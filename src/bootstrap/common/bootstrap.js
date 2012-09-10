@@ -42,7 +42,7 @@
   jsBoot.core.use('libs/js/bootstrap.js');
 
   // Form validation
-  jsBoot.core.use('libs/js/jquery.validate.js');
+  // jsBoot.core.use('libs/js/jquery.validate.js');
 /*
     $("#register_form").validate({
         rules:{
@@ -69,22 +69,25 @@
  */
 
   // Charts
-  jsBoot.core.use('libs/js/jquery.peity.js');
+  // jsBoot.core.use('libs/js/jquery.peity.js');
 
   // Datatables
-  jsBoot.core.use('libs/js/jquery.dataTables.js');
+  // jsBoot.core.use('libs/js/jquery.dataTables.js');
 
 
 
   jsBoot.core.use('libs/js/jquery.ui.custom.js');
 
   // Calendar
-  jsBoot.core.use('libs/js/fullcalendar.js');
+  // jsBoot.core.use('libs/js/fullcalendar.js');
 
 
   jsBoot.core.wait();
+
+  jsBoot.core.use('libs/js/unicorn.js');
+
   // Form wizard
-  jsBoot.core.use('libs/js/jquery.wizard.js');
+  // jsBoot.core.use('libs/js/jquery.wizard.js');
 
 
 
@@ -92,9 +95,8 @@
 
   // jsBoot.core.use('libs/js/jquery.flot.js');
   // jsBoot.core.use('libs/js/jquery.flot.resize.js');
-  jsBoot.core.use('libs/js/excanvas.js');
-  jsBoot.core.use('libs/js/jquery.gritter.js');
-  jsBoot.core.use('libs/js/unicorn.js');
+  // jsBoot.core.use('libs/js/excanvas.js');
+  // jsBoot.core.use('libs/js/jquery.gritter.js');
   // jsBoot.core.use('libs/js/unicorn.dashboard.js');
 
 })();

@@ -1,0 +1,31 @@
+/* By default, we are logged out */
+body  {
+  .user-logged-in, .user-author, .user-reviewer, .user-admin {
+    display: none !important;
+  }
+}
+
+/* All logged-in users see logged-in and author */
+body.user-author, body.user-reviewer, body.user-admin {
+  .user-logged-out {
+    display: none !important;
+  }
+
+  .user-logged-in, .user-author {
+    display: block !important;
+  }
+}
+
+/* Reviewer and admins sees reviewer level */
+body.user-reviewer, body.user-admin {
+  .user-reviewer {
+    display: block !important;
+  }
+}
+
+/* Admin sees admin level */
+body.user-admin {
+  .user-admin {
+    display: block !important;
+  }
+}

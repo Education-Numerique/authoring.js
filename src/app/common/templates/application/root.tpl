@@ -37,7 +37,7 @@
     </section>
 
     <section class="container-fluid">
-      <div>main content</div>
+      {{outlet}}
     </section>
 
     <footer id="footer">
