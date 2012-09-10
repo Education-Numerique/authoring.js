@@ -42,7 +42,7 @@ def mint():
 
 @task("Stats report deploy")
 def stats():
-  PH.stater(Yak.DOC_ROOT)
+  # PH.stater(Yak.DOC_ROOT)
   PH.stater(Yak.BUILD_ROOT)
 
 @task("Building the taupe!")
