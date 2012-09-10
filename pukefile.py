@@ -127,9 +127,9 @@ def build():
   combine(css, VERSIONED_ROOT + "/app.css", replace=sed)
 
   # fonts copy
-  fonts = FileList("src/assets/common/fonts/")
+  # fonts = FileList("src/assets/common/fonts/")
   # fonts.merge(FileList("src/assets/desktop/fonts/"))
-  deepcopy(fonts, VERSIONED_ROOT + '/fonts/')
+  # deepcopy(fonts, VERSIONED_ROOT + '/fonts/')
 
   # images copy
   images = FileList('src/assets/common/images', filter = "*.jpg,*.png,*.gif,*.ico")
