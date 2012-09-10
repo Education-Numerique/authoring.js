@@ -1,7 +1,10 @@
 user-jenkins-box-Linux:
     ROOT: '/opt/puke/jenkins-roxee'
-    DEPLOY_ROOT: '/var/www/deploy/static/lib'
+    DEPLOY_ROOT: '/var/www/deploy/static/clients/lxxl'
     DOC_ROOT: '/var/www/deploy/static/doc/lxxl'
+    LINKS:
+        # Link to webitup
+        JSBOOT: 'https://static.sn.ackitup.net/lib/webitup/jsboot.yaml'
 
 user-raildecom-box-Darwin:
     ROOT: '${HOME}/workspace/webitup/buildd'
