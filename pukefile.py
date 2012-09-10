@@ -65,10 +65,10 @@ def build():
 
   # First, merge in bootstraps
   js = FileList("src/bootstrap/common/" , filter="*.js")
-  js.merge(FileList("src/bootstrap/desktop/", filter = "*.js"))
+  # js.merge(FileList("src/bootstrap/desktop/", filter = "*.js"))
 
   css = FileList("src/bootstrap/common/" , filter="*.css,*.scss")
-  css.merge(FileList("src/bootstrap/desktop/", filter = "*.css,*.scss"))
+  # css.merge(FileList("src/bootstrap/desktop/", filter = "*.css,*.scss"))
 
   # Now generate min and non min version
 
@@ -106,11 +106,11 @@ def build():
   js.merge(FileList("src/app/common/models", filter = "*.js"))
   js.merge(FileList("src/app/common/controllers", filter = "*.js"))
   js.merge(FileList("src/app/common/views", filter = "*.js"))
-  js.merge(FileList("src/app/desktop/", filter = "*app.js"))
-  js.merge(FileList("src/app/desktop/states", filter = "*.js"))
-  js.merge(FileList("src/app/desktop/models", filter = "*.js"))
-  js.merge(FileList("src/app/desktop/controllers", filter = "*.js"))
-  js.merge(FileList("src/app/desktop/views", filter = "*.js"))
+  # js.merge(FileList("src/app/desktop/", filter = "*app.js"))
+  # js.merge(FileList("src/app/desktop/states", filter = "*.js"))
+  # js.merge(FileList("src/app/desktop/models", filter = "*.js"))
+  # js.merge(FileList("src/app/desktop/controllers", filter = "*.js"))
+  # js.merge(FileList("src/app/desktop/views", filter = "*.js"))
 
   combine(js, VERSIONED_ROOT + "/app.js", replace=sed)
 
@@ -123,22 +123,22 @@ def build():
 
   # css application
   css = FileList("src/assets/common/css", filter = "*.css,*.scss")
-  css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
+  # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
   combine(css, VERSIONED_ROOT + "/app.css", replace=sed)
 
   # fonts copy
   fonts = FileList("src/assets/common/fonts/")
-  fonts.merge(FileList("src/assets/desktop/fonts/"))
+  # fonts.merge(FileList("src/assets/desktop/fonts/"))
   deepcopy(fonts, VERSIONED_ROOT + '/fonts/')
 
   # images copy
   images = FileList('src/assets/common/images', filter = "*.jpg,*.png,*.gif,*.ico")
-  images.merge(FileList('src/assets/desktop/images', filter = "*.jpg,*.png,*.gif,*.ico"))
+  # images.merge(FileList('src/assets/desktop/images', filter = "*.jpg,*.png,*.gif,*.ico"))
   deepcopy(images, VERSIONED_ROOT + "/images/")
 
   # templates merge
   templates = FileList('src/app/common/templates', filter = "*.tpl")
-  templates.merge(FileList("src/app/desktop/templates/", filter = "*.tpl"))
+  # templates.merge(FileList("src/app/desktop/templates/", filter = "*.tpl"))
   combine(templates, VERSIONED_ROOT +  "/app.tpl")
 
 
