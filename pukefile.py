@@ -26,11 +26,15 @@ def deploy():
 
 @task("Lint")
 def lint():
-  PH.linter("src")
+  PH.linter("src/app")
+  PH.linter("src/assets")
+  PH.linter("src/bootstrap")
 
 @task("Flint")
 def flint():
-  PH.flinter("src")
+  PH.flinter("src/app")
+  PH.flinter("src/assets")
+  PH.flinter("src/bootstrap")
 
 @task("Minting")
 def mint():

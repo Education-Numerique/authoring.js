@@ -1,2 +1,6 @@
-LxxlApp.Application = Ember.Object.extend({
-});
+(function() {
+
+  this.Application = Ember.Object.extend({
+  });
+
+}).apply(LxxlApp);

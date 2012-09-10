@@ -11,30 +11,30 @@
 
 'use strict';
 
-(function(){
+(function() {
   var bootRoot = '{PUKE-BOOT-ROOT}/';
   var debug = !!location.href.match(/use-debug/);
   var nostack = !!location.href.match(/use-split/);
   var trunk = !!location.href.match(/use-trunk/);
   var suffix = (!debug && !location.href.match(/use-full/)) ? '-min.js' : '.js';
 
-  if(!nostack){
+  if (!nostack) {
     jsBoot.core.boot(null, debug, trunk);
     // Load the app itself
     jsBoot.core.use(bootRoot + 'app' + suffix);
-  }else{
-    if(debug)
+  }else {
+    if (debug)
       jsBoot.core.use(jsBoot.core.DEBUG);
     jsBoot.core.use(jsBoot.core.SHIMS);
-    jsBoot.core.use('jquery', trunk ? 'trunk': '1.8');
-    jsBoot.core.use('handlebars', trunk ? 'trunk': '1.b6', 'main');
+    jsBoot.core.use('jquery', trunk ? 'trunk' : '1.8');
+    jsBoot.core.use('handlebars', trunk ? 'trunk' : '1.b6', 'main');
     jsBoot.core.wait();
-    jsBoot.core.use('ember', trunk ? 'trunk': '1.0.pre', debug ? 'debug' : 'prod');
-    jsBoot.core.use('i18n', trunk ? 'trunk': '3rc2');
+    jsBoot.core.use('ember', trunk ? 'trunk' : '1.0.pre', debug ? 'debug' : 'prod');
+    jsBoot.core.use('i18n', trunk ? 'trunk' : '3rc2');
     jsBoot.core.wait();
   }
 
-  jsBoot.core.wait(function () {
+  jsBoot.core.wait(function() {
     $('html').removeClass('no-js');
   });
 
@@ -43,7 +43,7 @@
 
   // Form validation
   // jsBoot.core.use('libs/js/jquery.validate.js');
-/*
+  /*
     $("#register_form").validate({
         rules:{
             user_name:"required",
@@ -63,8 +63,8 @@
 
 <form id="register_form" name="register_form" action="auth.php" method="post">
     <input type="text" name="user_name" id="user_name" value="" />
-    <input type="text" name="user_email"  id="user_email" value="" />    
-    <input type="submit" name="submit" value="Register" />           
+    <input type="text" name="user_email"  id="user_email" value="" />
+    <input type="submit" name="submit" value="Register" />
 </form>
  */
 
