@@ -10,9 +10,9 @@
         return 'application/header';
       }.property(),
 
-      didInsertElement: function(){
+      didInsertElement: function() {
         this._super();
-        this.addObserver('parentView.controller.selected', function(){
+        this.addObserver('parentView.controller.selected', function() {
           unicorn.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
         });
         unicorn.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
@@ -27,30 +27,30 @@
     })
   });
 
-  this.lxxlPageView = function(name){
+  this.lxxlPageView = function(name) {
     var argg;
     return {
       templateName: function() {
         return 'pages/' + name;
       }.property(),
 
-      didInsertElement: function(){
+      didInsertElement: function() {
         unicorn.bindBehaviors(this.get('element'));
         this.set('parentView.controller.pageTitle', I18n.translate(name + '.title'));
-        var bread = I18n.translate(name + '.bread', {defaultValue: "----"});
-        if(bread != '----'){
+        var bread = I18n.translate(name + '.bread', {defaultValue: '----'});
+        if (bread != '----') {
           argg = this.get('parentView.controller.breadcrumbs');
           argg.pushObject({displayName: bread});
         }
         // Bind behaviors
         unicorn.bindBehaviors(this.get('element'));
-        if(this.doOnInsert)
+        if (this.doOnInsert)
           this.doOnInsert();
 
       },
 
-      willDestroy: function(){
-        if(argg)
+      willDestroy: function() {
+        if (argg)
           argg.popObject();
       }
     };

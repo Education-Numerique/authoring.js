@@ -1,8 +1,8 @@
 (function() {
-  var t = this.lxxlPageView('dashboard')
+  var t = this.lxxlPageView('dashboard');
 
-  t.selectedItem = function(){
-    if(this.get('element')){
+  t.selectedItem = function() {
+    if (this.get('element')) {
       $('.in', this.get('element')).removeClass('in');
       $('#' + this.get('controller.selected') + '-collapse', this.get('element')).addClass('in');
     }

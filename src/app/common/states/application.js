@@ -22,7 +22,7 @@
     enableLogging: true,
 
     root: Ember.Route.extend({
-      index:  lxxlRoute('/'),/*Ember.Route.extend({
+      index: lxxlRoute('/'),/*Ember.Route.extend({
         route: '/',
         // enter: function(router) {
         //   console.log('entering route index from', router.get('currentState.name'));
@@ -64,33 +64,33 @@
 
         index: Ember.Route.extend({
           route: '/',
-          connectOutlets: function(router){
+          connectOutlets: function(router) {
             router.set('dashboardController.selected', 'home');
           }
         }),
 
         cnil: Ember.Route.extend({
           route: 'cnil',
-          connectOutlets: function(router){
+          connectOutlets: function(router) {
             router.set('dashboardController.selected', 'cnil');
           }
         }),
         charte: Ember.Route.extend({
           route: 'charte',
-          connectOutlets: function(router){
+          connectOutlets: function(router) {
             router.set('dashboardController.selected', 'charte');
           }
         }),
         advices: Ember.Route.extend({
           route: 'advices',
-          connectOutlets: function(router){
+          connectOutlets: function(router) {
             router.set('dashboardController.selected', 'advices');
           }
         }),
 
         route: 'dashboard',
 
-        enter: function(router){
+        enter: function(router) {
           router.set('applicationController.selected', 'dashboard');
         },
 
