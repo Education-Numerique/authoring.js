@@ -26,7 +26,7 @@
     if (debug)
       jsBoot.core.use(jsBoot.core.DEBUG);
     jsBoot.core.use(jsBoot.core.SHIMS);
-    jsBoot.core.use('jquery', trunk ? 'trunk' : '1.8');
+    jsBoot.core.use('jquery', trunk ? 'trunk' : '1.7');
     jsBoot.core.use('handlebars', trunk ? 'trunk' : '1.b6', 'main');
     jsBoot.core.wait();
     jsBoot.core.use('ember', trunk ? 'trunk' : '1.0.pre', debug ? 'debug' : 'prod');
@@ -40,7 +40,13 @@
 
 
   jsBoot.core.use('libs/js/bootstrap.js');
+  jsBoot.core.use('libs/js/unicorn.js');
 
+  jsBoot.core.wait();
+
+
+
+  // jsBoot.core.use('libs/js/jquery.ui.custom.js');
   // Form validation
   // jsBoot.core.use('libs/js/jquery.validate.js');
   /*
@@ -74,17 +80,10 @@
   // Datatables
   // jsBoot.core.use('libs/js/jquery.dataTables.js');
 
-
-
-  jsBoot.core.use('libs/js/jquery.ui.custom.js');
-
   // Calendar
   // jsBoot.core.use('libs/js/fullcalendar.js');
 
 
-  jsBoot.core.wait();
-
-  jsBoot.core.use('libs/js/unicorn.js');
 
   // Form wizard
   // jsBoot.core.use('libs/js/jquery.wizard.js');

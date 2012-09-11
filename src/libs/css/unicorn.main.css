@@ -266,10 +266,10 @@ a:hover {
 #breadcrumb a:hover {
 	color: #333333;
 }
-#breadcrumb a:last-child {
+#breadcrumb a:last-of-type {
 	background-image:none;
-}
-#breadcrumb a.current {
+/*}
+#breadcrumb a.current {*/
 	font-weight: bold;
 	color: #444444;
 }

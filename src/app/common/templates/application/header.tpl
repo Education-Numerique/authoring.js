@@ -1,15 +1,6 @@
 /*
 * @template : application/header
 */
-
-<!--     {{log this}}
-    {{log controller}}
-    {{log view}}
-    {{log model}}
-    {{log papa}}
-    {{log this.papa}}
- -->
-
   <header id="header" role="banner">
       <h1>
         <a href="./">LxxL</a>
@@ -49,38 +40,38 @@
   </nav>
 
   <nav id="sidebar">
-    <a class="visible-phone" {{action showDashboard href=true}}><i class="icon icon-home"></i>Home</a>
-    <a class="visible-phone" {{action showSandbox href=true}}><i class="icon icon-eye-open"></i> <span>Explore sandbox</span></a></li>
+    <a class="visible-phone"><i class="icon icon-home"></i>Home</a>
     <ul>
-      {{#view view.navItemView item="dashboard" class="user-all" }}
-        <a {{action showDashboard href=true}}><i class="icon icon-home"></i> <span>Home</span></a>
-      {{/view}}
-      {{#view view.navItemView item="sandbox" class="user-all" }}
-        <a {{action showSandbox href=true}}><i class="icon icon-eye-open"></i> <span>Explore sandbox</span></a>
-      {{/view}}
+      <li class="user-all">
+        <a id="navigation-dashboard" {{action showDashboard href=true}}><i class="icon icon-home"></i> <span>Home</span></a>
+      </li>
 
-      {{#view view.navItemView item="my-qtis" class="submenu user-author" }}
-        <a {{action showMyQTIs href=true}}><i class="icon icon-th-list"></i> <span>My QTIs</span></a>
+      <li class="user-all">
+        <a id="navigation-sandbox" {{action showSandbox href=true}}><i class="icon icon-eye-open"></i> <span>Explore sandbox</span></a>
+      </li>
+
+      <li class="submenu user-author">
+        <a id="navigation-myQtis" {{action showMyQTIs href=true}}><i class="icon icon-th-list"></i> <span>My QTIs</span></a>
         <ul>
           <li><a {{action showMyQTIs href=true}}>List</a></li>
           <li><a {{action showNewQTI href=true}}>New</a></li>
         </ul>
-      {{/view}}
+      </li>
 
-      {{#view view.navItemView item="all-qtis" class="user-reviewer" }}
-        <a {{action showAllQTIs href=true}}><i class="icon icon-bullhorn"></i> <span>All QTIs</span></a>
-      {{/view}}
+      <li class="submenu user-reviewer">
+        <a id="navigation-qtis" {{action showAllQTIs href=true}}><i class="icon icon-bullhorn"></i> <span>All QTIs</span></a>
+      </li>
 
-      {{#view view.navItemView item="categories" class="submenu user-admin" }}
-        <a {{action showAllCategories href=true}}><i class="icon icon-bookmark"></i> <span>Categories</span></a>
+      <li class="submenu user-admin">
+        <a id="navigation-categories" {{action showAllCategories href=true}}><i class="icon icon-bookmark"></i> <span>Categories</span></a>
         <ul>
           <li><a {{action showAllCategories href=true}}>List</a></li>
           <li><a {{action showNewCategory href=true}}>New</a></li>
         </ul>
-      {{/view}}
+      </li>
 
-      {{#view view.navItemView item="users" class="user-admin" }}
-        <a {{action showAllUsers href=true}}><i class="icon icon-user"></i> <span>Users</span></a>
-      {{/view}}
+      <li class="user-admin">
+        <a id="navigation-users" {{action showAllUsers href=true}}><i class="icon icon-user"></i> <span>Users</span></a>
+      </li>
     </ul>
   </nav>

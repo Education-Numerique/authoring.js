@@ -1,11 +1,11 @@
 /*
 * @template : application/root
 */
-  {{view view.headerView}}
+  {{view view.navigationView}}
 
   <article id="content" role="main">
     <header id="content-header">
-      <h1>Stuff</h1>
+      <h1>{{pageTitle}}</h1>
     </header>
 
     <!-- Kick out old crap... -->
@@ -31,19 +31,24 @@
     </section>
 
     <section id="breadcrumb">
-      <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
-      <a href="#" class="">Dashboard</a>
-      <a href="#" class="current">Toto</a>
+      <a {{action showDashboard href="true"}} title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+
+      {{#each breadcrumbs}}
+        <a {{bindAttr class="className"}}>{{displayName}}</a>
+      {{/each}}
     </section>
 
-    <section class="container-fluid">
+    <section class="container-fluid" id="mainsection">
       {{outlet}}
     </section>
 
     <footer id="footer">
-      <p>Lxxl, author environment, copyright 2012 E&amp;N</p>
+      <p>Copyright © 2011 LxxL - Education & Numérique. Tous droits réservés. | <a {{action showCnil href=true}}>Conditions générales &amp; Respect de la vie privée</a>.
     </footer>
   </article>
+
+  {{view view.footerView}}
+
 
 <!--
   <article role="main">
@@ -65,4 +70,3 @@
     </for>
   </article>
 -->
-  {{view view.footerView}}

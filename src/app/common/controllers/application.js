@@ -58,8 +58,10 @@
       console.warn(this.content);
       this._super();
     },
-    // Selected element in the left navigation
-    selected: null
+    // Which node ios actually selected
+    selected: null,
+    pageTitle: null,
+    breadcrumbs: []
   });
 
 }).apply(LxxlApp);

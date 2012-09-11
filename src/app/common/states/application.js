@@ -3,9 +3,11 @@
   var lxxlRoute = function(name, adds) {
     var rt = {
       route: name,
-      connectOutlets: function(router) {
+      enter: function(router) {
         router.set('applicationController.selected', name);
-        //      router.get('applicationController').connectOutlet(name);
+      },
+      connectOutlets: function(router) {
+        router.get('applicationController').connectOutlet(name);
       }
     };
     if (adds)
@@ -18,18 +20,19 @@
   this.Router = Ember.Router.extend({
     // XXX flag debug here
     enableLogging: true,
+
     root: Ember.Route.extend({
-      index: Ember.Route.extend({
+      index:  lxxlRoute('/'),/*Ember.Route.extend({
         route: '/',
-        enter: function(router) {
-          console.log('entering route index from', router.get('currentState.name'));
-        },
-        connectOutlets: function(router) {
-          console.log('entered root.index, fully transitioned to', router.get('currentState.path'));
-          //        router.get('applicationController').connectOutlet('another');
-          //       redirectsTo: 'dashboard'
-        }
-      }),
+        // enter: function(router) {
+        //   console.log('entering route index from', router.get('currentState.name'));
+        // },
+        // connectOutlets: function(router) {
+        //   console.log('entered root.index, fully transitioned to', router.get('currentState.path'));
+        //   //        router.get('applicationController').connectOutlet('another');
+        //   //       redirectsTo: 'dashboard'
+        // }
+      }),*/
 
       // User account related
       showLogin: Ember.Route.transitionTo('login'),
@@ -44,19 +47,69 @@
       showSettings: Ember.Route.transitionTo('settings'),
       settings: lxxlRoute('settings'),
 
+
+
       // User base activities
-      showDashboard: Ember.Route.transitionTo('dashboard'),
-      dashboard: lxxlRoute('dashboard'),
+      // showDashboard: Ember.Route.transitionTo('dashboard.index'),
+      // showCnil: Ember.Route.transitionTo('dashboard.cnil'),
+      // showCharte: Ember.Route.transitionTo('dashboard.charte'),
+      // showAdvice: Ember.Route.transitionTo('dashboard.advices'),
+
+      showDashboard: Ember.Route.transitionTo('dashboard.index'),
+      showCnil: Ember.Route.transitionTo('dashboard.cnil'),
+
+      dashboard: Ember.Route.extend({
+        showCharte: Ember.Route.transitionTo('dashboard.charte'),
+        showAdvice: Ember.Route.transitionTo('dashboard.advices'),
+
+        index: Ember.Route.extend({
+          route: '/',
+          connectOutlets: function(router){
+            router.set('dashboardController.selected', 'home');
+          }
+        }),
+
+        cnil: Ember.Route.extend({
+          route: 'cnil',
+          connectOutlets: function(router){
+            router.set('dashboardController.selected', 'cnil');
+          }
+        }),
+        charte: Ember.Route.extend({
+          route: 'charte',
+          connectOutlets: function(router){
+            router.set('dashboardController.selected', 'charte');
+          }
+        }),
+        advices: Ember.Route.extend({
+          route: 'advices',
+          connectOutlets: function(router){
+            router.set('dashboardController.selected', 'advices');
+          }
+        }),
+
+        route: 'dashboard',
+
+        enter: function(router){
+          router.set('applicationController.selected', 'dashboard');
+        },
+
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('dashboard');
+        }
+      }),
+
+
 
       showSandbox: Ember.Route.transitionTo('sandbox'),
       sandbox: lxxlRoute('sandbox'),
 
       // QTIs
       showMyQTIs: Ember.Route.transitionTo('myQTIs'),
-      myQTIs: lxxlRoute('my-qtis'),
+      myQTIs: lxxlRoute('myQtis'),
 
       showAllQTIs: Ember.Route.transitionTo('allQTIs'),
-      allQTIs: lxxlRoute('all-qtis'),
+      allQTIs: lxxlRoute('qtis'),
 
       // Categories
       showAllCategories: Ember.Route.transitionTo('categories'),
@@ -73,6 +126,7 @@
 
       showNewCategory: Ember.Route.transitionTo('newCategory'),
       newCategory: Ember.Route.extend({route: 'category.new'}),
+
 
       // Routes not accessible from navigation itself
       editQTI: Ember.Route.extend({route: 'qti.edit:qti_id'}),

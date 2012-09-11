@@ -1,31 +1,66 @@
-/* By default, we are logged out */
-body  {
+/* By default, logged out users don't see... */
+body:not(.user-author):not(.user-reviewer):not(.user-admin) {
   .user-logged-in, .user-author, .user-reviewer, .user-admin {
     display: none !important;
   }
 }
 
-/* All logged-in users see logged-in and author */
+/* All logged-in users stop seeing logged-out */
 body.user-author, body.user-reviewer, body.user-admin {
   .user-logged-out {
     display: none !important;
   }
+}
 
-  .user-logged-in, .user-author {
-    display: block !important;
+/* Non-admin don't see some stuff */
+body:not(.user-reviewer):not(.user-admin) {
+  .user-reviewer, .user-admin {
+    display: none !important;
   }
 }
 
-/* Reviewer and admins sees reviewer level */
-body.user-reviewer, body.user-admin {
-  .user-reviewer {
-    display: block !important;
-  }
-}
-
-/* Admin sees admin level */
-body.user-admin {
+body:not(.user-admin) {
   .user-admin {
-    display: block !important;
+    display: none !important;
   }
 }
+
+/* Fix unicorn shady management */
+
+#sidebar > a {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 769px) {
+  #user-nav > ul {
+    width: auto;
+    margin: 0;
+  }
+}
+
+@media screen and (min-width: 480px) {
+  #sidebar > ul {
+    display: block;
+  }
+  #content-header .btn-group {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 479px) {
+  #sidebar > ul {
+    display: none;
+  }
+  #user-nav > ul {
+    margin-left: -100px;
+  }
+}
+
+/* Fix unicorn css on collapse */
+
+#charte, #cnil, #advices {
+  > header > h5 {
+    cursor: pointer;
+  }
+}
+
