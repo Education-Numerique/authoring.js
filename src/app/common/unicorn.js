@@ -67,6 +67,30 @@
     //  items: 4
     // });
 
+    (function () {
+      var hide = function () {
+        $(this).removeClass('slidify-on');
+      };
+
+      var show = function () {
+        $(this).addClass('slidify-on');
+      };
+
+      $('body').on('click.slidify.data-api', '[data-toggle=slidify]', function (e) {
+        var dataParent = $(this).attr('data-parent');
+        var speed = parseInt($(this).attr('data-speed')) || 500;
+        var nodeTarget = $($(this).attr('data-target'));
+
+        if (nodeTarget.hasClass('slidify-on')) {
+          nodeTarget.slideUp(speed, hide);
+        } else {
+          if (dataParent)
+            $(dataParent).find('.slidify-on').slideUp(speed, hide);
+          nodeTarget.slideDown(speed, show);
+        }
+      });
+    })();
   });
+
 
 }).apply(this);

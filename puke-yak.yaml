@@ -8,8 +8,11 @@ user-jenkins-box-Linux:
 
 user-raildecom-box-Darwin:
     ROOT: '${HOME}/workspace/webitup/buildd'
-    DEPLOY_ROOT: '${HOME}/workspace/webitup/deploy/web/static/lib'
+    DEPLOY_ROOT: '${HOME}/workspace/webitup/deploy/web/static/lib/lxxl'
     DOC_ROOT: '${HOME}/workspace/webitup/deploy/doc/lxxl'
+    LINKS:
+        # Link to webitup
+        JSBOOT: 'https://static.sn.ackitup.net/lib/webitup/jsboot.yaml'
 
 user-dmp-box-Darwin:
     ROOT: '${HOME}/buildd/stage.webitup.org'

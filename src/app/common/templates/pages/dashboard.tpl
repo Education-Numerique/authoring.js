@@ -104,19 +104,19 @@
 
 
 
-
+<div id="accordion2">
 <article id="charte" class="widget-box">
-  <header class="widget-title">
+  <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-speed="500" data-target="#charte-collapse">
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
-    <h5 data-toggle="collapse" data-target="#charte-collapse">Charte
+    <h5>Charte
 des auteurs LxxL - Éducation Numérique</h5>
     <div class="buttons">
       <a title="Icon Title" class="btn btn-mini" href="#"><i class="icon-print"></i> Print</a>
     </div>
   </header>
-  <section class="widget-content collapse" id="charte-collapse">
+  <section class="widget-content slidify" id="charte-collapse">
 
     <h5>1 Généralités</h5>
     <ul>
@@ -233,16 +233,16 @@ des auteurs LxxL - Éducation Numérique</h5>
 
 
 <article id="cnil" class="widget-box">
-  <header class="widget-title">
+  <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#cnil-collapse">
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
-    <h5 data-toggle="collapse" data-target="#cnil-collapse">Respect de la vie privée - Données personnelles - CNIL</h5>
+    <h5 >Respect de la vie privée - Données personnelles - CNIL</h5>
     <div class="buttons">
       <a title="Icon Title" class="btn btn-mini" href="#"><i class="icon-print"></i> Print</a>
     </div>
   </header>
-  <section class="widget-content collapse" id="cnil-collapse">
+  <section class="widget-content slidify" id="cnil-collapse">
     <ul syle="text-align: justify;">
       <li>
         <h5>Dispositions générales</h5>
@@ -280,16 +280,16 @@ des auteurs LxxL - Éducation Numérique</h5>
 
 
 <article id="advices" class="widget-box">
-  <header class="widget-title">
+  <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#advices-collapse">
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
-    <h5 data-toggle="collapse" data-target="#advices-collapse">Conseils à l’illustration des œuvres des auteurs</h5>
+    <h5 >Conseils à l’illustration des œuvres des auteurs</h5>
     <div class="buttons">
       <a title="Icon Title" class="btn btn-mini" href="#"><i class="icon-print"></i> Print</a>
     </div>
   </header>
-  <section class="widget-content collapse" id="advices-collapse">
+  <section class="widget-content slidify" id="advices-collapse">
     <p>Dans la conception et la proposition de
     son œuvre à LxxL, un auteur peut souhaiter utiliser des images, des musiques, des
     vidéos ou des textes, que ce soit parce que le document a un rôle central dans
@@ -445,4 +445,4 @@ des auteurs LxxL - Éducation Numérique</h5>
     href="//creativecommons.org/licenses">Licenses</a></p>
   </section>
 </article>
-
+</div>
