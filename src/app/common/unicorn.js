@@ -30,11 +30,42 @@
 
     this.bindBehaviors = function(node) {
       console.warn('binding behaviors on ', node);
+      // 
+      $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
+
+      // Tips
       $('.tip', node).tooltip();
       $('.tip-left', node).tooltip({ placement: 'left' });
       $('.tip-right', node).tooltip({ placement: 'right' });
       $('.tip-top', node).tooltip({ placement: 'top' });
       $('.tip-bottom', node).tooltip({ placement: 'bottom' });
+
+      $('.data-table').each(function(ind, item){
+        if($(item).hasClass('dataTable'))
+          return;
+        $(item).dataTable({
+          "bJQueryUI": true,
+          "sPaginationType": "full_numbers",
+          "sDom": '<""l>t<"F"fp>'
+        });
+
+        $('select').chosen();
+        
+        $("span.icon input:checkbox, th input:checkbox").click(function() {
+          var checkedStatus = this.checked;
+          var checkbox = $(this).parents('.widget-box').find('tr td:first-child input:checkbox');   
+          checkbox.each(function() {
+            this.checked = checkedStatus;
+            if (checkedStatus == this.checked) {
+              $(this).closest('.checker > span').removeClass('checked');
+            }
+            if (this.checked) {
+              $(this).closest('.checker > span').addClass('checked');
+            }
+          });
+        });
+
+      });
     };
   })();
 

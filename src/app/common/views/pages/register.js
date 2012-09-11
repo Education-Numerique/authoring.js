@@ -1,5 +1,6 @@
 (function() {
   var t = this.lxxlPageView('register');
+
   t.doOnInsert = function() {
     $('#form-wizard').formwizard({
       formPluginEnabled: true,
@@ -69,8 +70,7 @@
         $('.form-actions').hide();
     };
 
-    $('#next').on('click', setProgress);
-    $('#back').on('click', setProgress);
+    $('#next,#back').on('click', setProgress);
 
     $('#register-regular').on('click', function() {
       $('#form-wizard').formwizard('show', 'step-regular');
@@ -104,7 +104,7 @@
 
     var onfailure = function(error) {
       switch (error) {
-        case this.get('controller').ALREADY_USED_EMAIL:
+        case this.get('controller').ALREADY_USED_NICK:
           $('#creation-error').html(
               'Le nom d\'utilisateur choisi existe déjà. Merci d\'en choisir un autre.');
           $('#creation-error').fadeTo(1000, 1, function() {
@@ -114,7 +114,7 @@
             $('#form-wizard').formwizard('show', 'step-basic');
           });
           break;
-        case this.get('controller').ALREADY_USED_NICK:
+        case this.get('controller').ALREADY_USED_EMAIL:
           // XXX maybe do something here
           $('#creation-error').html('Cet email a déjà été utilisé pour créer un compte.');
           $('#creation-error').fadeTo(1000, 1/*, function(){
@@ -137,6 +137,12 @@
       $('#form-wizard').fadeTo(500, 0, function() {
         $(this).hide();
       });
+      $.gritter.add({
+        title:  'Compte créé',
+        text: 'Votre compte a bien été créé. Vous recevrez sous peu un mail de validation.',
+        // image:  'assets/demo/envelope.png',
+        sticky: false
+      }); 
       if (type == 'regular') {
         $('#success-regular').fadeTo(500, 1);
         return;
@@ -146,6 +152,8 @@
           // XXX navigate login page
         });
       });
+
+
     }.bind(this);
 
   };

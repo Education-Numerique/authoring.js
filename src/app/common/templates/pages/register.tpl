@@ -71,7 +71,7 @@
           <div class="control-group">
             <label class="control-label">Email</label>
             <div class="controls">
-              <input id="email" type="text" name="email" class="tip-right"/>
+              <input id="email" type="text" name="email" />
             </div>
           </div>
 

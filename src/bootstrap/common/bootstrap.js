@@ -36,7 +36,16 @@
     $('html').removeClass('no-js');
   });
 
+  // Growl like notifications
+  jsBoot.core.use('libs/js/jquery.gritter.js');
+  // Disable text select
+  jsBoot.core.use('libs/js/jquery.uniform.js');
+  // Data tables
+  jsBoot.core.use('libs/js/jquery.dataTables.js');
+  // Css bootstrap
   jsBoot.core.use('libs/js/bootstrap.js');
+
+  jsBoot.core.use('libs/js/jquery.chosen.js');
 
   // Wizard depend on this crap
   jsBoot.core.use('libs/js/jquery.ui.custom.js');

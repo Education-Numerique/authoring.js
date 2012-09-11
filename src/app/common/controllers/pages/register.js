@@ -5,6 +5,7 @@
     ALREADY_USED_NICK: 'nick',
     tryRegister: function(data, successCbk, failureCbk) {
       successCbk('regular');// or facebook
+      // failureCbk(this.ALREADY_USED_NICK);// or facebook
       // console.warn(JSON.stringify(data));
     }
   });
