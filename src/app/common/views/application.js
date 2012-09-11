@@ -11,6 +11,7 @@
       }.property(),
 
       didInsertElement: function() {
+        console.warn('Binding in root view');
         this._super();
         this.addObserver('parentView.controller.selected', function() {
           unicorn.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
@@ -35,6 +36,8 @@
       }.property(),
 
       didInsertElement: function() {
+        console.warn('Binding in outlet');
+        // Bind behaviors
         unicorn.bindBehaviors(this.get('element'));
         this.set('parentView.controller.pageTitle', I18n.translate(name + '.title'));
         var bread = I18n.translate(name + '.bread', {defaultValue: '----'});
@@ -42,8 +45,6 @@
           argg = this.get('parentView.controller.breadcrumbs');
           argg.pushObject({displayName: bread});
         }
-        // Bind behaviors
-        unicorn.bindBehaviors(this.get('element'));
         if (this.doOnInsert)
           this.doOnInsert();
 

@@ -50,23 +50,3 @@
   {{view view.footerView}}
 
 
-<!--
-  <article role="main">
-    <script type="text/x-handlebars" data-template-name="say-hello">
-      <h1>Hello world!{{name}}</h1>
-    </script>
-
-    <h1>Class Index</h1>
-    <for each="thisClass" in="data">
-    <section>
-        <h2>{+(new Link().toSymbol(thisClass.alias))+}</h2>
-      <details>
-          <summary>
-            {+resolveLinks(summarize(thisClass.classDesc))+}
-          </summary>
-        <p>{+resolveLinks(thisClass.classDesc)+}</p>
-      </details>
-    </section>
-    </for>
-  </article>
--->

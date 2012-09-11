@@ -4,7 +4,6 @@
 
 <div class="row-fluid ">
 <div class="alert alert-info">Bienvenue sur LxxL!<a href="#" data-dismiss="alert" class="close">×</a></div>
-</div>
 
 
 <article id="home" class="widget-box">

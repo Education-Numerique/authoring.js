@@ -58,9 +58,14 @@ body:not(.user-admin) {
 
 /* Fix unicorn css on collapse */
 
-#charte, #cnil, #advices {
+#charte, #cnil, #advices, #home {
   > header > h5 {
     cursor: pointer;
   }
+}
+
+
+.icon-facebook{
+  background-image: url("images/facebook.png");
 }
 

@@ -20,8 +20,6 @@
 
   if (!nostack) {
     jsBoot.core.boot(null, debug, trunk);
-    // Load the app itself
-    jsBoot.core.use(bootRoot + 'app' + suffix);
   }else {
     if (debug)
       jsBoot.core.use(jsBoot.core.DEBUG);
@@ -38,15 +36,21 @@
     $('html').removeClass('no-js');
   });
 
-
   jsBoot.core.use('libs/js/bootstrap.js');
-  jsBoot.core.use('libs/js/unicorn.js');
 
+  // Wizard depend on this crap
+  jsBoot.core.use('libs/js/jquery.ui.custom.js');
   jsBoot.core.wait();
 
+  jsBoot.core.use('libs/js/jquery.validate.js');
+  jsBoot.core.use('libs/js/jquery.wizard.js');
+  jsBoot.core.wait();
+
+  // Load the app itself
+  jsBoot.core.use(bootRoot + 'app' + suffix);
 
 
-  // jsBoot.core.use('libs/js/jquery.ui.custom.js');
+
   // Form validation
   // jsBoot.core.use('libs/js/jquery.validate.js');
   /*

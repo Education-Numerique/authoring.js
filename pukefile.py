@@ -101,7 +101,7 @@ def build():
   # ================================
 
   #js application
-  js = FileList("src/app/common/", filter = "*app.js,*i18n.js")
+  js = FileList("src/app/common/", filter = "*i18n.js,*unicorn.js,*app.js")
   js.merge(FileList("src/app/common/states", filter = "*.js"))
   js.merge(FileList("src/app/common/models", filter = "*.js"))
   js.merge(FileList("src/app/common/controllers", filter = "*.js"))
