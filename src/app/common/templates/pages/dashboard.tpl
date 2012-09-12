@@ -6,14 +6,15 @@
 <div class="alert alert-info">Bienvenue sur LxxL!<a href="#" data-dismiss="alert" class="close">×</a></div>
 
 
+<div id="accordion2">
 <article id="home" class="widget-box">
-  <header class="widget-title">
+  <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#home-collapse">
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
-    <h5 data-toggle="collapse" data-target="#home-collapse">Accueil</h5>
+    <h5>Accueil</h5>
   </header>
-  <section class="widget-content collapse" id="home-collapse">
+  <section class="widget-content slidify" id="home-collapse">
     <h5>Enregistrez-vous en tant qu'auteur E&amp;N...<br />
     c'est gratuit, public, la&iuml;que, open source, creative commons et pas obligatoire !</h5>
     <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showRegister href=true}}>cliquez ici</a></p>
@@ -98,13 +99,6 @@
 </article>
 
 
-
-
-
-
-
-
-<div id="accordion2">
 <article id="charte" class="widget-box">
   <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-speed="500" data-target="#charte-collapse">
     <span class="icon">

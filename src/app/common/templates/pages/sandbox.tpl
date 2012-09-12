@@ -13,20 +13,25 @@
       <table class="table table-bordered data-table">
         <thead>
           <tr style="cursor: pointer; table-striped with-check">
-            <th>Modifier</th>
-            <th>Jouer</th>
-            <th>Author</th>
-            <th>Category</th>
+            <th class="user-reviewer2" style="width: 10px;"></th>
+            <th style="width: 10px;"></th>
             <th>Titre</th>
+            <th>Category</th>
+            <th>Author</th>
           </tr>
         </thead>
         <tbody>
           {{#each qti}}
             <tr>
-              <td class="">{{author}}</td>
-              <td>{{author}}</td>
-              <td>{{category}}</td>
+            <!--
+              regarder le mixin no text dans roxee / + unselectable 
+
+            -->
+              <td class="user-reviewer2"><button {{action showEditQTI this href=true}} class="icon-edit"></button></td>
+              <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
               <td>{{title}}</td>
+              <td>{{category}}</td>
+              <td>{{author}}</td>
             </tr>
           {{/each}}
         </tbody>

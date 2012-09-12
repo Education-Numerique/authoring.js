@@ -3,8 +3,8 @@
 
   t.selectedItem = function() {
     if (this.get('element')) {
-      $('.in', this.get('element')).removeClass('in');
-      $('#' + this.get('controller.selected') + '-collapse', this.get('element')).addClass('in');
+      $('.slidify-on', this.get('element')).removeClass('slidify-on');
+      $('#' + this.get('controller.selected') + '-collapse', this.get('element')).addClass('slidify-on');
     }
     return this.get('controller.selected');
   }.property('controller.selected', 'element');

@@ -129,9 +129,13 @@
 
 
       // Routes not accessible from navigation itself
-      editQTI: Ember.Route.extend({route: 'qti.edit:qti_id'}),
-      editCategory: Ember.Route.extend({route: 'category.edit:cat_id'}),
-      editUser: Ember.Route.extend({route: 'user.edit:user_id'})
+      showPlayQTI: Ember.Route.transitionTo('playQTI'),
+      showEditQTI: Ember.Route.transitionTo('editQTI'),
+      playQTI: Ember.Route.extend({route: 'qti.show/:id'}),
+      editQTI: Ember.Route.extend({route: 'qti.edit/:id'}),
+
+      editCategory: Ember.Route.extend({route: 'category.edit/:cat_id'}),
+      editUser: Ember.Route.extend({route: 'user.edit/:user_id'})
     })
   });
 }).apply(LxxlApp);
