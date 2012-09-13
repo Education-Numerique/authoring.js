@@ -1,0 +1,26 @@
+/*
+  This is a placeholder stylesheet meant to:
+  - provide *default* styles to be displayed while the app boots-up
+  - import the actual entry point stylesheet of the app
+*/
+
+@import url("{PUKE-BOOT-ROOT}/lxxl{MIN}.css");
+
+noscript p {
+  text-align: center;
+}
+
+body > p{
+  display: none;
+}
+
+/* Show the throbber until the app finishes booting and remove the no-js class */
+.no-js body > p{
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  margin-top: -30px;
+  left: 50%;
+  margin-left: -78px;
+  display: block;
+}

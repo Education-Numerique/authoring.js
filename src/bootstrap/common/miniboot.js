@@ -3,7 +3,9 @@
  * @author {PUKE-PACKAGE-AUTHOR}
  * @name {PUKE-PACKAGE-NAME}
  * @homepage {PUKE-PACKAGE-HOME}
- * @file Gris Taupe javascript bootstraper
+ * @file This is meant to load whatever you need before actually running your application.
+ * Your main application script should not be in there though, but rather loaded asynchronously
+ * as well.
  * @license {PUKE-PACKAGE-LICENSE}.
  * @copyright {PUKE-PACKAGE-COPYRIGHT}
  * @location {PUKE-PACKAGE-GIT-ROOT}/bootstrap/desktop/bootstrap.js{PUKE-PACKAGE-GIT-REV}
@@ -19,8 +21,28 @@
   // Read the comment above!
   var trunk = !!location.href.match(/use-trunk/);
 
-  // Load bootstrap stylesheet early on
-  jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'css');
+  // Root of the versioned app, and w/o -min suffix
+  var bootRoot = '{PUKE-BOOT-ROOT}/';
+  var suffix = (!debug && !location.href.match(/-full/)) ? '-min.js' : '.js';
+
+  // IE deserves to be raped :)
+  if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
+    jsBoot.loader.use('ie7', trunk ? 'trunk' : '2.1b4');
+
+
+  // Load bootstrap stylesheet
+  // jsBoot.loader.use("{SPIT-CSSBOOT}");
+  // And application stylesheet as well
+  // jsBoot.loader.use("{PUKE-BOOT-ROOT}/lxxl{MIN}.css");
+  // Doesn't work because of img/ relative path
+  // jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'css$');
+  /*  jsBoot.loader.use("libs/css/bootstrap.css");
+  jsBoot.loader.use("libs/css/bootstrap-responsive.css");
+  jsBoot.loader.use("libs/css/jquery.gritter.css");
+  jsBoot.loader.use("libs/css/chosen.css");
+  jsBoot.loader.use("libs/css/unicorn.main.css");
+  jsBoot.loader.use("libs/css/unicorn.grey.css");*/
+
 
   if (!nostack) {
     jsBoot.boot.ember(null, debug);
@@ -43,12 +65,14 @@
     jsBoot.loader.wait();
   }
 
-  jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'js');
+  // Use bootstrap as part of the stack as well.
+  jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'js$');
 
   jsBoot.loader.wait(function() {
-    $('html').removeClass('no-js');
+    if (debug)
+      jsBoot.debug.tick('Base stack loaded - continuing with the app itself');
     if (debug) {
-      jsBoot.debug.cssPoller.start();
+      // jsBoot.debug.cssPoller.start();
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
           jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR |
           jsBoot.debug.console.LOG | jsBoot.debug.console.DEBUG;
@@ -57,11 +81,6 @@
       //      jsBoot.loader.muteConsole();
     }
   });
-
-
-
-  var suffix = (!debug && !location.href.match(/-full/)) ? '-min.js' : '.js';
-  var bootRoot = '{PUKE-BOOT-ROOT}/';
 
   // Growl like notifications
   jsBoot.loader.use('libs/js/jquery.gritter' + suffix);
@@ -89,7 +108,12 @@
   // Load the app itself
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix);
 
-
+  jsBoot.loader.wait(function() {
+    if (debug)
+      jsBoot.debug.tick('Application stack fully loaded - will bootstrap now');
+    // Now, go away placeholder
+    $('html').removeClass('no-js');
+  });
 
   // Form validation
   // jsBoot.loader.use('libs/js/jquery.validate.js');

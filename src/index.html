@@ -7,20 +7,32 @@
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title dir="ltr">LxxL author environment</title>
-  <meta name="description" content="Author environment for the lxxl project">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="author" content="E&amp;N">
   <link rel="shortcut icon" href="miniboot.ico">
 
-  <!-- XXX FIX LINK - dean ie7 -->
-  <!--[if lt IE 9]>
-  <script src="lib/shims/ie9-2.1b4.js"></script>
-  <![endif]-->
-
-  <!-- Stylesheet -->
+  <!--
+  This is a placeholder stylesheet meant to:
+  - provide *default* styles to be displayed while the app boots-up
+  - import the actual entry point stylesheet of the app
+  -->
   <link rel="stylesheet" type="text/css" href="miniboot{MIN}.css" />
-  <!-- jsBoot supports additional query fragment parameters:
+
+
+
+
+  <!-- +++ editable - customize this if you want +++ -->
+  <title dir="ltr">LxxL author environment</title>
+  <meta name="description" content="Author environment for the lxxl project">
+  <meta name="author" content="E&amp;N">
+  <!-- --- editable --- -->
+
+
+
+
+  <!--
+  Include the jsBoot main entry point.
+
+  jsBoot supports additional query fragment parameters:
   #trunk
     - use trunk versions of third-party libraries
     - useful if you plan on migrating to next-gen versions of frameworks
@@ -37,10 +49,12 @@
     - deplaced jsboot root <- don't do that!
   #experimental
     - don't do that either!
+
   Combining is possible using comas: #debug,trunk,experimental
   -->
-  <script type="text/javascript" src="{SPIT-JSBOOT}"></script>
+  <script type="text/javascript" src="{SPIT-JSBOOT}#debug"></script>
 
+  <!-- Your application script bootstraper -->
   <script type="text/javascript" src="miniboot{MIN}.js"></script>
 
   <!--
@@ -55,25 +69,27 @@
   -->
 
 </head>
-<!-- user-admin -->
 <body id="lxxlroot" class="user-admin">
-  <!-- No script placeholder -->
+  <!-- Browsers with no javascript support will see this -->
   <noscript>
-    <p class="alert alert-error" style="text-align: center;">
+    <p class="alert alert-error">
       <strong>You need to enable javascript to use this product. Please do so, then reload.</strong>
     </p>
   </noscript>
 
-  <!-- Throbber, to wait -->
-  <p id="miniboot-throbber" style="text-align: center; position: absolute; top: 50%; margin-top: -30px; left: 50%; margin-left: -78px;">
+  <!-- Throbber image displayed while the application boots-up -->
+  <p>
     <img src="miniboot.png" />
   </p>
 
 </body>
 </html>
 
+
+
+
 <!--
-  XXX
+  XXX FIXME
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <script src="https://getfirebug.com/firebug-lite.js"></script>
 -->

@@ -55,7 +55,7 @@
   this.ApplicationController = Ember.ObjectController.extend({
     init: function() {
       // Get a ref to the user account
-      console.warn(this.content);
+      // console.warn(this.content);
       this._super();
     },
     // Which node ios actually selected

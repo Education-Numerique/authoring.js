@@ -9,11 +9,13 @@
   this.LxxlApp = {
     rootElement: $('#lxxlroot'),
     ready: function() {
-      console.warn('Application is ready');
+      if (jsBoot.debug)
+        jsBoot.debug.tick('Ember application is ready!', true);
       this._super();
     },
     init: function() {
-      console.warn('Application is init');
+      if (jsBoot.debug)
+        jsBoot.debug.tick('Ember application inited');
       this._super();
     }
   };
@@ -36,6 +38,8 @@
           tpls[name] = content;
           Em.TEMPLATES[name] = Em.Handlebars.compile(content);
         }
+        if (jsBoot.debug)
+          jsBoot.debug.tick('Templates loaded');
         // And init the application
         callback();
       }

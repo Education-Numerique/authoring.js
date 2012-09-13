@@ -8,7 +8,6 @@
       var currentSubmenu = node.siblings('ul');
       var otherLis = $('#sidebar li');
 
-      console.warn('Unicorn toggling:', node, parentLi);
       if (parentLi.hasClass('open') || parentLi.hasClass('active'))
         return;
 
@@ -29,8 +28,6 @@
     };
 
     this.bindBehaviors = function(node) {
-      console.warn('binding behaviors on ', node);
-      //
       $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
       // Tips
