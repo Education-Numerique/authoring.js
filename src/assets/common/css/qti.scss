@@ -1,0 +1,153 @@
+.qti {
+
+    .qti-title {
+        .icon {
+            border-right:0;
+        }
+
+        h5 {
+
+        }
+        width:249px;
+        border-right: 1px solid #CDCDCD;
+        float:left;
+    }
+    .main-tab-container {
+        overflow:visible!important;
+    }
+
+    .panel-left {
+        margin-left:250px;
+        margin-right:0px;
+    }
+
+    .panel-right {
+        left:0;
+        right:auto;
+        border-right: 1px solid #DDD;
+        border-left:0;
+    }
+
+    .pages-list {
+        line-height: 21px;
+        list-style: none outside none;
+        margin: 0;
+        padding: 0;
+        font-size: 10px;
+        float:left;
+        width:100%;
+
+        li {
+            border-color: #DDD;
+            border-style: none none solid;
+            border-width: 0 0 1px;
+            padding: 1px;
+            position: relative;
+            float:left;
+            width:100%;
+            font-size: 12px;
+
+            &.ui-sortable-placeholder {
+                border:1px dotted #bcbaba;
+                background-color:#ececec;
+                margin:10px;
+                height:34px;
+                width:90%;
+                @include box-sizing(content-box);
+            }
+
+            &.ui-sortable-helper {
+                border: 1px solid #D6D6D6;
+            }
+
+            &.active {
+                background-color: #EAEAEA;
+                font-weight:bold;
+
+                .icon {
+                    background-color: #EFEFEF;
+                    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#f0f0f0), to(#dedede));
+                    background-image: -webkit-linear-gradient(top, #f0f0f0 0%, #dedede 100%);
+                    background-image: -moz-linear-gradient(top, #f0f0f0 0%, #dedede 100%);
+                    background-image: -ms-linear-gradient(top, #f0f0f0 0%, #dedede 100%);
+                    background-image: -o-linear-gradient(top, #f0f0f0 0%, #dedede 100%);
+                    background-image: -linear-gradient(top, #f0f0f0 0%, #dedede 100%);
+                }
+            }
+
+            &:hover {
+                background-color:#eeeeee;
+            }
+
+            a {
+                color: #666;
+                display: block;
+                float:left;
+                width:100%;
+
+                .icon {
+                    border-right: 1px solid #CDCDCD;
+                    width:28px;
+                    height:28px;
+                    float: left;
+                    opacity: .7;
+                    text-align:center;
+                    padding:8px 0;
+                    margin-right:10px;
+
+                    line-height: 2.4em;
+
+                    background-color: #EFEFEF;
+                    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#FDFDFD), to(#EAEAEA));
+                    background-image: -webkit-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                    background-image: -moz-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                    background-image: -ms-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                    background-image: -o-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                    background-image: -linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                    cursor:move;
+                }
+
+                .page-title {
+                    float:left;
+                    line-height:3.5em;
+                }
+            }
+
+            .questions-count{
+                padding: 3px 5px;
+                position: absolute;
+                right: 10px;
+                top: 12px;
+            }
+        }
+    }
+
+    .nav-tabs {
+        float:left;
+    }
+
+    #page-management {
+
+
+        .panel-title {
+            float:left;
+            padding:5px 0;
+
+            h5 {
+                float:left;
+            }
+            .buttons {
+                margin:0;
+                padding: 0px 10px 0 0;
+                height: 100%;
+                float:right;
+                a {
+                    margin-top:4px;
+                    
+                }
+            }
+
+        }
+       
+    }
+}
