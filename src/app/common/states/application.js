@@ -57,6 +57,7 @@
 
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showCnil: Ember.Route.transitionTo('dashboard.cnil'),
+      showActions: Ember.Route.transitionTo('dashboard.actions'),
 
       dashboard: Ember.Route.extend({
         showCharte: Ember.Route.transitionTo('dashboard.charte'),
@@ -66,6 +67,13 @@
           route: '/',
           connectOutlets: function(router) {
             router.set('dashboardController.selected', 'home');
+          }
+        }),
+
+        actions: Ember.Route.extend({
+          route: 'actions',
+          connectOutlets: function(router) {
+            router.set('dashboardController.selected', 'actions');
           }
         }),
 

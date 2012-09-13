@@ -7,6 +7,10 @@
 
 
 <div id="accordion2">
+
+
+
+
 <article id="home" class="widget-box">
   <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#home-collapse">
     <span class="icon">
@@ -95,6 +99,72 @@
       </section>
     </article>
 
+  </section>
+</article>
+
+
+<article id="actions" class="widget-box">
+  <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#actions-collapse">
+    <span class="icon">
+      <i class="icon-th-list"></i>
+    </span>
+    <h5>Mon dashboard</h5>
+  </header>
+  <section class="widget-content slidify" id="actions-collapse">
+    <div class="row-fluid">
+      <div class="span12 center" style="text-align: center;">         
+        <ul class="quick-actions">
+          <li>
+            <a {{action showSandbox href=true}}>
+              <i class="icon-home"></i>
+              Les activités dans la sandbox
+            </a>
+          </li>
+          <li class="user-author">
+            <a {{action showMyQTIs href=true}}>
+              <i class="icon-book"></i>
+              Mes activités
+            </a>
+          </li>
+          <li class="user-author">
+            <a {{action showProfile href=true}}>
+              <i class="icon-client"></i>
+              Mon profil
+            </a>
+          </li>
+          <li class="user-author">
+            <a {{action showSettings href=true}}>
+              <i class="icon-lock"></i>
+              Mes réglages
+            </a>
+          </li>
+        </ul>
+      </div>  
+    </div>
+    <div class="row-fluid">
+      <div class="span12 center" style="text-align: center;">         
+        <ul class="quick-actions">
+          <li class="user-reviewer">
+            <a {{action showAllQTIs href=true}}>
+              <i class="icon-download"></i>
+              Modération des QTIs
+            </a>
+          </li>
+          <li class="user-admin">
+            <a {{action showAllCategories href=true}}>
+              <i class="icon-graph"></i>
+              Gestion des catégories
+            </a>
+          </li>
+          <li class="user-admin">
+            <a {{action showAllUsers href=true}}>
+              <i class="icon-people"></i>
+              Gestion des comptes utilisateurs
+            </a>
+          </li>
+        </ul>
+      </div>  
+    </div>
   </section>
 </article>
 

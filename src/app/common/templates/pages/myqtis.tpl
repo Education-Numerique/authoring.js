@@ -2,7 +2,7 @@
 * @template : pages/myqtis
 */
 
-<section class="container-fluid">
-  MY QTIS PLACEHOLDER
-</section>
+<div class="row-fluid ">
+  MY QTIS
+</div>
 

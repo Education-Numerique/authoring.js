@@ -12,56 +12,87 @@
 'use strict';
 
 (function() {
-  var bootRoot = '{PUKE-BOOT-ROOT}/';
+  // Will load Ember debug, and jsBoot debug helpers
   var debug = !!location.href.match(/use-debug/);
+  // Use a splitted jsBoot stack instead (DONT DO THAT KID!)
   var nostack = !!location.href.match(/use-split/);
+  // Read the comment above!
   var trunk = !!location.href.match(/use-trunk/);
-  var suffix = (!debug && !location.href.match(/use-full/)) ? '-min.js' : '.js';
+
+  // Load bootstrap stylesheet early on
+  jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'css');
 
   if (!nostack) {
-    jsBoot.core.boot(null, debug, trunk);
+    jsBoot.boot.ember(null, debug);
   }else {
+    // Don't try this at home kids!!!!
+    jsBoot.loader.use(jsBoot.loader.SHIMS);
+    jsBoot.loader.wait();
+    jsBoot.loader.use(jsBoot.loader.MINGUS);
+    jsBoot.loader.use('stacktrace', trunk ? 'trunk' : '0.3');
+    jsBoot.loader.use(jsBoot.loader.CORE);
+    jsBoot.loader.use(jsBoot.loader.SERVICE);
+    jsBoot.loader.use('jquery', trunk ? 'trunk' : '1.7');
+    jsBoot.loader.use('handlebars', trunk ? 'trunk' : '1.b6', 'main');
+    jsBoot.loader.wait();
+    // This could be put anywhere, but has to wait for core
     if (debug)
-      jsBoot.core.use(jsBoot.core.DEBUG);
-    jsBoot.core.use(jsBoot.core.SHIMS);
-    jsBoot.core.use('jquery', trunk ? 'trunk' : '1.7');
-    jsBoot.core.use('handlebars', trunk ? 'trunk' : '1.b6', 'main');
-    jsBoot.core.wait();
-    jsBoot.core.use('ember', trunk ? 'trunk' : '1.0.pre', debug ? 'debug' : 'prod');
-    jsBoot.core.use('i18n', trunk ? 'trunk' : '3rc2');
-    jsBoot.core.wait();
+      jsBoot.loader.use(jsBoot.loader.DEBUG);
+    jsBoot.loader.use('ember', trunk ? 'trunk' : '1.0.pre', debug ? 'debug' : 'prod');
+    jsBoot.loader.use('i18n', trunk ? 'trunk' : '3rc2');
+    jsBoot.loader.wait();
   }
 
-  jsBoot.core.wait(function() {
+  jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'js');
+
+  jsBoot.loader.wait(function() {
     $('html').removeClass('no-js');
+    if (debug) {
+      jsBoot.debug.cssPoller.start();
+      jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
+          jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR |
+          jsBoot.debug.console.LOG | jsBoot.debug.console.DEBUG;
+    // TRACE is out of the game - jsBoot debug reserved
+    }else {
+      //      jsBoot.loader.muteConsole();
+    }
   });
 
-  // Growl like notifications
-  jsBoot.core.use('libs/js/jquery.gritter.js');
-  // Disable text select
-  jsBoot.core.use('libs/js/jquery.uniform.js');
-  // Data tables
-  jsBoot.core.use('libs/js/jquery.dataTables.js');
-  // Css bootstrap
-  jsBoot.core.use('libs/js/bootstrap.js');
 
-  jsBoot.core.use('libs/js/jquery.chosen.js');
+
+  var suffix = (!debug && !location.href.match(/-full/)) ? '-min.js' : '.js';
+  var bootRoot = '{PUKE-BOOT-ROOT}/';
+
+  // Growl like notifications
+  jsBoot.loader.use('libs/js/jquery.gritter' + suffix);
+  // Disable text select
+  jsBoot.loader.use('libs/js/jquery.uniform' + suffix);
+  // Data tables
+  jsBoot.loader.use('libs/js/jquery.dataTables' + suffix);
+  // Css bootstrap
+  jsBoot.loader.use('libs/js/bootstrap' + suffix);
+
+  jsBoot.loader.use('libs/js/jquery.chosen' + suffix);
 
   // Wizard depend on this crap
-  jsBoot.core.use('libs/js/jquery.ui.custom.js');
-  jsBoot.core.wait();
+  jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix);
+  jsBoot.loader.wait();
 
-  jsBoot.core.use('libs/js/jquery.validate.js');
-  jsBoot.core.use('libs/js/jquery.wizard.js');
-  jsBoot.core.wait();
+  jsBoot.loader.use('libs/js/jquery.validate' + suffix);
+  jsBoot.loader.use('libs/js/jquery.wizard' + suffix);
+
+  jsBoot.loader.use('libs/js/jquery.flot' + suffix);
+  jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix);
+
+  jsBoot.loader.wait();
 
   // Load the app itself
-  jsBoot.core.use(bootRoot + 'app' + suffix);
+  jsBoot.loader.use(bootRoot + 'lxxl' + suffix);
 
 
 
   // Form validation
-  // jsBoot.core.use('libs/js/jquery.validate.js');
+  // jsBoot.loader.use('libs/js/jquery.validate.js');
   /*
     $("#register_form").validate({
         rules:{
@@ -88,27 +119,27 @@
  */
 
   // Charts
-  // jsBoot.core.use('libs/js/jquery.peity.js');
+  // jsBoot.loader.use('libs/js/jquery.peity.js');
 
   // Datatables
-  // jsBoot.core.use('libs/js/jquery.dataTables.js');
+  // jsBoot.loader.use('libs/js/jquery.dataTables.js');
 
   // Calendar
-  // jsBoot.core.use('libs/js/fullcalendar.js');
+  // jsBoot.loader.use('libs/js/fullcalendar.js');
 
 
 
   // Form wizard
-  // jsBoot.core.use('libs/js/jquery.wizard.js');
+  // jsBoot.loader.use('libs/js/jquery.wizard.js');
 
 
 
 
 
-  // jsBoot.core.use('libs/js/jquery.flot.js');
-  // jsBoot.core.use('libs/js/jquery.flot.resize.js');
-  // jsBoot.core.use('libs/js/excanvas.js');
-  // jsBoot.core.use('libs/js/jquery.gritter.js');
-  // jsBoot.core.use('libs/js/unicorn.dashboard.js');
+  // jsBoot.loader.use('libs/js/jquery.flot.js');
+  // jsBoot.loader.use('libs/js/jquery.flot.resize.js');
+  // jsBoot.loader.use('libs/js/excanvas.js');
+  // jsBoot.loader.use('libs/js/jquery.gritter.js');
+  // jsBoot.loader.use('libs/js/unicorn.dashboard.js');
 
 })();

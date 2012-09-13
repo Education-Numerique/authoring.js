@@ -69,7 +69,7 @@
   };
 
   // XXX risky with minifier
-  loadTpls(getScriptBaseUrl('app.js') + '/app.tpl', function() {
+  loadTpls(getScriptBaseUrl('lxxl') + '/lxxl.tpl', function() {
     LxxlApp = Ember.Application.create(LxxlApp);
     LxxlApp.initialize();
   });

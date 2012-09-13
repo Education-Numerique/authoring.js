@@ -50,9 +50,6 @@ def build():
   istrunk = Yak.VARIANT == 'bleed'
   sed = Sed()
   PH.replacer(sed)
-  bootman = PH.getmanifest('jsboot', '0.1', istrunk)
-  sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
-  sed.add('{SPIT-CSSBOOT}', bootman['cssbootstrap'])
 
   # ================================
   # Modeling as an Ember application
@@ -74,18 +71,26 @@ def build():
 
   sed.add('{PUKE-BOOT-ROOT}', Yak.PACKAGE['VERSION'])
 
-  copyfile("src/bootstrap/favicon.ico", Yak.BUILD_ROOT + "/bootstrap.ico")
-  copyfile("src/bootstrap/bootstrap.png", Yak.BUILD_ROOT + "/bootstrap.png")
+  copyfile("src/bootstrap/favicon.ico", Yak.BUILD_ROOT + "/miniboot.ico")
+  copyfile("src/bootstrap/miniboot.png", Yak.BUILD_ROOT + "/miniboot.png")
+
+  bootman = PH.getmanifest('jsboot', '0.1', usemin = True)
+  sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
+  sed.add('{SPIT-CSSBOOT}', bootman['cssbootstrap'])
 
   sed.add('{MIN}', '-min')
-  combine(js, Yak.BUILD_ROOT + "/bootstrap-min.js", replace=sed)
-  combine(css, Yak.BUILD_ROOT + "/bootstrap-min.css", replace=sed)
+  combine(js, Yak.BUILD_ROOT + "/miniboot-min.js", replace=sed)
+  combine(css, Yak.BUILD_ROOT + "/miniboot-min.css", replace=sed)
 
   combine('src/index.html', Yak.BUILD_ROOT + '/index.html', replace=sed)
 
+  bootman = PH.getmanifest('jsboot', '0.1', False)
+  sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
+  sed.add('{SPIT-CSSBOOT}', bootman['cssbootstrap'])
+
   sed.add('{MIN}', '')
-  combine(js, Yak.BUILD_ROOT + "/bootstrap.js", replace=sed)
-  combine(css, Yak.BUILD_ROOT + "/bootstrap.css", replace=sed)
+  combine(js, Yak.BUILD_ROOT + "/miniboot.js", replace=sed)
+  combine(css, Yak.BUILD_ROOT + "/miniboot.css", replace=sed)
 
   combine('src/index.html', Yak.BUILD_ROOT + '/index-full.html', replace=sed)
 
@@ -112,7 +117,7 @@ def build():
   # js.merge(FileList("src/app/desktop/controllers", filter = "*.js"))
   # js.merge(FileList("src/app/desktop/views", filter = "*.js"))
 
-  combine(js, VERSIONED_ROOT + "/app.js", replace=sed)
+  combine(js, VERSIONED_ROOT + "/lxxl.js", replace=sed)
 
   # js.merge(FileList("src/app/desktop/", filter = "*routing.js"))
   # js.merge(FileList("src/app/desktop/", filter = "*hotkeys.js"))
@@ -124,7 +129,7 @@ def build():
   # css application
   css = FileList("src/assets/common/css", filter = "*.css,*.scss")
   # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
-  combine(css, VERSIONED_ROOT + "/app.css", replace=sed)
+  combine(css, VERSIONED_ROOT + "/lxxl.css", replace=sed)
 
   # fonts copy
   # fonts = FileList("src/assets/common/fonts/")
@@ -139,7 +144,7 @@ def build():
   # templates merge
   templates = FileList('src/app/common/templates', filter = "*.tpl")
   # templates.merge(FileList("src/app/desktop/templates/", filter = "*.tpl"))
-  combine(templates, VERSIONED_ROOT +  "/app.tpl")
+  combine(templates, VERSIONED_ROOT +  "/lxxl.tpl")
 
 
 

@@ -31,7 +31,7 @@
     </section>
 
     <section id="breadcrumb">
-      <a {{action showDashboard href="true"}} title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+      <a {{action showActions href="true"}} title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
 
       {{#each breadcrumbs}}
         <a {{bindAttr class="className"}}>{{displayName}}</a>

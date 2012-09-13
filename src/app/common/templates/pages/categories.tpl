@@ -2,7 +2,7 @@
 * @template : pages/categories
 */
 
-<section class="container-fluid">
-  CATEGORIES PLACEHOLDER
-</section>
+<div class="row-fluid ">
+  CATEGORIES
+</div>
 

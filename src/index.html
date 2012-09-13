@@ -11,7 +11,7 @@
   <meta name="description" content="Author environment for the lxxl project">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="E&amp;N">
-  <link rel="shortcut icon" href="bootstrap.ico">
+  <link rel="shortcut icon" href="miniboot.ico">
 
   <!-- XXX FIX LINK - dean ie7 -->
   <!--[if lt IE 9]>
@@ -19,9 +19,29 @@
   <![endif]-->
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" type="text/css" href="bootstrap{MIN}.css" />
+  <link rel="stylesheet" type="text/css" href="miniboot{MIN}.css" />
+  <!-- jsBoot supports additional query fragment parameters:
+  #trunk
+    - use trunk versions of third-party libraries
+    - useful if you plan on migrating to next-gen versions of frameworks
+  #notminified
+    - everything will be loaded NOT minified - huge impact on perf obviously
+    - useful if you are trying to figure out what's wrong in a core dependency or 3rd-party library
+    - note that usually you should just load thereisonly itself in a non minified form and leave this alone
+  #debug
+    - forces asserts in libraries that support it
+    - implies notminified, no matter what
+    - useful for debugging jsBoot itself (DOESNT provide debugging helper for you!)
+    - you should not need that (force debug true on jsBoot.boot.ember instead)
+  #base
+    - deplaced jsboot root <- don't do that!
+  #experimental
+    - don't do that either!
+  Combining is possible using comas: #debug,trunk,experimental
+  -->
   <script type="text/javascript" src="{SPIT-JSBOOT}"></script>
-  <script type="text/javascript" src="bootstrap{MIN}.js"></script>
+
+  <script type="text/javascript" src="miniboot{MIN}.js"></script>
 
   <!--
    * @license {PUKE-PACKAGE-LICENSE}.
@@ -36,7 +56,7 @@
 
 </head>
 <!-- user-admin -->
-<body id="lxxlroot" class="">
+<body id="lxxlroot" class="user-admin">
   <!-- No script placeholder -->
   <noscript>
     <p class="alert alert-error" style="text-align: center;">
@@ -45,8 +65,8 @@
   </noscript>
 
   <!-- Throbber, to wait -->
-  <p style="text-align: center; position: absolute; top: 50%; margin-top: -30px; left: 50%; margin-left: -78px;">
-    <img src="bootstrap.png" />
+  <p id="miniboot-throbber" style="text-align: center; position: absolute; top: 50%; margin-top: -30px; left: 50%; margin-left: -78px;">
+    <img src="miniboot.png" />
   </p>
 
 </body>

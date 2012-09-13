@@ -2,7 +2,7 @@
 * @template : pages/profile
 */
 
-<section class="container-fluid">
-  PROFILE PLACEHOLDER
-</section>
+<div class="row-fluid ">
+  PROFILE
+</div>
 

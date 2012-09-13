@@ -133,6 +133,6 @@ def getmanifest(name, version, usemin = False, makeabsolute = True):
     else:
       yam[k] = remote.replace('http:', '').replace('https:', '') + '/' + v
     if usemin:
-      yam[k] = v.replace('.js', '-min.js')
-      yam[k] = v.replace('.css', '-min.css')
+      yam[k] = re.sub(r"(.*).js$", r"\1-min.js", yam[k])
+      yam[k] = re.sub(r"(.*).css$", r"\1-min.css", yam[k])
   return yam

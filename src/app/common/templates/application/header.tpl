@@ -43,7 +43,7 @@
     <a class="visible-phone"><i class="icon icon-home"></i>Home</a>
     <ul>
       <li class="user-all">
-        <a id="navigation-dashboard" {{action showDashboard href=true}}><i class="icon icon-home"></i> <span>Home</span></a>
+        <a id="navigation-dashboard" {{action showActions href=true}}><i class="icon icon-home"></i> <span>Home</span></a>
       </li>
 
       <li class="user-all">

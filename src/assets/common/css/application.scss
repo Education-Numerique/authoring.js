@@ -1,3 +1,12 @@
+@import url("{SPIT-CSSBOOT}");
+/* Use the Unicorn theme */
+@import url("../libs/css/bootstrap.css");
+@import url("../libs/css/bootstrap-responsive.css");
+@import url("../libs/css/jquery.gritter.css");
+@import url("../libs/css/chosen.css");
+@import url("../libs/css/unicorn.main.css");
+@import url("../libs/css/unicorn.grey.css");
+
 [data-toggle=slidify] {
     cursor:pointer;
 }
@@ -24,4 +33,8 @@ button[class*=" icon-"] {
     &:active{
       opacity: 1;
     }
+}
+
+#js #miniboot-throbber{
+  display: none;
 }

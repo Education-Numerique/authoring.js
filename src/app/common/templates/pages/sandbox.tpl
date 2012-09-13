@@ -2,8 +2,73 @@
 * @template : pages/sandbox
 */
 
-<section class="container-fluid">
+<div class="row-fluid ">
+  <div class="widget-box">
+    <div class="widget-title">
+      <h5>Statistiques</h5>
+    </div>
+    <div class="widget-content center">
+      <ul class="stats-plain">
+        <li>                    
+          <h4>{{nbActivities}}</h4>
+          <span>Activités</span>
+        </li>
+        <li>                    
+          <h4>{{nbAuthors}}</h4>
+          <span>Auteurs</span>
+        </li>
+        <li>                    
+          <h4>{{nbCategories}}</h4>
+          <span>Catégories</span>
+        </li>
+      </ul>
+    </div>
 
+    <div class="widget-content">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title">
+            <span class="icon">
+              <i class="icon-signal"></i>
+            </span>
+            <h5>Répartition des activités par catégorie</h5>
+          </div>
+          <div class="widget-content">
+            <div class="pie"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title">
+            <span class="icon">
+              <i class="icon-eye-open"></i>
+            </span>
+            <h5>Top auteur</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Auteurs</th>
+                  <th>Nombre de QTIs</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each view.top}}
+                <tr>
+                  <td>{{name}}</td>
+                  <td>{{nb}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <div class="widget-box">
     <div class="widget-title">
@@ -39,5 +104,5 @@
     </div>
   </div>
 
-</section>
+</div>
 

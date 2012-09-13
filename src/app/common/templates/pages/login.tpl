@@ -2,7 +2,6 @@
 * @template : pages/login
 */
 
-<section class="container-fluid">
-  LOGIN PLACEHOLDER
-</section>
-
+<div class="row-fluid ">
+  LOGIN
+</div>

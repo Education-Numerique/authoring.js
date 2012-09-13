@@ -29,7 +29,7 @@
       },
       qtis: {
         title: 'QTIs',
-        bread: 'Gestion des QTIs'
+        bread: 'Administration de tous les QTIs'
       },
 
       sandbox: {
