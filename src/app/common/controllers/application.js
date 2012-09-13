@@ -62,6 +62,14 @@
     selected: null,
     pageTitle: null,
     breadcrumbs: []
+
+    // connectOutlet: function(name, context){
+    //   if(name == 'qtiEdit'){
+
+    //   }
+    //   this._super(name, context);
+    // },
+
   });
 
 }).apply(LxxlApp);

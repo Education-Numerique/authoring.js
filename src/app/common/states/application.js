@@ -2,7 +2,7 @@
 
   var lxxlRoute = function(name, adds) {
     var rt = {
-      route: name,
+      route: '/' + name,
       enter: function(router) {
         router.set('applicationController.selected', name);
       },
@@ -22,8 +22,14 @@
     enableLogging: true,
 
     root: Ember.Route.extend({
-      index: lxxlRoute('/'),/*Ember.Route.extend({
+      // redirectsTo: 'dashboard',
+/*      index: lxxlRoute('/'),*/
+      index: Ember.Route.extend({
         route: '/',
+        redirectsTo: 'dashboard'
+      }),
+
+        // route: '/',
         // enter: function(router) {
         //   console.log('entering route index from', router.get('currentState.name'));
         // },
@@ -32,7 +38,7 @@
         //   //        router.get('applicationController').connectOutlet('another');
         //   //       redirectsTo: 'dashboard'
         // }
-      }),*/
+
 
       // User account related
       showLogin: Ember.Route.transitionTo('login'),
@@ -71,32 +77,32 @@
         }),
 
         actions: Ember.Route.extend({
-          route: 'actions',
+          route: '/actions',
           connectOutlets: function(router) {
             router.set('dashboardController.selected', 'actions');
           }
         }),
 
         cnil: Ember.Route.extend({
-          route: 'cnil',
+          route: '/cnil',
           connectOutlets: function(router) {
             router.set('dashboardController.selected', 'cnil');
           }
         }),
         charte: Ember.Route.extend({
-          route: 'charte',
+          route: '/charte',
           connectOutlets: function(router) {
             router.set('dashboardController.selected', 'charte');
           }
         }),
         advices: Ember.Route.extend({
-          route: 'advices',
+          route: '/advices',
           connectOutlets: function(router) {
             router.set('dashboardController.selected', 'advices');
           }
         }),
 
-        route: 'dashboard',
+        route: '/dashboard',
 
         enter: function(router) {
           router.set('applicationController.selected', 'dashboard');
@@ -130,20 +136,51 @@
 
       // Special routes, not top-level in the navigation
       showNewQTI: Ember.Route.transitionTo('newQTI'),
-      newQTI: Ember.Route.extend({route: 'qti.new'}),
+      newQTI: Ember.Route.extend({route: '/qtiNew'}),
 
       showNewCategory: Ember.Route.transitionTo('newCategory'),
-      newCategory: Ember.Route.extend({route: 'category.new'}),
+      newCategory: Ember.Route.extend({route: '/categoryNew'}),
 
 
       // Routes not accessible from navigation itself
       showPlayQTI: Ember.Route.transitionTo('playQTI'),
       showEditQTI: Ember.Route.transitionTo('editQTI'),
-      playQTI: Ember.Route.extend({route: 'qti.show/:id'}),
-      editQTI: Ember.Route.extend({route: 'qti.edit/:id'}),
+      playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
-      editCategory: Ember.Route.extend({route: 'category.edit/:cat_id'}),
-      editUser: Ember.Route.extend({route: 'user.edit/:user_id'})
+      editQTI: Ember.Route.extend(
+        {
+          route: '/qtiEdit/:id',
+          connectOutlets: function(router, qti) {
+            router.get('applicationController').connectOutlet('qtiEdit', qtiFactory.getQtiById(qti.id));
+          }
+        }),
+
+      editCategory: Ember.Route.extend({route: '/categoryEdit/:cat_id'}),
+      editUser: Ember.Route.extend({route: '/userEdit/:user_id'})
     })
   });
 }).apply(LxxlApp);
+
+
+
+
+var qti = function(id){
+  return Ember.Object.create({
+    id: id,
+    title: 'bitch'
+  });
+};
+
+var modelBidon = {
+  title: "Super Title QTI"
+};
+
+var qtiFactory = new (function(){
+  this.getQtiById = function(id){
+    return new qti(id);
+  };
+
+  this.newQti = function(){
+  };
+})();
+
