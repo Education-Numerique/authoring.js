@@ -23,21 +23,21 @@
 
     root: Ember.Route.extend({
       // redirectsTo: 'dashboard',
-/*      index: lxxlRoute('/'),*/
+      /*      index: lxxlRoute('/'),*/
       index: Ember.Route.extend({
         route: '/',
         redirectsTo: 'dashboard'
       }),
 
-        // route: '/',
-        // enter: function(router) {
-        //   console.log('entering route index from', router.get('currentState.name'));
-        // },
-        // connectOutlets: function(router) {
-        //   console.log('entered root.index, fully transitioned to', router.get('currentState.path'));
-        //   //        router.get('applicationController').connectOutlet('another');
-        //   //       redirectsTo: 'dashboard'
-        // }
+      // route: '/',
+      // enter: function(router) {
+      //   console.log('entering route index from', router.get('currentState.name'));
+      // },
+      // connectOutlets: function(router) {
+      //   console.log('entered root.index, fully transitioned to', router.get('currentState.path'));
+      //   //        router.get('applicationController').connectOutlet('another');
+      //   //       redirectsTo: 'dashboard'
+      // }
 
 
       // User account related
@@ -148,12 +148,12 @@
       playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
       editQTI: Ember.Route.extend(
-        {
-          route: '/qtiEdit/:id',
-          connectOutlets: function(router, qti) {
-            router.get('applicationController').connectOutlet('qtiEdit', qtiFactory.getQtiById(qti.id));
-          }
-        }),
+          {
+            route: '/qtiEdit/:id',
+            connectOutlets: function(router, qti) {
+              router.get('applicationController').connectOutlet('qtiEdit', qtiFactory.getQtiById(qti.id));
+            }
+          }),
 
       editCategory: Ember.Route.extend({route: '/categoryEdit/:cat_id'}),
       editUser: Ember.Route.extend({route: '/userEdit/:user_id'})
@@ -164,7 +164,7 @@
 
 
 
-var qti = function(id){
+var qti = function(id) {
   return Ember.Object.create({
     id: id,
     title: 'bitch'
@@ -172,15 +172,15 @@ var qti = function(id){
 };
 
 var modelBidon = {
-  title: "Super Title QTI"
+  title: 'Super Title QTI'
 };
 
-var qtiFactory = new (function(){
-  this.getQtiById = function(id){
+var qtiFactory = new (function() {
+  this.getQtiById = function(id) {
     return new qti(id);
   };
 
-  this.newQti = function(){
+  this.newQti = function() {
   };
 })();
 

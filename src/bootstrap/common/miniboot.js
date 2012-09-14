@@ -92,7 +92,7 @@
   // Data tables
   jsBoot.loader.use('libs/js/jquery.dataTables' + suffix);
   // Css bootstrap - vanilla version doesn't work
-//  jsBoot.loader.use('libs/js/bootstrap' + suffix);
+  //  jsBoot.loader.use('libs/js/bootstrap' + suffix);
 
   // jsBoot.loader.use('bootstrap', 'jsboot', 'css$');
 
