@@ -1,7 +1,7 @@
 /*
 * @template : pages/qtiedit
 */
-
+<form class="form-horizontal">
 <div class="row-fluid qti">
     <div class="span10">
         
@@ -9,30 +9,60 @@
             <div class="widget-title">
                 <div class="qti-title">
                     <span class="icon"><span class="icon-edit"></span></span>
-                    <h5>Mon super QTI</h5>
+                    <h5>Mon super dd QTI</h5>
                 </div>
                 <ul class="nav nav-tabs">
-                    <li class=""><a data-toggle="tab" href="#infos">Infos</a></li>
-                    <li class="active"><a data-toggle="tab" href="#edit">Pages</a></li>
-                    <li><a data-toggle="tab" href="#admin">Gérer</a></li>
+                    <li class=""><a href="#infos">Infos</a></li>
+                    <li class="active"><a  href="#edit">Pages</a></li>
+                    <li><a  href="#admin">Gérer</a></li>
                 </ul>
                 
             </div>
             <div class="widget-content nopadding">
                 <div class="panel-left ">
                     <div class="widget-content tab-content main-tab-container nopadding">
-                        <div id="infos" class="tab-pane " style="height:300px">This is a Tab Two Content</div>
-                        <div id="edit" class="tab-pane active" style="height:300px">
+                        <div id="infos" class="tab-pane ">This is a Tab Two Content</div>
+                        <div id="edit" class="tab-pane active">
                             <div class="container-fluid">
                                 <div class="widget-box">
                                     <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
                                         <span class="icon">
-                                            <i class="icon-th-list"></i>
+                                            <i class="icon-wrench"></i>
                                         </span>
                                         <h5>Informations</h5>
                                     </div>
                                     <div class="widget-content slidify-on" id="page-informations">
-                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                        
+                                        <div class="control-group">
+                                            <div class="input-prepend">
+                                                <label class="add-on" for="form-page-title">Titre</label>
+                                                <input class="span2" id="form-page-title" name="form-page-title" type="text" placeholder="Identifiez la nature du texte" />
+                                            </div>
+                                            <div class="input-prepend">
+                                                <label class="add-on" for="form-page-subtitle">Sous-titre</label>
+                                                <input class="span2" id="form-page-subtitle" name="form-page-subtitle"  type="text" placeholder="Sous-titre de la page" />
+                                            </div>
+                                            <div class="input-prepend">
+                                                <label class="add-on" for="form-page-explanation">Consigne</label>
+                                                <textarea id="form-page-explanation" class="mceSimple" name="form-page-explanation"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="options">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-box">
+                                    <div class="widget-title" data-toggle="slidify" data-target="#page-document">
+                                        <span class="icon">
+                                            <i class="icon-pencil"></i>
+                                        </span>
+                                        <h5>Document</h5>
+                                    </div>
+                                    <div class="widget-content slidify" id="page-document">
+                                        <div class="control-group">
+                                            <textarea name="page-document"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="widget-box">
@@ -71,28 +101,28 @@
                                 <div class="panel-content nopadding">
                                     <ul class="pages-list">
                                         <li>
-                                            <a href="#">
+                                            <a >
                                                 <span class="icon"><span class="icon-file"></span></span>
                                                 <span class="page-title">Page 1</span>
                                             </a>
                                             <span class="questions-count badge badge-info">3</span>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a >
                                                 <span class="icon"><span class="icon-file"></span></span>
                                                 <span class="page-title">Page 2</span>
                                             </a>
                                             <span class="questions-count badge badge-info">3</span>
                                         </li>
                                         <li class="active">
-                                            <a href="#">
+                                            <a>
                                                 <span class="icon"><span class="icon-file"></span></span>
                                                 <span class="page-title">Page 3</span>
                                             </a>
                                             <span class="questions-count badge badge-info">3</span>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a>
                                                 <span class="icon"><span class="icon-file"></span></span>
                                                 <span class="page-title">Page 4</span>
                                             </a>
@@ -137,3 +167,4 @@
         </div>
     </div>
 </div>
+</form>

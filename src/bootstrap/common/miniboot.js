@@ -81,6 +81,7 @@
       //      jsBoot.loader.muteConsole();
     }
   });
+  jsBoot.loader.use('tinymce', 'noversion', 'dev');
 
   // Growl like notifications
   jsBoot.loader.use('libs/js/jquery.gritter' + suffix);

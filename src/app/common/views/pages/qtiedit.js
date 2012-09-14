@@ -15,6 +15,22 @@
         $( ".pages-list" ).sortable({
             placeholder : 'ui-sortable-placeholder'
         });
-    }
+
+        window.setTimeout(function () {
+            tinyMCE.init({
+                    mode : "textareas",
+                    theme : "simple",
+                    editor_selector : "mceSimple"
+            });
+        }, 2000);
+    },
+
+    totoLaMoule : function(from, key, value) {
+        if (!this.get('element'))
+            return;
+
+        console.log('====>', this.$('#form-page-explanation').length);
+        
+    }.observes('element')
   });
 }).apply(LxxlApp);

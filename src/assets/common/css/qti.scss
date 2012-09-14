@@ -1,5 +1,23 @@
 .qti {
 
+    .control-group .input-prepend {
+        padding
+    }
+    .input-prepend {
+        width:100%;
+        margin-left:10px;
+
+        label, input, textarea {
+            margin:0;
+            float:left;
+            margin: 10px 0;
+        }
+
+        label {
+            width: 100px;
+            cursor:pointer;
+        }
+    }
     .qti-title {
         .icon {
             border-right:0;
@@ -149,5 +167,32 @@
 
         }
        
+    }
+
+    textarea {
+        @include box-sizing(border-box);
+        resize:vertical;
+        min-height:30px;
+    }
+    textarea[name=page-document] {
+        width:100%;
+        max-width:100%;
+    }
+
+    #page-informations {
+        .control-group {
+            float:left;
+            width:70%;
+
+            input, textarea {
+                width:75%;
+            }
+        }
+
+        .options {
+            width:20%;
+            height:200px;
+            float:right;
+        }
     }
 }
