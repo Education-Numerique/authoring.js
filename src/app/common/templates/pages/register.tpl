@@ -69,20 +69,20 @@
           </div>
 
           <div class="control-group">
-            <label class="control-label">Email</label>
+            <label for="email" class="control-label">Email</label>
             <div class="controls">
               <input id="email" type="text" name="email" />
             </div>
           </div>
 
           <div class="control-group">
-            <label class="control-label">Password</label>
+            <label for="password" class="control-label">Password</label>
             <div class="controls">
               <input id="password" type="password" name="password" />
             </div>
           </div>
           <div class="control-group">
-            <label class="control-label">Confirm Password</label>
+            <label for="password2" class="control-label">Confirm Password</label>
             <div class="controls">
               <input id="password2" type="password" name="password2" />
             </div>
@@ -95,14 +95,15 @@
           </div>
 
           <div class="control-group">
-            <label class="control-label">Pseudonyme</label>
+            <label for="username" class="control-label">Pseudonyme</label>
             <div class="controls">
               <input id="username" type="text" name="username" />
             </div>
           </div>
 
+          <!-- XXX finish-up the label for attributes -->
           <div class="control-group">
-            <label class="control-label">Prénom</label>
+            <label for="firstname" class="control-label">Prénom</label>
             <div class="controls">
               <input id="firstname" type="text" name="firstname" />
             </div>
