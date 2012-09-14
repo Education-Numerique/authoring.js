@@ -179,7 +179,28 @@
         max-width:100%;
     }
 
+    
+
+    [for="form-page-explanation"] {
+        height:24px;
+    }
+
     #page-informations {
+        .redactor_box {
+            float:left;
+            width:84%%;
+            margin:10px 0;
+
+            textarea {
+                padding:0!important;
+                margin:0!important;
+                width:100%!important;
+            }
+        }
+
+        #form-page-explanation {
+            width:100%;
+        }
         .control-group {
             float:left;
             width:70%;
@@ -191,7 +212,6 @@
 
         .options {
             width:20%;
-            height:200px;
             float:right;
         }
     }

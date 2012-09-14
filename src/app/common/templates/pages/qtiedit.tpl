@@ -42,14 +42,15 @@
                                                 <label class="add-on" for="form-page-subtitle">Sous-titre</label>
                                                 <input class="span2" id="form-page-subtitle" name="form-page-subtitle"  type="text" placeholder="Sous-titre de la page" />
                                             </div>
-                                            <div class="input-prepend">
-                                                <label class="add-on" for="form-page-explanation">Consigne</label>
-                                                <textarea id="form-page-explanation" class="mceSimple" name="form-page-explanation"></textarea>
-                                            </div>
+                                            
                                         </div>
                                         <div class="options">
 
                                         </div>
+                                        <div class="input-prepend">
+                                                <label class="add-on" for="form-page-explanation">Consigne</label>
+                                                <textarea id="form-page-explanation" class="redactorjs" name="form-page-explanation"></textarea>
+                                            </div>
                                     </div>
                                 </div>
                                 <div class="widget-box">
