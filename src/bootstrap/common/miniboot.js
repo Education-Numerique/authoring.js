@@ -13,6 +13,7 @@
 
 'use strict';
 
+
 (function() {
   // Will load Ember debug, and jsBoot debug helpers
   var debug = !!location.href.match(/use-debug/);
@@ -81,7 +82,8 @@
       //      jsBoot.loader.muteConsole();
     }
   });
-  jsBoot.loader.use('tinymce', 'noversion', 'dev');
+  // console.warn(jsBoot.loader.list());
+  // throw "toto";
 
   // Growl like notifications
   jsBoot.loader.use('libs/js/jquery.gritter' + suffix);
@@ -89,10 +91,12 @@
   jsBoot.loader.use('libs/js/jquery.uniform' + suffix);
   // Data tables
   jsBoot.loader.use('libs/js/jquery.dataTables' + suffix);
-  // Css bootstrap
-  jsBoot.loader.use('libs/js/bootstrap' + suffix);
+  // Css bootstrap - vanilla version doesn't work
+//  jsBoot.loader.use('libs/js/bootstrap' + suffix);
 
-  jsBoot.loader.use('libs/js/jquery.chosen' + suffix);
+  // jsBoot.loader.use('bootstrap', 'jsboot', 'css$');
+
+  jsBoot.loader.use('chosen', 'jsboot');
 
   // Wizard depend on this crap
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix);
@@ -104,7 +108,7 @@
   jsBoot.loader.use('libs/js/jquery.flot' + suffix);
   jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix);
 
-  jsBoot.loader.wait();
+  jsBoot.loader.use('redactor', '8.0');
 
   // Load the app itself
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix);
@@ -115,6 +119,9 @@
     // Now, go away placeholder
     $('html').removeClass('no-js');
   });
+
+
+
 
   // Form validation
   // jsBoot.loader.use('libs/js/jquery.validate.js');
@@ -166,5 +173,7 @@
   // jsBoot.loader.use('libs/js/excanvas.js');
   // jsBoot.loader.use('libs/js/jquery.gritter.js');
   // jsBoot.loader.use('libs/js/unicorn.dashboard.js');
+
+
 
 })();
