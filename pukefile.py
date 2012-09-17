@@ -96,7 +96,7 @@ def build():
 
 
   # XXX
-  combine('src/test.jqz', Yak.BUILD_ROOT + '/test.jqz', replace=sed)
+  # combine('src/test.jqz', Yak.BUILD_ROOT + '/test.jqz', replace=sed)
 
 
 
