@@ -366,12 +366,13 @@ LxxlLib.Model = new (function(){
 
 })();
 
-var qtiFactory = new (function(){
-  this.getQtiById = function(id){
+var activityFactory = new (function(){
+  this.getActivityById = function(id){
     return new LxxlLib.Model.Activity();
   };
 
-  this.newQti = function() {
+  this.newActivity = function() {
+    return new LxxlLib.Model.Activity();
   };
 })();
 
