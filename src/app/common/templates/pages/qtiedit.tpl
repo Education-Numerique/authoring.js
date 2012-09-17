@@ -9,7 +9,7 @@
             <div class="widget-title">
                 <div class="qti-title">
                     <span class="icon"><span class="icon-edit"></span></span>
-                    <h5>Mon super dd QTI</h5>
+                    <h5>{{content.title}}</h5>
                 </div>
                 <ul class="nav nav-tabs">
                     <li class=""><a href="#infos">Infos</a></li>

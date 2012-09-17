@@ -151,7 +151,7 @@
           {
             route: '/qtiEdit/:id',
             connectOutlets: function(router, qti) {
-              router.get('applicationController').connectOutlet('qtiEdit', qtiFactory.getQtiById(qti.id));
+              router.get('applicationController').connectOutlet('qtiEdit', activityFactory.getActivityById(qti.id));
             }
           }),
 
@@ -311,7 +311,7 @@ LxxlLib.Model = new (function(){
     this.title = null;
     this.level = 0;
     this.matter = null;
-    this.length = 0;
+    this.duration = 0;
     this.difficulty = null;
     this.category = null;
 
@@ -320,27 +320,6 @@ LxxlLib.Model = new (function(){
 
     // Attached stuff
     this.pages = [];
-
-
-    this.addPage = function(at){
-      if(!at)
-        this.pages.push(new LxxlLib.Model.Page());
-      else
-        this.pages.splice(at, 0, new LxxlLib.Model.Page());
-    };
-
-    this.deletePage = function(page){
-      this.pages.splice(this.pages.indexOf(page), 1);
-    };
-
-    this.movePage = function(page, pos){
-      this.pages.splice(this.pages.indexOf(page), 1);
-      this.pages.splice(pos, 0, page);
-    };
-
-
-    this.reset = function(){
-    };
 
     this.toJSON = function(){
     };
@@ -368,7 +347,32 @@ LxxlLib.Model = new (function(){
 
 var activityFactory = new (function(){
   this.getActivityById = function(id){
-    return new LxxlLib.Model.Activity();
+    var t = new LxxlLib.Model.Activity();
+
+    (function(){
+      this.title = 'Titre test';
+      this.level = LxxlLib.Model.LEVELS.tl;
+      this.matter = LxxlLib.Model.MATTERS.lit;
+      this.duration = 120;
+      this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
+      this.category = 'XXXX NOT FUCKIN READY';
+
+      this.description = I18n.translate('qti.def.description');// 160 chars max
+      this.thumbnail = null;
+
+      // Attached stuff
+      this.pages = [
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page(),
+        new LxxlLib.Model.Page()
+      ];
+    }).apply(t);
+    return t;
   };
 
   this.newActivity = function() {
