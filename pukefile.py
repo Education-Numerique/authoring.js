@@ -95,6 +95,11 @@ def build():
   combine('src/index.html', Yak.BUILD_ROOT + '/index-full.html', replace=sed)
 
 
+  # XXX
+  combine('src/test.jqz', Yak.BUILD_ROOT + '/test.jqz', replace=sed)
+
+
+
   # ================================
   # Helpers libraries
   # ================================

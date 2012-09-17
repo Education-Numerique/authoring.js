@@ -3,12 +3,24 @@
 @import url("{SPIT-CSSBOOT}");
 @import url("../libs/css/bootstrap.css");
 @import url("../libs/css/bootstrap-responsive.css");
-@import url("../libs/css/jquery.gritter.css");
-@import url("../libs/css/chosen.css");
 @import url("../libs/css/unicorn.main.css");
 @import url("../libs/css/unicorn.grey.css");
 @import url("../libs/css/uniform.css");
 
+
+/* Override logo */
+
+#header h1 {
+  background: url("images/logo.png") no-repeat scroll 0 0px transparent !important;
+  height: 60px !important;
+  top: 10px !important;
+  left: 50px !important;
+/*  line-height: 600px;
+  overflow: hidden;
+  position: relative;
+  width: 191px;
+*/
+}
 
 /* Slidify styling */
 [data-toggle=slidify] {

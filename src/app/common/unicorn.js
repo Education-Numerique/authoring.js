@@ -28,7 +28,9 @@
     };
 
     this.bindBehaviors = function(node) {
-      $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
+      // Chosen stuff
+      // $('select.chzn-select').chosen();
+      $('select').chosen();
 
       // Tips
       $('.tip', node).tooltip();
@@ -36,6 +38,9 @@
       $('.tip-right', node).tooltip({ placement: 'right' });
       $('.tip-top', node).tooltip({ placement: 'top' });
       $('.tip-bottom', node).tooltip({ placement: 'bottom' });
+
+
+      $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
       $('.data-table').each(function(ind, item) {
         if ($(item).hasClass('dataTable'))
@@ -46,7 +51,6 @@
           'sDom': '<""l>t<"F"fp>'
         });
 
-        $('select').chosen();
 
         $('span.icon input:checkbox, th input:checkbox').click(function() {
           var checkedStatus = this.checked;

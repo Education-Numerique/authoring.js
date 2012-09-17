@@ -161,26 +161,220 @@
   });
 }).apply(LxxlApp);
 
+/*
+// Contain keys (can be fed to I18n helper by calling "qti.matters" + key:
+LxxlLib.Model.MATTERS
+LxxlLib.Model.LEVELS
+LxxlLib.Model.LENGTHS
+LxxlLib.Model.DIFFICULTIES
+LxxlLib.Model.FLAVORS
+
+LxxlLib.Model.Answer:
+  text: describe the answer (rich text)
+  comment: comment on the answer
+  isCorrect: true/false
+  weight: if the QTI is weighted, this is an int
+
+LxxlLib.Model.Question:
+  coef: default == 0 - means no coefficient applied
+  text: describe the question
+  answers: [Answer, ..., Answer]
+
+  addAnswer(optional position)
+  deleteAnswer(answerObject)
+  moveAnswer(answerObject, newPosition)
+
+LxxlLib.Model.Page:
+  flavor: undocumented,
+  title: title (mandatory)
+  subtitle: subtitle
+  advice: rich text
+
+  // page flavor "document", or "documentQuizz"
+  document: rich text
+
+  // page flavor "documentQuizz"
+  questions: [Question, Question]
+  coef: 0 (int) - if the QTI has coeffs
+  limitedTime: default 0 == infinity, int otherwise in seconds
+  sequencing: -1 == default, follow through - 0 == random, X == random on subset
+
+  addQuestion(optional position)
+  deleteQuestion(questionObject)
+  moveQuestion(questionObject, newPosition)
 
 
+LxxlLib.Model.Qti:
+  id: internal,
 
-var qti = function(id) {
-  return Ember.Object.create({
-    id: id,
-    title: 'bitch'
-  });
-};
+  // Basic
+  title: title (mandatory)
+  matter: [] (from Matters)
+  level: string from Levels
+  length: int from Lengths
+  difficulty: string from Difficulties
 
-var modelBidon = {
-  title: 'Super Title QTI'
-};
+  description: rich text
+  thumbnail: file
 
-var qtiFactory = new (function() {
-  this.getQtiById = function(id) {
-    return new qti(id);
+  pages: [Page, Page]
+
+
+  addPage(optional position)
+  deletePage(questionObject)
+  movePage(questionObject, newPosition)
+
+ */
+
+var LxxlLib = {};
+LxxlLib.Model = new (function(){
+
+  // Returns the array of all matters (keys)
+  this.MATTERS = Object.keys(I18n.translate('qti.matters'));
+  this.LEVELS = Object.keys(I18n.translate('qti.levels'));
+  this.LENGTHS = Object.keys(I18n.translate('qti.lengths'));
+  this.DIFFICULTIES = Object.keys(I18n.translate('qti.difficulties'));
+  this.FLAVORS = Object.keys(I18n.translate('qti.pageFlavors'));
+
+  var Answer = function(){
+    this.text;
+    this.comment;
+    this.isCorrect;
+    this.weight = 0;
+  };
+
+  var Question = function(){
+    this.coef = 0;
+    // Rich text
+    this.text;
+    this.answers = [];
+
+    this.addAnswer = function(at){
+      if(!at)
+        this.answers.push(new LxxlLib.Model.Answer());
+      else
+        this.answers.splice(at, 0, new LxxlLib.Model.Answer());
+    };
+
+    this.deleteAnswer = function(answer){
+      this.answers.splice(this.answers.indexOf(answer), 1);
+    };
+
+    this.moveAnswer = function(answer, pos){
+      this.answers.splice(this.answers.indexOf(answer), 1);
+      this.answers.splice(pos, 0, answer);
+    };
+
+  };
+
+  var Page = function(){
+    // Page "flavor"
+    this.flavor;
+
+    this.title;
+    this.subtitle;
+    // Rich text
+    this.advice;
+    // Rich text
+    this.document;
+
+    // Coefficient de la page dans l'exercice
+    this.coef = 0;
+
+    this.limitedTime = 0;// 0 == infinity - X seconds = time
+    this.sequencing = -1; // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+
+    this.questions = [];
+
+    this.addQuestion = function(at){
+      if(!at)
+        this.questions.push(new LxxlLib.Model.Question());
+      else
+        this.questions.splice(at, 0, new LxxlLib.Model.Question());
+    };
+
+    this.deleteQuestion = function(question){
+      this.questions.splice(this.questions.indexOf(question), 1);
+    };
+
+    this.moveQuestion = function(question, pos){
+      this.questions.splice(this.questions.indexOf(question), 1);
+      this.questions.splice(pos, 0, question);
+    };
+  }
+
+
+  var Qti = function(id){
+    this.id = id;
+
+    // Basic infos
+    this.title;
+    this.matter = [];
+    this.level;
+    this.length;
+    this.difficulty;
+
+    this.description = I18n.translate('qti.def.description');// 160 chars max
+    this.thumbnail;
+
+    // Attached stuff
+    this.pages = [];
+
+
+    this.addPage = function(at){
+      if(!at)
+        this.pages.push(new LxxlLib.Model.Page());
+      else
+        this.pages.splice(at, 0, new LxxlLib.Model.Page());
+    };
+
+    this.deletePage = function(page){
+      this.pages.splice(this.pages.indexOf(page), 1);
+    };
+
+    this.movePage = function(page, pos){
+      this.pages.splice(this.pages.indexOf(page), 1);
+      this.pages.splice(pos, 0, page);
+    };
+
+
+    this.reset = function(){
+    };
+
+    this.toJSON = function(){
+    };
+
+    this.fromJSON = function(flat){
+    };
+  };
+
+
+  this.Question = function(id){
+    return Ember.Object.create(new Question(id));
+  };
+
+
+  this.Qti = function(id){
+    return Ember.Object.create(new Qti(id));
+  };
+
+  this.Page = function(){
+    return Ember.Object.create(new Page());
+  };
+
+
+})();
+
+var qtiFactory = new (function(){
+  this.getQtiById = function(id){
+    return new LxxlLib.Model.Qti();
   };
 
   this.newQti = function() {
   };
 })();
+
+
+
+
 

@@ -40,7 +40,6 @@
   /*  jsBoot.loader.use("libs/css/bootstrap.css");
   jsBoot.loader.use("libs/css/bootstrap-responsive.css");
   jsBoot.loader.use("libs/css/jquery.gritter.css");
-  jsBoot.loader.use("libs/css/chosen.css");
   jsBoot.loader.use("libs/css/unicorn.main.css");
   jsBoot.loader.use("libs/css/unicorn.grey.css");*/
 
@@ -66,12 +65,35 @@
     jsBoot.loader.wait();
   }
 
-  // Use bootstrap as part of the stack as well.
+  // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't 
+  // fit well with the vanilla bootstrap...
   jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'jsboot', 'js$');
 
+  // Growl like notifications
+  jsBoot.loader.use('gritter', trunk ? 'trunk' : 'jsboot');
+
+  // Redactor rich text editing
+  jsBoot.loader.use('redactor', '8.0');
+
+  // Multiple select stuff
+  jsBoot.loader.use('chosen', trunk ? 'trunk' : 'jsboot');
+
+  // Redactor rich text editing
+  jsBoot.loader.use('validate', trunk ? 'trunk' : '1.10');
+
+  // Custom forms
+  jsBoot.loader.use('uniform', trunk ? 'trunk' : '1.5');
+
+
   jsBoot.loader.wait(function() {
-    if (debug)
+    if (debug){
+      $.gritter.add({
+        title:  'Base stack loaded',
+        text: 'Keep on truckin!',
+        sticky: false
+      });      
       jsBoot.debug.tick('Base stack loaded - continuing with the app itself');
+    }
     if (debug) {
       // jsBoot.debug.cssPoller.start();
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
@@ -85,30 +107,24 @@
   // console.warn(jsBoot.loader.list());
   // throw "toto";
 
-  // Growl like notifications
-  jsBoot.loader.use('libs/js/jquery.gritter' + suffix);
-  // Disable text select
-  jsBoot.loader.use('libs/js/jquery.uniform' + suffix);
+
+  jsBoot.loader.wait();
+
+
   // Data tables
   jsBoot.loader.use('libs/js/jquery.dataTables' + suffix);
   // Css bootstrap - vanilla version doesn't work
   //  jsBoot.loader.use('libs/js/bootstrap' + suffix);
 
-  // jsBoot.loader.use('bootstrap', 'jsboot', 'css$');
-
-  jsBoot.loader.use('chosen', 'jsboot');
 
   // Wizard depend on this crap
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix);
   jsBoot.loader.wait();
 
-  jsBoot.loader.use('libs/js/jquery.validate' + suffix);
   jsBoot.loader.use('libs/js/jquery.wizard' + suffix);
 
   jsBoot.loader.use('libs/js/jquery.flot' + suffix);
   jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix);
-
-  jsBoot.loader.use('redactor', '8.0');
 
   // Load the app itself
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix);
