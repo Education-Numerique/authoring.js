@@ -22,10 +22,13 @@ fullName: function(key, value) {
 
     currentPage: (function(key, value){
       // Getter
-      if (arguments.length === 1)
-        return _storedCurrentPage && content.pages.length && content.pages[content.pages.length -1] || _storedCurrentPage;
+      if (arguments.length === 1) {
+        return  !this._storedCurrentPage && this.content.pages.length && this.content.pages[0] || this._storedCurrentPage;
+      }
+
       // Setter
-      return _storedCurrentPage = value;
+      this.set('_storedCurrentPage', value);
+      return value;
     }).property('content', 'content.pages.length'),
 
     // Mutation on the content

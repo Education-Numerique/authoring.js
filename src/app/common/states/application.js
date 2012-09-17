@@ -336,6 +336,10 @@ LxxlLib.Model = new (function(){
     return Ember.Object.create(new Question(id));
   };
 
+  this.Answer = function() {
+    return Ember.Object.create(new Answer());
+  }
+
 
   this.Page = function(){
     return Ember.Object.create(new Page());
@@ -386,17 +390,37 @@ var activityFactory = new (function(){
       this.description = I18n.translate('activities.def.description');// 160 chars max
       this.thumbnail = null;
 
+
       // Attached stuff
-      this.pages = [
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page(),
-        new LxxlLib.Model.Page()
-      ];
+      this.pages = [];
+
+      for (var i=0; i<5;i++) {
+        var tmp = new LxxlLib.Model.Page();
+        tmp.title = "Page " + i;
+        tmp.subtitle = "Subtitle " + i;
+        tmp.document = "Document " + i;
+        tmp.advice = "Advice " + i;
+        tmp.questions = [];
+
+        for(var j=0; j<3;j++) {
+          var tmpQ = new LxxlLib.Model.Question();
+          tmpQ.text="Question " + j;
+
+          for(var k=0; k<6;k++) {
+            var tmpA = new LxxlLib.Model.Answer();
+            tmpA.text="Answer " + j + "-"+ k;
+            tmpA.comment = "Yihaaaaaa" + k;
+            
+            if (k % 2 == 0)
+              tmpA.isCorrect = true;
+
+            tmpQ.answers.pushObject(tmpA);
+          }
+
+          tmp.questions.pushObject(tmpQ);
+        }
+        this.pages.pushObject(tmp)
+      }
     }).apply(t);
     return t;
   };

@@ -67,12 +67,11 @@
                                         <div class="control-group">
                                             <div class="input-prepend">
                                                 <label class="add-on" for="form-page-title">Titre</label>
-                                                {{view Ember.TextField valueBinding="view.currentPage.title"}}
-<!--                                                 <input class="span2" id="form-page-title" name="form-page-title" type="text" placeholder="Identifiez la nature du texte" />
- -->                                            </div>
+                                                {{view Ember.TextField valueBinding="currentPage.title" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
+                                            </div>
                                             <div class="input-prepend">
                                                 <label class="add-on" for="form-page-subtitle">Sous-titre</label>
-                                                <input class="span2" id="form-page-subtitle" name="form-page-subtitle"  type="text" placeholder="Sous-titre de la page" />
+                                                {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
                                             </div>
                                             
                                         </div>
@@ -83,7 +82,7 @@
                                         </div>
                                         <div class="input-prepend">
                                                 <label class="add-on" for="form-page-explanation">Consigne</label>
-                                                <textarea id="form-page-explanation" class="redactorjs" name="form-page-explanation"></textarea>
+                                                {{view Ember.TextArea valueBinding="currentPage.advice" classNames="redactorjs" id="form-page-explanation"}}
                                             </div>
                                     </div>
                                 </div>
@@ -95,27 +94,26 @@
                                         <h5>Document</h5>
                                     </div>
                                     <div class="widget-content slidify nopadding" id="page-document">
-                                        <textarea name="page-document"></textarea>
+                                       {{view Ember.TextArea valueBinding="currentPage.document" classNames="redactorjs"}}
                                     </div>
                                 </div>
                                 <hr class="soften" />
-                                <div class="questions-list">
-                                    <div class="widget-box question-box">
-                                        <div class="widget-title" data-toggle="slidify" data-target="#page-questions">
-                                            <span class="icon">
-                                                <i class="icon-th-list"></i>
-                                            </span>
-                                            <h5>Questions</h5>
-                                            <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i>Supprimer</button>
-                                            <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
-                                        </div>
-                                        <div class="widget-content slidify nopadding" id="page-questions">
-                                                <div class="input-prepend">
-                                                    <label class="add-on" for="form-question-title">Intitulé</label>
-                                                    <input class="span2" id="form-question-title" name="form-question-title" type="text" placeholder="Intitulé de la question" />
-                                                </div>
+                                {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
+                                    <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                                        <span class="icon">
+                                            <i class="icon-th-list"></i>
+                                        </span>
+                                        <h5>Question {{view.content.text}}</h5>
+                                        <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i>Supprimer</button>
+                                        <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
+                                    </div>
+                                    <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
+                                            <div class="input-prepend">
+                                                <label class="add-on" for="form-question-title">Intitulé</label>
+                                                {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
+                                            </div>
 
-                                            <div class="container-fix-sortify"> 
+                                        <div class="container-fix-sortify"> 
                                             <table class="table answers table-bordered table-striped with-check">
                                                 <thead>
                                                     <tr>
@@ -125,117 +123,17 @@
                                                         <th>Explication</th>
                                                     </tr>
                                                 </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></td>
-                                                        <td><input type="checkbox" /></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                </tbody>
+                                                {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                    <td><i class="icon-resize-vertical"></td>
+                                                    <td>{{view Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
+                                                    <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                                                    <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                {{/collection}}
                                             </table>
-                                            </div>
                                         </div>
                                     </div>
-
-                                    <div class="widget-box question-box">
-                                        <div class="widget-title" data-toggle="slidify" data-target="#page-questions-2">
-                                            <span class="icon">
-                                                <i class="icon-th-list"></i>
-                                            </span>
-                                            <h5>Questions</h5>
-                                            <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i>Supprimer</button>
-                                            <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
-                                        </div>
-                                        <div class="widget-content slidify nopadding" id="page-questions-2">
-                                                <div class="input-prepend">
-                                                    <label class="add-on" for="form-question-title">Intitulé</label>
-                                                    <input class="span2" id="form-question-title" name="form-question-title" type="text" placeholder="Intitulé de la question" />
-                                                </div>
-
-                                            <div class="container-fix-sortify"> 
-                                            <table class="table answers table-bordered table-striped with-check">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th><i class="icon-ok"></i></th>
-                                                        <th>Réponse</th>
-                                                        <th>Explication</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></td>
-                                                        <td><input type="checkbox" /></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><i class="icon-resize-vertical"></i></td>
-                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
-                                                        <td><input type="text" placeholder="" /></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{/collection}}
+                                    
                             </div>
                             
 
