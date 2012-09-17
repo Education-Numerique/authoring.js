@@ -53,7 +53,7 @@
 
       // You can add new matters here - but DONT RENAME existing keys!!!! - you can still rename
       // the value obviously
-      qti:{
+      activities:{
 
         matters: {
           fra: "Français",
@@ -94,6 +94,32 @@
           six: "6",
           other: "Autre"
         },
+/*        categories: {
+          fra-ts: {
+            bla: {
+              title: "bla",
+              subtree: {
+
+              }
+            },
+            foo: {
+              title: "foo",
+              subtree: {
+                fooriendises: "Stuff"
+              }
+            },
+            bar: {
+              title: "bar",
+              subtree: {
+                fooriendises: "Barendises"
+              }
+            },
+            eng: {
+              title: "Anglais pas littéraire du tout",
+
+            }
+          }
+        },*/
 
         lengths: {
           10: "10 minutes",
@@ -111,18 +137,17 @@
         },
 
         pageFlavors: {
-          document: "doc",
-          documentQuizz: "docquizz",
+          staticPage: "doc",
+          quizz: "docquizz",
           tat: "tat"
         },
 
-        def:{
-          description: "Description par défaut du QTI",
+        defaultValues:{
+          description: "Description par défaut de l'activité",
           page: {
             title: 'Titre par défaut de la maman'
           }
-        },
-
+        }
       }
 
     }

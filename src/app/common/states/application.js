@@ -228,13 +228,9 @@ LxxlLib.Model.Qti:
 
 var LxxlLib = {};
 LxxlLib.Model = new (function(){
-
-  // Returns the array of all matters (keys)
-  this.MATTERS = Object.keys(I18n.translate('qti.matters'));
-  this.LEVELS = Object.keys(I18n.translate('qti.levels'));
-  this.LENGTHS = Object.keys(I18n.translate('qti.lengths'));
-  this.DIFFICULTIES = Object.keys(I18n.translate('qti.difficulties'));
-  this.FLAVORS = Object.keys(I18n.translate('qti.pageFlavors'));
+  this.LENGTHS = Object.keys(I18n.translate('activities.lengths'));
+  this.DIFFICULTIES = Object.keys(I18n.translate('activities.difficulties'));
+  this.FLAVORS = Object.keys(I18n.translate('activities.pageFlavors'));
 
   var Answer = function(){
     this.text;
@@ -271,7 +267,7 @@ LxxlLib.Model = new (function(){
     // Page "flavor"
     this.flavor;
 
-    this.title = I18n.translate('qti.def.page.title');// 160 chars max
+    this.title = I18n.translate('activities.defaultValues.page.title');// 160 chars max
     this.subtitle;
     // Rich text
     this.advice;
@@ -304,18 +300,59 @@ LxxlLib.Model = new (function(){
   }
 
 
+
+  var Matter = function(id){
+    this.id = id;
+    this.title = null;
+  };
+
+  var Level = function(id){
+    this.id = id;
+    this.title = null;
+  };
+
+  var Category = function(id){
+    this.id = id;
+    this.title = null;
+    this.matter = null;
+    this.level = null;
+    this.subtree = [];
+  };
+
+  this.Matter = function(id){
+    return Ember.Object.create(new Matter(id));
+  };
+
+  this.Level = function(id){
+    return Ember.Object.create(new Level(id));
+  };
+
+  this.Category = function(id){
+    return Ember.Object.create(new Category(id));
+  };
+
+
+  this.Question = function(id){
+    return Ember.Object.create(new Question(id));
+  };
+
+
+  this.Page = function(){
+    return Ember.Object.create(new Page());
+  };
+
   var Activity = function(id){
     this.id = id;
 
     // Basic infos
-    this.title = null;
+    this.title = I18n.translate('activities.defaultValues.title');// 160 chars max
     this.level = 0;
     this.matter = null;
     this.duration = 0;
     this.difficulty = null;
     this.category = null;
 
-    this.description = I18n.translate('qti.def.description');// 160 chars max
+    this.description = I18n.translate('activities.defaultValues.description');// 160 chars max
     this.thumbnail = null;
 
     // Attached stuff
@@ -328,20 +365,9 @@ LxxlLib.Model = new (function(){
     };
   };
 
-
-  this.Question = function(id){
-    return Ember.Object.create(new Question(id));
-  };
-
-
   this.Activity = function(id){
     return Ember.Object.create(new Activity(id));
   };
-
-  this.Page = function(){
-    return Ember.Object.create(new Page());
-  };
-
 
 })();
 
@@ -351,13 +377,13 @@ var activityFactory = new (function(){
 
     (function(){
       this.title = 'Titre test';
-      this.level = LxxlLib.Model.LEVELS.tl;
-      this.matter = LxxlLib.Model.MATTERS.lit;
+      this.level = categoryFactory.levels.tl;
+      this.matter = categoryFactory.matters.lit;
       this.duration = 120;
       this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
       this.category = 'XXXX NOT FUCKIN READY';
 
-      this.description = I18n.translate('qti.def.description');// 160 chars max
+      this.description = I18n.translate('activities.def.description');// 160 chars max
       this.thumbnail = null;
 
       // Attached stuff
@@ -382,5 +408,63 @@ var activityFactory = new (function(){
 
 
 
+/**
+ * XXX crap to be spoofed into the service at some point.
+ * Whether the localization ought to reside here or on the service is yet undetermined.
+ * ... and whether it's a simple tree or something more complex is undecided.
+ */
+var categoryFactory = new (function(){
+  var fakeMatters = Object.keys(I18n.translate('activities.matters'));
+  var fakeLevels = Object.keys(I18n.translate('activities.levels'));
+
+  var rootCategory = new LxxlLib.Model.Category();
+
+  fakeMatters.forEach(function(matter){
+    fakeLevels.forEach(function(level){
+      var lcat = new LxxlLib.Model.Category();
+      lcat.matter = new LxxlLib.Model.Matter();
+      lcat.matter.id = matter;
+      lcat.matter.title = I18n.translate('activities.matters.' + matter);
+      lcat.level = new LxxlLib.Model.Level();
+      lcat.level.id = level;
+      lcat.level.title = I18n.translate('activities.levels.' + level);
+      rootCategory.subtree.push(lcat);
+      var subito = new LxxlLib.Model.Category();
+      subito.title = 'Compréhension du pied';
+      lcat.subtree.push(subito);
+      subito = new LxxlLib.Model.Category();
+      subito.title = 'Compréhension de la main';
+      lcat.subtree.push(subito);
+      subito = new LxxlLib.Model.Category();
+      subito.title = 'Compréhension de René Chatonbriand';
+      lcat.subtree.push(subito);
+    });
+  });
+
+  this.matters = (function(){
+    return fakeMatters.map(function(id){
+      var matter = new LxxlLib.Model.Matter();
+      matter.id = id;
+      matter.title = I18n.translate('activities.matters.' + id);
+      return matter;
+    });
+  })();
+
+  this.levels = (function(){
+    return fakeLevels.map(function(id){
+      var matter = new LxxlLib.Model.Level();
+      matter.id = id;
+      matter.title = I18n.translate('activities.levels.' + id);
+      return matter;
+    });
+  })();
+
+  this.getTreeFor = function(matter, level){
+    return rootCategory.subtree.filter(function(item){
+      return (item.level.id == level) && (item.matter.id == matter);
+    });
+  };
+
+})();
 
 
