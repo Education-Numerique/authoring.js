@@ -368,7 +368,7 @@ LxxlLib.Model = new (function(){
 
 var qtiFactory = new (function(){
   this.getQtiById = function(id){
-    return new LxxlLib.Model.Qti();
+    return new LxxlLib.Model.Activity();
   };
 
   this.newQti = function() {
