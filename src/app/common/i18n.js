@@ -44,6 +44,11 @@
       myqtis: {
         title: 'Mes QTIs',
         bread: 'Gestion de mes QTIs'
+      },
+
+      qtiedit : {
+        title : 'Créer un QTI',
+        bread : ''
       }
     }
   };

@@ -183,6 +183,7 @@
 
     [for="form-page-explanation"] {
         height:24px;
+        line-height:2em;
     }
 
     #page-informations {
@@ -204,6 +205,8 @@
         .control-group {
             float:left;
             width:70%;
+            padding-bottom:10px;
+            margin-bottom:10px;
 
             input, textarea {
                 width:75%;
@@ -213,6 +216,37 @@
         .options {
             width:20%;
             float:right;
+            margin-right:6px;
+
+            button {
+                width:100%;
+                margin-bottom:10px;
+            }
+        }
+    }
+
+    .widget-title {
+         button.btn {
+            float:right;
+            margin-top:9px;
+            margin-right:10px;
+         }
+    }
+
+    .question-box {
+
+        table.answers {
+            border-top: 1px solid #DDD;
+
+            tr td:first-of-type {
+                opacity: 0.6;
+                width:10px;
+                cursor:move;
+                @include unselectable;
+            }
+        }
+        .input-prepend {
+            margin:10px 20px;
         }
     }
 }
