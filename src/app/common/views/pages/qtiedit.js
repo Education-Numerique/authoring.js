@@ -2,20 +2,36 @@
   var t = this.lxxlPageView('qtiedit');
   this.QtiEditView = Ember.View.extend(t, {
 
+    pagesCollectionView : Em.CollectionView.extend({
+        moveItem: function(fromIndex, toIndex){
+            var items = this.get('content');
+
+            this.get('controller').movePage(items.objectAt(fromIndex), toIndex);
+        },
+        didInsertElement : function () {
+            var view = this;
+            view.$().sortable({
+                placeholder: 'ui-sortable-placeholder',
+                axis: 'y',
+                start: function(event, ui) {
+                    ui.item.previousIndex = ui.item.index();                      
+                },
+                stop: function(event, ui) {
+                    view.moveItem(ui.item.previousIndex, ui.item.index());
+                }
+            });
+        },
+        itemViewClass : Em.View.extend({
+            click: function () {
+                this.get('_parentView').$('li').removeClass('active');
+                this.$().addClass('active');
+            }
+        })
+    }),
+
     didInsertElement: function() {
 
-      $('a[data-toggle="tab"]').on('shown', function(e) {
-        if ($(e.target).attr('href') == '#edit') {
-          this.$('.widget-title .buttons').show();
-        } else {
-          this.$('.widget-title .buttons').hide();
-        }
-      }.bind(this));
-
-      $('.pages-list').sortable({
-        placeholder: 'ui-sortable-placeholder',
-        axis: 'y'
-      });
+      
 
 
       $('.questions-list').sortable({

@@ -14,11 +14,11 @@
     },
 
     deletePage: function(page){
-      this.content.pages.splice(this.pages.indexOf(page), 1);
+      this.content.pages.splice(this.content.pages.indexOf(page), 1);
     },
 
     movePage: function(page, pos){
-      this.content.pages.splice(this.pages.indexOf(page), 1);
+      this.content.pages.splice(this.content.pages.indexOf(page), 1);
       this.content.pages.splice(pos, 0, page);
     },
 

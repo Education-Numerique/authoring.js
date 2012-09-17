@@ -271,7 +271,7 @@ LxxlLib.Model = new (function(){
     // Page "flavor"
     this.flavor;
 
-    this.title;
+    this.title = I18n.translate('qti.def.page.title');// 160 chars max
     this.subtitle;
     // Rich text
     this.advice;

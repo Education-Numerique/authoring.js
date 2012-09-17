@@ -117,8 +117,12 @@
         },
 
         def:{
-          description: "Description par défaut du QTI"
-        }
+          description: "Description par défaut du QTI",
+          page: {
+            title: 'Titre par défaut de la maman'
+          }
+        },
+
       }
 
     }

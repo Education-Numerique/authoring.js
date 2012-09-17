@@ -26,7 +26,6 @@
         h5 {
 
         }
-        width:249px;
         border-right: 1px solid #CDCDCD;
         float:left;
     }
@@ -35,15 +34,21 @@
     }
 
     .panel-left {
-        margin-left:250px;
+        float:left;
+        margin-left:0;
         margin-right:0px;
+        @include box-sizing(border-box);
     }
 
     .panel-right {
         left:0;
         right:auto;
+        top:0;
         border-right: 1px solid #DDD;
         border-left:0;
+        position:relative!important;
+        float:left;
+        height:auto;
     }
 
     .pages-list {
@@ -66,6 +71,7 @@
             float:left;
             width:100%;
             font-size: 12px;
+            cursor:pointer;
 
             &.ui-sortable-placeholder {
                 border:1px dotted #bcbaba;
@@ -238,7 +244,7 @@
     .questions-list {
         position:relative;
         overflow:auto;
-        
+
         > .ui-sortable-placeholder {
             height:36px;
             width:100%;
