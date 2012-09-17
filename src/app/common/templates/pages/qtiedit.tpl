@@ -67,67 +67,142 @@
                                         <textarea name="page-document"></textarea>
                                     </div>
                                 </div>
-                                <div class="widget-box question-box">
-                                    <div class="widget-title" data-toggle="slidify" data-target="#page-questions">
-                                        <span class="icon">
-                                            <i class="icon-th-list"></i>
-                                        </span>
-                                        <h5>Questions</h5>
-                                        <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
+                                <hr class="soften" />
+                                <div class="questions-list">
+                                    <div class="widget-box question-box">
+                                        <div class="widget-title" data-toggle="slidify" data-target="#page-questions">
+                                            <span class="icon">
+                                                <i class="icon-th-list"></i>
+                                            </span>
+                                            <h5>Questions</h5>
+                                            <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i>Supprimer</button>
+                                            <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
+                                        </div>
+                                        <div class="widget-content slidify nopadding" id="page-questions">
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-question-title">Intitulé</label>
+                                                    <input class="span2" id="form-question-title" name="form-question-title" type="text" placeholder="Intitulé de la question" />
+                                                </div>
+
+                                            <div class="container-fix-sortify"> 
+                                            <table class="table answers table-bordered table-striped with-check">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th><i class="icon-ok"></i></th>
+                                                        <th>Réponse</th>
+                                                        <th>Explication</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></td>
+                                                        <td><input type="checkbox" /></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="widget-content slidify-on nopadding" id="page-questions">
-                                            <div class="input-prepend">
-                                                <label class="add-on" for="form-question-title">Intitulé</label>
-                                                <input class="span2" id="form-question-title" name="form-question-title" type="text" placeholder="Intitulé de la question" />
-                                            </div>      
-                                        <table class="table answers table-bordered table-striped with-check">
-                                            <thead>
-                                                <tr>
-                                                    <th></th>
-                                                    <th><i class="icon-ok"></i></th>
-                                                    <th>Réponse</th>
-                                                    <th>Explication</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><i class="icon-resize-vertical"></i></td>
-                                                    <td><input type="checkbox" /></td>
-                                                    <td>Row 3</td>
-                                                    <td>Row 4</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i class="icon-resize-vertical"></i></td>
-                                                    <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                    <td>Row 3</td>
-                                                    <td>Row 4</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i class="icon-resize-vertical"></i></td>
-                                                    <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                    <td>Row 3</td>
-                                                    <td>Row 4</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i class="icon-resize-vertical"></i></td>
-                                                    <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                    <td>Row 3</td>
-                                                    <td>Row 4</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i class="icon-resize-vertical"></i></td>
-                                                    <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                    <td>Row 3</td>
-                                                    <td>Row 4</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><i class="icon-resize-vertical"></i></td>
-                                                    <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
-                                                    <td>Row 3</td>
-                                                    <td>Row 4</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+
+                                    <div class="widget-box question-box">
+                                        <div class="widget-title" data-toggle="slidify" data-target="#page-questions-2">
+                                            <span class="icon">
+                                                <i class="icon-th-list"></i>
+                                            </span>
+                                            <h5>Questions</h5>
+                                            <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i>Supprimer</button>
+                                            <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
+                                        </div>
+                                        <div class="widget-content slidify nopadding" id="page-questions-2">
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-question-title">Intitulé</label>
+                                                    <input class="span2" id="form-question-title" name="form-question-title" type="text" placeholder="Intitulé de la question" />
+                                                </div>
+
+                                            <div class="container-fix-sortify"> 
+                                            <table class="table answers table-bordered table-striped with-check">
+                                                <thead>
+                                                    <tr>
+                                                        <th></th>
+                                                        <th><i class="icon-ok"></i></th>
+                                                        <th>Réponse</th>
+                                                        <th>Explication</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></td>
+                                                        <td><input type="checkbox" /></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><i class="icon-resize-vertical"></i></td>
+                                                        <td><div class="checker" id="uniform-undefined"><span><input type="checkbox"></span></div></td>
+                                                        <td><input type="text" placeholder="Intitulé de la réponse" /></td>
+                                                        <td><input type="text" placeholder="" /></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

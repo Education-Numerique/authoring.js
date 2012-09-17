@@ -7,6 +7,8 @@
 @import url("../libs/css/chosen.css");
 @import url("../libs/css/unicorn.main.css");
 @import url("../libs/css/unicorn.grey.css");
+@import url("../libs/css/uniform.css");
+
 
 /* Slidify styling */
 [data-toggle=slidify] {
@@ -196,4 +198,14 @@ hr.clear {
     clear:both;
     width:100%;
     visibility:hidden;
+}
+
+hr.soften {
+  height: 1px;
+  margin: 2px 0;
+  background-image: -webkit-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -moz-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -ms-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
+  border: 0;
 }
