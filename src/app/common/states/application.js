@@ -304,18 +304,19 @@ LxxlLib.Model = new (function(){
   }
 
 
-  var Qti = function(id){
+  var Activity = function(id){
     this.id = id;
 
     // Basic infos
-    this.title;
-    this.matter = [];
-    this.level;
-    this.length;
-    this.difficulty;
+    this.title = null;
+    this.level = 0;
+    this.matter = null;
+    this.length = 0;
+    this.difficulty = null;
+    this.category = null;
 
     this.description = I18n.translate('qti.def.description');// 160 chars max
-    this.thumbnail;
+    this.thumbnail = null;
 
     // Attached stuff
     this.pages = [];
@@ -354,8 +355,8 @@ LxxlLib.Model = new (function(){
   };
 
 
-  this.Qti = function(id){
-    return Ember.Object.create(new Qti(id));
+  this.Activity = function(id){
+    return Ember.Object.create(new Activity(id));
   };
 
   this.Page = function(){
