@@ -131,26 +131,36 @@
         },
 
         difficulties: {
-          easy: "facile",
-          normal: "normal",
-          hard: "difficile"
+          easy: "Facile",
+          normal: "Normal",
+          hard: "Difficile"
         },
 
         pageFlavors: {
-          staticPage: "doc",
-          quizz: "docquizz",
-          tat: "tat"
+          staticPage: "Page simple",
+          quizz: "Page quizz",
+          tat: "Page texte à trous"
         },
 
         defaultValues:{
-          description: "Description par défaut de l'activité",
+          // title: '',
+          // level: '',
+          // matter: '',
+          // category: '',
+          description: 'Description par défaut de l\'activité',
+          duration: 60,
+          difficulty: 'easy',
+
           page: {
-            title: 'Titre par défaut de la maman'
+            title: 'Titre par défaut de la page',
+            subtitle: 'Sous-titre par défaut de la page',
+            flavor: 'staticPage',
+            coef: 0,
+            // advice: '',
+            // document: '',
           }
         }
       }
-
     }
   };
-
 }).apply(this);

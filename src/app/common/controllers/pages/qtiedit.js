@@ -2,44 +2,23 @@
   this.QtiEditController = Ember.ObjectController.extend({
     categoryFactory: categoryFactory,
 
-/*
-fullName: function(key, value) {
-    // getter
-    if (arguments.length === 1) {
-      var firstName = this.get('firstName');
-      var lastName = this.get('lastName');
-      return firstName + ' ' + lastName;
-    // setter
-    } else {
-      var name = value.split(" ");
-      this.set('firstName', name[0]);
-      this.set('lastName', name[1]);
-      return value;
-    }
-*/
 
-    _storedCurrentPage: null,
 
-    currentPage: (function(key, value){
-      // Getter
-      if (arguments.length === 1) {
-        return  !this._storedCurrentPage && this.content.pages.length && this.content.pages[0] || this._storedCurrentPage;
-      }
-
-      // Setter
-      this.set('_storedCurrentPage', value);
-      return value;
-    }).property('content', 'content.pages.length'),
-
-    // Mutation on the content
+    /**
+     * Pages management
+     */
     addPage: function(at){
+      var newPage = new LxxlLib.Model.Page();
       if(!at)
-        this.content.pages.push(new LxxlLib.Model.Page());
+        this.content.pages.pushObject(newPage);
       else
-        this.content.pages.splice(at, 0, new LxxlLib.Model.Page());
+        this.content.pages.splice(at, 0, newPage);
+      this.set('currentPage', newPage);
     },
 
     deletePage: function(page){
+      if(this.currentPage == page)
+        this.set('currentPage', null);
       this.content.pages.splice(this.content.pages.indexOf(page), 1);
     },
 
@@ -48,6 +27,68 @@ fullName: function(key, value) {
       this.content.pages.splice(pos, 0, page);
     },
 
+
+    /**
+     * Current page management
+     */
+    _storedCurrentPage: null,
+
+    currentPage: (function(key, value){
+      // Getter
+      if (arguments.length === 1) {
+        // Empty(ed) document gets null
+        if(!this.content.pages.length)
+          return this.set('_storedCurrentPage', null) && null;
+        return  !this._storedCurrentPage && this.content.pages[0] || this._storedCurrentPage;
+      }
+
+      // Setter
+      this.set('_storedCurrentPage', value);
+      return value;
+    }).property('content', 'content.pages.length'),
+
+
+    _storedCurrentQuestion: null,
+
+    currentQuestion: (function(key, value){
+      // Getter
+      if (arguments.length === 1) {
+        // Empty(ed) document gets null
+        if(!this._storedCurrentPage.questions.length)
+          return this.set('_storedCurrentQuestion', null) && null;
+        return  !this._storedCurrentQuestion && this._storedCurrentPage.questions[0] || this._storedCurrentQuestion;
+      }
+
+      // Setter
+      this.set('_storedCurrentQuestion', value);
+      return value;
+    }).property('_storedCurrentPage', '_storedCurrentPage.questions.length'),
+
+
+    addQuestion: function(at){
+      var nq = new LxxlLib.Model.Question();
+      if(!at)
+        this.currentPage.questions.pushObject(nq);
+      else
+        this.currentPage.questions.splice(at, 0, nq);
+      this.set('currentQuestion', nq);
+    },
+
+    deleteQuestion: function(question){
+      if(this.currentQuestion == question)
+        this.set('currentQuestion', null);
+      this.currentPage.questions.splice(this.currentPage.questions.indexOf(question), 1);
+    },
+
+    moveQuestion: function(question, pos){
+      this.currentPage.questions.splice(this.currentPage.questions.indexOf(question), 1);
+      this.currentPage.questions.splice(pos, 0, question);
+    },
+
+
+    /**
+     * Categories handling
+     */
     matters: (function(){
       return categoryFactory.matters;
     }).property('categoryFactory.matters'),
@@ -59,6 +100,16 @@ fullName: function(key, value) {
     categoryTree: (function(){
       return categoryFactory.getTreeFor(content.level, content.matter);
     }).property('content.level', 'content.matter', 'matters', 'levels'),
+
+
+    lengths: Object.keys(I18n.translate('activities.lengths')),
+    difficulties: Object.keys(I18n.translate('activities.difficulties')),
+    flavors: Object.keys(I18n.translate('activities.pageFlavors'))
+
+    /**
+     * Various select handling
+     */
+
 
 /*
     reset: function(){

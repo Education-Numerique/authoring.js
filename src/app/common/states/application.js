@@ -227,6 +227,14 @@ LxxlLib.Model.Qti:
  */
 
 var LxxlLib = {};
+
+LxxlLib.Locale = {};
+LxxlLib.Locale.getData = function(key){
+  var ret = I18n.translate(key, {defaultValue: '---'});
+  return (ret != '---') && ret || null;
+};
+
+
 LxxlLib.Model = new (function(){
   this.LENGTHS = Object.keys(I18n.translate('activities.lengths'));
   this.DIFFICULTIES = Object.keys(I18n.translate('activities.difficulties'));
@@ -263,41 +271,10 @@ LxxlLib.Model = new (function(){
 
   };
 
-  var Page = function(){
-    // Page "flavor"
-    this.flavor;
+  this.Question = function(id){
+    return Ember.Object.create(new Question(id));
+  };
 
-    this.title = I18n.translate('activities.defaultValues.page.title');// 160 chars max
-    this.subtitle;
-    // Rich text
-    this.advice;
-    // Rich text
-    this.document;
-
-    // Coefficient de la page dans l'exercice
-    this.coef = 0;
-
-    this.limitedTime = 0;// 0 == infinity - X seconds = time
-    this.sequencing = -1; // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
-
-    this.questions = [];
-
-    this.addQuestion = function(at){
-      if(!at)
-        this.questions.push(new LxxlLib.Model.Question());
-      else
-        this.questions.splice(at, 0, new LxxlLib.Model.Question());
-    };
-
-    this.deleteQuestion = function(question){
-      this.questions.splice(this.questions.indexOf(question), 1);
-    };
-
-    this.moveQuestion = function(question, pos){
-      this.questions.splice(this.questions.indexOf(question), 1);
-      this.questions.splice(pos, 0, question);
-    };
-  }
 
 
 
@@ -332,9 +309,30 @@ LxxlLib.Model = new (function(){
   };
 
 
-  this.Question = function(id){
-    return Ember.Object.create(new Question(id));
-  };
+
+
+
+
+  var Page = function(){
+    // Page "flavor"
+    this.flavor = LxxlLib.Locale.getData('activities.defaultValues.page.flavor');
+
+    this.title = LxxlLib.Locale.getData('activities.defaultValues.page.title');// 160 chars max
+    this.subtitle = LxxlLib.Locale.getData('activities.defaultValues.page.subtitle');
+    // Rich text
+    this.advice = LxxlLib.Locale.getData('advice');
+    // Rich text
+    this.document = LxxlLib.Locale.getData('document');
+
+    // Coefficient de la page dans l'exercice
+    this.coef = LxxlLib.Locale.getData('coef');
+
+    this.limitedTime = 0;// 0 == infinity - X seconds = time
+    this.sequencing = -1; // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+
+    this.questions = [];
+
+  }
 
   this.Answer = function() {
     return Ember.Object.create(new Answer());
@@ -349,45 +347,70 @@ LxxlLib.Model = new (function(){
     this.id = id;
 
     // Basic infos
-    this.title = I18n.translate('activities.defaultValues.title');// 160 chars max
-    this.level = 0;
-    this.matter = null;
-    this.duration = 0;
-    this.difficulty = null;
-    this.category = null;
+    this.title = LxxlLib.Locale.getData('activities.defaultValues.title');
+    this.description = LxxlLib.Locale.getData('activities.defaultValues.description');
+    this.level = LxxlLib.Locale.getData('activities.defaultValues.description');
+    this.matter = LxxlLib.Locale.getData('activities.defaultValues.matter');
+    this.duration = LxxlLib.Locale.getData('activities.defaultValues.duration');
+    this.difficulty = LxxlLib.Locale.getData('activities.defaultValues.difficulty');
+    this.category = LxxlLib.Locale.getData('activities.defaultValues.category');;
 
-    this.description = I18n.translate('activities.defaultValues.description');// 160 chars max
     this.thumbnail = null;
 
-    // Attached stuff
     this.pages = [];
-
-    this.toJSON = function(){
-    };
-
-    this.fromJSON = function(flat){
-    };
   };
 
+  var jsonable = Ember.Object.extend({
+    // this.fromJson = function(mesh) {
+    //   try{
+    //     mesh = JSON.parse(mesh);
+    //   }catch(e){
+    //     throw "FATAL ERROR parsing data - the activity is not valid JSON";
+    //   }
+    //   for(var i in mesh)
+    //     if(typeof this[i] != 'array')
+    //       this.set(i, mesh[i]);
+    //     else
+    //       mesh[i].forEach(function(item){
+    //         // Item as a mesh
+    //         this.pushObject(new LxxlLib.Model.Page(item));
+    //       }, this[i]);
+    // };
+
+    toJson: function() {
+      var v, ret = [];
+      for (var key in this)
+        if (this.hasOwnProperty(key)) {
+          v = this[key];
+          if (v === 'toString')
+              continue;
+          if (Ember.typeOf(v) === 'function')
+              continue;
+          ret.push(key);
+        }
+      return JSON.stringify(this.getProperties(ret));
+    }
+  });
+
   this.Activity = function(id){
-    return Ember.Object.create(new Activity(id));
+    return jsonable.create(new Activity(id));
   };
 
 })();
+
 
 var activityFactory = new (function(){
   this.getActivityById = function(id){
     var t = new LxxlLib.Model.Activity();
 
     (function(){
-      this.title = 'Titre test';
+      // this.title = 'Titre test';
+      // this.description = 'desc';
       this.level = categoryFactory.levels.tl;
       this.matter = categoryFactory.matters.lit;
       this.duration = 120;
       this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
-      this.category = 'XXXX NOT FUCKIN READY';
-
-      this.description = I18n.translate('activities.def.description');// 160 chars max
+      this.category = categoryFactory.getTreeFor(this.matter, this.level);
       this.thumbnail = null;
 
 
@@ -486,9 +509,11 @@ var categoryFactory = new (function(){
   this.getTreeFor = function(matter, level){
     return rootCategory.subtree.filter(function(item){
       return (item.level.id == level) && (item.matter.id == matter);
-    });
+    }).pop();
   };
 
 })();
 
-
+I18n.fallbacks = false;
+var t = activityFactory.getActivityById();
+console.error(t.toJson());
