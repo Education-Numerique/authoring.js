@@ -121,6 +121,8 @@
                                                         <th><i class="icon-ok"></i></th>
                                                         <th>Réponse</th>
                                                         <th>Explication</th>
+                                                        <th>Coef</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
@@ -128,6 +130,8 @@
                                                     <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
                                                     <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                                                     <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                    <td></td>
+                                                    <td><button class="btn btn-danger btn-mini"><i class="icon-remove icon-white full-opacity"></i></button></td>
                                                 {{/collection}}
                                             </table>
                                         </div>

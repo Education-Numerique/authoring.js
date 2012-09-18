@@ -47,8 +47,7 @@
             var items = this.get('content');
             var item = items.objectAt(fromIndex);
 
-            //XXX FIXME moveQuestion
-            //this.get('controller').movePage(item, toIndex);
+            this.get('controller').moveQuestion(item, toIndex);
         },
         didInsertElement : function () {
             var view = this;
@@ -80,8 +79,7 @@
                     var items = this.get('content');
                     var item = items.objectAt(fromIndex);
 
-                    //XXX FIXME moveQuestion
-                    //this.get('controller').movePage(item, toIndex);
+                    //this.get('controller').moveAnswer(item, toIndex);
                 },
                 didInsertElement : function () {
                     var view = this;
@@ -103,7 +101,7 @@
                               },
                               axis: 'y',
                               start : function(event, ui) {
-                                ui.placeholder.html('<td /><td /><td /><td />');
+                                ui.placeholder.html('<td /><td /><td /><td /><td /><td />');
                                 ui.item.previousIndex = ui.item.index();     
                               },
                               stop: function(event, ui) {

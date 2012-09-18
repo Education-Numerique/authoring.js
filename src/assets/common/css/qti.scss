@@ -308,6 +308,20 @@
                     @include unselectable;
                 }
 
+                td:last-of-type {
+                    width:10px;
+                    padding:8px;
+
+                    button {
+                        opacity:0.8;
+                        padding: 2px;
+
+                        &:hover {
+                            opacity:1;
+                        }
+                    }
+                }
+
                 td:nth-of-type(2) {
                     width:10px;
                     padding:8px;
@@ -324,5 +338,9 @@
         .input-prepend {
             margin:10px 20px;
         }
+    }
+
+    .full-opacity {
+        opacity:1!important;
     }
 }

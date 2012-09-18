@@ -81,8 +81,8 @@
     },
 
     moveQuestion: function(question, pos){
-      this.currentPage.questions.splice(this.currentPage.questions.indexOf(question), 1);
-      this.currentPage.questions.splice(pos, 0, question);
+      this.get('currentPage.questions').splice(this.get('currentPage.questions').indexOf(question), 1);
+      this.get('currentPage.questions').splice(pos, 0, question);
     },
 
 
