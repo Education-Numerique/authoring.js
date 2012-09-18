@@ -387,8 +387,8 @@ var activityFactory = new (function(){
     var t = new LxxlLib.Model.Activity();
 
     (function(){
-      // this.title = 'Titre test';
-      // this.description = 'desc';
+      this.title = 'Titre test';
+      this.description = 'desc';
       this.level = categoryFactory.levels.tl;
       this.matter = categoryFactory.matters.lit;
       this.duration = 120;
@@ -423,7 +423,7 @@ var activityFactory = new (function(){
             tmpQ.answers.pushObject(tmpA);
 
           }
-          
+
           tmp.questions.pushObject(tmpQ);
         }
         this.pages.pushObject(tmp)
