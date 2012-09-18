@@ -145,11 +145,21 @@
                 }
             }
 
-            .questions-count{
+            .questions-count, .delete-page{
                 padding: 3px 5px;
                 position: absolute;
                 right: 10px;
                 top: 12px;
+            }
+
+            .delete-page {
+                padding:2px;
+                -webkit-transform:scale(0.7);
+                opacity:0.8;
+
+                &:hover {
+                    opacity:1;
+                }
             }
         }
     }
@@ -354,5 +364,5 @@
 
 [data-type=tat] {
     cursor:pointer;
-    
+
 }

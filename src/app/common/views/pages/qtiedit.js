@@ -57,6 +57,8 @@
         }
     }),
 
+    
+
 
     pagesCollectionView : Em.CollectionView.extend({
         moveItem: function(fromIndex, toIndex){
@@ -70,7 +72,7 @@
             view.$().sortable({
                 placeholder: 'ui-sortable-placeholder',
                 axis: 'y',
-                delay: 300,
+                delay: 150,
                 start: function(event, ui) {
                     ui.item.previousIndex = ui.item.index();                      
                 },
@@ -117,7 +119,24 @@
                     this.set('flavorIcon', 'icon-text-width');
                     this.set('pageType', 'page-tat');
                 }
-            }.observes('content.flavor')
+            }.observes('content.flavor'),
+
+            DeletePageButton : Em.View.extend({
+                tagName : "button",
+                page : null,
+                modalName : null,
+
+                attributeBindings : ['href', 'data-toggle'],
+
+                click : function (event) {
+                    modalHandler.save(this.get('modalName'), function() {
+                        this.get('controller').deletePage(this.get('page'));
+                    }.bind(this));
+
+                    event.preventDefault();
+                    return false;
+                }
+            })
         })
     }),
 
@@ -134,7 +153,7 @@
                 handle : '.widget-title',
                 placeholder: 'ui-sortable-placeholder',
                 axis: 'y',
-                delay : 300,
+                delay : 150,
                 start: function(event, ui) {
                     ui.item.previousIndex = ui.item.index();                      
                 },
@@ -196,7 +215,7 @@
                         $(this).find('table tbody').sortable({
                             placeholder: 'ui-sortable-placeholder',
                             handle: 'td:first-of-type',
-                            delay: 300,
+                            delay: 150,
                             helper: function(e, tr)
                               {
                                 var $originals = tr.children();

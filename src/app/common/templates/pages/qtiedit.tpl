@@ -32,8 +32,9 @@
                                 <span class="icon"><span {{bindAttr class="view.flavorIcon"}}></span></span>
                                 <span class="page-title">{{view.content.title}}</span>
                             </a>
-                            <span class="questions-count badge badge-info">{{view.content.questions.length}}</span>
-                        {{/collection}}
+                            {{#view view.DeletePageButton modalName="deletePage" pageBinding="view.content" classNames="btn btn-danger btn-mini delete-page" data-toggle="modal" href="#modal-delete-page"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}
+<!--                             <span class="questions-count badge badge-info">{{view.content.questions.length}}</span>
+ -->                        {{/collection}}
                     </div>
                 </div>
 
@@ -187,6 +188,19 @@
      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Voulez-vous vraiment supprimer cette question ?</h3>
+    </div>
+    <div class="modal-footer">
+        {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
+        {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
+    </div>
+</div>
+{{/view}}
+
+{{#view view.ModalBox modalName="deletePage"}}
+<div class="modal hide" id="modal-delete-page">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Voulez-vous vraiment supprimer cette page ?</h3>
     </div>
     <div class="modal-footer">
         {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
