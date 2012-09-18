@@ -3,9 +3,12 @@
 */
 
 <div class="row-fluid">
-  <div class="alert alert-info">Bienvenue dans le processus d'inscription! Votre compte sera créé en quatre étapes simples.
+  <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Inscription</h4>
+    Bienvenue dans le processus d'inscription! Votre compte sera créé en quatre étapes simples.
   </div>
+
   <div class="progress progress-striped active">
     <div id="register-progress" style="width: 5%;" class="bar"></div>
   </div>

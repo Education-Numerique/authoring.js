@@ -30,7 +30,7 @@
     this.bindBehaviors = function(node) {
       // Chosen stuff
       // $('select.chzn-select').chosen();
-      $('select').chosen();
+      $(':not(.data-table) select').chosen();
 
       // Tips
       $('.tip', node).tooltip();
@@ -39,13 +39,36 @@
       $('.tip-top', node).tooltip({ placement: 'top' });
       $('.tip-bottom', node).tooltip({ placement: 'bottom' });
 
+      // $('[class*="tip-"]', node).each(function(ind, item){
+      //   console.warn(item);
+      //   if($(item).hasClass('tipbound'))
+      //     return;
+      //   $(item).addClass('tipbound');
+      //   var p = (item.className.match(/tip-(left)/) ||
+      //     item.className.match(/tip-(right)/) ||
+      //     item.className.match(/tip-(bottom)/) ||
+      //     item.className.match(/tip-(top)/)).pop();
+      //   console.warn(p);
+      //   $(item).tooltip({placement: p});
+      // });
 
       $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
+
+      $('.icon-print').each(function(ind, item){
+        var p = $(item).parent();
+        if(p.hasClass('will-print'))
+          return;
+        p.addClass('will-print');
+        p.click(function(e){
+          print();
+        });
+      });
 
       $('.data-table').each(function(ind, item) {
         if ($(item).hasClass('dataTable'))
           return;
         $(item).dataTable({
+          "oLanguage": LxxlLib.Locale.getData('tables'),
           'bJQueryUI': true,
           'sPaginationType': 'full_numbers',
           'sDom': '<""l>t<"F"fp>'
@@ -65,7 +88,7 @@
             }
           });
         });
-
+        $('select').chosen();
       });
     };
   })();

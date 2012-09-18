@@ -3,6 +3,7 @@
 */
 <form class="form-horizontal">
 <div class="row-fluid qti">
+
     <div class="span10">
         
         <div class="widget-box">

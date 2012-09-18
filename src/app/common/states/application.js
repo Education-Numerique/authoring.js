@@ -500,6 +500,6 @@ var categoryFactory = new (function(){
 
 })();
 
-I18n.fallbacks = false;
-var t = activityFactory.getActivityById();
-console.error(t.toJson());
+// I18n.fallbacks = false;
+// var t = activityFactory.getActivityById();
+// console.error(t.toJson());

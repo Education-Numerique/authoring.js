@@ -3,6 +3,12 @@
 */
 
 <div class="row-fluid ">
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Administration des activités</h4>
+    Cette page réservée aux modérateurs permet d'accéder à l'ensemble des activités, publiées ou non.
+  </div>
+  
   <div class="widget-box">
     <div class="widget-title">
       <h5>Statistiques</h5>

@@ -1,12 +1,14 @@
 /* Use the Unicorn theme */
 
-@import url("{SPIT-CSSBOOT}");
-@import url("../libs/css/bootstrap.css");
-@import url("../libs/css/bootstrap-responsive.css");
-@import url("../libs/css/unicorn.main.css");
-@import url("../libs/css/unicorn.grey.css");
-@import url("../libs/css/uniform.css");
+/* */
 
+html .unsupported-browser{
+  display: none;
+}
+
+html:not(.ie6):not(.ie7):not(.ie8).unsupported-browser .unsupported-browser{
+  display: block;
+}
 
 /* Override logo */
 

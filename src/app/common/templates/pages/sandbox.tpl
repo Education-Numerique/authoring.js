@@ -3,6 +3,12 @@
 */
 
 <div class="row-fluid ">
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">La sandbox</h4>
+    Vous trouverez ici les activités publiées dans la sandbox, bla.
+  </div>
+
   <div class="widget-box">
     <div class="widget-title">
       <h5>Statistiques</h5>

@@ -1,15 +1,30 @@
 /*
-  This is a placeholder stylesheet meant to:
-  - provide *default* styles to be displayed while the app boots-up
-  - import the actual entry point stylesheet of the app
+  This is a placeholder stylesheet meant to provide *default* styles to be displayed while the app boots-up
 */
 
-@import url("{PUKE-BOOT-ROOT}/lxxl{MIN}.css");
-
-noscript p {
+/* This is meant only to style no-javascript browsers error */
+noscript > p{
+  padding: 8px 35px 8px 14px;
+  margin-bottom: 18px;
+  color: #c09853;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+  color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
   text-align: center;
 }
 
+/* Match the product background-color */
+body {
+  background-color: #444444;
+}
+
+/* Placeholders should be hidden once we remove the no-js class */
 body > p{
   display: none;
 }
@@ -24,3 +39,4 @@ body > p{
   margin-left: -78px;
   display: block;
 }
+

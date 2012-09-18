@@ -2,14 +2,11 @@
 * @template : pages/dashboard
 */
 
-<div class="row-fluid ">
-<div class="alert alert-info">Bienvenue sur LxxL!<a href="#" data-dismiss="alert" class="close">×</a></div>
-
-
-<div id="accordion2">
-
-
-
+<div class="row-fluid" id="accordion2">
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Bienvenue!</h4>
+    Ceci est la page d'accueil de Lxxl</div>
 
 <article id="home" class="widget-box">
   <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#home-collapse">
@@ -115,27 +112,27 @@
       <div class="span12 center" style="text-align: center;">         
         <ul class="quick-actions">
           <li>
-            <a {{action showSandbox href=true}}>
+            <a {{action showSandbox href=true}} class="tip-top" title="Accéder aux activités publiquement disponibles">
               <i class="icon-home"></i>
-              Les activités dans la sandbox
+              Sandbox
             </a>
           </li>
           <li class="user-author">
-            <a {{action showMyQTIs href=true}}>
+            <a {{action showMyQTIs href=true}} class="tip-top" title="Accéder à vos activités">
               <i class="icon-book"></i>
-              Mes activités
+              Activités
             </a>
           </li>
           <li class="user-author">
-            <a {{action showProfile href=true}}>
+            <a {{action showProfile href=true}} class="tip-top" title="Accéder à votre profil et données personnelles">
               <i class="icon-client"></i>
-              Mon profil
+              Profil
             </a>
           </li>
           <li class="user-author">
-            <a {{action showSettings href=true}}>
+            <a {{action showSettings href=true}} class="tip-top" title="Accéder à vos paramètres">
               <i class="icon-lock"></i>
-              Mes réglages
+              Réglages
             </a>
           </li>
         </ul>
@@ -145,21 +142,21 @@
       <div class="span12 center" style="text-align: center;">         
         <ul class="quick-actions">
           <li class="user-reviewer">
-            <a {{action showAllQTIs href=true}}>
+            <a {{action showAllQTIs href=true}} class="tip-bottom" title="Modérer et modifier toutes les activités">
               <i class="icon-download"></i>
-              Modération des QTIs
+              Modération des activités
             </a>
           </li>
           <li class="user-admin">
-            <a {{action showAllCategories href=true}}>
+            <a {{action showAllCategories href=true}} class="tip-bottom" title="Gérer le graph des catégories">
               <i class="icon-graph"></i>
-              Gestion des catégories
+              Arbre des catégories
             </a>
           </li>
           <li class="user-admin">
-            <a {{action showAllUsers href=true}}>
+            <a {{action showAllUsers href=true}} class="tip-bottom" title="Gérer les comptes utilisateurs">
               <i class="icon-people"></i>
-              Gestion des comptes utilisateurs
+              Comptes utilisateurs
             </a>
           </li>
         </ul>
@@ -167,7 +164,6 @@
     </div>
   </section>
 </article>
-
 
 <article id="charte" class="widget-box">
   <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-speed="500" data-target="#charte-collapse">

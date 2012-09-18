@@ -71,28 +71,26 @@ def build():
 
   sed.add('{PUKE-BOOT-ROOT}', Yak.PACKAGE['VERSION'])
 
-  copyfile("src/bootstrap/favicon.ico", Yak.BUILD_ROOT + "/miniboot.ico")
+  copyfile("src/bootstrap/miniboot.ico", Yak.BUILD_ROOT + "/miniboot.ico")
   copyfile("src/bootstrap/miniboot.png", Yak.BUILD_ROOT + "/miniboot.png")
 
   bootman = PH.getmanifest('jsboot', '0.1', usemin = True)
   sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
-  sed.add('{SPIT-CSSBOOT}', bootman['cssbootstrap'])
 
   sed.add('{MIN}', '-min')
   combine(js, Yak.BUILD_ROOT + "/miniboot-min.js", replace=sed)
   combine(css, Yak.BUILD_ROOT + "/miniboot-min.css", replace=sed)
 
-  combine('src/index.html', Yak.BUILD_ROOT + '/index.html', replace=sed)
+  combine('src/bootstrap/index.html', Yak.BUILD_ROOT + '/index.html', replace=sed)
 
   bootman = PH.getmanifest('jsboot', '0.1', False)
   sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
-  sed.add('{SPIT-CSSBOOT}', bootman['cssbootstrap'])
 
   sed.add('{MIN}', '')
   combine(js, Yak.BUILD_ROOT + "/miniboot.js", replace=sed)
   combine(css, Yak.BUILD_ROOT + "/miniboot.css", replace=sed)
 
-  combine('src/index.html', Yak.BUILD_ROOT + '/index-full.html', replace=sed)
+  combine('src/bootstrap/index.html', Yak.BUILD_ROOT + '/index-full.html', replace=sed)
 
 
   # XXX
@@ -111,7 +109,9 @@ def build():
   # ================================
 
   #js application
-  js = FileList("src/app/common/", filter = "*i18n.js,*unicorn.js,*app.js,*addons.js")
+  js = FileList("src/app/common/helpers", filter = "*.js")
+  js.merge(FileList("src/app/common/", filter = "*i18n.js"))
+  js.merge(FileList("src/app/common/root", filter = "*.js"))
   js.merge(FileList("src/app/common/states", filter = "*.js"))
   js.merge(FileList("src/app/common/models", filter = "*.js"))
   js.merge(FileList("src/app/common/controllers", filter = "*.js"))
