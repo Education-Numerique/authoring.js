@@ -73,6 +73,12 @@
             font-size: 12px;
             cursor:pointer;
 
+            &.page-static {
+                .questions-count {
+                    display:none;
+                }
+            }
+
             &.ui-sortable-placeholder {
                 border:1px dotted #bcbaba;
                 background-color:#ececec;

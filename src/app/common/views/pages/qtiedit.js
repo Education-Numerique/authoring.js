@@ -20,6 +20,7 @@
   })();
 
   this.QtiEditView = Ember.View.extend(t, {
+    classNameBindings: ['isStaticPage', 'isQuizz', 'isTat'],
     isStaticPage : false,
     isQuizz : false,
     isTat : false,
@@ -69,6 +70,7 @@
             view.$().sortable({
                 placeholder: 'ui-sortable-placeholder',
                 axis: 'y',
+                delay: 300,
                 start: function(event, ui) {
                     ui.item.previousIndex = ui.item.index();                      
                 },
@@ -78,7 +80,8 @@
             });
         },
         itemViewClass : Em.View.extend({
-
+            classNameBindings : ['pageType'],
+            pageType : null,
             flavorIcon : null,
 
             didInsertElement : function () {
@@ -104,12 +107,16 @@
             flavorUpdated : function () {
                 var value = this.get('content.flavor');
                 console.log('=====< flavor', value);
-                if (value == 'staticPage')
+                if (value == 'staticPage') {
                     this.set('flavorIcon', 'icon-file');
-                else if (value == 'quizz')
+                    this.set('pageType', 'page-static');
+                } else if (value == 'quizz') {
                     this.set('flavorIcon', 'icon-ok');
-                else if (value == 'tat')
+                    this.set('pageType', 'page-quizz');
+                } else if (value == 'tat') {
                     this.set('flavorIcon', 'icon-text-width');
+                    this.set('pageType', 'page-tat');
+                }
             }.observes('content.flavor')
         })
     }),
@@ -127,6 +134,7 @@
                 handle : '.widget-title',
                 placeholder: 'ui-sortable-placeholder',
                 axis: 'y',
+                delay : 300,
                 start: function(event, ui) {
                     ui.item.previousIndex = ui.item.index();                      
                 },
@@ -188,6 +196,7 @@
                         $(this).find('table tbody').sortable({
                             placeholder: 'ui-sortable-placeholder',
                             handle: 'td:first-of-type',
+                            delay: 300,
                             helper: function(e, tr)
                               {
                                 var $originals = tr.children();
