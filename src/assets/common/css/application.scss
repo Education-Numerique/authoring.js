@@ -206,6 +206,15 @@ body:not(.user-admin) {
     user-select: none;
 }
 
+
+@mixin scale($deg) {
+    transform:scale($deg);
+    -moz-transform:scale($deg);
+    -webkit-transform:scale($deg);
+    -o-transform:scale($deg);
+    -ms-transform:scale($deg);
+}
+
 hr.clear {
     clear:both;
     width:100%;

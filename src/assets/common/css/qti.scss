@@ -154,7 +154,7 @@
 
             .delete-page {
                 padding:2px;
-                -webkit-transform:scale(0.7);
+                @include scale(0.7);
                 opacity:0.8;
 
                 &:hover {
@@ -331,6 +331,7 @@
                     button {
                         opacity:0.8;
                         padding: 2px;
+                        @include scale(0.8);
 
                         &:hover {
                             opacity:1;
