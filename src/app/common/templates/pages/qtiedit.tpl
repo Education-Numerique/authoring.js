@@ -82,7 +82,7 @@
                                         </div>
                                         <div class="input-prepend">
                                                 <label class="add-on" for="form-page-explanation">Consigne</label>
-                                                {{view Ember.TextArea valueBinding="currentPage.advice" classNames="redactorjs" id="form-page-explanation"}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" id="form-page-explanation"}}
                                             </div>
                                     </div>
                                 </div>
@@ -94,7 +94,7 @@
                                         <h5>Document</h5>
                                     </div>
                                     <div class="widget-content slidify nopadding" id="page-document">
-                                       {{view Ember.TextArea valueBinding="currentPage.document" classNames="redactorjs"}}
+                                       {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
                                     </div>
                                 </div>
                                 <hr class="soften" />
@@ -125,7 +125,7 @@
                                                 </thead>
                                                 {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
                                                     <td><i class="icon-resize-vertical"></td>
-                                                    <td>{{view Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
+                                                    <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
                                                     <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                                                     <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                                                 {{/collection}}

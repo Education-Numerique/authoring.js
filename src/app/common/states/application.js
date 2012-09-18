@@ -226,7 +226,9 @@ LxxlLib.Model.Qti:
 
  */
 
-var LxxlLib = {};
+if ('undefined' === typeof LxxlLib) {
+  var LxxlLib = {};
+}
 
 LxxlLib.Locale = {};
 LxxlLib.Locale.getData = function(key){

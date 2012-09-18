@@ -130,13 +130,7 @@
     }),
 
     didInsertElement: function() {
-
-      
-
-      $('textarea').redactor({ 
-            imageUpload: '/file_upload.php',
-            autoresize: true
-        });
+        this.$('input')[0].blur();
     }
   });
 }).apply(LxxlApp);
