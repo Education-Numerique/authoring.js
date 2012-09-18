@@ -131,7 +131,7 @@
         this._super();
         var values = I18n.translate('activities.pageFlavors');
 
-        for (key in values) {
+        for (var key in values) {
           this.get('content').pushObject({
             'value' : key,
             'label' : values[key]
