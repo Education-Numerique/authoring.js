@@ -21,6 +21,15 @@
 
   this.QtiEditView = Ember.View.extend(t, {
 
+
+    AddQuestionButton : Em.View.extend({
+        click : function (e) {
+            this.get('controller').addQuestion();
+            e.preventDefault();
+            return false;
+        }
+    }),
+
     pagesCollectionView : Em.CollectionView.extend({
         moveItem: function(fromIndex, toIndex){
             var items = this.get('content');
@@ -82,6 +91,7 @@
                 }
             });
         },
+
         itemViewClass : Em.View.extend({
             classNames: ['widget-box', 'question-box'],
 
@@ -93,6 +103,22 @@
                 return 'widget-question-' + this.get('element.id');
             }.property('element.id'),
 
+            DeleteQuestionButton : Em.View.extend({
+                tagName : "button",
+                question : null,
+                modalName : null,
+
+                attributeBindings : ['href', 'data-toggle'],
+
+                click : function (event) {
+                    modalHandler.save(this.get('modalName'), function() {
+                        this.get('controller').deleteQuestion(this.get('question'));
+                    }.bind(this));
+
+                    event.preventDefault();
+                    return false;
+                }
+            }),
             answersCollectionView : Em.CollectionView.extend({
                 moveItem: function(fromIndex, toIndex){
                     var items = this.get('content');
@@ -133,16 +159,6 @@
                     });
                 },
                 itemViewClass : Em.View.extend({
-                    // classNames: ['widget-box', 'question-box'],
-
-                    // widgetIdAnchor : function() {
-                    //     return '#widget-question-' + this.get('element.id');
-                    // }.property('element.id'),
-
-                    // widgetId : function() {
-                    //     return 'widget-question-' + this.get('element.id');
-                    // }.property('element.id')
-                    // 
                     
                     DeleteButton : Em.View.extend({
                         tagName : "button",

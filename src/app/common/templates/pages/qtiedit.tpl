@@ -60,7 +60,7 @@
                                             <i class="icon-wrench"></i>
                                         </span>
                                         <h5>Informations</h5>
-                                        <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une question</button>
+                                        {{#view view.AddQuestionButton tagName="button" classNames="btn btn-inverse btn-mini"}}<i class="icon-plus icon-white"></i>Ajouter une question{{/view}}
                                     </div>
                                     <div class="widget-content slidify-on" id="page-informations">
                                         
@@ -104,7 +104,7 @@
                                             <i class="icon-th-list"></i>
                                         </span>
                                         <h5>Question {{view.content.text}}</h5>
-                                        <button class="btn btn-danger btn-mini"><i class="icon-remove icon-white"></i>Supprimer</button>
+                                        {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>Supprimer{{/view}}
                                         <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
                                     </div>
                                     <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
@@ -179,6 +179,19 @@
      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Voulez-vous vraiment supprimer cette réponse ?</h3>
+    </div>
+    <div class="modal-footer">
+        {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
+        {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
+    </div>
+</div>
+{{/view}}
+
+{{#view view.ModalBox modalName="deleteQuestion"}}
+<div class="modal hide" id="modal-delete-question">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Voulez-vous vraiment supprimer cette question ?</h3>
     </div>
     <div class="modal-footer">
         {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
