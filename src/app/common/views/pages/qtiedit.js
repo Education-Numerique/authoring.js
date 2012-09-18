@@ -119,6 +119,16 @@
                     return false;
                 }
             }),
+
+            AddAnswerButton : Em.View.extend({
+                click : function (e) {
+                    this.get('controller').set('currentQuestion', this.get('_parentView.content'));
+                    this.get('controller').addAnswer();
+                    e.preventDefault();
+                    return false;
+                }
+            }),
+
             answersCollectionView : Em.CollectionView.extend({
                 moveItem: function(fromIndex, toIndex){
                     var items = this.get('content');

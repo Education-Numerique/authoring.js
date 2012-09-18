@@ -105,7 +105,7 @@
                                         </span>
                                         <h5>Question {{view.content.text}}</h5>
                                         {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>Supprimer{{/view}}
-                                        <button class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i>Ajouter une réponse</button>
+                                        {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white"></i>Ajouter une réponse{{/view}}
                                     </div>
                                     <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
                                             <div class="input-prepend">
