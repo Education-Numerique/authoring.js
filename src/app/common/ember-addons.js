@@ -20,6 +20,9 @@
 
         didInsertElement : function () {
             var timer = new LxxlLib.utils.Timer(1000, function () {
+                if (this.get('value') == this.$().getCode())
+                    return;
+
                 this.set('value', this.$().getCode());
             }.bind(this));
 
@@ -40,6 +43,9 @@
         },
 
         updateContent : function () {
+            if (this.get('value') == this.$().getCode())
+                return;
+
             this.$().setCode(this.get('value'));
             $(document).focus();
         }.observes('value')
