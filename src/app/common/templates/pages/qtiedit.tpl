@@ -131,7 +131,7 @@
                                                     <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                                                     <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                                                     <td></td>
-                                                    <td><button class="btn btn-danger btn-mini"><i class="icon-remove icon-white full-opacity"></i></button></td>
+                                                    <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                                                 {{/collection}}
                                             </table>
                                         </div>
@@ -173,3 +173,16 @@
     </div>
 </div>
 </form>
+
+{{#view view.ModalBox modalName="deleteAnswer"}}
+<div class="modal hide" id="modal-delete-answer">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Voulez-vous vraiment supprimer cette réponse ?</h3>
+    </div>
+    <div class="modal-footer">
+        {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
+        {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
+    </div>
+</div>
+{{/view}}

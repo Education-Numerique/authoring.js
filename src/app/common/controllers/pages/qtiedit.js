@@ -70,37 +70,37 @@
       if(!at)
         this.currentPage.questions.pushObject(nq);
       else
-        this.currentPage.questions.splice(at, 0, nq);
+        this.currentPage.questions.replace(at, 0, nq);
       this.set('currentQuestion', nq);
     },
 
     deleteQuestion: function(question){
       if(this.currentQuestion == question)
         this.set('currentQuestion', null);
-      this.currentPage.questions.splice(this.currentPage.questions.indexOf(question), 1);
+      this.currentPage.questions.replace(this.currentPage.questions.indexOf(question), 1);
     },
 
     moveQuestion: function(question, pos){
-      this.get('currentPage.questions').splice(this.get('currentPage.questions').indexOf(question), 1);
-      this.get('currentPage.questions').splice(pos, 0, question);
+      this.get('currentPage.questions').replace(this.get('currentPage.questions').indexOf(question), 1);
+      this.get('currentPage.questions').replace(pos, 0, question);
     },
 
 
 
     addAnswer: function(at){
       if(!at)
-        this.currentQuestion.answers.pushObject(new LxxlLib.Model.Answer());
+        this.get('currentQuestion.answers').pushObject(new LxxlLib.Model.Answer());
       else
-        this.currentQuestion.answers.splice(at, 0, new LxxlLib.Model.Answer());
+        this.get('currentQuestion.answers').replace(at, 0, new LxxlLib.Model.Answer());
     },
 
     deleteAnswer: function(answer){
-      this.currentQuestion.answers.splice(this.currentQuestion.answers.indexOf(answer), 1);
+      this.get('currentQuestion.answers').replace(this.get('currentQuestion.answers').indexOf(answer), 1);
     },
 
     moveAnswer: function(answer, pos){
-      this.currentQuestion.answers.splice(this.currentQuestion.answers.indexOf(answer), 1);
-      this.currentQuestion.answers.splice(pos, 0, answer);
+      this.get('currentQuestion.answers').replace(this.get('currentQuestion.answers').indexOf(answer), 1);
+      this.get('currentQuestion.answers').replace(pos, 0, answer);
     },
 
 

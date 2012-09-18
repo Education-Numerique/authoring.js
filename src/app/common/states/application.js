@@ -421,8 +421,9 @@ var activityFactory = new (function(){
               tmpA.isCorrect = true;
 
             tmpQ.answers.pushObject(tmpA);
-          }
 
+          }
+          
           tmp.questions.pushObject(tmpQ);
         }
         this.pages.pushObject(tmp)

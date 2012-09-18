@@ -1,5 +1,24 @@
 (function() {
   var t = this.lxxlPageView('qtiedit');
+
+
+  var modalHandler = new (function () {
+    var _store = {};
+
+    this.save = function (key, callback) {
+        _store[key] = callback;
+    };
+
+    this.clear = function (key) {
+        _store[key] = null;
+    };
+
+    this.get = function (key) {
+        return _store[key] || false;
+    };
+
+  })();
+
   this.QtiEditView = Ember.View.extend(t, {
 
     pagesCollectionView : Em.CollectionView.extend({
@@ -79,7 +98,8 @@
                     var items = this.get('content');
                     var item = items.objectAt(fromIndex);
 
-                    //this.get('controller').moveAnswer(item, toIndex);
+                    this.get('controller').set('currentQuestion', this.get('_parentView.content'));
+                    this.get('controller').moveAnswer(item, toIndex);
                 },
                 didInsertElement : function () {
                     var view = this;
@@ -122,9 +142,46 @@
                     // widgetId : function() {
                     //     return 'widget-question-' + this.get('element.id');
                     // }.property('element.id')
+                    // 
+                    
+                    DeleteButton : Em.View.extend({
+                        tagName : "button",
+                        answer : null,
+                        modalName : null,
+
+                        attributeBindings : ['href', 'data-toggle'],
+
+                        click : function () {
+                            modalHandler.save(this.get('modalName'), function() {
+                                this.get('controller').set('currentQuestion', this.get('_parentView._parentView._parentView.content'));
+                                this.get('controller').deleteAnswer(this.get('answer'));
+                            }.bind(this));
+                        }
+                    })
                 })
             })
         })
+    }),
+
+    ModalBox : Em.View.extend({
+        modalName : null,
+
+        CancelButton : Em.View.extend({
+            attributeBindings : ['data-dismiss'],
+
+            click : function () {
+                modalHandler.clear(this.get('modalName'));
+                return true;
+            }
+        }),
+        ConfirmButton : Em.View.extend({
+            click : function () {
+                objectToDelete = modalHandler.get(this.get('_parentView.modalName'));
+                objectToDelete();
+                this.get('_parentView').$('>.modal').modal('hide');
+                return true;
+            }
+        }),
     }),
 
     didInsertElement: function() {
