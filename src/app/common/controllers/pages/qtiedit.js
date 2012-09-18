@@ -86,6 +86,25 @@
     },
 
 
+
+    addAnswer: function(at){
+      if(!at)
+        this.currentQuestion.answers.pushObject(new LxxlLib.Model.Answer());
+      else
+        this.currentQuestion.answers.splice(at, 0, new LxxlLib.Model.Answer());
+    },
+
+    deleteAnswer: function(answer){
+      this.currentQuestion.answers.splice(this.currentQuestion.answers.indexOf(answer), 1);
+    },
+
+    moveAnswer: function(answer, pos){
+      this.currentQuestion.answers.splice(this.currentQuestion.answers.indexOf(answer), 1);
+      this.currentQuestion.answers.splice(pos, 0, answer);
+    },
+
+
+
     /**
      * Categories handling
      */

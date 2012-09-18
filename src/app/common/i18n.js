@@ -156,6 +156,8 @@
             subtitle: 'Sous-titre par défaut de la page',
             flavor: 'staticPage',
             coef: 0,
+            limitedTime: 0, // // 0 == infinity - X seconds = time
+            sequencing: -1 // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
             // advice: '',
             // document: '',
           }

@@ -243,39 +243,27 @@ LxxlLib.Model = new (function(){
   this.FLAVORS = Object.keys(I18n.translate('activities.pageFlavors'));
 
   var Answer = function(){
-    this.text;
-    this.comment;
-    this.isCorrect;
-    this.weight = 0;
+    this.text = LxxlLib.Locale.getData('activities.defaultValues.answer.text');
+    this.comment = LxxlLib.Locale.getData('activities.defaultValues.answer.comment');
+    this.isCorrect = LxxlLib.Locale.getData('activities.defaultValues.answer.isCorrect');
+    this.weight = LxxlLib.Locale.getData('activities.defaultValues.answer.weight');;
   };
 
   var Question = function(){
-    this.coef = 0;
+    this.coef = LxxlLib.Locale.getData('activities.defaultValues.question.coef');
     // Rich text
-    this.text;
+    this.text = LxxlLib.Locale.getData('activities.defaultValues.question.text');
     this.answers = [];
-
-    this.addAnswer = function(at){
-      if(!at)
-        this.answers.push(new LxxlLib.Model.Answer());
-      else
-        this.answers.splice(at, 0, new LxxlLib.Model.Answer());
-    };
-
-    this.deleteAnswer = function(answer){
-      this.answers.splice(this.answers.indexOf(answer), 1);
-    };
-
-    this.moveAnswer = function(answer, pos){
-      this.answers.splice(this.answers.indexOf(answer), 1);
-      this.answers.splice(pos, 0, answer);
-    };
-
   };
 
   this.Question = function(id){
     return Ember.Object.create(new Question(id));
   };
+
+  this.Answer = function() {
+    return Ember.Object.create(new Answer());
+  };
+
 
 
 
@@ -313,8 +301,6 @@ LxxlLib.Model = new (function(){
 
 
 
-
-
   var Page = function(){
     // Page "flavor"
     this.flavor = LxxlLib.Locale.getData('activities.defaultValues.page.flavor');
@@ -322,27 +308,18 @@ LxxlLib.Model = new (function(){
     this.title = LxxlLib.Locale.getData('activities.defaultValues.page.title');// 160 chars max
     this.subtitle = LxxlLib.Locale.getData('activities.defaultValues.page.subtitle');
     // Rich text
-    this.advice = LxxlLib.Locale.getData('advice');
+    this.advice = LxxlLib.Locale.getData('activities.defaultValues.page.advice');
     // Rich text
-    this.document = LxxlLib.Locale.getData('document');
+    this.document = LxxlLib.Locale.getData('activities.defaultValues.page.document');
 
     // Coefficient de la page dans l'exercice
-    this.coef = LxxlLib.Locale.getData('coef');
+    this.coef = LxxlLib.Locale.getData('activities.defaultValues.page.coef');
 
-    this.limitedTime = 0;// 0 == infinity - X seconds = time
-    this.sequencing = -1; // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+    this.limitedTime = LxxlLib.Locale.getData('activities.defaultValues.page.limitedTime');// 0 == infinity - X seconds = time
+    this.sequencing = LxxlLib.Locale.getData('activities.defaultValues.page.sequencing'); // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
 
     this.questions = [];
 
-  }
-
-  this.Answer = function() {
-    return Ember.Object.create(new Answer());
-  }
-
-
-  this.Page = function(){
-    return Ember.Object.create(new Page());
   };
 
   var Activity = function(id){
@@ -393,6 +370,10 @@ LxxlLib.Model = new (function(){
       return JSON.stringify(this.getProperties(ret));
     }
   });
+
+  this.Page = function(){
+    return Ember.Object.create(new Page());
+  };
 
   this.Activity = function(id){
     return jsonable.create(new Activity(id));
