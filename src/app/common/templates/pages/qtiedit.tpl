@@ -83,7 +83,11 @@
                                         <h5>Document</h5>
                                     </div>
                                     <div class="widget-content slidify nopadding" id="page-document">
-                                       {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
+                                        {{#if view.isTat}}
+                                            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
+                                        {{else}}
+                                            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
+                                        {{/if}}
                                     </div>
                                 </div>
                                 {{#if view.isQuizz}}
