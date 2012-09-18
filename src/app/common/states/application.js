@@ -395,6 +395,7 @@ var activityFactory = new (function(){
       this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
       this.category = categoryFactory.getTreeFor(this.matter, this.level);
       this.thumbnail = null;
+      this.flavor = 'quizz';
 
 
       // Attached stuff

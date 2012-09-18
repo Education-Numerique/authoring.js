@@ -11,7 +11,7 @@
                     <span class="icon"><span class="icon-edit"></span></span>
                     <h5>{{content.title}}</h5>
                 </div>
-                
+
             </div>
             <div class="widget-content nopadding">
                 <div id="page-management" class="panel-right span3">
@@ -21,28 +21,15 @@
                     <div class="panel-title">
                         <h5>Pages</h5>
                         <div class="buttons">
-                            <a id="add-event" data-toggle="modal" href="#modal-add-event" class="btn btn-success btn-mini"><i class="icon-plus icon-white"></i>Ajouter une page</a>
-                            <div class="modal hide" id="modal-add-event">
-                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">×</button>
-                                    <h3>Add a new event</h3>
-                                </div>
-                                <div class="modal-body">
-                                    <p>Enter event name:</p>
-                                    <p><input id="event-name" type="text"></p>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-                                    <a href="#" id="add-event-submit" class="btn btn-primary">Add event</a>
-                                </div>
-                            </div>
+                            <a id="add-event" data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white"></i>Ajouter une page</a>
+                            
                         </div>
                     </div>
                     <div class="panel-content nopadding">
 
                         {{#collection view.pagesCollectionView contentBinding="content.pages" tagName="ul" classNames="pages-list"}}
                             <a >
-                                <span class="icon"><span class="icon-file"></span></span>
+                                <span class="icon"><span {{bindAttr class="view.flavorIcon"}}></span></span>
                                 <span class="page-title">{{view.content.title}}</span>
                             </a>
                             <span class="questions-count badge badge-info">{{view.content.questions.length}}</span>
@@ -60,7 +47,9 @@
                                             <i class="icon-wrench"></i>
                                         </span>
                                         <h5>Informations</h5>
-                                        {{#view view.AddQuestionButton tagName="button" classNames="btn btn-inverse btn-mini"}}<i class="icon-plus icon-white"></i>Ajouter une question{{/view}}
+                                        {{#if view.isQuizz}}
+                                            {{#view view.AddQuestionButton tagName="button" classNames="btn btn-inverse btn-mini"}}<i class="icon-plus icon-white"></i>Ajouter une question{{/view}}
+                                        {{/if}}
                                     </div>
                                     <div class="widget-content slidify-on" id="page-informations">
                                         
@@ -97,46 +86,48 @@
                                        {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
                                     </div>
                                 </div>
-                                <hr class="soften" />
-                                {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
-                                    <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
-                                        <span class="icon">
-                                            <i class="icon-th-list"></i>
-                                        </span>
-                                        <h5>Question {{view.content.text}}</h5>
-                                        {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>Supprimer{{/view}}
-                                        {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white"></i>Ajouter une réponse{{/view}}
-                                    </div>
-                                    <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
-                                            <div class="input-prepend">
-                                                <label class="add-on" for="form-question-title">Intitulé</label>
-                                                {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
-                                            </div>
-
-                                        <div class="container-fix-sortify"> 
-                                            <table class="table answers table-bordered table-striped with-check">
-                                                <thead>
-                                                    <tr>
-                                                        <th></th>
-                                                        <th><i class="icon-ok"></i></th>
-                                                        <th>Réponse</th>
-                                                        <th>Explication</th>
-                                                        <th>Coef</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
-                                                    <td><i class="icon-resize-vertical"></td>
-                                                    <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                                                    <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
-                                                    <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                                                    <td></td>
-                                                    <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
-                                                {{/collection}}
-                                            </table>
+                                {{#if view.isQuizz}}
+                                    <hr class="soften" />
+                                    {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
+                                        <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                                            <span class="icon">
+                                                <i class="icon-th-list"></i>
+                                            </span>
+                                            <h5>Question {{view.content.text}}</h5>
+                                            {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>Supprimer{{/view}}
+                                            {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white"></i>Ajouter une réponse{{/view}}
                                         </div>
-                                    </div>
-                                {{/collection}}
+                                        <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-question-title">Intitulé</label>
+                                                    {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
+                                                </div>
+
+                                            <div class="container-fix-sortify"> 
+                                                <table class="table answers table-bordered table-striped with-check">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th><i class="icon-ok"></i></th>
+                                                            <th>Réponse</th>
+                                                            <th>Explication</th>
+                                                            <th>Coef</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                        <td><i class="icon-resize-vertical"></td>
+                                                        <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
+                                                        <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                                                        <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                        <td></td>
+                                                        <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                    {{/collection}}
+                                                </table>
+                                            </div>
+                                        </div>
+                                    {{/collection}}
+                                {{/if}}
                                     
                             </div>
                             
@@ -199,3 +190,18 @@
     </div>
 </div>
 {{/view}}
+
+<div class="modal hide" id="modal-create-page">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Créer une nouvelle page</h3>
+    </div>
+    <div class="modal-body" style="height:200px">
+        <p>Choisissez le template de votre page</p>
+        <p>{{view Ember.Select contentBinding="flavors.content" selectionBinding="flavors.selected" optionLabelPath="content.label" optionValuePath="content.value"}}</p>
+    </div>
+    <div class="modal-footer">
+        <a class="btn" data-dismiss="modal">Annuler</a>
+        {{#view view.AddPageButton classNames="btn btn-primary" tagName="a"}}Créer{{/view}}
+    </div>
+</div>

@@ -123,7 +123,21 @@
 
     lengths: Object.keys(I18n.translate('activities.lengths')),
     difficulties: Object.keys(I18n.translate('activities.difficulties')),
-    flavors: Object.keys(I18n.translate('activities.pageFlavors'))
+    flavors: Ember.Object.create({
+      selected: null,
+      content: [],
+      init : function () {
+        this._super()
+        var values = I18n.translate('activities.pageFlavors');
+
+        for (key in values) {
+          this.get('content').pushObject({
+            'value' : key,
+            'label' : values[key]
+          });
+        }
+      }
+    })
 
     /**
      * Various select handling

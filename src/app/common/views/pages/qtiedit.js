@@ -20,7 +20,25 @@
   })();
 
   this.QtiEditView = Ember.View.extend(t, {
+    isStaticPage : false,
+    isQuizz : false,
+    isTat : false,
 
+
+    _updateFlavor : function() {
+        var value = this.get('controller.currentPage.flavor');
+
+        this.set('isStaticPage', false);
+        this.set('isQuizz', false);
+        this.set('isTat', false);
+        console.log('????', value);
+        if (value == 'staticPage')
+            this.set('isStaticPage', true);
+        else if (value == 'quizz')
+            this.set('isQuizz', true);
+        else if (value == 'tat')
+            this.set('isTat', true);
+    }.observes('controller.currentPage.flavor'),
 
     AddQuestionButton : Em.View.extend({
         click : function (e) {
@@ -29,6 +47,15 @@
             return false;
         }
     }),
+
+    AddPageButton : Em.View.extend({
+        click : function (e) {
+            this.get('controller').addPage();
+            this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected.value'));
+            $('#modal-create-page').modal('hide');
+        }
+    }),
+
 
     pagesCollectionView : Em.CollectionView.extend({
         moveItem: function(fromIndex, toIndex){
@@ -52,8 +79,11 @@
         },
         itemViewClass : Em.View.extend({
 
+            flavorIcon : null,
+
             didInsertElement : function () {
                 this.updateActive();
+                this.flavorUpdated();
             },
 
             click: function () {
@@ -61,12 +91,26 @@
             },
 
             updateActive : function() {
+                if (!this.get('element'))
+                    return;
+
                 if (this.get('controller.currentPage') == this.get('content')) {
                     this.$().addClass('active');
                 } else {
                     this.$().removeClass('active');
                 }
-            }.observes('controller.currentPage')
+            }.observes('controller.currentPage'),
+
+            flavorUpdated : function () {
+                var value = this.get('content.flavor');
+                console.log('=====< flavor', value);
+                if (value == 'staticPage')
+                    this.set('flavorIcon', 'icon-file');
+                else if (value == 'quizz')
+                    this.set('flavorIcon', 'icon-ok');
+                else if (value == 'tat')
+                    this.set('flavorIcon', 'icon-text-width');
+            }.observes('content.flavor')
         })
     }),
 
@@ -212,6 +256,7 @@
 
     didInsertElement: function() {
         this.$('input')[0].blur();
+        this._updateFlavor();
     }
   });
 }).apply(LxxlApp);
