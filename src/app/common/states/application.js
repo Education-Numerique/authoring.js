@@ -226,279 +226,288 @@ LxxlLib.Model.Qti:
 
  */
 
-if ('undefined' === typeof LxxlLib) {
-  var LxxlLib = {};
-}
-
-LxxlLib.Locale = {};
-LxxlLib.Locale.getData = function(key){
-  var ret = I18n.translate(key, {defaultValue: '---'});
-  return (ret != '---') && ret || null;
-};
-
-
-LxxlLib.Model = new (function(){
-  this.LENGTHS = Object.keys(I18n.translate('activities.lengths'));
-  this.DIFFICULTIES = Object.keys(I18n.translate('activities.difficulties'));
-  this.FLAVORS = Object.keys(I18n.translate('activities.pageFlavors'));
-
-  var Answer = function(){
-    this.text = LxxlLib.Locale.getData('activities.defaultValues.answer.text');
-    this.comment = LxxlLib.Locale.getData('activities.defaultValues.answer.comment');
-    this.isCorrect = LxxlLib.Locale.getData('activities.defaultValues.answer.isCorrect');
-    this.weight = LxxlLib.Locale.getData('activities.defaultValues.answer.weight');;
-  };
-
-  var Question = function(){
-    this.coef = LxxlLib.Locale.getData('activities.defaultValues.question.coef');
-    // Rich text
-    this.text = LxxlLib.Locale.getData('activities.defaultValues.question.text');
-    this.answers = [];
-  };
-
-  this.Question = function(id){
-    return Ember.Object.create(new Question(id));
-  };
-
-  this.Answer = function() {
-    return Ember.Object.create(new Answer());
-  };
-
-
-
-
-
-  var Matter = function(id){
-    this.id = id;
-    this.title = null;
-  };
-
-  var Level = function(id){
-    this.id = id;
-    this.title = null;
-  };
-
-  var Category = function(id){
-    this.id = id;
-    this.title = null;
-    this.matter = null;
-    this.level = null;
-    this.subtree = [];
-  };
-
-  this.Matter = function(id){
-    return Ember.Object.create(new Matter(id));
-  };
-
-  this.Level = function(id){
-    return Ember.Object.create(new Level(id));
-  };
-
-  this.Category = function(id){
-    return Ember.Object.create(new Category(id));
-  };
-
-
-
-
-  var Page = function(){
-    // Page "flavor"
-    this.flavor = LxxlLib.Locale.getData('activities.defaultValues.page.flavor');
-
-    this.title = LxxlLib.Locale.getData('activities.defaultValues.page.title');// 160 chars max
-    this.subtitle = LxxlLib.Locale.getData('activities.defaultValues.page.subtitle');
-    // Rich text
-    this.advice = LxxlLib.Locale.getData('activities.defaultValues.page.advice');
-    // Rich text
-    this.document = LxxlLib.Locale.getData('activities.defaultValues.page.document');
-
-    // Coefficient de la page dans l'exercice
-    this.coef = LxxlLib.Locale.getData('activities.defaultValues.page.coef');
-
-    this.limitedTime = LxxlLib.Locale.getData('activities.defaultValues.page.limitedTime');// 0 == infinity - X seconds = time
-    this.sequencing = LxxlLib.Locale.getData('activities.defaultValues.page.sequencing'); // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
-
-    this.questions = [];
-
-  };
-
-  var Activity = function(id){
-    this.id = id;
-
-    // Basic infos
-    this.title = LxxlLib.Locale.getData('activities.defaultValues.title');
-    this.description = LxxlLib.Locale.getData('activities.defaultValues.description');
-    this.level = LxxlLib.Locale.getData('activities.defaultValues.description');
-    this.matter = LxxlLib.Locale.getData('activities.defaultValues.matter');
-    this.duration = LxxlLib.Locale.getData('activities.defaultValues.duration');
-    this.difficulty = LxxlLib.Locale.getData('activities.defaultValues.difficulty');
-    this.category = LxxlLib.Locale.getData('activities.defaultValues.category');;
-
-    this.thumbnail = null;
-
-    this.pages = [];
-  };
-
-  var jsonable = Ember.Object.extend({
-    // this.fromJson = function(mesh) {
-    //   try{
-    //     mesh = JSON.parse(mesh);
-    //   }catch(e){
-    //     throw "FATAL ERROR parsing data - the activity is not valid JSON";
-    //   }
-    //   for(var i in mesh)
-    //     if(typeof this[i] != 'array')
-    //       this.set(i, mesh[i]);
-    //     else
-    //       mesh[i].forEach(function(item){
-    //         // Item as a mesh
-    //         this.pushObject(new LxxlLib.Model.Page(item));
-    //       }, this[i]);
-    // };
-
-    toJson: function() {
-      var v, ret = [];
-      for (var key in this)
-        if (this.hasOwnProperty(key)) {
-          v = this[key];
-          if (v === 'toString')
-              continue;
-          if (Ember.typeOf(v) === 'function')
-              continue;
-          ret.push(key);
-        }
-      return JSON.stringify(this.getProperties(ret));
-    }
-  });
-
-  this.Page = function(){
-    return Ember.Object.create(new Page());
-  };
-
-  this.Activity = function(id){
-    return jsonable.create(new Activity(id));
-  };
-
+(function() {
+  if ('undefined' === typeof window.LxxlLib) {
+    window.LxxlLib = {};
+  }
 })();
 
+(function(LxxlLib) {
 
-var activityFactory = new (function(){
-  this.getActivityById = function(id){
-    var t = new LxxlLib.Model.Activity();
+  LxxlLib.Locale = {};
+  LxxlLib.Locale.getData = function(key) {
+    var ret = I18n.translate(key, {defaultValue: '---'});
+    return (ret != '---') && ret || null;
+  };
 
-    (function(){
-      this.title = 'Titre test';
-      this.description = 'desc';
-      this.level = categoryFactory.levels.tl;
-      this.matter = categoryFactory.matters.lit;
-      this.duration = 120;
-      this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
-      this.category = categoryFactory.getTreeFor(this.matter, this.level);
+
+  LxxlLib.Model = new (function() {
+    this.LENGTHS = Object.keys(I18n.translate('activities.lengths'));
+    this.DIFFICULTIES = Object.keys(I18n.translate('activities.difficulties'));
+    this.FLAVORS = Object.keys(I18n.translate('activities.pageFlavors'));
+
+    var Answer = function() {
+      this.text = LxxlLib.Locale.getData('activities.defaultValues.answer.text');
+      this.comment = LxxlLib.Locale.getData('activities.defaultValues.answer.comment');
+      this.isCorrect = LxxlLib.Locale.getData('activities.defaultValues.answer.isCorrect');
+      this.weight = LxxlLib.Locale.getData('activities.defaultValues.answer.weight');
+    };
+
+    var Question = function() {
+      this.coef = LxxlLib.Locale.getData('activities.defaultValues.question.coef');
+      // Rich text
+      this.text = LxxlLib.Locale.getData('activities.defaultValues.question.text');
+      this.answers = [];
+    };
+
+    this.Question = function(id) {
+      return Ember.Object.create(new Question(id));
+    };
+
+    this.Answer = function() {
+      return Ember.Object.create(new Answer());
+    };
+
+
+
+
+
+    var Matter = function(id) {
+      this.id = id;
+      this.title = null;
+    };
+
+    var Level = function(id) {
+      this.id = id;
+      this.title = null;
+    };
+
+    var Category = function(id) {
+      this.id = id;
+      this.title = null;
+      this.matter = null;
+      this.level = null;
+      this.subtree = [];
+    };
+
+    this.Matter = function(id) {
+      return Ember.Object.create(new Matter(id));
+    };
+
+    this.Level = function(id) {
+      return Ember.Object.create(new Level(id));
+    };
+
+    this.Category = function(id) {
+      return Ember.Object.create(new Category(id));
+    };
+
+
+
+
+    var Page = function() {
+      // Page "flavor"
+      this.flavor = LxxlLib.Locale.getData('activities.defaultValues.page.flavor');
+
+      this.title = LxxlLib.Locale.getData('activities.defaultValues.page.title');// 160 chars max
+      this.subtitle = LxxlLib.Locale.getData('activities.defaultValues.page.subtitle');
+      // Rich text
+      this.advice = LxxlLib.Locale.getData('activities.defaultValues.page.advice');
+      // Rich text
+      this.document = LxxlLib.Locale.getData('activities.defaultValues.page.document');
+
+      // Coefficient de la page dans l'exercice
+      this.coef = LxxlLib.Locale.getData('activities.defaultValues.page.coef');
+
+      // 0 == infinity - X seconds = time
+      this.limitedTime = LxxlLib.Locale.getData('activities.defaultValues.page.limitedTime');
+      // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+      this.sequencing = LxxlLib.Locale.getData('activities.defaultValues.page.sequencing');
+
+      this.questions = [];
+
+    };
+
+    var Activity = function(id) {
+      this.id = id;
+
+      // Basic infos
+      this.title = LxxlLib.Locale.getData('activities.defaultValues.title');
+      this.description = LxxlLib.Locale.getData('activities.defaultValues.description');
+      this.level = LxxlLib.Locale.getData('activities.defaultValues.description');
+      this.matter = LxxlLib.Locale.getData('activities.defaultValues.matter');
+      this.duration = LxxlLib.Locale.getData('activities.defaultValues.duration');
+      this.difficulty = LxxlLib.Locale.getData('activities.defaultValues.difficulty');
+      this.category = LxxlLib.Locale.getData('activities.defaultValues.category');
+
       this.thumbnail = null;
 
-
-      // Attached stuff
       this.pages = [];
+    };
 
-      for (var i=0; i<5;i++) {
-        var tmp = new LxxlLib.Model.Page();
-        tmp.title = "Page " + i;
-        tmp.subtitle = "Subtitle " + i;
-        tmp.document = "Document " + i;
-        tmp.advice = "Advice " + i;
-        tmp.questions = [];
-        tmp.flavor = 'quizz';
+    var jsonable = Ember.Object.extend({
+      // this.fromJson = function(mesh) {
+      //   try{
+      //     mesh = JSON.parse(mesh);
+      //   }catch(e){
+      //     throw "FATAL ERROR parsing data - the activity is not valid JSON";
+      //   }
+      //   for(var i in mesh)
+      //     if(typeof this[i] != 'array')
+      //       this.set(i, mesh[i]);
+      //     else
+      //       mesh[i].forEach(function(item){
+      //         // Item as a mesh
+      //         this.pushObject(new LxxlLib.Model.Page(item));
+      //       }, this[i]);
+      // };
 
-
-        for(var j=0; j<3;j++) {
-          var tmpQ = new LxxlLib.Model.Question();
-          tmpQ.text="Question " + j;
-
-          for(var k=0; k<6;k++) {
-            var tmpA = new LxxlLib.Model.Answer();
-            tmpA.text="Answer " + j + "-"+ k;
-            tmpA.comment = "Yihaaaaaa" + k;
-            
-            if (k % 2 == 0)
-              tmpA.isCorrect = true;
-
-            tmpQ.answers.pushObject(tmpA);
-
+      toJson: function() {
+        var v, ret = [];
+        for (var key in this)
+          if (this.hasOwnProperty(key)) {
+            v = this[key];
+            if (v === 'toString')
+              continue;
+            if (Ember.typeOf(v) === 'function')
+              continue;
+            ret.push(key);
           }
-
-          tmp.questions.pushObject(tmpQ);
-        }
-        this.pages.pushObject(tmp)
+          return JSON.stringify(this.getProperties(ret));
       }
-    }).apply(t);
-    return t;
-  };
+    });
 
-  this.newActivity = function() {
-    return new LxxlLib.Model.Activity();
-  };
-})();
+    this.Page = function() {
+      return Ember.Object.create(new Page());
+    };
+
+    this.Activity = function(id) {
+      return jsonable.create(new Activity(id));
+    };
+
+  })();
 
 
+  this.activityFactory = new (function() {
+    this.getActivityById = function(id) {
+      var t = new LxxlLib.Model.Activity();
 
-/**
+      (function() {
+        this.title = 'Titre test';
+        this.description = 'desc';
+        this.level = categoryFactory.levels.tl;
+        this.matter = categoryFactory.matters.lit;
+        this.duration = 120;
+        this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
+        this.category = categoryFactory.getTreeFor(this.matter, this.level);
+        this.thumbnail = null;
+
+
+        // Attached stuff
+        this.pages = [];
+
+        for (var i = 0; i < 1; i++) {
+          var tmp = new LxxlLib.Model.Page();
+          tmp.title = 'Page ' + i;
+          tmp.subtitle = 'Subtitle ' + i;
+          tmp.document = 'Document ' + i;
+          tmp.advice = 'Advice ' + i;
+          tmp.questions = [];
+          tmp.flavor = 'staticPage';
+
+
+          for (var j = 0; j < 3; j++) {
+            var tmpQ = new LxxlLib.Model.Question();
+            tmpQ.text = 'Question ' + j;
+
+            for (var k = 0; k < 6; k++) {
+              var tmpA = new LxxlLib.Model.Answer();
+              tmpA.text = 'Answer ' + j + '-' + k;
+              tmpA.comment = 'Yihaaaaaa' + k;
+
+              if (k % 2 == 0)
+                tmpA.isCorrect = true;
+
+              tmpQ.answers.pushObject(tmpA);
+
+            }
+
+            tmp.questions.pushObject(tmpQ);
+          }
+          this.pages.pushObject(tmp);
+        }
+      }).apply(t);
+      return t;
+    };
+
+    this.newActivity = function() {
+      return new LxxlLib.Model.Activity();
+    };
+  })();
+
+
+  /**
  * XXX crap to be spoofed into the service at some point.
  * Whether the localization ought to reside here or on the service is yet undetermined.
  * ... and whether it's a simple tree or something more complex is undecided.
  */
-var categoryFactory = new (function(){
-  var fakeMatters = Object.keys(I18n.translate('activities.matters'));
-  var fakeLevels = Object.keys(I18n.translate('activities.levels'));
+  this.categoryFactory = new (function() {
+    var fakeMatters = Object.keys(I18n.translate('activities.matters'));
+    var fakeLevels = Object.keys(I18n.translate('activities.levels'));
 
-  var rootCategory = new LxxlLib.Model.Category();
+    var rootCategory = new LxxlLib.Model.Category();
 
-  fakeMatters.forEach(function(matter){
-    fakeLevels.forEach(function(level){
-      var lcat = new LxxlLib.Model.Category();
-      lcat.matter = new LxxlLib.Model.Matter();
-      lcat.matter.id = matter;
-      lcat.matter.title = I18n.translate('activities.matters.' + matter);
-      lcat.level = new LxxlLib.Model.Level();
-      lcat.level.id = level;
-      lcat.level.title = I18n.translate('activities.levels.' + level);
-      rootCategory.subtree.push(lcat);
-      var subito = new LxxlLib.Model.Category();
-      subito.title = 'Compréhension du pied';
-      lcat.subtree.push(subito);
-      subito = new LxxlLib.Model.Category();
-      subito.title = 'Compréhension de la main';
-      lcat.subtree.push(subito);
-      subito = new LxxlLib.Model.Category();
-      subito.title = 'Compréhension de René Chatonbriand';
-      lcat.subtree.push(subito);
+    fakeMatters.forEach(function(matter) {
+      fakeLevels.forEach(function(level) {
+        var lcat = new LxxlLib.Model.Category();
+        lcat.matter = new LxxlLib.Model.Matter();
+        lcat.matter.id = matter;
+        lcat.matter.title = I18n.translate('activities.matters.' + matter);
+        lcat.level = new LxxlLib.Model.Level();
+        lcat.level.id = level;
+        lcat.level.title = I18n.translate('activities.levels.' + level);
+        rootCategory.subtree.push(lcat);
+        var subito = new LxxlLib.Model.Category();
+        subito.title = 'Compréhension du pied';
+        lcat.subtree.push(subito);
+        subito = new LxxlLib.Model.Category();
+        subito.title = 'Compréhension de la main';
+        lcat.subtree.push(subito);
+        subito = new LxxlLib.Model.Category();
+        subito.title = 'Compréhension de René Chatonbriand';
+        lcat.subtree.push(subito);
+      });
     });
-  });
 
-  this.matters = (function(){
-    return fakeMatters.map(function(id){
-      var matter = new LxxlLib.Model.Matter();
-      matter.id = id;
-      matter.title = I18n.translate('activities.matters.' + id);
-      return matter;
-    });
+    this.matters = (function() {
+      return fakeMatters.map(function(id) {
+        var matter = new LxxlLib.Model.Matter();
+        matter.id = id;
+        matter.title = I18n.translate('activities.matters.' + id);
+        return matter;
+      });
+    })();
+
+    this.levels = (function() {
+      return fakeLevels.map(function(id) {
+        var matter = new LxxlLib.Model.Level();
+        matter.id = id;
+        matter.title = I18n.translate('activities.levels.' + id);
+        return matter;
+      });
+    })();
+
+    this.getTreeFor = function(matter, level) {
+      return rootCategory.subtree.filter(function(item) {
+        return (item.level.id == level) && (item.matter.id == matter);
+      }).pop();
+    };
+
   })();
+}).apply(this, [LxxlLib]);
 
-  this.levels = (function(){
-    return fakeLevels.map(function(id){
-      var matter = new LxxlLib.Model.Level();
-      matter.id = id;
-      matter.title = I18n.translate('activities.levels.' + id);
-      return matter;
-    });
-  })();
 
-  this.getTreeFor = function(matter, level){
-    return rootCategory.subtree.filter(function(item){
-      return (item.level.id == level) && (item.matter.id == matter);
-    }).pop();
-  };
 
-})();
 
 // I18n.fallbacks = false;
 // var t = activityFactory.getActivityById();

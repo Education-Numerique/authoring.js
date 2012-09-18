@@ -54,12 +54,12 @@
 
       $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
 
-      $('.icon-print').each(function(ind, item){
+      $('.icon-print').each(function(ind, item) {
         var p = $(item).parent();
-        if(p.hasClass('will-print'))
+        if (p.hasClass('will-print'))
           return;
         p.addClass('will-print');
-        p.click(function(e){
+        p.click(function(e) {
           print();
         });
       });
@@ -68,7 +68,7 @@
         if ($(item).hasClass('dataTable'))
           return;
         $(item).dataTable({
-          "oLanguage": LxxlLib.Locale.getData('tables'),
+          'oLanguage': LxxlLib.Locale.getData('tables'),
           'bJQueryUI': true,
           'sPaginationType': 'full_numbers',
           'sDom': '<""l>t<"F"fp>'

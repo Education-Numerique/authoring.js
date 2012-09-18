@@ -1,4 +1,4 @@
-(function(){
+(function() {
   I18n.defaultLocale = 'fr';
   I18n.locale = 'fr';
 

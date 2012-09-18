@@ -27,21 +27,21 @@
   var suffix = (!debug && !location.href.match(/-full/)) ? '-min.js' : '.js';
 
   var debugUser = (location.href.match(/user-anonymous/) || location.href.match(/user-author/) ||
-    location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-author']).pop();
+      location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-author']).pop();
 
   // IE deserves to be raped :)
   if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
     jsBoot.loader.use('ie7', trunk ? 'trunk' : '2.1b4');
 
   // Load jsboot core stylesheet
-  jsBoot.loader.use("normalize", 2.0);
-  jsBoot.loader.use("h5bp", 4.0);
+  jsBoot.loader.use('normalize', 2.0);
+  jsBoot.loader.use('h5bp', 4.0);
   // Bundled assets (vanilla bootstrap doesn't work)
-  jsBoot.loader.use("libs/css/bootstrap.css");
-  jsBoot.loader.use("libs/css/bootstrap-responsive.css");
+  jsBoot.loader.use('libs/css/bootstrap.css');
+  jsBoot.loader.use('libs/css/bootstrap-responsive.css');
   // Unicorn base theming
-  jsBoot.loader.use("libs/css/unicorn.main.css");
-  jsBoot.loader.use("libs/css/unicorn.grey.css");
+  jsBoot.loader.use('libs/css/unicorn.main.css');
+  jsBoot.loader.use('libs/css/unicorn.grey.css');
 
   if (!nostack) {
     jsBoot.boot.ember(null, debug);
@@ -71,8 +71,8 @@
   // Redactor rich text editing
   jsBoot.loader.use('redactor', 'stable');
 
-  // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't 
-  // fit well with the vanilla bootstrap...<  
+  // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't
+  // fit well with the vanilla bootstrap...<
   jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'stable', '.js$');
 
   // Growl like notifications
@@ -95,10 +95,10 @@
   // jsBoot.loader.use("{PUKE-BOOT-ROOT}/lxxl{MIN}.css");
 
   jsBoot.loader.wait(function() {
-    if (debug){
+    if (debug) {
       jsBoot.debug.tick('Base stack loaded - continuing with the app itself');
       $.gritter.add({
-        title:  'Base stack loaded',
+        title: 'Base stack loaded',
         text: 'Keep on truckin!',
         sticky: false
       });
@@ -132,7 +132,7 @@
       jsBoot.debug.tick('Application stack fully loaded - will bootstrap now');
     // Now, go away placeholder
     $('html').removeClass('no-js');
-    if(typeof chrome == 'undefined')
+    if (typeof chrome == 'undefined')
       $('html').addClass('unsupported-browser');
   });
 
