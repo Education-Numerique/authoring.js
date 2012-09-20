@@ -14,7 +14,7 @@
                 </div>
 
             </div>
-            <div class="widget-content nopadding">
+            <div class="widget-content nopadding main-container">
                 <div id="page-management" class="panel-right span3">
                     <div class="panel-title">
                         <h5>Informations</h5>

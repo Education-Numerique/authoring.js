@@ -413,7 +413,7 @@ LxxlLib.Model.Qti:
           tmp.document = 'Document ' + i;
           tmp.advice = 'Advice ' + i;
           tmp.questions = [];
-          tmp.flavor = 'staticPage';
+          tmp.flavor = 'quizz';
 
 
           for (var j = 0; j < 3; j++) {
@@ -428,11 +428,11 @@ LxxlLib.Model.Qti:
               if (k % 2 == 0)
                 tmpA.isCorrect = true;
 
-              tmpQ.answers.pushObject(tmpA);
+              //tmpQ.answers.pushObject(tmpA);
 
             }
 
-            tmp.questions.pushObject(tmpQ);
+            //tmp.questions.pushObject(tmpQ);
           }
           this.pages.pushObject(tmp);
         }

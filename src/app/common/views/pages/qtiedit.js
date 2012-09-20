@@ -73,6 +73,7 @@
           placeholder: 'ui-sortable-placeholder',
           axis: 'y',
           delay: 150,
+          items:'li:not(.empty)',
           start: function(event, ui) {
             ui.item.previousIndex = ui.item.index();
           },
@@ -81,6 +82,11 @@
           }
         });
       },
+      emptyView: Ember.View.extend({
+        classNames : ['empty'],
+        template: Ember.Handlebars.compile("<a><span class=\"page-title\">Aucune page</span></a>")
+      }),
+
       itemViewClass: Em.View.extend({
         classNameBindings: ['pageType'],
         pageType: null,
@@ -162,6 +168,11 @@
         });
       },
 
+      emptyView: Ember.View.extend({
+        classNames : ['empty'],
+        template: Ember.Handlebars.compile("<i>Aucune question</i>")
+      }),
+
       itemViewClass: Em.View.extend({
         classNames: ['widget-box', 'question-box'],
 
@@ -215,6 +226,7 @@
                 placeholder: 'ui-sortable-placeholder',
                 handle: 'td:first-of-type',
                 delay: 150,
+                items: 'tr:not(.empty)',
                 helper: function(e, tr)
                 {
                   var $originals = tr.children();
@@ -239,6 +251,11 @@
               }).disableSelection();
             });
           },
+
+          emptyView: Ember.View.extend({
+            classNames : ['empty'],
+            template: Ember.Handlebars.compile("<td colspan=\"6\"><i>Aucune réponse</i></td>")
+          }),
           itemViewClass: Em.View.extend({
 
             DeleteButton: Em.View.extend({
