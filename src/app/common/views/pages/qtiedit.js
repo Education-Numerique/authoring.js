@@ -41,6 +41,13 @@
         this.set('isTat', true);
     }.observes('controller.currentPage.flavor'),
 
+    InformationButton : Em.View.extend({
+      tagName: 'button',
+      click : function () {
+        this.get('controller').set('currentPage', null);
+      }
+    }),
+
     AddQuestionButton: Em.View.extend({
       click: function(e) {
         this.get('controller').addQuestion();
@@ -302,6 +309,8 @@
     didInsertElement: function() {
       this.$('input')[0].blur();
       this._updateFlavor();
+
+      this.get('controller').set('currentPage', null);
     }
   });
 }).apply(LxxlApp);

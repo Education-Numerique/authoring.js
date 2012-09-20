@@ -16,13 +16,11 @@
             </div>
             <div class="widget-content nopadding main-container">
                 <div id="page-management" class="panel-right span3">
-                    <div class="panel-title">
-                        <h5>Informations</h5>
-                    </div>
+                    {{#view view.InformationButton classNames="panel-button"}}Informations{{/view}}
                     <div class="panel-title">
                         <h5>Pages</h5>
                         <div class="buttons">
-                            <a id="add-event" data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white"></i>Ajouter une page</a>
+                            <a  data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white"></i>Ajouter une page</a>
                             
                         </div>
                     </div>
@@ -42,101 +40,132 @@
 
                 <div class="panel-left span9">
 
-                            <div class="container-fluid">
-                                <div class="widget-box">
-                                    <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
-                                        <span class="icon">
-                                            <i class="icon-wrench"></i>
-                                        </span>
-                                        <h5>Informations</h5>
-                                        {{#if view.isQuizz}}
-                                            {{#view view.AddQuestionButton tagName="button" classNames="btn btn-inverse btn-mini"}}<i class="icon-plus icon-white"></i>Ajouter une question{{/view}}
-                                        {{/if}}
-                                    </div>
-                                    <div class="widget-content slidify-on" id="page-informations">
-                                        
-                                        <div class="control-group">
-                                            <div class="input-prepend">
-                                                <label class="add-on" for="form-page-title">Titre</label>
-                                                {{view Ember.TextField valueBinding="currentPage.title" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
-                                            </div>
-                                            <div class="input-prepend">
-                                                <label class="add-on" for="form-page-subtitle">Sous-titre</label>
-                                                {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="options">
-                                            <button class="btn">Temps limité</button>
-                                            <button class="btn">Séquenceur</button>
-                                            <button class="btn">Coefficient</button>
-                                        </div>
-                                        <div class="input-prepend">
-                                                <label class="add-on" for="form-page-explanation">Consigne</label>
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" id="form-page-explanation"}}
-                                            </div>
-                                    </div>
-                                </div>
-                                <div class="widget-box">
-                                    <div class="widget-title" data-toggle="slidify" data-target="#page-document">
-                                        <span class="icon">
-                                            <i class="icon-pencil"></i>
-                                        </span>
-                                        <h5>Document</h5>
-                                    </div>
-                                    <div class="widget-content slidify-on nopadding" id="page-document">
-                                        {{#if view.isTat}}
-                                            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
-                                        {{else}}
-                                            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
-                                        {{/if}}
-                                    </div>
-                                </div>
-                                {{#if view.isQuizz}}
-                                    <hr class="soften" />
-                                    {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
-                                        <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                            {{#if currentPage}}
+                                <div class="container-fluid">
+                                    <div class="widget-box">
+                                        <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
                                             <span class="icon">
-                                                <i class="icon-th-list"></i>
+                                                <i class="icon-wrench"></i>
                                             </span>
-                                            <h5>Question {{view.content.text}}</h5>
-                                            {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>Supprimer{{/view}}
-                                            {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white"></i>Ajouter une réponse{{/view}}
+                                            <h5>Informations</h5>
+                                            {{#if view.isQuizz}}
+                                                {{#view view.AddQuestionButton tagName="button" classNames="btn btn-inverse btn-mini"}}<i class="icon-plus icon-white"></i>Ajouter une question{{/view}}
+                                            {{/if}}
                                         </div>
-                                        <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
+                                        <div class="widget-content slidify-on" id="page-informations">
+                                            
+                                            <div class="control-group">
                                                 <div class="input-prepend">
-                                                    <label class="add-on" for="form-question-title">Intitulé</label>
-                                                    {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
+                                                    <label class="add-on" for="form-page-title">Titre</label>
+                                                    {{view Ember.TextField valueBinding="currentPage.title" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
                                                 </div>
-
-                                            <div class="container-fix-sortify"> 
-                                                <table class="table answers table-bordered table-striped with-check">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th><i class="icon-ok"></i></th>
-                                                            <th>Réponse</th>
-                                                            <th>Explication</th>
-                                                            <th>Coef</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
-                                                        <td><i class="icon-resize-vertical"></td>
-                                                        <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                                                        <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
-                                                        <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                                                        <td></td>
-                                                        <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
-                                                    {{/collection}}
-                                                </table>
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-subtitle">Sous-titre</label>
+                                                    {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
+                                                </div>
+                                                
                                             </div>
+                                            <div class="options">
+                                                <button class="btn">Temps limité</button>
+                                                <button class="btn">Séquenceur</button>
+                                                <button class="btn">Coefficient</button>
+                                            </div>
+                                            <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-explanation">Consigne</label>
+                                                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" id="form-page-explanation"}}
+                                                </div>
                                         </div>
-                                    {{/collection}}
-                                {{/if}}
-                                    
-                            </div>
-                            
+                                    </div>
+                                    <div class="widget-box">
+                                        <div class="widget-title" data-toggle="slidify" data-target="#page-document">
+                                            <span class="icon">
+                                                <i class="icon-pencil"></i>
+                                            </span>
+                                            <h5>Document</h5>
+                                        </div>
+                                        <div class="widget-content slidify-on nopadding" id="page-document">
+                                            {{#if view.isTat}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
+                                            {{else}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                    {{#if view.isQuizz}}
+                                        <hr class="soften" />
+                                        {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
+                                            <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                                                <span class="icon">
+                                                    <i class="icon-th-list"></i>
+                                                </span>
+                                                <h5>Question {{view.content.text}}</h5>
+                                                {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>Supprimer{{/view}}
+                                                {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white"></i>Ajouter une réponse{{/view}}
+                                            </div>
+                                            <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
+                                                    <div class="input-prepend">
+                                                        <label class="add-on" for="form-question-title">Intitulé</label>
+                                                        {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
+                                                    </div>
+
+                                                <div class="container-fix-sortify"> 
+                                                    <table class="table answers table-bordered table-striped with-check">
+                                                        <thead>
+                                                            <tr>
+                                                                <th></th>
+                                                                <th><i class="icon-ok"></i></th>
+                                                                <th>Réponse</th>
+                                                                <th>Explication</th>
+                                                                <th>Coef</th>
+                                                                <th></th>
+                                                            </tr>
+                                                        </thead>
+                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                            <td><i class="icon-resize-vertical"></td>
+                                                            <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
+                                                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                                                            <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                            <td></td>
+                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                        {{/collection}}
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        {{/collection}}
+                                    {{/if}}
+                                        
+                                </div>
+                            {{else}}
+                            <div class="container-fluid">
+                                    <div class="widget-box">
+                                        <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
+                                            <span class="icon">
+                                                <i class="icon-wrench"></i>
+                                            </span>
+                                            <h5>Informations</h5>
+                                        </div>
+                                        <div class="widget-content slidify-on" id="page-informations">
+                                            
+                                            <div class="control-group">
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-title">Titre</label>
+                                                    {{view Ember.TextField valueBinding="content.title" classNames="span2" id="form-page-title" placeholder="Titre de l'activité"}}
+                                                </div>
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-subtitle">Niveau</label>
+                                                    {{view LxxlLib.Em.Select contentBinding="flavors.content" selectionBinding="flavors.selected" optionLabelPath="content.label" optionValuePath="content.value"}}
+                                                </div>
+                                                
+                                            </div>
+                                            <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-explanation">Description</label>
+                                                    {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" classNames="redactorjs" id="form-page-explanation"}}
+                                                </div>
+                                        </div>
+                                    </div>
+                                        
+                                </div>
+                            {{/if}}
 
                        
                         

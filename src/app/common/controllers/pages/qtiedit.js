@@ -130,7 +130,7 @@
       init: function() {
         this._super();
         var values = I18n.translate('activities.pageFlavors');
-
+        window.COIN = this;
         for (var key in values) {
           this.get('content').pushObject({
             'value' : key,

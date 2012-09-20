@@ -14,6 +14,17 @@
     }
   });
 
+  LxxlLib.Em.Select = Em.Select.extend({
+    didInsertElement : function () {
+      this.$().chosen();
+    },
+
+    contentUpdated : function () {
+      console.log('updated');
+      this.$().trigger("liszt:updated");
+    }.observes('content.@each')
+  });
+
   LxxlLib.Em.Wysiwyg = Em.TextArea.extend({
     imageUpload: '/file_upload.php',
     autoresize: true,
