@@ -108,7 +108,6 @@
 
         flavorUpdated: function() {
           var value = this.get('content.flavor');
-          console.log('=====< flavor', value);
           if (value == 'staticPage') {
             this.set('flavorIcon', 'icon-file');
             this.set('pageType', 'page-static');

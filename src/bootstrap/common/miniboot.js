@@ -97,11 +97,11 @@
   jsBoot.loader.wait(function() {
     if (debug) {
       jsBoot.debug.tick('Base stack loaded - continuing with the app itself');
-      $.gritter.add({
-        title: 'Base stack loaded',
-        text: 'Keep on truckin!',
-        sticky: false
-      });
+      // $.gritter.add({
+      //   title: 'Base stack loaded',
+      //   text: 'Keep on truckin!',
+      //   sticky: false
+      // });
 
       // jsBoot.debug.cssPoller.start();
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |

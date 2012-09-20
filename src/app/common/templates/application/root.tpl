@@ -11,8 +11,8 @@
     <!-- Kick out old crap... -->
     <section style="text-align: center;" class="row-fluid">
 
-    <div class="alert alert-success">{{localize welcome}}<a href="#" data-dismiss="alert" class="close">×</a></div>
-
+<!--     <div class="alert alert-success">localize welcome<a href="#" data-dismiss="alert" class="close">×</a></div>
+ -->
     <!--[if lt IE 9]>
       <p class="alert alert-error" id="very-outdated-browser">
       <strong>

@@ -34,7 +34,7 @@
                                 <span class="page-title">{{view.content.title}}</span>
                             </a>
                             {{#view view.DeletePageButton modalName="deletePage" pageBinding="view.content" classNames="btn btn-danger btn-mini delete-page" data-toggle="modal" href="#modal-delete-page"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}
-<!--                             <span class="questions-count badge badge-info">{{view.content.questions.length}}</span>
+<!--                             <span class="questions-count badge badge-info"></span>
  -->                        {{/collection}}
                     </div>
                 </div>
