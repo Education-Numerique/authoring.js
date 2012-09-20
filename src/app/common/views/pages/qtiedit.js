@@ -43,8 +43,10 @@
 
     InformationButton : Em.View.extend({
       tagName: 'button',
-      click : function () {
+      click : function (e) {
+        e.preventDefault();
         this.get('controller').set('currentPage', null);
+        return false;
       }
     }),
 
