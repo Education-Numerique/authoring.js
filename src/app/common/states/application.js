@@ -497,8 +497,6 @@ LxxlLib.Model.Qti:
       });
     })();
 
-    console.warn(this.levels);
-
     this.getTreeFor = function(matter, level) {
       return rootCategory.subtree.filter(function(item) {
         return (item.level.id == level) && (item.matter.id == matter);

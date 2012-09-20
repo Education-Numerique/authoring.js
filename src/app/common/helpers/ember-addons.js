@@ -33,6 +33,9 @@
     didInsertElement: function() {
 
       var timer = new LxxlLib.utils.Timer(1000, function() {
+        if (!this.$())
+          return;
+
         if (this.get('value') == this.$().getCode())
           return;
 
