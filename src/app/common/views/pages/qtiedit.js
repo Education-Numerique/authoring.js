@@ -73,7 +73,7 @@
           placeholder: 'ui-sortable-placeholder',
           axis: 'y',
           delay: 150,
-          items:'li:not(.empty)',
+          items: 'li:not(.empty)',
           start: function(event, ui) {
             ui.item.previousIndex = ui.item.index();
           },
@@ -83,8 +83,8 @@
         });
       },
       emptyView: Ember.View.extend({
-        classNames : ['empty'],
-        template: Ember.Handlebars.compile("<a><span class=\"page-title\">Aucune page</span></a>")
+        classNames: ['empty'],
+        template: Ember.Handlebars.compile('<a><span class=\"page-title\">Aucune page</span></a>')
       }),
 
       itemViewClass: Em.View.extend({
@@ -169,8 +169,8 @@
       },
 
       emptyView: Ember.View.extend({
-        classNames : ['empty'],
-        template: Ember.Handlebars.compile("<i>Aucune question</i>")
+        classNames: ['empty'],
+        template: Ember.Handlebars.compile('<i>Aucune question</i>')
       }),
 
       itemViewClass: Em.View.extend({
@@ -253,8 +253,8 @@
           },
 
           emptyView: Ember.View.extend({
-            classNames : ['empty'],
-            template: Ember.Handlebars.compile("<td colspan=\"6\"><i>Aucune réponse</i></td>")
+            classNames: ['empty'],
+            template: Ember.Handlebars.compile('<td colspan=\"6\"><i>Aucune réponse</i></td>')
           }),
           itemViewClass: Em.View.extend({
 
