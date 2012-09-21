@@ -154,27 +154,27 @@
       //          this.get('content.matter.id'), this.get('content.level.id')));
       var res = [
         {
-          label: 'Cat 1',
+          title: 'Cat 1',
           id: 'cat1',
           content: [{
             id: 'sub11',
-            label: 'Sub 1 1'
+            title: 'Sub 1 1'
           }]
         },
         {
-          label: 'Cat 2',
+          title: 'Cat 2',
           id: 'cat2',
           content: [{
             id: 'sub21',
-            label: 'Sub 2 1'
+            title: 'Sub 2 1'
           }]
         },
         {
-          label: 'Cat 3',
+          title: 'Cat 3',
           id: 'cat3',
           content: [{
             id: 'sub31',
-            label: 'Sub 3 1'
+            title: 'Sub 3 1'
           }]
         }
       ];
