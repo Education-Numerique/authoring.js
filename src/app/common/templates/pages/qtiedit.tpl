@@ -270,3 +270,17 @@
         {{#view view.AddPageButton classNames="btn btn-primary" tagName="a"}}Créer{{/view}}
     </div>
 </div>
+
+
+<div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="modal-preview-label">Preview</h3>
+  </div>
+  <div class="modal-body">
+    <p id="modal-preview-body"></p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
+</div>
