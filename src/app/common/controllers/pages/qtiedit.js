@@ -26,7 +26,17 @@
     },
 
 
-    doPreview: function() {
+    doPreview : function (node, activity) {
+      var a = new LxxlLib.activity();
+      a.setupViewport(node, true);
+      // a.addStyle('body{background-color: blue;}');
+      /*
+      a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
+      */
+      a.setupTemplate(lxxlVersionedRoot + 'activity.tpl');
+      a.showActivity({title: "super actif"}, function(){
+        console.warn("All set baby!");
+      });
       console.warn('preview');
     },
 
@@ -122,7 +132,7 @@
     //   return categoryFactory.levels;
     // }).property('categoryFactory.levels'),
 
-    matters: Ember.Object.create({
+    matters : Ember.Object.create({
       content: [],
       init: function() {
         this._super();
@@ -130,7 +140,7 @@
       }
     }),
 
-    levels: Ember.Object.create({
+    levels : Ember.Object.create({
       content: [],
       init: function() {
         this._super();
@@ -141,36 +151,35 @@
     testToto: function() {
       if (!this.get('content.level') || !this.get('content.matter'))
         return;
-      //this.set('categoryTree', categoryFactory.getTreeFor(
-      //          this.get('content.matter.id'), this.get('content.level.id')));
+      //this.set('categoryTree', categoryFactory.getTreeFor(this.get('content.matter.id'), this.get('content.level.id')));
       var res = [
-        {
-          label: 'Cat 1',
-          id: 'cat1',
-          content: [{
-            id: 'sub11',
-            label: 'Sub 1 1'
-          }]
-        },
-        {
-          label: 'Cat 2',
-          id: 'cat2',
-          content: [{
-            id: 'sub21',
-            label: 'Sub 2 1'
-          }]
-        },
-        {
-          label: 'Cat 3',
-          id: 'cat3',
-          content: [{
-            id: 'sub31',
-            label: 'Sub 3 1'
-          }]
-        }
+       {
+         label : 'Cat 1',
+         id : 'cat1',
+         content : [{
+            id : 'sub11',
+            label : 'Sub 1 1'
+         }]
+       },
+       {
+         label : 'Cat 2',
+         id : 'cat2',
+         content : [{
+            id : 'sub21',
+            label : 'Sub 2 1'
+         }],
+       },
+       {
+         label : 'Cat 3',
+         id : 'cat3',
+         content : [{
+            id : 'sub31',
+            label : 'Sub 3 1'
+         }],
+       }
       ];
 
-      this.set('categoryTree', res);
+      return res;
     }.observes('content', 'content.level', 'content.matter', 'matters.content.length', 'levels.content.length'),
 
 

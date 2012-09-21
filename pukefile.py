@@ -104,6 +104,8 @@ def build():
   helpers = FileList('src', filter = '*libs*')
   deepcopy(helpers, Yak.BUILD_ROOT);
 
+
+
   # ================================
   # Versioned part of the app
   # ================================
@@ -122,7 +124,11 @@ def build():
   # js.merge(FileList("src/app/desktop/controllers", filter = "*.js"))
   # js.merge(FileList("src/app/desktop/views", filter = "*.js"))
 
+  js.merge("src/activity/activity.js")
+
   combine(js, VERSIONED_ROOT + "/lxxl.js", replace=sed)
+
+  combine("src/activity/activity.tpl", VERSIONED_ROOT + "/activity.tpl", replace=sed)
 
   # js.merge(FileList("src/app/desktop/", filter = "*routing.js"))
   # js.merge(FileList("src/app/desktop/", filter = "*hotkeys.js"))
@@ -133,6 +139,7 @@ def build():
 
   # css application
   css = FileList("src/assets/common/css", filter = "*.css,*.scss")
+  css.merge("src/activity/activity.scss")
   # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
   combine(css, VERSIONED_ROOT + "/lxxl.css", replace=sed)
 
@@ -152,4 +159,10 @@ def build():
   combine(templates, VERSIONED_ROOT +  "/lxxl.tpl")
 
 
+  # ================================
+  # Versioned runner
+  # ================================
 
+  list = FileList('src', filter = '*activity*')
+  deepcopy(list, VERSIONED_ROOT, replace=sed)
+  
