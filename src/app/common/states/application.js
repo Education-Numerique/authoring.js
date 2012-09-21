@@ -284,10 +284,10 @@ LxxlLib.Model.Qti:
 
     var Category = function(id) {
       this.id = id;
-      this.title = null;
+      this.title = 'default title';
       this.matter = null;
       this.level = null;
-      this.subtree = [];
+      this.content = [];
     };
 
     this.Matter = function(id) {
@@ -456,6 +456,8 @@ LxxlLib.Model.Qti:
     var fakeLevels = Object.keys(I18n.translate('activities.levels'));
 
     var rootCategory = new LxxlLib.Model.Category();
+    rootCategory.id = 'fake id';
+    rootCategory.title = 'fake title';
 
     fakeMatters.forEach(function(matter) {
       fakeLevels.forEach(function(level) {
@@ -466,16 +468,22 @@ LxxlLib.Model.Qti:
         lcat.level = new LxxlLib.Model.Level();
         lcat.level.id = level;
         lcat.level.title = I18n.translate('activities.levels.' + level);
-        rootCategory.subtree.push(lcat);
-        var subito = new LxxlLib.Model.Category();
+        rootCategory.content.push(lcat);
+        var subito = new LxxlLib.Model.Category(Math.random());
         subito.title = 'Compréhension du pied';
-        lcat.subtree.push(subito);
-        subito = new LxxlLib.Model.Category();
+        subito.content = [new LxxlLib.Model.Category(Math.random()), new LxxlLib.Model.Category(
+            Math.random()), new LxxlLib.Model.Category(Math.random())];
+        lcat.content.push(subito);
+        subito = new LxxlLib.Model.Category(Math.random());
         subito.title = 'Compréhension de la main';
-        lcat.subtree.push(subito);
-        subito = new LxxlLib.Model.Category();
+        subito.content = [new LxxlLib.Model.Category(Math.random()), new LxxlLib.Model.Category(
+            Math.random()), new LxxlLib.Model.Category(Math.random())];
+        lcat.content.push(subito);
+        subito = new LxxlLib.Model.Category(Math.random());
         subito.title = 'Compréhension de René Chatonbriand';
-        lcat.subtree.push(subito);
+        subito.content = [new LxxlLib.Model.Category(Math.random()), new LxxlLib.Model.Category(
+            Math.random()), new LxxlLib.Model.Category(Math.random())];
+        lcat.content.push(subito);
       });
     });
 

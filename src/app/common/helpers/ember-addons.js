@@ -89,7 +89,7 @@
         imageUpload: this.get('imageUpload'),
         autoresize: this.get('autoresize'),
         air: this.get('air'),
-        focus : false,
+        focus: false,
         modal_tat: String() +
             '<form id="redactorInsertVideoForm">' +
             '<label>Word</label>' +
@@ -231,7 +231,7 @@
 
     willDestroyElement: function() {
       if (this.get('value') == this.$().getCode())
-          return;
+        return;
 
       this.set('value', this.$().getCode());
 

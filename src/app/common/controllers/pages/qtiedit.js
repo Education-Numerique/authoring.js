@@ -34,7 +34,7 @@
     a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
     */
       a.setupTemplate(lxxlVersionedRoot + 'activity.tpl');
-      a.showActivity({title: 'super actif'}, function() {
+      a.showActivity(this.content, function() {
         console.warn('All set baby!');
       });
     },
@@ -47,7 +47,7 @@
 
     currentPage: (function(key, value) {
       // Getter
-      // 
+      //
       window.TEST = this;
       if (arguments.length === 1) {
         // Empty(ed) document gets null
@@ -150,9 +150,12 @@
     testToto: function() {
       if (!this.get('content.level') || !this.get('content.matter'))
         return;
-      //this.set('categoryTree', categoryFactory.getTreeFor(
-      //          this.get('content.matter.id'), this.get('content.level.id')));
-      var res = [
+      var tree = categoryFactory.getTreeFor(
+          this.get('content.matter.id'), this.get('content.level.id'));
+
+      this.set('categoryTree', (tree && tree.content) || []);
+      console.warn('------------', this.get('categoryTree'));
+      /*      var res = [
         {
           title: 'Cat 1',
           id: 'cat1',
@@ -179,7 +182,7 @@
         }
       ];
 
-      this.set('categoryTree', res);
+      this.set('categoryTree', res);*/
     }.observes('content', 'content.level', 'content.matter', 'matters.content.length', 'levels.content.length'),
 
 
