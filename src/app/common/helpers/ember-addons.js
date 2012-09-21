@@ -30,7 +30,7 @@
     attributeBindings: ['multiple'],
     defaultTemplate: Ember.Handlebars.compile(
         '{{#if view.prompt}}<option value>{{view.prompt}}</option>{{/if}}{{#each view.content}}' +
-        '{{view Ember.SelectOptGroup labelBinding="label" contentBinding="content"}}{{/each}}'),
+        '{{view Ember.SelectOptGroup labelBinding="title" contentBinding="content"}}{{/each}}'),
     didInsertElement: function() {
       this.$().chosen();
     },

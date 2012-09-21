@@ -162,7 +162,7 @@
                                                 </div>
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-subtitle">Catégories</label>
-                                                    {{view Em.GroupedSelect contentBinding="categoryTree" selectionBinding="content.category" optionLabelPath="content.label" optionValuePath="content.id"}}
+                                                    {{view Em.GroupedSelect contentBinding="categoryTree" selectionBinding="content.category" optionLabelPath="content.title" optionValuePath="content.id"}}
                                                 </div>
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-subtitle">Durée</label>
