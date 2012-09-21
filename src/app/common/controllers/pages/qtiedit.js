@@ -26,8 +26,17 @@
     },
 
 
-    doPreview: function() {
-      console.warn('preview');
+    doPreview: function(node, activity) {
+      var a = new LxxlLib.activity();
+      a.setupViewport(node, true);
+      // a.addStyle('body{background-color: blue;}');
+      /*
+    a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
+    */
+      a.setupTemplate(lxxlVersionedRoot + 'activity.tpl');
+      a.showActivity({title: 'super actif'}, function() {
+        console.warn('All set baby!');
+      });
     },
 
 

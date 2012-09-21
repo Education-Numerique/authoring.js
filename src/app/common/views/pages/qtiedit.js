@@ -54,9 +54,8 @@
       tagName: 'button',
       click: function(e) {
         e.preventDefault();
-        this.get('controller').doPreview();
-        $(document).focus();
-      $(document).blur();
+        $('#modal-preview').modal({keyboard: false, backdrop: true});
+        this.get('controller').doPreview($('#modal-preview-body'));
         return false;
       }
     }),
