@@ -334,11 +334,11 @@ LxxlLib.Model.Qti:
       // Basic infos
       this.title = LxxlLib.Locale.getData('activities.defaultValues.title');
       this.description = LxxlLib.Locale.getData('activities.defaultValues.description');
-      this.level = LxxlLib.Locale.getData('activities.defaultValues.description');
-      this.matter = LxxlLib.Locale.getData('activities.defaultValues.matter');
-      this.duration = LxxlLib.Locale.getData('activities.defaultValues.duration');
-      this.difficulty = LxxlLib.Locale.getData('activities.defaultValues.difficulty');
-      this.category = LxxlLib.Locale.getData('activities.defaultValues.category');
+      this.level = null;//LxxlLib.Locale.getData('activities.defaultValues.description');
+      this.matter = null;//LxxlLib.Locale.getData('activities.defaultValues.matter');
+      this.duration = null;//LxxlLib.Locale.getData('activities.defaultValues.duration');
+      this.difficulty = null;//LxxlLib.Locale.getData('activities.defaultValues.difficulty');
+      this.category = null;//LxxlLib.Locale.getData('activities.defaultValues.category');
 
       this.thumbnail = null;
 

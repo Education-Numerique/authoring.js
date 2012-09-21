@@ -50,6 +50,15 @@
       }
     }),
 
+    DoPreview : Em.View.extend({
+      tagName : 'button',
+      click : function(e) {
+        e.preventDefault();
+        this.get('controller').doPreview();
+        return false;
+      }
+    }),
+
     AddQuestionButton: Em.View.extend({
       click: function(e) {
         this.get('controller').addQuestion();

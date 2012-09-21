@@ -2,8 +2,6 @@
   this.QtiEditController = Ember.ObjectController.extend({
     categoryFactory: categoryFactory,
 
-
-
     /**
      * Pages management
      */
@@ -28,12 +26,19 @@
     },
 
 
+    doPreview : function () {
+      console.warn('preview');
+    },
+
+
     /**
      * Current page management
      */
     _storedCurrentPage: null,
 
     currentPage: (function(key, value) {
+
+      window.TEST = this;
       // Getter
       if (arguments.length === 1) {
         // Empty(ed) document gets null
@@ -109,32 +114,105 @@
     /**
      * Categories handling
      */
-    matters: (function() {
-      return categoryFactory.matters;
-    }).property('categoryFactory.matters'),
+    // matters: (function() {
+    //   return categoryFactory.matters;
+    // }).property('categoryFactory.matters'),
 
-    levels: (function() {
-      return categoryFactory.levels;
-    }).property('categoryFactory.levels'),
+    // levels: (function() {
+    //   return categoryFactory.levels;
+    // }).property('categoryFactory.levels'),
 
-    categoryTree: (function() {
-      return categoryFactory.getTreeFor(content.level, content.matter);
-    }).property('content.level', 'content.matter', 'matters', 'levels'),
+    matters : Ember.Object.create({
+      content: [],
+      init: function() {
+        this._super();
+        this.set('content', categoryFactory.matters);
+      }
+    }),
+
+    levels : Ember.Object.create({
+      content: [],
+      init: function() {
+        this._super();
+        this.set('content', categoryFactory.levels);
+      }
+    }),
+
+    testToto: function() {
+      if (!this.get('content.level') || !this.get('content.matter'))
+        return;
+      //this.set('categoryTree', categoryFactory.getTreeFor(this.get('content.matter.id'), this.get('content.level.id')));
+      var res = [
+       {
+         label : 'Cat 1',
+         id : 'cat1',
+         content : [{
+            id : 'sub11',
+            label : 'Sub 1 1'
+         }]
+       },
+       {
+         label : 'Cat 2',
+         id : 'cat2',
+         content : [{
+            id : 'sub21',
+            label : 'Sub 2 1'
+         }],
+       },
+       {
+         label : 'Cat 3',
+         id : 'cat3',
+         content : [{
+            id : 'sub31',
+            label : 'Sub 3 1'
+         }],
+       }
+      ];
+
+      return res;
+    }.observes('content', 'content.level', 'content.matter', 'matters.content.length', 'levels.content.length'),
 
 
-    lengths: Object.keys(I18n.translate('activities.lengths')),
-    difficulties: Object.keys(I18n.translate('activities.difficulties')),
+    categoryTree: [],
+
+
+    lengths: Ember.Object.create({
+      content: [],
+      init: function() {
+        this._super();
+        var values = I18n.translate('activities.lengths');
+        for (var key in values) {
+          this.get('content').pushObject({
+            'id' : key,
+            'title' : values[key]
+          });
+        }
+      }
+    }),
+
+    difficulties: Ember.Object.create({
+      content: [],
+      init: function() {
+        this._super();
+        var values = I18n.translate('activities.difficulties');
+        for (var key in values) {
+          this.get('content').pushObject({
+            'id' : key,
+            'title' : values[key]
+          });
+        }
+      }
+    }),
+
     flavors: Ember.Object.create({
-      selected: null,
       content: [],
       init: function() {
         this._super();
         var values = I18n.translate('activities.pageFlavors');
-        window.COIN = this;
         for (var key in values) {
           this.get('content').pushObject({
-            'value' : key,
-            'label' : values[key]
+            'id' : key,
+            'title' : values[key]
           });
         }
       }

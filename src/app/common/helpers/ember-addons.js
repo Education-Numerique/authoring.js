@@ -25,6 +25,32 @@
     }.observes('content.@each')
   });
 
+  Ember.GroupedSelect = Ember.Select.extend({
+    classNames: ['ember-grouped-select'],
+    defaultTemplate: Ember.Handlebars.compile('{{#if view.prompt}}<option value>{{view.prompt}}</option>{{/if}}{{#each view.content}}{{view Ember.SelectOptGroup labelBinding="label" contentBinding="content"}}{{/each}}'),
+  });
+
+  Ember.SelectOptGroup = Ember.View.extend({
+    tagName: 'optgroup',
+    classNames: [],
+    attributeBindings: ['label'],
+    defaultTemplate: Ember.Handlebars.compile('{{#each this.content}}{{view Ember.SelectOption contentBinding="this"}}{{/each}}'),
+
+    // proxy to the Select
+    optionLabelPath: function() {
+      return Ember.getPath(this, 'parentView.optionLabelPath');
+    }.property('parentView.optionLabelPath'),
+    optionValuePath: function() {
+      return Ember.getPath(this, 'parentView.optionValuePath');
+    }.property('parentView.optionValuePath'),
+    selection: function() {
+      return Ember.getPath(this, 'parentView.selection');
+    }.property('parentView.selection'),
+    multiple: function() {
+      return Ember.getPath(this, 'parentView.multiple');
+    }.property('parentView.multiple')
+  });
+
   LxxlLib.Em.Wysiwyg = Em.TextArea.extend({
     imageUpload: '/file_upload.php',
     autoresize: true,
@@ -33,8 +59,8 @@
     didInsertElement: function() {
 
       var timer = new LxxlLib.utils.Timer(1000, function() {
-        if (!this.$())
-          return;
+        // if (!this.$())
+        //   return;
 
         if (this.get('value') == this.$().getCode())
           return;
@@ -43,7 +69,6 @@
       }.bind(this));
 
       var api = this.$();
-
 
       this.$().redactor({
         imageUpload: this.get('imageUpload'),
@@ -183,6 +208,15 @@
         timer.stop();
       });
 
+    },
+
+    willDestroyElement: function () {
+      // if (this.get('value') == this.$().getCode())
+      //     return;
+
+      this.set('value', this.$().getCode());
+
+      console.error('whatttttttt', this.get('value'));
     },
 
     updateContent: function() {

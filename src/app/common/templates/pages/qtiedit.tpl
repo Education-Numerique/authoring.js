@@ -136,7 +136,7 @@
                                         
                                 </div>
                             {{else}}
-                            <div class="container-fluid">
+                                <div class="container-fluid">
                                     <div class="widget-box">
                                         <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
                                             <span class="icon">
@@ -151,9 +151,27 @@
                                                     <label class="add-on" for="form-page-title">Titre</label>
                                                     {{view Ember.TextField valueBinding="content.title" classNames="span2" id="form-page-title" placeholder="Titre de l'activité"}}
                                                 </div>
+
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-subtitle">Niveau</label>
-                                                    {{view LxxlLib.Em.Select contentBinding="flavors.content" selectionBinding="flavors.selected" optionLabelPath="content.label" optionValuePath="content.value"}}
+                                                    {{view LxxlLib.Em.Select contentBinding="levels.content" selectionBinding="content.level" optionLabelPath="content.title" optionValuePath="content.id"}}
+                                                </div>
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-subtitle">Matière</label>
+                                                    {{view LxxlLib.Em.Select contentBinding="matters.content" selectionBinding="content.matter" optionLabelPath="content.title" optionValuePath="content.id"}}
+                                                </div>
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-subtitle">Matière</label>
+                                                    {{view Em.GroupedSelect contentBinding="categoryTree" selectionBinding="content.category" optionLabelPath="content.title" optionValuePath="content.id"}}
+                                                </div>
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-subtitle">Durée</label>
+                                                    {{view LxxlLib.Em.Select contentBinding="lengths.content" selectionBinding="content.duration" optionLabelPath="content.title" optionValuePath="content.id"}}
+                                                </div>
+                                                
+                                                <div class="input-prepend">
+                                                    <label class="add-on" for="form-page-subtitle">Difficulté</label>
+                                                    {{view LxxlLib.Em.Select contentBinding="difficulties.content" selectionBinding="content.difficulty" optionLabelPath="content.title" optionValuePath="content.id"}}
                                                 </div>
                                                 
                                             </div>
@@ -181,8 +199,7 @@
                 <h5>Publish</h5>
             </div>
             <div class="widget-content">
-                toto<br />
-                toto <br />
+                {{#view view.DoPreview classNames="btn"}}<i class="icon-eye-open"></i>Preview{{/view}}
             </div>
         </div>
     </div>
