@@ -506,7 +506,7 @@ LxxlLib.Model.Qti:
     })();
 
     this.getTreeFor = function(matter, level) {
-      return rootCategory.subtree.filter(function(item) {
+      return rootCategory.content.filter(function(item) {
         return (item.level.id == level) && (item.matter.id == matter);
       }).pop();
     };
