@@ -57,7 +57,7 @@
                                             <div class="control-group">
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-title">Titre</label>
-                                                    {{view Ember.TextField valueBinding="currentPage.title" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
+                                                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
                                                 </div>
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-subtitle">Sous-titre</label>
@@ -149,7 +149,7 @@
                                             <div class="control-group">
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-title">Titre</label>
-                                                    {{view Ember.TextField valueBinding="content.title" classNames="span2" id="form-page-title" placeholder="Titre de l'activité"}}
+                                                    {{view Ember.TextField valueBinding="content.title"  classNames="span2" id="form-page-title" placeholder="Titre de l'activité"}}
                                                 </div>
 
                                                 <div class="input-prepend">

@@ -3,8 +3,8 @@
     categoryFactory: categoryFactory,
 
     /**
-    * Pages management
-    */
+     * Pages management
+     */
     addPage: function(at) {
       var newPage = new LxxlLib.Model.Page();
       if (!at)
@@ -26,29 +26,19 @@
     },
 
 
-    doPreview: function(node, activity) {
-      var a = new LxxlLib.activity();
-      a.setupViewport(node, true);
-      // a.addStyle('body{background-color: blue;}');
-      /*
-    a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
-    */
-      a.setupTemplate(lxxlVersionedRoot + 'activity.tpl');
-      a.showActivity({title: 'super actif'}, function() {
-        console.warn('All set baby!');
-      });
+    doPreview: function() {
       console.warn('preview');
     },
 
 
     /**
-    * Current page management
-    */
+     * Current page management
+     */
     _storedCurrentPage: null,
 
     currentPage: (function(key, value) {
       // Getter
-      //
+      // 
       window.TEST = this;
       if (arguments.length === 1) {
         // Empty(ed) document gets null
@@ -122,8 +112,8 @@
 
 
     /**
-    * Categories handling
-    */
+     * Categories handling
+     */
     // matters: (function() {
     //   return categoryFactory.matters;
     // }).property('categoryFactory.matters'),
@@ -230,14 +220,14 @@
     })
 
     /**
-    * Various select handling
-    */
+     * Various select handling
+     */
 
 
     /*
-   reset: function(){
-   }
-    */
+    reset: function(){
+    }
+ */
 
     // cheat: "*********************/// *******************",
 
@@ -259,3 +249,5 @@
 //     return new LxxlLib.Model.Activity();
 //   };
 // })();
+
+

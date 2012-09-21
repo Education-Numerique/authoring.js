@@ -20,7 +20,6 @@
     },
 
     contentUpdated: function() {
-      console.log('updated');
       this.$().trigger('liszt:updated');
     }.observes('content.@each')
   });
@@ -75,8 +74,8 @@
     didInsertElement: function() {
 
       var timer = new LxxlLib.utils.Timer(1000, function() {
-        // if (!this.$())
-        //   return;
+        if (!this.$())
+          return;
 
         if (this.get('value') == this.$().getCode())
           return;
@@ -90,6 +89,7 @@
         imageUpload: this.get('imageUpload'),
         autoresize: this.get('autoresize'),
         air: this.get('air'),
+        focus : false,
         modal_tat: String() +
             '<form id="redactorInsertVideoForm">' +
             '<label>Word</label>' +
@@ -224,23 +224,25 @@
         timer.stop();
       });
 
+      $(document).focus();
+      $(document).blur();
+
     },
 
     willDestroyElement: function() {
-      // if (this.get('value') == this.$().getCode())
-      //     return;
+      if (this.get('value') == this.$().getCode())
+          return;
 
       this.set('value', this.$().getCode());
 
-      console.error('whatttttttt', this.get('value'));
     },
 
     updateContent: function() {
       if (this.get('value') == this.$().getCode())
         return;
 
-      this.$().setCode(this.get('value'));
-      $(document).focus();
+      this.$().getEditor().html(this.get('value'));
+      this.$().data('redactor').syncCode();
     }.observes('value')
   });
 
