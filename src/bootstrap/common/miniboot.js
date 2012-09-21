@@ -16,7 +16,7 @@
 
 (function() {
   // Root of the versioned app
-  var bootRoot = '{PUKE-BOOT-ROOT}/';
+  var bootRoot = window.lxxlVersionedRoot = '{PUKE-BOOT-ROOT}/';
   // Will load Ember debug, and jsBoot debug helpers
   var debug = !!location.href.match(/use-debug/);
   // Use a splitted jsBoot stack instead (DONT DO THAT KID!)
@@ -39,9 +39,6 @@
   // Bundled assets (vanilla bootstrap doesn't work)
   jsBoot.loader.use('libs/css/bootstrap.css');
   jsBoot.loader.use('libs/css/bootstrap-responsive.css');
-  // Unicorn base theming
-  jsBoot.loader.use('libs/css/unicorn.main.css');
-  jsBoot.loader.use('libs/css/unicorn.grey.css');
 
   if (!nostack) {
     jsBoot.boot.ember(null, debug);
@@ -89,6 +86,10 @@
 
   // Data tables - no style from them though
   jsBoot.loader.use('datatable', trunk ? 'trunk' : '1.9', 'js$');
+
+  // Unicorn base theming
+  jsBoot.loader.use('libs/css/unicorn.main.css');
+  jsBoot.loader.use('libs/css/unicorn.grey.css');
 
 
   // And application stylesheet as well
