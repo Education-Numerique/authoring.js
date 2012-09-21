@@ -41,18 +41,18 @@
         this.set('isTat', true);
     }.observes('controller.currentPage.flavor'),
 
-    InformationButton : Em.View.extend({
+    InformationButton: Em.View.extend({
       tagName: 'button',
-      click : function (e) {
+      click: function(e) {
         e.preventDefault();
         this.get('controller').set('currentPage', null);
         return false;
       }
     }),
 
-    DoPreview : Em.View.extend({
-      tagName : 'button',
-      click : function(e) {
+    DoPreview: Em.View.extend({
+      tagName: 'button',
+      click: function(e) {
         e.preventDefault();
         this.get('controller').doPreview();
         return false;

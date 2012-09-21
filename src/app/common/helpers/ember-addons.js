@@ -15,39 +15,55 @@
   });
 
   LxxlLib.Em.Select = Em.Select.extend({
-    didInsertElement : function () {
+    didInsertElement: function() {
       this.$().chosen();
     },
 
-    contentUpdated : function () {
+    contentUpdated: function() {
       console.log('updated');
-      this.$().trigger("liszt:updated");
+      this.$().trigger('liszt:updated');
     }.observes('content.@each')
   });
 
   Ember.GroupedSelect = Ember.Select.extend({
     classNames: ['ember-grouped-select'],
-    defaultTemplate: Ember.Handlebars.compile('{{#if view.prompt}}<option value>{{view.prompt}}</option>{{/if}}{{#each view.content}}{{view Ember.SelectOptGroup labelBinding="label" contentBinding="content"}}{{/each}}'),
+    multiple: true,
+    attributeBindings: ['multiple'],
+    defaultTemplate: Ember.Handlebars.compile(
+        '{{#if view.prompt}}<option value>{{view.prompt}}</option>{{/if}}{{#each view.content}}' +
+        '{{view Ember.SelectOptGroup labelBinding="label" contentBinding="content"}}{{/each}}'),
+    didInsertElement: function() {
+      this.$().chosen();
+    },
+    contentUpdated: function() {
+      this.$().trigger('liszt:updated');
+    }.observes('content.@each')
   });
 
   Ember.SelectOptGroup = Ember.View.extend({
     tagName: 'optgroup',
     classNames: [],
     attributeBindings: ['label'],
-    defaultTemplate: Ember.Handlebars.compile('{{#each this.content}}{{view Ember.SelectOption contentBinding="this"}}{{/each}}'),
+    defaultTemplate: Ember.Handlebars.compile(
+        '{{#each this.content}}{{view Ember.SelectOption contentBinding="this"}}{{/each}}'
+    ),
+
+    didInsertElement: function() {
+      this.get('parentView').$().trigger('liszt:updated');
+    },
 
     // proxy to the Select
     optionLabelPath: function() {
-      return Ember.getPath(this, 'parentView.optionLabelPath');
+      return Ember.get(this, 'parentView.optionLabelPath');
     }.property('parentView.optionLabelPath'),
     optionValuePath: function() {
-      return Ember.getPath(this, 'parentView.optionValuePath');
+      return Ember.get(this, 'parentView.optionValuePath');
     }.property('parentView.optionValuePath'),
     selection: function() {
-      return Ember.getPath(this, 'parentView.selection');
+      return Ember.get(this, 'parentView.selection');
     }.property('parentView.selection'),
     multiple: function() {
-      return Ember.getPath(this, 'parentView.multiple');
+      return Ember.get(this, 'parentView.multiple');
     }.property('parentView.multiple')
   });
 
@@ -210,7 +226,7 @@
 
     },
 
-    willDestroyElement: function () {
+    willDestroyElement: function() {
       // if (this.get('value') == this.$().getCode())
       //     return;
 
