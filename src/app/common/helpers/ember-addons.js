@@ -311,4 +311,15 @@
 
   });
 
+  Handlebars.registerHelper('ifequal', function (val1, val2, options) {
+    var context = (options.fn.contexts && options.fn.contexts[0]) || this;
+    var val1 = Ember.Handlebars.getPath(context, val1, options.fn);
+    var val2 = Ember.Handlebars.getPath(context, val2, options.fn);
+
+    if (val1 === val2) {
+      return options.fn(this);
+    } else{
+      return options.inverse(this);
+    }
+  });
 })();
