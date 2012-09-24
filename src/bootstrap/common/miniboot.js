@@ -15,6 +15,9 @@
 
 
 (function() {
+  window.ENV = {};
+  // ENV.RAISE_ON_DEPRECATION = true;
+
   // Root of the versioned app
   var bootRoot = window.lxxlVersionedRoot = '{PUKE-BOOT-ROOT}/';
   // Will load Ember debug, and jsBoot debug helpers

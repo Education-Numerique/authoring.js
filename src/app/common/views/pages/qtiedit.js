@@ -32,7 +32,7 @@
       this.set('isStaticPage', false);
       this.set('isQuizz', false);
       this.set('isTat', false);
-      console.log('????', value);
+
       if (value == 'staticPage')
         this.set('isStaticPage', true);
       else if (value == 'quizz')
@@ -80,7 +80,6 @@
           self.get('controller.content').set('thumbnail', img);
         }
 
-        console.warn('====> img', self.get('controller.content.thumbnail'));
         if (self.get('controller.content.thumbnail'))
           _loadImage(self.get('controller.content.thumbnail'));
 
@@ -166,7 +165,7 @@
     AddPageButton: Em.View.extend({
       click: function(e) {
         this.get('controller').addPage();
-        this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected.value'));
+        this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected.id'));
         $('#modal-create-page').modal('hide');
       }
     }),
@@ -211,7 +210,7 @@
           this.flavorUpdated();
         },
 
-        click: function() {
+        click: function(e) {
           this.get('controller').set('currentPage', this.get('content'));
         },
 

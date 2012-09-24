@@ -27,10 +27,8 @@
                     <div class="panel-content nopadding">
 
                         {{#collection view.pagesCollectionView contentBinding="content.pages" tagName="ul" classNames="pages-list"}}
-                            <a >
                                 <span class="icon"><span {{bindAttr class="view.flavorIcon"}}></span></span>
                                 <span class="page-title">{{view.content.title}}</span>
-                            </a>
                             {{#view view.DeletePageButton modalName="deletePage" pageBinding="view.content" classNames="btn btn-danger btn-mini delete-page" data-toggle="modal" href="#modal-delete-page"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}
 <!--                             <span class="questions-count badge badge-info"></span>
  -->                        {{/collection}}
@@ -84,11 +82,7 @@
                                             <h5>Document</h5>
                                         </div>
                                         <div class="widget-content slidify-on nopadding" id="page-document">
-                                            {{#if view.isTat}}
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
-                                            {{else}}
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
-                                            {{/if}}
+                                            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTatBinding="view.isTat" classNames="redactorjs"}}
                                         </div>
                                     </div>
                                     {{#if view.isQuizz}}
@@ -217,7 +211,7 @@
     </div>
     <div class="modal-body" style="height:200px">
         <p>Choisissez le template de votre page</p>
-        <p>{{view Ember.Select contentBinding="flavors.content" selectionBinding="flavors.selected" optionLabelPath="content.label" optionValuePath="content.value"}}</p>
+        <p>{{view Ember.Select contentBinding="flavors.content" selectionBinding="flavors.selected" optionLabelPath="content.title" optionValuePath="content.id"}}</p>
     </div>
     <div class="modal-footer">
         <a class="btn" data-dismiss="modal">Annuler</a>

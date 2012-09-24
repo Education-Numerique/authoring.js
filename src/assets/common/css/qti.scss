@@ -161,41 +161,42 @@
                 background-color:#eeeeee;
             }
 
-            a {
-                color: #666;
-                display: block;
-                float:left;
-                width:100%;
+            
+            color: #666;
+            display: block;
+            float:left;
+            width:100%;
+            @include unselectable();
 
-                .icon {
-                    border-right: 1px solid #CDCDCD;
-                    width:28px;
-                    height:28px;
-                    float: left;
-                    opacity: .7;
-                    text-align:center;
-                    padding:8px 0;
-                    margin-right:10px;
+            .icon {
+                border-right: 1px solid #CDCDCD;
+                width:28px;
+                height:28px;
+                float: left;
+                opacity: .7;
+                text-align:center;
+                padding:8px 0;
+                margin-right:10px;
 
-                    line-height: 2.4em;
+                line-height: 2.4em;
 
-                    background-color: #EFEFEF;
-                    background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#FDFDFD), to(#EAEAEA));
-                    background-image: -webkit-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
-                    background-image: -moz-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
-                    background-image: -ms-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
-                    background-image: -o-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
-                    background-image: -linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
-                    cursor:move;
-                }
-
-                .page-title {
-                    float:left;
-                    line-height:3.5em;
-                }
-
-
+                background-color: #EFEFEF;
+                background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#FDFDFD), to(#EAEAEA));
+                background-image: -webkit-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                background-image: -moz-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                background-image: -ms-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                background-image: -o-linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                background-image: -linear-gradient(top, #FDFDFD 0%, #EAEAEA 100%);
+                cursor:move;
             }
+
+            .page-title {
+                float:left;
+                line-height:3.5em;
+            }
+
+
+            
 
             .questions-count, .delete-page{
                 padding: 3px 5px;
@@ -528,4 +529,8 @@
 #form-activity-title {
     width:65%!important;
     min-width:220px;
+}
+
+[data-type=tat] {
+    
 }

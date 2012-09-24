@@ -108,13 +108,12 @@
             '</div>'
       });
 
-      if (!('showTat' in api)) {
+      if (api.data('redactor') && !('showTat' in api)) {
         Object.getPrototypeOf(api.data('redactor')).showTat = function(e) {
           var $el = $(e.target);
 
           this.modalInit('Texte à trous', 'tat', 600, $.proxy(function()
               {
-                console.log('=====> showTat', e, $el);
                 if ($el.attr('data-type') == 'tat') {
                   $('#tat-selection').val($el.text());
                   $('#tat-clue').val($el.attr('data-clue'));
@@ -163,7 +162,13 @@
         Object.getPrototypeOf(api.data('redactor')).observesTat = function() {
 
           var showTatAir = function(e) {
+
             this.$editor.tatAir.hide();
+
+            if (!this.getSelectedHtml().trim())
+              return;
+
+
             var width = this.$editor.tatAir.innerWidth();
             var left = e.clientX;
 
@@ -191,6 +196,7 @@
                 '</ul>' +
                 '</div>');
             $('body').prepend(this.$editor.tatAir);
+            this.$editor.tatAir.hide();
 
             this.$editor.tatAir.find('a').click(function(e) {
               this.showTat(e);
@@ -204,7 +210,7 @@
             return true;
           }.bind(this));
 
-          this.$editor.find('[data-type=tat]').on('click', function(s)
+          $(document).on('click.tat-click-handler', '[data-type=tat]', function(s)
               {
                 this.showTat(s);
               }.bind(this));
@@ -230,10 +236,23 @@
     },
 
     willDestroyElement: function() {
-      if (this.get('value') == this.$().getCode())
+      if (!this.$() || !this.$().data('redactor'))
         return;
 
-      this.set('value', this.$().getCode());
+      var value = this.$().getCode();
+
+      if (this.$().getEditor().tatAir)
+        this.$().getEditor().tatAir.remove();
+
+      $(document).unbind('click.tat-click-handler');
+
+      this.$().destroyEditor();
+
+      if (this.get('value') == value)
+        return;
+
+      this.set('value', value);
+
 
     },
 
