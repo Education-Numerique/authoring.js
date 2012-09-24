@@ -41,6 +41,101 @@
         this.set('isTat', true);
     }.observes('controller.currentPage.flavor'),
 
+    InformationTab: Em.View.extend({
+      templateName: 'pages/qtiedit/informations',
+
+      didInsertElement: function() {
+        var self = this;
+
+
+        var _loadImage = function(img) {
+
+          if (typeof(img) === 'string') {
+            $('.dropzone .preview').empty();
+            $('.dropzone .preview').append($('<img src="' + img + '" style="max-width:300px;max-height:300px" />'));
+            return;
+          }
+
+
+          loadImage(img, function(img) {
+            $('.dropzone .preview').empty();
+            $('.dropzone .preview').append(img);
+
+            var container = $('.dropzone .preview');
+            var node = container.find('canvas,img');
+            var w = node.width() * 100 / container.width();
+            var h = node.height() * 100 / container.height();
+
+            node.css({
+              'top' : ((100 - h) / 2) + '%',
+              'left' : ((100 - w) / 2) + '%'
+            });
+          }, {
+            maxWidth: 300,
+            maxHeight: 300,
+            canvas: true
+          });
+
+          //data.submit();
+          self.get('controller.content').set('thumbnail', img);
+        }
+
+        console.warn('====> img', self.get('controller.content.thumbnail'));
+        if (self.get('controller.content.thumbnail'))
+          _loadImage(self.get('controller.content.thumbnail'));
+
+
+        $('#fileupload').fileupload();
+        $('#fileupload').fileupload('option', {
+          dropZone: this.$('.dropzone')[0],
+          url: '//roxee.tv/',
+          limitMultiFileUploads: 1,
+          maxFileSize: 5000000,
+          acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+          process: [
+            {
+                      action: 'load',
+                      fileTypes: /^image\/(gif|jpeg|png)$/,
+                      maxFileSize: 20000000 // 20MB
+            },
+            {
+                      action: 'resize',
+                      maxWidth: 1440,
+                      maxHeight: 900
+            },
+            {
+                      action: 'save'
+            }
+          ],
+          add: function(e, data) {
+            $(this).fileupload('process', data).done(function() {
+              _loadImage(data.files[0]);
+
+            });
+          }
+        });
+
+        $(document).bind('dragover', function(e) {
+          var dropZone = $('.dropzone'),
+              timeout = window.dropZoneTimeout;
+          if (!timeout) {
+            dropZone.addClass('in');
+          } else {
+            clearTimeout(timeout);
+          }
+          if (e.target === dropZone[0]) {
+            dropZone.addClass('hover');
+          } else {
+            dropZone.removeClass('hover');
+          }
+          window.dropZoneTimeout = setTimeout(function() {
+            window.dropZoneTimeout = null;
+            dropZone.removeClass('in hover');
+          }, 100);
+        });
+      }
+    }),
+
     InformationButton: Em.View.extend({
       tagName: 'button',
       click: function(e) {
@@ -326,72 +421,7 @@
 
       this.get('controller').set('currentPage', null);
 
-      $('#fileupload').fileupload();
-      $('#fileupload').fileupload('option', {
-        dropZone: this.$('.dropzone')[0],
-        url: '//roxee.tv/',
-        limitMultiFileUploads: 1,
-        maxFileSize: 5000000,
-        acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
-        process: [
-          {
-                    action: 'load',
-                    fileTypes: /^image\/(gif|jpeg|png)$/,
-                    maxFileSize: 20000000 // 20MB
-          },
-          {
-                    action: 'resize',
-                    maxWidth: 1440,
-                    maxHeight: 900
-          },
-          {
-                    action: 'save'
-          }
-        ],
-        add: function(e, data) {
-          $(this).fileupload('process', data).done(function() {
-            loadImage(data.files[0], function(img) {
-              $('.dropzone .preview').empty();
-              $('.dropzone .preview').append(img);
 
-              var container = $('.dropzone .preview');
-              var node = container.find('canvas,img');
-              var w = node.width() * 100 / container.width();
-              var h = node.height() * 100 / container.height();
-
-              node.css({
-                'top' : ((100 - h) / 2) + '%',
-                'left' : ((100 - w) / 2) + '%'
-              });
-            }, {
-              maxWidth: 300,
-              maxHeight: 300,
-              canvas: true
-            });
-            //data.submit();
-            self.get('controller.content').set('thumbnail', data.files[0]);
-          });
-        }
-      });
-
-      $(document).bind('dragover', function(e) {
-        var dropZone = $('.dropzone'),
-            timeout = window.dropZoneTimeout;
-        if (!timeout) {
-          dropZone.addClass('in');
-        } else {
-          clearTimeout(timeout);
-        }
-        if (e.target === dropZone[0]) {
-          dropZone.addClass('hover');
-        } else {
-          dropZone.removeClass('hover');
-        }
-        window.dropZoneTimeout = setTimeout(function() {
-          window.dropZoneTimeout = null;
-          dropZone.removeClass('in hover');
-        }, 100);
-      });
     }
   });
 }).apply(LxxlApp);
