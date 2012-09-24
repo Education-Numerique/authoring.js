@@ -232,3 +232,9 @@ hr.soften {
   background-image: -o-linear-gradient(left, transparent, rgba(0, 0, 0, .1), transparent);
   border: 0;
 }
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}

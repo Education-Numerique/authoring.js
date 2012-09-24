@@ -33,7 +33,7 @@
         }
 
         h5 {
-
+            max-width: 55%;
         }
         border-right: 1px solid #CDCDCD;
         float:left;
@@ -193,6 +193,10 @@
             .page-title {
                 float:left;
                 line-height:3.5em;
+                max-width: 60%;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
             }
 
 

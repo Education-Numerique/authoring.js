@@ -10,7 +10,7 @@
             <div class="widget-title">
                 <div class="qti-title span3">
                     <span class="icon"><span class="icon-edit"></span></span>
-                    <h5>{{content.title}}</h5>
+                    <h5 class="text-ellipsis ">{{content.title}}</h5>
                 </div>
 
             </div>
