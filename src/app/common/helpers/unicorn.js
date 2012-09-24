@@ -52,7 +52,7 @@
       //   $(item).tooltip({placement: p});
       // });
 
-      $('input[type=checkbox],input[type=radio],input[type=file]').uniform();
+      $('input[type=checkbox],input[type=radio]').uniform();
 
       $('.icon-print').each(function(ind, item) {
         var p = $(item).parent();

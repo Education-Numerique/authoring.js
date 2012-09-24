@@ -146,10 +146,12 @@
                                         </div>
                                         <div class="widget-content slidify-on" id="page-informations">
                                             
-                                            <div class="control-group">
+                                            
+
+                                            <div class="control-group " style="width:60%">
                                                 <div class="input-prepend">
                                                     <label class="add-on" for="form-page-title">Titre</label>
-                                                    {{view Ember.TextField valueBinding="content.title"  classNames="span2" id="form-page-title" placeholder="Titre de l'activité"}}
+                                                    {{view Ember.TextField valueBinding="content.title"  classNames="span2" id="form-activity-title" placeholder="Titre de l'activité"}}
                                                 </div>
 
                                                 <div class="input-prepend">
@@ -175,6 +177,20 @@
                                                 </div>
                                                 
                                             </div>
+
+                                            <div class="dropzone-container">
+                                                <div class="dropzone">
+                                                    <div class="preview">
+                                                        
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-large add-thumbnail">
+                                                    <i class="icon-plus"></i>
+                                                    <input id="fileupload" type="file" name="file" />
+                                                    Ajouter une thumbnail
+                                                </button>
+                                            </div>
+
                                             <div class="input-prepend">
                                                     <label class="add-on" for="form-page-explanation">Description</label>
                                                     {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" classNames="redactorjs" id="form-page-explanation"}}
