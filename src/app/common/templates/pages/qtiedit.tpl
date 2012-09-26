@@ -2,7 +2,7 @@
 * @template : pages/qtiedit
 */
 <form class="form-horizontal">
-<div class="row-fluid qti">
+<div class="row-fluid qti" {{bindAttr class="view.isStaticPage view.isQuizz view.isTat"}}>
 
     <div class="span10">
         
@@ -12,12 +12,21 @@
                     <span class="icon"><span class="icon-edit"></span></span>
                     <h5 class="text-ellipsis unselectable">{{content.title}}</h5>
                 </div>
+                <h5 class="text-ellipsis unselectable activity-breadcrumb">
+                    <span class="normal">Activité</span><span class="sep"></span>
+                    {{#if currentPage}}
+                         <span class="normal">{{view.flavorLabel}}</span><span class="sep"></span>{{currentPage.title}} 
+                    {{else}}
+                         Informations
+                    {{/if}}
+                    
+                </h5>
 
             </div>
             <div class="widget-content nopadding main-container">
                 <div id="page-management" class="panel-right span3">
                     {{#view view.InformationButton classNames="panel-button"}}Informations{{/view}}
-                    <div class="panel-title">
+                    <div class="panel-title" {{bindAttr class="currentPage:section-active"}}>
                         <h5>Pages</h5>
                         <div class="buttons">
                             <a  data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter une page</a>
@@ -44,7 +53,7 @@
                                             <span class="icon">
                                                 <i class="icon-wrench"></i>
                                             </span>
-                                            <h5>Informations</h5>
+                                            <h5>Informations de la page</h5>
                                         </div>
                                         <div class="widget-content slidify-on" id="page-informations">
                                             
@@ -60,9 +69,20 @@
                                                 
                                             </div>
                                             <div class="options">
+                                                <!--
+                                                    Activate / deactive
+                                                    Minutes / secondes
+
+                                                    limitedTime : 0 infini
+                                                //-->
                                                 <button class="btn">Temps limité</button>
+                                                <!--
+                                                    displayAll (bool) All together / one by one
+                                                    sequencing || Random : All | number
+                                                    -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+                                                //-->
                                                 <button class="btn">Séquenceur</button>
-                                                <button class="btn">Coefficient</button>
+                                                <!-- <button class="btn">Coefficient</button> -->
                                             </div>
                                             <div class="input-prepend">
                                                     <label class="add-on" for="form-page-explanation">Consigne</label>
@@ -78,7 +98,11 @@
                                             <h5>Document</h5>
                                         </div>
                                         <div class="widget-content slidify-on nopadding" id="page-document">
-                                            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTatBinding="view.isTat" classNames="redactorjs"}}
+                                            {{#if view.isTat}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
+                                            {{else}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
+                                            {{/if}}
                                         </div>
                                     </div>
                                     {{#if view.isQuizz}}

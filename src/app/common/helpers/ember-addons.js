@@ -257,6 +257,9 @@
     },
 
     updateContent: function() {
+      if (!this.$().data('redactor'))
+        return;
+
       if (this.get('value') == this.$().getCode())
         return;
 

@@ -238,3 +238,7 @@ hr.soften {
   white-space: nowrap;
   overflow: hidden;
 }
+
+.unselectable {
+  @include unselectable();
+}

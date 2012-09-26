@@ -4,6 +4,24 @@
             margin-right:5px;
         }
     }
+
+    h5 {
+        .normal {
+            font-weight:normal;
+        }
+    }
+
+    .activity-breadcrumb {
+        max-width:70%;
+
+        .sep {
+            padding: 8px 10px 0px 10px;
+            display: inline-block;
+            background-image: url(../libs/img/breadcrumb.png);
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    }
     .control-group .input-prepend {
         
     }
@@ -233,7 +251,11 @@
 
     #page-management {
 
-
+        .section-active {
+            background-color:#d8d8d8;
+            border-top:1px solid #c3c3c3;
+            border-bottom:1px solid #c3c3c3;
+        }
         .panel-title {
             float:left;
             padding:5px 0;
@@ -308,6 +330,18 @@
             button {
                 width:100%;
                 margin-bottom:10px;
+            }
+        }
+    }
+
+    &.is-static-page {
+        #page-informations {
+            .control-group {
+                width:100%;
+            }
+
+            .options {
+                display:none;
             }
         }
     }

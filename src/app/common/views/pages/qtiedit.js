@@ -20,10 +20,10 @@
   })();
 
   this.QtiEditView = Ember.View.extend(t, {
-    classNameBindings: ['isStaticPage', 'isQuizz', 'isTat'],
     isStaticPage: false,
     isQuizz: false,
     isTat: false,
+    flavorLabel: '',
 
 
     _updateFlavor: function() {
@@ -33,12 +33,16 @@
       this.set('isQuizz', false);
       this.set('isTat', false);
 
-      if (value == 'staticPage')
+      if (value == 'staticPage') {
         this.set('isStaticPage', true);
-      else if (value == 'quizz')
+        this.set('flavorLabel', I18n.translate('activities.pageFlavors.staticPage'));
+      } else if (value == 'quizz') {
         this.set('isQuizz', true);
-      else if (value == 'tat')
+        this.set('flavorLabel', I18n.translate('activities.pageFlavors.quizz'));
+      } else if (value == 'tat') {
         this.set('isTat', true);
+        this.set('flavorLabel', I18n.translate('activities.pageFlavors.tat'));
+      }
     }.observes('controller.currentPage.flavor'),
 
     InformationTab: Em.View.extend({
@@ -141,7 +145,15 @@
         e.preventDefault();
         this.get('controller').set('currentPage', null);
         return false;
-      }
+      },
+
+      isActiveUpdate: function() {
+        var value = this.get('controller.currentPage');
+        if (!value)
+          this.$().addClass('section-active');
+        else
+          this.$().removeClass('section-active');
+      }.observes('controller.currentPage')
     }),
 
     DoPreview: Em.View.extend({
