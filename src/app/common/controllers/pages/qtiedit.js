@@ -181,7 +181,6 @@
           this.get('content.matter.id'), this.get('content.level.id'));
 
       this.set('categoryTree', (tree && tree.content) || []);
-      console.warn('------------', this.get('categoryTree'));
       /*      var res = [
         {
           title: 'Cat 1',

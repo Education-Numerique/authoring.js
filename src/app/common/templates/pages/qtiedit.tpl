@@ -20,7 +20,7 @@
                     <div class="panel-title">
                         <h5>Pages</h5>
                         <div class="buttons">
-                            <a  data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white"></i>Ajouter une page</a>
+                            <a  data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter une page</a>
                             
                         </div>
                     </div>
@@ -30,8 +30,7 @@
                                 <span class="icon"><span {{bindAttr class="view.flavorIcon"}}></span></span>
                                 <span class="page-title">{{view.content.title}}</span>
                             {{#view view.DeletePageButton modalName="deletePage" pageBinding="view.content" classNames="btn btn-danger btn-mini delete-page" data-toggle="modal" href="#modal-delete-page"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}
-<!--                             <span class="questions-count badge badge-info"></span>
- -->                        {{/collection}}
+                        {{/collection}}
                     </div>
                 </div>
 
@@ -46,9 +45,6 @@
                                                 <i class="icon-wrench"></i>
                                             </span>
                                             <h5>Informations</h5>
-                                            {{#if view.isQuizz}}
-                                                {{#view view.AddQuestionButton tagName="button" classNames="btn btn-inverse btn-mini"}}<i class="icon-plus icon-white"></i>Ajouter une question{{/view}}
-                                            {{/if}}
                                         </div>
                                         <div class="widget-content slidify-on" id="page-informations">
                                             
@@ -87,20 +83,33 @@
                                     </div>
                                     {{#if view.isQuizz}}
                                         <hr class="soften" />
-                                        {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
-                                            <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                                        <div class="widget-box questions-toolbar">
+                                            <div class="widget-title">
                                                 <span class="icon">
                                                     <i class="icon-th-list"></i>
                                                 </span>
-                                                <h5>Question {{view.content.text}}</h5>
+                                                <h5>Questions</h5>
+                                                {{#view view.AddQuestionButton tagName="button" classNames="btn btn-success btn-mini"}}<i class="icon-plus icon-white spacify"></i>Ajouter une question{{/view}}
+                                                {{#view view.CollapseAllQuestions tagName="button" classNames="btn btn-mini" }}
+                                                    <i class="icon-resize-small spacify"></i>Collapse all
+                                                {{/view}}
+                                            </div>
+                                        </div>
+                                        {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
+                                            <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                                                <span class="icon">
+                                                    <i class="icon-bullhorn"></i>
+                                                </span>
+                                                <h5 class="text-ellipsis">Question {{view.content.text}}</h5>
                                                 {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>{{/view}}
-                                                {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white"></i>Ajouter une réponse{{/view}}
+                                                
                                             </div>
                                             <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
                                                     <div class="input-prepend">
                                                         <label class="add-on" for="form-question-title">Intitulé</label>
                                                         {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
                                                     </div>
+                                                    {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white spacify"></i>Ajouter une réponse{{/view}}
 
                                                 <table class="table answers table-bordered table-striped with-check">
                                                     <thead>
@@ -145,7 +154,7 @@
                 <h5>Publish</h5>
             </div>
             <div class="widget-content">
-                {{#view view.DoPreview classNames="btn"}}<i class="icon-eye-open"></i>Preview{{/view}}
+                {{#view view.DoPreview classNames="btn"}}<i class="icon-eye-open spacify"></i>Preview{{/view}}
             </div>
         </div>
     </div>

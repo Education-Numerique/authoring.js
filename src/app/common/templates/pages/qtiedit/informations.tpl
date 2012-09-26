@@ -4,13 +4,13 @@
 
 <div class="container-fluid">
     <div class="widget-box">
-        <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
+        <div class="widget-title">
             <span class="icon">
                 <i class="icon-wrench"></i>
             </span>
             <h5>Informations</h5>
         </div>
-        <div class="widget-content slidify-on" id="page-informations">
+        <div class="widget-content" id="page-informations">
             <div class="control-group " style="width:60%">
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>

@@ -1,7 +1,11 @@
 .qti {
-
+    button {
+        i.spacify {
+            margin-right:5px;
+        }
+    }
     .control-group .input-prepend {
-        padding
+        
     }
     .input-prepend {
         width:100%;
@@ -104,6 +108,7 @@
             width:100%;
             font-size: 12px;
             cursor:pointer;
+            @include box-sizing(border-box);
 
             &.page-static {
                 .questions-count {
@@ -140,6 +145,7 @@
 
             &.ui-sortable-helper {
                 border: 1px solid #D6D6D6;
+                @include box-sizing(content-box);
             }
 
             &.active {
@@ -314,6 +320,16 @@
          }
     }
 
+    .questions-toolbar {
+
+        .widget-title {
+            background:none;
+            background-color: #E5E5E5;
+            box-shadow: 0 0 1px white;
+        }
+
+    }
+
     .questions-list {
         position:relative;
 
@@ -335,6 +351,21 @@
 
         .widget-box .icon {
             cursor:move;
+        }
+
+        .widget-title {
+            h5 {
+                max-width:80%;
+            }
+
+            button {
+                opacity:0.8;
+                padding:2px;
+
+                &:hover {
+                    opacity:1;
+                }
+            }
         }
     }
 

@@ -162,6 +162,23 @@
       }
     }),
 
+    CollapseAllQuestions: Em.View.extend({
+      isVisible: false,
+
+      click: function(e) {
+        var boxes = this.get('_parentView').$('.questions-list > .question-box > .widget-content');
+        boxes.hide();
+        boxes.removeClass('slidify-on').addClass('slidify');
+
+        e.preventDefault();
+        return false;
+      },
+
+      updateIsVisible: function() {
+        this.set('isVisible', !!this.get('controller.currentPage.questions.length'));
+      }.observes('controller.currentPage.questions.length')
+    }),
+
     AddPageButton: Em.View.extend({
       click: function(e) {
         this.get('controller').addPage();
@@ -413,7 +430,7 @@
       this.$('input')[0].blur();
       this._updateFlavor();
 
-      this.get('controller').set('currentPage', null);
+      this.get('controller').set('currentPage', this.get('controller.content.pages')[0]);
 
 
     }
