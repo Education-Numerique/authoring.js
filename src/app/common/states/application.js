@@ -324,6 +324,7 @@ LxxlLib.Model.Qti:
       // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
       this.sequencing = LxxlLib.Locale.getData('activities.defaultValues.page.sequencing');
 
+      this.displayAll = false;
       this.questions = [];
 
     };
