@@ -95,6 +95,11 @@
 
   $(document).ready(function() {
 
+    var oldMouseStart = $.ui.sortable.prototype._mouseStart;
+    $.ui.sortable.prototype._mouseStart = function(event, overrideHandle, noActivation) {
+      this._trigger('beforeStart', event, this._uiHash());
+      oldMouseStart.apply(this, [event, overrideHandle, noActivation]);
+    };
     // === Sidebar navigation === //
 
     // Sidebar mobile

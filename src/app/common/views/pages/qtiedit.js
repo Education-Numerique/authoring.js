@@ -163,7 +163,10 @@
     }),
 
     CollapseAllQuestions: Em.View.extend({
-      isVisible: false,
+      init: function() {
+        this._super();
+        this.updateIsVisible();
+      },
 
       click: function(e) {
         var boxes = this.get('_parentView').$('.questions-list > .question-box > .widget-content');
@@ -296,6 +299,14 @@
           },
           stop: function(event, ui) {
             view.moveItem(ui.item.previousIndex, ui.item.index());
+            if ($(ui.item).find('.widget-content').hasClass('slidify-on')) {
+              $(ui.item).find('.widget-content').show();
+            }
+          },
+          beforeStart: function(event, ui) {
+            if ($(ui.item).find('.widget-content').hasClass('slidify-on')) {
+              $(ui.item).find('.widget-content').hide();
+            }
           },
           containment: 'parent',
           tolerance: 'pointer'
