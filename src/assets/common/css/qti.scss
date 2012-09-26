@@ -316,7 +316,6 @@
 
     .questions-list {
         position:relative;
-        overflow:auto;
 
         > .ui-sortable-placeholder, > .empty {
             height:36px;
@@ -343,15 +342,6 @@
 
 
 
-        .container-fix-sortify {
-            position:relative;
-            overflow:hidden;
-            border-top: 1px solid #DDD;
-
-            &:hover {
-                overflow:auto;
-            }
-        }
 
         table.answers {
             

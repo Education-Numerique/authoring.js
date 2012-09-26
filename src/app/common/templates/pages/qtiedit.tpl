@@ -102,28 +102,26 @@
                                                         {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
                                                     </div>
 
-                                                <div class="container-fix-sortify"> 
-                                                    <table class="table answers table-bordered table-striped with-check">
-                                                        <thead>
-                                                            <tr>
-                                                                <th></th>
-                                                                <th><i class="icon-ok"></i></th>
-                                                                <th>Réponse</th>
-                                                                <th>Explication</th>
-                                                                <th>Coef</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
-                                                            <td><i class="icon-resize-vertical"></td>
-                                                            <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                                                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
-                                                            <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                                                            <td></td>
-                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
-                                                        {{/collection}}
-                                                    </table>
-                                                </div>
+                                                <table class="table answers table-bordered table-striped with-check">
+                                                    <thead>
+                                                        <tr>
+                                                            <th></th>
+                                                            <th><i class="icon-ok"></i></th>
+                                                            <th>Réponse</th>
+                                                            <th>Explication</th>
+                                                            <th>Coef</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                    {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                        <td><i class="icon-resize-vertical"></td>
+                                                        <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
+                                                        <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                                                        <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                        <td></td>
+                                                        <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                    {{/collection}}
+                                                </table>
                                             </div>
                                         {{/collection}}
                                     {{/if}}
