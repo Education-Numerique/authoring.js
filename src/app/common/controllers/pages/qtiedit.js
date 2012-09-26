@@ -34,21 +34,26 @@
     addPage: function(at) {
       var newPage = new LxxlLib.Model.Page();
       if (!at)
-        this.content.pages.pushObject(newPage);
+        this.content.get('pages').pushObject(newPage);
       else
-        this.content.pages.splice(at, 0, newPage);
+        this.content.get('pages').replace(at, 0, [newPage]);
       this.set('currentPage', newPage);
     },
 
     deletePage: function(page) {
-      if (this.currentPage == page)
+      if (this.get('currentPage') == page)
         this.set('currentPage', null);
-      this.content.pages.replace(this.content.pages.indexOf(page), 1);
+      var pages = this.content.get('pages');
+      pages.replace(pages.indexOf(page), 1);
+      // console.warn("--delete");
+      // this.content.get('pages').forEach(function(item){console.warn(item, item.title);});
     },
 
     movePage: function(page, pos) {
-      this.content.pages.splice(this.content.pages.indexOf(page), 1);
-      this.content.pages.splice(pos, 0, page);
+      var pages = this.content.get('pages');
+      pages.replace(pages.indexOf(page), 1);
+      pages.replace(pos, 0, [page]);
+      // this.content.get('pages').forEach(function(item){console.warn(item, item.title);});
     },
 
 
@@ -78,7 +83,7 @@
       window.TEST = this;
       if (arguments.length === 1) {
         // Empty(ed) document gets null
-        if (!this.content.pages.length)
+        if (!this.content.get('pages').length)
           return this.set('_storedCurrentPage', null) && null;
         return this._storedCurrentPage;
       }
@@ -123,8 +128,8 @@
     },
 
     moveQuestion: function(question, pos) {
-      this.get('currentPage.questions').splice(this.get('currentPage.questions').indexOf(question), 1);
-      this.get('currentPage.questions').splice(pos, 0, question);
+      this.get('currentPage.questions').replace(this.get('currentPage.questions').indexOf(question), 1);
+      this.get('currentPage.questions').replace(pos, 0, [question]);
     },
 
 
@@ -141,8 +146,8 @@
     },
 
     moveAnswer: function(answer, pos) {
-      this.get('currentQuestion.answers').splice(this.get('currentQuestion.answers').indexOf(answer), 1);
-      this.get('currentQuestion.answers').splice(pos, 0, answer);
+      this.get('currentQuestion.answers').replace(this.get('currentQuestion.answers').indexOf(answer), 1);
+      this.get('currentQuestion.answers').replace(pos, 0, [answer]);
     },
 
 
