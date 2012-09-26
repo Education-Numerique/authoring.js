@@ -333,36 +333,31 @@
           },
           didInsertElement: function() {
             var view = this;
-            view.get('_parentView').$('.container-fix-sortify').each(function() {
-
-              $(this).find('table tbody').sortable({
-                placeholder: 'ui-sortable-placeholder',
-                handle: 'td:first-of-type',
-                delay: 150,
-                items: 'tr:not(.empty)',
-                helper: function(e, tr)
-                {
-                  var $originals = tr.children();
-                  var $helper = tr.clone();
-                  $helper.children().each(function(index)
-                      {
-                        // Set helper cell sizes to match the original sizes
-                        $(this).width($originals.eq(index).width());
-                      });
-                  return $helper;
-                },
-                axis: 'y',
-                start: function(event, ui) {
-                  ui.placeholder.html('<td /><td /><td /><td /><td /><td />');
-                  ui.item.previousIndex = ui.item.index();
-                },
-                stop: function(event, ui) {
-                  view.moveItem(ui.item.previousIndex, ui.item.index());
-                },
-                scroll: true,
-                containment: $(this)
-              }).disableSelection();
-            });
+            view.get('_parentView').$('table tbody').sortable({
+              placeholder: 'ui-sortable-placeholder',
+              handle: 'td:first-of-type',
+              delay: 150,
+              items: 'tr:not(.empty)',
+              helper: function(e, tr)
+              {
+                var $originals = tr.children();
+                var $helper = tr.clone();
+                $helper.children().each(function(index)
+                    {
+                      // Set helper cell sizes to match the original sizes
+                      $(this).width($originals.eq(index).width());
+                    });
+                return $helper;
+              },
+              axis: 'y',
+              start: function(event, ui) {
+                ui.placeholder.html('<td /><td /><td /><td /><td /><td />');
+                ui.item.previousIndex = ui.item.index();
+              },
+              stop: function(event, ui) {
+                view.moveItem(ui.item.previousIndex, ui.item.index());
+              }
+            }).disableSelection();
           },
 
           emptyView: Ember.View.extend({
