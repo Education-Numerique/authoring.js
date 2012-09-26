@@ -36,12 +36,13 @@
   // jsBoot.loader.use('libs/css/bootstrap.css');
   // jsBoot.loader.use('libs/css/bootstrap-responsive.css');
 
-  jsBoot.loader.use('burnscars');
+  // jsBoot.loader.use('burnscars');
+  jsBoot.loader.use(jsBoot.loader.SHIMS);
   jsBoot.loader.wait();
   // XXX compact every other needed script
   jsBoot.loader.use(jsBoot.loader.MINGUS);
   // jsBoot.loader.use('stacktrace', trunk ? 'trunk' : '0.4');
-  // jsBoot.loader.use(jsBoot.loader.CORE);
+  jsBoot.loader.use(jsBoot.loader.CORE);
   // jsBoot.loader.use(jsBoot.loader.SERVICE);
   // UI obviously depends on a stack of shite
   // jsBoot.loader.use(jsBoot.loader.UI);
@@ -56,7 +57,7 @@
     // jsBoot.loader.use('ember', trunk ? 'trunk' : '1.0.pre', debug ? 'debug' : 'prod');
 
   // Fullscreen shim-like
-  jsBoot.loader.use('bigscreen', trunk ? 'trunk' : 'stable');
+  // jsBoot.loader.use('bigscreen', trunk ? 'trunk' : 'stable');
 
   // Redactor rich text editing
   // jsBoot.loader.use('redactor', 'stable');
@@ -66,16 +67,16 @@
   jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'stable');// , '.js$');
 
   // Growl like notifications
-  jsBoot.loader.use('gritter', trunk ? 'trunk' : 'stable');
+  // jsBoot.loader.use('gritter', trunk ? 'trunk' : 'stable');
 
   // Multiple select stuff
-  jsBoot.loader.use('chosen', trunk ? 'trunk' : 'stable');
+  // jsBoot.loader.use('chosen', trunk ? 'trunk' : 'stable');
 
   // Redactor rich text editing
   // jsBoot.loader.use('validate', trunk ? 'trunk' : '1.10');
 
   // Custom forms
-  jsBoot.loader.use('uniform', trunk ? 'trunk' : '1.5');
+  // jsBoot.loader.use('uniform', trunk ? 'trunk' : '1.5');
 
   // Data tables - no style from them though
   // jsBoot.loader.use('datatable', trunk ? 'trunk' : '1.9', 'js$');
@@ -85,11 +86,11 @@
   jsBoot.loader.wait(function() {
     if (debug) {
       jsBoot.debug.tick('Base stack loaded - continuing with the app itself');
-      $.gritter.add({
+/*      $.gritter.add({
         title: 'Activity starting',
         text: 'Keep on truckin!',
         sticky: false
-      });
+      });*/
 
       // jsBoot.debug.cssPoller.start();
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
@@ -103,6 +104,13 @@
   });
 
   jsBoot.loader.use('activity.js');
+
+  jsBoot.loader.use('../../libs/css/unicorn.main.css');
+
+  jsBoot.loader.use('activity.css');
+
+  // jsBoot.loader.use('../../libs/css/unicorn.grey.css');
+  // jsBoot.loader.use('../../libs/js/unicorn.js');
 
   // Wizard depend on this crap, and possibly flot as well
   // jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix);
@@ -123,6 +131,27 @@
     $('html').removeClass('no-js');
     if (typeof chrome == 'undefined')
       $('html').addClass('unsupported-browser');
+
+
+    // Activity may be passed as a json url, or embedded as a datauri?
+    console.warn("Ok?");
+    try{
+    var a = new LxxlLib.activity();
+    a.setupViewport($('#lxxlroot'), true);
+    // a.addStyle('body{background-color: blue;}');
+    /*
+    a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
+    */
+    a.setupTemplate('activity.tpl');
+
+    a.showActivity('activity.json', function() {
+      console.warn('All set baby!');
+    });
+
+    console.warn("Going?");
+    }catch(e){
+  console.error(e);      
+    }
   });
 
 
@@ -177,7 +206,6 @@
   // jsBoot.loader.use('libs/js/jquery.flot.resize.js');
   // jsBoot.loader.use('libs/js/excanvas.js');
   // jsBoot.loader.use('libs/js/jquery.gritter.js');
-  // jsBoot.loader.use('libs/js/unicorn.dashboard.js');
 
 
 

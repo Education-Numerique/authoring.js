@@ -61,7 +61,6 @@
     */
       a.setupTemplate(lxxlVersionedRoot + 'activity.tpl');
 
-      console.warn(this.get('content').get('duration'));
       a.showActivity(this.content, function() {
         console.warn('All set baby!');
       });

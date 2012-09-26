@@ -105,6 +105,20 @@ def build():
   deepcopy(helpers, Yak.BUILD_ROOT);
 
 
+  # ================================
+  # Standalone activity viewer
+  # ================================
+
+  # spitman = PH.getmanifest('spitfire', '0.1', istrunk)
+  # bootman = PH.getmanifest('jsboot', '0.1', istrunk)
+  # actlist = [
+  #   spitman['spitfire-lab'],
+  #   'src/onegateisopening/boot.js',
+  # ]
+  # combine(spitfireList, Yak.BUILD_ROOT + "/there.is.only.jsboot.js", replace=sed)
+
+
+
 
   # ================================
   # Versioned part of the app
@@ -127,8 +141,6 @@ def build():
   js.merge("src/activity/activity.js")
 
   combine(js, VERSIONED_ROOT + "/lxxl.js", replace=sed)
-
-  combine("src/activity/activity.tpl", VERSIONED_ROOT + "/activity.tpl", replace=sed)
 
   # js.merge(FileList("src/app/desktop/", filter = "*routing.js"))
   # js.merge(FileList("src/app/desktop/", filter = "*hotkeys.js"))
@@ -166,3 +178,7 @@ def build():
   list = FileList('src', filter = '*activity*')
   deepcopy(list, VERSIONED_ROOT, replace=sed)
   
+  # combine("src/activity/activity.tpl", VERSIONED_ROOT + "/activity.tpl", replace=sed)
+  # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
+  combine("src/activity/activity.scss", VERSIONED_ROOT + "/activity/activity.css", replace=sed)
+

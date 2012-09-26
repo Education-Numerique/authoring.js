@@ -226,7 +226,4 @@
   <div class="modal-body">
     <p id="modal-preview-body"></p>
   </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  </div>
 </div>

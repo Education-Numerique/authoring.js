@@ -3,6 +3,18 @@ if(!('LxxlLib' in window))
 
 (function(){
 
+  Handlebars.registerHelper('ifequalhelp', function(val1, val2, options) {
+    var context = (options.fn.contexts && options.fn.contexts[0]) || this;
+    // var val1 = Ember.Handlebars.getPath(context, val1, options.fn);
+    // var val2 = Ember.Handlebars.getPath(context, val2, options.fn);
+    if (val1 === val2) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
+  });
+
+
 /*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
     return key == 
     options.defaultValue = '---';
@@ -18,11 +30,15 @@ if(!('LxxlLib' in window))
       // Make page 0 active, if any
       var act = $('.pages-list > li', dom);
       if(act.length)
-        act[0].addClass('active');
+        $(act[0]).addClass('active');
       // Hide pages content
       $('.pages-content > li', dom).each(function(ind, item){
         $(item).hide();
       });
+
+      act = $('.pages-content > li', dom)
+      if(act.length)
+        $(act[0]).fadeIn(1000, function(){console.warn("done");});
 
 
       // Pages navigation

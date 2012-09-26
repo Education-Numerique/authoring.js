@@ -1,0 +1,4 @@
+{"title":
+"Titre par défaut de l'activité","description":"Description par défaut de l'activité","level":{"title":"Terminale S","id":"ts"},"matter":{"title":"Français","id":"fra"},"duration":{"id":"10","title":"10 minutes"},"difficulty":{"id":"easy","title":"Facile"},"category":[],"thumbnail":null,"pages":[{"flavor":"quizz","title":"Page 0","subtitle":"Subtitle 0","advice":"Advice 0","document":"Document 0","coef":null,"limitedTime":null,"sequencing":-1,"questions":[]},
+{"flavor":"quizz","title":"Page 1","subtitle":"Subtitle 1","advice":"Advice 1","document":"Document 1","coef":null,"limitedTime":null,"sequencing":-1,"questions":[]}],
+"styleData":[],"styleUri":[]}

@@ -55,26 +55,26 @@
     <div class="widget-content nopadding">
       <ul class="span3 pages-list" style="width: 20%; height: 100%; min-width: 100px; overflow: hidden;">
         {{#each pages}}
-          {{#ifequal flavor "staticPage"}}
+          {{#ifequalhelp flavor "staticPage"}}
           <li class="page-static">
-          {{/ifequal}}
-          {{#ifequal flavor "quizz"}}
+          {{/ifequalhelp}}
+          {{#ifequalhelp flavor "quizz"}}
           <li class="page-quizz">
-          {{/ifequal}}
-          {{#ifequal flavor "tat"}}
+          {{/ifequalhelp}}
+          {{#ifequalhelp flavor "tat"}}
           <li class="page-tat">
-          {{/ifequal}}
+          {{/ifequalhelp}}
             <a>
               <span class="icon">
-                {{#ifequal flavor "staticPage"}}
+                {{#ifequalhelp flavor "staticPage"}}
                 <span class="icon-file"></span>
-                {{/ifequal}}
-                {{#ifequal flavor "quizz"}}
+                {{/ifequalhelp}}
+                {{#ifequalhelp flavor "quizz"}}
                 <span class="icon-ok"></span>
-                {{/ifequal}}
-                {{#ifequal flavor "tat"}}
+                {{/ifequalhelp}}
+                {{#ifequalhelp flavor "tat"}}
                 <span class="icon-text-width"></span>
-                {{/ifequal}}
+                {{/ifequalhelp}}
               </span>
               <span class="page-title">{{title}}</span>
             </a>
@@ -97,27 +97,34 @@
             <p>{{{document}}}</p>
             {{/if}}
 
-            {{coef}}
-            {{limitedTime}}
-            {{sequencing}}
-
-            {{#each questions}}
-              <p>{{text}}</p>
+            {{#ifequalhelp flavor "quizz"}}
               {{coef}}
-              <ul>
-                {{#each answers}}
-                <li>
-                  {{text}}
-                  {{comment}}
-                  {{isCorrect}}
-                  {{weight}}
-                </li>
-                {{/each}}
-              </ul>
-            {{/each}}
+              {{limitedTime}}
+              {{sequencing}}
+
+              {{#each questions}}
+                <p>{{text}}</p>
+                {{coef}}
+                <ul>
+                  {{#each answers}}
+                  <li>
+                    {{text}}
+                    {{comment}}
+                    {{isCorrect}}
+                    {{weight}}
+                  </li>
+                  {{/each}}
+                </ul>
+              {{/each}}
+            {{/ifequalhelp}}
           </li>
         {{/each}}
       </ul>
+    </div>
+    <div id="navpreview">
+      <a href="#" class="btn btn-large disabled">Page précédente</a>
+      <a href="#" class="btn btn-large disabled">Page suivante</a>
+      <a href="#" class="btn btn-large btn-primary disabled">Finir</a>
     </div>
   </section>
 </article>
