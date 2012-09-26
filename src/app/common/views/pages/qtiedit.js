@@ -20,30 +20,7 @@
   })();
 
   this.QtiEditView = Ember.View.extend(t, {
-    isStaticPage: false,
-    isQuizz: false,
-    isTat: false,
-    flavorLabel: '',
 
-
-    _updateFlavor: function() {
-      var value = this.get('controller.currentPage.flavor');
-
-      this.set('isStaticPage', false);
-      this.set('isQuizz', false);
-      this.set('isTat', false);
-
-      if (value == 'staticPage') {
-        this.set('isStaticPage', true);
-        this.set('flavorLabel', I18n.translate('activities.pageFlavors.staticPage'));
-      } else if (value == 'quizz') {
-        this.set('isQuizz', true);
-        this.set('flavorLabel', I18n.translate('activities.pageFlavors.quizz'));
-      } else if (value == 'tat') {
-        this.set('isTat', true);
-        this.set('flavorLabel', I18n.translate('activities.pageFlavors.tat'));
-      }
-    }.observes('controller.currentPage.flavor'),
 
     InformationTab: Em.View.extend({
       templateName: 'pages/qtiedit/informations',
@@ -265,8 +242,11 @@
             this.set('flavorIcon', 'icon-file');
             this.set('pageType', 'page-static');
           } else if (value == 'quizz') {
-            this.set('flavorIcon', 'icon-ok');
+            this.set('flavorIcon', 'icon-ok-circle');
             this.set('pageType', 'page-quizz');
+          } else if (value == 'quizzMulti') {
+            this.set('flavorIcon', ' icon-check');
+            this.set('pageType', 'page-quizz-multi');
           } else if (value == 'tat') {
             this.set('flavorIcon', 'icon-text-width');
             this.set('pageType', 'page-tat');
@@ -368,6 +348,9 @@
         }),
 
         answersCollectionView: Em.CollectionView.extend({
+
+          selectedAnswer: null,
+
           moveItem: function(fromIndex, toIndex) {
             var items = this.get('content');
             var item = items.objectAt(fromIndex);
@@ -375,6 +358,16 @@
             this.get('controller').set('currentQuestion', this.get('_parentView.content'));
             this.get('controller').moveAnswer(item, toIndex);
           },
+
+          test: function() {
+            this.get('content').forEach(function(item) {
+              if (this.get('selectedAnswer') == item)
+                item.set('isCorrect', true);
+              else
+                item.set('isCorrect', false);
+            }.bind(this));
+          }.observes('selectedAnswer'),
+
           didInsertElement: function() {
             var view = this;
             view.get('_parentView').$('table tbody').sortable({
@@ -454,11 +447,6 @@
     }),
 
     didInsertElement: function() {
-      var self = this;
-
-      this.$('input')[0].blur();
-      this._updateFlavor();
-
       this.get('controller').set('currentPage', this.get('controller.content.pages')[0]);
 
 

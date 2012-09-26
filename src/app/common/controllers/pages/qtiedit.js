@@ -31,6 +31,41 @@
     /**
      * Pages management
      */
+
+    isStaticPage: false,
+    isQuizz: false,
+    isQuizzQcm: false,
+    isQuizzMulti: false,
+    isTat: false,
+    flavorLabel: '',
+
+
+    _updateCurrentFlavor: function() {
+      var value = this.get('currentPage.flavor');
+
+      this.set('isStaticPage', false);
+      this.set('isQuizz', false);
+      this.set('isTat', false);
+      this.set('isQuizzQcm', false);
+      this.set('isQuizzMulti', false);
+
+      if (value == 'staticPage') {
+        this.set('isStaticPage', true);
+      } else if (value == 'quizz') {
+        this.set('isQuizz', true);
+        this.set('isQuizzQcm', true);
+      } else if (value == 'quizzMulti') {
+        this.set('isQuizz', true);
+        this.set('isQuizzMulti', true);
+      } else if (value == 'tat') {
+        this.set('isTat', true);
+      }
+
+      this.set('flavorLabel', I18n.translate('activities.pageFlavors')[value]);
+
+    }.observes('currentPage.flavor'),
+
+
     addPage: function(at) {
       var newPage = new LxxlLib.Model.Page();
       if (!at)
@@ -83,9 +118,9 @@
       window.TEST = this;
       if (arguments.length === 1) {
         // Empty(ed) document gets null
-        if (!this.content.get('pages').length)
+        if (!this.get('content.pages.length'))
           return this.set('_storedCurrentPage', null) && null;
-        return this._storedCurrentPage;
+        return this.get('_storedCurrentPage');
       }
 
       // Setter

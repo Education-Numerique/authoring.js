@@ -2,7 +2,7 @@
 * @template : pages/qtiedit
 */
 <form class="form-horizontal">
-<div class="row-fluid qti" {{bindAttr class="view.isStaticPage view.isQuizz view.isTat"}}>
+<div class="row-fluid qti" {{bindAttr class="isStaticPage isQuizz isTat"}}>
 
     <div class="span10">
         
@@ -15,7 +15,7 @@
                 <h5 class="text-ellipsis unselectable activity-breadcrumb">
                     <span class="normal">Activité</span><span class="sep"></span>
                     {{#if currentPage}}
-                         <span class="normal">{{view.flavorLabel}}</span><span class="sep"></span>{{currentPage.title}} 
+                         <span class="normal">{{flavorLabel}}</span><span class="sep"></span>{{currentPage.title}} 
                     {{else}}
                          Informations
                     {{/if}}
@@ -98,14 +98,14 @@
                                             <h5>Document</h5>
                                         </div>
                                         <div class="widget-content slidify-on nopadding" id="page-document">
-                                            {{#if view.isTat}}
+                                            {{#if isTat}}
                                                 {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
                                             {{else}}
                                                 {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
                                             {{/if}}
                                         </div>
                                     </div>
-                                    {{#if view.isQuizz}}
+                                    {{#if isQuizz}}
                                         <hr class="soften" />
                                         <div class="widget-box questions-toolbar">
                                             <div class="widget-title">
@@ -146,14 +146,25 @@
                                                             <th></th>
                                                         </tr>
                                                     </thead>
-                                                    {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
-                                                        <td><i class="icon-resize-vertical"></td>
-                                                        <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                                                        <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
-                                                        <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                                                        <td></td>
-                                                        <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
-                                                    {{/collection}}
+                                                    {{#if isQuizzMulti}}
+                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                            <td><i class="icon-resize-vertical"></td>
+                                                            <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
+                                                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                                                            <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                            <td></td>
+                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                        {{/collection}}
+                                                    {{else}}
+                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                            <td><i class="icon-resize-vertical"></td>
+                                                            <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer"}}</td>
+                                                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                                                            <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
+                                                            <td></td>
+                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                        {{/collection}}
+                                                    {{/if}}
                                                 </table>
                                             </div>
                                         {{/collection}}

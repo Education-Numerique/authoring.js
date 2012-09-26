@@ -268,6 +268,32 @@
     }.observes('value')
   });
 
+  Ember.RadioButton = Ember.View.extend({
+    title: null,
+    checked: false,
+    name: 'radio_button',
+    disabled: false,
+
+    classNames: ['ember-radio-button'],
+
+    defaultTemplate: Ember.Handlebars.compile('<label><input type="radio" {{ bindAttr disabled="view.disabled" name="view.name" checked="view.checked"}} />{{view.title}}</label>'),
+
+    change: function() {
+      Ember.run.once(this, this._updateElementValue);
+    },
+
+    _updateElementValue: function() {
+      this.set('group', this.get('value'));
+    }
+  });
+
+  LxxlLib.Em.RadioButton = Em.RadioButton.extend({
+
+    didInsertElement: function() {
+      this.$('input').uniform();
+    }
+  });
+
 
   LxxlLib.utils.poll = function(condition, callback, limit) {
     var delay = 1;

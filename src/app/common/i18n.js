@@ -279,6 +279,7 @@
         pageFlavors: {
           staticPage: 'Page simple',
           quizz: 'Page quizz',
+          quizzMulti: 'Page multi selection',
           tat: 'Page texte à trous'
         },
 
