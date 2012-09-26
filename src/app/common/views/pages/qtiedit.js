@@ -197,7 +197,7 @@
       },
       emptyView: Ember.View.extend({
         classNames: ['empty'],
-        template: Ember.Handlebars.compile('<a><span class=\"page-title\">Aucune page</span></a>')
+        template: Ember.Handlebars.compile('<span class=\"page-title\">Aucune page</span>')
       }),
 
       itemViewClass: Em.View.extend({

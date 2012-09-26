@@ -113,17 +113,18 @@
             }
 
             &.empty {
-                a {
-                    .page-title {
-                        width: 100%;
-                        text-align: center;
-                        display: block;
-                    }
+                
+                .page-title {
+                    width: 100%;
+                    text-align: center;
+                    display: block;
+                    max-width:100%;
 
-                    cursor:default!important;
-                    font-style:italic;
                 }
 
+                cursor:default!important;
+                font-style:italic;
+            
                 &:hover {
                     background-color:transparent;
                 }
