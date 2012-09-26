@@ -209,7 +209,9 @@
           },
           stop: function(event, ui) {
             view.moveItem(ui.item.previousIndex, ui.item.index());
-          }
+          },
+          containment: 'parent',
+          tolerance: 'pointer'
         });
       },
       emptyView: Ember.View.extend({
@@ -294,7 +296,9 @@
           },
           stop: function(event, ui) {
             view.moveItem(ui.item.previousIndex, ui.item.index());
-          }
+          },
+          containment: 'parent',
+          tolerance: 'pointer'
         });
       },
 
@@ -373,7 +377,9 @@
               },
               stop: function(event, ui) {
                 view.moveItem(ui.item.previousIndex, ui.item.index());
-              }
+              },
+              containment: 'parent',
+              tolerance: 'pointer'
             }).disableSelection();
           },
 
