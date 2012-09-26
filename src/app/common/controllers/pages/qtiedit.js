@@ -6,13 +6,13 @@
      * To be handled somewhere else...
      */
     thumb: (function(key, value) {
-      if(!this.get('content'))
+      if (!this.get('content'))
         return;
-      if(!this.get('content').get('thumbnail'))
+      if (!this.get('content').get('thumbnail'))
         return;
       var reader = new FileReader();
-      reader.onload = function(event){
-          this.content.set('img', event.target.result);
+      reader.onload = function(event) {
+        this.content.set('img', event.target.result);
       }.bind(this);
       reader.readAsDataURL(this.get('content').get('thumbnail'));//Convert the blob from clipboard to base64
     }).observes('content.thumbnail'),
