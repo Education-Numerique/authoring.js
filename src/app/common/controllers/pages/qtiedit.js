@@ -3,6 +3,32 @@
     categoryFactory: categoryFactory,
 
     /**
+     * To be handled somewhere else...
+     */
+    thumb: (function(key, value) {
+      if(!this.get('content'))
+        return;
+      if(!this.get('content').get('thumbnail'))
+        return;
+      var reader = new FileReader();
+      reader.onload = function(event){
+          this.content.set('img', event.target.result);
+      }.bind(this);
+      reader.readAsDataURL(this.get('content').get('thumbnail'));//Convert the blob from clipboard to base64
+    }).observes('content.thumbnail'),
+
+    // isSimple: (function(key, value) {
+    //   if(!this.get('content'))
+    //     return;
+    //   if(!this.get('content').get('flavor'))
+    //     return;
+    //   this.content.set('isSimple', this.get('flavor').title == I18n.translate('activities.pageFlavors').staticPage);
+    //   this.content.set('isQuizz', this.get('flavor').title == I18n.translate('activities.pageFlavors').quizz);
+    //   this.content.set('isTat', this.get('flavor').title == I18n.translate('activities.pageFlavors').tat);
+    // }).observes('content.flavor'),
+
+
+    /**
      * Pages management
      */
     addPage: function(at) {
@@ -34,6 +60,8 @@
     a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
     */
       a.setupTemplate(lxxlVersionedRoot + 'activity.tpl');
+
+      console.warn(this.get('content').get('duration'));
       a.showActivity(this.content, function() {
         console.warn('All set baby!');
       });

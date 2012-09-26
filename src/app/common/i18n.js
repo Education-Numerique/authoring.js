@@ -283,12 +283,12 @@
         },
 
         defaultValues: {
-          // title: '',
+          title: 'Titre par défaut de l\'activité',
           // level: '',
           // matter: '',
           // category: '',
           description: 'Description par défaut de l\'activité',
-          duration: 60,
+          duration: 10,
           difficulty: 'easy',
 
           page: {

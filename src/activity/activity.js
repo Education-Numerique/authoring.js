@@ -2,8 +2,52 @@ if(!('LxxlLib' in window))
   window.LxxlLib = {};
 
 (function(){
+
+/*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
+    return key == 
+    options.defaultValue = '---';
+    var ret = I18n.translate(key, options);
+    return (ret != '---') && ret || null;
+  });*/
+
+
   // Explicit API
   this.LxxlLib.activity = function(){
+
+    var behaviors = function(dom){
+      // Make page 0 active, if any
+      var act = $('.pages-list > li', dom);
+      if(act.length)
+        act[0].addClass('active');
+      // Hide pages content
+      $('.pages-content > li', dom).each(function(ind, item){
+        $(item).hide();
+      });
+
+
+      // Pages navigation
+      $('.pages-list > li', dom).on('click', function(event){
+        var idx;
+        $('.pages-list > li', dom).each(function(ind, item){
+          if(item == this){
+            $(item).addClass('active');
+            idx = ind;
+          }else{
+            $(item).removeClass('active');
+          }
+        }.bind(this));
+
+        $('.pages-content > li', dom).each(function(ind, item){
+          if(ind != idx)
+            $(item).hide();
+          else
+            $(item).fadeIn(1000, function(){console.warn("done");});
+            // $(item).show();
+        });
+        event.preventDefault();
+        return false;
+      });
+    };
 
     var parse = function(payload, flavor){
       switch(flavor){
@@ -12,10 +56,7 @@ if(!('LxxlLib' in window))
         break;
         case 'text/html':
           // return (new DOMParser()).parseFromString(payload, 'text/xml');
-          console.warn("OK");
-          var toto = Handlebars.compile(payload);
-          console.warn("Has compiled", toto);
-          return toto;
+          return Handlebars.compile(payload);
         break;
         default:
         break;
@@ -103,6 +144,8 @@ if(!('LxxlLib' in window))
           ifr.html(res);
         else
           ifr.innerHTML = res;
+        behaviors(ifr);
+
         loadingComplete();
       }
     };
