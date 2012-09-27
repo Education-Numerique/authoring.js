@@ -133,15 +133,18 @@
       if (arguments.length === 1) {
         return !!this.get('currentPage.limitedTime');
       }
-
       this.get('currentPage').set('limitedTime', value ? 60 : 0);
+
       return !!this.get('currentPage.limitedTime');
 
-    }).property('currentPage.limitedTime'),
+    }).property('currentPage', 'currentPage.limitedTime'),
 
 
     limitedTimeUpdated: function() {
       if (!this.get('currentPage'))
+        return;
+
+      if (!this.get('hours.selected') || !this.get('minutes.selected') || !this.get('seconds.selected'))
         return;
 
       var time = this.get('hours.selected.id') * 60 * 60;
@@ -341,6 +344,7 @@
 
     hours: Em.Object.create({
       content: [],
+      selected: null,
       init: function() {
         for (var i = 0; i <= 24; i++) {
           this.get('content').pushObject({
@@ -348,10 +352,15 @@
             'title' : i + (i > 1 ? ' heures' : ' heure')
           });
         }
+        this.set('selected', this.get('content')[0]);
+        console.log('====>', this.get('selected'));
+
       }
     }),
     minutes: Em.Object.create({
       content: [],
+      selected: null,
+
       init: function() {
         for (var i = 0; i <= 60; i++) {
           this.get('content').pushObject({
@@ -359,10 +368,14 @@
             'title' : i + (i > 1 ? ' minutes' : ' minute')
           });
         }
+        this.set('selected', this.get('content')[0]);
+
       }
     }),
     seconds: Em.Object.create({
       content: [],
+      selected: null,
+
       init: function() {
         for (var i = 0; i <= 60; i++) {
           this.get('content').pushObject({
@@ -370,6 +383,8 @@
             'title' : i + (i > 1 ? ' secondes' : ' seconde')
           });
         }
+        this.set('selected', this.get('content')[0]);
+
       }
     })
 

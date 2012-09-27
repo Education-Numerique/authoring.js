@@ -28,7 +28,7 @@
     }.observes('content.@each'),
 
     selectionUpdated: function() {
-      this.$().val(this.get('selection.id'));
+      this.$().val(this.get('selection.id') || 0);
       this.$().trigger('liszt:updated');
     }.observes('selection')
   });

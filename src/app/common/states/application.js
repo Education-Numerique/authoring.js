@@ -435,7 +435,7 @@ LxxlLib.Model.Qti:
 
             //tmp.questions.pushObject(tmpQ);
           }
-          this.pages.pushObject(tmp);
+          //this.pages.pushObject(tmp);
         }
       }).apply(t);
       return t;
