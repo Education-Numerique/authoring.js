@@ -14,7 +14,7 @@
     },
 
     checkedUpdate: function() {
-      $.uniform.update('#'+ this.get('elementId'));
+      $.uniform.update('#' + this.get('elementId'));
     }.observes('checked')
   });
 
@@ -280,7 +280,9 @@
 
     classNames: ['ember-radio-button'],
 
-    defaultTemplate: Ember.Handlebars.compile('<label><input type="radio" {{ bindAttr disabled="view.disabled" name="view.name" checked="view.checked"}} />{{view.title}}</label>'),
+    defaultTemplate: Ember.Handlebars.compile('<label><input type="radio" {{ ' +
+        'bindAttr disabled="view.disabled" name="view.name" checked="view.checked"}} />' +
+        '{{view.title}}</label>'),
 
     change: function() {
       Ember.run.once(this, this._updateElementValue);
