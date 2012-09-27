@@ -123,8 +123,6 @@
         if (this.$('.checker').has($(e.target)).length) {
           return true;
         }
-
-        console.log('====> go model');
       }
     }),
 

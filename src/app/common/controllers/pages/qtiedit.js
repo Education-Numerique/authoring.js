@@ -139,6 +139,28 @@
 
     }).property('currentPage.limitedTime'),
 
+
+    limitedTimeUpdated: function() {
+      if (!this.get('currentPage'))
+        return;
+
+      var time = this.get('hours.selected.id') * 60 * 60;
+      time += this.get('minutes.selected.id') * 60;
+      time += this.get('seconds.selected.id');
+      this.set('currentPage.limitedTime', time);
+    }.observes('currentPage', 'hours.selected', 'minutes.selected', 'seconds.selected'),
+
+    setSelectedLimitedTime: function() {
+      var date = new Date(null);
+      date.setSeconds(this.get('currentPage.limitedTime'));
+      var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
+        return parseInt(i);
+      });
+      this.set('hours.selected', this.get('hours.content')[time[0]]);
+      this.set('minutes.selected', this.get('minutes.content')[time[1]]);
+      this.set('seconds.selected', this.get('seconds.content')[time[2]]);
+    }.observes('currentPage.limitedTime'),
+
     pageActivatedSequencing: (function(key, value) {
       if (arguments.length === 1) {
         return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
@@ -312,6 +334,40 @@
           this.get('content').pushObject({
             'id' : key,
             'title' : values[key]
+          });
+        }
+      }
+    }),
+
+    hours: Em.Object.create({
+      content: [],
+      init: function() {
+        for (var i = 0; i <= 24; i++) {
+          this.get('content').pushObject({
+            'id' : i,
+            'title' : i + (i > 1 ? ' heures' : ' heure')
+          });
+        }
+      }
+    }),
+    minutes: Em.Object.create({
+      content: [],
+      init: function() {
+        for (var i = 0; i <= 60; i++) {
+          this.get('content').pushObject({
+            'id' : i,
+            'title' : i + (i > 1 ? ' minutes' : ' minute')
+          });
+        }
+      }
+    }),
+    seconds: Em.Object.create({
+      content: [],
+      init: function() {
+        for (var i = 0; i <= 60; i++) {
+          this.get('content').pushObject({
+            'id' : i,
+            'title' : i + (i > 1 ? ' secondes' : ' seconde')
           });
         }
       }

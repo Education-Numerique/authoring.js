@@ -75,7 +75,7 @@
 
                                                     limitedTime : 0 infini
                                                 //-->
-                                                {{#view view.TimeButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}<span class="name btn">Temps limité</span>{{/view}}
+                                                {{#view view.TimeButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}<span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité</span>{{/view}}
                                                 <!--
                                                     displayAll (bool) All together / one by one
                                                     sequencing || Random : All | number
@@ -258,6 +258,21 @@
     <div class="modal-footer">
         <a class="btn" data-dismiss="modal">Annuler</a>
         {{#view view.AddPageButton classNames="btn btn-primary" tagName="a"}}Créer{{/view}}
+    </div>
+</div>
+
+<div class="modal hide" id="modal-page-timer">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Gérer le temps limité</h3>
+    </div>
+    <div class="modal-body" style="height:200px">
+        {{view LxxlLib.Em.Select contentBinding="hours.content" selectionBinding="hours.selected" optionLabelPath="content.title" optionValuePath="content.id"}}
+        {{view LxxlLib.Em.Select contentBinding="minutes.content" selectionBinding="minutes.selected" optionLabelPath="content.title" optionValuePath="content.id"}}
+        {{view LxxlLib.Em.Select contentBinding="seconds.content" selectionBinding="seconds.selected" optionLabelPath="content.title" optionValuePath="content.id"}}
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary" data-dismiss="modal">Ok</a>
     </div>
 </div>
 

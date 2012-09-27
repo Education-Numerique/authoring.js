@@ -25,7 +25,12 @@
 
     contentUpdated: function() {
       this.$().trigger('liszt:updated');
-    }.observes('content.@each')
+    }.observes('content.@each'),
+
+    selectionUpdated: function() {
+      this.$().val(this.get('selection.id'));
+      this.$().trigger('liszt:updated');
+    }.observes('selection')
   });
 
   Ember.GroupedSelect = Ember.Select.extend({
