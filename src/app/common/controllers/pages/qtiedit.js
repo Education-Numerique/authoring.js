@@ -129,6 +129,26 @@
     }).property('content', 'content.pages.length'),
 
 
+    pageActivatedLimitedTime: (function(key, value) {
+      if (arguments.length === 1) {
+        return !!this.get('currentPage.limitedTime');
+      }
+
+      this.get('currentPage').set('limitedTime', value ? 60 : 0);
+      return !!this.get('currentPage.limitedTime');
+
+    }).property('currentPage.limitedTime'),
+
+    pageActivatedSequencing: (function(key, value) {
+      if (arguments.length === 1) {
+        return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
+      }
+
+      this.get('currentPage').set('sequencing', value ? 0 : -1);
+      return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
+
+    }).property('currentPage.sequencing'),
+
     _storedCurrentQuestion: null,
 
     currentQuestion: (function(key, value) {

@@ -330,6 +330,22 @@
             button {
                 width:100%;
                 margin-bottom:10px;
+
+                &.multicontrol {
+                    @include shadow(0,0,0,#FFF);
+                    border:0px;
+                }
+                .checker {
+                    border-right: 1px solid #CCC;
+                    padding:5px;
+                    @include rounded-left(4px);
+                }
+
+                > .name {
+                    padding: 5px 0 6px 0;
+                    display:block;
+                    @include rounded-right(4px);
+                }
             }
         }
     }
@@ -479,6 +495,13 @@
 
                 td {
                     padding:5px 8px;
+
+                    .ember-radio-button {
+                        margin-top:2px;
+                        .radio, label {
+                            margin:0;
+                        }
+                    }
                 }
             }
         }

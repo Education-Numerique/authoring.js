@@ -116,6 +116,30 @@
       }
     }),
 
+    TimeButton: Em.View.extend({
+      tagName: 'button',
+
+      click: function(e) {
+        if (this.$('.checker').has($(e.target)).length) {
+          return true;
+        }
+
+        console.log('====> go model');
+      }
+    }),
+
+    SequenceButton: Em.View.extend({
+      tagName: 'button',
+
+      click: function(e) {
+        if (this.$('.checker').has($(e.target)).length) {
+          return true;
+        }
+
+        console.log('====> go model');
+      }
+    }),
+
     InformationButton: Em.View.extend({
       tagName: 'button',
       click: function(e) {

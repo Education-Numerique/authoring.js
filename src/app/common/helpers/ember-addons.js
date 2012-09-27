@@ -10,8 +10,12 @@
   LxxlLib.Em.Checkbox = Em.Checkbox.extend({
 
     didInsertElement: function() {
-      this.$().uniform();
-    }
+      this.$().uniform({'checkboxClass' : this.$().attr('class') + ' checker'});
+    },
+
+    checkedUpdate: function() {
+      $.uniform.update('#'+ this.get('elementId'));
+    }.observes('checked')
   });
 
   LxxlLib.Em.Select = Em.Select.extend({
@@ -210,7 +214,7 @@
             return true;
           }.bind(this));
 
-          $(document).on('click.tat-click-handler', '[data-type=tat]', function(s)
+          $('[data-type=tat]', this.$editor).on('click.tat-click-handler', function(s)
               {
                 this.showTat(s);
               }.bind(this));

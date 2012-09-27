@@ -75,13 +75,13 @@
 
                                                     limitedTime : 0 infini
                                                 //-->
-                                                <button class="btn">Temps limité</button>
+                                                {{#view view.TimeButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}<span class="name btn">Temps limité</span>{{/view}}
                                                 <!--
                                                     displayAll (bool) All together / one by one
                                                     sequencing || Random : All | number
                                                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                                                 //-->
-                                                <button class="btn">Séquenceur</button>
+                                                {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span class="name btn">Séquenceur</span>{{/view}}
                                                 <!-- <button class="btn">Coefficient</button> -->
                                             </div>
                                             <div class="input-prepend">
