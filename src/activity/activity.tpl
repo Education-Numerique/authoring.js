@@ -61,6 +61,9 @@
           {{#ifequalhelp flavor "quizz"}}
           <li class="page-quizz">
           {{/ifequalhelp}}
+          {{#ifequalhelp flavor "quizzMulti"}}
+          <li class="page-tat">
+          {{/ifequalhelp}}
           {{#ifequalhelp flavor "tat"}}
           <li class="page-tat">
           {{/ifequalhelp}}
@@ -70,6 +73,9 @@
                 <span class="icon-file"></span>
                 {{/ifequalhelp}}
                 {{#ifequalhelp flavor "quizz"}}
+                <span class="icon-ok-circle"></span>
+                {{/ifequalhelp}}
+                {{#ifequalhelp flavor "quizzMulti"}}
                 <span class="icon-ok"></span>
                 {{/ifequalhelp}}
                 {{#ifequalhelp flavor "tat"}}
@@ -95,37 +101,84 @@
 
             {{#if document}}
             <p>{{{document}}}</p>
+<!--
+            {{#ifequalhelp flavor "tat"}}
+              <a href="#" class="btn btn-large disabled">Vérifier mes réponses</a>
+            {{/ifequalhelp}}
+-->
             {{/if}}
 
             {{#ifequalhelp flavor "quizz"}}
-              {{coef}}
-              {{limitedTime}}
-              {{sequencing}}
+              <h4 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h4>
+            {{/ifequalhelp}}
+            {{#ifequalhelp flavor "quizzMulti"}}
+              <h4 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h4>
+            {{/ifequalhelp}}
+            {{#ifequalhelp flavor "tat"}}
+              <h4 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h4>
+            {{/ifequalhelp}}
 
+<!--              {{coef}} -->
+<!--              {{sequencing}} -->
+
+            {{#ifequalhelp flavor "quizz"}}
               {{#each questions}}
                 <p>{{text}}</p>
-                {{coef}}
+<!--              {{coef}} -->
                 <ul>
                   {{#each answers}}
                   <li>
-                    {{text}}
-                    {{comment}}
-                    {{isCorrect}}
-                    {{weight}}
+                    <input type="radio" />
+                    {{text}} <quote>{{comment}}</quote>
+<!--                    {{isCorrect}}
+                    {{weight}} -->
                   </li>
                   {{/each}}
                 </ul>
               {{/each}}
             {{/ifequalhelp}}
+
+            {{#ifequalhelp flavor "quizzMulti"}}
+              {{#each questions}}
+                <p>{{text}}</p>
+<!--              {{coef}} -->
+                <ul>
+                  {{#each answers}}
+                  <li>
+                    <input type="checkbox" />
+                    {{text}} <quote>{{comment}}</quote>
+<!--                    {{isCorrect}}
+                    {{weight}} -->
+                  </li>
+                  {{/each}}
+                </ul>
+              {{/each}}
+            {{/ifequalhelp}}
+
+
+
           </li>
         {{/each}}
       </ul>
     </div>
-    <div id="navpreview">
-      <a href="#" class="btn btn-large disabled">Page précédente</a>
-      <a href="#" class="btn btn-large disabled">Page suivante</a>
-      <a href="#" class="btn btn-large btn-primary disabled">Finir</a>
-    </div>
   </section>
-</article>
 
+  <div class="modal hide" id="modal-preview-tat" role="dialog" aria-labelledby="modal-preview-tat-label" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" onclick="$(event.target.parentNode.parentNode).modal('hide');" aria-hidden="true">×</button>
+      <h3 id="modal-preview-tat-label">Que doit-il y avoir à la place du trou?</h3>
+    </div>
+    <div class="modal-body">
+      <p id="modal-preview-tat-body"></p>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" onclick="$(event.target.parentNode.parentNode).modal('hide');">Annuler</a>
+      <a class="btn btn-primary" onclick="$(event.target.parentNode.parentNode).modal('hide');">Valider</a>
+    </div>
+  </div>
+  <div id="navpreview">
+    <a class="btn btn-large disabled">Page précédente</a>
+    <a class="btn btn-large disabled">Page suivante</a>
+    <a class="btn btn-large btn-primary disabled">Finir</a>
+  </div>
+</article>

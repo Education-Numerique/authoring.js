@@ -138,6 +138,7 @@ def build():
   # js.merge(FileList("src/app/desktop/controllers", filter = "*.js"))
   # js.merge(FileList("src/app/desktop/views", filter = "*.js"))
 
+  js.merge("src/activity/apiwrapper.js")
   js.merge("src/activity/activity.js")
 
   combine(js, VERSIONED_ROOT + "/lxxl.js", replace=sed)

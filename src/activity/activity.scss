@@ -5,6 +5,25 @@
       margin: 10px;
     }
 
+    .clocker{
+      text-align: right;
+/*      font-size: 30px;*/
+    }
+
+    .hurry{
+      color: orange;
+    }
+
+    .finished{
+      color: red;      
+    }
+
+    [data-type="tat"]{
+      color: grey;
+      background-color: yellow;
+    }
+
+
     .pages-list {
         line-height: 21px;
         list-style: none outside none;

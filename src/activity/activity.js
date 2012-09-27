@@ -3,6 +3,9 @@ if(!('LxxlLib' in window))
 
 (function(){
 
+  /**
+   * Handlebouze
+   */
   Handlebars.registerHelper('ifequalhelp', function(val1, val2, options) {
     var context = (options.fn.contexts && options.fn.contexts[0]) || this;
     // var val1 = Ember.Handlebars.getPath(context, val1, options.fn);
@@ -15,6 +18,115 @@ if(!('LxxlLib' in window))
   });
 
 
+  /**
+   * Scorm stuff - untested
+   */
+  this.LxxlLib.scorm = new (function(){
+    this.INIT = 'Initialize';
+    this.FINISH = 'Finish';
+    this.GET = 'GetValue';
+    this.SET = 'SetValue';
+    this.COMMIT = 'Commit';
+    /*
+    doLMSGetLastError
+    doLMSGetErrorString
+    doLMSGetDiagnostic
+    */  
+
+    this.PASSED = 'passed';
+    this.COMPLETED = 'completed';
+    this.FAILED = 'failed';
+    this.INCOMPLETE = 'incomplete';
+    this.BROWSED = 'browsed';
+    this.NO_ATM = 'not attempted';
+
+    this.TIME_OUT = 'time-out';
+    this.SUSPEND = 'suspend';
+    this.LOGOUT = 'logout';
+    this.BLANK = '';
+
+    var isFunctional = true;
+
+    // Wrap shitny API
+    this.execute = function(statement, data){
+      console.warn(' [scorm/lms] - about to execute', statement, data);
+      if(!isFunctional){
+        console.error(' NO LMS available - just passing by');
+        return;
+      }
+      var ret = window['doLMS' + statement].apply(this, data);
+      console.warn(' [scorm/lms] - returned', ret);
+      if(!ret && (statement == this.INIT)){
+        console.error('LMS initialization fail - disabling scorm entirely');
+        isFunctional = false;
+      }
+      return ret;
+      // var err = doLMSGetLastError();
+      // console.warn(' [scorm/lms] - last err', err, doLMSGetErrorString(err));
+    };
+
+    var startTime = (new Date()).getTime();
+    this.start = function(){
+      this.execute(this.INIT);
+      this.execute(this.SET, ['cmi.core.lesson_status', this.BROWSED]);
+      this.execute(this.SET, ['cmi.core.score.min', 0]);
+      this.execute(this.SET, ['cmi.core.score.max', 100]);
+      this.execute(this.COMMIT);
+    };
+
+    this.end = function(status){
+      switch(status){
+        case this.COMPLETED:
+        case this.INCOMPLETE:
+          this.score(max, score, min, status, tokens);
+          this.execute(this.SET, ['cmi.core.session_time', crapTime((new Date()).getTime() - startTime)]);
+        break;
+      }
+      this.execute(this.COMMIT);
+      this.execute(this.FINISH);
+    };
+
+    this.score = function(max, score, min, status, tokens){
+      this.execute(this.SET, ['cmi.core.score.max', max]);
+      this.execute(this.SET, ['cmi.core.score.raw', score]);
+      this.execute(this.SET, ['cmi.core.score.min', min]);
+      tokens.forEach(function(token, idx){
+        this.execute(this.SET, ['cmi.objectives.' + idx + '.id', 'objective_' + token.id]);
+        this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
+        this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
+        this.execute(this.SET, ['cmi.objectives.' + idx + '.min', token.min]);
+        this.execute(this.SET, ['cmi.objectives.' + idx + '.status', status]);
+
+        this.execute(this.SET, ['cmi.interactions.' + idx + '.id', 'interaction_' + token.id]);
+        this.execute(this.SET, ['cmi.interactions.' + idx + '.weighting', token.weighting]);
+        // Whatever the fuck
+        this.execute(this.SET, ['cmi.interactions.' + idx + '.type', 'performance']);
+        this.execute(this.SET, ['cmi.interactions.' + idx + '.student_response', token.response]);
+      }, this);
+      this.execute(this.COMMIT);
+    };
+
+    // Stolen from hotp - highly buggy, not compliant, and inefficient
+    // XXX rewrite
+    var crapTime = function(seconds){
+      seconds = Math.round(seconds/1000);
+      var S = seconds % 60;
+      Seconds -= S;
+      if (S < 10){
+        S = '0' + S;
+      }
+      var M = (seconds / 60) % 60;
+      if (M < 10){M = '0' + M;}
+      var H = Math.floor(seconds / 3600);
+      if (H < 10){H = '0' + H;}
+      return H + ':' + M + ':' + S;
+    };
+
+  })();
+
+
+
+
 /*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
     return key == 
     options.defaultValue = '---';
@@ -23,22 +135,110 @@ if(!('LxxlLib' in window))
   });*/
 
 
+  var helpers = new (function(){
+    var pad = function(subject, n, pattern) {
+      subject = subject + "";
+      while(subject.length < n){
+        subject = pattern + "" + subject;
+      }
+      return subject;
+    };
+
+    this.chronometer = function(node, seconds, toutCbk){
+      var cur = seconds;
+      $(node).html(pad(Math.round(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
+      var tout;
+
+      var ticker = function(){
+        if(cur < seconds / 2){
+          $(node).addClass('hurry');
+        }
+
+        if(!cur){
+          this.dead = true;
+          $(node).addClass('finished');
+          toutCbk();
+          return;
+        }
+        cur--;
+        $(node).html(pad(Math.round(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
+        tout = window.setTimeout(ticker, 1000);
+      };
+
+      this.start = function(){
+        if(!this.dead)
+          ticker();
+      };
+
+      this.dead = false;
+
+      this.stop = function(){
+        window.clearTimeout(tout);
+      };
+    };
+  })();
+
+
   // Explicit API
   this.LxxlLib.activity = function(){
+    var pageEnter = function(index){
+      console.warn("Entering page ", index);
+      if(act.pages[index].chrono)
+        act.pages[index].chrono.start();
+    };
+
+    var pageExit = function(index){
+      console.warn("Exiting page ", index);
+      if(act.pages[index].chrono && !act.pages[index].chrono.dead)
+        act.pages[index].chrono.stop();
+    };
+
 
     var behaviors = function(dom){
+      // Chronometers binding
+      $('.clocker').each(function(i, item){
+        var s = parseInt($(item).attr('data-chrono'));
+        var id = parseInt($(item).attr('data-binding'));
+        if(s){
+          act.pages[i].chrono = new helpers.chronometer(item, s, function(){
+            console.warn("Timedout like a mangouste on ", id);
+          });
+        }else{
+          $(item).hide();
+        }
+      });
+
+      // Tat thingies
+      $('[data-type="tat"]', dom).each(function(ind, item){
+        console.log("Found some tat", item);
+        item = $(item);
+        var clue = item.attr('data-clue');
+        var alt = item.attr('data-alt').split(',');
+        var answer = item.html();
+        item.html('trou à remplir');
+        item.on('click', function(){
+          console.warn("HAS CLICKYCLICK");
+          $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
+          var stuff = '<h5>' + clue+ '</h5>' +
+            '<input type="text"></input>'
+          $('#modal-preview-tat-body').html(stuff);
+        });
+      });
+
       // Make page 0 active, if any
-      var act = $('.pages-list > li', dom);
-      if(act.length)
-        $(act[0]).addClass('active');
+      var acti = $('.pages-list > li', dom);
+      if(acti.length){
+        $(acti[0]).addClass('active');
+        pageEnter(0);
+      }
       // Hide pages content
       $('.pages-content > li', dom).each(function(ind, item){
         $(item).hide();
       });
 
-      act = $('.pages-content > li', dom)
-      if(act.length)
-        $(act[0]).fadeIn(1000, function(){console.warn("done");});
+      acti = $('.pages-content > li', dom)
+      if(acti.length)
+        $(acti[0]).fadeIn(1000, function(){console.warn("done");});
 
 
       // Pages navigation
@@ -48,8 +248,12 @@ if(!('LxxlLib' in window))
           if(item == this){
             $(item).addClass('active');
             idx = ind;
+            pageEnter(ind);
           }else{
-            $(item).removeClass('active');
+            if($(item).hasClass('active')){
+              pageExit(ind);
+              $(item).removeClass('active');
+            }
           }
         }.bind(this));
 
@@ -63,6 +267,7 @@ if(!('LxxlLib' in window))
         event.preventDefault();
         return false;
       });
+
     };
 
     var parse = function(payload, flavor){
@@ -135,6 +340,7 @@ if(!('LxxlLib' in window))
     var styles = [];
     var completionCallback;
 
+
     var loadingComplete = function(){
       if(completionCallback)
         completionCallback();
@@ -155,16 +361,26 @@ if(!('LxxlLib' in window))
             act.styleData.push({data: item});
           }
         });
+        // Fixing the activity
+        act.pages.forEach(function(item, ind){
+          item.id = ind;
+        });
         var res = tpl(act);
         if('html' in ifr)
           ifr.html(res);
         else
           ifr.innerHTML = res;
         behaviors(ifr);
-
+        // Check if there is a LMS
+        var isThere = LxxlLib.scorm.execute(LxxlLib.scorm.INIT);
+        if(!isThere)
+          console.error("No LMS found - won't use the api at all");
         loadingComplete();
       }
     };
+
+
+
 
     var ifr;
     this.setupViewport = function(node, noframe){
@@ -202,6 +418,11 @@ if(!('LxxlLib' in window))
     this.makeDataUri = function(obj){
       return 'data:application/json;base64,' + encode(obj);
     };
+
+    this.end = function(){
+      LxxlLib.scorm.execute(LxxlLib.scorm.FINISH);
+    };
+
   };
 
 }).apply(this);

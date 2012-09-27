@@ -104,6 +104,7 @@
   });
 
   jsBoot.loader.use('activity.js');
+  jsBoot.loader.use('apiwrapper.js');
 
   jsBoot.loader.use('../../libs/css/unicorn.main.css');
 
@@ -132,10 +133,7 @@
     if (typeof chrome == 'undefined')
       $('html').addClass('unsupported-browser');
 
-
     // Activity may be passed as a json url, or embedded as a datauri?
-    console.warn("Ok?");
-    try{
     var a = new LxxlLib.activity();
     a.setupViewport($('#lxxlroot'), true);
     // a.addStyle('body{background-color: blue;}');
@@ -144,17 +142,20 @@
     */
     a.setupTemplate('activity.tpl');
 
-    a.showActivity('activity.json', function() {
-      console.warn('All set baby!');
-    });
+    a.showActivity('activity.json');
 
-    console.warn("Going?");
-    }catch(e){
-  console.error(e);      
-    }
+    window.onunload = function(){
+      a.end();
+    };
+
   });
 
-
+// pipwerks.SCORM.get()  API.LMSGetValue(parameter)  API.GetValue(parameter)
+// pipwerks.SCORM.set()  API.LMSSetValue(parameter, value) API.SetValue(parameter, value)
+// pipwerks.SCORM.save() API.LMSCommit(“”) API.Commit(“”)
+// pipwerks.SCORM.debug.getCode()  API.LMSGetLastError() API.GetLastError()
+// pipwerks.SCORM.debug.getInfo(errorCode) API.LMSGetErrorString(errorCode)  API.GetErrorString(errorCode)
+// pipwerks.SCORM.debug.getDiagnosticInfo (errorCode)
 
 
   // Form validation
@@ -210,3 +211,7 @@
 
 
 })();
+
+
+
+
