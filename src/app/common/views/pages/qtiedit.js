@@ -119,17 +119,30 @@
     TimeButton: Em.View.extend({
       tagName: 'button',
 
-      click: function(e) {
-        if (this.$('.checker').has($(e.target)).length) {
-          return true;
-        }
+      didInsertElement: function() {
+        var self = this.$('.checker');
+        this.$().on('click', function(e) {
+          if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
+            $('#modal-page-timer').modal('show');
+        }.bind(this));
       }
+
+      // click: function(e) {
+      //   console.log('=====> click');
+      //   e.preventDefault();
+      //   e.stopImmediatePropagation();
+      //   return false;
+      //   if (this.$('.checker').has($(e.target)).length) {
+      //     return true;
+      //   }
+      // }
     }),
 
     SequenceButton: Em.View.extend({
       tagName: 'button',
 
       click: function(e) {
+        console.log('====> click');
         if (this.$('.checker').has($(e.target)).length) {
           return true;
         }

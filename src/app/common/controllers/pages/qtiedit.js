@@ -144,14 +144,13 @@
       if (!this.get('currentPage'))
         return;
 
-      if (!this.get('hours.selected') || !this.get('minutes.selected') || !this.get('seconds.selected'))
+      if (!this.get('minutes.selected') || !this.get('seconds.selected'))
         return;
 
-      var time = this.get('hours.selected.id') * 60 * 60;
-      time += this.get('minutes.selected.id') * 60;
+      var time = this.get('minutes.selected.id') * 60;
       time += this.get('seconds.selected.id');
       this.set('currentPage.limitedTime', time);
-    }.observes('currentPage', 'hours.selected', 'minutes.selected', 'seconds.selected'),
+    }.observes('currentPage', 'minutes.selected', 'seconds.selected'),
 
     setSelectedLimitedTime: function() {
       var date = new Date(null);
@@ -159,7 +158,6 @@
       var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
         return parseInt(i);
       });
-      this.set('hours.selected', this.get('hours.content')[time[0]]);
       this.set('minutes.selected', this.get('minutes.content')[time[1]]);
       this.set('seconds.selected', this.get('seconds.content')[time[2]]);
     }.observes('currentPage.limitedTime'),
@@ -342,30 +340,17 @@
       }
     }),
 
-    hours: Em.Object.create({
-      content: [],
-      selected: null,
-      init: function() {
-        for (var i = 0; i <= 24; i++) {
-          this.get('content').pushObject({
-            'id' : i,
-            'title' : i + (i > 1 ? ' heures' : ' heure')
-          });
-        }
-        this.set('selected', this.get('content')[0]);
-        console.log('====>', this.get('selected'));
-
-      }
-    }),
     minutes: Em.Object.create({
       content: [],
       selected: null,
 
       init: function() {
-        for (var i = 0; i <= 60; i++) {
+
+        var values = [0, 1 , 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90];
+        for (var i = 0; i < values.length; i++) {
           this.get('content').pushObject({
-            'id' : i,
-            'title' : i + (i > 1 ? ' minutes' : ' minute')
+            'id' : values[i],
+            'title' : values[i] + (values[i] > 1 ? ' minutes' : ' minute')
           });
         }
         this.set('selected', this.get('content')[0]);
@@ -377,10 +362,11 @@
       selected: null,
 
       init: function() {
-        for (var i = 0; i <= 60; i++) {
+        var values = [0, 10, 20, 30, 45];
+        for (var i = 0; i < values.length; i++) {
           this.get('content').pushObject({
-            'id' : i,
-            'title' : i + (i > 1 ? ' secondes' : ' seconde')
+            'id' : values[i],
+            'title' : values[i] + (values[i] > 1 ? ' secondes' : ' seconde')
           });
         }
         this.set('selected', this.get('content')[0]);

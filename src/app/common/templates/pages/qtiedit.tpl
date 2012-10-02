@@ -267,7 +267,6 @@
         <h3>Gérer le temps limité</h3>
     </div>
     <div class="modal-body" style="height:200px">
-        {{view LxxlLib.Em.Select contentBinding="hours.content" selectionBinding="hours.selected" optionLabelPath="content.title" optionValuePath="content.id"}}
         {{view LxxlLib.Em.Select contentBinding="minutes.content" selectionBinding="minutes.selected" optionLabelPath="content.title" optionValuePath="content.id"}}
         {{view LxxlLib.Em.Select contentBinding="seconds.content" selectionBinding="seconds.selected" optionLabelPath="content.title" optionValuePath="content.id"}}
     </div>
