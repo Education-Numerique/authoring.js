@@ -22,6 +22,13 @@ user-dmp-box-Darwin:
         # Link to webitup
         JSBOOT: 'http://static.loft.sn.ackitup.net:4242/lib/webitup/jsboot.yaml'
 
+user-JB-box-Darwin:
+    ROOT: '${HOME}/tmp-lxxl'
+    DEPLOY_ROOT: '${HOME}/Sites/lxxl'
+    LINKS:
+        # Link to webitup
+        JSBOOT: 'https://static.sn.ackitup.net/lib/webitup/jsboot.yaml'
+
 yak:
     ############ Package basic informations
     # Code name
