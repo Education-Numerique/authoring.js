@@ -1,0 +1,51 @@
+{
+  "name": "Lxxl",
+  "version": "0.2.0-dev",
+
+  "description": "lxxl",
+  "keywords": ["lxxl"],
+  "maintainers": [
+    {
+      "name": "Raildecom",
+      "email": "dev@webitup.fr",
+      "web": "http://www.webitup.fr"
+    }
+  ],
+  "contributors":[
+    {
+      "name": "Mangled Deutz",
+      "email": "dev@webitup.fr",
+      "web": "http://www.webitup.fr"
+    },
+    {
+      "name": "Raildecom",
+      "email": "dev@webitup.fr",
+      "web": "http://www.webitup.fr"
+    }
+  ],
+  "bugs": "https://github.com/Education-Numerique/authoring.js/issues",
+  "licenses": [
+     {
+         "type": "AferoGPL",
+         "url": "http://www.gnu.org/licenses/agpl-3.0.html"
+     }
+  ],
+  "repositories": [
+         {
+              "type": "git",
+              "url": "https://github.com/Education-Numerique/authoring.js.git"
+         }
+  ],
+  "dependencies": {
+    "Spitfire.js": "1.0.x",
+    "Airstrip.js": "1.0.x",
+    "jsBoot.js": "0.2.x",
+    "roxeecore": "0.7.x"
+  },
+
+  "homepage": "http://education-numerique.com/",
+
+  "directories": {
+    "src": "src"
+  }
+}

@@ -111,7 +111,7 @@ if(!('LxxlLib' in window))
     var crapTime = function(seconds){
       seconds = Math.round(seconds/1000);
       var S = seconds % 60;
-      Seconds -= S;
+      seconds -= S;
       if (S < 10){
         S = '0' + S;
       }
@@ -144,9 +144,19 @@ if(!('LxxlLib' in window))
       return subject;
     };
 
+/*
+XXX use this instead of the other crap
+
+var date = new Date(null);
+      date.setSeconds(this.get('currentPage.limitedTime'));
+      var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
+        return parseInt(i);
+      });
+ */
+
     this.chronometer = function(node, seconds, toutCbk){
       var cur = seconds;
-      $(node).html(pad(Math.round(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
+      $(node).html(pad(Math.floor(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
       var tout;
 
       var ticker = function(){
@@ -161,7 +171,7 @@ if(!('LxxlLib' in window))
           return;
         }
         cur--;
-        $(node).html(pad(Math.round(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
+        $(node).html(pad(Math.floor(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
         tout = window.setTimeout(ticker, 1000);
       };
 

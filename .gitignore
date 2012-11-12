@@ -1,2 +1,7 @@
-*.pyc
 .DS_Store
+.pukecache/
+*.sublime-project
+*.sublime-workspace
+*.pyc
+/build/
+/tmp/

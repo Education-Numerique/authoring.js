@@ -1,108 +1,144 @@
 #!/usr/bin/env puke
 # -*- coding: utf8 -*-
 
-
 global PH
-import pukehelpers as PH
+import helpers as PH
+import re
+import json
 
 @task("Default task")
 def default():
-  Cache.clean()
   executeTask("build")
+  # executeTask("tests")
   executeTask("deploy")
 
 @task("All")
 def all():
-  Cache.clean()
   executeTask("lint")
+  executeTask("hint")
   executeTask("build")
+  # executeTask("tests")
   executeTask("mint")
   executeTask("deploy")
+  executeTask("doc")
   executeTask("stats")
 
-@task("Deploy package")
-def deploy():
-  PH.deployer(False)
+
+@task("Wash the taupe!")
+def clean():
+  PH.cleaner()
+
+@task("jsDocking")
+def doc():
+  list = FileList(Yak.build_root)
+  # jsdoc3(list, Yak.doc_root + "/jsdoc3.json")
+  d = FileSystem.abspath(Yak.doc_root)
+  jsdoc3(list, "%s/gristaupe.json" % d)
+  jsdoc3(list, "%s/html" % d, template = "templates/default")
+
 
 @task("Lint")
 def lint():
   PH.linter("src/app")
   PH.linter("src/assets")
-  PH.linter("src/bootstrap")
+  PH.linter("src/miniboot")
+
+  # PH.linter("src/bootstrap")
+  # PH.linter("src/lib/ember")
+  # PH.linter("src/lib/roxee")
+  # PH.linter("src/lib/utils")
+  # PH.linter("src/lib/widgets")
+
+@task("Hint")
+def hint():
+  PH.hinter("src/app")
+  PH.hinter("src/assets")
+  PH.hinter("src/miniboot")
+
+  # PH.hinter("src/miniboot/")
+  # PH.hinter("src/lib/", excluding = "*jquery.ui*,*jquery.effects*")
+  # PH.hinter("src/app/", excluding = "*tests*")
+
+@task("Fhint")
+def fhint():
+  PH.fhinter("src/app")
+  PH.fhinter("src/assets")
+  PH.fhinter("src/miniboot")
 
 @task("Flint")
 def flint():
   PH.flinter("src/app")
   PH.flinter("src/assets")
-  PH.flinter("src/bootstrap")
+  PH.flinter("src/miniboot")
+  # PH.flinter("src/bootstrap")
+  # PH.flinter("src/lib/ember")
+  # PH.flinter("src/lib/roxee")
+  # PH.flinter("src/lib/utils")
+  # PH.flinter("src/lib/widgets")
+
+# @task("Deploy package")
+# def deploy():
+#   # Redirect deploy though
+#   Yak.deploy_root = Yak.deploy_root + '/' + Yak.package['name']
+#   PH.deployer(False)
+
+@task("Deploy package")
+def deploy():
+  PH.deployer(False)
+
 
 @task("Minting")
 def mint():
-  PH.minter(Yak.BUILD_ROOT)
+  PH.minter(Yak.build_root)
 
 @task("Stats report deploy")
 def stats():
-  # PH.stater(Yak.DOC_ROOT)
-  PH.stater(Yak.BUILD_ROOT)
+  PH.stater(Yak.build_root)
+
 
 @task("Building the taupe!")
 def build():
-  istrunk = Yak.VARIANT == 'bleed'
   sed = Sed()
   PH.replacer(sed)
+
+  bootman = PH.getmanifest('jsboot')
+
+  sed.add('{JSBOOT}', bootman['jsbootstrap'].encode('latin-1'))
+  sed.add('{MINIBOOT}', 'miniboot-min.js')
+
+  sed.add('{PUKE_ANALYTICS}', Yak.ACCESS['GA'])
+  sed.add('{PUKE_FBKEY}', Yak.ACCESS['FACEBOOK']['KEY'])
+  sed.add('{PUKE_KEY}', Yak.ACCESS['LXXL']['KEY'])
+  sed.add('{PUKE_SECRET}', Yak.ACCESS['LXXL']['SECRET'])
+
+  BOOTSTRAP_BUILD = FileSystem.join(Yak.build_root)
+  VERSIONED_ROOT = FileSystem.join(Yak.build_root, Yak.package['version'])
+
+
+  # ================================
+  # Bootstrap
+  # ================================
+  miniboot = FileList("src/miniboot/common/" , filter="*.js")
+  combine(miniboot, BOOTSTRAP_BUILD + '/miniboot.js', replace=sed)
+  combine(miniboot, BOOTSTRAP_BUILD + '/miniboot-min.js', replace=sed)
+
+  copyfile("src/miniboot/miniboot.ico", Yak.build_root + "/miniboot.ico")
+  copyfile("src/miniboot/miniboot.png", Yak.build_root + "/miniboot.png")
+
+
+  combine('src/miniboot/index.html', BOOTSTRAP_BUILD + '/index.html', replace=sed)
+
+
 
   # ================================
   # Modeling as an Ember application
   # ================================
 
   # ================================
-  # Bootstrap
-  # ================================
-  VERSIONED_ROOT = FileSystem.join(Yak.BUILD_ROOT, Yak.PACKAGE['VERSION']);
-
-  # First, merge in bootstraps
-  js = FileList("src/bootstrap/common/" , filter="*.js")
-  # js.merge(FileList("src/bootstrap/desktop/", filter = "*.js"))
-
-  css = FileList("src/bootstrap/common/" , filter="*.css,*.scss")
-  # css.merge(FileList("src/bootstrap/desktop/", filter = "*.css,*.scss"))
-
-  # Now generate min and non min version
-
-  sed.add('{PUKE-BOOT-ROOT}', Yak.PACKAGE['VERSION'])
-
-  copyfile("src/bootstrap/miniboot.ico", Yak.BUILD_ROOT + "/miniboot.ico")
-  copyfile("src/bootstrap/miniboot.png", Yak.BUILD_ROOT + "/miniboot.png")
-
-  bootman = PH.getmanifest('jsboot', '0.1', usemin = True)
-  sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
-
-  sed.add('{MIN}', '-min')
-  combine(js, Yak.BUILD_ROOT + "/miniboot-min.js", replace=sed)
-  combine(css, Yak.BUILD_ROOT + "/miniboot-min.css", replace=sed)
-
-  combine('src/bootstrap/index.html', Yak.BUILD_ROOT + '/index.html', replace=sed)
-
-  bootman = PH.getmanifest('jsboot', '0.1', False)
-  sed.add('{SPIT-JSBOOT}', bootman['jsbootstrap'])
-
-  sed.add('{MIN}', '')
-  combine(js, Yak.BUILD_ROOT + "/miniboot.js", replace=sed)
-  combine(css, Yak.BUILD_ROOT + "/miniboot.css", replace=sed)
-
-  combine('src/bootstrap/index.html', Yak.BUILD_ROOT + '/index-full.html', replace=sed)
-
-
-  # XXX
-  # combine('src/test.jqz', Yak.BUILD_ROOT + '/test.jqz', replace=sed)
-
-
-
-  # ================================
   # Helpers libraries
   # ================================
   helpers = FileList('src', filter = '*libs*')
-  deepcopy(helpers, Yak.BUILD_ROOT);
+  deepcopy(helpers, Yak.build_root);
 
 
   # ================================
