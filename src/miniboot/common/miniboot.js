@@ -51,6 +51,21 @@
     }else {
       jsBoot.core.toggleConsole(false);
     }
+
+    // Init service
+    jsBoot.service.core.initialize({
+      id: 'TEST',
+      secret: 'TEST'
+    }, {
+      host: 'localhost',
+      port: '8081',
+      version: '1.0'
+    }, {
+      id: 'anonymous',
+      login: 'anonymous',
+      password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+    });
+
     $('body').addClass(debugUser);
   }, debug, version);
 

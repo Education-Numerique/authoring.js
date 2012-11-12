@@ -10,7 +10,7 @@ Git clone the repository.
 
 Then install puke in order to build (https://github.com/webitup/puke) - `pip install puke`
 
-Edit the puke-yak.yaml file to fit your mileage if you want.
+Edit the config.yaml file to fit your mileage if you want.
 
 
 How to contribute
@@ -26,7 +26,7 @@ Likely, it won't puke right, because of some syntactic validation failure.
 
 So, fix (some of) the typos: `puke flint`
 
-Then verify things are ok: `puke lint`
+Then verify things are ok: `puke lint; puke hint`
 
 Lint will tell you what's wrong. Fix it, lint again.
 
@@ -38,18 +38,19 @@ Then ask for a pull request.
 Files at the root
 ----------------------
 
-The only file you may edit is the puke-yak.yaml build descriptor, in case you want to customize the build output directory.
+The only file you may edit is the config.yaml build descriptor, in case you want to customize the build output directory.
 
-To do so, create a node with your (unix) username and os name (`uname`), and document DEPLOY_ROOT:
+To do so, create a node with your (unix) username and lowercase os name (`uname`), and document paths/deploy:
 
 ```
-user-YOUR_NAME-box-YOUR_OS:
-    DEPLOY_ROOT: '/some-directory'
+config-YOUR_NAME-YOUR_OS:
+    paths:
+      deploy: '/some-directory'
 ```
 
 Unless you know "puke" well, there is little to no reason why you should hack any other file at the root.
 
-The src/bootstrap folder
+The src/miniboot folder
 ----------------------
 
 Contains the html shell along with very basic style and waiting logo, meant to be visible only:
@@ -61,7 +62,7 @@ You may edit at will any of the following files in that folder, namely:
 
 - index.html - the html shell itself
 - miniboot.ico - the app favicon
-- miniboot.css - the basic styles
+- miniboot.png - the placeholder while the app boots-up
 
 Though, you should NOT edit miniboot.js unless you have very good reasons, nor should you add too much in there.
 These are placeholders files, and should have almost zero intelligence.
