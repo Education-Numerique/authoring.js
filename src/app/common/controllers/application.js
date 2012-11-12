@@ -17,7 +17,7 @@
     this.REVIEWER = 2;
     this.ADMIN = 3;
 
-    var loginSuccess = function(level) {
+    var loginSuccess = (function(level) {
       switch (level) {
         default:
         case this.AUTHOR:
@@ -31,7 +31,7 @@
           break;
       }
 
-    }.bind(this);
+    }.bind(this));
 
     var loginFailure = function() {
       // XXX Show the failure banner on the login view

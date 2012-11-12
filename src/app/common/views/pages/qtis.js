@@ -8,7 +8,7 @@
     }).appendTo('body').fadeIn(200);
   };
 
-  t.data = function() {
+  t.data = (function() {
     if (!this.get('element'))
       return;
     var act = this.get('controller.categories');
@@ -44,11 +44,11 @@
         }
       }
     });
-  }.property('controller.categories', 'element');
+  }.property('controller.categories', 'element'));
 
   t.stupidBinding = 'data';
 
-  t.top = function() {
+  t.top = (function() {
     var a = this.get('controller.authors');
     var d = [];
     for (var i in a)
@@ -58,7 +58,7 @@
     });
     d.splice(10, d.length);
     return d;
-  }.property('controller.authors');
+  }.property('controller.authors'));
 
   t.doOnInsert = function() {
 

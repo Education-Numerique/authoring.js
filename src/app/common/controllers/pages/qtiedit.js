@@ -11,9 +11,9 @@
       if (!this.get('content').get('thumbnail'))
         return;
       var reader = new FileReader();
-      reader.onload = function(event) {
+      reader.onload = (function(event) {
         this.content.set('img', event.target.result);
-      }.bind(this);
+      }.bind(this));
       reader.readAsDataURL(this.get('content').get('thumbnail'));//Convert the blob from clipboard to base64
     }).observes('content.thumbnail'),
 

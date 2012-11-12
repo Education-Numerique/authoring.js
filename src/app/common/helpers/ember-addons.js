@@ -147,7 +147,7 @@
                 $('#redactor_insert_video_area').focus();
               }
           );
-        }
+        };
 
         Object.getPrototypeOf(api.data('redactor')).insertTat = function($el) {
           console.error('???', $el);
@@ -166,11 +166,11 @@
 
           this.observesTat();
           this.modalClose();
-        }
+        };
 
         Object.getPrototypeOf(api.data('redactor')).observesTat = function() {
 
-          var showTatAir = function(e) {
+          var showTatAir = (function(e) {
 
             this.$editor.tatAir.hide();
 
@@ -189,12 +189,12 @@
             this.$editor.tatAir.css({ left: left + 'px', top: (e.clientY + $(document).scrollTop() +
                   14) + 'px' }).show();
             return true;
-          }.bind(this);
+          }.bind(this));
 
 
-          var hideTatAir = function() {
+          var hideTatAir = (function() {
             this.$editor.tatAir.hide();
-          }.bind(this);
+          }.bind(this));
 
           if (!this.$editor.tatAir) {
             this.$editor.tatAir = $('<div class="redactor_air redactor_tat_air" style="">' +
@@ -223,7 +223,7 @@
               {
                 this.showTat(s);
               }.bind(this));
-        }
+        };
       }
 
       if (this.get('activeTat'))
@@ -342,12 +342,12 @@
 
       status = 1;
       poller();
-    }
+    };
 
     this.stop = function() {
       status = 0;
       clearTimeout(ref);
-    }
+    };
 
   });
 

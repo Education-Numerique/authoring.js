@@ -59,7 +59,7 @@
 
           //data.submit();
           self.get('controller.content').set('thumbnail', img);
-        }
+        };
 
         if (self.get('controller.content.thumbnail'))
           _loadImage(self.get('controller.content.thumbnail'));

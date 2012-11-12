@@ -102,7 +102,7 @@
       return false;
     }.bind(this));
 
-    var onfailure = function(error) {
+    var onfailure = (function(error) {
       switch (error) {
         case this.get('controller').ALREADY_USED_NICK:
           $('#creation-error').html(
@@ -130,9 +130,9 @@
           $('#creation-error').fadeTo(1000, 1);
           break;
       }
-    }.bind(this);
+    }.bind(this));
 
-    var onsuccess = function(type) {
+    var onsuccess = (function(type) {
       setProgress(100);
       $('#form-wizard').fadeTo(500, 0, function() {
         $(this).hide();
@@ -154,7 +154,7 @@
       });
 
 
-    }.bind(this);
+    }.bind(this));
 
   };
 
