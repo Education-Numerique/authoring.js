@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
 
   if ('undefined' === typeof LxxlLib) {
     window.LxxlLib = {};

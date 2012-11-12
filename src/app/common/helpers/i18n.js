@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   I18n.defaultLocale = 'fr';
   I18n.locale = 'fr';
 

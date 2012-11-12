@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   this.QtiEditController = Ember.ObjectController.extend({
     categoryFactory: categoryFactory,
 

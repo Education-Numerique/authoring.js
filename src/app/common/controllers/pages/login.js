@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   this.LoginController = Ember.ObjectController.extend({
     tryLogin: function(data, successCbk, failureCbk) {
       successCbk();

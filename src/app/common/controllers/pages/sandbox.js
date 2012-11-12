@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   this.SandboxController = Ember.ObjectController.extend({
     qti: (function() {
       var ret = [

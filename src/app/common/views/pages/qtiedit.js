@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   var t = this.lxxlPageView('qtiedit');
 
 
@@ -38,7 +39,7 @@
           }
 
 
-          loadImage(img, function(img) {
+          window.loadImage(img, function(img) {
             $('.dropzone .preview').empty();
             $('.dropzone .preview').append(img);
 
@@ -147,7 +148,7 @@
           return true;
         }
 
-        console.log('====> go model');
+        // console.log('====> go model');
       }
     }),
 
@@ -207,7 +208,7 @@
     }),
 
     AddPageButton: Em.View.extend({
-      click: function(e) {
+      click: function(/*e*/) {
         this.get('controller').addPage();
         this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected.id'));
         $('#modal-create-page').modal('hide');
@@ -256,7 +257,7 @@
           this.flavorUpdated();
         },
 
-        click: function(e) {
+        click: function(/*e*/) {
           this.get('controller').set('currentPage', this.get('content'));
         },
 
@@ -473,7 +474,7 @@
       }),
       ConfirmButton: Em.View.extend({
         click: function() {
-          objectToDelete = modalHandler.get(this.get('_parentView.modalName'));
+          var objectToDelete = modalHandler.get(this.get('_parentView.modalName'));
           objectToDelete();
           this.get('_parentView').$('>.modal').modal('hide');
           return true;

@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   var t = this.lxxlPageView('register');
 
   t.doOnInsert = function() {
@@ -37,7 +38,7 @@
           username: 'required'
         },
         messages: {
-          username: "Merci de fournir un nom d'utilisateur",
+          username: 'Merci de fournir un nom d\'utilisateur',
           password: 'Vous devez choisir un mot de passe',
           password2: {
             required: 'Merci de répéter le mot de passe choisi',
@@ -45,16 +46,16 @@
           },
           email: {
             required: 'Merci de fournir votre email',
-            email: "Le format d'email correct est nom@domaine.com"
+            email: 'Le format d\'email correct est nom@domaine.com'
           },
           eula: 'Vous devez accepter les conditions générales'
         },
         errorClass: 'help-inline',
         errorElement: 'span',
-        highlight: function(element, errorClass, validClass) {
+        highlight: function(element/*, errorClass, validClass*/) {
           $(element).parents('.control-group').addClass('error');
         },
-        unhighlight: function(element, errorClass, validClass) {
+        unhighlight: function(element/*, errorClass, validClass*/) {
           $(element).parents('.control-group').removeClass('error');
         }
       }

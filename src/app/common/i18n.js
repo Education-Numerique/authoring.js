@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   I18n.translations = {
 
     // This is javascript! - and must be valid
@@ -306,4 +307,4 @@
       }
     }
   };
-}).apply(this);
+})();

@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
 
   this.LxxlApp = {
     rootElement: $('#lxxlroot'),
@@ -11,7 +12,8 @@
       if (jsBoot.debug)
         jsBoot.debug.tick('Ember application inited');
       this._super();
-    }
+    },
+    autoinit: false
   };
 
   var tpls = {};

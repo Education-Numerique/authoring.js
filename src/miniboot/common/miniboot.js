@@ -24,7 +24,7 @@
   // -min suffixing
   var suffix = (!debug && /-min/.test(jsBoot.loader.params('miniboot'))) ? '-min.' : '.';
 
-  var gaTracker = '{PUKE_ANALYTICS}';
+  // var gaTracker = '{PUKE_ANALYTICS}';
 
   // Root of the versioned app
   var bootRoot = window.lxxlVersionedRoot = '{PUKE-PACKAGE-VERSION}/';

@@ -51,9 +51,9 @@ def lint():
 
 @task("Hint")
 def hint():
+  PH.hinter("src/miniboot/")
   PH.hinter("src/app")
   PH.hinter("src/assets")
-  PH.hinter("src/miniboot")
 
   # PH.hinter("src/miniboot/")
   # PH.hinter("src/lib/", excluding = "*jquery.ui*,*jquery.effects*")

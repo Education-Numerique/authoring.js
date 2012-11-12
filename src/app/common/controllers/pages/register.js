@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   this.RegisterController = Ember.ObjectController.extend({
     ALREADY_USED_EMAIL: 'email',
     UNKNOWN: 'crap',

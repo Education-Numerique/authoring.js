@@ -3,6 +3,7 @@
 // });
 
 (function() {
+  'use strict';
   /*
   var mainUser = new (function(){
     // Bla

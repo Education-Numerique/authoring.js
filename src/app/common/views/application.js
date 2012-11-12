@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   this.ApplicationView = Ember.View.extend({
 
     templateName: function() {

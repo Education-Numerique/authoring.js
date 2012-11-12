@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   var t = this.lxxlPageView('dashboard');
 
   t.selectedItem = (function() {

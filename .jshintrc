@@ -48,7 +48,7 @@
   // Maximum depth
   "maxdepth": 4,
   // Maximum number of statements in a block
-  "maxstatements": 20,
+  "maxstatements": 40,
   // Maximum function complexity
   "maxcomplexity": 10,
   // Maximum line length
@@ -61,15 +61,20 @@
   "globals": {
     // External dependencies
     "jsBoot": true,
-    "Roxee": true,
+    "$": true,
+    "Ember": true,
+    "Em": true,
+    "I18n": true,
+    "unicorn": true,
+    "LxxlApp": true,
+    "LxxlLib": true
+    /*,
     "Mingus": true,
     "YT": true,
-    "$": true,
-    "Em": true,
-    "Ember": true,
     "moment": true,
     "History": true,
     "App": true,
     "console" : true
+    */
   }
-
+}

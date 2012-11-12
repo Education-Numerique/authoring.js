@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
   this.unicorn = new (function() {
     // Toggle active state on one menu item
     this.makeMenuItemActive = function(node) {

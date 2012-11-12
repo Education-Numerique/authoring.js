@@ -1,4 +1,5 @@
 (function() {
+  'use strict';
 
   var lxxlRoute = function(name, adds) {
     var rt = {
