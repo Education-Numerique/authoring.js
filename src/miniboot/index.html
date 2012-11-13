@@ -10,9 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="miniboot.ico">
 
-
-  <!-- +++ editable - customize this if you want +++ -->
-
   <!--
   This is a placeholder stylesheet meant to
   provide *default* styles to be displayed while the app boots-up
@@ -55,24 +52,32 @@
       margin-left: -78px;
       display: block;
     }
+
+    html .unsupported-browser{
+      display: none;
+    }
+
+    html:not(.ie6):not(.ie7):not(.ie8).unsupported-browser .unsupported-browser{
+      display: block;
+    }
+
   </style>
 
   <title dir="ltr">Environnement auteur Éducation et Numérique</title>
   <meta name="description" content="Environnement auteur Éducation et Numérique">
   <meta name="author" content="E&amp;N">
-  <!-- --- editable --- -->
-
 
 
   <!--
-   * @license {PUKE-PACKAGE-LICENSE}.
-   * @copyright {PUKE-PACKAGE-COPYRIGHT}
-   * @version {PUKE-PACKAGE-VERSION}
-   * @author {PUKE-PACKAGE-AUTHOR}
-   * @name {PUKE-PACKAGE-NAME}
-   * @homepage {PUKE-PACKAGE-HOME}
-   * @location {PUKE-PACKAGE-GIT-ROOT}/index.html{PUKE-PACKAGE-GIT-REV}
-   * @file .
+ * @file
+ * @summary Bootstrap html nutshell
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/miniboot/index.html{PUKE-GIT-REVISION}
   -->
 
 </head>
@@ -84,13 +89,36 @@
     </p>
   </noscript>
 
+  <!-- oldIES get here -->
+  <!--[if lt IE 9]>
+    <p class="alert alert-error" id="very-outdated-browser">
+    <strong>
+    Votre navigateur est obsolète. Vous devriez <a href="http://browsehappy.com/">vraiment le mettre à jour.</a>, ou <a href="//www.google.com/chromeframe/?redirect=true">installer Google Chrome Frame</a>.
+    </strong>
+    </p>
+  <![endif]-->
+
+  <section style="position: fixed; bottom: 0; text-align: center; z-index: 1000;" class="unsupported-browser row-fluid">
+    <!-- Everything but Chrome and Firefox (and old IEs) will get this -->
+    <p class="alert alert-error">
+      <button class="close" data-dismiss="alert">×</button>
+      <strong>
+      Votre navigateur n'est peut-être pas pris en charge...<br/><a href="http://www.mozilla.org/fr/firefox/new/">Firefox ESR (et supérieur)</a> et <a href="https://www.google.com/intl/fr/chrome/browser/?hl=fr">Google Chrome</a> sont les seuls navigateurs officiellement supportés par cette application.<br/>
+      Les derniers Safari et Opera devraient fonctionner correctement cependant.<br />
+      Pour tout autre navigateur, certaines fonctionnalités peuvent ne pas être opérationnelles, ou le produit pourrait ne pas fonctionner du tout...
+      </strong>
+    </p>
+  </section>
+
+
   <!-- Throbber image displayed while the application boots-up -->
   <p>
     <img src="miniboot.png" />
   </p>
 
+  <!-- jsBoot loader inclusion point -->
   <script type="text/javascript" src="{JSBOOT}"></script>
-  <!-- Your application script bootstraper -->
+  <!-- Application script bootstrapper -->
   <script type="text/javascript" src="{MINIBOOT}"></script>
 </body>
 </html>

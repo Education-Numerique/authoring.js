@@ -1385,7 +1385,8 @@ form {
 	}
 }
 
-@media (min-width: 481px) and (max-width: 767px) {
+/*and (max-width: 767px)*/
+@media (min-width: 481px)  {
 	#header h1 {
 		top: 3px;
 	}
@@ -1437,7 +1438,8 @@ form {
 		margin-left: 43px;
 	}
 }
-@media (max-width: 600px) {
+
+/*@media (max-width: 600px) {*/
 	.widget-title .buttons {
 		float: left;
 	}
@@ -1454,7 +1456,7 @@ form {
 		width: auto;
 	}
 
-}
+/*}*/
 @media (max-width: 767px) {
 	body {
 		padding: 0 !important;
@@ -1468,6 +1470,7 @@ form {
 		display: none;
 	}
 }
+/*
 @media (min-width: 768px) and (max-width: 979px) {
 	[class*="span"], .row-fluid [class*="span"] {
 		display: block;
@@ -1476,6 +1479,7 @@ form {
 		width: auto;
 	}
 }
+*/
 @media (max-width: 979px) {
 	div.dataTables_wrapper .ui-widget-header {
 		height: 68px;

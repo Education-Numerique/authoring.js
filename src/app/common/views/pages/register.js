@@ -138,12 +138,12 @@
       $('#form-wizard').fadeTo(500, 0, function() {
         $(this).hide();
       });
-      $.gritter.add({
+/*      $.gritter.add({
         title: 'Compte créé',
         text: 'Votre compte a bien été créé. Vous recevrez sous peu un mail de validation.',
         // image:  'assets/demo/envelope.png',
         sticky: false
-      });
+      });*/
       if (type == 'regular') {
         $('#success-regular').fadeTo(500, 1);
         return;

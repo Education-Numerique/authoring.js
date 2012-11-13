@@ -521,6 +521,21 @@
 
 }
 
+#page-management {
+    width:100%;
+}
+
+.panel-left {
+    width:100%;
+}
+
+.input-prepend {
+    label {
+        display:none!important;
+    }
+}
+
+/*
 @media (max-width: 979px) {
     #page-management {
         width:100%;
@@ -540,6 +555,8 @@
         }
     }
 }
+*/
+
 
 .dropzone-container {
     float:right;

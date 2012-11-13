@@ -100,7 +100,7 @@
       /*
     a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
     */
-      a.setupTemplate(lxxlVersionedRoot + 'activity/activity.tpl');
+      a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
       a.showActivity(this.content, function() {
         console.warn('All set baby!');

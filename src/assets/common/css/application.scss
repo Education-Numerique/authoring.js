@@ -2,14 +2,6 @@
 
 /* */
 
-html .unsupported-browser{
-  display: none;
-}
-
-html:not(.ie6):not(.ie7):not(.ie8).unsupported-browser .unsupported-browser{
-  display: block;
-}
-
 /* Override logo */
 
 #header h1 {
@@ -86,12 +78,14 @@ body:not(.user-admin) {
   cursor: pointer;
 }
 
+/*
 @media screen and (min-width: 769px) {
   #user-nav > ul {
     width: auto;
     margin: 0;
   }
 }
+*/
 
 @media screen and (min-width: 480px) {
   #sidebar > ul {
