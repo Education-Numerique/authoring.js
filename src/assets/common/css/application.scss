@@ -1,14 +1,16 @@
-/* Use the Unicorn theme */
-
-/* */
+/*
+Contains override for bootstrap / base theme along with global apparence settings
+Work here if you intend to change something globally for the whole app, or define mixins
+*/
 
 /* Override logo */
-
 #header h1 {
-  background: url("images/logo.png") no-repeat scroll 0 0px transparent !important;
+/*  background: url("images/logo.png") no-repeat scroll 0 0px transparent !important;
+  left: 50px !important;*/
+  background: url("images/logo-mini.png") no-repeat scroll 0 0px transparent !important;
+  left: 0px !important;
   height: 60px !important;
   top: 10px !important;
-  left: 50px !important;
 /*  line-height: 600px;
   overflow: hidden;
   position: relative;
