@@ -19,13 +19,15 @@
                 </div>
 
                 <div class="input-prepend">
-                    <label class="add-on" for="form-page-subtitle">Niveau</label>
-                    {{view LxxlLib.Em.Select contentBinding="levels.content" selectionBinding="content.level" optionLabelPath="content.title" optionValuePath="content.id"}}
-                </div>
-                <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Matière</label>
                     {{view LxxlLib.Em.Select contentBinding="matters.content" selectionBinding="content.matter" optionLabelPath="content.title" optionValuePath="content.id"}}
                 </div>
+                
+                <div class="input-prepend">
+                    <label class="add-on" for="form-page-subtitle">Niveau</label>
+                    {{view LxxlLib.Em.Select contentBinding="levels.content" selectionBinding="content.level" optionLabelPath="content.title" optionValuePath="content.id"}}
+                </div>
+                
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Catégories</label>
                     {{view Em.GroupedSelect contentBinding="categoryTree" selectionBinding="content.category" optionLabelPath="content.title" optionValuePath="content.id"}}
