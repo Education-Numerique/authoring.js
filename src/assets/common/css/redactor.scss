@@ -1,0 +1,27 @@
+.redactor_box {
+    .redactor_editor {
+        min-height:120px;
+   }
+
+   .infobox {
+        display: block;
+        width: 100%;
+        background-color: #F1F1F1;
+        text-align:right;
+
+        &.ok {
+            span {
+
+            }
+        }
+
+        &.ko {
+            span {
+                color:red;
+            }
+        }
+        span {
+            margin-right:10px;
+        }
+    }
+}

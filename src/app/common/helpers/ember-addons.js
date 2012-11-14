@@ -92,10 +92,14 @@
     imageUpload: '/file_upload.php',
     autoresize: true,
     activeTat: false,
+    maxLength: null,
+
+    _infoBox: null,
 
     didInsertElement: function() {
 
-      var timer = new LxxlLib.utils.Timer(1000, function() {
+      var timer = new LxxlLib.utils.Timer(500, function() {
+        this.updateCharCount();
         if (!this.$())
           return;
 
@@ -104,6 +108,8 @@
 
         this.set('value', this.$().getCode());
       }.bind(this));
+
+
 
       var api = this.$();
 
@@ -129,6 +135,10 @@
                     '</span>' +
             '</div>'
       });
+      if (this.get('maxLength') && !this.$().parent().find('.infobox').length) {
+        this.$().parent().append('<div class="infobox" />');
+        this.set('_infoBox', this.$().parent().find('.infobox'));
+      }
 
       if (api.data('redactor') && !('showTat' in api)) {
         Object.getPrototypeOf(api.data('redactor')).showTat = function(e) {
@@ -243,6 +253,7 @@
         api.data('redactor').observesTat();
 
       this.updateContent();
+      this.updateCharCount();
 
       this.$().getEditor().focus(function() {
         timer.start();
@@ -256,6 +267,21 @@
       $(document).blur();
 
     },
+
+    updateCharCount: function() {
+      if (this.get('maxLength') > 0) {
+        var len = this.$().getText().trim().length;
+        var cnt = this.get('maxLength') - len;
+
+        if (cnt < 0) {
+          this.get('_infoBox').removeClass('ok').addClass('ko');
+        } else {
+          this.get('_infoBox').removeClass('ko').addClass('ok');
+        }
+        this.get('_infoBox').html('<span>' + cnt + '</span>');
+      }
+    },
+
 
     willDestroyElement: function() {
       if (!this.$() || !this.$().data('redactor'))
