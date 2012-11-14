@@ -551,7 +551,7 @@ Style specific to activity edition
 .dropzone-container {
     float:right;
     width:35%;
-    height:235px;
+    height:200px;
 
     .dropzone {
         background: palegreen;
@@ -571,6 +571,9 @@ Style specific to activity edition
             left:10%;
             overflow:hidden;
 
+            &.default {
+                background:url('images/default.png') center center no-repeat;
+            }
             img, canvas {
                 position:absolute;
                 top:0;

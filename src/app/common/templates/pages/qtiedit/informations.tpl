@@ -9,7 +9,7 @@
                 <i class="icon-wrench"></i>
             </span>
             <h5>Informations de l'activité</h5>
-            
+
         </div>
         <div class="widget-content" id="page-informations">
             <div class="control-group " style="width:60%">
@@ -44,8 +44,7 @@
 
             <div class="dropzone-container">
                 <div class="dropzone">
-                    <div class="preview">
-                        
+                    <div class="preview default">
                     </div>
                 </div>
                 <button class="btn btn-large add-thumbnail">

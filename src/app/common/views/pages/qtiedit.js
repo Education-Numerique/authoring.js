@@ -33,6 +33,7 @@
           if (typeof(img) === 'string') {
             $('.dropzone .preview').empty();
             $('.dropzone .preview').append($('<img src="' + img + '" style="max-width:300px;max-height:300px" />'));
+            $('.dropzone .preview').removeClass('default');
             return;
           }
 
@@ -40,6 +41,7 @@
           window.loadImage(img, function(img) {
             $('.dropzone .preview').empty();
             $('.dropzone .preview').append(img);
+            $('.dropzone .preview').removeClass('default');
 
             var container = $('.dropzone .preview');
             var node = container.find('canvas,img');
