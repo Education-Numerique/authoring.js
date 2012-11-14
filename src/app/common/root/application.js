@@ -7,7 +7,7 @@
  *
  * @license {PUKE-RIGHTS-LICENSE}.
  * @copyright {PUKE-RIGHTS-COPYRIGHT}
- * @name {PUKE-GIT-ROOT}/app/common/root/app.js{PUKE-GIT-REVISION}
+ * @name {PUKE-GIT-ROOT}/app/common/root/application.js{PUKE-GIT-REVISION}
  */
 
 (function() {

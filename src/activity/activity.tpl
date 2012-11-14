@@ -55,7 +55,7 @@
     <div class="widget-content nopadding">
       <ul class="span3 pages-list" style="width: 20%; height: 100%; min-width: 100px; overflow: hidden;">
         {{#each pages}}
-          {{#ifequalhelp flavor "staticPage"}}
+          {{#ifequalhelp flavor "simple"}}
           <li class="page-static">
           {{/ifequalhelp}}
           {{#ifequalhelp flavor "quizz"}}
@@ -69,7 +69,7 @@
           {{/ifequalhelp}}
             <a>
               <span class="icon">
-                {{#ifequalhelp flavor "staticPage"}}
+                {{#ifequalhelp flavor "simple"}}
                 <span class="icon-file"></span>
                 {{/ifequalhelp}}
                 {{#ifequalhelp flavor "quizz"}}
