@@ -262,21 +262,6 @@
           }
         },*/
 
-        lengths: {
-          10: '10 minutes',
-          15: '15 minutes',
-          20: '20 minutes',
-          30: '30 minutes',
-          45: '45 minutes',
-          60: '60 minutes'
-        },
-
-        difficulties: {
-          easy: 'Facile',
-          normal: 'Normal',
-          hard: 'Difficile'
-        },
-
         pageFlavors: {
           staticPage: 'Page simple',
           quizz: 'Page quizz',

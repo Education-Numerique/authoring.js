@@ -1,4 +1,4 @@
-/*global categoryFactory, activityFactory*/
+/*global LxxlLib.factories.metadata, activityFactory*/
 (function() {
   'use strict';
 
@@ -166,11 +166,6 @@
 
 /*
 // Contain keys (can be fed to I18n helper by calling "qti.matters" + key:
-LxxlLib.Model.MATTERS
-LxxlLib.Model.LEVELS
-LxxlLib.Model.LENGTHS
-LxxlLib.Model.DIFFICULTIES
-LxxlLib.Model.FLAVORS
 
 LxxlLib.Model.Answer:
   text: describe the answer (rich text)
@@ -248,8 +243,7 @@ LxxlLib.Model.Qti:
 
 
   LxxlLib.Model = new (function() {
-    this.LENGTHS = Object.keys(I18n.translate('activities.lengths'));
-    this.DIFFICULTIES = Object.keys(I18n.translate('activities.difficulties'));
+    this.LENGTHS = LxxlLib.factories.metadata.lengths;
     this.FLAVORS = Object.keys(I18n.translate('activities.pageFlavors'));
 
     var Answer = function() {
@@ -273,42 +267,6 @@ LxxlLib.Model.Qti:
     this.Answer = function() {
       return Ember.Object.create(new Answer());
     };
-
-
-
-
-
-    var Matter = function(id) {
-      this.id = id;
-      this.title = null;
-    };
-
-    var Level = function(id) {
-      this.id = id;
-      this.title = null;
-    };
-
-    var Category = function(id) {
-      this.id = id;
-      this.title = 'default title';
-      this.matter = null;
-      this.level = null;
-      this.content = [];
-    };
-
-    this.Matter = function(id) {
-      return Ember.Object.create(new Matter(id));
-    };
-
-    this.Level = function(id) {
-      return Ember.Object.create(new Level(id));
-    };
-
-    this.Category = function(id) {
-      return Ember.Object.create(new Category(id));
-    };
-
-
 
 
     var Page = function() {
@@ -402,11 +360,11 @@ LxxlLib.Model.Qti:
       (function() {
         this.title = 'Titre test';
         this.description = 'desc';
-        this.level = categoryFactory.levels.tl;
-        this.matter = categoryFactory.matters.lit;
+        this.level = LxxlLib.factories.metadata.levels.tl;
+        this.matter = LxxlLib.factories.metadata.matters.lit;
         this.duration = 120;
-        this.difficulty = LxxlLib.Model.DIFFICULTIES.easy;
-        this.category = categoryFactory.getTreeFor(this.matter, this.level);
+        this.difficulty = LxxlLib.factories.metadata.difficulties.easy;
+        this.category = LxxlLib.factories.metadata.getTreeFor(this.matter, this.level);
         this.thumbnail = null;
 
 
@@ -453,72 +411,6 @@ LxxlLib.Model.Qti:
   })();
 
 
-  /**
- * XXX crap to be spoofed into the service at some point.
- * Whether the localization ought to reside here or on the service is yet undetermined.
- * ... and whether it's a simple tree or something more complex is undecided.
- */
-  this.categoryFactory = new (function() {
-    var fakeMatters = Object.keys(I18n.translate('activities.matters'));
-    var fakeLevels = Object.keys(I18n.translate('activities.levels'));
-
-    var rootCategory = new LxxlLib.Model.Category();
-    rootCategory.id = 'fake id';
-    rootCategory.title = 'fake title';
-
-    fakeMatters.forEach(function(matter) {
-      fakeLevels.forEach(function(level) {
-        var lcat = new LxxlLib.Model.Category();
-        lcat.matter = new LxxlLib.Model.Matter();
-        lcat.matter.id = matter;
-        lcat.matter.title = I18n.translate('activities.matters.' + matter);
-        lcat.level = new LxxlLib.Model.Level();
-        lcat.level.id = level;
-        lcat.level.title = I18n.translate('activities.levels.' + level);
-        rootCategory.content.push(lcat);
-        var subito = new LxxlLib.Model.Category(Math.random());
-        subito.title = 'Compréhension du pied';
-        subito.content = [new LxxlLib.Model.Category(Math.random()), new LxxlLib.Model.Category(
-            Math.random()), new LxxlLib.Model.Category(Math.random())];
-        lcat.content.push(subito);
-        subito = new LxxlLib.Model.Category(Math.random());
-        subito.title = 'Compréhension de la main';
-        subito.content = [new LxxlLib.Model.Category(Math.random()), new LxxlLib.Model.Category(
-            Math.random()), new LxxlLib.Model.Category(Math.random())];
-        lcat.content.push(subito);
-        subito = new LxxlLib.Model.Category(Math.random());
-        subito.title = 'Compréhension de René Chatonbriand';
-        subito.content = [new LxxlLib.Model.Category(Math.random()), new LxxlLib.Model.Category(
-            Math.random()), new LxxlLib.Model.Category(Math.random())];
-        lcat.content.push(subito);
-      });
-    });
-
-    this.matters = (function() {
-      return fakeMatters.map(function(id) {
-        var matter = new LxxlLib.Model.Matter();
-        matter.id = id;
-        matter.title = I18n.translate('activities.matters.' + id);
-        return matter;
-      });
-    })();
-
-    this.levels = (function() {
-      return fakeLevels.map(function(id) {
-        var matter = new LxxlLib.Model.Level();
-        matter.id = id;
-        matter.title = I18n.translate('activities.levels.' + id);
-        return matter;
-      });
-    })();
-
-    this.getTreeFor = function(matter, level) {
-      return rootCategory.content.filter(function(item) {
-        return (item.level.id == level) && (item.matter.id == matter);
-      }).pop();
-    };
-
-  })();
 }).apply(this, [LxxlLib]);
 
 

@@ -129,6 +129,7 @@
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload-fp' + suffix + 'js');
 
   // Load the app itself, along its stylesheet
+  jsBoot.loader.use(bootRoot + 'lxxl-standalone-library' + suffix + 'js');
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'js');
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'css');
 

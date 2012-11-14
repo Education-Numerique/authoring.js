@@ -42,6 +42,7 @@ def lint():
   PH.linter("src/app")
   PH.linter("src/assets")
   PH.linter("src/miniboot")
+  PH.linter("src/lxxl")
 
   # PH.linter("src/bootstrap")
   # PH.linter("src/lib/ember")
@@ -51,6 +52,7 @@ def lint():
 
 @task("Hint")
 def hint():
+  PH.hinter("src/lxxl")
   PH.hinter("src/miniboot/")
   PH.hinter("src/app")
   PH.hinter("src/assets")
@@ -64,12 +66,14 @@ def fhint():
   PH.fhinter("src/app")
   PH.fhinter("src/assets")
   PH.fhinter("src/miniboot")
+  PH.fhinter("src/lxxl")
 
 @task("Flint")
 def flint():
   PH.flinter("src/app")
   PH.flinter("src/assets")
   PH.flinter("src/miniboot")
+  PH.flinter("src/lxxl")
   # PH.flinter("src/bootstrap")
   # PH.flinter("src/lib/ember")
   # PH.flinter("src/lib/roxee")
@@ -159,6 +163,13 @@ def build():
   # ================================
   # Versioned part of the app
   # ================================
+  lxxl = [
+    'src/lxxl/data.js',
+    'src/lxxl/mutable.js',
+    'src/lxxl/model/model.js',
+    'src/lxxl/factories.js'
+  ]
+  combine(lxxl, VERSIONED_ROOT + "/lxxl-standalone-library.js", replace=sed)
 
   #js application
   js = FileList("src/app/common/helpers", filter = "*.js")

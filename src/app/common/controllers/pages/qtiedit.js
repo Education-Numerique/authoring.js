@@ -1,7 +1,7 @@
 (function() {
   'use strict';
   this.QtiEditController = Ember.ObjectController.extend({
-    categoryFactory: categoryFactory,
+    categoryFactory: LxxlLib.factories.metadata,
 
     /**
      * To be handled somewhere else...
@@ -250,18 +250,18 @@
      * Categories handling
      */
     // matters: (function() {
-    //   return categoryFactory.matters;
-    // }).property('categoryFactory.matters'),
+    //   return LxxlLib.factories.metadata.matters;
+    // }).property('LxxlLib.factories.metadata.matters'),
 
     // levels: (function() {
-    //   return categoryFactory.levels;
-    // }).property('categoryFactory.levels'),
+    //   return LxxlLib.factories.metadata.levels;
+    // }).property('LxxlLib.factories.metadata.levels'),
 
     matters: Ember.Object.create({
       content: [],
       init: function() {
         this._super();
-        this.set('content', categoryFactory.matters);
+        this.set('content', LxxlLib.factories.metadata.matters);
       }
     }),
 
@@ -269,14 +269,14 @@
       content: [],
       init: function() {
         this._super();
-        this.set('content', categoryFactory.levels);
+        this.set('content', LxxlLib.factories.metadata.levels);
       }
     }),
 
     testToto: function() {
       if (!this.get('content.level') || !this.get('content.matter'))
         return;
-      var tree = categoryFactory.getTreeFor(
+      var tree = LxxlLib.factories.metadata.getTreeFor(
           this.get('content.matter.id'), this.get('content.level.id'));
 
       this.set('categoryTree', (tree && tree.content) || []);
@@ -310,36 +310,14 @@
       this.set('categoryTree', res);*/
     }.observes('content', 'content.level', 'content.matter', 'matters.content.length', 'levels.content.length'),
 
-
     categoryTree: [],
 
-
     lengths: Ember.Object.create({
-      content: [],
-      init: function() {
-        this._super();
-        var values = I18n.translate('activities.lengths');
-        for (var key in values) {
-          this.get('content').pushObject({
-            'id' : key,
-            'title' : values[key]
-          });
-        }
-      }
+      content: LxxlLib.factories.metadata.lengths
     }),
 
     difficulties: Ember.Object.create({
-      content: [],
-      init: function() {
-        this._super();
-        var values = I18n.translate('activities.difficulties');
-        for (var key in values) {
-          this.get('content').pushObject({
-            'id' : key,
-            'title' : values[key]
-          });
-        }
-      }
+      content: LxxlLib.factories.metadata.difficulties
     }),
 
     flavors: Ember.Object.create({
