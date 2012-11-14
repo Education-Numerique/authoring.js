@@ -6,11 +6,11 @@ Authoring environment for lxxl.
 How to build
 ----------------------
 
-Git clone the repository.
+Git clone the repository: git clone git@github.com:Education-Numerique/authoring.js.git
 
-Then install puke in order to build (https://github.com/webitup/puke) - `pip install puke`
+Install puke in order to build `pip install puke` (you need python obviously, along with pip, which probably means you need brew under osx - more about puke: https://github.com/webitup/puke)
 
-Edit the config.yaml file to fit your mileage if you want.
+Edit the config.yaml file to fit your mileage if you want (add a custom node, see the file).
 
 
 How to contribute
@@ -22,13 +22,15 @@ Make your changes.
 
 Verify that it pukes right: `puke all`.
 
-Likely, it won't puke right, because of some syntactic validation failure.
+Likely, it won't puke right, because of your code is sloppy.
 
-So, fix (some of) the typos: `puke flint`
+So, fix your typos: `puke flint`
 
-Then verify things are ok: `puke lint; puke hint`
+Then verify things are ok: `puke lint;`
 
-Lint will tell you what's wrong. Fix it, lint again.
+Then run `puke hint` for static audit.
+
+Hint will tell you what's wrong. Fix. Repeat until everything is ok.
 
 Commit and push.
 
@@ -57,6 +59,7 @@ Contains the html shell along with very basic style and waiting logo, meant to b
 
 - while the application boots-up
 - if the user doesn't have javascript enabled
+- if the user have an unsupported browser
 
 You may edit at will any of the following files in that folder, namely:
 
@@ -64,21 +67,21 @@ You may edit at will any of the following files in that folder, namely:
 - miniboot.ico - the app favicon
 - miniboot.png - the placeholder while the app boots-up
 
-Though, you should NOT edit miniboot.js unless you have very good reasons, nor should you add too much in there.
+Though, you should NOT edit miniboot.js unless you have good reasons, nor should you add too much in there.
 These are placeholders files, and should have almost zero intelligence.
 
 The libs folder
 ----------------------
 
-Contains third-party dependencies. There is no reason to change these.
+Contains third-party dependencies. There is no reason to change any of these.
 
-The lxxllib folder
+The lxxl folder
 ----------------------
 
 Contains the *generic* lxxl library: the one that defines the data model and that is used when producing standalone activities, which provides APIs to display and manipulate activities.
 
 Modifying it means you impact consumers.
-You should think twice about it before doing that...
+You should think twice about it before doing that... but this is there the model is defined.
 
 
 The src/assets/common folder
@@ -97,22 +100,24 @@ Remember that the application style is always laoded after any other third-party
 
 Obviously, you may create any additional file you want in the common/css folder - it will be combined inside the app stylesheet.
 
+If you want to quick change something, use zcustomization.css for that.
+
 
 The src/app/common folder
 ----------------------
 
-If you want to edit something that is related to displayed text, you should edit the i18n.js file.
+If you want to edit something that is related to displayed text, you may edit the i18n.js file, or any of the templates.
 
 If you want to edit something related to display, the templates folder is for you.
 
-Anything else in there requires that you understand basics of MVC and Emberjs.
+Anything else in there requires that you understand basics of MVC frameworks, and probably some of Emberjs, Handlebars and jQuery.
 
 - the helpers folder is ad-hoc, and just provide casual glue / helping snippets
 - the root folder just contain the actual application bootstrapping process (pretty much loading the templates and initializing the app)
-- the models folder provide Emberified versions of the LxxlLib objects
+- the models folder provide some Emberified / reprocessed versions of the LxxlLib objects
 - the controllers folder provide abstraction on top of the models to be used in the editing interface
 - the views folder provide... views
-- the states folder define the application routing
+- the states folder define the application routing - this is where you should hook if you want a new url endpoint, or edit an existing one
 
 
 About the "common" folders everywhere
@@ -127,3 +132,4 @@ This project is built on top of jsboot, which itself in turn depends on airstrip
 
 If you REALLY think there is a problem in these, you may report a bug there - otherwise, it's probably just something you can override.
 
+Note that once packaged for release, every such dependency will be bundled inside the project itself.

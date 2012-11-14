@@ -42,7 +42,6 @@
   if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
     jsBoot.loader.use('ie7', '2.1');
 
-
   // Callback for when the first part of the stack is loaded
   var onEmberBoot = function() {
     // Js is working here
@@ -119,7 +118,15 @@
 
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
+  // Mathjax config
+  // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-AMS-MML_HTMLorMML.js');
+
   jsBoot.loader.wait();
+  // Mathjax itself
+  // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-AMS-MML_HTMLorMML.js');
+
+  jsBoot.loader.use('http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML#.js');
+
   jsBoot.loader.use('libs/js/jquery.wizard' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix + 'js');

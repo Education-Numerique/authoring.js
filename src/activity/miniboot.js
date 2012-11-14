@@ -11,7 +11,7 @@
  * @location {PUKE-PACKAGE-GIT-ROOT}/bootstrap/desktop/bootstrap.js{PUKE-PACKAGE-GIT-REV}
  */
 
-// XXX todo - use burnscrars instead of shims
+// XXX todo - use burnscars instead of shims
 (function() {
   'use strict';
   // Allow the use of additional url parameters to trigger specific behavior
