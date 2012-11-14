@@ -32,4 +32,37 @@
     }
   });
 
+
+  Ember.Handlebars.registerHelper('pad', function(property, options) {
+
+    var number = Ember.Handlebars.get(this, property, options);
+    options = options.hash;
+    var width = 2;
+    var character = '0';
+
+    if (!number)
+      number = 0;
+
+    if ('char' in options)
+      character = options.char;
+
+    if ('width' in options)
+      width = options.width;
+
+    return pad(number, width, character);
+
+  });
+
+
+
+  var pad = function(number, width, character) {
+    character = character || '0';
+    width -= number.toString().length;
+    if (width > 0)
+    {
+      return new Array(width + (/\./.test(number) ? 2 : 1)).join(character) + number;
+    }
+    return number;
+  };
+
 }).apply(this);

@@ -68,7 +68,13 @@
 
                                                     limitedTime : 0 infini
                                                 //-->
-                                                {{#view view.TimeButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}<span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité</span>{{/view}}
+                                                {{#view view.TimeButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}
+                                                    <span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité 
+                                                        {{#if pageActivatedLimitedTime}}
+                                                            ({{#bind minutes.selected.id}}{{pad this}}{{/bind}}:{{#bind seconds.selected.id}}{{pad this}}{{/bind}})
+                                                        {{/if}}
+                                                    </span>
+                                                {{/view}}
                                                 <!--
                                                     displayAll (bool) All together / one by one
                                                     sequencing || Random : All | number

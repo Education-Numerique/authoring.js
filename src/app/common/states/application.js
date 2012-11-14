@@ -13,7 +13,7 @@
       }
     };
     if (adds)
-      Object.keys(adds).forEach(function(i){
+      Object.keys(adds).forEach(function(i) {
         rt[i] = adds[i];
       });
     return Ember.Route.extend(rt);
@@ -441,7 +441,7 @@ LxxlLib.Model.Qti:
 
             //tmp.questions.pushObject(tmpQ);
           }
-          //this.pages.pushObject(tmp);
+          this.pages.pushObject(tmp);
         }
       }).apply(t);
       return t;

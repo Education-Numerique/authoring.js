@@ -9,13 +9,13 @@
     thumb: (function(key, value) {
       if (!this.get('content'))
         return;
-      if (!this.get('content').get('thumbnail'))
+      if (!this.get('content.thumbnail'))
         return;
       var reader = new FileReader();
       reader.onload = (function(event) {
         this.content.set('img', event.target.result);
       }.bind(this));
-      reader.readAsDataURL(this.get('content').get('thumbnail'));//Convert the blob from clipboard to base64
+      reader.readAsDataURL(this.get('content.thumbnail'));//Convert the blob from clipboard to base64
     }).observes('content.thumbnail'),
 
     // isSimple: (function(key, value) {
@@ -155,12 +155,27 @@
 
     setSelectedLimitedTime: function() {
       var date = new Date(null);
+
       date.setSeconds(this.get('currentPage.limitedTime'));
       var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
         return parseInt(i);
       });
-      this.set('minutes.selected', this.get('minutes.content')[time[1]]);
-      this.set('seconds.selected', this.get('seconds.content')[time[2]]);
+
+      var selectedMinute = null;
+      this.get('minutes.content').forEach(function(i) {
+        if (i.id == time[1])
+          selectedMinute = i;
+      });
+
+      var selectedSecond = null;
+
+      this.get('seconds.content').forEach(function(i) {
+        if (i.id == time[2])
+          selectedSecond = i;
+      });
+
+      this.set('minutes.selected', selectedMinute);
+      this.set('seconds.selected', selectedSecond);
     }.observes('currentPage.limitedTime'),
 
     pageActivatedSequencing: (function(key, value) {
