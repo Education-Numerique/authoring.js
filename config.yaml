@@ -108,7 +108,7 @@ config-jenkins-linux:
 config-raildecom-darwin:
   root: '${HOME}/workspace/webitup/buildd'
   paths:
-    deploy: '${HOME}/workspace/webitup/deploy/static/lib/lxxl'
+    deploy: '${HOME}/workspace/webitup/deploy/web/static/lib/lxxl'
   # DOC_ROOT: '/var/www/deploy/static/doc/spitfire'
   links:
     airstrip:

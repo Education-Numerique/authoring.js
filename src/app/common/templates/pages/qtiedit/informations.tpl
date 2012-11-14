@@ -9,6 +9,7 @@
                 <i class="icon-wrench"></i>
             </span>
             <h5>Informations de l'activité</h5>
+            
         </div>
         <div class="widget-content" id="page-informations">
             <div class="control-group " style="width:60%">

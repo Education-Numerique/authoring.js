@@ -5,7 +5,7 @@
 <form class="form-horizontal">
 <div class="row-fluid qti" {{bindAttr class="isStaticPage isQuizz isTat"}}>
 
-    <div class="span10">
+    <div class="span12">
         
         <div class="widget-box">
             <div class="widget-title">
@@ -13,15 +13,7 @@
                     <span class="icon"><span class="icon-edit"></span></span>
                     <h5 class="text-ellipsis unselectable">{{content.title}}</h5>
                 </div>
-                <h5 class="text-ellipsis unselectable activity-breadcrumb">
-                    <span class="normal">Activité</span><span class="sep"></span>
-                    {{#if currentPage}}
-                         <span class="normal">{{flavorLabel}}</span><span class="sep"></span>{{currentPage.title}} 
-                    {{else}}
-                         Informations
-                    {{/if}}
-                    
-                </h5>
+                {{#view view.DoPreview classNames="btn"}}<i class="icon-eye-open spacify"></i>Preview{{/view}}
 
             </div>
             <div class="widget-content nopadding main-container">
@@ -181,27 +173,6 @@
                     <hr class="clear" />
                 </div>
                 <hr class="clear" />
-            </div>
-        </div>
-    </div>
-    <div class="span2">
-        <div class="widget-box">
-            <div class="widget-title">
-                <h5>Publish</h5>
-            </div>
-            <div class="widget-content">
-                {{#view view.DoPreview classNames="btn"}}<i class="icon-eye-open spacify"></i>Preview{{/view}}
-            </div>
-        </div>
-    </div>
-    <div class="span2">
-        <div class="widget-box">
-            <div class="widget-title">
-                <h5>Publish</h5>
-            </div>
-            <div class="widget-content">
-                toto<br />
-                toto <br />
             </div>
         </div>
     </div>

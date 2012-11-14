@@ -3,6 +3,9 @@ Style specific to activity edition
 */
 
 .qti {
+    &.row-fluid:first-child {
+        margin-top:0px!important;
+    }
     button {
         i.spacify {
             margin-right:5px;
@@ -527,17 +530,17 @@ Style specific to activity edition
 
 @media (max-width: 979px) {
     #page-management {
-        width:100%;
+        width:100%!important;
     }
 
     .panel-left {
-        width:100%;
+        width:100%!important;
     }
 
 
 }
 
-@media (max-width: 1580px) {
+@media (max-width: 730px) {
     .input-prepend {
         label {
             display:none!important;
