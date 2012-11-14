@@ -76,6 +76,11 @@ body:not(.user-admin) {
   }
 }
 
+
+body {
+  overflow:visible!important;
+}
+
 /* Fix unicorn shady management */
 #sidebar > a {
   cursor: pointer;
