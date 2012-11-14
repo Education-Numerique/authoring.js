@@ -118,6 +118,7 @@
         autoresize: this.get('autoresize'),
         air: this.get('air'),
         focus: false,
+        plugins: ['mathjax'],
         modal_tat: String() +
             '<form id="redactorInsertVideoForm">' +
             '<label>Word</label>' +

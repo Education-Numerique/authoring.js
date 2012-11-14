@@ -90,7 +90,7 @@
   // jsBoot.loader.use('bigscreen', version || 'stable');
 
   // Redactor rich text editing
-  jsBoot.loader.use('redactor', 'stable');
+  //jsBoot.loader.use('redactor', 'stable');
 
   // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't
   // fit well with the vanilla bootstrap stylesheet
@@ -114,6 +114,7 @@
   // Unicorn base theming
   jsBoot.loader.use('libs/css/unicorn.main.css');
   jsBoot.loader.use('libs/css/unicorn.grey.css');
+  jsBoot.loader.use('libs/css/redactor.css');
 
 
   // Wizard depend on this crap, and possibly flot as well
@@ -135,10 +136,13 @@
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload' + suffix + 'js');
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload-fp' + suffix + 'js');
 
+
+
   // Load the app itself, along its stylesheet
   jsBoot.loader.use(bootRoot + 'lxxl-standalone-library' + suffix + 'js');
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'js');
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'css');
+  jsBoot.loader.use('libs/js/redactor' + suffix + 'js');
 
 
   jsBoot.loader.wait(function() {

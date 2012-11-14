@@ -263,3 +263,13 @@
     <p id="modal-preview-body"></p>
   </div>
 </div>
+
+
+<div id="redactor-mathjax" style="display: none;">
+    <div id="redactor_modal_content">
+        <p><button id="mymodal-link">Insert</button></p>
+    </div>
+    <div id="redactor_modal_footer">
+        <a href="#" class="redactor_modal_btn redactor_btn_modal_close">Close</a>
+    </div>
+</div>
