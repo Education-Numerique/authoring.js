@@ -360,8 +360,8 @@ LxxlLib.Model.Qti:
       (function() {
         this.title = 'Titre test';
         this.description = 'desc';
-        this.level = LxxlLib.factories.metadata.levels.tl;
-        this.matter = LxxlLib.factories.metadata.matters.lit;
+        this.level = LxxlLib.factories.metadata.levels[0];
+        this.matter = LxxlLib.factories.metadata.matters[0];
         this.duration = 120;
         this.difficulty = LxxlLib.factories.metadata.difficulties.easy;
         this.category = LxxlLib.factories.metadata.getTreeFor(this.matter, this.level);

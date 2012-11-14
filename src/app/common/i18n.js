@@ -196,45 +196,6 @@
       // the value obviously
       activities: {
 
-        matters: {
-          fra: 'Français',
-          lit: 'Littérature',
-          mat: 'Maths',
-          mate: 'Maths éco',
-          sci: 'Sciences éco',
-          svt: 'SVT',
-          his: 'Histoire',
-          geo: 'Géographie',
-          phi: 'Philosophie',
-          all: 'Allemand',
-          eng: 'Anglais',
-          esp: 'Espagnol',
-          ita: 'Italien',
-          lat: 'Latin',
-          gre: 'Grec',
-          mus: 'Musique',
-          eps: 'EPS',
-          tpe: 'TPE',
-          inf: 'Informatique',
-          other: 'Autre'
-        },
-
-        // You can add new levels here - but DONT RENAME existing keys!!!! - you can still rename
-        // the value obviously
-        levels: {
-          ts: 'Terminale S',
-          tes: 'Terminale ES',
-          tl: 'Terminale L',
-          ps: '1 S',
-          pes: '1 ES',
-          pl: '1 L',
-          two: '2',
-          three: '3',
-          four: '4',
-          five: '5',
-          six: '6',
-          other: 'Autre'
-        },
         /*        categories: {
           fra-ts: {
             bla: {

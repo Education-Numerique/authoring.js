@@ -1,8 +1,6 @@
 (function() {
   'use strict';
   this.QtiEditController = Ember.ObjectController.extend({
-    categoryFactory: LxxlLib.factories.metadata,
-
     /**
      * To be handled somewhere else...
      */
@@ -258,59 +256,23 @@
     // }).property('LxxlLib.factories.metadata.levels'),
 
     matters: Ember.Object.create({
-      content: [],
-      init: function() {
-        this._super();
-        this.set('content', LxxlLib.factories.metadata.matters);
-      }
+      content: LxxlLib.factories.metadata.matters
     }),
 
     levels: Ember.Object.create({
-      content: [],
-      init: function() {
-        this._super();
-        this.set('content', LxxlLib.factories.metadata.levels);
-      }
+      content: LxxlLib.factories.metadata.levels
     }),
 
     testToto: function() {
       if (!this.get('content.level') || !this.get('content.matter'))
         return;
-      var tree = LxxlLib.factories.metadata.getTreeFor(
-          this.get('content.matter.id'), this.get('content.level.id'));
+      var tree = LxxlLib.factories.metadata.getTreeFor(this.get('content.matter.id'), this.get('content.level.id'));
+      this.set('categoryTree.content', (tree && tree.content) || []);
+    }.observes('content', 'content.level', 'content.matter'),
 
-      this.set('categoryTree', (tree && tree.content) || []);
-      /*      var res = [
-        {
-          title: 'Cat 1',
-          id: 'cat1',
-          content: [{
-            id: 'sub11',
-            title: 'Sub 1 1'
-          }]
-        },
-        {
-          title: 'Cat 2',
-          id: 'cat2',
-          content: [{
-            id: 'sub21',
-            title: 'Sub 2 1'
-          }]
-        },
-        {
-          title: 'Cat 3',
-          id: 'cat3',
-          content: [{
-            id: 'sub31',
-            title: 'Sub 3 1'
-          }]
-        }
-      ];
-
-      this.set('categoryTree', res);*/
-    }.observes('content', 'content.level', 'content.matter', 'matters.content.length', 'levels.content.length'),
-
-    categoryTree: [],
+    categoryTree: Ember.Object.create({
+      content: []
+    }),
 
     lengths: Ember.Object.create({
       content: LxxlLib.factories.metadata.lengths

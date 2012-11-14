@@ -76,13 +76,13 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
     },
     {
       id: 'test2',
-      title: 'Ceci est une seconde catégorie attachée au français de terminale S, sans subtree',
+      title: 'Ceci est une catégorie attachée au français de terminale L, sans subtree',
       matter: {id: 'fra'},
-      level: {id: 'ts'},
+      level: {id: 'tl'},
     },
     {
       id: 'test3',
-      title: 'Ceci est une dernière catégorie attachée au français de terminale S',
+      title: 'Ceci est une dernière catégorie attachée au français autre',
       content: [
         {
           id: 'test1-soustest1',
@@ -96,7 +96,7 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
         }
       ],
       matter: {id: 'fra'},
-      level: {id: 'ts'},
+      level: {id: 'other'},
     }
   ];
 });

@@ -32,7 +32,7 @@ jsBoot.pack('LxxlLib.factories', function(api) {
     });
 
     this.getTreeFor = function(matter, level) {
-      if(!matter && !level)
+      if((matter == '*') && (level == '*'))
         return categories;
       return categories.filter(function(item) {
         return (item.level.id == level) && (item.matter.id == matter);
