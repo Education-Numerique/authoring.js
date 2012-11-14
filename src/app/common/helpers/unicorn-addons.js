@@ -1,3 +1,16 @@
+/**
+ * @file
+ * @summary Simple helper to bind some specific behaviors on the markup, originally linked
+ * with unicorn.
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/app/common/helpers/unicorn.js{PUKE-GIT-REVISION}
+ */
+
 (function() {
   'use strict';
   this.unicorn = new (function() {

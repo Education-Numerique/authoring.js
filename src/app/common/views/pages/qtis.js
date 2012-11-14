@@ -14,7 +14,7 @@
       return;
     var act = this.get('controller.categories');
     var data = [];
-    Object.keys(act).forEach(function(i){
+    Object.keys(act).forEach(function(i) {
       data.push({
         label: i,
         data: act[i]
@@ -52,7 +52,7 @@
   t.top = (function() {
     var a = this.get('controller.authors');
     var d = [];
-    Object.key(a).forEach(function(i){
+    Object.key(a).forEach(function(i) {
       d.push({name: i, nb: a[i]});
     });
     d.sort(function(item, comp) {

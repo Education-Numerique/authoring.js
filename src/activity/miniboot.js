@@ -11,25 +11,28 @@
  * @location {PUKE-PACKAGE-GIT-ROOT}/bootstrap/desktop/bootstrap.js{PUKE-PACKAGE-GIT-REV}
  */
 
-'use strict';
-
 // XXX todo - use burnscrars instead of shims
 (function() {
+  'use strict';
+  // Allow the use of additional url parameters to trigger specific behavior
+  // Debuggin
+  var debug = /use-debug/.test(location.href);
+  // Trunk version - don't do this, kid!
+  var version = /use-trunk/.test(location.href) && 'trunk';
+  // Not minified if debugging
+  var suffix = !debug ? '-min.' : '.';
+
+  // No analytics for now
+  // var gaTracker = '{PUKE_ANALYTICS}';
+
   // Root of the versioned app
-  var bootRoot = '{PUKE-BOOT-ROOT}/';
-  // Will load Ember debug, and jsBoot debug helpers
-  var debug = !!location.href.match(/use-debug/);
-  // Read the comment above!
-  var trunk = !!location.href.match(/use-trunk/);
-  // -min suffixing
-  var suffix = (!debug && !location.href.match(/-full/)) ? '-min.js' : '.js';
+  var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
   // IE deserves to be raped :)
-  // XXX add piecss here
   if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
-    jsBoot.loader.use('ie7', trunk ? 'trunk' : '2.1b4');
+    jsBoot.loader.use('ie7', '2.1');
 
-  // XXX compact all stylesheets
+
   jsBoot.loader.use('normalize', 2.0);
   jsBoot.loader.use('h5bp', 4.0);
   // Bundled assets (vanilla bootstrap doesn't work)
@@ -38,101 +41,48 @@
 
   // jsBoot.loader.use('burnscars');
   jsBoot.loader.use(jsBoot.loader.SHIMS);
+  // jsBoot.loader.use('stacktrace', version || '0.4', null, debug);
   jsBoot.loader.wait();
   // XXX compact every other needed script
-  jsBoot.loader.use(jsBoot.loader.MINGUS);
-  // jsBoot.loader.use('stacktrace', trunk ? 'trunk' : '0.4');
+  // jsBoot.loader.use(jsBoot.loader.MINGUS);
   jsBoot.loader.use(jsBoot.loader.CORE);
+  jsBoot.loader.wait();
   // jsBoot.loader.use(jsBoot.loader.SERVICE);
-  // UI obviously depends on a stack of shite
-  // jsBoot.loader.use(jsBoot.loader.UI);
-  jsBoot.loader.use('jquery', trunk ? 'trunk' : '1.7');
-  jsBoot.loader.use('handlebars', trunk ? 'trunk' : '1.rc1', 'main');// b6
+  jsBoot.loader.use('jquery', version || '1.8');
+  jsBoot.loader.use('handlebars', version || '1.0', 'main');// b6
   // jsBoot.loader.use('i18n', trunk ? 'trunk' : '3rc2');
   jsBoot.loader.wait();
 
   // This could be put anywhere, but has to wait for core
   if (debug)
     jsBoot.loader.use(jsBoot.loader.DEBUG);
-    // jsBoot.loader.use('ember', trunk ? 'trunk' : '1.0.pre', debug ? 'debug' : 'prod');
 
-  // Fullscreen shim-like
-  // jsBoot.loader.use('bigscreen', trunk ? 'trunk' : 'stable');
+  jsBoot.loader.use('bootstrap', version || 'stable');
 
-  // Redactor rich text editing
-  // jsBoot.loader.use('redactor', 'stable');
-
-  // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't
-  // fit well with the vanilla bootstrap...<
-  jsBoot.loader.use('bootstrap', trunk ? 'trunk' : 'stable');// , '.js$');
-
-  // Growl like notifications
-  // jsBoot.loader.use('gritter', trunk ? 'trunk' : 'stable');
-
-  // Multiple select stuff
-  // jsBoot.loader.use('chosen', trunk ? 'trunk' : 'stable');
-
-  // Redactor rich text editing
-  // jsBoot.loader.use('validate', trunk ? 'trunk' : '1.10');
-
-  // Custom forms
-  // jsBoot.loader.use('uniform', trunk ? 'trunk' : '1.5');
-
-  // Data tables - no style from them though
-  // jsBoot.loader.use('datatable', trunk ? 'trunk' : '1.9', 'js$');
-  // And application stylesheet as well
-  // jsBoot.loader.use("{PUKE-BOOT-ROOT}/lxxl{MIN}.css");
 
   jsBoot.loader.wait(function() {
+    $('html').removeClass('no-js');
+    // Now, go away placeholder
     if (debug) {
-      jsBoot.debug.tick('Base stack loaded - continuing with the app itself');
-/*      $.gritter.add({
-        title: 'Activity starting',
-        text: 'Keep on truckin!',
-        sticky: false
-      });*/
-
-      // jsBoot.debug.cssPoller.start();
+      // To be removed - allow to spoof user level when debugging
+      jsBoot.debug.tick('Base stack loaded');
+      // Set reasonable verbosity
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
           jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR |
-          jsBoot.debug.console.LOG | jsBoot.debug.console.DEBUG;
-    // TRACE is out of the game - jsBoot debug reserved
+          jsBoot.debug.console.LOG /*| jsBoot.debug.console.DEBUG*/;
     }else {
-      //      jsBoot.loader.muteConsole();
+      // Mute console while in production
+      jsBoot.core.toggleConsole(false);
     }
-
   });
 
   jsBoot.loader.use('activity.js');
   jsBoot.loader.use('apiwrapper.js');
-
-  jsBoot.loader.use('../../libs/css/unicorn.main.css');
-
   jsBoot.loader.use('activity.css');
-
-  // jsBoot.loader.use('../../libs/css/unicorn.grey.css');
-  // jsBoot.loader.use('../../libs/js/unicorn.js');
-
-  // Wizard depend on this crap, and possibly flot as well
-  // jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix);
-  // jsBoot.loader.wait();
-  // jsBoot.loader.use('libs/js/jquery.wizard' + suffix);
-  // jsBoot.loader.use('libs/js/jquery.flot' + suffix);
-  // jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix);
-
-  // Load the app itself, along its stylesheet
-  // jsBoot.loader.use(bootRoot + 'lxxl' + suffix);
-  // jsBoot.loader.use(bootRoot + 'lxxl' + suffix.replace(/js$/, 'css'));
-
 
   jsBoot.loader.wait(function() {
     if (debug)
       jsBoot.debug.tick('Application stack fully loaded - will bootstrap now');
-    // Now, go away placeholder
-    $('html').removeClass('no-js');
-    if (typeof chrome == 'undefined')
-      $('html').addClass('unsupported-browser');
-
     // Activity may be passed as a json url, or embedded as a datauri?
     var a = new LxxlLib.activity();
     a.setupViewport($('#lxxlroot'), true);
@@ -147,71 +97,6 @@
     window.onunload = function(){
       a.end();
     };
-
   });
 
-// pipwerks.SCORM.get()  API.LMSGetValue(parameter)  API.GetValue(parameter)
-// pipwerks.SCORM.set()  API.LMSSetValue(parameter, value) API.SetValue(parameter, value)
-// pipwerks.SCORM.save() API.LMSCommit(“”) API.Commit(“”)
-// pipwerks.SCORM.debug.getCode()  API.LMSGetLastError() API.GetLastError()
-// pipwerks.SCORM.debug.getInfo(errorCode) API.LMSGetErrorString(errorCode)  API.GetErrorString(errorCode)
-// pipwerks.SCORM.debug.getDiagnosticInfo (errorCode)
-
-
-  // Form validation
-  // jsBoot.loader.use('libs/js/jquery.validate.js');
-  /*
-    $("#register_form").validate({
-        rules:{
-            user_name:"required",
-            user_email:{
-                required:true,
-                email: true
-            },
-        messages:{
-            user_name:"Enter your first and last name",
-            user_email:{
-                required:"Enter your email address",
-                email:"Enter valid email address"
-        },
-        errorClass: "help-inline",
-        errorElement: "span"
-    });
-
-<form id="register_form" name="register_form" action="auth.php" method="post">
-    <input type="text" name="user_name" id="user_name" value="" />
-    <input type="text" name="user_email"  id="user_email" value="" />
-    <input type="submit" name="submit" value="Register" />
-</form>
- */
-
-  // Charts
-  // jsBoot.loader.use('libs/js/jquery.peity.js');
-
-  // Datatables
-  // jsBoot.loader.use('libs/js/jquery.dataTables.js');
-
-  // Calendar
-  // jsBoot.loader.use('libs/js/fullcalendar.js');
-
-
-
-  // Form wizard
-  // jsBoot.loader.use('libs/js/jquery.wizard.js');
-
-
-
-
-
-  // jsBoot.loader.use('libs/js/jquery.flot.js');
-  // jsBoot.loader.use('libs/js/jquery.flot.resize.js');
-  // jsBoot.loader.use('libs/js/excanvas.js');
-  // jsBoot.loader.use('libs/js/jquery.gritter.js');
-
-
-
 })();
-
-
-
-

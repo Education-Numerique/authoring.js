@@ -1,3 +1,7 @@
 /*
 If you want to do tests or very specific overrides, work here
 */
+
+#breadcrumb, #search {
+  display: none !important;
+}

@@ -2,7 +2,7 @@
   'use strict';
   var t = this.lxxlPageView('sandbox');
 
-/*  var flotTip = function(x, y, contents) {
+  /*  var flotTip = function(x, y, contents) {
     $('<div id="tooltip">' + contents + '</div>').css({
       top: y + 5,
       left: x + 5
@@ -14,7 +14,7 @@
       return;
     var act = this.get('controller.categories');
     var data = [];
-    Object.keys(act).forEach(function(i){
+    Object.keys(act).forEach(function(i) {
       data.push({
         label: i,
         data: act[i]
@@ -52,7 +52,7 @@
   t.top = (function() {
     var a = this.get('controller.authors');
     var d = [];
-    Object.keys(a).forEach(function(i){
+    Object.keys(a).forEach(function(i) {
       d.push({name: i, nb: a[i]});
     });
     d.sort(function(item, comp) {

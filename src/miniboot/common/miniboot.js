@@ -16,8 +16,9 @@
   'use strict';
 
   // Ember global configuration
-  window.ENV = {};
-  ENV.RAISE_ON_DEPRECATION = true;
+  window.ENV = {
+    RAISE_ON_DEPRECATION: true
+  };
 
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin

@@ -1,7 +1,6 @@
 (function() {
   'use strict';
-  var t = this.lxxlPageView('qtiedit');
-
+  // var t = this.lxxlPageView('qtiedit');
 
   var modalHandler = new (function() {
     var _store = {};
@@ -20,8 +19,7 @@
 
   })();
 
-  this.QtiEditView = Ember.View.extend(t, {
-
+  this.QtiEditView = Ember.View.extend({
 
     InformationTab: Em.View.extend({
       templateName: 'pages/qtiedit/informations',
@@ -121,7 +119,7 @@
       tagName: 'button',
 
       didInsertElement: function() {
-        var self = this.$('.checker');
+        // var self = this.$('.checker');
         this.$().on('click', function(e) {
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
             $('#modal-page-timer').modal('show');
@@ -143,7 +141,7 @@
       tagName: 'button',
 
       click: function(e) {
-        console.log('====> click');
+        // console.log('====> click');
         if (this.$('.checker').has($(e.target)).length) {
           return true;
         }
@@ -482,10 +480,15 @@
       })
     }),
 
+    templateName: function() {
+      return 'pages/qtiedit';
+    }.property(),
+
     didInsertElement: function() {
+      unicorn.bindBehaviors(this.get('element'));
+      this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.qtiedit.title'));
+
       this.get('controller').set('currentPage', this.get('controller.content.pages')[0]);
-
-
     }
   });
 }).apply(LxxlApp);

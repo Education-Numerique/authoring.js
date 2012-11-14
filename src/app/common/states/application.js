@@ -1,3 +1,4 @@
+/*global categoryFactory, activityFactory*/
 (function() {
   'use strict';
 
@@ -12,9 +13,10 @@
       }
     };
     if (adds)
-      for (var i in adds)
+      Object.keys(adds).forEach(function(i){
         rt[i] = adds[i];
-      return Ember.Route.extend(rt);
+      });
+    return Ember.Route.extend(rt);
   };
 
 
@@ -228,17 +230,20 @@ LxxlLib.Model.Qti:
  */
 
 (function() {
+  'use strict';
   if ('undefined' === typeof window.LxxlLib) {
     window.LxxlLib = {};
   }
 })();
 
 (function(LxxlLib) {
+  'use strict';
 
   LxxlLib.Locale = {};
   LxxlLib.Locale.getData = function(key) {
-    var ret = I18n.translate(key, {defaultValue: '---'});
-    return (ret != '---') && ret || null;
+    var def = '---';
+    var ret = I18n.translate(key, {defaultValue: def});
+    return (ret != def) && ret || null;
   };
 
 
@@ -391,7 +396,7 @@ LxxlLib.Model.Qti:
 
 
   this.activityFactory = new (function() {
-    this.getActivityById = function(id) {
+    this.getActivityById = function(/*id*/) {
       var t = new LxxlLib.Model.Activity();
 
       (function() {
@@ -427,7 +432,7 @@ LxxlLib.Model.Qti:
               tmpA.text = 'Answer ' + j + '-' + k;
               tmpA.comment = 'Yihaaaaaa' + k;
 
-              if (k % 2 == 0)
+              if (k % 2 === 0)
                 tmpA.isCorrect = true;
 
               //tmpQ.answers.pushObject(tmpA);

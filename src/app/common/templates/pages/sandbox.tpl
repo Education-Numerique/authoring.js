@@ -2,7 +2,22 @@
 * @template : pages/sandbox
 */
 
-<div class="row-fluid ">
+<div class="row-fluid">
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Page du vivier</h4>
+    Ceci est la page du vivier
+  </div>
+
+  <article id="home" class="widget-box">
+    <div>
+      En attente validation et fourniture contenus / textes lot 2
+    </div>
+  </article>
+</div>
+
+
+<div class="row-fluid " style="visibility: hidden">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">La sandbox</h4>

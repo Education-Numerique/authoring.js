@@ -24,7 +24,6 @@
       <li class="btn btn-mini btn-inverse"><a title="{{localize nav.settings.tip}}"  {{action showSettings href=true}} class="tip-bottom"><i class="icon icon-cog"></i> <span class="text">{{localize nav.settings.text}}</span></a></li>
       <li class="btn btn-mini btn-inverse"><a title="{{localize nav.logout.tip}}" href="#callcontrollerlogout" class="tip-bottom"><i class="icon icon-off"></i> <span class="text">{{localize nav.logout.text}}</span></a></li>
     </ul>
-
   </nav>
 
   <nav id="sidebar">

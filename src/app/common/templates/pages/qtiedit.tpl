@@ -1,6 +1,7 @@
 /*
 * @template : pages/qtiedit
 */
+
 <form class="form-horizontal">
 <div class="row-fluid qti" {{bindAttr class="isStaticPage isQuizz isTat"}}>
 

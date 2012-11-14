@@ -39,11 +39,11 @@
         // Bind behaviors
         unicorn.bindBehaviors(this.get('element'));
         this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.' + name + '.title'));
-        var bread = LxxlLib.Locale.getData('breadcrumb.' + name + '.bread');
+        /*        var bread = LxxlLib.Locale.getData('breadcrumb.' + name + '.bread');
         if (bread) {
           argg = this.get('parentView.controller.breadcrumbs');
           argg.pushObject({displayName: bread});
-        }
+        }*/
         if (this.doOnInsert)
           this.doOnInsert();
 

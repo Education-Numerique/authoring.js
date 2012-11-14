@@ -2,7 +2,22 @@
 * @template : pages/qtis
 */
 
-<div class="row-fluid ">
+<div class="row-fluid">
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Page d'administration des activités</h4>
+    Ceci est la page administrateur permettant l'édition des activités
+  </div>
+
+  <article id="home" class="widget-box">
+    <div>
+      En attente validation et fourniture contenus / textes lot 2
+    </div>
+  </article>
+</div>
+
+
+<div class="row-fluid " style="visibility: hidden;">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Administration des activités</h4>
@@ -94,10 +109,6 @@
         <tbody>
           {{#each qti}}
             <tr>
-            <!--
-              regarder le mixin no text dans roxee / + unselectable 
-
-            -->
               <td class="user-reviewer2"><button {{action showEditQTI this href=true}} class="icon-edit"></button></td>
               <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
               <td>{{title}}</td>
@@ -109,6 +120,4 @@
       </table>  
     </div>
   </div>
-
 </div>
-

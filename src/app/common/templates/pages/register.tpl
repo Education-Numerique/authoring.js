@@ -5,6 +5,22 @@
 <div class="row-fluid">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Page de création de compte</h4>
+    Ceci est la page de création de compte utilisateur
+  </div>
+
+  <article id="home" class="widget-box">
+    <div>
+      En attente validation et fourniture contenus / textes lot 2
+    </div>
+  </article>
+</div>
+
+<!--
+
+<div class="row-fluid">
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Inscription</h4>
     Bienvenue dans le processus d'inscription! Votre compte sera créé en quatre étapes simples.
   </div>
@@ -104,7 +120,7 @@
             </div>
           </div>
 
-          <!-- XXX finish-up the label for attributes -->
+          <!-- XXX finish-up the label for attributes --!>
           <div class="control-group">
             <label for="firstname" class="control-label">Prénom</label>
             <div class="controls">
@@ -217,12 +233,14 @@
             <input id="next" class="btn btn-primary" type="submit" value="Next" />
             <!--
             <div id="status">Status?</div>
-            -->
+            --!>
         </div>
       </form>
 <!--
       <div id="submitted" style="display: none;"><h5 class="throbbering">En cours de traitement</h5></div>
--->
+--!>
     </div>
   </div>
 </div>
+
+-->

@@ -1,6 +1,15 @@
-// LxxlApp.ApplicationController.addObserver('selected', function(){
-//   console.warn("slectyed changed!!!", this.get('selected'));
-// });
+/**
+ * @file
+ * @summary Root application controller
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/app/common/controllers/application.js{PUKE-GIT-REVISION}
+ */
+
 
 (function() {
   'use strict';
