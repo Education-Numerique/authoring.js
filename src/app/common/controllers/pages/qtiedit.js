@@ -263,16 +263,15 @@
       content: LxxlLib.factories.metadata.levels
     }),
 
-    testToto: function() {
+    categoryTree: (function() {
+      var obj = Em.Object.create();
       if (!this.get('content.level') || !this.get('content.matter'))
-        return;
-      var tree = LxxlLib.factories.metadata.getTreeFor(this.get('content.matter.id'), this.get('content.level.id'));
-      this.set('categoryTree.content', (tree && tree.content) || []);
-    }.observes('content', 'content.level', 'content.matter'),
+        return obj;
 
-    categoryTree: Ember.Object.create({
-      content: []
-    }),
+      var tree = LxxlLib.factories.metadata.getTreeFor(this.get('content.matter.id'), this.get('content.level.id'));
+      obj.set('content', (tree && tree.content) || []);
+      return obj;
+    }.property('content', 'content.level', 'content.matter')),
 
     lengths: Ember.Object.create({
       content: LxxlLib.factories.metadata.lengths

@@ -52,7 +52,7 @@
     attributeBindings: ['multiple'],
     defaultTemplate: Ember.Handlebars.compile(
         '{{#if view.prompt}}<option value>{{view.prompt}}</option>{{/if}}{{#each view.content}}' +
-        '{{view Ember.SelectOptGroup labelBinding="title" contentBinding="content"}}{{/each}}'),
+        '{{view Ember.SelectOptGroup labelBinding="title" contentBinding="view.content"}}{{/each}}'),
     didInsertElement: function() {
       this.$().chosen();
     },
@@ -66,7 +66,7 @@
     classNames: [],
     attributeBindings: ['label'],
     defaultTemplate: Ember.Handlebars.compile(
-        '{{#each this.content}}{{view Ember.SelectOption contentBinding="this"}}{{/each}}'
+        '{{#each view.content}}{{view Ember.SelectOption contentBinding="view.content"}}{{/each}}'
     ),
 
     didInsertElement: function() {
@@ -133,8 +133,12 @@
             '<input  type="button"  id="tat-untag" value="Supprimer" />' +
             '<a href="javascript:void(null);" id="redactor_btn_modal_close">' + RLANG.cancel + '</a>' +
                     '</span>' +
-            '</div>'
+            '</div>',
+
+        allowedTags: ['math']
       });
+
+
       if (this.get('maxLength') && !this.$().parent().find('.infobox').length) {
         this.$().parent().append('<div class="infobox" />');
         this.set('_infoBox', this.$().parent().find('.infobox'));
