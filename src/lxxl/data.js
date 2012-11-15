@@ -25,7 +25,10 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
     60: '60 minutes',
     90: '90 minutes'
   };
-      content: [0, 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90].map(function(key){
+
+ 0, 1 , 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90 / secondes : 0, 10, 20, 30, 45
+
+      content: [0, 10, 20, 30, 45].map(function(key){
           return {id: key, title: key + (key > 1 ? ' minutes' : ' minute')};
         }),
       selected: {id: 0, title: '0 minute'}

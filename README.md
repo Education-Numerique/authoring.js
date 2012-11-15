@@ -136,6 +136,7 @@ About the "common" folders everywhere
 This is provisionnal, and is meant to specialize the application for desktop / mobile, by abstracting what is common to all devices.
 
 
+
 About stuff that is NOT there
 ----------------------
 
@@ -144,3 +145,48 @@ This project is built on top of jsboot, which itself in turn depends on airstrip
 If you REALLY think there is a problem in these, you may report a bug there - otherwise, it's probably just something you can override.
 
 Note that once packaged for release, every such dependency will be bundled inside the project itself.
+
+
+About dependencies
+----------------------
+
+The project relies heavily on:
+- jsBoot (https://github.com/jsBoot/jsboot.js), a mini-framework providing an API to ease dependencies loading (said dependencies being provided via airstrip.js https://github.com/jsBoot/airstrip.js), allow for easy shiming (shims being provided by underlying spitfire.js https://github.com/jsBoot/spitfire.js), a package / class manager, and a few helpers and basic types (eg: EventDispatcher, md5 and such) and a service loader component meant to be use with a jsBoot compatible stack (see service part of the project)
+- jQuery
+- I18n js - used anecdotically
+- Bootstrap, a client-side mini framework providing behaviors and basic styles
+- Handlebars, a template engine 
+- EmberJS (http://emberjs.com/), a MVC framework relying on jQuery and Handlebars
+
+All of these are packaged and maintained into the official jsBoot stack.
+
+To a lesser extent, the project makes use of the following, also hidden by the jsBoot stack:
+- LABjs
+- ie7.js
+- normalize
+- h5bp (style only)
+- stacktrace
+- es5shim
+- XMLHttpRequest.js
+
+As a tier-2, the following jsBoot components are explicitely requested:
+- chosen
+- validate
+- uniform
+- datatable
+
+The following components are used only is the project, and loaded directly (from the lib folder):
+- jQueryUI
+- unicorn, a bootstrap stylesheet customization
+- redactor, a wysiwyg component
+- mathjax
+- jquery.wizard
+
+And to a lesser use:
+- jquery.flot
+- jquery.flot.pie
+- jquery.file-upload
+
+
+The release version of the project will bundle all these inside the dep directory.
+All of these (but redactor) are free to use components released under open-source AGPL compatible licenses.
