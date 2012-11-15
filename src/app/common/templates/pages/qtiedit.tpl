@@ -275,7 +275,7 @@
             <hr class="clear" />
 
     <div id="redactor_modal_footer">
-        <a class="redactor_modal_btn" href="http://www1.chapman.edu/~jipsen/mathml/asciimath.html" style="float:left;" target="_blank">Documentation</a>
+        <a class="redactor_modal_btn" href="http://www1.chapman.edu/~jipsen/mathml/asciimathsyntax.html" style="float:left;" target="_blank">Documentation</a>
         <a class="redactor_modal_btn redactor_btn_modal_insert">Insérer</a>
         <a  class="redactor_modal_btn redactor_btn_modal_close">Fermer</a>
     </div>
