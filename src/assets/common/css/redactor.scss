@@ -1,4 +1,4 @@
-.redactor_box {
+.redactor_box, .redactor_air {
     .redactor_editor {
         min-height:120px;
    }
@@ -35,9 +35,31 @@
         }
     }
 
+    a[data-type=tat] {
+        background-color:#909090!important;
+        color:white!important;
+        padding:2px 5px!important;
+        @include rounded(4px);
+        text-decoration:none!important;
+
+        &:hover {
+            background-color:#585858!important;
+        }
+    }
+
     .redactor_toolbar {
         a.redactor_btn_mathjax {
             background: url('images/redactor/mathjax.png') center center no-repeat;
+        }
+
+        a.redactor_btn_tat {
+            background: url('images/redactor/tat.png') 0px -24px no-repeat;
+            background-size:26px 52px;
+
+            &:hover {
+                background: url('images/redactor/tat.png') 0px 3px no-repeat;
+                background-size:26px 52px;
+            }
         }
     }
 }

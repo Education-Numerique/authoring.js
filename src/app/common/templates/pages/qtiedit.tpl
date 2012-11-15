@@ -281,3 +281,21 @@
     </div>
 </div>
 
+<div id="redactor-tat" style="display: none;">
+    <div id="redactor_modal_content">
+        <label>Mot supprimé : </label>
+        <input type="text" class="word redactor_input" value="" />
+        <label>Indice : </label>
+        <input type="text" class="clue redactor_input" value="" />
+        <label>Alternatives (séparées par ; | joker : *) : </label>
+        <input type="text" class="alternatives redactor_input" value="" />
+    </div>
+            <hr class="clear" />
+
+    <div id="redactor_modal_footer">
+        <a class="redactor_modal_btn redactor_btn_modal_insert">Trouer</a>
+        <a class="redactor_modal_btn redactor_btn_modal_remove">Reboucher</a>
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Annuler</a>
+    </div>
+</div>
+
