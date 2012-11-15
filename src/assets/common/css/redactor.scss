@@ -64,3 +64,7 @@
     }
 }
 
+.redactor_box .redactor_toolbar>li:first-of-type,  .redactor_box .redactor_toolbar>li:first-of-type + li.redactor_separator {
+    display:none;
+}
+
