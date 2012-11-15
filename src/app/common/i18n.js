@@ -195,41 +195,6 @@
       // You can add new matters here - but DONT RENAME existing keys!!!! - you can still rename
       // the value obviously
       activities: {
-
-        /*        categories: {
-          fra-ts: {
-            bla: {
-              title: "bla",
-              subtree: {
-
-              }
-            },
-            foo: {
-              title: "foo",
-              subtree: {
-                fooriendises: "Stuff"
-              }
-            },
-            bar: {
-              title: "bar",
-              subtree: {
-                fooriendises: "Barendises"
-              }
-            },
-            eng: {
-              title: "Anglais pas littéraire du tout",
-
-            }
-          }
-        },*/
-
-        pageFlavors: {
-          staticPage: 'Page simple',
-          quizz: 'Page quizz',
-          quizzMulti: 'Page multi selection',
-          tat: 'Page texte à trous'
-        },
-
         defaultValues: {
           title: 'Titre par défaut de l\'activité',
           // level: '',
@@ -242,7 +207,7 @@
           page: {
             title: 'Titre par défaut de la page',
             subtitle: 'Sous-titre par défaut de la page',
-            flavor: 'staticPage',
+            flavor: 'simple',
             coef: 0,
             limitedTime: 0, // // 0 == infinity - X seconds = time
             sequencing: -1 // -1 = follow through | 0 = random sur la totalité | X = random sur un subset

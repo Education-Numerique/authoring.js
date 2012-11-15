@@ -5,6 +5,10 @@ jsBoot.use('jsBoot.types.utils');
 jsBoot.pack('LxxlLib.model', function(api) {
   'use strict';
 
+  /**
+   * This is the base model describing activities metadata
+   */
+
   this.Matter = api.getPooledMutable({
     id: '',
     title: ''
@@ -25,27 +29,26 @@ jsBoot.pack('LxxlLib.model', function(api) {
     title: ''
   });
 
-  // Tricky deviation to handle the nesting concept of Categories
-  // Having directly content: this.Category obviously wouldn't work
-  var dirty = this;
-  var categoriesList = api.ArrayMutable.bind({}, function(m){
-    return new dirty.Category(m);
+  this.Flavor = api.getPooledMutable({
+    id: '',
+    title: ''
   });
 
-  this.Category = api.TypedMutable.bind({}, {
-    id: '',
+  var catDescriptor = {
+    id: 0,
     title: '',
     matter: this.Matter,
-    level: this.Level,
-    content: categoriesList
-  });
+    level: this.Level
+  };
+
+  this.Category = api.getPooledMutable(catDescriptor);
+  // Mutate the descriptor to workaround the loop problem
+  catDescriptor.content = api.ArrayMutable.bind({}, this.Category);
 
 
-
-
-
-
-
+  /**
+   * This is the activity model itself
+   */
   this.Answer = api.TypedMutable.bind({}, {
     text: '',
     comment: '',
@@ -56,10 +59,33 @@ jsBoot.pack('LxxlLib.model', function(api) {
   this.Question = api.TypedMutable.bind({}, {
     coef: 0,
     text: '',
-    // XXX shit
-    answers: api.ArrayMutable
+    answers: api.ArrayMutable.bind({}, this.Answer)
   });
 
+  this.Page = api.TypedMutable.bind({}, {
+    flavor: this.Flavor,
+    title: '',
+    subtitle: '',
+    advice: '',
+    document: '',
+    limitedTime: 0,// // 0 == infinity - X seconds = time
+    coef: 0,
+    sequencing: -1,// -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+    displayAll: false,
+    questions: api.ArrayMutable.bind({}, this.Question)
+  });
 
+  this.Activity = api.TypedMutable.bind({}, {
+    id: 0,
+    title: '',
+    description: '',
+    level: this.Level,
+    matter: this.Matter,
+    duration: 0,
+    difficulty: new this.Difficulty({id: 'easy'}),
+    category: api.ArrayMutable.bind({}, this.Category),
+    thumbnail: null,
+    pages: api.ArrayMutable.bind({}, this.Page)
+  });
 
 });

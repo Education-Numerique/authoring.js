@@ -17,6 +17,13 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
     hard: 'Difficile'
   };
 
+  this.flavors = {
+    simple: 'Page simple',
+    quizz: 'Page quizz',
+    tat: 'Page texte à trous',
+    jmt: 'Page mix and match'
+  };
+
   // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
   this.matters = {
     fra: 'Français',
@@ -59,15 +66,15 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
 
   this.categories = [
     {
-      id: 'test1',
+      id: 1,
       title: 'Ceci est une catégorie attachée au français de terminale S',
       content: [
         {
-          id: 'test1-soustest1',
+          id: 11,
           title: 'dont voici une première sous-catégorie'
         },
         {
-          id: 'test1-soustest2',
+          id: 12,
           title: 'et une seconde sous-catégorie'
         }
       ],
@@ -75,21 +82,21 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
       level: {id: 'ts'},
     },
     {
-      id: 'test2',
+      id: 2,
       title: 'Ceci est une catégorie attachée au français de terminale L, sans subtree',
       matter: {id: 'fra'},
       level: {id: 'tl'},
     },
     {
-      id: 'test3',
+      id: 3,
       title: 'Ceci est une dernière catégorie attachée au français autre',
       content: [
         {
-          id: 'test1-soustest1',
+          id: 31,
           title: 'dont voici une première sous-catégorie',
           content: [
             {
-              id: 'test1-soustest1',
+              id: 311,
               title: 'qui a elle-même une sous catégorie'
             }
           ]

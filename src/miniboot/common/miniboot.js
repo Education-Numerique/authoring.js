@@ -121,12 +121,11 @@
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
   // Mathjax config
   // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-AMS-MML_HTMLorMML.js');
+  // jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML.js');
+  jsBoot.loader.use('http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js');
 
-  jsBoot.loader.wait();
   // Mathjax itself
   // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-AMS-MML_HTMLorMML.js');
-
-  jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML.js');
   jsBoot.loader.use('libs/js/jquery.wizard' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix + 'js');

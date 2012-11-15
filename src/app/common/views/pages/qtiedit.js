@@ -268,7 +268,7 @@
 
         flavorUpdated: function() {
           var value = this.get('content.flavor');
-          if (value == 'staticPage') {
+          if (value == 'simple') {
             this.set('flavorIcon', 'icon-file');
             this.set('pageType', 'page-static');
           } else if (value == 'quizz') {
@@ -481,7 +481,7 @@
     }.property(),
 
     didInsertElement: function() {
-      unicorn.bindBehaviors(this.get('element'));
+      LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.qtiedit.title'));
 
       this.get('controller').set('currentPage', this.get('controller.content.pages')[0]);

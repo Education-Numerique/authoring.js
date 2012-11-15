@@ -134,6 +134,7 @@ jsBoot.pack('jsBoot.types', function(api) {
         case 'function':
           Object.defineProperty(this, i, {
             enumerable: true,
+            configurable: true,
             get: function(){
               // XXX super dirty and dangerous - cause of the bind
               // Verify this in IE and other non-bindable browsers
@@ -144,6 +145,9 @@ jsBoot.pack('jsBoot.types', function(api) {
                 return privatePool[i];
               }else
                 return item(lastMesh[i]);
+            },
+            set: function(value){
+              privatePool[i] = value;
             }
           });
           break;
@@ -184,14 +188,28 @@ jsBoot.pack('jsBoot.types', function(api) {
             this.set(i, item);
             break;
           case 'function':
-            if(typeof privatePool[i] != 'undefined')
-              if('fromObject' in privatePool[i])
-                privatePool[i].fromObject(networkMesh[i]);
-              else
+            if(typeof privatePool[i] != 'undefined'){
+              if(descriptor[i].constructor == Function){
+                if(!!privatePool[i]){
+                  privatePool[i].fromObject(networkMesh[i]);
+                }else{
+                  lastMesh[i] = networkMesh[i];
+                }
+              }else
                 this.set(i, descriptor[i](networkMesh[i]));
-            else
+            }else
               // Merge and override lastMesh otherwise, to be used for later construction
               lastMesh[i] = networkMesh[i];
+
+
+            // if(typeof privatePool[i] != 'undefined')
+            //   if('fromObject' in privatePool[i])
+            //     privatePool[i].fromObject(networkMesh[i]);
+            //   else
+            //     this.set(i, descriptor[i](networkMesh[i]));
+            // else
+            //   // Merge and override lastMesh otherwise, to be used for later construction
+            //   lastMesh[i] = networkMesh[i];
             break;
           default:
             this.set(i, item);
@@ -213,8 +231,13 @@ jsBoot.pack('jsBoot.types', function(api) {
     var inner = api.mutable.bind({}, descriptor);
     var pool = {};
     return function(initialMesh){
-      if(!(initialMesh.id in pool))
+      if(!initialMesh || !('id' in initialMesh))
+        return null;
+      if(!(initialMesh.id in pool)){
         pool[initialMesh.id] = new inner(initialMesh);
+      }else{
+        pool[initialMesh.id].fromObject(initialMesh);
+      }
       return pool[initialMesh.id];
     };
   };

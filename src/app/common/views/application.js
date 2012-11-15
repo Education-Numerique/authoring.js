@@ -14,10 +14,10 @@
       didInsertElement: function() {
         this._super();
         this.addObserver('parentView.controller.selected', function() {
-          unicorn.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
+          LxxlLib.behaviors.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
         });
-        unicorn.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
-        unicorn.bindBehaviors(this.get('element'));
+        LxxlLib.behaviors.makeMenuItemActive($('#navigation-' + this.get('parentView.controller.selected')));
+        LxxlLib.behaviors.bindBehaviors(this.get('element'));
       }
     }),
 
@@ -37,7 +37,7 @@
 
       didInsertElement: function() {
         // Bind behaviors
-        unicorn.bindBehaviors(this.get('element'));
+        LxxlLib.behaviors.bindBehaviors(this.get('element'));
         this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.' + name + '.title'));
         /*        var bread = LxxlLib.Locale.getData('breadcrumb.' + name + '.bread');
         if (bread) {

@@ -21,6 +21,14 @@
     return (ret != options.defaultValue) && ret || null;
   });
 
+  LxxlLib.Locale = {
+    getData: function(key) {
+      var def = '---';
+      var ret = I18n.translate(key, {defaultValue: def});
+      return (ret != def) && ret || null;
+    }
+  };
+
   Ember.Handlebars.registerHelper('ifequal', function(val1, val2, options) {
     var context = (options.fn.contexts && options.fn.contexts[0]) || this;
     // var val1 = Ember.Handlebars.getPath(context, val1, options.fn);
@@ -52,8 +60,6 @@
     return pad(number, width, character);
 
   });
-
-
 
   var pad = function(number, width, character) {
     character = character || '0';

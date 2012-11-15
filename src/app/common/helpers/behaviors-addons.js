@@ -1,19 +1,18 @@
 /**
  * @file
- * @summary Simple helper to bind some specific behaviors on the markup, originally linked
- * with unicorn.
+ * @summary Simple helper to bind some specific behaviors on the markup
  *
  * @author {PUKE-RIGHTS-AUTHOR}
  * @version {PUKE-PACKAGE-VERSION}
  *
  * @license {PUKE-RIGHTS-LICENSE}.
  * @copyright {PUKE-RIGHTS-COPYRIGHT}
- * @name {PUKE-GIT-ROOT}/app/common/helpers/unicorn.js{PUKE-GIT-REVISION}
+ * @name {PUKE-GIT-ROOT}/app/common/helpers/behaviors-addons.js{PUKE-GIT-REVISION}
  */
 
 (function() {
   'use strict';
-  this.unicorn = new (function() {
+  LxxlLib.behaviors = new (function() {
     // Toggle active state on one menu item
     this.makeMenuItemActive = function(node) {
       var parentLi = node.parents('li');

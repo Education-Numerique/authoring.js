@@ -21,7 +21,7 @@
     //     return;
     //   if(!this.get('content').get('flavor'))
     //     return;
-    //   this.content.set('isSimple', this.get('flavor').title == I18n.translate('activities.pageFlavors').staticPage);
+    //   this.content.set('isSimple', this.get('flavor').title == I18n.translate('activities.pageFlavors').simple);
     //   this.content.set('isQuizz', this.get('flavor').title == I18n.translate('activities.pageFlavors').quizz);
     //   this.content.set('isTat', this.get('flavor').title == I18n.translate('activities.pageFlavors').tat);
     // }).observes('content.flavor'),
@@ -48,7 +48,7 @@
       this.set('isQuizzQcm', false);
       this.set('isQuizzMulti', false);
 
-      if (value == 'staticPage') {
+      if (value == 'simple') {
         this.set('isStaticPage', true);
       } else if (value == 'quizz') {
         this.set('isQuizz', true);
@@ -66,7 +66,7 @@
 
 
     addPage: function(at) {
-      var newPage = new LxxlLib.Model.Page();
+      var newPage = new LxxlLib.model.Page();
       if (!at)
         this.content.get('pages').pushObject(newPage);
       else
@@ -140,8 +140,9 @@
 
 
     limitedTimeUpdated: function() {
-      if (!this.get('currentPage'))
+      if (!this.get('currentPage')){
         return;
+      }
 
       if (!this.get('minutes.selected') || !this.get('seconds.selected'))
         return;
@@ -205,7 +206,7 @@
 
 
     addQuestion: function(at) {
-      var nq = new LxxlLib.Model.Question();
+      var nq = new LxxlLib.model.Question();
       if (!at)
         this.get('currentPage.questions').pushObject(nq);
       else
@@ -228,9 +229,9 @@
 
     addAnswer: function(at) {
       if (!at)
-        this.get('currentQuestion.answers').pushObject(new LxxlLib.Model.Answer());
+        this.get('currentQuestion.answers').pushObject(new LxxlLib.model.Answer());
       else
-        this.get('currentQuestion.answers').replace(at, 0, new LxxlLib.Model.Answer());
+        this.get('currentQuestion.answers').replace(at, 0, new LxxlLib.model.Answer());
     },
 
     deleteAnswer: function(answer) {
@@ -282,51 +283,21 @@
     }),
 
     flavors: Ember.Object.create({
-      content: [],
-      init: function() {
-        this._super();
-        var values = I18n.translate('activities.pageFlavors');
-        for (var key in values) {
-          this.get('content').pushObject({
-            'id' : key,
-            'title' : values[key]
-          });
-        }
-      }
+      content: LxxlLib.factories.metadata.flavors
     }),
 
     minutes: Em.Object.create({
-      content: [],
-      selected: null,
-
-      init: function() {
-
-        var values = [0, 1 , 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90];
-        for (var i = 0; i < values.length; i++) {
-          this.get('content').pushObject({
-            'id' : values[i],
-            'title' : values[i] + (values[i] > 1 ? ' minutes' : ' minute')
-          });
-        }
-        this.set('selected', this.get('content')[0]);
-
-      }
+      content: [0, 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90].map(function(key){
+          return {id: key, title: key + (key > 1 ? ' minutes' : ' minute')};
+        }),
+      selected: {id: 0, title: '0 minute'}
     }),
+
     seconds: Em.Object.create({
-      content: [],
-      selected: null,
-
-      init: function() {
-        var values = [0, 10, 20, 30, 45];
-        for (var i = 0; i < values.length; i++) {
-          this.get('content').pushObject({
-            'id' : values[i],
-            'title' : values[i] + (values[i] > 1 ? ' secondes' : ' seconde')
-          });
-        }
-        this.set('selected', this.get('content')[0]);
-
-      }
+      content: [0, 10, 20, 30, 45].map(function(key){
+          return {id: key, title: key + (key > 1 ? ' secondes' : ' seconde')};
+        }),
+      selected: {id: 0, title: '0 seconde'}
     })
 
     /**
@@ -348,16 +319,5 @@
   });
 
 }).apply(LxxlApp);
-
-
-// var activityFactory = new (function(){
-//   this.getActivityById = function(id){
-//     return ;
-//   };
-
-//   this.newActivity = function() {
-//     return new LxxlLib.Model.Activity();
-//   };
-// })();
 
 
