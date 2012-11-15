@@ -12,6 +12,7 @@
 
         MathJax.Hub.Typeset($('#redactor_modal .preview')[0], function() {
           math = MathJax.Hub.getAllJax('ragout')[0];
+          math.Text($('#redactor_modal .formula').val());
         });
 
         $('#redactor_modal .formula').on('input', function() {
@@ -20,12 +21,12 @@
             return;
           }
 
-          console.log('value', $(this).val());
           math.Text($(this).val());
         });
 
         $('#redactor_modal .redactor_btn_modal_insert').on('click', function() {
-          this.insertFromMyModal();
+
+          this.insertFromMyModal($('#redactor_modal .formula').val());
         }.bind(this));
 
       }.bind(this));
@@ -37,10 +38,29 @@
 
       this.addBtnSeparatorBefore('mathjax');
     },
-    insertFromMyModal: function(html) {
+    insertFromMyModal: function(formula) {
       this.restoreSelection();
-      this.execCommand('inserthtml', $($('.preview')[1]).html());
-      this.modalClose();
+
+      var ready = (function(node) {
+        this.execCommand('inserthtml', node[0].outerHTML);
+        this.modalClose();
+      }.bind(this));
+
+      html2canvas([$('#redactor_modal .preview')[0]], {
+        onrendered: function(canvas) {
+          var img = $('<img />');
+          img.attr('src', canvas.toDataURL());
+          img.attr('data-type', 'math');
+          img.attr('data-format', 'ascii-math');
+          img.attr('data-formula', formula);
+          img.attr('uneditable', 'true');
+          ready(img);
+        }
+      });
+
+
+
+
     }
   };
 

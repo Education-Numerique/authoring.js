@@ -1311,7 +1311,7 @@ var RLANG = {
                 return false;
             }
 
-            this.$editor.find('img').each($.proxy(function(i,s)
+            this.$editor.find('img:not([uneditable])').each($.proxy(function(i,s)
             {
                 if ($.browser.msie)
                 {

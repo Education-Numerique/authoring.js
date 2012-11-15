@@ -267,9 +267,9 @@
 
 <div id="redactor-mathjax" style="display: none;">
     <div id="redactor_modal_content">
-        <p><input type="text" class="formula" value="coin" /></p>
+        <p><input type="text" class="formula" value="f(x)=sum_(n=0)^oo(f^((n))(a))/(n!)(x-a)^n" /></p>
 
-        <div class="preview">`{}`</div>
+        <div class="preview" style="float:left;">`{}`</div>
     </div>
     <div id="redactor_modal_footer">
         <a class="redactor_modal_btn redactor_btn_modal_insert">Insérer</a>
