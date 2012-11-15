@@ -10,6 +10,34 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
     45: '45 minutes',
     60: '60 minutes'
   };
+/*
+  this.minutes = {
+    0: '0 minute',
+    1: '1 minute',
+    2: '2 minutes',
+    3: '3 minutes',
+    4: '4 minutes',
+    5: '5 minutes',
+    10: '10 minutes',
+    15: '15 minutes',
+    30: '30 minutes',
+    45: '45 minutes',
+    60: '60 minutes',
+    90: '90 minutes'
+  };
+      content: [0, 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90].map(function(key){
+          return {id: key, title: key + (key > 1 ? ' minutes' : ' minute')};
+        }),
+      selected: {id: 0, title: '0 minute'}
+    }),
+
+    seconds: Em.Object.create({
+      content: [0, 10, 20, 30, 45].map(function(key){
+          return {id: key, title: key + (key > 1 ? ' secondes' : ' seconde')};
+        }),
+      selected: {id: 0, title: '0 seconde'}
+*/
+
 
   this.difficulties = {
     easy: 'Facile',

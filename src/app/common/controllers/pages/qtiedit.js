@@ -228,8 +228,6 @@
       this.get('currentPage.questions').replace(pos, 0, [question]);
     },
 
-
-
     addAnswer: function(at) {
       if (!at)
         this.get('currentQuestion.answers').pushObject(new LxxlLib.model.Answer());
@@ -251,13 +249,6 @@
     /**
      * Categories handling
      */
-    // matters: (function() {
-    //   return LxxlLib.factories.metadata.matters;
-    // }).property('LxxlLib.factories.metadata.matters'),
-
-    // levels: (function() {
-    //   return LxxlLib.factories.metadata.levels;
-    // }).property('LxxlLib.factories.metadata.levels'),
 
     matters: Ember.Object.create({
       content: LxxlLib.factories.metadata.matters
