@@ -204,7 +204,7 @@
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {
         this.get('controller').addPage();
-        this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected.id'));
+        this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected'));
         $('#modal-create-page').modal('hide');
       }
     }),
@@ -268,16 +268,16 @@
 
         flavorUpdated: function() {
           var value = this.get('content.flavor');
-          if (value == 'simple') {
+          if (value.id == 'simple') {
             this.set('flavorIcon', 'icon-file');
             this.set('pageType', 'page-static');
-          } else if (value == 'quizz') {
+          } else if (value.id == 'quizz') {
             this.set('flavorIcon', 'icon-ok-circle');
             this.set('pageType', 'page-quizz');
-          } else if (value == 'quizzMulti') {
+          } else if (value.id == 'quizzMulti') {
             this.set('flavorIcon', ' icon-check');
             this.set('pageType', 'page-quizz-multi');
-          } else if (value == 'tat') {
+          } else if (value.id == 'tat') {
             this.set('flavorIcon', 'icon-text-width');
             this.set('pageType', 'page-tat');
           }

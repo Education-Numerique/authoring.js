@@ -48,19 +48,22 @@
       this.set('isQuizzQcm', false);
       this.set('isQuizzMulti', false);
 
-      if (value == 'simple') {
+      if(!value)
+        return;
+
+      if (value.id == 'simple') {
         this.set('isStaticPage', true);
-      } else if (value == 'quizz') {
+      } else if (value.id == 'quizz') {
         this.set('isQuizz', true);
         this.set('isQuizzQcm', true);
-      } else if (value == 'quizzMulti') {
+      } else if (value.id == 'quizzMulti') {
         this.set('isQuizz', true);
         this.set('isQuizzMulti', true);
-      } else if (value == 'tat') {
+      } else if (value.id == 'tat') {
         this.set('isTat', true);
       }
 
-      this.set('flavorLabel', I18n.translate('activities.pageFlavors')[value]);
+      this.set('flavorLabel', value.title);// I18n.translate('activities.pageFlavors')[value]);
 
     }.observes('currentPage.flavor'),
 

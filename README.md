@@ -3,6 +3,7 @@ clients.lxxl.authoring
 
 Authoring environment for lxxl.
 
+
 How to build
 ----------------------
 
@@ -11,6 +12,12 @@ Git clone the repository: git clone git@github.com:Education-Numerique/authoring
 Install puke in order to build `pip install puke` (you need python obviously, along with pip, which probably means you need brew under osx - more about puke: https://github.com/webitup/puke)
 
 Edit the config.yaml file to fit your mileage if you want (add a custom node, see the file).
+
+
+How to deploy
+----------------------
+
+Serve the build directory with any http webserver.
 
 
 How to contribute
@@ -52,6 +59,7 @@ config-YOUR_NAME-YOUR_OS:
 
 Unless you know "puke" well, there is little to no reason why you should hack any other file at the root.
 
+
 The src/miniboot folder
 ----------------------
 
@@ -70,10 +78,12 @@ You may edit at will any of the following files in that folder, namely:
 Though, you should NOT edit miniboot.js unless you have good reasons, nor should you add too much in there.
 These are placeholders files, and should have almost zero intelligence.
 
+
 The libs folder
 ----------------------
 
 Contains third-party dependencies. There is no reason to change any of these.
+
 
 The lxxl folder
 ----------------------
@@ -124,6 +134,7 @@ About the "common" folders everywhere
 ----------------------
 
 This is provisionnal, and is meant to specialize the application for desktop / mobile, by abstracting what is common to all devices.
+
 
 About stuff that is NOT there
 ----------------------
