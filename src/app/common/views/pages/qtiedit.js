@@ -127,6 +127,9 @@
         this.$().on('click', function(e) {
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
             $('#modal-page-timer').modal('show');
+          else if (this.$('[data-toggle]')[0] == e.target) {
+            this.set('controller.pageActivatedLimitedTime', true);
+          }
 
         }.bind(this));
       }
