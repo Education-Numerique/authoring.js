@@ -4,7 +4,7 @@ jsBoot.pack('LxxlLib.factories', function(api) {
   'use strict';
 
   this.activities = new (function() {
-    this.getById = function(id){
+    this.getById = function(id) {
       return new api.model.Activity({id: id});
     };
   })();
@@ -36,12 +36,12 @@ jsBoot.pack('LxxlLib.factories', function(api) {
       return new api.model.Difficulty({id: id, title: di[id]});
     });
 
-    var categories = api.defines.categories.map(function(item){
+    var categories = api.defines.categories.map(function(item) {
       return new api.model.Category(item);
     });
 
     this.getTreeFor = function(matter, level) {
-      if((matter == '*') && (level == '*'))
+      if ((matter == '*') && (level == '*'))
         return categories;
       return categories.filter(function(item) {
         return (item.level.id == level) && (item.matter.id == matter);

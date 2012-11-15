@@ -48,7 +48,7 @@
       this.set('isQuizzQcm', false);
       this.set('isQuizzMulti', false);
 
-      if(!value)
+      if (!value)
         return;
 
       if (value.id == 'simple') {
@@ -143,7 +143,7 @@
 
 
     limitedTimeUpdated: function() {
-      if (!this.get('currentPage')){
+      if (!this.get('currentPage')) {
         return;
       }
 
@@ -281,16 +281,16 @@
     }),
 
     minutes: Em.Object.create({
-      content: [0, 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90].map(function(key){
-          return {id: key, title: key + (key > 1 ? ' minutes' : ' minute')};
-        }),
+      content: [0, 1, 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90].map(function(key) {
+        return {id: key, title: key + (key > 1 ? ' minutes' : ' minute')};
+      }),
       selected: {id: 0, title: '0 minute'}
     }),
 
     seconds: Em.Object.create({
-      content: [0, 10, 20, 30, 45].map(function(key){
-          return {id: key, title: key + (key > 1 ? ' secondes' : ' seconde')};
-        }),
+      content: [0, 10, 20, 30, 45].map(function(key) {
+        return {id: key, title: key + (key > 1 ? ' secondes' : ' seconde')};
+      }),
       selected: {id: 0, title: '0 seconde'}
     })
 

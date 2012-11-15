@@ -4,11 +4,16 @@
 
   this.RedactorPlugins.mathjax = {
     init: function() {
+      var target = null;
 
       var callback = (function() {
 
         var math = null;
         this.saveSelection();
+
+        if (target) {
+          $('#redactor_modal .formula').val($(target).attr('data-formula'));
+        }
 
         MathJax.Hub.Typeset($('#redactor_modal .preview')[0], function() {
           math = MathJax.Hub.getAllJax('ragout')[0];
@@ -17,7 +22,6 @@
 
         $('#redactor_modal .formula').on('input', function() {
           if (!math) {
-            console.log('ahhhhhhh');
             return;
           }
 
@@ -26,29 +30,37 @@
 
         $('#redactor_modal .redactor_btn_modal_insert').on('click', function() {
 
-          this.insertFromMyModal($('#redactor_modal .formula').val());
+          this.insertFromMyModal($('#redactor_modal .formula').val(), target);
         }.bind(this));
 
       }.bind(this));
 
 
-      this.addBtn('mathjax', 'MathJax', function(obj) {
-        obj.modalInit('MathJax', '#redactor-mathjax', 500, callback);
+      this.addBtn('mathjax', 'AsciiMath', function(obj, e) {
+        target = obj.getBtn('mathjax').data('target');
+        obj.getBtn('mathjax').data('target', null);
+
+        obj.modalInit('AsciiMath', '#redactor-mathjax', 500, callback);
       });
 
       this.addBtnSeparatorBefore('mathjax');
     },
-    insertFromMyModal: function(formula) {
+    insertFromMyModal: function(formula, target) {
       this.restoreSelection();
 
       var ready = (function(node) {
-        this.execCommand('inserthtml', node[0].outerHTML);
+        if (target)
+          $(target).replaceWith(node[0]);
+        else
+          this.execCommand('inserthtml', node[0].outerHTML);
+
         this.modalClose();
       }.bind(this));
 
       html2canvas([$('#redactor_modal .preview')[0]], {
         onrendered: function(canvas) {
           var img = $('<img />');
+
           img.attr('src', canvas.toDataURL());
           img.attr('data-type', 'math');
           img.attr('data-format', 'ascii-math');
@@ -66,27 +78,3 @@
 
 
 }).apply(this);
-
-// $(document).ready(function () {
-
-//     var QUEUE = MathJax.Hub.queue;  // shorthand for the queue
-//     window.math = null, box = null;    // the element jax for the math output, and the box it's in
-
-
-//     //
-//     //  Get the element jax when MathJax has produced it.
-//     //
-//     QUEUE.Push(function () {
-//       window.math = MathJax.Hub.getAllJax("MathOutput")[0];
-//     });
-
-//     //
-//     //  The onchange event handler that typesets the math entered
-//     //  by the user.  Hide the box, then typeset, then show it again
-//     //  so we don't see a flash as the math is cleared and replaced.
-//     //
-//     window.UpdateMath = function (TeX) {
-//       QUEUE.Push(["Text",math,TeX]);
-//     };
-
-// });

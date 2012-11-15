@@ -8,7 +8,7 @@ jsBoot.pack('jsBoot.types', function(api) {
   this.Mutable = function() {
     if (typeof Ember != 'undefined') {
       var em = new Ember.Object();
-      for (var i in em){
+      for (var i in em) {
         if (i != 'constructor' && i != 'set')
           this[i] = em[i];
       }
@@ -66,31 +66,31 @@ jsBoot.pack('jsBoot.types', function() {
 jsBoot.use('jsBoot.types.EventDispatcher').as('dispatcher');
 jsBoot.pack('jsBoot.types', function(api) {
   'use strict';
-  this.ArrayMutable = function(subType, initialMesh){
+  this.ArrayMutable = function(subType, initialMesh) {
     var f = [];
-    Object.keys(api.dispatcher.prototype).forEach(function(item){
+    Object.keys(api.dispatcher.prototype).forEach(function(item) {
       this[item] = api.dispatcher.prototype[item];
     }, f);
     api.dispatcher.apply(f);
 
-    f.fromObject = function(mesh){
+    f.fromObject = function(mesh) {
       f.replace(0, f.length);
-      mesh.forEach(function(item){
-        if(subType.constructor == Function){
+      mesh.forEach(function(item) {
+        if (subType.constructor == Function) {
           this.pushObject(new subType(item));
-        }else{
+        }else {
           this.pushObject(subType(item));
         }
       }, f);
     };
 
-    f.toObject = function(){
-      return this.map(function(item){
+    f.toObject = function() {
+      return this.map(function(item) {
         return item.toObject();
       });
     };
 
-    if(initialMesh)
+    if (initialMesh)
       f.fromObject(initialMesh);
     return f;
   };
@@ -128,25 +128,25 @@ jsBoot.pack('jsBoot.types', function(api) {
           this[i] = '' + item;
           break;
         case 'object':
-        // May be null, an array, or an object-object
+          // May be null, an array, or an object-object
           this[i] = item;
           break;
         case 'function':
           Object.defineProperty(this, i, {
             enumerable: true,
             configurable: true,
-            get: function(){
+            get: function() {
               // XXX super dirty and dangerous - cause of the bind
               // Verify this in IE and other non-bindable browsers
-              if(item.constructor == Function){
-                if(typeof privatePool[i] == 'undefined'){
+              if (item.constructor == Function) {
+                if (typeof privatePool[i] == 'undefined') {
                   privatePool[i] = new item(lastMesh[i] || null);
                 }
                 return privatePool[i];
               }else
                 return item(lastMesh[i]);
             },
-            set: function(value){
+            set: function(value) {
               privatePool[i] = value;
             }
           });
@@ -154,7 +154,7 @@ jsBoot.pack('jsBoot.types', function(api) {
       }
     }, this);
 
-    this.free = function(){
+    this.free = function() {
       privatePool = {};
     };
 
@@ -167,10 +167,10 @@ jsBoot.pack('jsBoot.types', function(api) {
     };
 
     this.fromObject = function(networkMesh) {
-      if(typeof networkMesh != 'object')
+      if (typeof networkMesh != 'object')
         networkMesh = {id: networkMesh};
-      Object.keys(networkMesh).forEach(function(i){
-        if(!(i in descriptor))
+      Object.keys(networkMesh).forEach(function(i) {
+        if (!(i in descriptor))
           return;
         var item = networkMesh[i];
         switch (typeof descriptor[i]) {
@@ -184,15 +184,15 @@ jsBoot.pack('jsBoot.types', function(api) {
             this.set(i, '' + item);
             break;
           case 'object':
-          // May be null, an array, or an object-object
+            // May be null, an array, or an object-object
             this.set(i, item);
             break;
           case 'function':
-            if(typeof privatePool[i] != 'undefined'){
-              if(descriptor[i].constructor == Function){
-                if(!!privatePool[i]){
+            if (typeof privatePool[i] != 'undefined') {
+              if (descriptor[i].constructor == Function) {
+                if (!!privatePool[i]) {
                   privatePool[i].fromObject(networkMesh[i]);
-                }else{
+                }else {
                   lastMesh[i] = networkMesh[i];
                 }
               }else
@@ -218,7 +218,7 @@ jsBoot.pack('jsBoot.types', function(api) {
       }, this);
     };
 
-    if(initialMesh)
+    if (initialMesh)
       this.fromObject(initialMesh);
   };
 
@@ -227,15 +227,15 @@ jsBoot.pack('jsBoot.types', function(api) {
 jsBoot.use('jsBoot.types.TypedMutable').as('mutable');
 jsBoot.pack('jsBoot.types', function(api) {
   'use strict';
-  this.getPooledMutable = function(descriptor){
+  this.getPooledMutable = function(descriptor) {
     var inner = api.mutable.bind({}, descriptor);
     var pool = {};
-    return function(initialMesh){
-      if(!initialMesh || !('id' in initialMesh))
+    return function(initialMesh) {
+      if (!initialMesh || !('id' in initialMesh))
         return null;
-      if(!(initialMesh.id in pool)){
+      if (!(initialMesh.id in pool)) {
         pool[initialMesh.id] = new inner(initialMesh);
-      }else{
+      }else {
         pool[initialMesh.id].fromObject(initialMesh);
       }
       return pool[initialMesh.id];

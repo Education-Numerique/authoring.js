@@ -267,13 +267,17 @@
 
 <div id="redactor-mathjax" style="display: none;">
     <div id="redactor_modal_content">
-        <p><input type="text" class="formula" value="f(x)=sum_(n=0)^oo(f^((n))(a))/(n!)(x-a)^n" /></p>
-
-        <div class="preview" style="float:left;">`{}`</div>
+        <label>Formule : </label>
+        <input type="text" class="formula redactor_input" value="f(x)=sum_(n=0)^oo(f^((n))(a))/(n!)(x-a)^n" />
+        <label>Aperçu : </label>
+        <div class="preview" style="float:left;margin-top:10px;">`{}`</div>
     </div>
+            <hr class="clear" />
+
     <div id="redactor_modal_footer">
+        <a class="redactor_modal_btn" href="http://www1.chapman.edu/~jipsen/mathml/asciimath.html" style="float:left;" target="_blank">Documentation</a>
         <a class="redactor_modal_btn redactor_btn_modal_insert">Insérer</a>
-        <a  class="redactor_modal_btn redactor_btn_modal_close">Close</a>
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Fermer</a>
     </div>
 </div>
 

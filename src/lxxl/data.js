@@ -10,7 +10,7 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
     45: '45 minutes',
     60: '60 minutes'
   };
-/*
+  /*
   this.minutes = {
     0: '0 minute',
     1: '1 minute',
@@ -36,7 +36,7 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
           return {id: key, title: key + (key > 1 ? ' secondes' : ' seconde')};
         }),
       selected: {id: 0, title: '0 seconde'}
-*/
+  */
 
 
   this.difficulties = {
@@ -107,13 +107,13 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
         }
       ],
       matter: {id: 'fra'},
-      level: {id: 'ts'},
+      level: {id: 'ts'}
     },
     {
       id: 2,
       title: 'Ceci est une catégorie attachée au français de terminale L, sans subtree',
       matter: {id: 'fra'},
-      level: {id: 'tl'},
+      level: {id: 'tl'}
     },
     {
       id: 3,
@@ -131,7 +131,7 @@ jsBoot.pack('LxxlLib.model.defines', function(api) {
         }
       ],
       matter: {id: 'fra'},
-      level: {id: 'other'},
+      level: {id: 'other'}
     }
   ];
 });

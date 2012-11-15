@@ -27,6 +27,12 @@
 
     img[data-type=math] {
         cursor:pointer;
+        padding:5px;
+
+        &:hover {
+            @include rounded(5px);
+            background-color:#F1F1F1;
+        }
     }
 
     .redactor_toolbar {
