@@ -267,9 +267,13 @@
 
 <div id="redactor-mathjax" style="display: none;">
     <div id="redactor_modal_content">
-        <p><button id="mymodal-link">Insert</button></p>
+        <p><input type="text" class="formula" value="coin" /></p>
+
+        <div class="preview">`{}`</div>
     </div>
     <div id="redactor_modal_footer">
-        <a href="#" class="redactor_modal_btn redactor_btn_modal_close">Close</a>
+        <a class="redactor_modal_btn redactor_btn_modal_insert">Insérer</a>
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Close</a>
     </div>
 </div>
+
