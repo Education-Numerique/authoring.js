@@ -90,7 +90,9 @@
           $('#redactor_modal .redactor_btn_modal_remove').show();
         } else {
           this.saveSelection();
-          $('#redactor_modal .word').val(this.getSelectedHtml());
+          var tmp = $('<p />');
+          tmp.html(this.getSelectedHtml());
+          $('#redactor_modal .word').val(tmp.text());
           $('#redactor_modal .redactor_btn_modal_remove').hide();
         }
 
