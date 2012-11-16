@@ -14,9 +14,10 @@
         if (target) {
           $('#redactor_modal .formula').val($(target).attr('data-formula'));
         }
-
-        MathJax.Hub.Typeset($('#redactor_modal .preview')[0], function() {
-          math = MathJax.Hub.getAllJax('ragout')[0];
+        var coinNode = $('#redactor_modal .preview')[0];
+        MathJax.Hub.Typeset(coinNode, function() {
+          console.warn('====> coin node', coinNode);
+          math = MathJax.Hub.getAllJax(coinNode)[0];
           math.Text($('#redactor_modal .formula').val());
         });
 
@@ -28,7 +29,7 @@
           math.Text($(this).val());
         });
 
-        $('#redactor_modal .redactor_btn_modal_insert').on('click', function() {
+        $('#redactor_modal .redactor_btn_modal_insert').bind('click', function() {
 
           this.insertFromMyModal($('#redactor_modal .formula').val(), target);
         }.bind(this));
@@ -77,66 +78,67 @@
   };
 
 
-  this.RedactorPlugins.tat = {
-    init: function() {
-      var target = null;
+  // this.RedactorPlugins.tat = {
+  //   init: function() {
+  //     var target = null;
 
-      var callback = (function() {
+  //     var callback = (function() {
 
-        if (target) {
-          $('#redactor_modal .word').val(target.text());
-          $('#redactor_modal .clue').val(target.attr('data-clue'));
-          $('#redactor_modal .alternatives').val(target.attr('data-alt'));
-          $('#redactor_modal .redactor_btn_modal_remove').show();
-        } else {
-          this.saveSelection();
-          var tmp = $('<p />');
-          tmp.html(this.getSelectedHtml());
-          $('#redactor_modal .word').val(tmp.text());
-          $('#redactor_modal .redactor_btn_modal_remove').hide();
-        }
-
-
-        $('#redactor_modal .redactor_btn_modal_insert').on('click', function() {
-          this.insertFromMyModal(target);
-        }.bind(this));
-
-        $('#redactor_modal .redactor_btn_modal_remove').on('click', function() {
-          this.untagTat(target);
-        }.bind(this));
-
-      }.bind(this));
+  //       if (target) {
+  //         $('#redactor_modal .word').val(target.text());
+  //         $('#redactor_modal .clue').val(target.attr('data-clue'));
+  //         $('#redactor_modal .alternatives').val(target.attr('data-alt'));
+  //         $('#redactor_modal .redactor_btn_modal_remove').show();
+  //       } else {
+  //         this.saveSelection();
+  //         var tmp = $('<p />');
+  //         tmp.html(this.getSelectedHtml());
+  //         $('#redactor_modal .word').val(tmp.text());
+  //         $('#redactor_modal .redactor_btn_modal_remove').hide();
+  //       }
 
 
-      this.addBtn('tat', 'Texte à trous', function(obj, e) {
-        target = obj.getBtn('tat').data('target') ? $(obj.getBtn('tat').data('target')) : null;
-        obj.getBtn('tat').data('target', null);
+  //       $('#redactor_modal .redactor_btn_modal_insert').bind('click', function() {
+  //         this.insertFromMyModal(target);
+  //       }.bind(this));
 
-        obj.modalInit('Texte à trous', '#redactor-tat', 500, callback);
-      });
-    },
+  //       $('#redactor_modal .redactor_btn_modal_remove').bind('click', function() {
+  //         this.untagTat(target);
+  //       }.bind(this));
 
-    untagTat: function(el) {
-      el.replaceWith(el.text());
-      this.modalClose();
-    },
+  //     }.bind(this));
 
-    insertFromMyModal: function(el) {
-      var word = $('#redactor_modal .word').val();
-      var clue = $('#redactor_modal .clue').val();
-      var alts = $('#redactor_modal .alternatives').val();
 
-      var markup = '<a data-type="tat" data-clue="' + this.stripTags(clue) + '" data-alt="' +
-          this.stripTags(alts) + '">' + word + '</a>&nbsp';
+  //     this.addBtn('tat', 'Texte à trous', function(obj, e) {
+  //       target = obj.getBtn('tat').data('target') ? $(obj.getBtn('tat').data('target')) : null;
+  //       obj.getBtn('tat').data('target', null);
 
-      if (el && el.attr('data-type') == 'tat') {
-        el.replaceWith(markup);
-      } else {
-        this.restoreSelection();
-        this.execCommand('inserthtml', markup);
-      }
-      this.modalClose();
-    }
-  };
+  //       obj.modalInit('Texte à trous', '#redactor-tat', 500, callback);
+  //     });
+  //   },
+
+  //   untagTat: function(el) {
+  //     el.replaceWith(el.text());
+  //     this.modalClose();
+  //   },
+
+  //   insertFromMyModal: function(el) {
+  //     var word = $('#redactor_modal .word').val();
+  //     var clue = $('#redactor_modal .clue').val();
+  //     var alts = $('#redactor_modal .alternatives').val();
+
+  //     var markup = '<a data-type="tat" data-clue="' + this.stripTags(clue) + '" data-alt="' +
+  //         this.stripTags(alts) + '">' + word + '</a>&nbsp';
+
+  //     if (el && el.attr('data-type') == 'tat') {
+  //       el.replaceWith(markup);
+  //     } else {
+  //       this.restoreSelection();
+  //       this.execCommand('inserthtml', markup);
+  //     }
+  //     this.modalClose();
+  //   }
+
+  // };
 
 }).apply(this);
