@@ -127,6 +127,24 @@
 
       // Setter
       this.set('_storedCurrentPage', value);
+
+          // Overloads on model
+      if(!('isAlphabetical' in value)){
+        value.isAlphabetical = (function(k, v){
+          if (arguments.length === 1)
+            return !this.get('displayHolesRandomly');
+          this.set('displayHolesRandomly', !v);
+          return !v;
+        }).property('value.displayHolesRandomly');
+
+        value.isRandom = (function(k, v){
+          if (arguments.length === 1)
+            return this.get('displayHolesRandomly');
+          this.set('displayHolesRandomly', v);
+          return !v;
+        }).property('value.displayHolesRandomly');
+      }
+
       return value;
     }).property('content', 'content.pages.length'),
 
