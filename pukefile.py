@@ -40,9 +40,9 @@ def doc():
 
 @task("Lint")
 def lint():
-  PH.linter("src/app")
-  PH.linter("src/miniboot")
   PH.linter("src/lxxl")
+  PH.linter("src/miniboot")
+  PH.linter("src/app")
   PH.linter("src/activity", excluding="*apiwrapper*")
 
   # PH.linter("src/bootstrap")
@@ -64,16 +64,16 @@ def hint():
 
 @task("Fhint")
 def fhint():
-  PH.fhinter("src/app")
-  PH.fhinter("src/miniboot")
   PH.fhinter("src/lxxl")
+  PH.fhinter("src/miniboot")
+  PH.fhinter("src/app")
   PH.fhinter("src/activity", excluding="*apiwrapper*")
 
 @task("Flint")
 def flint():
-  PH.flinter("src/app")
-  PH.flinter("src/miniboot")
   PH.flinter("src/lxxl")
+  PH.flinter("src/miniboot")
+  PH.flinter("src/app")
   PH.flinter("src/activity", excluding="*apiwrapper*")
   # PH.flinter("src/bootstrap")
   # PH.flinter("src/lib/ember")
