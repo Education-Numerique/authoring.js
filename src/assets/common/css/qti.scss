@@ -646,3 +646,8 @@ Style specific to activity edition
 [data-type=tat] {
     
 }
+
+
+.pager li:not(.disabled) a {
+    cursor:pointer;
+}

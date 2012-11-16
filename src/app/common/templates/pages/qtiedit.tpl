@@ -288,7 +288,7 @@
               </fieldset>
             </form>
               <ul class="pager" style="padding-top:10px">
-                  <li {{bindAttr class="view.hasPrevious:show:disabled"}}><a {{action goPrevious target="this"}} >Précédant</a></li>
+                  <li {{bindAttr class="view.hasPrevious:show:disabled"}}><a {{action goPrevious target="this"}} >Précédent</a></li>
                   <li {{bindAttr class="view.hasNext:show:disabled"}}><a {{action goNext target="this" }} >Suivant</a></li>
                 </ul>
             </div>
