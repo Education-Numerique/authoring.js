@@ -11,10 +11,13 @@
         var math = null;
         this.saveSelection();
 
-        if (target) {
+        if (target)
           $('#redactor_modal .formula').val($(target).attr('data-formula'));
-        }
+
+        // MathJAX initialization stupidity
         var coinNode = $('#redactor_modal .preview')[0];
+        $('#redactor_modal .preview').html('`{}`');
+
         MathJax.Hub.Typeset(coinNode, function() {
           console.warn('====> coin node', coinNode);
           math = MathJax.Hub.getAllJax(coinNode)[0];
