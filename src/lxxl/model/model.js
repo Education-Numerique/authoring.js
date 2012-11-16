@@ -59,6 +59,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   this.Question = api.TypedMutable.bind({}, {
     coef: 0,
     text: '',
+    isQRM: false,
     answers: api.ArrayMutable.bind({}, this.Answer)
   });
 

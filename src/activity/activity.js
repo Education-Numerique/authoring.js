@@ -326,13 +326,13 @@ var date = new Date(null);
       }
       switch (toLoad.scheme) {
         case 'jshint':
-        break;
+          break;
         case 'data':
           callback(readDataUri(toLoad));
           break;
         default:
-        // case 'http':
-        // case 'file':
+          // case 'http':
+          // case 'file':
           var r = new XMLHttpRequest();
           r.open('GET', iri);
           r.onreadystatechange = function() {
@@ -359,7 +359,7 @@ var date = new Date(null);
     };
 
     var note = function(data) {
-      if(typeof data == 'function')
+      if (typeof data == 'function')
         tpl = data;
       else
         act = data;
