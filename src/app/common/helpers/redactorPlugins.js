@@ -2,11 +2,9 @@
   if (typeof this.RedactorPlugins === 'undefined') this.RedactorPlugins = {};
 
 
-  this.RedactorPlugins.mathjax = new (function(){
-    var redactorScope;
+  this.RedactorPlugins.mathjax = new (function() {
     this.init = function() {
-      console.warn("initing MATHJAX", this);
-      redactorScope = this;
+      var redactorScope;
       var target = null;
 
       var callback = (function() {
@@ -43,6 +41,7 @@
 
 
       this.addBtn('mathjax', 'AsciiMath', function(obj, e) {
+        redactorScope = obj;
         target = obj.getBtn('mathjax').data('target');
         obj.getBtn('mathjax').data('target', null);
 
@@ -50,39 +49,41 @@
       });
 
       this.addBtnSeparatorBefore('mathjax');
-    };
 
-    var insertFromMyModal = function(formula, target) {
-      console.warn("Mathjax inserting form modal", this);
-      redactorScope.restoreSelection();
+      var insertFromMyModal = function(formula, target) {
+        redactorScope.restoreSelection();
 
-      var ready = function(node) {
-        if (target)
-          $(target).replaceWith(node[0]);
-        else
-          redactorScope.execCommand('inserthtml', node[0].outerHTML);
+        var ready = function(node) {
+          if (target)
+            $(target).replaceWith(node[0]);
+          else
+            redactorScope.execCommand('inserthtml', node[0].outerHTML);
 
-        redactorScope.modalClose();
+          redactorScope.modalClose();
+        };
+
+        html2canvas([$('#redactor_modal .preview')[0]], {
+          onrendered: function(canvas) {
+            var img = $('<img />');
+
+            img.attr('src', canvas.toDataURL());
+            img.attr('data-type', 'math');
+            img.attr('data-format', 'ascii-math');
+            img.attr('data-formula', formula);
+            img.attr('uneditable', 'true');
+            ready(img);
+          }
+        });
       };
 
-      html2canvas([$('#redactor_modal .preview')[0]], {
-        onrendered: function(canvas) {
-          var img = $('<img />');
 
-          img.attr('src', canvas.toDataURL());
-          img.attr('data-type', 'math');
-          img.attr('data-format', 'ascii-math');
-          img.attr('data-formula', formula);
-          img.attr('uneditable', 'true');
-          ready(img);
-        }
-      });
     };
+
   })();
 
-  this.RedactorPlugins.tat = new (function(){
+  this.RedactorPlugins.tat = new (function() {
     this.init = function() {
-      console.warn("initing TAT", this);
+      var redactorScope;
       var target = null;
 
       var callback = (function() {
@@ -113,35 +114,37 @@
 
 
       this.addBtn('tat', 'Texte à trous', function(obj, e) {
+        redactorScope = obj;
         target = obj.getBtn('tat').data('target') ? $(obj.getBtn('tat').data('target')) : null;
         obj.getBtn('tat').data('target', null);
 
         obj.modalInit('Texte à trous', '#redactor-tat', 500, callback);
       });
+
+      var untagTat = function(el) {
+        el.replaceWith(el.text());
+        redactorScope.modalClose();
+      };
+
+      var insertFromMyModal = function(el) {
+        var word = $('#redactor_modal .word').val();
+        var clue = $('#redactor_modal .clue').val();
+        var alts = $('#redactor_modal .alternatives').val();
+
+        var markup = '<a data-type="tat" data-clue="' + redactorScope.stripTags(clue) + '" data-alt="' +
+            redactorScope.stripTags(alts) + '">' + word + '</a>&nbsp';
+
+        if (el && el.attr('data-type') == 'tat') {
+          el.replaceWith(markup);
+        } else {
+          redactorScope.restoreSelection();
+          redactorScope.execCommand('inserthtml', markup);
+        }
+        redactorScope.modalClose();
+      };
     };
 
-    var untagTat = (function(el) {
-      el.replaceWith(el.text());
-      this.modalClose();
-    }.bind(this));
 
-    var insertFromMyModal = (function(el) {
-      console.warn("INSERTING FROM MODAL", this);
-      var word = $('#redactor_modal .word').val();
-      var clue = $('#redactor_modal .clue').val();
-      var alts = $('#redactor_modal .alternatives').val();
-
-      var markup = '<a data-type="tat" data-clue="' + this.stripTags(clue) + '" data-alt="' +
-          this.stripTags(alts) + '">' + word + '</a>&nbsp';
-
-      if (el && el.attr('data-type') == 'tat') {
-        el.replaceWith(markup);
-      } else {
-        this.restoreSelection();
-        this.execCommand('inserthtml', markup);
-      }
-      this.modalClose();
-    }.bind(this));
 
   })();
 
