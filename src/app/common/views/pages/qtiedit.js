@@ -401,6 +401,9 @@
             }.bind(this));
           }.observes('selectedAnswer'),
 
+
+
+
           didInsertElement: function() {
             var view = this;
             view.get('_parentView').$('table tbody').sortable({
@@ -456,6 +459,71 @@
           })
         })
       })
+    }),
+
+    TatGestion: Em.View.extend({
+      tats: [],
+      current: 0,
+      tmpNode: null,
+
+      Tat: Em.Object.extend({
+        word: null,
+        clue: null,
+        alt: null,
+        item: null
+      }),
+
+      tatUpdated: function() {
+        this.set('tats', []);
+        var tats = $('<p />');
+        this.set('tmpNode', tats);
+        tats.html(this.get('controller.currentPage.document'));
+        tats.find('[data-type=tat]').each(function(i, item) {
+          var tat = this.Tat.create();
+          tat.word = $(item).text();
+          tat.clue = $(item).attr('data-clue');
+          tat.alt = $(item).attr('data-alt');
+          tat.item = $(item);
+          this.get('tats').pushObject(tat);
+        }.bind(this));
+      }.observes('controller.currentPage.document'),
+
+      currentTat: (function() {
+        return this.get('tats')[this.get('current')];
+      }.property('tats.length', 'current')),
+
+
+      valueChanged: (function() {
+        //XXX optim
+        //Observes only when modal is visible
+        if (!this.get('tmpNode') || !this.get('currentTat.item'))
+          return;
+
+        this.get('currentTat.item').text(this.get('currentTat.word'));
+        this.get('currentTat.item').attr('data-clue', this.get('currentTat.clue'));
+        this.get('currentTat.item').attr('data-alt', this.get('currentTat.alt'));
+        if (this.get('controller.currentPage.document') == this.get('tmpNode').html())
+          return;
+
+        this.set('controller.currentPage.document', this.get('tmpNode').html());
+      }.observes('currentTat.word', 'currentTat.clue', 'currentTat.alt')),
+
+      hasNext: (function() {
+        return (this.get('current') < (this.get('tats.length') - 1));
+      }.property('tats.length', 'current')),
+
+      hasPrevious: (function() {
+        return (this.get('current') > 0);
+      }.property('tats.length', 'current')),
+
+      goNext: function() {
+        this.incrementProperty('current');
+      },
+
+      goPrevious: function() {
+        this.decrementProperty('current');
+      }
+
     }),
 
     ModalBox: Em.View.extend({

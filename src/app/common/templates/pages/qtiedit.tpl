@@ -80,7 +80,13 @@
                                                     sequencing || Random : All | number
                                                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                                                 //-->
-                                                {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span class="name btn">Séquenceur</span>{{/view}}
+                                                {{#unless isTat}}
+                                                    {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span class="name btn">Séquenceur</span>{{/view}}
+                                                {{else}}
+                                                     <button data-toggle="modal" href="#modal-page-gestion" class="name btn">
+                                                        Gestion
+                                                    </button>
+                                                {{/unless}}
                                                 <!-- <button class="btn">Coefficient</button> -->
                                             </div>
                                             <div class="input-prepend">
@@ -252,6 +258,49 @@
         <a class="btn btn-primary" data-dismiss="modal">Ok</a>
     </div>
 </div>
+
+
+{{#if isTat}}
+{{#view view.TatGestion}}
+<div class="modal hide" id="modal-page-gestion">
+    <div class="modal-body" style="height:300px">
+       <div class="tabbable"> <!-- Only required for left/right tabs -->
+        <button type="button" class="close" data-dismiss="modal">×</button>
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#general" data-toggle="tab">General</a></li>
+            <li><a href="#trous" data-toggle="tab">Trous</a></li>
+          </ul>
+
+          <div class="tab-content">
+            <div class="tab-pane active" id="general">
+              <p> "show words in holes", with a radio select underneath: "alphabetical / random"</p>
+            </div>
+            <div class="tab-pane" id="trous">
+            <form>
+              <fieldset>
+                <label>Mot supprimé :</label>
+                {{view Ember.TextField valueBinding="view.currentTat.word"}}
+                <label>Indice :</label>
+                {{view Ember.TextField valueBinding="view.currentTat.clue"}}
+                <label>Alternatives (séparées par ; | joker : *) :</label>
+                {{view Ember.TextField valueBinding="view.currentTat.alt"}}
+               
+              </fieldset>
+            </form>
+              <ul class="pager" style="padding-top:10px">
+                  <li {{bindAttr class="view.hasPrevious:show:disabled"}}><a {{action goPrevious target="this"}} >Précédant</a></li>
+                  <li {{bindAttr class="view.hasNext:show:disabled"}}><a {{action goNext target="this" }} >Suivant</a></li>
+                </ul>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+    </div>
+</div>
+{{/view}}
+{{/if}}
 
 
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">

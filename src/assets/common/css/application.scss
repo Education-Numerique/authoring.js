@@ -241,6 +241,11 @@ hr.soften {
   overflow: hidden;
 }
 
+.none {
+  display:none!important;
+}
+
+
 .unselectable {
   @include unselectable();
 }
