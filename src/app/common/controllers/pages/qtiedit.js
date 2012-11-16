@@ -149,18 +149,23 @@
     }).property('content', 'content.pages.length'),
 
     tatIsAlphabetical: (function(k, v) {
-      if (arguments.length === 1)
+      if (arguments.length === 1) {
         return !this.get('currentPage.displayHolesRandomly');
+      }
       this.set('currentPage.displayHolesRandomly', !v);
+
       return !v;
-    }.property('currentPage.displayHolesRandomly')),
+    }.property('currentPage', 'currentPage.displayHolesRandomly')),
 
     tatIsRandom: (function(k, v) {
-      if (arguments.length === 1)
+
+      if (arguments.length === 1) {
         return this.get('currentPage.displayHolesRandomly');
+      }
       this.set('currentPage.displayHolesRandomly', v);
+
       return v;
-    }.property('currentPage.displayHolesRandomly')),
+    }.property('currentPage', 'currentPage.displayHolesRandomly')),
 
 
     pageActivatedLimitedTime: (function(key, value) {

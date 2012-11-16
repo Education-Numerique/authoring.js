@@ -27,7 +27,9 @@
     },
 
     checkedUpdate: function() {
-      $.uniform.update('#' + this.get('elementId'));
+      Ember.run.next(this, function() {
+        $.uniform.update(this.$());
+      });
     }.observes('checked')
   });
 
@@ -295,6 +297,14 @@
     change: function() {
       Ember.run.once(this, this._updateElementValue);
     },
+
+    upstreamChanged: (function() {
+      Ember.run.next(this, function() {
+        // this will be executed at the end of the RunLoop, when bindings are synced
+        $.uniform.update(this.$('input'));
+      });
+
+    }.observes('checked')),
 
     _updateElementValue: function() {
       this.set('group', this.get('value'));
