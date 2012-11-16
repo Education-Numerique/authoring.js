@@ -275,10 +275,13 @@
             <div class="tab-pane active" id="general">
                 <form>
                   <fieldset>
-                    <label>Trier les mots par ordre :</label>
-                    {{log currentPage}}
-                    {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isAlphabetical" title="Alphabétique"}}
-                    {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isRandom" title="Aléatoire"}}
+                    
+                     <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher tous les trous</label> <br />
+                    {{#if currentPage.displayHoles}}
+                        <label>Trier les mots par ordre :</label>
+                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isAlphabetical" title="Alphabétique"}}
+                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isRandom" title="Aléatoire"}}
+                    {{/if}}
                   </fieldset>
                 </form>
             </div>
