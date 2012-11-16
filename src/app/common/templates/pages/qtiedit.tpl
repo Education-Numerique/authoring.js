@@ -273,7 +273,14 @@
 
           <div class="tab-content">
             <div class="tab-pane active" id="general">
-              <p> "show words in holes", with a radio select underneath: "alphabetical / random"</p>
+                <form>
+                  <fieldset>
+                    <label>Trier les mots par ordre :</label>
+                    {{log currentPage}}
+                    {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isAlphabetical" title="Alphabétique"}}
+                    {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isRandom" title="Aléatoire"}}
+                  </fieldset>
+                </form>
             </div>
             <div class="tab-pane" id="trous">
                 {{#if view.tats.length}}

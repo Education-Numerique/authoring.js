@@ -122,17 +122,17 @@
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
 
-  if(cdnJax){
+  if (cdnJax) {
     jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML.js');
-  }else{
+  }else {
     // Mathjax is a bitch
-    var baseJax = jsBoot.loader.list().mathjax.filter(function(item){
-      if(item.match(/MathJax.js/) && item.match(/latest/))// 2\.1
+    var baseJax = jsBoot.loader.list().mathjax.filter(function(item) {
+      if (item.match(/MathJax.js/) && item.match(/latest/))// 2\.1
         return true;
     }).pop();
 
     jsBoot.loader.use(baseJax + '?config=AM_HTMLorMML-full.js');
-    jsBoot.loader.wait(function(){
+    jsBoot.loader.wait(function() {
 
     });
   }
