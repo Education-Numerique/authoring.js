@@ -1,3 +1,9 @@
+/**
+ * This file is responsible for two things:
+ * - expose an API to manipulate and render activity objects
+ * - adds the learner environemnent including feedback and other consumer related behaviors
+ */
+
 (function(){
   'use strict';
   /**
