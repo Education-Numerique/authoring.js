@@ -279,8 +279,8 @@
                      <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher tous les trous</label> <br />
                     {{#if currentPage.displayHoles}}
                         <label>Trier les mots par ordre :</label>
-                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isAlphabetical" title="Alphabétique"}}
-                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" valueBinding="currentPage.isRandom" title="Aléatoire"}}
+                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsAlphabetical" value=false title="Alphabétique" groupBinding="currentPage.displayHolesRandomly"}}
+                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsRandom" value=true title="Aléatoire" groupBinding="currentPage.displayHolesRandomly"}}
                     {{/if}}
                   </fieldset>
                 </form>
