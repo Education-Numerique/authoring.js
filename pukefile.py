@@ -199,7 +199,7 @@ def build():
 
   # css application
   css = FileList("src/assets/common/css", filter = "*.css,*.scss")
-  css.merge("src/activity/activity.scss")
+  # css.merge("src/activity/activity.scss")
   # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
   combine(css, VERSIONED_ROOT + "/lxxl.css", replace=sed)
 
@@ -225,8 +225,11 @@ def build():
 
   list = FileList('src', filter = '*activity*')
   deepcopy(list, VERSIONED_ROOT, replace=sed)
+  combine(lxxl, VERSIONED_ROOT + "/activity/lxxl-standalone-library.js", replace=sed)
   
   # combine("src/activity/activity.tpl", VERSIONED_ROOT + "/activity.tpl", replace=sed)
   # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
+
   combine("src/activity/activity.scss", VERSIONED_ROOT + "/activity/activity.css", replace=sed)
+  combine("src/activity/miniboot.js", VERSIONED_ROOT + "/activity/miniboot-min.js", replace=sed)
 

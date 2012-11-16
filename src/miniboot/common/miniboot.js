@@ -31,6 +31,8 @@
   // No analytics for now
   // var gaTracker = '{PUKE_ANALYTICS}';
 
+  var cdnJax = /use-cdnjax/.test(location.href);
+
   // Root of the versioned app
   var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
@@ -119,13 +121,27 @@
 
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
-  // Mathjax config
-  // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-AMS-MML_HTMLorMML.js');
-  // jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML.js');
-  jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js');
+
+  if(cdnJax){
+    jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML.js');
+  }else{
+    // Mathjax is a bitch
+    var baseJax = jsBoot.loader.list().mathjax.filter(function(item){
+      if(item.match(/MathJax.js/) && item.match(/latest/))// 2\.1
+        return true;
+    }).pop();
+
+    jsBoot.loader.use(baseJax + '?config=AM_HTMLorMML-full.js');
+    jsBoot.loader.wait(function(){
+
+    });
+  }
+
+  // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-MML-AM_HTMLorMML.js');
+  // jsBoot.loader.use('mathjax', version || '2.1', 'mathjax.*[.]js$');
+  // jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js');
 
   // Mathjax itself
-  // jsBoot.loader.use('mathjax', version || '2.1', 'TeX-AMS-MML_HTMLorMML.js');
   jsBoot.loader.use('libs/js/jquery.wizard' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix + 'js');

@@ -161,7 +161,7 @@ jsBoot.pack('jsBoot.types', function(api) {
     this.toObject = function() {
       var ret = {};
       Object.keys(descriptor).forEach(function(i) {
-        ret[i] = this[i];
+        ret[i] = (!!this[i] && (typeof this[i] == 'object') && ('toObject' in this[i])) ? this[i].toObject() : this[i];
       }, this);
       return ret;
     };

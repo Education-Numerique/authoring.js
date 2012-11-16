@@ -1,19 +1,18 @@
 /**
+ * @file
+ * @summary This is a simplified miniboot meant for standalone applications.
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
  * @version {PUKE-PACKAGE-VERSION}
- * @author {PUKE-PACKAGE-AUTHOR}
- * @name {PUKE-PACKAGE-NAME}
- * @homepage {PUKE-PACKAGE-HOME}
- * @file This is meant to load whatever you need before actually running your application.
- * Your main application script should NOT be in there though, but rather loaded asynchronously
- * as well. DONT edit this unless you know what you are doing.
- * @license {PUKE-PACKAGE-LICENSE}.
- * @copyright {PUKE-PACKAGE-COPYRIGHT}
- * @location {PUKE-PACKAGE-GIT-ROOT}/bootstrap/desktop/bootstrap.js{PUKE-PACKAGE-GIT-REV}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/miniboot/common/miniboot.js{PUKE-GIT-REVISION}
  */
 
-// XXX todo - use burnscars instead of shims
 (function() {
   'use strict';
+
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin
   var debug = /use-debug/.test(location.href);
@@ -32,7 +31,6 @@
   if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
     jsBoot.loader.use('ie7', '2.1');
 
-
   jsBoot.loader.use('normalize', 2.0);
   jsBoot.loader.use('h5bp', 4.0);
   // Bundled assets (vanilla bootstrap doesn't work)
@@ -44,10 +42,15 @@
   // jsBoot.loader.use('stacktrace', version || '0.4', null, debug);
   jsBoot.loader.wait();
   // XXX compact every other needed script
-  // jsBoot.loader.use(jsBoot.loader.MINGUS);
+  jsBoot.loader.use(jsBoot.loader.MINGUS);
+  if (debug)
+    jsBoot.loader.use('stacktrace', version || '0.4', null, debug);
+  jsBoot.loader.wait();
   jsBoot.loader.use(jsBoot.loader.CORE);
   jsBoot.loader.wait();
-  // jsBoot.loader.use(jsBoot.loader.SERVICE);
+  if (debug)
+    jsBoot.loader.use(jsBoot.loader.DEBUG, null, null, debug);
+  jsBoot.loader.use(jsBoot.loader.SERVICE);
   jsBoot.loader.use('jquery', version || '1.8');
   jsBoot.loader.use('handlebars', version || '1.0', 'main');// b6
   // jsBoot.loader.use('i18n', trunk ? 'trunk' : '3rc2');
@@ -59,13 +62,18 @@
 
   jsBoot.loader.use('bootstrap', version || 'stable');
 
+  jsBoot.loader.use('apiwrapper' + suffix + 'js');
+  jsBoot.loader.use('lxxl-standalone-library' + suffix + 'js');
 
+  // Callback for when the first part of the stack is loaded
   jsBoot.loader.wait(function() {
+    // Js is working here
     $('html').removeClass('no-js');
     // Now, go away placeholder
+    // if ((typeof chrome == 'undefined') && (typeof XPCNativeWrapper == 'undefined'))
+    //   $('html').addClass('unsupported-browser');
     if (debug) {
-      // To be removed - allow to spoof user level when debugging
-      jsBoot.debug.tick('Base stack loaded');
+      jsBoot.debug.tick('Ember stack loaded');
       // Set reasonable verbosity
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
           jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR |
@@ -74,11 +82,26 @@
       // Mute console while in production
       jsBoot.core.toggleConsole(false);
     }
+
+    // Initialize service - to be {PUKE-*}-ed
+    jsBoot.service.core.initialize({
+      id: 'TEST',
+      secret: 'TEST'
+    }, {
+      // host: 'localhost',
+      // port: '8081',
+      host: 'snap.lxxl.com',
+      port: '90',
+      version: '1.0'
+    }, {
+      id: 'anonymous',
+      login: 'anonymous',
+      password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+    });
   });
 
-  jsBoot.loader.use('activity.js');
-  jsBoot.loader.use('apiwrapper.js');
-  jsBoot.loader.use('activity.css');
+  // jsBoot.loader.use('activity' + suffix + 'css');
+  jsBoot.loader.use('activity' + suffix + 'js');
 
   jsBoot.loader.wait(function() {
     if (debug)
@@ -87,9 +110,7 @@
     var a = new LxxlLib.activity();
     a.setupViewport($('#lxxlroot'), true);
     // a.addStyle('body{background-color: blue;}');
-    /*
-    a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
-    */
+
     a.setupTemplate('activity.tpl');
 
     a.showActivity('activity.json');
@@ -98,5 +119,4 @@
       a.end();
     };
   });
-
 })();

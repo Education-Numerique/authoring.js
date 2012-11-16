@@ -1,8 +1,5 @@
-if(!('LxxlLib' in window))
-  window.LxxlLib = {};
-
 (function(){
-
+  'use strict';
   /**
    * Handlebouze
    */
