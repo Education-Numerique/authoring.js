@@ -18,6 +18,7 @@ def all():
   # executeTask("hint")
   executeTask("build")
   # executeTask("tests")
+  executeTask("deploy")
   executeTask("mint")
   executeTask("deploy")
   executeTask("doc")
