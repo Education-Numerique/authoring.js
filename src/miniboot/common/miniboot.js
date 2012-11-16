@@ -127,7 +127,7 @@
   }else {
     // Mathjax is a bitch
     var baseJax = jsBoot.loader.list().mathjax.filter(function(item) {
-      if (item.match(/MathJax.js/) && item.match(/latest/))// 2\.1
+      if (item.match(/MathJax[.]js/) && item.match(/latest/))// 2\.1
         return true;
     }).pop();
 

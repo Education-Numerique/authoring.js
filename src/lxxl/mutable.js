@@ -1,5 +1,6 @@
 // Simple polymorph mutable object on top of EventDispatcher
 // Whether or not in Ember context, will behave seemlessly
+/*jshint newcap:false*/
 jsBoot.use('jsBoot.types.EventDispatcher').as('dispatcher');
 jsBoot.pack('jsBoot.types', function(api) {
   /*global Ember*/

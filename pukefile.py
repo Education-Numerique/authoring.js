@@ -41,9 +41,9 @@ def doc():
 @task("Lint")
 def lint():
   PH.linter("src/app")
-  PH.linter("src/assets")
   PH.linter("src/miniboot")
   PH.linter("src/lxxl")
+  PH.linter("src/activity", excluding="*apiwrapper*")
 
   # PH.linter("src/bootstrap")
   # PH.linter("src/lib/ember")
@@ -55,8 +55,8 @@ def lint():
 def hint():
   PH.hinter("src/lxxl")
   PH.hinter("src/miniboot/")
+  PH.hinter("src/activity", excluding="*apiwrapper*")
   PH.hinter("src/app")
-  PH.hinter("src/assets")
 
   # PH.hinter("src/miniboot/")
   # PH.hinter("src/lib/", excluding = "*jquery.ui*,*jquery.effects*")
@@ -65,16 +65,16 @@ def hint():
 @task("Fhint")
 def fhint():
   PH.fhinter("src/app")
-  PH.fhinter("src/assets")
   PH.fhinter("src/miniboot")
   PH.fhinter("src/lxxl")
+  PH.fhinter("src/activity", excluding="*apiwrapper*")
 
 @task("Flint")
 def flint():
   PH.flinter("src/app")
-  PH.flinter("src/assets")
   PH.flinter("src/miniboot")
   PH.flinter("src/lxxl")
+  PH.flinter("src/activity", excluding="*apiwrapper*")
   # PH.flinter("src/bootstrap")
   # PH.flinter("src/lib/ember")
   # PH.flinter("src/lib/roxee")

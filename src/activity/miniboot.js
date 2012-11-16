@@ -25,7 +25,7 @@
   // var gaTracker = '{PUKE_ANALYTICS}';
 
   // Root of the versioned app
-  var bootRoot = '{PUKE-PACKAGE-VERSION}/';
+  // var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
   // IE deserves to be raped :)
   if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
@@ -115,7 +115,7 @@
 
     a.showActivity('activity.json');
 
-    window.onunload = function(){
+    window.onunload = function() {
       a.end();
     };
   });

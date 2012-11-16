@@ -233,7 +233,8 @@
           {
             route: '/qtiEdit/:id',
             connectOutlets: function(router, qti) {
-              router.get('applicationController').connectOutlet('qtiEdit', LxxlLib.factories.activities.getById(qti.id));
+              router.get('applicationController').connectOutlet('qtiEdit',
+                  LxxlLib.factories.activities.getById(qti.id));
             }
           }),
 

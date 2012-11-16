@@ -4,13 +4,14 @@
  * - adds the learner environemnent including feedback and other consumer related behaviors
  */
 
-(function(){
+/*global console, Mingus, Handlebars*/
+(function() {
   'use strict';
   /**
    * Handlebouze
    */
   Handlebars.registerHelper('ifequalhelp', function(val1, val2, options) {
-    var context = (options.fn.contexts && options.fn.contexts[0]) || this;
+    // var context = (options.fn.contexts && options.fn.contexts[0]) || this;
     // var val1 = Ember.Handlebars.getPath(context, val1, options.fn);
     // var val2 = Ember.Handlebars.getPath(context, val2, options.fn);
     if (val1 === val2) {
@@ -24,7 +25,7 @@
   /**
    * Scorm stuff - untested
    */
-  this.LxxlLib.scorm = new (function(){
+  this.LxxlLib.scorm = new (function() {
     this.INIT = 'Initialize';
     this.FINISH = 'Finish';
     this.GET = 'GetValue';
@@ -34,7 +35,7 @@
     doLMSGetLastError
     doLMSGetErrorString
     doLMSGetDiagnostic
-    */  
+    */
 
     this.PASSED = 'passed';
     this.COMPLETED = 'completed';
@@ -51,15 +52,15 @@
     var isFunctional = true;
 
     // Wrap shitny API
-    this.execute = function(statement, data){
+    this.execute = function(statement, data) {
       console.warn(' [scorm/lms] - about to execute', statement, data);
-      if(!isFunctional){
+      if (!isFunctional) {
         console.error(' NO LMS available - just passing by');
         return;
       }
       var ret = window['doLMS' + statement].apply(this, data);
       console.warn(' [scorm/lms] - returned', ret);
-      if(!ret && (statement == this.INIT)){
+      if (!ret && (statement == this.INIT)) {
         console.error('LMS initialization fail - disabling scorm entirely');
         isFunctional = false;
       }
@@ -69,7 +70,7 @@
     };
 
     var startTime = (new Date()).getTime();
-    this.start = function(){
+    this.start = function() {
       this.execute(this.INIT);
       this.execute(this.SET, ['cmi.core.lesson_status', this.BROWSED]);
       this.execute(this.SET, ['cmi.core.score.min', 0]);
@@ -77,23 +78,23 @@
       this.execute(this.COMMIT);
     };
 
-    this.end = function(status){
-      switch(status){
+    this.end = function(status) {
+      switch (status) {
         case this.COMPLETED:
         case this.INCOMPLETE:
-          this.score(max, score, min, status, tokens);
+          // this.score(max, score, min, status, tokens);
           this.execute(this.SET, ['cmi.core.session_time', crapTime((new Date()).getTime() - startTime)]);
-        break;
+          break;
       }
       this.execute(this.COMMIT);
       this.execute(this.FINISH);
     };
 
-    this.score = function(max, score, min, status, tokens){
+    this.score = function(max, score, min, status, tokens) {
       this.execute(this.SET, ['cmi.core.score.max', max]);
       this.execute(this.SET, ['cmi.core.score.raw', score]);
       this.execute(this.SET, ['cmi.core.score.min', min]);
-      tokens.forEach(function(token, idx){
+      tokens.forEach(function(token, idx) {
         this.execute(this.SET, ['cmi.objectives.' + idx + '.id', 'objective_' + token.id]);
         this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
         this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
@@ -111,17 +112,17 @@
 
     // Stolen from hotp - highly buggy, not compliant, and inefficient
     // XXX rewrite
-    var crapTime = function(seconds){
-      seconds = Math.round(seconds/1000);
+    var crapTime = function(seconds) {
+      seconds = Math.round(seconds / 1000);
       var S = seconds % 60;
       seconds -= S;
-      if (S < 10){
+      if (S < 10) {
         S = '0' + S;
       }
       var M = (seconds / 60) % 60;
-      if (M < 10){M = '0' + M;}
+      if (M < 10) {M = '0' + M;}
       var H = Math.floor(seconds / 3600);
-      if (H < 10){H = '0' + H;}
+      if (H < 10) {H = '0' + H;}
       return H + ':' + M + ':' + S;
     };
 
@@ -130,24 +131,24 @@
 
 
 
-/*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
-    return key == 
+  /*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
+    return key ==
     options.defaultValue = '---';
     var ret = I18n.translate(key, options);
     return (ret != '---') && ret || null;
   });*/
 
 
-  var helpers = new (function(){
+  var helpers = new (function() {
     var pad = function(subject, n, pattern) {
-      subject = subject + "";
-      while(subject.length < n){
-        subject = pattern + "" + subject;
+      subject = subject + '';
+      while (subject.length < n) {
+        subject = pattern + '' + subject;
       }
       return subject;
     };
 
-/*
+    /*
 XXX use this instead of the other crap
 
 var date = new Date(null);
@@ -157,35 +158,35 @@ var date = new Date(null);
       });
  */
 
-    this.chronometer = function(node, seconds, toutCbk){
+    this.chronometer = function(node, seconds, toutCbk) {
       var cur = seconds;
-      $(node).html(pad(Math.floor(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
+      $(node).html(pad(Math.floor(cur / 60), 2, '0') + ':' + pad(cur % 60, 2, '0'));
       var tout;
 
-      var ticker = function(){
-        if(cur < seconds / 2){
+      var ticker = function() {
+        if (cur < seconds / 2) {
           $(node).addClass('hurry');
         }
 
-        if(!cur){
+        if (!cur) {
           this.dead = true;
           $(node).addClass('finished');
           toutCbk();
           return;
         }
         cur--;
-        $(node).html(pad(Math.floor(cur / 60), 2, "0") + ':' + pad(cur % 60, 2, "0"));
+        $(node).html(pad(Math.floor(cur / 60), 2, '0') + ':' + pad(cur % 60, 2, '0'));
         tout = window.setTimeout(ticker, 1000);
       };
 
-      this.start = function(){
-        if(!this.dead)
+      this.start = function() {
+        if (!this.dead)
           ticker();
       };
 
       this.dead = false;
 
-      this.stop = function(){
+      this.stop = function() {
         window.clearTimeout(tout);
       };
     };
@@ -193,89 +194,89 @@ var date = new Date(null);
 
 
   // Explicit API
-  this.LxxlLib.activity = function(){
-    var pageEnter = function(index){
-      console.warn("Entering page ", index);
-      if(act.pages[index].chrono)
+  this.LxxlLib.activity = function() {
+    var pageEnter = function(index) {
+      console.warn('Entering page ', index);
+      if (act.pages[index].chrono)
         act.pages[index].chrono.start();
     };
 
-    var pageExit = function(index){
-      console.warn("Exiting page ", index);
-      if(act.pages[index].chrono && !act.pages[index].chrono.dead)
+    var pageExit = function(index) {
+      console.warn('Exiting page ', index);
+      if (act.pages[index].chrono && !act.pages[index].chrono.dead)
         act.pages[index].chrono.stop();
     };
 
 
-    var behaviors = function(dom){
+    var behaviors = function(dom) {
       // Chronometers binding
-      $('.clocker').each(function(i, item){
-        var s = parseInt($(item).attr('data-chrono'));
-        var id = parseInt($(item).attr('data-binding'));
-        if(s){
-          act.pages[i].chrono = new helpers.chronometer(item, s, function(){
-            console.warn("Timedout like a mangouste on ", id);
+      $('.clocker').each(function(i, item) {
+        var s = parseInt($(item).attr('data-chrono'), 10);
+        var id = parseInt($(item).attr('data-binding'), 10);
+        if (s) {
+          act.pages[i].chrono = new helpers.chronometer(item, s, function() {
+            console.warn('Timedout like a mangouste on ', id);
           });
-        }else{
+        }else {
           $(item).hide();
         }
       });
 
       // Tat thingies
-      $('[data-type="tat"]', dom).each(function(ind, item){
-        console.log("Found some tat", item);
+      $('[data-type="tat"]', dom).each(function(ind, item) {
+        console.log('Found some tat', item);
         item = $(item);
         var clue = item.attr('data-clue');
-        var alt = item.attr('data-alt').split(',');
-        var answer = item.html();
+        // var alt = item.attr('data-alt').split(',');
+        // var answer = item.html();
         item.html('trou à remplir');
-        item.on('click', function(){
-          console.warn("HAS CLICKYCLICK");
+        item.on('click', function() {
+          console.warn('HAS CLICKYCLICK');
           $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
-          var stuff = '<h5>' + clue+ '</h5>' +
-            '<input type="text"></input>'
+          var stuff = '<h5>' + clue + '</h5>' +
+              '<input type="text"></input>';
           $('#modal-preview-tat-body').html(stuff);
         });
       });
 
       // Make page 0 active, if any
       var acti = $('.pages-list > li', dom);
-      if(acti.length){
+      if (acti.length) {
         $(acti[0]).addClass('active');
         pageEnter(0);
       }
       // Hide pages content
-      $('.pages-content > li', dom).each(function(ind, item){
+      $('.pages-content > li', dom).each(function(ind, item) {
         $(item).hide();
       });
 
-      acti = $('.pages-content > li', dom)
-      if(acti.length)
-        $(acti[0]).fadeIn(1000, function(){console.warn("done");});
+      acti = $('.pages-content > li', dom);
+      if (acti.length)
+        $(acti[0]).fadeIn(1000, function() {console.warn('done');});
 
 
       // Pages navigation
-      $('.pages-list > li', dom).on('click', function(event){
+      $('.pages-list > li', dom).on('click', function(event) {
         var idx;
-        $('.pages-list > li', dom).each(function(ind, item){
-          if(item == this){
+        $('.pages-list > li', dom).each(function(ind, item) {
+          if (item == this) {
             $(item).addClass('active');
             idx = ind;
             pageEnter(ind);
-          }else{
-            if($(item).hasClass('active')){
+          }else {
+            if ($(item).hasClass('active')) {
               pageExit(ind);
               $(item).removeClass('active');
             }
           }
         }.bind(this));
 
-        $('.pages-content > li', dom).each(function(ind, item){
-          if(ind != idx)
+        $('.pages-content > li', dom).each(function(ind, item) {
+          if (ind != idx)
             $(item).hide();
           else
-            $(item).fadeIn(1000, function(){console.warn("done");});
-            // $(item).show();
+            $(item).fadeIn(1000, function() {console.warn('done');});
+          // $(item).show();
         });
         event.preventDefault();
         return false;
@@ -283,66 +284,64 @@ var date = new Date(null);
 
     };
 
-    var parse = function(payload, flavor){
-      switch(flavor){
+    var parse = function(payload, flavor) {
+      switch (flavor) {
         case 'application/json':
           return JSON.parse(payload);
-        break;
         case 'text/html':
           // return (new DOMParser()).parseFromString(payload, 'text/xml');
           return Handlebars.compile(payload);
-        break;
         default:
-        break;
+          break;
       }
       return payload;
     };
 
-    var readDataUri = function(toLoad){
+    var readDataUri = function(toLoad) {
       var a = toLoad.path.split(',');
       var t = a.shift().split(';');
-      if(t.pop() != 'base64')
-        throw "Only base64 encoded data is supported";
+      if (t.pop() != 'base64')
+        throw 'Only base64 encoded data is supported';
       parse(atob(a.join(',')), t.pop());
     };
 
-    var guessType = function(ext){
-      switch(ext){
+    var guessType = function(ext) {
+      switch (ext) {
         case 'json':
           return 'application/json';
-        break;
         case 'tpl':
           return 'text/html';
-        break;
       }
       return null;
     };
 
-    var loader = function(iri, callback){
+    var loader = function(iri, callback) {
       var toLoad;
-      try{
+      try {
         toLoad = Mingus.grammar.IRI.parse(iri);
-      }catch(e){
+      }catch (e) {
         // Eg: receiving something that is not an IRI
         callback(iri);
         return;
       }
-      switch(toLoad.scheme){
+      switch (toLoad.scheme) {
+        case 'jshint':
+        break;
         case 'data':
           callback(readDataUri(toLoad));
-        break;
-        case 'http':
-        case 'file':
+          break;
         default:
+        // case 'http':
+        // case 'file':
           var r = new XMLHttpRequest();
           r.open('GET', iri);
-          r.onreadystatechange = function(){
-            if(r.readyState == 4){
+          r.onreadystatechange = function() {
+            if (r.readyState == 4) {
               callback(parse(r.responseText, guessType(toLoad.path.split('.').pop())));
             }
           };
           r.send();
-        break;
+          break;
       }
     };
 
@@ -354,40 +353,43 @@ var date = new Date(null);
     var completionCallback;
 
 
-    var loadingComplete = function(){
-      if(completionCallback)
+    var loadingComplete = function() {
+      if (completionCallback)
         completionCallback();
     };
 
-    var note = function(data){
-      ((typeof data == 'function') && (tpl = data)) || (act = data);
+    var note = function(data) {
+      if(typeof data == 'function')
+        tpl = data;
+      else
+        act = data;
       init++;
-      if(init == done){
+      if (init == done) {
         act.styleData = [];
         act.styleUri = [];
         // Style mashuping
-        styles.forEach(function(item){
-          try{
+        styles.forEach(function(item) {
+          try {
             Mingus.grammar.IRI.parse(item);
             act.styleUri.push({data: item});
-          }catch(e){
+          }catch (e) {
             act.styleData.push({data: item});
           }
         });
         // Fixing the activity
-        act.pages.forEach(function(item, ind){
+        act.pages.forEach(function(item, ind) {
           item.id = ind;
         });
         var res = tpl(act);
-        if('html' in ifr)
+        if ('html' in ifr)
           ifr.html(res);
         else
           ifr.innerHTML = res;
         behaviors(ifr);
         // Check if there is a LMS
         var isThere = LxxlLib.scorm.execute(LxxlLib.scorm.INIT);
-        if(!isThere)
-          console.error("No LMS found - won't use the api at all");
+        if (!isThere)
+          console.error('No LMS found - won\'t use the api at all');
         loadingComplete();
       }
     };
@@ -396,10 +398,10 @@ var date = new Date(null);
 
 
     var ifr;
-    this.setupViewport = function(node, noframe){
-      if(ifr)
+    this.setupViewport = function(node, noframe) {
+      if (ifr)
         ifr.parentNode.removeChild(ifr);
-      if(!noframe){
+      if (!noframe) {
         ifr = document.createElement('iframe');
         node.appendChild(ifr);
         ifr = ifr.contentDocument.body;
@@ -407,32 +409,32 @@ var date = new Date(null);
         ifr = node;
     };
 
-    this.addStyle = function(styleBlob){
+    this.addStyle = function(styleBlob) {
       styles.push(styleBlob);
     };
 
 
-    this.setupTemplate = function(templateIri){
+    this.setupTemplate = function(templateIri) {
       done++;
       loader(templateIri || 'activity.tpl', note);
     };
 
-    this.showActivity = function(activityIri, callback){
+    this.showActivity = function(activityIri, callback) {
       done++;
       completionCallback = callback;
       loader(activityIri, note);
     };
 
     // Allow to encode stuff
-    var encode = function(obj){
+    var encode = function(obj) {
       return btoa(JSON.stringify(obj));
     };
 
-    this.makeDataUri = function(obj){
+    this.makeDataUri = function(obj) {
       return 'data:application/json;base64,' + encode(obj);
     };
 
-    this.end = function(){
+    this.end = function() {
       LxxlLib.scorm.execute(LxxlLib.scorm.FINISH);
     };
 

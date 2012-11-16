@@ -1,5 +1,5 @@
 // jsBoot.use('LxxlLib.model.Activity');
-jsBoot.pack('LxxlLib.model.defines', function(api) {
+jsBoot.pack('LxxlLib.model.defines', function() {
   'use strict';
 
   this.lengths = {
