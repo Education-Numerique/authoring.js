@@ -276,21 +276,26 @@
               <p> "show words in holes", with a radio select underneath: "alphabetical / random"</p>
             </div>
             <div class="tab-pane" id="trous">
-            <form>
-              <fieldset>
-                <label>Mot supprimé :</label>
-                {{view Ember.TextField valueBinding="view.currentTat.word"}}
-                <label>Indice :</label>
-                {{view Ember.TextField valueBinding="view.currentTat.clue"}}
-                <label>Alternatives (séparées par ; | joker : *) :</label>
-                {{view Ember.TextField valueBinding="view.currentTat.alt"}}
-               
-              </fieldset>
-            </form>
-              <ul class="pager" style="padding-top:10px">
-                  <li {{bindAttr class="view.hasPrevious:show:disabled"}}><a {{action goPrevious target="this"}} >Précédent</a></li>
-                  <li {{bindAttr class="view.hasNext:show:disabled"}}><a {{action goNext target="this" }} >Suivant</a></li>
+                {{#if view.tats.length}}
+                <form>
+                  <fieldset>
+                    <label>Mot supprimé :</label>
+                    {{view Ember.TextField valueBinding="view.currentTat.word"}}
+                    <label>Indice :</label>
+                    {{view Ember.TextField valueBinding="view.currentTat.clue"}}
+                    <label>Alternatives (séparées par ; | joker : *) :</label>
+                    {{view Ember.TextField valueBinding="view.currentTat.alt"}}
+                   
+                  </fieldset>
+                </form>
+                <ul class="pager" style="padding-top:10px">
+                      <li {{bindAttr class="view.hasPrevious:show:disabled"}}><a {{action goPrevious target="this"}} >Précédent</a></li>
+                      <li {{bindAttr class="view.hasNext:show:disabled"}}><a {{action goNext target="this" }} >Suivant</a></li>
+                  
                 </ul>
+                {{else}}
+                    Aucun trou
+                {{/if}}
             </div>
           </div>
         </div>
