@@ -796,7 +796,7 @@ Copyright (c) 2011 by Harvest
     };
 
     Chosen.prototype.winnow_results = function() {
-      var found, option, part, parts, regex, regexAnchor, result, result_id, results, searchText, startpos, text, zregex, _i, _j, _len, _len2, _ref;
+      var found, foundInText, option, part, parts, regex, regexAnchor, result, result_id, results, searchText, startpos, text, zregex, _i, _j, _len, _len2, _ref;
       this.no_results_clear();
       results = 0;
       searchText = this.search_field.val() === this.default_text ? "" : $('<div/>').text($.trim(this.search_field.val())).html();
@@ -804,6 +804,7 @@ Copyright (c) 2011 by Harvest
       regex = new RegExp(regexAnchor + searchText.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i');
       zregex = new RegExp(searchText.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i');
       _ref = this.results_data;
+      foundInText = false;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         option = _ref[_i];
         if (!option.disabled && !option.empty) {
@@ -814,8 +815,13 @@ Copyright (c) 2011 by Harvest
             result_id = option.dom_id;
             result = $("#" + result_id);
             // XXX dirty fix
-            if (regex.test(option.html) || regex.test(option.text)) {
+            
+            if (regex.test(option.html)) {
               found = true;
+              results += 1;
+            } else if (regex.test(option.text)) {
+              found = true;
+              foundInText = true;
               results += 1;
             } else if (option.html.indexOf(" ") >= 0 || option.html.indexOf("[") === 0) {
               parts = option.html.replace(/\[|\]/g, "").split(" ");
@@ -830,12 +836,13 @@ Copyright (c) 2011 by Harvest
               }
             }
             if (found) {
+              var foundPart = foundInText ? option.text : option.html;
               if (searchText.length) {
-                startpos = option.html.search(zregex);
-                text = option.html.substr(0, startpos + searchText.length) + '</em>' + option.html.substr(startpos + searchText.length);
+                startpos = foundPart.search(zregex);
+                text = foundPart.substr(0, startpos + searchText.length) + '</em>' + foundPart.substr(startpos + searchText.length);
                 text = text.substr(0, startpos) + '<em>' + text.substr(startpos);
               } else {
-                text = option.html;
+                text = foundPart;
               }
               result.html(text);
               this.result_activate(result);
