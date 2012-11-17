@@ -3,6 +3,16 @@
         min-height:120px;
    }
 
+   &.one-line {
+    @include rounded-right(3px);
+    .redactor_editor {
+        min-height:20px!important;
+        padding:3px!important;
+            @include rounded-right(3px);
+
+    }
+   }
+
    .infobox {
         display: block;
         width: 100%;

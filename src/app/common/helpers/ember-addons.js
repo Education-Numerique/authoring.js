@@ -95,11 +95,15 @@
     autoresize: true,
     plugins: '',
     maxLength: null,
+    air: false,
+    oneLine: false,
 
     _infoBox: null,
 
     didInsertElement: function() {
       var plugins = [];
+
+      console.log('=========> create new editor', this.get('value'));
 
       if (this.get('plugins').trim()) {
         plugins = this.get('plugins').trim().split(',').filter(function(item) {
@@ -110,7 +114,8 @@
       }
 
       var timer = new LxxlLib.utils.Timer(500, function() {
-        if (this.get('status') != 'inDOM')
+
+        if (this.get('state') != 'inDOM')
           return;
 
         this.updateCharCount();
@@ -127,15 +132,19 @@
         autoresize: this.get('autoresize'),
         air: this.get('air'),
         focus: false,
-        plugins: plugins
+        plugins: plugins,
+        airButtons: ['bold', 'italic']
       });
+
+
 
       var api = this.$().redactor().getObject();
 
       var editor = this.$().redactor().getEditor();
 
-
-
+      if (this.get('oneLine')) {
+        editor.parent().addClass('one-line');
+      }
 
 
       if (this.get('maxLength') && !this.$().parent().find('.infobox').length) {
@@ -266,6 +275,8 @@
         $(editor.tatAir).remove();
         editor.tatAir = null;
       }
+
+
       this.$().destroyEditor();
 
       if (this.get('value') == value)

@@ -129,14 +129,14 @@
                                                 <span class="icon">
                                                     <i class="icon-bullhorn"></i>
                                                 </span>
-                                                <h5 class="text-ellipsis">Question {{view.content.text}}</h5>
+                                                <h5 class="text-ellipsis">Question {{view.questionNumber}}</h5>
                                                 {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>{{/view}}
                                                 
                                             </div>
                                             <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
                                                     <div class="input-prepend">
                                                         <label class="add-on" for="form-question-title">Intitulé</label>
-                                                        {{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la question"}}
+                                                        {{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" air=true oneLine=true plugins="mathjax" classNames="redactorjs"}}
                                                     </div>
                                                     {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white spacify"></i>Ajouter une réponse{{/view}}
 

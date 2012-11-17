@@ -306,11 +306,14 @@
     }),
 
     questionsCollectionView: Em.CollectionView.extend({
+      lastMove: 0,
+
       moveItem: function(fromIndex, toIndex) {
         var items = this.get('content');
         var item = items.objectAt(fromIndex);
 
         this.get('controller').moveQuestion(item, toIndex);
+        this.set('lastMove', (new Date().getTime()));
       },
       didInsertElement: function() {
         var view = this;
@@ -346,13 +349,17 @@
       itemViewClass: Em.View.extend({
         classNames: ['widget-box', 'question-box'],
 
+        questionNumber: (function() {
+          return this.get('parentView.content').indexOf(this.get('content')) + 1;
+        }.property('parentView.lastMove')),
+
         widgetIdAnchor: function() {
-          return '#widget-question-' + this.get('element.id');
-        }.property('element.id'),
+          return '#widget-question-' + this.get('elementId');
+        }.property('elementId'),
 
         widgetId: function() {
-          return 'widget-question-' + this.get('element.id');
-        }.property('element.id'),
+          return 'widget-question-' + this.get('elementId');
+        }.property('elementId'),
 
         DeleteQuestionButton: Em.View.extend({
           tagName: 'button',
