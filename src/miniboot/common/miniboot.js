@@ -102,7 +102,7 @@
   // jsBoot.loader.use('gritter', version || 'stable');
 
   // Multiple select stuff
-  jsBoot.loader.use('chosen', version || 'stable');
+  jsBoot.loader.use('chosen', version || 'stable', '.css$');
 
   // Redactor rich text editing
   jsBoot.loader.use('validate', version || '1.10');
@@ -118,7 +118,7 @@
   jsBoot.loader.use('libs/css/unicorn.grey.css');
   jsBoot.loader.use('libs/css/redactor.css');
 
-
+  jsBoot.loader.use('libs/js/chosen.jquery'+suffix+'js');
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
 
