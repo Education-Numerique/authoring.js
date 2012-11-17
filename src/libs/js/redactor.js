@@ -1249,7 +1249,7 @@ var RLANG = {
                 $(this.opts.toolbarExternal).empty();
             }
 
-            $('.redactor_air').remove();
+            if (this.air) this.air.remove();
 
             for (var i = 0; i < this.dropdowns.length; i++)
             {
