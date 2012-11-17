@@ -120,7 +120,7 @@ With the understanding that:
 ** interface was used so that the output could be assigned the window.console object.
 *******************************************************************************/
   var message = function(str)
-  {
+      {
     if (debug)
     {
       output.log(str);
@@ -146,7 +146,7 @@ With the understanding that:
 **
 *******************************************************************************/
   var findAPI = function(win)
-  {
+      {
     var findAPITries = 0;
     while (!win.API && win.parent && (win.parent != win))
     {
@@ -178,7 +178,7 @@ With the understanding that:
   var apiHandle;
 
   LMSApi.getAPIHandle = function()
-  {
+      {
     return apiHandle || (apiHandle = findAPI(window) || (window.opener && findAPI(window.opener))) ||
         message('Unable to find an API adapter');
   };
@@ -198,7 +198,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSInitialize = function()
-  {
+      {
     if (initialized)
       return true;
 
@@ -235,7 +235,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSFinish = function()
-  {
+      {
     if (!initialized)
       return true;
 
@@ -274,7 +274,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSGetValue = function(name)
-  {
+      {
     var api = this.getAPIHandle();
     var result = '';
     if (!api)
@@ -315,7 +315,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSSetValue = function(name, value)
-  {
+      {
     var api = this.getAPIHandle();
     var err;
     var result = 'false';
@@ -354,7 +354,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSCommit = function()
-  {
+      {
     var api = this.getAPIHandle();
     var err;
     var result = 'false';
@@ -392,7 +392,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSGetLastError = function()
-  {
+      {
     var api = this.getAPIHandle();
     if (!api)
     {
@@ -416,7 +416,7 @@ With the understanding that:
 **
 ********************************************************************************/
   LMSApi.doLMSGetErrorString = function(errorCode)
-  {
+      {
     var api = this.getAPIHandle();
     if (!api)
     {
@@ -440,7 +440,7 @@ With the understanding that:
 **
 *******************************************************************************/
   LMSApi.doLMSGetDiagnostic = function(errorCode)
-  {
+      {
     var api = this.getAPIHandle();
     if (!api)
     {
@@ -472,7 +472,7 @@ With the understanding that:
 ** }
 *******************************************************************************/
   LMSApi.ErrorHandler = function()
-  {
+      {
     var error = {'code': _NoError.code, 'string': _NoError.string, 'diagnostic': _NoError.diagnostic};
     var api = this.getAPIHandle();
     if (!api)

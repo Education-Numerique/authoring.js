@@ -118,7 +118,7 @@
   jsBoot.loader.use('libs/css/unicorn.grey.css');
   jsBoot.loader.use('libs/css/redactor.css');
 
-  jsBoot.loader.use('libs/js/chosen.jquery'+suffix+'js');
+  jsBoot.loader.use('libs/js/chosen.jquery' + suffix + 'js');
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
 
