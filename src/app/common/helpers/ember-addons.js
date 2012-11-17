@@ -246,7 +246,7 @@
 
 
     willDestroyElement: function() {
-      if (!this.$() || !this.$().data('redactor'))
+      if (this.get('state') != 'inDOM' || !this.$().data('redactor'))
         return;
 
       var value = this.$().getCode();
