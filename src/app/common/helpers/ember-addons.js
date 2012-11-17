@@ -103,8 +103,6 @@
     didInsertElement: function() {
       var plugins = [];
 
-      console.log('=========> create new editor', this.get('value'));
-
       if (this.get('plugins').trim()) {
         plugins = this.get('plugins').trim().split(',').filter(function(item) {
           return !!item.trim();

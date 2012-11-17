@@ -152,13 +152,13 @@
                                                         </tr>
                                                     </thead>
                                                     {{#if isQuizzMulti}}
-                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" questionBinding="view.content" tagName="tbody"}}
                                                             <td><i class="icon-resize-vertical"></td>
                                                             <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
                                                             <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                                                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                                                             <td></td>
-                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.question" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                                                         {{/collection}}
                                                     {{else}}
                                                         {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
@@ -167,7 +167,7 @@
                                                             <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                                                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                                                             <td></td>
-                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                                                         {{/collection}}
                                                     {{/if}}
                                                 </table>
@@ -218,7 +218,7 @@
 {{/view}}
 
 {{#view view.ModalBox modalName="deletePage"}}
-<div class="modal hide" id="modal-delete-page">
+<div class="modal" style="display:none" id="modal-delete-page">
      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Voulez-vous vraiment supprimer cette page ?</h3>

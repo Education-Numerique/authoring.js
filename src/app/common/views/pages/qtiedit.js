@@ -297,7 +297,7 @@
             modalHandler.save(this.get('modalName'), function() {
               this.get('controller').deletePage(this.get('page'));
             }.bind(this));
-
+            $(this.get('href')).modal('show');
             event.preventDefault();
             return false;
           }
@@ -372,7 +372,7 @@
             modalHandler.save(this.get('modalName'), function() {
               this.get('controller').deleteQuestion(this.get('question'));
             }.bind(this));
-
+            $(this.get('href')).modal('show');
             event.preventDefault();
             return false;
           }
@@ -455,12 +455,16 @@
 
               attributeBindings: ['href', 'data-toggle'],
 
-              click: function() {
+              click: function(e) {
                 modalHandler.save(this.get('modalName'), function() {
+                  console.log('=========> question', this.get('question'));
                   this.get('controller').set('currentQuestion',
-                      this.get('_parentView._parentView._parentView.content'));
+                      this.get('question'));
                   this.get('controller').deleteAnswer(this.get('answer'));
                 }.bind(this));
+                $(this.get('href')).modal('show');
+                e.preventDefault();
+                return false;
               }
             })
           })
