@@ -91,7 +91,7 @@
                                             </div>
                                             <div class="input-prepend">
                                                     <label class="add-on" for="form-page-explanation">Consigne</label>
-                                                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" id="form-page-explanation"}}
+                                                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax" id="form-page-explanation"}}
                                                 </div>
                                         </div>
                                     </div>
@@ -104,9 +104,9 @@
                                         </div>
                                         <div class="widget-content slidify-on nopadding" id="page-document">
                                             {{#if isTat}}
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" activeTat="true" classNames="redactorjs"}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tat" classNames="redactorjs"}}
                                             {{else}}
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" classNames="redactorjs"}}
+                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax" classNames="redactorjs"}}
                                             {{/if}}
                                         </div>
                                     </div>

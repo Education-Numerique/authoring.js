@@ -93,17 +93,27 @@
   LxxlLib.Em.Wysiwyg = Em.TextArea.extend({
     imageUpload: '/file_upload.php',
     autoresize: true,
-    activeTat: false,
+    plugins: '',
     maxLength: null,
 
     _infoBox: null,
 
     didInsertElement: function() {
+      var plugins = [];
+
+      if (this.get('plugins').trim()) {
+        plugins = this.get('plugins').trim().split(',').filter(function(item) {
+          return !!item.trim();
+        }).map(function(item) {
+          return item.trim().toLowerCase();
+        });
+      }
 
       var timer = new LxxlLib.utils.Timer(500, function() {
-        this.updateCharCount();
-        if (!this.$())
+        if (this.get('status') != 'inDOM')
           return;
+
+        this.updateCharCount();
 
         if (this.get('value') == this.$().getCode())
           return;
@@ -111,43 +121,20 @@
         this.set('value', this.$().getCode());
       }.bind(this));
 
+
       this.$().redactor({
         imageUpload: this.get('imageUpload'),
         autoresize: this.get('autoresize'),
         air: this.get('air'),
         focus: false,
-        plugins: ['mathjax', 'tat']
-        // modal_tat: String() +
-        //     '<form id="redactorInsertVideoForm">' +
-        //     '<label>Word</label>' +
-        //             '<input id="tat-selection" class="redactor_input" />' +
-        //             '<label>Clue</label>' +
-        //             '<input id="tat-clue" class="redactor_input" />' +
-        //             '<label>Alternatives</label>' +
-        //             '<input id="tat-alt" class="redactor_input" />' +
-        //     '</form>' +
-        //     '<div id="redactor_modal_footer">' +
-        //             '<span class="redactor_btns_box">' +
-        //     '<input type="button" id="redactor_insert_video_btn" value="' + RLANG.insert + '" />' +
-        //     '<input  type="button"  id="tat-untag" value="Supprimer" />' +
-        //     '<a href="javascript:void(null);" id="redactor_btn_modal_close">' + RLANG.cancel + '</a>' +
-        //             '</span>' +
-        //     '</div>',
+        plugins: plugins
       });
 
       var api = this.$().redactor().getObject();
 
       var editor = this.$().redactor().getEditor();
 
-      $(editor).on('click.mathredactor', '[data-type=math]', function(e) {
-        api.getBtn('mathjax').data('target', e.target);
-        api.getBtn('mathjax').click();
-      });
 
-      $(editor).on('click.tat-click-handler', '[data-type=tat]', function(e) {
-        api.getBtn('tat').data('target', e.target);
-        api.getBtn('tat').click();
-      });
 
 
 
@@ -160,7 +147,7 @@
       Object.getPrototypeOf(api).observesTat = function() {
 
         var showTatAir = (function(e) {
-
+          ensureTatAir();
           this.$editor.tatAir.hide();
 
           if (!this.getSelectedHtml().trim())
@@ -182,25 +169,30 @@
 
 
         var hideTatAir = (function() {
+          ensureTatAir();
           this.$editor.tatAir.hide();
         }.bind(this));
 
-        if (!this.$editor.tatAir) {
-          this.$editor.tatAir = $('<div class="redactor_air redactor_tat_air" style="">' +
-              '<ul class="redactor_toolbar">' +
-              '<li>' +
-              '<a href="javascript:void(null);" title="Texte à trous" class="redactor_btn_tat"></a>' +
-              '</li>' +
-              '</ul>' +
-              '</div>');
-          $('body').prepend(this.$editor.tatAir);
-          this.$editor.tatAir.hide();
-
-          this.$editor.tatAir.find('a').click(function(e) {
-            api.getBtn('tat').click();
+        var ensureTatAir = (function() {
+          if (!this.$editor.tatAir) {
+            this.$editor.tatAir = $('<div class="redactor_air redactor_tat_air" style="">' +
+                '<ul class="redactor_toolbar">' +
+                '<li>' +
+                '<a href="javascript:void(null);" title="Texte à trous" class="redactor_btn_tat"></a>' +
+                '</li>' +
+                '</ul>' +
+                '</div>');
+            $('body').prepend(this.$editor.tatAir);
             this.$editor.tatAir.hide();
-          }.bind(this));
-        }
+
+            this.$editor.tatAir.find('a').click(function(e) {
+              api.getBtn('tat').click();
+              this.$editor.tatAir.hide();
+            }.bind(this));
+          }
+        }.bind(this));
+
+
         this.$editor.bind('textselect', showTatAir.bind(this));
 
         this.$editor.bind('textunselect', function(e) {
@@ -210,9 +202,22 @@
 
 
       };
+      if (plugins.indexOf('tat') != -1) {
+        $(editor).on('click.tat-click-handler', '[data-type=tat]', function(e) {
+          api.getBtn('tat').data('target', e.target);
+          api.getBtn('tat').click();
+        });
+        api.observesTat();
 
-      //if (this.get('activeTat'))
-      api.observesTat();
+      }
+
+      if (plugins.indexOf('mathjax') != -1) {
+        $(editor).on('click.mathredactor', '[data-type=math]', function(e) {
+          api.getBtn('mathjax').data('target', e.target);
+          api.getBtn('mathjax').click();
+        });
+      }
+
 
       this.updateContent();
       this.updateCharCount();
@@ -246,6 +251,7 @@
 
 
     willDestroyElement: function() {
+
       if (this.get('state') != 'inDOM' || !this.$().data('redactor'))
         return;
 
@@ -254,12 +260,12 @@
       var editor = this.$().redactor().getEditor();
 
       $(editor).unbind('click.mathredactor');
+      $(editor).unbind('click.tat-click-handler');
 
-      // if (this.$().getEditor().tatAir)
-      //   this.$().getEditor().tatAir.remove();
-
-      // $(document).unbind('click.tat-click-handler');
-
+      if (editor.tatAir) {
+        $(editor.tatAir).remove();
+        editor.tatAir = null;
+      }
       this.$().destroyEditor();
 
       if (this.get('value') == value)
