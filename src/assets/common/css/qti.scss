@@ -354,6 +354,13 @@ Style specific to activity edition
                     @include shadow(0,0,0,#FFF);
                     border:0px;
                 }
+
+                &.radioblock {
+                    .checker {
+                        padding:0;
+                        border-right:0;
+                    }
+                }
                 .checker {
                     border-right: 1px solid #CCC;
                     padding:5px;
@@ -636,6 +643,8 @@ Style specific to activity edition
     width:65%!important;
     min-width:220px;
 }
+
+
 
 #modal-page-timer {
     .chzn-container {

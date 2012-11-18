@@ -46,6 +46,11 @@
                  <button data-toggle="modal" href="#modal-tat-gestion" class="name btn">
                     Gestion
                 </button>
+
+                <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">
+                    {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"}}
+                    Side document
+                </button>
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
             <div class="input-prepend">
@@ -54,6 +59,7 @@
                 </div>
         </div>
     </div>
+    {{#if currentPage.hasDocument}}
     <div class="widget-box">
         <div class="widget-title" data-toggle="slidify" data-target="#page-document">
             <span class="icon">
@@ -65,6 +71,7 @@
                 {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tat" classNames="redactorjs"}}
         </div>
     </div>
+    {{/if}}
         
 </div>
 

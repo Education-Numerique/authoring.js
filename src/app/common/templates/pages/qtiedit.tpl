@@ -178,3 +178,15 @@
     </div>
 </div>
 
+{{#view view.ModalBox modalName="deleteSideDocument"}}
+<div class="modal hide" id="modal-delete-side-document">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Voulez-vous vraiment supprimer ce side document ?</h3>
+    </div>
+    <div class="modal-footer">
+        {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
+        {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
+    </div>
+</div>
+{{/view}}

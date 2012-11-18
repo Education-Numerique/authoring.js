@@ -68,6 +68,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     title: 'Titre par défaut',
     subtitle: '',
     advice: '',
+    hasDocument: false,
     document: '',
     limitedTime: 0,// // 0 == infinity - X seconds = time
     coef: 0,

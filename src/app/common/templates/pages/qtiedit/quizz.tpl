@@ -43,6 +43,13 @@
                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                 //-->
                     {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span class="name btn">Séquenceur</span>{{/view}}
+
+
+                    <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">
+                        {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"}}
+                        Side document
+                    </button>
+                
                 
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
@@ -52,6 +59,7 @@
                 </div>
         </div>
     </div>
+    {{#if currentPage.hasDocument}}
     <div class="widget-box">
         <div class="widget-title" data-toggle="slidify" data-target="#page-document">
             <span class="icon">
@@ -63,6 +71,7 @@
                 {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax" classNames="redactorjs"}}
         </div>
     </div>
+    {{/if}}
         <hr class="soften" />
         <div class="widget-box questions-toolbar">
             <div class="widget-title">

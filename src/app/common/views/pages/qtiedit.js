@@ -46,6 +46,19 @@
 
       }),
 
+      toggleSideDocument: function() {
+        var hasDocument = this.get('controller.currentPage.hasDocument');
+
+        if (hasDocument) {
+          modalHandler.save('deleteSideDocument', function() {
+            this.set('controller.currentPage.document', '');
+            this.set('controller.currentPage.hasDocument', false);
+          }.bind(this));
+          $('#modal-delete-side-document').modal('show');
+        } else {
+          this.set('controller.currentPage.hasDocument', true);
+        }
+      },
       TatGestion: Em.View.extend({
         tats: [],
         current: 0,
@@ -131,7 +144,22 @@
           }.bind(this));
         }
 
+
       }),
+
+      toggleSideDocument: function() {
+        var hasDocument = this.get('controller.currentPage.hasDocument');
+
+        if (hasDocument) {
+          modalHandler.save('deleteSideDocument', function() {
+            this.set('controller.currentPage.document', '');
+            this.set('controller.currentPage.hasDocument', false);
+          }.bind(this));
+          $('#modal-delete-side-document').modal('show');
+        } else {
+          this.set('controller.currentPage.hasDocument', true);
+        }
+      },
       SequenceButton: Em.View.extend({
         tagName: 'button',
 
