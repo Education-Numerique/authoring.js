@@ -75,7 +75,7 @@
           this.set('tats', []);
           var tats = $('<p />');
           this.set('tmpNode', tats);
-          tats.html(this.get('controller.currentPage.document'));
+          tats.html(this.get('controller.currentPage.tat'));
           tats.find('[data-type=tat]').each(function(i, item) {
             var tat = this.Tat.create();
             tat.word = $(item).text();
@@ -84,7 +84,7 @@
             tat.item = $(item);
             this.get('tats').pushObject(tat);
           }.bind(this));
-        }.observes('controller.currentPage.document'),
+        }.observes('controller.currentPage.tat'),
 
         currentTat: (function() {
           return this.get('tats')[this.get('current')];
@@ -100,10 +100,10 @@
           this.get('currentTat.item').text(this.get('currentTat.word'));
           this.get('currentTat.item').attr('data-clue', this.get('currentTat.clue'));
           this.get('currentTat.item').attr('data-alt', this.get('currentTat.alt'));
-          if (this.get('controller.currentPage.document') == this.get('tmpNode').html())
+          if (this.get('controller.currentPage.tat') == this.get('tmpNode').html())
             return;
 
-          this.set('controller.currentPage.document', this.get('tmpNode').html());
+          this.set('controller.currentPage.tat', this.get('tmpNode').html());
         }.observes('currentTat.word', 'currentTat.clue', 'currentTat.alt')),
 
         hasNext: (function() {
