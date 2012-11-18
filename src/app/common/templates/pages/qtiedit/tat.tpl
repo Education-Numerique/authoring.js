@@ -68,10 +68,23 @@
             <h5>Document</h5>
         </div>
         <div class="widget-content slidify-on nopadding" id="page-document">
-                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tat" classNames="redactorjs"}}
+                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax" classNames="redactorjs"}}
         </div>
     </div>
     {{/if}}
+
+
+    <div class="widget-box">
+        <div class="widget-title" data-toggle="slidify" data-target="#page-tat">
+            <span class="icon">
+                <i class="icon-pencil"></i>
+            </span>
+            <h5>Texte à trous</h5>
+        </div>
+        <div class="widget-content slidify-on nopadding" id="page-tat">
+                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.tat" plugins="mathjax,tat" classNames="redactorjs"}}
+        </div>
+    </div>
         
 </div>
 

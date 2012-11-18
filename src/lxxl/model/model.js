@@ -70,6 +70,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     advice: '',
     hasDocument: false,
     document: '',
+    tat: '',
     limitedTime: 0,// // 0 == infinity - X seconds = time
     coef: 0,
     sequencing: -1,// -1 = follow through | 0 = random sur la totalité | X = random sur un subset
