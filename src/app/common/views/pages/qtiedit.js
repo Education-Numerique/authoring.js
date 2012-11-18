@@ -531,10 +531,6 @@
           tolerance: 'pointer'
         });
       },
-      emptyView: Ember.View.extend({
-        classNames: ['empty'],
-        template: Ember.Handlebars.compile('<span class=\"page-title\">Aucune page</span>')
-      }),
 
       itemViewClass: Em.View.extend({
         classNameBindings: ['pageType'],

@@ -181,8 +181,38 @@ Style specific to activity edition
             }
 
             &.active {
-                background-color: #EAEAEA;
+                //background-color: #EAEAEA;
+                background-color: #D8D8D8;
                 font-weight:bold;
+                border-right:1px solid #C6C6C6;
+
+                &:after {
+                    content: "";
+                    position:absolute;
+                    right:-10px;
+                    top:50%;
+                    margin-top:-8px;
+                    width: 0; 
+                    height: 0; 
+                    border-top: 10px solid transparent;
+                    border-bottom: 10px solid transparent;
+                    
+                    border-left: 10px solid #d8d8d8;
+                }
+
+                &:before {
+                    content: "";
+                    position:absolute;
+                    right:-12px;
+                    top:50%;
+                    margin-top:-10px;
+                    width: 0; 
+                    height: 0; 
+                    border-top: 12px solid transparent;
+                    border-bottom: 12px solid transparent;
+                    
+                    border-left: 12px solid #C6C6C6;
+                }
 
                 .icon {
                     background-color: #EFEFEF;
@@ -195,7 +225,7 @@ Style specific to activity edition
                 }
             }
 
-            &:hover {
+            &:not(.active):hover {
                 background-color:#eeeeee;
             }
 
@@ -271,8 +301,37 @@ Style specific to activity edition
 
         .section-active {
             background-color:#d8d8d8;
-            border-top:1px solid #c3c3c3;
             border-bottom:1px solid #c3c3c3;
+            border-right:1px solid #C6C6C6;
+            position:relative;
+
+            &:after {
+                content: "";
+                position:absolute;
+                right:-10px;
+                top:50%;
+                margin-top:-8px;
+                width: 0; 
+                height: 0; 
+                border-top: 10px solid transparent;
+                border-bottom: 10px solid transparent;
+                
+                border-left: 10px solid #d8d8d8;
+            }
+
+            &:before {
+                content: "";
+                position:absolute;
+                right:-12px;
+                top:50%;
+                margin-top:-10px;
+                width: 0; 
+                height: 0; 
+                border-top: 12px solid transparent;
+                border-bottom: 12px solid transparent;
+                
+                border-left: 12px solid #C6C6C6;
+            }
         }
         .panel-title {
             float:left;

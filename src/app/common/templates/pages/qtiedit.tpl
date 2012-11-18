@@ -19,13 +19,7 @@
             <div class="widget-content nopadding main-container">
                 <div id="page-management" class="panel-right span3">
                     {{#view view.InformationButton classNames="panel-button"}}Informations{{/view}}
-                    <div class="panel-title" {{bindAttr class="currentPage:section-active"}}>
-                        <h5>Pages</h5>
-                        <div class="buttons">
-                            <a  data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter une page</a>
-                            
-                        </div>
-                    </div>
+                    
                     <div class="panel-content nopadding">
 
                         {{#collection view.pagesCollectionView contentBinding="content.pages" tagName="ul" classNames="pages-list"}}
@@ -33,6 +27,12 @@
                                 <span class="page-title">{{view.content.title}}</span>
                             {{#view view.DeletePageButton modalName="deletePage" pageBinding="view.content" classNames="btn btn-danger btn-mini delete-page" data-toggle="modal" href="#modal-delete-page"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}
                         {{/collection}}
+                    </div>
+                    <div class="panel-title">
+                        <div class="buttons">
+                            <a  data-toggle="modal" href="#modal-create-page" class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter une page</a>
+                            
+                        </div>
                     </div>
                 </div>
 
