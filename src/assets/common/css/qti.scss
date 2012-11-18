@@ -258,7 +258,11 @@ Style specific to activity edition
             }
         }
     }
-
+    #modal-tat-gestion {
+        .nav-tabs {
+            float:none;
+        }
+    }
     .nav-tabs {
         float:left;
     }

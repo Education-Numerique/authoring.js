@@ -40,142 +40,15 @@
                 <div class="panel-left span9">
 
                             {{#if currentPage}}
-                                <div class="container-fluid">
-                                    <div class="widget-box">
-                                        <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
-                                            <span class="icon">
-                                                <i class="icon-wrench"></i>
-                                            </span>
-                                            <h5>Informations de la page</h5>
-                                        </div>
-                                        <div class="widget-content slidify-on" id="page-informations">
-                                            
-                                            <div class="control-group">
-                                                <div class="input-prepend">
-                                                    <label class="add-on" for="form-page-title">Titre</label>
-                                                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
-                                                </div>
-                                                <div class="input-prepend">
-                                                    <label class="add-on" for="form-page-subtitle">Sous-titre</label>
-                                                    {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
-                                                </div>
-                                                
-                                            </div>
-                                            <div class="options">
-                                                <!--
-                                                    Activate / deactive
-                                                    Minutes / secondes
-
-                                                    limitedTime : 0 infini
-                                                //-->
-                                                {{#view view.TimeButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}
-                                                    <span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité 
-                                                        {{#if pageActivatedLimitedTime}}
-                                                            ({{#bind minutes.selected.id}}{{pad this}}{{/bind}}:{{#bind seconds.selected.id}}{{pad this}}{{/bind}})
-                                                        {{/if}}
-                                                    </span>
-                                                {{/view}}
-                                                <!--
-                                                    displayAll (bool) All together / one by one
-                                                    sequencing || Random : All | number
-                                                    -1 = follow through | 0 = random sur la totalité | X = random sur un subset
-                                                //-->
-                                                {{#unless isTat}}
-                                                    {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span class="name btn">Séquenceur</span>{{/view}}
-                                                {{else}}
-                                                     <button data-toggle="modal" href="#modal-page-gestion" class="name btn">
-                                                        Gestion
-                                                    </button>
-                                                {{/unless}}
-                                                <!-- <button class="btn">Coefficient</button> -->
-                                            </div>
-                                            <div class="input-prepend">
-                                                    <label class="add-on" for="form-page-explanation">Consigne</label>
-                                                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax" id="form-page-explanation"}}
-                                                </div>
-                                        </div>
-                                    </div>
-                                    <div class="widget-box">
-                                        <div class="widget-title" data-toggle="slidify" data-target="#page-document">
-                                            <span class="icon">
-                                                <i class="icon-pencil"></i>
-                                            </span>
-                                            <h5>Document</h5>
-                                        </div>
-                                        <div class="widget-content slidify-on nopadding" id="page-document">
-                                            {{#if isTat}}
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tat" classNames="redactorjs"}}
-                                            {{else}}
-                                                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax" classNames="redactorjs"}}
-                                            {{/if}}
-                                        </div>
-                                    </div>
-                                    {{#if isQuizz}}
-                                        <hr class="soften" />
-                                        <div class="widget-box questions-toolbar">
-                                            <div class="widget-title">
-                                                <span class="icon">
-                                                    <i class="icon-th-list"></i>
-                                                </span>
-                                                <h5>Questions</h5>
-                                                {{#view view.AddQuestionButton tagName="button" classNames="btn btn-success btn-mini"}}<i class="icon-plus icon-white spacify"></i>Ajouter une question{{/view}}
-                                                {{#view view.CollapseAllQuestions tagName="button" classNames="btn btn-mini" }}
-                                                    <i class="icon-resize-small spacify"></i>Collapse all
-                                                {{/view}}
-                                            </div>
-                                        </div>
-                                        {{#collection view.questionsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
-                                            <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
-                                                <span class="icon">
-                                                    <i class="icon-bullhorn"></i>
-                                                </span>
-                                                <h5 class="text-ellipsis">Question {{view.questionNumber}}</h5>
-                                                {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>{{/view}}
-                                                
-                                            </div>
-                                            <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
-                                                    <div class="input-prepend">
-                                                        <label class="add-on" for="form-question-title">Intitulé</label>
-                                                        {{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" air=true oneLine=true plugins="mathjax" classNames="redactorjs"}}
-                                                    </div>
-                                                    {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white spacify"></i>Ajouter une réponse{{/view}}
-
-                                                <table class="table answers table-bordered table-striped with-check">
-                                                    <thead>
-                                                        <tr>
-                                                            <th></th>
-                                                            <th><i class="icon-ok"></i></th>
-                                                            <th>Réponse</th>
-                                                            <th>Explication</th>
-                                                            <th>Coef</th>
-                                                            <th></th>
-                                                        </tr>
-                                                    </thead>
-                                                    {{#if isQuizzMulti}}
-                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" questionBinding="view.content" tagName="tbody"}}
-                                                            <td><i class="icon-resize-vertical"></td>
-                                                            <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                                                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
-                                                            <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                                                            <td></td>
-                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.question" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
-                                                        {{/collection}}
-                                                    {{else}}
-                                                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
-                                                            <td><i class="icon-resize-vertical"></td>
-                                                            <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer"}}</td>
-                                                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
-                                                            <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                                                            <td></td>
-                                                            <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
-                                                        {{/collection}}
-                                                    {{/if}}
-                                                </table>
-                                            </div>
-                                        {{/collection}}
-                                    {{/if}}
-                                        
-                                </div>
+                                {{#if isStaticPage}}
+                                    {{view view.StaticPage}}
+                                {{/if}}
+                                {{#if isQuizz}}
+                                    {{view view.QuizzPage}}
+                                {{/if}}
+                                {{#if isTat}}
+                                    {{view view.TatPage}}
+                                {{/if}}
                             {{else}}
                                 {{view view.InformationTab}}
                             {{/if}}
@@ -258,64 +131,6 @@
         <a class="btn btn-primary" data-dismiss="modal">Ok</a>
     </div>
 </div>
-
-
-{{#if isTat}}
-{{#view view.TatGestion}}
-<div class="modal hide" id="modal-page-gestion">
-    <div class="modal-body" style="height:300px">
-       <div class="tabbable"> <!-- Only required for left/right tabs -->
-        <button type="button" class="close" data-dismiss="modal">×</button>
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#general" data-toggle="tab">General</a></li>
-            <li><a href="#trous" data-toggle="tab">Trous</a></li>
-          </ul>
-
-          <div class="tab-content">
-            <div class="tab-pane active" id="general">
-                <form>
-                  <fieldset>
-                    
-                     <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher tous les trous</label> <br />
-                    {{#if currentPage.displayHoles}}
-                        <label>Trier les mots par ordre :</label>
-                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsAlphabetical" value=false title="Alphabétique" groupBinding="tatIsRandom"}}
-                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsRandom" value=true title="Aléatoire" groupBinding="tatIsRandom"}}
-                    {{/if}}
-                  </fieldset>
-                </form>
-            </div>
-            <div class="tab-pane" id="trous">
-                {{#if view.tats.length}}
-                <form>
-                  <fieldset>
-                    <label>Mot supprimé :</label>
-                    {{view Ember.TextField valueBinding="view.currentTat.word"}}
-                    <label>Indice :</label>
-                    {{view Ember.TextField valueBinding="view.currentTat.clue"}}
-                    <label>Alternatives (séparées par ; | joker : *) :</label>
-                    {{view Ember.TextField valueBinding="view.currentTat.alt"}}
-                   
-                  </fieldset>
-                </form>
-                <ul class="pager" style="padding-top:10px">
-                      <li {{bindAttr class="view.hasPrevious:show:disabled"}}><a {{action goPrevious target="this"}} >Précédent</a></li>
-                      <li {{bindAttr class="view.hasNext:show:disabled"}}><a {{action goNext target="this" }} >Suivant</a></li>
-                  
-                </ul>
-                {{else}}
-                    Aucun trou
-                {{/if}}
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <a class="btn btn-primary" data-dismiss="modal">Ok</a>
-    </div>
-</div>
-{{/view}}
-{{/if}}
 
 
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
