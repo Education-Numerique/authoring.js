@@ -4,7 +4,7 @@
 
   window.API = {};
   ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
-      'GetDiagnostic'].forEach(function(key) {
+   'GetDiagnostic'].forEach(function(key) {
     window.API[key] = function() {
       console.log('Fake LMS API debug. Method:', key, 'args', arguments);
       return 'whatever';
