@@ -123,7 +123,7 @@
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
 
   if (cdnJax) {
-    jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML.js');
+    jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js');
   }else {
     // Mathjax is a bitch
     var baseJax = jsBoot.loader.list().mathjax.filter(function(item) {
@@ -131,7 +131,7 @@
         return true;
     }).pop();
 
-    jsBoot.loader.use(baseJax + '?config=AM_HTMLorMML-full.js');
+    jsBoot.loader.use(baseJax + '?config=TeX-MML-AM_HTMLorMML.js');
     jsBoot.loader.wait(function() {
 
     });

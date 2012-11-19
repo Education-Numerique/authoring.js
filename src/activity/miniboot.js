@@ -115,8 +115,5 @@
 
     a.showActivity('activity.json');
 
-    window.onunload = function() {
-      a.end();
-    };
   });
 })();

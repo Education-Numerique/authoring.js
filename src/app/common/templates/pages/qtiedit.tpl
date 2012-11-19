@@ -149,7 +149,8 @@
         <label>Formule : </label>
         <input type="text" class="formula redactor_input" value="f(x)=sum_(n=0)^oo(f^((n))(a))/(n!)(x-a)^n" />
         <label>Aperçu : </label>
-        <div class="preview" style="float:left;margin-top:10px;"></div>
+        <div class="preview am" style="float:left;margin-top:10px;"></div>
+        <div class="preview lt" style="clear: both; float:left;"></div>
     </div>
             <hr class="clear" />
 

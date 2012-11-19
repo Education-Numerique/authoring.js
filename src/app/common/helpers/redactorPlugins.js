@@ -9,27 +9,37 @@
 
       var callback = (function() {
 
-        var math = null;
+        var matha = null;
+        var mathl = null;
         this.saveSelection();
 
         if (target)
           $('#redactor_modal .formula').val($(target).attr('data-formula'));
 
         // MathJAX initialization stupidity
-        var coinNode = $('#redactor_modal .preview')[0];
-        $('#redactor_modal .preview').html('`{}`');
+        var asciiPreview = $('#redactor_modal .preview.am');
+        asciiPreview.html('`{}`');
 
-        MathJax.Hub.Typeset(coinNode, function() {
-          math = MathJax.Hub.getAllJax(coinNode)[0];
-          math.Text($('#redactor_modal .formula').val());
+        var latexPreview = $('#redactor_modal .preview.lt');
+        latexPreview.html('$${}$$');
+
+        MathJax.Hub.Typeset(asciiPreview[0], function() {
+          matha = MathJax.Hub.getAllJax(asciiPreview[0])[0];
+          matha.Text($('#redactor_modal .formula').val());
+        });
+
+        MathJax.Hub.Typeset(latexPreview[0], function() {
+          mathl = MathJax.Hub.getAllJax(latexPreview[0])[0];
+          mathl.Text($('#redactor_modal .formula').val());
         });
 
         $('#redactor_modal .formula').on('input', function() {
-          if (!math) {
-            return;
+          if (matha){
+            matha.Text($(this).val());
           }
-
-          math.Text($(this).val());
+          if(mathl){
+            mathl.Text($(this).val());
+          }
         });
 
         $('#redactor_modal .redactor_btn_modal_insert').bind('click', function() {
