@@ -1,14 +1,14 @@
 /**
  * This file is responsible for two things:
  * - expose an API to manipulate and render activity objects
- * - adds the learner environemnent including feedback and other consumer related behaviors
+ * - add the learner environemnent including feedback and other consumer related behaviors
  */
 
 /*global console, Mingus, Handlebars*/
 (function() {
   'use strict';
   /**
-   * Handlebouze
+   * Handle
    */
   Handlebars.registerHelper('ifequalhelp', function(val1, val2, options) {
     // var context = (options.fn.contexts && options.fn.contexts[0]) || this;
@@ -20,113 +20,6 @@
       return options.inverse(this);
     }
   });
-
-
-  /**
-   * Scorm stuff - untested
-   */
-  this.LxxlLib.scorm = new (function() {
-    this.INIT = 'Initialize';
-    this.FINISH = 'Finish';
-    this.GET = 'GetValue';
-    this.SET = 'SetValue';
-    this.COMMIT = 'Commit';
-    /*
-    doLMSGetLastError
-    doLMSGetErrorString
-    doLMSGetDiagnostic
-    */
-
-    this.PASSED = 'passed';
-    this.COMPLETED = 'completed';
-    this.FAILED = 'failed';
-    this.INCOMPLETE = 'incomplete';
-    this.BROWSED = 'browsed';
-    this.NO_ATM = 'not attempted';
-
-    this.TIME_OUT = 'time-out';
-    this.SUSPEND = 'suspend';
-    this.LOGOUT = 'logout';
-    this.BLANK = '';
-
-    var isFunctional = true;
-
-    // Wrap shitny API
-    this.execute = function(statement, data) {
-      console.warn(' [scorm/lms] - about to execute', statement, data);
-      if (!isFunctional) {
-        console.error(' NO LMS available - just passing by');
-        return;
-      }
-      var ret = window['doLMS' + statement].apply(this, data);
-      console.warn(' [scorm/lms] - returned', ret);
-      if (!ret && (statement == this.INIT)) {
-        console.error('LMS initialization fail - disabling scorm entirely');
-        isFunctional = false;
-      }
-      return ret;
-      // var err = doLMSGetLastError();
-      // console.warn(' [scorm/lms] - last err', err, doLMSGetErrorString(err));
-    };
-
-    var startTime = (new Date()).getTime();
-    this.start = function() {
-      this.execute(this.INIT);
-      this.execute(this.SET, ['cmi.core.lesson_status', this.BROWSED]);
-      this.execute(this.SET, ['cmi.core.score.min', 0]);
-      this.execute(this.SET, ['cmi.core.score.max', 100]);
-      this.execute(this.COMMIT);
-    };
-
-    this.end = function(status) {
-      switch (status) {
-        case this.COMPLETED:
-        case this.INCOMPLETE:
-          // this.score(max, score, min, status, tokens);
-          this.execute(this.SET, ['cmi.core.session_time', crapTime((new Date()).getTime() - startTime)]);
-          break;
-      }
-      this.execute(this.COMMIT);
-      this.execute(this.FINISH);
-    };
-
-    this.score = function(max, score, min, status, tokens) {
-      this.execute(this.SET, ['cmi.core.score.max', max]);
-      this.execute(this.SET, ['cmi.core.score.raw', score]);
-      this.execute(this.SET, ['cmi.core.score.min', min]);
-      tokens.forEach(function(token, idx) {
-        this.execute(this.SET, ['cmi.objectives.' + idx + '.id', 'objective_' + token.id]);
-        this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
-        this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
-        this.execute(this.SET, ['cmi.objectives.' + idx + '.min', token.min]);
-        this.execute(this.SET, ['cmi.objectives.' + idx + '.status', status]);
-
-        this.execute(this.SET, ['cmi.interactions.' + idx + '.id', 'interaction_' + token.id]);
-        this.execute(this.SET, ['cmi.interactions.' + idx + '.weighting', token.weighting]);
-        // Whatever the fuck
-        this.execute(this.SET, ['cmi.interactions.' + idx + '.type', 'performance']);
-        this.execute(this.SET, ['cmi.interactions.' + idx + '.student_response', token.response]);
-      }, this);
-      this.execute(this.COMMIT);
-    };
-
-    // Stolen from hotp - highly buggy, not compliant, and inefficient
-    // XXX rewrite
-    var crapTime = function(seconds) {
-      seconds = Math.round(seconds / 1000);
-      var S = seconds % 60;
-      seconds -= S;
-      if (S < 10) {
-        S = '0' + S;
-      }
-      var M = (seconds / 60) % 60;
-      if (M < 10) {M = '0' + M;}
-      var H = Math.floor(seconds / 3600);
-      if (H < 10) {H = '0' + H;}
-      return H + ':' + M + ':' + S;
-    };
-
-  })();
 
 
 
@@ -195,95 +88,6 @@ var date = new Date(null);
 
   // Explicit API
   this.LxxlLib.activity = function() {
-    var pageEnter = function(index) {
-      console.warn('Entering page ', index);
-      if (act.pages[index].chrono)
-        act.pages[index].chrono.start();
-    };
-
-    var pageExit = function(index) {
-      console.warn('Exiting page ', index);
-      if (act.pages[index].chrono && !act.pages[index].chrono.dead)
-        act.pages[index].chrono.stop();
-    };
-
-
-    var behaviors = function(dom) {
-      // Chronometers binding
-      $('.clocker').each(function(i, item) {
-        var s = parseInt($(item).attr('data-chrono'), 10);
-        var id = parseInt($(item).attr('data-binding'), 10);
-        if (s) {
-          act.pages[i].chrono = new helpers.chronometer(item, s, function() {
-            console.warn('Timedout like a mangouste on ', id);
-          });
-        }else {
-          $(item).hide();
-        }
-      });
-
-      // Tat thingies
-      $('[data-type="tat"]', dom).each(function(ind, item) {
-        console.log('Found some tat', item);
-        item = $(item);
-        var clue = item.attr('data-clue');
-        // var alt = item.attr('data-alt').split(',');
-        // var answer = item.html();
-        item.html('trou à remplir');
-        item.on('click', function() {
-          console.warn('HAS CLICKYCLICK');
-          $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
-          var stuff = '<h5>' + clue + '</h5>' +
-              '<input type="text"></input>';
-          $('#modal-preview-tat-body').html(stuff);
-        });
-      });
-
-      // Make page 0 active, if any
-      var acti = $('.pages-list > li', dom);
-      if (acti.length) {
-        $(acti[0]).addClass('active');
-        pageEnter(0);
-      }
-      // Hide pages content
-      $('.pages-content > li', dom).each(function(ind, item) {
-        $(item).hide();
-      });
-
-      acti = $('.pages-content > li', dom);
-      if (acti.length)
-        $(acti[0]).fadeIn(1000, function() {console.warn('done');});
-
-
-      // Pages navigation
-      $('.pages-list > li', dom).on('click', function(event) {
-        var idx;
-        $('.pages-list > li', dom).each(function(ind, item) {
-          if (item == this) {
-            $(item).addClass('active');
-            idx = ind;
-            pageEnter(ind);
-          }else {
-            if ($(item).hasClass('active')) {
-              pageExit(ind);
-              $(item).removeClass('active');
-            }
-          }
-        }.bind(this));
-
-        $('.pages-content > li', dom).each(function(ind, item) {
-          if (ind != idx)
-            $(item).hide();
-          else
-            $(item).fadeIn(1000, function() {console.warn('done');});
-          // $(item).show();
-        });
-        event.preventDefault();
-        return false;
-      });
-
-    };
-
     var parse = function(payload, flavor) {
       switch (flavor) {
         case 'application/json':
@@ -365,38 +169,34 @@ var date = new Date(null);
         act = data;
       init++;
       if (init == done) {
-        act.styleData = [];
-        act.styleUri = [];
+        session = new ActivityUserController(act);
+        session.activity.styleData = [];
+        session.activity.styleUri = [];
         // Style mashuping
         styles.forEach(function(item) {
           try {
             Mingus.grammar.IRI.parse(item);
-            act.styleUri.push({data: item});
+            session.activity.styleUri.push({data: item});
           }catch (e) {
-            act.styleData.push({data: item});
+            session.activity.styleData.push({data: item});
           }
         });
         // Fixing the activity
-        act.pages.forEach(function(item, ind) {
+        session.activity.pages.forEach(function(item, ind) {
           item.id = ind;
         });
-        var res = tpl(act);
+        var res = tpl(session.activity);
         if ('html' in ifr)
           ifr.html(res);
         else
           ifr.innerHTML = res;
-        behaviors(ifr);
-        // Check if there is a LMS
-        var isThere = LxxlLib.scorm.execute(LxxlLib.scorm.INIT);
-        if (!isThere)
-          console.error('No LMS found - won\'t use the api at all');
+        session.start(ifr);
         loadingComplete();
       }
     };
 
 
-
-
+    var session;
     var ifr;
     this.setupViewport = function(node, noframe) {
       if (ifr)
@@ -423,6 +223,12 @@ var date = new Date(null);
       done++;
       completionCallback = callback;
       loader(activityIri, note);
+      var c = window.onunload;
+      window.onunload = function() {
+        session.end();
+        if(c)
+          c();
+      };
     };
 
     // Allow to encode stuff
@@ -434,13 +240,116 @@ var date = new Date(null);
       return 'data:application/json;base64,' + encode(obj);
     };
 
-    this.end = function() {
-      LxxlLib.scorm.execute(LxxlLib.scorm.FINISH);
-    };
-
   };
 
 }).apply(this);
+
+
+var ActivityUserController = function(mesh){
+  this.activity = new LxxlLib.model.Activity(mesh); 
+
+  this.start = function(node){
+    console.warn("starting activity bound on node", node);
+    behaviors(node);
+    // var isThere = LxxlLib.scorm.execute(LxxlLib.scorm.INIT);
+    // if (!isThere)
+    //   console.error('No LMS found - won\'t use the api at all');
+  };
+
+  this.end = function(){
+    LxxlLib.scorm.execute(LxxlLib.scorm.FINISH);
+    console.warn("stopping activity");
+  };
+
+
+  var pageEnter = function(index) {
+    console.warn('Entering page ', index);
+    if (act.pages[index].chrono)
+      act.pages[index].chrono.start();
+  };
+
+  var pageExit = function(index) {
+    console.warn('Exiting page ', index);
+    if (act.pages[index].chrono && !act.pages[index].chrono.dead)
+      act.pages[index].chrono.stop();
+  };
+
+  var behaviors = function(dom) {
+    // Chronometers binding
+    $('.clocker').each(function(i, item) {
+      var s = parseInt($(item).attr('data-chrono'), 10);
+      var id = parseInt($(item).attr('data-binding'), 10);
+      if (s) {
+        act.pages[i].chrono = new helpers.chronometer(item, s, function() {
+          console.warn('Timedout like a mangouste on ', id);
+        });
+      }else {
+        $(item).hide();
+      }
+    });
+
+    // Tat thingies
+    $('[data-type="tat"]', dom).each(function(ind, item) {
+      console.log('Found some tat', item);
+      item = $(item);
+      var clue = item.attr('data-clue');
+      // var alt = item.attr('data-alt').split(',');
+      // var answer = item.html();
+      item.html('trou à remplir');
+      item.on('click', function() {
+        console.warn('HAS CLICKYCLICK');
+        $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
+        var stuff = '<h5>' + clue + '</h5>' +
+            '<input type="text"></input>';
+        $('#modal-preview-tat-body').html(stuff);
+      });
+    });
+
+    // Make page 0 active, if any
+    var acti = $('.pages-list > li', dom);
+    if (acti.length) {
+      $(acti[0]).addClass('active');
+      pageEnter(0);
+    }
+    // Hide pages content
+    $('.pages-content > li', dom).each(function(ind, item) {
+      $(item).hide();
+    });
+
+    acti = $('.pages-content > li', dom);
+    if (acti.length)
+      $(acti[0]).fadeIn(1000, function() {console.warn('done');});
+
+
+    // Pages navigation
+    $('.pages-list > li', dom).on('click', function(event) {
+      var idx;
+      $('.pages-list > li', dom).each(function(ind, item) {
+        if (item == this) {
+          $(item).addClass('active');
+          idx = ind;
+          pageEnter(ind);
+        }else {
+          if ($(item).hasClass('active')) {
+            pageExit(ind);
+            $(item).removeClass('active');
+          }
+        }
+      }.bind(this));
+
+      $('.pages-content > li', dom).each(function(ind, item) {
+        if (ind != idx)
+          $(item).hide();
+        else
+          $(item).fadeIn(1000, function() {console.warn('done');});
+        // $(item).show();
+      });
+      event.preventDefault();
+      return false;
+    });
+
+  };
+};
 
 /*
 // window.onload = function(){
