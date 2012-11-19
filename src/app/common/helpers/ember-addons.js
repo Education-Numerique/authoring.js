@@ -67,7 +67,9 @@
 
 
     didInsertElement: function() {
-      this.$().chosen();
+      this.$().chosen({
+        max_selected_options: 4
+      });
     },
 
     _getObjectFromId: function(id) {

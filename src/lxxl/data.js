@@ -129,6 +129,22 @@ jsBoot.pack('LxxlLib.model.defines', function() {
             {
               id: 311,
               title: 'subfrancais'
+            },
+            {
+              id: 312,
+              title: 'subfrancais2'
+            },
+            {
+              id: 313,
+              title: 'subfrancais3'
+            },
+            {
+              id: 314,
+              title: 'subfrancais4'
+            },
+            {
+              id: 315,
+              title: 'subfrancais5'
             }
           ]
         }
