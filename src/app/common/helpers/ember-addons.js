@@ -48,46 +48,138 @@
     }.observes('selection')
   });
 
-  Ember.GroupedSelect = Ember.Select.extend({
+  Ember.GroupedSelect = Ember.CollectionView.extend({
     classNames: ['ember-grouped-select'],
+    tagName: 'select',
     multiple: true,
+
+    selection: null,
+    _rawContent: [],
+
     attributeBindings: ['multiple'],
-    defaultTemplate: Ember.Handlebars.compile(
-        '{{#if view.prompt}}<option value>{{view.prompt}}</option>{{/if}}{{#each view.content}}' +
-        '{{view Ember.SelectOptGroup labelBinding="title" contentBinding="view.content"}}{{/each}}'),
+    itemViewClass: Em.View.extend({
+      tagName: 'option',
+      attributeBindings: ['content.value:value', 'content.selected:selected'],
+      classNameBindings: ['content.className'],
+
+      defaultTemplate: Ember.Handlebars.compile('{{unbound view.content.title}}')
+    }),
+
+
     didInsertElement: function() {
       this.$().chosen();
     },
-    contentUpdated: function() {
-      this.$().trigger('liszt:updated');
-    }.observes('content.@each')
-  });
 
-  Ember.SelectOptGroup = Ember.View.extend({
-    tagName: 'optgroup',
-    classNames: [],
-    attributeBindings: ['label'],
-    defaultTemplate: Ember.Handlebars.compile(
-        '{{#each view.content}}{{view Ember.SelectOption contentBinding="view.content"}}{{/each}}'
-    ),
+    _getObjectFromId: function(id) {
+      var c = this.get('_rawContent');
+      var result = null;
+      var BreakException = {};
+      try {
+        c.forEach(function(item) {
+          if (item.get('id') == id) {
+            result = item;
+            throw BreakException;
+          }
 
-    didInsertElement: function() {
-      this.get('parentView').$().trigger('liszt:updated');
+          if (item.get('content.length')) {
+            item.get('content').forEach(function(subitem) {
+              if (subitem.get('id') == id) {
+                result = subitem;
+                throw BreakException;
+              }
+            });
+          }
+        });
+      } catch (e) {
+        if (e !== BreakException) throw e;
+      }
+
+      return result;
     },
 
-    // proxy to the Select
-    optionLabelPath: function() {
-      return Ember.get(this, 'parentView.optionLabelPath');
-    }.property('parentView.optionLabelPath'),
-    optionValuePath: function() {
-      return Ember.get(this, 'parentView.optionValuePath');
-    }.property('parentView.optionValuePath'),
-    selection: function() {
-      return Ember.get(this, 'parentView.selection');
-    }.property('parentView.selection'),
-    multiple: function() {
-      return Ember.get(this, 'parentView.multiple');
-    }.property('parentView.multiple')
+    _isSelected: function(search) {
+      if (!this.get('selection.length'))
+        return false;
+
+      var c = this.get('selection');
+      var result = false;
+
+      c.forEach(function(item) {
+        if (item.get('id') == search.get('id'))
+          result = true;
+      });
+      return result;
+    },
+
+
+    change: function(e) {
+      var options = this.$('option:selected'),
+          content = this.get('_rawContent'),
+          selection = this.get('selection');
+
+      if (!content) { return; }
+      if (options) {
+        var selectedIndexes = options.map(function() {
+          return $(this).attr('value');
+        }).toArray();
+
+        var newSelection = [];
+
+        selectedIndexes.forEach(function(item) {
+          newSelection.pushObject(this._getObjectFromId(item));
+        }, this);
+
+        if (Em.isArray(selection)) {
+          Em.EnumerableUtils.replace(selection, 0, selection.get('length'), newSelection);
+        } else {
+          this.set('selection', newSelection);
+        }
+      }
+
+    },
+
+    content: (function(key, value) {
+
+      if (arguments.length === 1) {
+        return [];
+      }
+
+      this.set('_rawContent', value);
+      var c = value;
+      var list = [];
+
+      if (!c)
+        return [];
+
+      c.forEach(function(item) {
+
+        list.pushObject({
+          title: item.get('title'),
+          value: item.get('id'),
+          className: 'group-result',
+          selected: this._isSelected(item)
+        });
+
+        if (item.get('content.length')) {
+          item.get('content').forEach(function(subitem) {
+            list.pushObject({
+              title: subitem.get('title'),
+              value: subitem.get('id'),
+              className: 'active-result',
+              selected: this._isSelected(subitem)
+            });
+          },this);
+        }
+      }, this);
+      return list;
+    }.property()),
+
+    contentUpdated: function() {
+      Ember.run.next(this, function() {
+        this.$().trigger('liszt:updated');
+      });
+
+    }.observes('content.@each')
   });
 
   LxxlLib.Em.Wysiwyg = Em.TextArea.extend({

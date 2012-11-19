@@ -102,11 +102,11 @@ jsBoot.pack('LxxlLib.model.defines', function() {
       content: [
         {
           id: 11,
-          title: 'dont voici une première sous-catégorie'
+          title: '1ère sous-catégorie'
         },
         {
           id: 12,
-          title: 'et une seconde sous-catégorie'
+          title: '2nd sous-catégorie'
         }
       ],
       matter: {id: 'fra'},
@@ -120,15 +120,15 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     },
     {
       id: 3,
-      title: 'Ceci est une dernière catégorie attachée au français autre',
+      title: ' français autre',
       content: [
         {
           id: 31,
-          title: 'dont voici une première sous-catégorie',
+          title: 'Francais autre',
           content: [
             {
               id: 311,
-              title: 'qui a elle-même une sous catégorie'
+              title: 'subfrancais'
             }
           ]
         }

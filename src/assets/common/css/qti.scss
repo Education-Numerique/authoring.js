@@ -735,3 +735,16 @@ Style specific to activity edition
 .noborder {
     border:0px!important;
 }
+
+body .chzn-container .chzn-results {
+    .group-result {
+        &.highlighted {
+            color:#FFF;
+        }
+        padding-left:5px!important;
+    }
+
+    .active-result {
+        padding-left:15px;
+    }
+} 

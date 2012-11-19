@@ -34,10 +34,10 @@
         });
 
         $('#redactor_modal .formula').on('input', function() {
-          if (matha){
+          if (matha) {
             matha.Text($(this).val());
           }
-          if(mathl){
+          if (mathl) {
             mathl.Text($(this).val());
           }
         });

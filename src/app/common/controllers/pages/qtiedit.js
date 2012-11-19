@@ -281,9 +281,9 @@
       var obj = Em.Object.create();
       if (!this.get('content.level') || !this.get('content.matter'))
         return obj;
-
       var tree = LxxlLib.factories.metadata.getTreeFor(this.get('content.matter.id'), this.get('content.level.id'));
-      obj.set('content', (tree && tree.content) || []);
+      if (tree)
+        obj.set('content', (tree && tree.content) || []);
       return obj;
     }.property('content', 'content.level', 'content.matter')),
 
