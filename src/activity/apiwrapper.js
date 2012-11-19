@@ -183,7 +183,7 @@
     scormAPI.statusKeys[scormAPI.status[key]] = key;
   });
 
-  var StatusPool = LxxlLib.model.getPooledMutable({
+  var StatusPool = jsBoot.types.getPooledMutable({
     id: '',
     title: ''
   });
@@ -194,7 +194,7 @@
 
   // Init status
   Object.keys(scormAPI.status).forEach(function(id) {
-    return new status({id: id, title: scormAPI.status[id]});
+    return new StatusPool({id: id, title: scormAPI.status[id]});
   });
 
   scormAPI.mode = {
@@ -246,7 +246,7 @@
         };
       innerDescriptor[key] = innerMapper.bind({}, key, descriptor[key].mapping, parse, serialize);
     });
-    return api.TypedMutable.bind({}, innerDescriptor);
+    return jsBoot.types.TypedMutable.bind({}, innerDescriptor);
   };
 
   var score = function(prefix) {
@@ -467,8 +467,8 @@
       }
     },
 
-    objectives: LxxlLib.model.ArrayMutable.bind({}, objective),
-    interactions: LxxlLib.model.ArrayMutable.bind({}, interaction)
+    objectives: jsBoot.types.ArrayMutable.bind({}, objective),
+    interactions: jsBoot.types.ArrayMutable.bind({}, interaction)
   });
 
   LxxlLib.session = function() {
