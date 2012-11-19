@@ -3,14 +3,8 @@
 */
 
 <div class="container-fluid">
-    <div class="widget-box">
-        <div class="widget-title">
-            <span class="icon">
-                <i class="icon-wrench"></i>
-            </span>
-            <h5>Informations de l'activité</h5>
-
-        </div>
+    <div class="widget-box noborder">
+    
         <div class="widget-content" id="page-informations">
             <div class="control-group " style="width:60%">
                 <div class="input-prepend">

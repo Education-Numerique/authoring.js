@@ -3,14 +3,8 @@
 */
 
 <div class="container-fluid">
-    <div class="widget-box">
-        <div class="widget-title" data-toggle="slidify" data-target="#page-informations">
-            <span class="icon">
-                <i class="icon-wrench"></i>
-            </span>
-            <h5>Informations de la page</h5>
-        </div>
-        <div class="widget-content slidify-on" id="page-informations">
+    <div class="widget-box noborder">
+        <div class="widget-content" id="page-informations">
             
             <div class="control-group">
                 <div class="input-prepend">

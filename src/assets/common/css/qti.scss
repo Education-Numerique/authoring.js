@@ -373,6 +373,7 @@ Style specific to activity edition
     }
 
     #page-informations {
+        padding-left:0px;
         .redactor_box {
             float:left;
             width:84%%;
@@ -729,4 +730,8 @@ Style specific to activity edition
 
 .pager li:not(.disabled) a {
     cursor:pointer;
+}
+
+.noborder {
+    border:0px!important;
 }
