@@ -12,7 +12,6 @@ jsBoot.pack('LxxlLib.factories', function(api) {
       ret.pages.pushObject(p1);
       ret.pages.pushObject(p2);
       ret.pages.pushObject(p3);
-      window.CHAT = ret;
       return ret;
     };
   })();
