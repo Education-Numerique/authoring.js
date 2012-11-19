@@ -284,6 +284,7 @@
       var tree = LxxlLib.factories.metadata.getTreeFor(this.get('content.matter.id'), this.get('content.level.id'));
       if (tree)
         obj.set('content', (tree && tree.content) || []);
+      this.set('content.category', []);
       return obj;
     }.property('content', 'content.level', 'content.matter')),
 

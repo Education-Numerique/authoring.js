@@ -52,9 +52,9 @@
     classNames: ['ember-grouped-select'],
     tagName: 'select',
     multiple: true,
-
-    selection: null,
-    _rawContent: [],
+    _forceRefresh: 0,
+    rawContent: [],
+    _rawSelection: [],
 
     attributeBindings: ['multiple'],
     itemViewClass: Em.View.extend({
@@ -65,27 +65,27 @@
       defaultTemplate: Ember.Handlebars.compile('{{unbound view.content.title}}')
     }),
 
-
     didInsertElement: function() {
       this.$().chosen({
         max_selected_options: 4
       });
+      this.set('_forceRefresh', new Date().getTime());
     },
 
     _getObjectFromId: function(id) {
-      var c = this.get('_rawContent');
+      var c = this.get('rawContent');
       var result = null;
       var BreakException = {};
       try {
         c.forEach(function(item) {
-          if (item.get('id') == id) {
+          if (item.id == id) {
             result = item;
             throw BreakException;
           }
 
-          if (item.get('content.length')) {
-            item.get('content').forEach(function(subitem) {
-              if (subitem.get('id') == id) {
+          if (item.content && item.content.length) {
+            item.content.forEach(function(subitem) {
+              if (subitem.id == id) {
                 result = subitem;
                 throw BreakException;
               }
@@ -107,7 +107,7 @@
       var result = false;
 
       c.forEach(function(item) {
-        if (item.get('id') == search.get('id'))
+        if (item.id == search.id)
           result = true;
       });
       return result;
@@ -116,7 +116,7 @@
 
     change: function(e) {
       var options = this.$('option:selected'),
-          content = this.get('_rawContent'),
+          content = this.get('rawContent'),
           selection = this.get('selection');
 
       if (!content) { return; }
@@ -141,12 +141,17 @@
     },
 
     content: (function(key, value) {
+      // console.log('================== content init', arguments);
+      // if (arguments.length === 1) {
+      //   var value = this.get('_rawContent');
+      // } else {
+      //   console.error('****** set content', value);
+      //   this.set('_rawContent', value);
 
-      if (arguments.length === 1) {
-        return [];
-      }
+      // }
 
-      this.set('_rawContent', value);
+      var value = this.get('rawContent');
+
       var c = value;
       var list = [];
 
@@ -154,31 +159,33 @@
         return [];
 
       c.forEach(function(item) {
-
         list.pushObject({
-          title: item.get('title'),
-          value: item.get('id'),
+          title: item.title,
+          value: item.id,
           className: 'group-result',
           selected: this._isSelected(item)
         });
 
-        if (item.get('content.length')) {
-          item.get('content').forEach(function(subitem) {
+        if (item.content && item.content.length) {
+          item.content.forEach(function(subitem) {
             list.pushObject({
-              title: subitem.get('title'),
-              value: subitem.get('id'),
+              title: subitem.title,
+              value: subitem.id,
               className: 'active-result',
               selected: this._isSelected(subitem)
             });
           },this);
         }
       }, this);
+
       return list;
-    }.property()),
+    }.property('rawContent', '_forceRefresh')),
+
 
     contentUpdated: function() {
       Ember.run.next(this, function() {
-        this.$().trigger('liszt:updated');
+        if (this.get('state') == 'inDOM')
+          this.$().trigger('liszt:updated');
       });
 
     }.observes('content.@each')
