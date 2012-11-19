@@ -1,4 +1,6 @@
 (function() {
+  /*global MathJax, html2canvas*/
+  'use strict';
   if (typeof this.RedactorPlugins === 'undefined') this.RedactorPlugins = {};
 
 

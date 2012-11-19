@@ -1,10 +1,13 @@
 (function() {
+  /*jshint devel: true*/
   'use strict';
 
   window.API = {};
-  ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString', 'GetDiagnostic'].forEach(function(key){
-    window.API[key] = function(){
+  ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
+      'GetDiagnostic'].forEach(function(key) {
+    window.API[key] = function() {
       console.log('Fake LMS API debug. Method:', key, 'args', arguments);
+      return 'whatever';
     };
   });
 
@@ -48,11 +51,11 @@
   // local variable definitions
   var api;
 
-  var initHandler = function( ){
-    if(!api){
+  var initHandler = function() {
+    if (!api) {
       api = findAPI(window) || (window.opener && findAPI(window.opener));
       // Mapping of 1.1 / 1.2 into 2004 API
-      if(api && ('LMSInitialize' in api)){
+      if (api && ('LMSInitialize' in api)) {
         api.Initialize = api.LMSInitialize;
         api.Terminate = api.LMSFinish;
         api.GetValue = api.LMSGetValue;
@@ -109,23 +112,22 @@
    */
 
   var initialized = false;
-  scormAPI.boot = function(){
+  scormAPI.boot = function() {
     initHandler();
-    if(!api)
+    if (!api)
       return;
     return initialized || (initialized = api.Initialize(''));
   };
 
-  scormAPI.shutdown = function(){
-    if(!api)
+  scormAPI.shutdown = function() {
+    if (!api)
       return;
     // Failure to terminate will leave initialized at true and api as it was.
-    return (!initialized || !(initialized = !api.Terminate(''))) && !(api == null);
+    return (!initialized || !(initialized = !api.Terminate(''))) && !(api = null);
   };
 
 
-  scormAPI.getLastError = function()
-  {
+  scormAPI.getLastError = function() {
     if (!api)
       return {
         code: scormAPI.errors.GENERAL_EXCEPTION,
@@ -137,12 +139,15 @@
     if (code == scormAPI.errors.NO_ERROR)
       return null;
 
-    return {code: code, name: api.GetErrorString(code).toUpperCase().replace(/ /g, '_'), message: api.GetDiagnostic(code)};
+    return {
+      code: code,
+      name: api.GetErrorString(code).toUpperCase().replace(/ /g, '_'),
+      message: api.GetDiagnostic(code)
+    };
   };
 
-  scormAPI.getValue = function(name)
-  {
-    if(!api)
+  scormAPI.getValue = function(name) {
+    if (!api)
       return;
     var result = api.GetValue(name);
     // Might throw / should do something smarter
@@ -151,16 +156,14 @@
     return result;
   };
 
-  scormAPI.setValue = function(name, value)
-  {
-    if(!api)
+  scormAPI.setValue = function(name, value) {
+    if (!api)
       return;
     return api.SetValue(name, value.toString());
   };
 
-  scormAPI.commit = function(name, value)
-  {
-    if(!api)
+  scormAPI.commit = function() {
+    if (!api)
       return;
     return api.Commit('');
   };
@@ -176,22 +179,22 @@
   };
 
   scormAPI.statusKeys = {};
-  Object.keys(scormAPI.status).forEach(function(key){
+  Object.keys(scormAPI.status).forEach(function(key) {
     scormAPI.statusKeys[scormAPI.status[key]] = key;
   });
 
-  var statusPool = LxxlLib.model.getPooledMutable({
+  var StatusPool = LxxlLib.model.getPooledMutable({
     id: '',
     title: ''
   });
 
-  var getStatus = function(id){
-    return new statusPool({id: id});
+  var getStatus = function(id) {
+    return new StatusPool({id: id});
   };
 
   // Init status
-  Object.keys(scormAPI.status).forEach(function(id){
-    new status({id: id, title: scormAPI.status[id]});
+  Object.keys(scormAPI.status).forEach(function(id) {
+    return new status({id: id, title: scormAPI.status[id]});
   });
 
   scormAPI.mode = {
@@ -208,37 +211,37 @@
   };
 
 
-  var mapper = function(cacheHolder, key, mapping, parse, serialize, value){
-    if(arguments.length < 5){
-      if(scormAPI.hasAPI && !cacheHolder.hasOwnProperty(key)){
+  var mapper = function(cacheHolder, key, mapping, parse, serialize, value) {
+    if (arguments.length < 5) {
+      if (scormAPI.hasAPI && !cacheHolder.hasOwnProperty(key)) {
         cacheHolder[key] = scormAPI.getValue('cmi.' + mapping);
-        if(parse)
+        if (parse)
           parse(cacheHolder[key]);
       }
       return cacheHolder[key];
     }
-    if(scormAPI.hasAPI)
+    if (scormAPI.hasAPI)
       scormAPI.setValue('cmi.' + mapping, serialize ? serialize(value) : value);
     cacheHolder[key] = value;
     return value;
   };
 
-  var getScormMutable = function(descriptor){
+  var getScormMutable = function(descriptor) {
     var innerMapper = mapper.bind({}, {});
     var innerDescriptor = {};
-    Object.keys(descriptor).forEach(function(key){
+    Object.keys(descriptor).forEach(function(key) {
       var parse = descriptor[key].read;
-      if(typeof descriptor[key] != 'object'){
+      if (typeof descriptor[key] != 'object') {
         innerDescriptor[key] = descriptor[key];
         return;
       }
-      if(descriptor[key].read === undefined)
-        parse = function(){
+      if (descriptor[key].read === undefined)
+        parse = function() {
           throw new Error('Write-only');
         };
       var serialize = descriptor[key].write;
-      if(descriptor[key].write === undefined)
-        serialize = function(){
+      if (descriptor[key].write === undefined)
+        serialize = function() {
           throw new Error('Write-only');
         };
       innerDescriptor[key] = innerMapper.bind({}, key, descriptor[key].mapping, parse, serialize);
@@ -246,7 +249,7 @@
     return api.TypedMutable.bind({}, innerDescriptor);
   };
 
-  var score = function(prefix){
+  var score = function(prefix) {
     return getScormMutable({
       raw: {
         mapping: prefix + 'raw',
@@ -266,44 +269,44 @@
     });
   };
 
-  var status = function(prefix){
+  var status = function(prefix) {
     return getScormMutable({
       mapping: prefix,
-      read: function(value){
+      read: function(value) {
         return getStatus(scormAPI.statusKeys[value]);
       },
-      write: function(value){
+      write: function(value) {
         return scormAPI.status[value.id];
       }
-    };
+    });
   };
 
   // This is dead tricky. Each objective will own its type (binded because of the scorm mutable and the id).
-  var objective = function(mesh, idx){
-    var mutant = getScormMutable({
+  var objective = function(mesh, idx) {
+    var Mutant = getScormMutable({
       id: {
         mapping: 'core.objectives.' + idx + '.id',
         read: null,
-        write: null,
+        write: null
       },
       score: score('core.objectives.' + idx + '.score'),
       status: status('core.objectives.' + idx + '.status')
     });
-    return new mutant(mesh);
+    return new Mutant(mesh);
   };
 
-  var interaction = function(mesh, idx){
+  var interaction = function(mesh, idx) {
     // XXX total crap - this spec is a fucking shit train freak accident godamn it
-    var mutant = getScormMutable({
+    var Mutant = getScormMutable({
       id: {
         mapping: 'core.interactions.' + idx + '.id',
         read: null,
-        write: null,
+        write: null
       },
       weight: {
         mapping: 'core.interactions.' + idx + '.weighting',
         read: null,
-        write: null,
+        write: null
       }/*,
       type: {
         mapping: 'core.interactions.' + idx + '.type',
@@ -312,38 +315,54 @@
       },
       // timestamp*/
     });
-    return new mutant(mesh);
+    return new Mutant(mesh);
   };
 
 
-// cmi.interactions._children (id,type,objectives,timestamp,correct_responses,weighting,learner_response,result,latency,description, RO) Listing of supported data model elements
-// cmi.interactions._count (non-negative integer, RO) Current number of interactions being stored by the LMS
-// cmi.interactions.n.id (long_identifier_type (SPM: 4000), RW) Unique label for the interaction
-// cmi.interactions.n.type (“true-false”, “choice”, “fill-in”, “long-fill-in”, “matching”, “performance”, “sequencing”, “likert”, “numeric” or “other”, RW) Which type of interaction is recorded
-// cmi.interactions.n.objectives._count (non-negative integer, RO) Current number of objectives (i.e., objective identifiers) being stored by the LMS for this interaction
-// cmi.interactions.n.objectives.n.id (long_identifier_type (SPM: 4000), RW) Label for objectives associated with the interaction
-// cmi.interactions.n.timestamp (time(second,10,0), RW) Point in time at which the interaction was first made available to the learner for learner interaction and response
-// cmi.interactions.n.correct_responses._count (non-negative integer, RO) Current number of correct responses being stored by the LMS for this interaction
-// cmi.interactions.n.correct_responses.n.pattern (format depends on interaction type, RW) One correct response pattern for the interaction
-// cmi.interactions.n.weighting (real (10,7), RW) Weight given to the interaction relative to other interactions
-// cmi.interactions.n.learner_response (format depends on interaction type, RW) Data generated when a learner responds to an interaction
-// cmi.interactions.n.result (“correct”, “incorrect”, “unanticipated”, “neutral”) or a real number with values that is accurate to seven significant decimal figures real. , RW) Judgment of the correctness of the learner response
-// cmi.interactions.n.latency (timeinterval (second,10,2), RW) Time elapsed between the time the interaction was made available to the learner for response and the time of the first response
-// cmi.interactions.n.description (localized_string_type (SPM: 250), RW) Brief informative description of the interaction
+  // cmi.interactions._children (id,type,objectives,timestamp,correct_responses,weighting,learner_response,result,
+  // latency,description, RO) Listing of supported data model elements
+  // cmi.interactions._count (non-negative integer, RO) Current number of interactions being stored by the LMS
+  // cmi.interactions.n.id (long_identifier_type (SPM: 4000), RW) Unique label for the interaction
+  // cmi.interactions.n.type (“true-false”, “choice”, “fill-in”, “long-fill-in”, “matching”, “performance”,
+  // “sequencing”, “likert”, “numeric” or “other”, RW) Which type of interaction is recorded
+  // cmi.interactions.n.objectives._count (non-negative integer, RO) Current number of objectives (i.e., objective
+  // identifiers) being stored by the LMS for this interaction
+  // cmi.interactions.n.objectives.n.id (long_identifier_type (SPM: 4000), RW) Label for objectives associated with the
+  // interaction
+  // cmi.interactions.n.timestamp (time(second,10,0), RW) Point in time at which the interaction was first made
+  // available to the learner for learner interaction and response
+  // cmi.interactions.n.correct_responses._count (non-negative integer, RO) Current number of correct responses
+  // being stored by the LMS for this interaction
+  // cmi.interactions.n.correct_responses.n.pattern (format depends on interaction type, RW) One correct response
+  // pattern for the interaction
+  // cmi.interactions.n.weighting (real (10,7), RW) Weight given to the interaction relative to other interactions
+  // cmi.interactions.n.learner_response (format depends on interaction type, RW) Data generated when a learner
+  // responds to an interaction
+  // cmi.interactions.n.result (“correct”, “incorrect”, “unanticipated”, “neutral”) or a real number with values
+  // that is accurate to seven significant decimal figures real. , RW) Judgment of the correctness of the learner
+  // response
+  // cmi.interactions.n.latency (timeinterval (second,10,2), RW) Time elapsed between the time the interaction was
+  // made available to the learner for response and the time of the first response
+  // cmi.interactions.n.description (localized_string_type (SPM: 250), RW) Brief informative description of the
+  // interaction
 
 
 
 
 
-// * cmi.core.student_id (CMIString (SPM: 255), RO) Identifies the student on behalf of whom the SCO was launched
-// * cmi.core.student_name (CMIString (SPM: 255), RO) Name provided for the student by the LMS
-// * cmi.core.credit (“credit”, “no-credit”, RO) Indicates whether the learner will be credited for performance in the SCO
-// * cmi.core.entry (“ab-initio”, “resume”, “”, RO) Asserts whether the learner has previously accessed the SCO
-// * cmi.core.total_time (CMITimespan, RO) Sum of all of the learner’s session times accumulated in the current learner attempt
-// * cmi.core.lesson_mode (“browse”, “normal”, “review”, RO) Identifies one of three possible modes in which the SCO may be presented to the learner
-// * cmi.launch_data (CMIString (SPM: 4096), RO) Data provided to a SCO after launch, initialized from the dataFromLMS manifest element
+  // * cmi.core.student_id (CMIString (SPM: 255), RO) Identifies the student on behalf of whom the SCO was launched
+  // * cmi.core.student_name (CMIString (SPM: 255), RO) Name provided for the student by the LMS
+  // * cmi.core.credit (“credit”, “no-credit”, RO) Indicates whether the learner will be credited for performance
+  // in the SCO
+  // * cmi.core.entry (“ab-initio”, “resume”, “”, RO) Asserts whether the learner has previously accessed the SCO
+  // * cmi.core.total_time (CMITimespan, RO) Sum of all of the learner’s session times accumulated in the current
+  // learner attempt
+  // * cmi.core.lesson_mode (“browse”, “normal”, “review”, RO) Identifies one of three possible modes in which the
+  // SCO may be presented to the learner
+  // * cmi.launch_data (CMIString (SPM: 4096), RO) Data provided to a SCO after launch, initialized from the
+  // dataFromLMS manifest element
 
-  var cmi = getScormMutable({
+  var Cmi = getScormMutable({
     studentId: {
       mapping: 'core.student_id',
       read: null
@@ -356,21 +375,21 @@
 
     credit: {
       mapping: 'core.credit',
-      read: function(){
+      read: function(value) {
         return value == 'credit';
       }
     },
 
     resume: {
       mapping: 'core.entry',
-      read: function(){
+      read: function(value) {
         return value == 'resume';
       }
     },
 
     totalTime: {
       mapping: 'core.total_time',
-      read: function(){
+      read: function(value) {
         return new Date(value);
       }
     },
@@ -385,14 +404,18 @@
       read: null
     },
 
-// * cmi.core.lesson_location (CMIString (SPM: 255), RW) The learner’s current location in the SCO
-// * cmi.core.lesson_status (“passed”, “completed”, “failed”, “incomplete”, “browsed”, “not attempted”, RW) Indicates whether the learner has completed and satisfied the requirements for the SCO
-// * cmi.core.score.raw (CMIDecimal, RW) Number that reflects the performance of the learner relative to the range bounded by the values of min and max
-// * cmi.core.score.max (CMIDecimal, RW) Maximum value in the range for the raw score
-// * cmi.core.score.min (CMIDecimal, RW) Minimum value in the range for the raw score
-// * cmi.core.exit (“time-out”, “suspend”, “logout”, “”, WO) Indicates how or why the learner left the SCO
-// * cmi.core.session_time (CMITimespan, WO) Amount of time that the learner has spent in the current learner session for this SCO
-// * cmi.suspend_data (CMIString (SPM: 4096), RW) Provides space to store and retrieve data between learner sessions
+    // * cmi.core.lesson_location (CMIString (SPM: 255), RW) The learner’s current location in the SCO
+    // * cmi.core.lesson_status (“passed”, “completed”, “failed”, “incomplete”, “browsed”, “not attempted”, RW)
+    // Indicates whether the learner has completed and satisfied the requirements for the SCO
+    // * cmi.core.score.raw (CMIDecimal, RW) Number that reflects the performance of the learner relative to the
+    // range bounded by the values of min and max
+    // * cmi.core.score.max (CMIDecimal, RW) Maximum value in the range for the raw score
+    // * cmi.core.score.min (CMIDecimal, RW) Minimum value in the range for the raw score
+    // * cmi.core.exit (“time-out”, “suspend”, “logout”, “”, WO) Indicates how or why the learner left the SCO
+    // * cmi.core.session_time (CMITimespan, WO) Amount of time that the learner has spent in the current learner
+    // session for this SCO
+    // * cmi.suspend_data (CMIString (SPM: 4096), RW) Provides space to store and retrieve data between learner
+    // sessions
 
     location: {
       mapping: 'core.lesson_location',
@@ -412,72 +435,73 @@
 
     sessionTime: {
       mapping: 'core.session_time',
-      read: function(value){
+      read: function(value) {
         return new Date(value);
       },
-      write: function(value){
+      write: function(value) {
         return value.toString();
       }
     },
 
-  // var crapTime = function(seconds) {
-  //   seconds = Math.round(seconds / 1000);
-  //   var S = seconds % 60;
-  //   seconds -= S;
-  //   if (S < 10) {
-  //     S = '0' + S;
-  //   }
-  //   var M = (seconds / 60) % 60;
-  //   if (M < 10) {M = '0' + M;}
-  //   var H = Math.floor(seconds / 3600);
-  //   if (H < 10) {H = '0' + H;}
-  //   return H + ':' + M + ':' + S;
-  // };
+    // var crapTime = function(seconds) {
+    //   seconds = Math.round(seconds / 1000);
+    //   var S = seconds % 60;
+    //   seconds -= S;
+    //   if (S < 10) {
+    //     S = '0' + S;
+    //   }
+    //   var M = (seconds / 60) % 60;
+    //   if (M < 10) {M = '0' + M;}
+    //   var H = Math.floor(seconds / 3600);
+    //   if (H < 10) {H = '0' + H;}
+    //   return H + ':' + M + ':' + S;
+    // };
 
     suspendData: {
       mapping: 'core.suspend_data',
-      read: function(value){
+      read: function(value) {
         return JSON.parse(value);
       },
-      write: function(value){
+      write: function(value) {
         return JSON.stringify(value);
       }
     },
 
-    objectives: LxxlLib.model.ArrayMutable.bind({}, objective)
+    objectives: LxxlLib.model.ArrayMutable.bind({}, objective),
+    interactions: LxxlLib.model.ArrayMutable.bind({}, interaction)
   });
 
-  LxxlLib.session = function(){
-    var cmi;
+  LxxlLib.session = function() {
+    var cmip;
     var startTime;
-    this.start = function(activity){
+    this.start = function(/*activity*/) {
       startTime = (new Date()).getTime();
       scormAPI.boot();
-      // Create inner session object to be manipulate the learner session 
-      cmi = new cmi({
+      // Create inner session object to be manipulate the learner session
+      cmip = new Cmi({
         objectives: [
           {
             id: 0
           }
         ]
       });
-      cmi.status = getStatus('BROWSED');
-      cmi.score.min = 0;
-      cmi.score.max = 100;
+      cmip.status = getStatus('BROWSED');
+      cmip.score.min = 0;
+      cmip.score.max = 100;
       scormAPI.commit();
     };
 
     Object.defineProperty(this, 'content', {
       enumerable: true,
-      get: function(){
-        return cmi;
+      get: function() {
+        return cmip;
       }
     });
 
-    this.pause = function(){
+    this.pause = function() {
     };
 
-    this.end = function(){
+    this.end = function() {
       scormAPI.shutdown();
       startTime = null;
     };
@@ -488,27 +512,27 @@
 
 
 
-    // Object.keys(descriptor).forEach(function(item){
-    //   var inner = {};
-    //   Object.defineProperty(this, {
-    //     enumerable: true,
-    //     get: function(){
-    //       if(scormAPI.hasAPI && !inner.hasOwnProperty(key))
-    //         inner[item] = scormAPI.getValue('cmi.' + descriptor[item].name);
-    //       return inner[item];
+// Object.keys(descriptor).forEach(function(item){
+//   var inner = {};
+//   Object.defineProperty(this, {
+//     enumerable: true,
+//     get: function(){
+//       if(scormAPI.hasAPI && !inner.hasOwnProperty(key))
+//         inner[item] = scormAPI.getValue('cmi.' + descriptor[item].name);
+//       return inner[item];
 
-    //     },
-    //     set: function(value){
-    //       if(scormAPI.hasAPI)
-    //         scormAPI.setValue('cmi.' + descriptor[item].name, value);
-    //       inner[item] = value;
-    //     }
-    //   });
-    // }, this);
+//     },
+//     set: function(value){
+//       if(scormAPI.hasAPI)
+//         scormAPI.setValue('cmi.' + descriptor[item].name, value);
+//       inner[item] = value;
+//     }
+//   });
+// }, this);
 
-  // Object.keys(LxxlLib.model.Mutable.prototype).forEach(function(x) {
-  //   cmi.prototype[x] = LxxlLib.model.Mutable.prototype[x];
-  // }, this);
+// Object.keys(LxxlLib.model.Mutable.prototype).forEach(function(x) {
+//   cmi.prototype[x] = LxxlLib.model.Mutable.prototype[x];
+// }, this);
 
 /*
 * cmi.core.student_id (CMIString (SPM: 255), RO) Identifies the student on behalf of whom the SCO was launched
@@ -517,54 +541,74 @@
 * cmi.core.entry (“ab-initio”, “resume”, “”, RO) Asserts whether the learner has previously accessed the SCO
 
 
-* cmi.core.total_time (CMITimespan, RO) Sum of all of the learner’s session times accumulated in the current learner attempt
-* cmi.core.lesson_mode (“browse”, “normal”, “review”, RO) Identifies one of three possible modes in which the SCO may be presented to the learner
+* cmi.core.total_time (CMITimespan, RO) Sum of all of the learner’s session times accumulated in the current learner
+*  attempt
+* cmi.core.lesson_mode (“browse”, “normal”, “review”, RO) Identifies one of three possible modes in which the SCO
+* may be presented to the learner
 
 * cmi.core.lesson_location (CMIString (SPM: 255), RW) The learner’s current location in the SCO
-* cmi.core.lesson_status (“passed”, “completed”, “failed”, “incomplete”, “browsed”, “not attempted”, RW) Indicates whether the learner has completed and satisfied the requirements for the SCO
-* cmi.core.score.raw (CMIDecimal, RW) Number that reflects the performance of the learner relative to the range bounded by the values of min and max
+* cmi.core.lesson_status (“passed”, “completed”, “failed”, “incomplete”, “browsed”, “not attempted”, RW) Indicates
+* whether the learner has completed and satisfied the requirements for the SCO
+* cmi.core.score.raw (CMIDecimal, RW) Number that reflects the performance of the learner relative to the range
+* bounded by the values of min and max
 * cmi.core.score.max (CMIDecimal, RW) Maximum value in the range for the raw score
 * cmi.core.score.min (CMIDecimal, RW) Minimum value in the range for the raw score
 * cmi.core.exit (“time-out”, “suspend”, “logout”, “”, WO) Indicates how or why the learner left the SCO
-* cmi.core.session_time (CMITimespan, WO) Amount of time that the learner has spent in the current learner session for this SCO
+* cmi.core.session_time (CMITimespan, WO) Amount of time that the learner has spent in the current learner session
+* for this SCO
 
 
 * cmi.suspend_data (CMIString (SPM: 4096), RW) Provides space to store and retrieve data between learner sessions
-* cmi.launch_data (CMIString (SPM: 4096), RO) Data provided to a SCO after launch, initialized from the dataFromLMS manifest element
+* cmi.launch_data (CMIString (SPM: 4096), RO) Data provided to a SCO after launch, initialized from the dataFromLMS
+* manifest element
 
 
 cmi.objectives._children (id,score,status, RO) Listing of supported data model elements
 cmi.objectives._count (non-negative integer, RO) Current number of objectives being stored by the LMS
 cmi.objectives.n.id (CMIIdentifier, RW) Unique label for the objective
 cmi.objectives.n.score._children (raw,min,max, RO) Listing of supported data model elements
-cmi.objectives.n.score.raw (CMIDecimal, RW) Number that reflects the performance of the learner, for the objective, relative to the range bounded by the values of min and max
+cmi.objectives.n.score.raw (CMIDecimal, RW) Number that reflects the performance of the learner, for the objective,
+relative to the range bounded by the values of min and max
 cmi.objectives.n.score.max (CMIDecimal, Rw) Maximum value, for the objective, in the range for the raw score
 cmi.objectives.n.score.min (CMIDecimal, RW) Minimum value, for the objective, in the range for the raw score
-cmi.objectives.n.status (“passed”, “completed”, “failed”, “incomplete”, “browsed”, “not attempted”, RW) Indicates whether the learner has completed or satisfied the objective
+cmi.objectives.n.status (“passed”, “completed”, “failed”, “incomplete”, “browsed”, “not attempted”, RW) Indicates
+whether the learner has completed or satisfied the objective
 
 
-cmi.student_data._children (mastery_score, max_time_allowed, time_limit_action, RO) Listing of supported data model elements
+cmi.student_data._children (mastery_score, max_time_allowed, time_limit_action, RO) Listing of supported data model
+elements
 cmi.student_data.mastery_score (CMIDecimal, RO) Passing score required to master the SCO
 cmi.student_data.max_time_allowed (CMITimespan, RO) Amount of accumulated time the learner is allowed to use a SCO
-cmi.student_data.time_limit_action (exit,message,” “exit,no message”,” continue,message”, “continue, no message”, RO) Indicates what the SCO should do when max_time_allowed is exceeded
+cmi.student_data.time_limit_action (exit,message,” “exit,no message”,” continue,message”, “continue, no message”, RO)
+Indicates what the SCO should do when max_time_allowed is exceeded
 cmi.student_preference._children (audio,language,speed,text, RO) Listing of supported data model elements
 cmi.student_preference.audio (CMISInteger, RW) Specifies an intended change in perceived audio level
-cmi.student_preference.language (CMIString (SPM: 255), RW) The student’s preferred language for SCOs with multilingual capability
+cmi.student_preference.language (CMIString (SPM: 255), RW) The student’s preferred language for SCOs with multilingual
+capability
 cmi.student_preference.speed (CMISInteger, RW) The learner’s preferred relative speed of content delivery
 cmi.student_preference.text (CMISInteger, RW) Specifies whether captioning text corresponding to audio is displayed
-cmi.interactions._children (id,objectives,time,type,correct_responses,weighting,student_response,result,latency, RO) Listing of supported data model elements
+cmi.interactions._children (id,objectives,time,type,correct_responses,weighting,student_response,result,latency, RO)
+Listing of supported data model elements
 cmi.interactions._count (CMIInteger, RO) Current number of interactions being stored by the LMS
 cmi.interactions.n.id (CMIIdentifier, WO) Unique label for the interaction
-cmi.interactions.n.objectives._count (CMIInteger, RO) Current number of objectives (i.e., objective identifiers) being stored by the LMS for this interaction
+cmi.interactions.n.objectives._count (CMIInteger, RO) Current number of objectives (i.e., objective identifiers)
+being stored by the LMS for this interaction
 cmi.interactions.n.objectives.n.id (CMIIdentifier, WO) Label for objectives associated with the interaction
-cmi.interactions.n.time (CMITime, WO) Point in time at which the interaction was first made available to the student for student interaction and response
-cmi.interactions.n.type (“true-false”, “choice”, “fill-in”, “matching”, “performance”, “sequencing”, “likert”, “numeric”, WO) Which type of interaction is recorded
-cmi.interactions.n.correct_responses._count (CMIInteger, RO) Current number of correct responses being stored by the LMS for this interaction
-cmi.interactions.n.correct_responses.n.pattern (format depends on interaction type, WO) One correct response pattern for the interaction
+cmi.interactions.n.time (CMITime, WO) Point in time at which the interaction was first made available to the student
+for student interaction and response
+cmi.interactions.n.type (“true-false”, “choice”, “fill-in”, “matching”, “performance”, “sequencing”, “likert”,
+“numeric”, WO) Which type of interaction is recorded
+cmi.interactions.n.correct_responses._count (CMIInteger, RO) Current number of correct responses being stored by the
+LMS for this interaction
+cmi.interactions.n.correct_responses.n.pattern (format depends on interaction type, WO) One correct response pattern
+for the interaction
 cmi.interactions.n.weighting (CMIDecimal, WO) Weight given to the interaction relative to other interactions
-cmi.interactions.n.student_response (format depends on interaction type, WO) Data generated when a student responds to an interaction
-cmi.interactions.n.result (“correct”, “wrong”, “unanticipated”, “neutral”, “x.x [CMIDecimal]“, WO) Judgment of the correctness of the learner response
-cmi.interactions.n.latency (CMITimespan, WO) Time elapsed between the time the interaction was made available to the learner for response and the time of the first response
+cmi.interactions.n.student_response (format depends on interaction type, WO) Data generated when a student responds
+to an interaction
+cmi.interactions.n.result (“correct”, “wrong”, “unanticipated”, “neutral”, “x.x [CMIDecimal]“, WO) Judgment of the
+correctness of the learner response
+cmi.interactions.n.latency (CMITimespan, WO) Time elapsed between the time the interaction was made available to the
+learner for response and the time of the first response
 
 
 cmi.comments (CMIString (SPM: 4096), RW) Textual input from the learner about the SCO
@@ -574,84 +618,11 @@ cmi.comments_from_lms (CMIString (SPM: 4096), RO) Comments or annotations associ
 
 
 
-/*
-Data Model
-cmi._version (characterstring, RO) Represents the version of the data model
-cmi.comments_from_learner._children (comment,location,timestamp, RO) Listing of supported data model elements
-cmi.comments_from_learner._count (non-negative integer, RO) Current number of learner comments
-cmi.comments_from_learner.n.comment (localized_string_type (SPM: 4000), RW) Textual input
-cmi.comments_from_learner.n.location (characterstring (SPM: 250), RW) Point in the SCO to which the comment applies
-cmi.comments_from_learner.n.timestamp (time (second,10,0), RW) Point in time at which the comment was created or most recently changed
-cmi.comments_from_lms._children (comment,location,timestamp, RO) Listing of supported data model elements
-cmi.comments_from_lms._count (non-negative integer, RO) Current number of comments from the LMS
-cmi.comments_from_lms.n.comment (localized_string_type (SPM: 4000), RO) Comments or annotations associated with a SCO
-cmi.comments_from_lms.n.location (characterstring (SPM: 250), RO) Point in the SCO to which the comment applies
-cmi.comments_from_lms.n.timestamp (time(second,10,0), RO) Point in time at which the comment was created or most recently changed
-cmi.completion_status (“completed”, “incomplete”, “not attempted”, “unknown”, RW) Indicates whether the learner has completed the SCO
-cmi.completion_threshold (real(10,7) range (0..1), RO) Used to determine whether the SCO should be considered complete
-cmi.credit (“credit”, “no-credit”, RO) Indicates whether the learner will be credited for performance in the SCO
-cmi.entry (ab_initio, resume, “”, RO) Asserts whether the learner has previously accessed the SCO
-cmi.exit (timeout, suspend, logout, normal, “”, WO) Indicates how or why the learner left the SCO
-cmi.interactions._children (id,type,objectives,timestamp,correct_responses,weighting,learner_response,result,latency,description, RO) Listing of supported data model elements
-cmi.interactions._count (non-negative integer, RO) Current number of interactions being stored by the LMS
-cmi.interactions.n.id (long_identifier_type (SPM: 4000), RW) Unique label for the interaction
-cmi.interactions.n.type (“true-false”, “choice”, “fill-in”, “long-fill-in”, “matching”, “performance”, “sequencing”, “likert”, “numeric” or “other”, RW) Which type of interaction is recorded
-cmi.interactions.n.objectives._count (non-negative integer, RO) Current number of objectives (i.e., objective identifiers) being stored by the LMS for this interaction
-cmi.interactions.n.objectives.n.id (long_identifier_type (SPM: 4000), RW) Label for objectives associated with the interaction
-cmi.interactions.n.timestamp (time(second,10,0), RW) Point in time at which the interaction was first made available to the learner for learner interaction and response
-cmi.interactions.n.correct_responses._count (non-negative integer, RO) Current number of correct responses being stored by the LMS for this interaction
-cmi.interactions.n.correct_responses.n.pattern (format depends on interaction type, RW) One correct response pattern for the interaction
-cmi.interactions.n.weighting (real (10,7), RW) Weight given to the interaction relative to other interactions
-cmi.interactions.n.learner_response (format depends on interaction type, RW) Data generated when a learner responds to an interaction
-cmi.interactions.n.result (“correct”, “incorrect”, “unanticipated”, “neutral”) or a real number with values that is accurate to seven significant decimal figures real. , RW) Judgment of the correctness of the learner response
-cmi.interactions.n.latency (timeinterval (second,10,2), RW) Time elapsed between the time the interaction was made available to the learner for response and the time of the first response
-cmi.interactions.n.description (localized_string_type (SPM: 250), RW) Brief informative description of the interaction
-cmi.launch_data (characterstring (SPM: 4000), RO) Data provided to a SCO after launch, initialized from the dataFromLMS manifest element
-cmi.learner_id (long_identifier_type (SPM: 4000), RO) Identifies the learner on behalf of whom the SCO was launched
-cmi.learner_name (localized_string_type (SPM: 250), RO) Name provided for the learner by the LMS
-cmi.learner_preference._children (audio_level,language,delivery_speed,audio_captioning, RO) Listing of supported data model elements
-cmi.learner_preference.audio_level (real(10,7), range (0..*), RW) Specifies an intended change in perceived audio level
-cmi.learner_preference.language (language_type (SPM 250), RW) The learner’s preferred language for SCOs with multilingual capability
-cmi.learner_preference.delivery_speed (real(10,7), range (0..*), RW) The learner’s preferred relative speed of content delivery
-cmi.learner_preference.audio_captioning (“-1″, “0″, “1″, RW) Specifies whether captioning text corresponding to audio is displayed
-cmi.location (characterstring (SPM: 1000), RW) The learner’s current location in the SCO
-cmi.max_time_allowed (timeinterval (second,10,2), RO) Amount of accumulated time the learner is allowed to use a SCO
-cmi.mode (“browse”, “normal”, “review”, RO) Identifies one of three possible modes in which the SCO may be presented to the learner
-cmi.objectives._children (id,score,success_status,completion_status,description, RO) Listing of supported data model elements
-cmi.objectives._count (non-negative integer, RO) Current number of objectives being stored by the LMS
-cmi.objectives.n.id (long_identifier_type (SPM: 4000), RW) Unique label for the objective
-cmi.objectives.n.score._children (scaled,raw,min,max, RO) Listing of supported data model elements
-cmi.objectives.n.score.scaled (real (10,7) range (-1..1), RW) Number that reflects the performance of the learner for the objective
-cmi.objectives.n.score.raw (real (10,7), RW) Number that reflects the performance of the learner, for the objective, relative to the range bounded by the values of min and max
-cmi.objectives.n.score.min (real (10,7), RW) Minimum value, for the objective, in the range for the raw score
-cmi.objectives.n.score.max (real (10,7), RW) Maximum value, for the objective, in the range for the raw score
-cmi.objectives.n.success_status (“passed”, “failed”, “unknown”, RW) Indicates whether the learner has mastered the objective
-cmi.objectives.n.completion_status (“completed”, “incomplete”, “not attempted”, “unknown”, RW) Indicates whether the learner has completed the associated objective
-cmi.objectives.n.progress_measure (real (10,7) range (0..1), RW) Measure of the progress the learner has made toward completing the objective
-cmi.objectives.n.description (localized_string_type (SPM: 250), RW) Provides a brief informative description of the objective
-cmi.progress_measure (real (10,7) range (0..1), RW) Measure of the progress the learner has made toward completing the SCO
-cmi.scaled_passing_score (real(10,7) range (-1 .. 1), RO) Scaled passing score required to master the SCO
-cmi.score._children (scaled,raw,min,max, RO) Listing of supported data model elements
-cmi.score.scaled (real (10,7) range (-1..1), RW) Number that reflects the performance of the learner
-cmi.score.raw (real (10,7), RW) Number that reflects the performance of the learner relative to the range bounded by the values of min and max
-cmi.score.min (real (10,7), RW) Minimum value in the range for the raw score
-cmi.score.max (real (10,7), RW) Maximum value in the range for the raw score
-cmi.session_time (timeinterval (second,10,2), WO) Amount of time that the learner has spent in the current learner session for this SCO
-cmi.success_status (“passed”, “failed”, “unknown”, RW) Indicates whether the learner has mastered the SCO
-cmi.suspend_data (characterstring (SPM: 64000), RW) Provides space to store and retrieve data between learner sessions
-cmi.time_limit_action (“exit,message”, “continue,message”, “exit,no message”, “continue,no message”, RO) Indicates what the SCO should do when cmi.max_time_allowed is exceeded
-cmi.total_time (timeinterval (second,10,2), RO) Sum of all of the learner’s session times accumulated in the current learner attempt
-adl.nav.request (request(continue, previous, choice, jump, exit, exitAll, abandon, abandonAll, suspendAll _none_), RW) Navigation request to be processed immediately following Terminate()
-adl.nav.request_valid.continue (state (true, false, unknown), RO) Used by a SCO to determine if a Continue navigation request will succeed.
-adl.nav.request_valid.previous (state (true, false, unknown), RO) Used by a SCO to determine if a Previous navigation request will succeed.
-adl.nav.request_valid.choice.{target=} (state (true, false, unknown), RO) Used by a SCO to determine if a Choice navigation request for the target activity will succeed.
-adl.nav.request_valid.jump.{target=} (state (true, false, unknown), RO) Used by a SCO to determine if a Jump navigation request for the target activity will succeed.
- */
 
 
 
 
-  /**
+/**
    * Scorm stuff - untested
    */
 /*

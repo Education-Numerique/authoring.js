@@ -446,7 +446,7 @@
     poller();
   };
 
-  LxxlLib.utils.Timer = (function(delay, callback) {
+  LxxlLib.utils.Timer = function(delay, callback) {
     var ref = null;
     var status = 0;
 
@@ -471,6 +471,6 @@
       clearTimeout(ref);
     };
 
-  });
+  };
 
 })();

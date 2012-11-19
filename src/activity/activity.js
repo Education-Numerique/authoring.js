@@ -226,7 +226,7 @@ var date = new Date(null);
       var c = window.onunload;
       window.onunload = function() {
         session.end();
-        if(c)
+        if (c)
           c();
       };
     };
@@ -242,114 +242,113 @@ var date = new Date(null);
 
   };
 
-}).apply(this);
+
+  var ActivityUserController = function(mesh) {
+    this.activity = new LxxlLib.model.Activity(mesh);
+
+    this.start = function(node) {
+      console.warn('starting activity bound on node', node);
+      behaviors(node);
+      // var isThere = LxxlLib.scorm.execute(LxxlLib.scorm.INIT);
+      // if (!isThere)
+      //   console.error('No LMS found - won\'t use the api at all');
+    };
+
+    this.end = function() {
+      LxxlLib.scorm.execute(LxxlLib.scorm.FINISH);
+      console.warn('stopping activity');
+    };
 
 
-var ActivityUserController = function(mesh){
-  this.activity = new LxxlLib.model.Activity(mesh); 
+    var pageEnter = function(index) {
+      console.warn('Entering page ', index);
+      if (this.activity.pages[index].chrono)
+        this.activity.pages[index].chrono.start();
+    };
 
-  this.start = function(node){
-    console.warn("starting activity bound on node", node);
-    behaviors(node);
-    // var isThere = LxxlLib.scorm.execute(LxxlLib.scorm.INIT);
-    // if (!isThere)
-    //   console.error('No LMS found - won\'t use the api at all');
-  };
+    var pageExit = function(index) {
+      console.warn('Exiting page ', index);
+      if (this.activity.pages[index].chrono && !this.activity.pages[index].chrono.dead)
+        this.activity.pages[index].chrono.stop();
+    };
 
-  this.end = function(){
-    LxxlLib.scorm.execute(LxxlLib.scorm.FINISH);
-    console.warn("stopping activity");
-  };
-
-
-  var pageEnter = function(index) {
-    console.warn('Entering page ', index);
-    if (act.pages[index].chrono)
-      act.pages[index].chrono.start();
-  };
-
-  var pageExit = function(index) {
-    console.warn('Exiting page ', index);
-    if (act.pages[index].chrono && !act.pages[index].chrono.dead)
-      act.pages[index].chrono.stop();
-  };
-
-  var behaviors = function(dom) {
-    // Chronometers binding
-    $('.clocker').each(function(i, item) {
-      var s = parseInt($(item).attr('data-chrono'), 10);
-      var id = parseInt($(item).attr('data-binding'), 10);
-      if (s) {
-        act.pages[i].chrono = new helpers.chronometer(item, s, function() {
-          console.warn('Timedout like a mangouste on ', id);
-        });
-      }else {
-        $(item).hide();
-      }
-    });
-
-    // Tat thingies
-    $('[data-type="tat"]', dom).each(function(ind, item) {
-      console.log('Found some tat', item);
-      item = $(item);
-      var clue = item.attr('data-clue');
-      // var alt = item.attr('data-alt').split(',');
-      // var answer = item.html();
-      item.html('trou à remplir');
-      item.on('click', function() {
-        console.warn('HAS CLICKYCLICK');
-        $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
-        var stuff = '<h5>' + clue + '</h5>' +
-            '<input type="text"></input>';
-        $('#modal-preview-tat-body').html(stuff);
-      });
-    });
-
-    // Make page 0 active, if any
-    var acti = $('.pages-list > li', dom);
-    if (acti.length) {
-      $(acti[0]).addClass('active');
-      pageEnter(0);
-    }
-    // Hide pages content
-    $('.pages-content > li', dom).each(function(ind, item) {
-      $(item).hide();
-    });
-
-    acti = $('.pages-content > li', dom);
-    if (acti.length)
-      $(acti[0]).fadeIn(1000, function() {console.warn('done');});
-
-
-    // Pages navigation
-    $('.pages-list > li', dom).on('click', function(event) {
-      var idx;
-      $('.pages-list > li', dom).each(function(ind, item) {
-        if (item == this) {
-          $(item).addClass('active');
-          idx = ind;
-          pageEnter(ind);
+    var behaviors = function(dom) {
+      // Chronometers binding
+      $('.clocker').each(function(i, item) {
+        var s = parseInt($(item).attr('data-chrono'), 10);
+        var id = parseInt($(item).attr('data-binding'), 10);
+        if (s) {
+          this.activity.pages[i].chrono = new helpers.chronometer(item, s, function() {
+            console.warn('Timedout like a mangouste on ', id);
+          });
         }else {
-          if ($(item).hasClass('active')) {
-            pageExit(ind);
-            $(item).removeClass('active');
-          }
-        }
-      }.bind(this));
-
-      $('.pages-content > li', dom).each(function(ind, item) {
-        if (ind != idx)
           $(item).hide();
-        else
-          $(item).fadeIn(1000, function() {console.warn('done');});
-        // $(item).show();
+        }
       });
-      event.preventDefault();
-      return false;
-    });
 
+      // Tat thingies
+      $('[data-type="tat"]', dom).each(function(ind, item) {
+        console.log('Found some tat', item);
+        item = $(item);
+        var clue = item.attr('data-clue');
+        // var alt = item.attr('data-alt').split(',');
+        // var answer = item.html();
+        item.html('trou à remplir');
+        item.on('click', function() {
+          console.warn('HAS CLICKYCLICK');
+          $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
+          var stuff = '<h5>' + clue + '</h5>' +
+              '<input type="text"></input>';
+          $('#modal-preview-tat-body').html(stuff);
+        });
+      });
+
+      // Make page 0 active, if any
+      var acti = $('.pages-list > li', dom);
+      if (acti.length) {
+        $(acti[0]).addClass('active');
+        pageEnter(0);
+      }
+      // Hide pages content
+      $('.pages-content > li', dom).each(function(ind, item) {
+        $(item).hide();
+      });
+
+      acti = $('.pages-content > li', dom);
+      if (acti.length)
+        $(acti[0]).fadeIn(1000, function() {console.warn('done');});
+
+
+      // Pages navigation
+      $('.pages-list > li', dom).on('click', function(event) {
+        var idx;
+        $('.pages-list > li', dom).each(function(ind, item) {
+          if (item == this) {
+            $(item).addClass('active');
+            idx = ind;
+            pageEnter(ind);
+          }else {
+            if ($(item).hasClass('active')) {
+              pageExit(ind);
+              $(item).removeClass('active');
+            }
+          }
+        }.bind(this));
+
+        $('.pages-content > li', dom).each(function(ind, item) {
+          if (ind != idx)
+            $(item).hide();
+          else
+            $(item).fadeIn(1000, function() {console.warn('done');});
+          // $(item).show();
+        });
+        event.preventDefault();
+        return false;
+      });
+
+    };
   };
-};
+}).apply(this);
 
 /*
 // window.onload = function(){
