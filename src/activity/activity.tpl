@@ -83,10 +83,10 @@
   <section class="page-simple" id="page-{{id}}">
   {{/ifequalhelp}}
   {{#ifequalhelp flavor.id "quizz"}}
-  <section class="page-quizz">
+  <section class="page-quizz" id="quizz-{{id}}">
   {{/ifequalhelp}}
   {{#ifequalhelp flavor.id "tat"}}
-  <section class="page-tat">
+  <section class="page-tat" id="tat-{{id}}">
   {{/ifequalhelp}}
     <div>
       <!--<span class="icon">
@@ -130,7 +130,9 @@
       {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "tat"}}
-        <p>{{{tat}}}</p>
+      <p class="wordlist" style="display: none;"></p>
+      <p>{{{tat}}}</p>
+      <p><button id="tat-{{id}}-check">Vérifier mes réponses</button></p>
       {{/ifequalhelp}}
 
 

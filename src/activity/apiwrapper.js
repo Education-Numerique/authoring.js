@@ -488,7 +488,7 @@
     var cmip;
     var startTime;
     var dom;
-
+    var activity;
     this.activity = null;
 
     this.bindDocument = function(d){
@@ -497,9 +497,9 @@
       tatBehavior();
     };
 
-    this.start = function(activity) {
+    this.start = function(act) {
       startTime = (new Date()).getTime();
-      this.activity = ('isMutable' in activity) ? activity : new LxxlLib.model.Activity(activity);
+      activity = this.activity = ('isMutable' in act) ? act : new LxxlLib.model.Activity(act);
       scormAPI.boot();
 
       // Create inner session object to be manipulate the learner session
@@ -529,27 +529,55 @@
     this.end = function() {
       scormAPI.shutdown();
       startTime = null;
-      this.activity = null;
+      this.activity = activity = null;
     };
 
 
     var tatBehavior = function(){
       // Tat thingies
-      console.error($('[data-type="tat"]', dom).length);
-      $('[data-type="tat"]', dom).each(function(ind, item) {
-        console.log('Found some tat', item);
-/*        item = $(item);
-        var clue = item.attr('data-clue');
-        // var alt = item.attr('data-alt').split(',');
-        // var answer = item.html();
-        item.html('trou à remplir');
-        item.on('click', function() {
-          console.warn('HAS CLICKYCLICK');
-          $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
-          var stuff = '<h5>' + clue + '</h5>' +
-              '<input type="text"></input>';
-          $('#modal-preview-tat-body').html(stuff);
-        });*/
+      var tat = 
+      $('section[id^=tat-]', dom).each(function(ind, item){
+        var id = item.id.replace(/tat-/, '');
+        var wordList = [];
+
+        $('#tat-' + id + '-check', item).on('click', function(){
+          alert("checking answer");
+        });
+
+        $('[data-type="tat"]', item).each(function(idx, it) {
+          var response = [it.innerHTML];
+          wordList.push(it.innerHTML);
+          it = $(it);
+          response = response.concat(it.attr('data-alt').split(';'));
+          var clue = it.attr('data-clue');
+          var h = '<input id="tat-' + ind + '-hole-' + idx + '" type="text"></input>';
+          h += ' <button style="display: none">Afficher un indice</button>';
+          h = $('<span />').html(h);
+          it.replaceWith(h);
+          if(clue){
+            $('button', h).on('click', function(e){
+              // console.warn($(e.target).replace);
+              $(e.target).replaceWith($('<span />').text('(indice: ' + clue + ')'));
+            });
+            $('button', h)[0].style.display = 'inline';
+          }
+
+        });
+
+        if(activity.pages[ind].displayHoles){
+          var plist = wordList;
+          if(activity.pages[ind].displayHolesRandomly){
+            wordList = [];
+            while(pList.length){
+              wordList.push(pList.splice(Math.round(Math.random() * (pList.length - 1)), 1));
+            }
+          }else{
+            wordList.sort();
+          }
+          $('.wordlist', item).html(wordList.join(', '));
+          $('.wordlist', item)[0].style.display = 'block';
+        }
+
       });
     };
 
