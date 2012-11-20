@@ -38,7 +38,8 @@
             if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
               $('#modal-page-timer').modal('show');
             else if (this.$('[data-toggle]')[0] == e.target) {
-              this.set('controller.pageActivatedLimitedTime', true);
+              if (!this.get('controller.pageActivatedLimitedTime'))
+                this.set('controller.pageActivatedLimitedTime', true);
             }
 
           }.bind(this));
@@ -138,7 +139,8 @@
             if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
               $('#modal-page-timer').modal('show');
             else if (this.$('[data-toggle]')[0] == e.target) {
-              this.set('controller.pageActivatedLimitedTime', true);
+              if (!this.get('controller.pageActivatedLimitedTime'))
+                this.set('controller.pageActivatedLimitedTime', true);
             }
 
           }.bind(this));
