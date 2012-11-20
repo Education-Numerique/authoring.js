@@ -381,6 +381,13 @@
             $('.dropzone .preview').append($('<img src="' + img + '" style="max-width:300px;max-height:300px" />'));
             $('.dropzone .preview').removeClass('default');
             return;
+          } else {
+            var r = new FileReader();
+            r.onload = function(e) {
+              self.get('controller.content').set('thumbnail', e.target.result);
+            };
+
+            r.readAsDataURL(img);
           }
 
 
@@ -404,8 +411,7 @@
             canvas: true
           });
 
-          //data.submit();
-          self.get('controller.content').set('thumbnail', img);
+
         };
 
         if (self.get('controller.content.thumbnail'))
