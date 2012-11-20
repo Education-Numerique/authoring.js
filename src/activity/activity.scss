@@ -132,6 +132,12 @@ body {
         padding:15px;
         @include box-sizing(border-box);
     }
+
+    .pages-container {
+        section {
+            display:none;
+        }
+    }
     .side-menu {
 
         nav {

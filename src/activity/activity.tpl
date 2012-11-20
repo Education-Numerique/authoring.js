@@ -80,7 +80,7 @@
   </aside>
 
 <!-- Pour chaque page -->
-<div class="span9 pull-left"
+<div class="span9 pages-container pull-left">
 {{#each pages}}
   {{#ifequalhelp flavor.id "simple"}}
   <section class="page-simple" id="page-{{id}}">
@@ -196,12 +196,12 @@
 
 
   <section class="widget-box">
-    <header class="widget-title">
+    <!-- <header class="widget-title">
       <span class="icon">
         <i class="icon-th-list"></i>
       </span>
       <h5></h5>
-    </header>
+    </header> -->
     <div class="widget-content nopadding">
  
       <ul class="pages-content span9" style="margin: auto; list-style-type: none;">

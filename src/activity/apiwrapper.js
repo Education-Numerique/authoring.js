@@ -538,12 +538,9 @@
         $(acti[0]).addClass('active');
         // pageEnter(0);
       }
-      // Hide pages content
-      $('.pages-content > li', dom).each(function(ind, item) {
-        $(item).hide();
-      });
 
-      acti = $('.pages-content > li', dom);
+
+      acti = $('.pages-container > section', dom);
       if (acti.length)
         $(acti[0]).fadeIn(1000, function() {console.warn('done');});
 
@@ -565,7 +562,7 @@
           }
         }.bind(this));
 
-        $('.pages-content > li', dom).each(function(ind, item) {
+        $('.pages-container > section', dom).each(function(ind, item) {
           if (ind != idx)
             $(item).hide();
           else
