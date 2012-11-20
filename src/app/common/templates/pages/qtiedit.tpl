@@ -10,10 +10,16 @@
         <div class="widget-box">
             <div class="widget-title">
                 <div class="qti-title span3">
+                    <!--
                     <span class="icon"><span class="icon-edit"></span></span>
                     <h5 class="text-ellipsis unselectable">{{content.title}}</h5>
+                    -->
+                    <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
-                {{#view view.DoPreview classNames="btn"}}<i class="icon-eye-open spacify"></i>Preview{{/view}}
+                {{#view view.DoPreview classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
+                {{#view view.DoExport classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Exporter{{/view}}
+                {{#view view.DoSave classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Sauvegarder{{/view}}
+                {{#view view.DoPublish classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Publier{{/view}}
 
             </div>
             <div class="widget-content nopadding main-container">
@@ -165,7 +171,7 @@
 </div>
 
 <div id="redactor-tat" style="display: none;">
-    <div id="redactor_modal_content">
+      <div id="redactor_modal_content">
         <label>Mot supprimé : </label>
         <input type="text" class="word redactor_input" value="" />
         <label>Indice : </label>
