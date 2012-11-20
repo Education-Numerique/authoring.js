@@ -21,6 +21,17 @@
     }
   });
 
+  var helpers = (function() {
+    var nameIndex = 0;
+    Handlebars.registerHelper('index', function() {
+      nameIndex++;
+      return nameIndex;
+    });
+    Handlebars.registerHelper('reset_index', function() {
+      nameIndex = 0;
+    });
+  })();
+
 
 
   // Explicit API
@@ -299,58 +310,13 @@ var date = new Date(null);
         }
       });
 
-
-
-      // Make page 0 active, if any
-      var acti = $('.pages-list > li', dom);
-      if (acti.length) {
-        $(acti[0]).addClass('active');
-        pageEnter(0);
-      }
-      // Hide pages content
-      $('.pages-content > li', dom).each(function(ind, item) {
-        $(item).hide();
-      });
-
-      acti = $('.pages-content > li', dom);
-      if (acti.length)
-        $(acti[0]).fadeIn(1000, function() {console.warn('done');});
-
-
-      // Pages navigation
-      $('.pages-list > li', dom).on('click', function(event) {
-        var idx;
-        $('.pages-list > li', dom).each(function(ind, item) {
-          if (item == this) {
-            $(item).addClass('active');
-            idx = ind;
-            pageEnter(ind);
-          }else {
-            if ($(item).hasClass('active')) {
-              pageExit(ind);
-              $(item).removeClass('active');
-            }
-          }
-        }.bind(this));
-
-        $('.pages-content > li', dom).each(function(ind, item) {
-          if (ind != idx)
-            $(item).hide();
-          else
-            $(item).fadeIn(1000, function() {console.warn('done');});
-          // $(item).show();
-        });
-        event.preventDefault();
-        return false;
-      });
-
     };
   };
 }).apply(this);
 
 
 // Activity may be passed as a json url, or embedded as a datauri?
-if(/activity.html/.test(location.href)){
+if (/activity.html/.test(location.href)) {
   var a = new LxxlLib.Masher();
   a.setupViewport($('#lxxlroot'), true);
   // a.addStyle('body{background-color: blue;}');

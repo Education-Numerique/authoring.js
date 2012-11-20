@@ -71,9 +71,9 @@ jsBoot.pack('jsBoot.types', function(api) {
     var f = [];
 
     // Still work without Ember
-    if(!('replace' in f))
+    if (!('replace' in f))
       f.replace = f.splice;
-    if(!('pushObject' in f))
+    if (!('pushObject' in f))
       f.pushObject = f.push;
 
     Object.keys(api.dispatcher.prototype).forEach(function(item) {

@@ -211,7 +211,7 @@
 
 
   var mapper = function(cacheHolder, key, mapping, parse, serialize, value) {
-    console.warn("gonna do something", key, arguments);
+    console.warn('gonna do something', key, arguments);
     if (value === undefined) {
       if (scormAPI.hasAPI && !cacheHolder.hasOwnProperty(key)) {
         cacheHolder[key] = scormAPI.getValue('cmi.' + mapping);
@@ -254,21 +254,21 @@
     return getScormMutable({
       raw: {
         mapping: prefix + '.raw',
-        read: function(v){
+        read: function(v) {
           return parseInt(v, 10);
         },
         write: null
       },
       max: {
         mapping: prefix + '.max',
-        read: function(v){
+        read: function(v) {
           return parseInt(v, 10);
         },
         write: null
       },
       min: {
         mapping: prefix + '.min',
-        read: function(v){
+        read: function(v) {
           return parseInt(v, 10);
         },
         write: null
@@ -396,7 +396,7 @@
 
     totalTime: {
       mapping: 'core.total_time',
-      read: null, /*function(value) {
+      read: null /*function(value) {
         // XXX convert to int
         return new Date(value);
       }*/
@@ -491,10 +491,11 @@
     var activity;
     this.activity = null;
 
-    this.bindDocument = function(d){
+    this.bindDocument = function(d) {
       dom = d;
       // XXX manu bind behaviors if you want
       tatBehavior();
+      menuBehavior();
     };
 
     this.start = function(act) {
@@ -531,17 +532,60 @@
       startTime = null;
       this.activity = activity = null;
     };
+    var menuBehavior = function() {
+      var acti = $('.pages-list > li', dom);
+      if (acti.length) {
+        $(acti[0]).addClass('active');
+        // pageEnter(0);
+      }
+      // Hide pages content
+      $('.pages-content > li', dom).each(function(ind, item) {
+        $(item).hide();
+      });
+
+      acti = $('.pages-content > li', dom);
+      if (acti.length)
+        $(acti[0]).fadeIn(1000, function() {console.warn('done');});
 
 
-    var tatBehavior = function(){
+      // Pages navigation
+      $('.pages-list > li', dom).on('click', function(event) {
+        var idx;
+
+        $('.pages-list > li', dom).each(function(ind, item) {
+          if (item == this) {
+            $(item).addClass('active');
+            idx = ind;
+            // pageEnter(ind);
+          }else {
+            if ($(item).hasClass('active')) {
+              //pageExit(ind);
+              $(item).removeClass('active');
+            }
+          }
+        }.bind(this));
+
+        $('.pages-content > li', dom).each(function(ind, item) {
+          if (ind != idx)
+            $(item).hide();
+          else
+            $(item).fadeIn(1000, function() {console.warn('done');});
+          // $(item).show();
+        });
+        event.preventDefault();
+        return false;
+      });
+    };
+
+    var tatBehavior = function() {
       // Tat thingies
-      var tat = 
-      $('section[id^=tat-]', dom).each(function(ind, item){
+      var tat =
+          $('section[id^=tat-]', dom).each(function(ind, item) {
         var id = item.id.replace(/tat-/, '');
         var wordList = [];
 
-        $('#tat-' + id + '-check', item).on('click', function(){
-          alert("checking answer");
+        $('#tat-' + id + '-check', item).on('click', function() {
+          alert('checking answer');
         });
 
         $('[data-type="tat"]', item).each(function(idx, it) {
@@ -554,8 +598,8 @@
           h += ' <button style="display: none">Afficher un indice</button>';
           h = $('<span />').html(h);
           it.replaceWith(h);
-          if(clue){
-            $('button', h).on('click', function(e){
+          if (clue) {
+            $('button', h).on('click', function(e) {
               // console.warn($(e.target).replace);
               $(e.target).replaceWith($('<span />').text('(indice: ' + clue + ')'));
             });
@@ -564,14 +608,14 @@
 
         });
 
-        if(activity.pages[ind].displayHoles){
+        if (activity.pages[ind].displayHoles) {
           var plist = wordList;
-          if(activity.pages[ind].displayHolesRandomly){
+          if (activity.pages[ind].displayHolesRandomly) {
             wordList = [];
-            while(pList.length){
+            while (pList.length) {
               wordList.push(pList.splice(Math.round(Math.random() * (pList.length - 1)), 1));
             }
-          }else{
+          }else {
             wordList.sort();
           }
           $('.wordlist', item).html(wordList.join(', '));

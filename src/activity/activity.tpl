@@ -41,18 +41,20 @@
   </header>
 
   <!-- Sommaire -->
-  <aside>
+  <div class="row-fluid content-container">
+  <aside class="span3 side-menu pull-right">
     <nav>
       <h2>Plan de l'activité</h2>
-      <ol>
+      <ol class="pages-list">
+        {{reset_index}}
         {{#each pages}}
-          {{#ifequalhelp flavor "simple"}}
+          {{#ifequalhelp flavor.id "simple"}}
           <li class="page-simple">
           {{/ifequalhelp}}
-          {{#ifequalhelp flavor "quizz"}}
+          {{#ifequalhelp flavor.id "quizz"}}
           <li class="page-quizz">
           {{/ifequalhelp}}
-          {{#ifequalhelp flavor "tat"}}
+          {{#ifequalhelp flavor.id "tat"}}
           <li class="page-tat">
           {{/ifequalhelp}}
             <a href="#">
@@ -69,7 +71,7 @@
                 {{/ifequalhelp}}
               </span>
               -->
-              <span class="page-title">{{title}}</span>
+              {{index}}. {{title}}
             </a>
           </li>
         {{/each}}
@@ -78,6 +80,7 @@
   </aside>
 
 <!-- Pour chaque page -->
+<div class="span9 pull-left"
 {{#each pages}}
   {{#ifequalhelp flavor.id "simple"}}
   <section class="page-simple" id="page-{{id}}">
@@ -138,8 +141,10 @@
 
     </article>
   </section>
-{{/each}}
 
+{{/each}}
+</div>
+</div>
 
 
 

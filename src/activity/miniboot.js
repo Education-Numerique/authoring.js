@@ -101,7 +101,7 @@
 
   jsBoot.loader.use('apiwrapper' + suffix + 'js');
   jsBoot.loader.wait();
-  // jsBoot.loader.use('activity' + suffix + 'css');
+  jsBoot.loader.use('activity' + suffix + 'css');
   jsBoot.loader.use('activity' + suffix + 'js');
 
   jsBoot.loader.wait(function() {

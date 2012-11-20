@@ -1,7 +1,208 @@
 /**
  * Empty
  */
+/** Rounded corners **/
+@mixin rounded($radius: 10px) {
+    border-radius: $radius;
+    -moz-border-radius: $radius;
+    -webkit-border-radius: $radius;
+}
+
+@mixin rounded-top($radius: 10px) {
+    border-radius: $radius $radius 0 0 !important;
+    -moz-border-radius: $radius $radius 0 0 !important;
+    -webkit-border-radius: $radius $radius 0 0 !important;
+}
+
+@mixin rounded-bottom($radius: 10px) {
+    border-radius: 0 0 $radius $radius !important;
+    -moz-border-radius: 0 0 $radius $radius !important;
+    -webkit-border-radius: 0 0 $radius $radius !important;
+}
+
+@mixin rounded-left($radius: 10px) {
+    border-radius: $radius 0 0 $radius;
+    -moz-border-radius: $radius 0 0 $radius;
+    -webkit-border-radius: $radius 0 0 $radius;
+}
+
+@mixin rounded-right($radius: 10px) {
+    border-radius: 0 $radius $radius 0;
+    -moz-border-radius:  0 $radius $radius 0;
+    -webkit-border-radius:  0 $radius $radius 0;
+}
+
+
+/** drop shadow **/
+@mixin shadow($x:5px, $y:5px, $blur:5px, $color:#ccc) {
+    -moz-box-shadow:  $x $y $blur $color;
+    -webkit-box-shadow:  $x $y $blur $color;
+    box-shadow:  $x $y $blur $color;
+}
+
+@mixin inner-shadow($x:5px, $y:5px, $blur:5px, $color:#ccc) {
+    -moz-box-shadow: inset $x $y $blur $color;
+    -webkit-box-shadow: inset $x $y $blur $color;
+    box-shadow: inset $x $y $blur $color;
+}
+
+@mixin multiple-shadows($x:5px, $y:5px, $blur:5px, $color:#ccc, $ix:5px, $iy:5px, $iblur:5px, $icolor:#ccc) {
+    -moz-box-shadow: $x $y $blur $color, inset $ix $iy $iblur $icolor;
+    -webkit-box-shadow: $x $y $blur $color, inset $ix $iy $iblur $icolor;
+    box-shadow: $x $y $blur $color, inset $ix $iy $iblur $icolor;
+}
+
+@mixin box-sizing($value){
+    -webkit-box-sizing: $value;
+    -moz-box-sizing: $value;
+    box-sizing: $value;
+}
+
+/** hide text content */
+@mixin notext() {
+    text-indent: -30000px;             
+    white-space:nowrap;
+}
+
+@mixin rotate($deg) {
+    transform:rotate($deg);
+    -moz-transform:rotate($deg);
+    -webkit-transform:rotate($deg);
+    -o-transform:rotate($deg);
+    -ms-transform:rotate($deg);
+}
+
+@mixin unselectable() {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+
+@mixin scale($deg) {
+    transform:scale($deg);
+    -moz-transform:scale($deg);
+    -webkit-transform:scale($deg);
+    -o-transform:scale($deg);
+    -ms-transform:scale($deg);
+}
+
+
+
 
 .minterisdumblikeadeadfuck {
   color: red;
+}
+
+
+body {
+    background-color: #F2F2F2;
+}
+
+#activity-preview-body {
+    width:90%;
+    margin:20px auto;
+    padding-top:10px;
+    font-family:Arial;
+
+    background-color:#FFF;
+
+    @include shadow(0,5px,15px,rgba(0,0,0,0.5));
+
+
+
+    > header {
+        background-color:#08C;
+        width:100%;
+        > * {
+            display:none;
+        }
+        h1 {
+            display:block;
+            font-size:10px;
+            font-weight:bold;
+            color:#FFF;
+            padding-left:20px;
+        }
+    }
+
+    .content-container {
+        padding:15px;
+        @include box-sizing(border-box);
+    }
+    .side-menu {
+
+        nav {
+            border: 1px solid #DDD;
+            margin-top:10px;
+
+            h2 {
+                background-color:rgb(245, 245, 245);
+                width:100%;
+                font-size:16px;
+                font-weight:normal;
+                margin:0;
+                text-indent:15px;
+                text-transform:uppercase;
+                color:#000;
+                border-bottom: 1px solid #E8E8E8;
+            }
+
+            ol,ul {
+                width:100%;
+                margin:0;
+                padding:0;
+                list-style:none;
+
+                li {
+                    display:block;
+                    width:100%;
+                    border-bottom: 1px solid #DDD;
+                    padding:0;
+                    margin:0;
+                    border-top:1px solid #FFF;
+
+                    &.active {
+                        border-top-color:#5fbaf3;
+                        background: #34a0ed;
+                        background: -moz-linear-gradient(top,  #34a0ed 0%, #1583d5 100%);
+                        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#34a0ed), color-stop(100%,#1583d5));
+                        background: -webkit-linear-gradient(top,  #34a0ed 0%,#1583d5 100%);
+                        background: -o-linear-gradient(top,  #34a0ed 0%,#1583d5 100%);
+                        background: -ms-linear-gradient(top,  #34a0ed 0%,#1583d5 100%);
+                        background: linear-gradient(to bottom,  #34a0ed 0%,#1583d5 100%);
+                        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#34a0ed', endColorstr='#1583d5',GradientType=0 );
+
+                        a {
+                            color:#FFF;
+                        }
+
+                    }
+                    
+
+                    &:last-of-type {
+                        border-bottom:0;
+                    }
+
+                    a {
+                        color: #08C;
+                        font-weight:bold;
+                        font-size:13px;
+                        line-height:1.2em;
+                        padding:10px 15px;
+                        display:block;
+                    }
+
+                    &:hover {
+                        background-color:rgb(245, 245, 245);
+                        a {
+                            text-decoration:none;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
