@@ -146,11 +146,14 @@
 
 <div id="redactor-mathjax" style="display: none;">
     <div id="redactor_modal_content">
+        <div class="redactor_tabs">
+            <a href="javascript:void(null);" class="asciimath redactor_tabs_act">AsciiMath</a>
+            <a href="javascript:void(null);" class="latex">Latex</a>
+        </div>
         <label>Formule : </label>
         <input type="text" class="formula redactor_input" value="f(x)=sum_(n=0)^oo(f^((n))(a))/(n!)(x-a)^n" />
         <label>Aperçu : </label>
-        <div class="preview am" style="float:left;margin-top:10px;"></div>
-        <div class="preview lt" style="clear: both; float:left;"></div>
+        <div class="preview" style="float:left;margin-top:10px;"></div>
     </div>
             <hr class="clear" />
 

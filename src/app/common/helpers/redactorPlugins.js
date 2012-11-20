@@ -10,59 +10,81 @@
       var target = null;
 
       var callback = (function() {
-
-        var matha = null;
-        var mathl = null;
+        var isAsciiMath = true;
+        var math = null;
         this.saveSelection();
 
-        if (target)
+
+        var drawIt = function() {
+          var nodePreview;
+          // MathJAX initialization stupidity
+          if (isAsciiMath) {
+            nodePreview = $('#redactor_modal .preview');
+            nodePreview.html('`{}`');
+          } else {
+            nodePreview = $('#redactor_modal .preview');
+            nodePreview.html('$${}$$');
+          }
+
+
+          MathJax.Hub.Typeset(nodePreview[0], function() {
+            math = MathJax.Hub.getAllJax(nodePreview[0])[0];
+            math.Text($('#redactor_modal .formula').val());
+          });
+
+        }
+
+
+        $('#redactor_modal .redactor_tabs a').bind('click', function() {
+          $(this).siblings().removeClass('redactor_tabs_act');
+          $(this).addClass('redactor_tabs_act');
+
+          if ($(this).hasClass('asciimath')) {
+            isAsciiMath = true;
+          } else {
+            isAsciiMath = false;
+          }
+
+          drawIt();
+        });
+
+        if (target) {
           $('#redactor_modal .formula').val($(target).attr('data-formula'));
+          if ($(target).attr('data-format') == 'latex') {
+            $('#redactor_modal .redactor_tabs a.latex').click();
+          }
 
-        // MathJAX initialization stupidity
-        var asciiPreview = $('#redactor_modal .preview.am');
-        asciiPreview.html('`{}`');
+        }
 
-        var latexPreview = $('#redactor_modal .preview.lt');
-        latexPreview.html('$${}$$');
 
-        MathJax.Hub.Typeset(asciiPreview[0], function() {
-          matha = MathJax.Hub.getAllJax(asciiPreview[0])[0];
-          matha.Text($('#redactor_modal .formula').val());
-        });
 
-        MathJax.Hub.Typeset(latexPreview[0], function() {
-          mathl = MathJax.Hub.getAllJax(latexPreview[0])[0];
-          mathl.Text($('#redactor_modal .formula').val());
-        });
+        drawIt();
 
         $('#redactor_modal .formula').on('input', function() {
-          if (matha) {
-            matha.Text($(this).val());
-          }
-          if (mathl) {
-            mathl.Text($(this).val());
-          }
+          math.Text($(this).val());
         });
+
+
 
         $('#redactor_modal .redactor_btn_modal_insert').bind('click', function() {
 
-          insertFromMyModal($('#redactor_modal .formula').val(), target);
+          insertFromMyModal($('#redactor_modal .formula').val(), target, isAsciiMath);
         }.bind(this));
 
       }.bind(this));
 
 
-      this.addBtn('mathjax', 'AsciiMath', function(obj, e) {
+      this.addBtn('mathjax', 'Math', function(obj, e) {
         redactorScope = obj;
         target = obj.getBtn('mathjax').data('target');
         obj.getBtn('mathjax').data('target', null);
 
-        obj.modalInit('AsciiMath', '#redactor-mathjax', 500, callback);
+        obj.modalInit('Math', '#redactor-mathjax', 500, callback);
       });
 
       this.addBtnSeparatorBefore('mathjax');
 
-      var insertFromMyModal = function(formula, target) {
+      var insertFromMyModal = function(formula, target, isAsciiMath) {
         redactorScope.restoreSelection();
 
         var ready = function(node) {
@@ -80,7 +102,7 @@
 
             img.attr('src', canvas.toDataURL());
             img.attr('data-type', 'math');
-            img.attr('data-format', 'ascii-math');
+            img.attr('data-format', isAsciiMath ? 'asciimath' : 'latex');
             img.attr('data-formula', formula);
             img.attr('uneditable', 'true');
             ready(img);
