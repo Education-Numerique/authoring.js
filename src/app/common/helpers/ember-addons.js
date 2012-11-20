@@ -227,6 +227,7 @@
 
 
       this.$().redactor({
+        lang: 'fr',
         imageUpload: this.get('imageUpload'),
         autoresize: this.get('autoresize'),
         air: this.get('air'),

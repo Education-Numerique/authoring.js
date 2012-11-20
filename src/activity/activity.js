@@ -23,71 +23,8 @@
 
 
 
-
-  /*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
-    return key ==
-    options.defaultValue = '---';
-    var ret = I18n.translate(key, options);
-    return (ret != '---') && ret || null;
-  });*/
-
-
-  var helpers = new (function() {
-    var pad = function(subject, n, pattern) {
-      subject = subject + '';
-      while (subject.length < n) {
-        subject = pattern + '' + subject;
-      }
-      return subject;
-    };
-
-    /*
-XXX use this instead of the other crap
-
-var date = new Date(null);
-      date.setSeconds(this.get('currentPage.limitedTime'));
-      var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
-        return parseInt(i);
-      });
- */
-
-    this.chronometer = function(node, seconds, toutCbk) {
-      var cur = seconds;
-      $(node).html(pad(Math.floor(cur / 60), 2, '0') + ':' + pad(cur % 60, 2, '0'));
-      var tout;
-
-      var ticker = function() {
-        if (cur < seconds / 2) {
-          $(node).addClass('hurry');
-        }
-
-        if (!cur) {
-          this.dead = true;
-          $(node).addClass('finished');
-          toutCbk();
-          return;
-        }
-        cur--;
-        $(node).html(pad(Math.floor(cur / 60), 2, '0') + ':' + pad(cur % 60, 2, '0'));
-        tout = window.setTimeout(ticker, 1000);
-      };
-
-      this.start = function() {
-        if (!this.dead)
-          ticker();
-      };
-
-      this.dead = false;
-
-      this.stop = function() {
-        window.clearTimeout(tout);
-      };
-    };
-  })();
-
-
   // Explicit API
-  this.LxxlLib.activity = function() {
+  this.LxxlLib.Masher = function() {
     var parse = function(payload, flavor) {
       switch (flavor) {
         case 'application/json':
@@ -169,28 +106,28 @@ var date = new Date(null);
         act = data;
       init++;
       if (init == done) {
-        session = new ActivityUserController(act);
-        session.activity.styleData = [];
-        session.activity.styleUri = [];
+        LxxlLib.sessionManager.start(act);
+        LxxlLib.sessionManager.activity.styleData = [];
+        LxxlLib.sessionManager.activity.styleUri = [];
         // Style mashuping
         styles.forEach(function(item) {
           try {
             Mingus.grammar.IRI.parse(item);
-            session.activity.styleUri.push({data: item});
+            LxxlLib.sessionManager.activity.styleUri.push({data: item});
           }catch (e) {
-            session.activity.styleData.push({data: item});
+            LxxlLib.sessionManager.activity.styleData.push({data: item});
           }
         });
         // Fixing the activity
-        session.activity.pages.forEach(function(item, ind) {
+        LxxlLib.sessionManager.activity.pages.forEach(function(item, ind) {
           item.id = ind;
         });
-        var res = tpl(session.activity);
+        var res = tpl(LxxlLib.sessionManager.activity);
         if ('html' in ifr)
           ifr.html(res);
         else
           ifr.innerHTML = res;
-        session.start(ifr);
+        // LxxlLib.sessionManager.session.start(ifr);
         loadingComplete();
       }
     };
@@ -225,7 +162,7 @@ var date = new Date(null);
       loader(activityIri, note);
       var c = window.onunload;
       window.onunload = function() {
-        session.end();
+        LxxlLib.sessionManager.end();
         if (c)
           c();
       };
@@ -241,6 +178,80 @@ var date = new Date(null);
     };
 
   };
+
+
+
+
+
+  /*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
+    return key ==
+    options.defaultValue = '---';
+    var ret = I18n.translate(key, options);
+    return (ret != '---') && ret || null;
+  });*/
+
+
+  var helpers = new (function() {
+    var pad = function(subject, n, pattern) {
+      subject = subject + '';
+      while (subject.length < n) {
+        subject = pattern + '' + subject;
+      }
+      return subject;
+    };
+
+    /*
+XXX use this instead of the other crap
+
+var date = new Date(null);
+      date.setSeconds(this.get('currentPage.limitedTime'));
+      var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
+        return parseInt(i);
+      });
+ */
+
+    this.chronometer = function(node, seconds, toutCbk) {
+      var cur = seconds;
+      $(node).html(pad(Math.floor(cur / 60), 2, '0') + ':' + pad(cur % 60, 2, '0'));
+      var tout;
+
+      var ticker = function() {
+        if (cur < seconds / 2) {
+          $(node).addClass('hurry');
+        }
+
+        if (!cur) {
+          this.dead = true;
+          $(node).addClass('finished');
+          toutCbk();
+          return;
+        }
+        cur--;
+        $(node).html(pad(Math.floor(cur / 60), 2, '0') + ':' + pad(cur % 60, 2, '0'));
+        tout = window.setTimeout(ticker, 1000);
+      };
+
+      this.start = function() {
+        if (!this.dead)
+          ticker();
+      };
+
+      this.dead = false;
+
+      this.stop = function() {
+        window.clearTimeout(tout);
+      };
+    };
+  })();
+
+
+
+
+
+
+
+
+
 
 
   var ActivityUserController = function(mesh) {
@@ -349,6 +360,19 @@ var date = new Date(null);
     };
   };
 }).apply(this);
+
+
+// Activity may be passed as a json url, or embedded as a datauri?
+if(/activity.html/.test(location.href)){
+  var a = new LxxlLib.Masher();
+  a.setupViewport($('#lxxlroot'), true);
+  // a.addStyle('body{background-color: blue;}');
+
+  a.setupTemplate('activity.tpl');
+
+  a.showActivity('activity.json');
+}
+
 
 /*
 // window.onload = function(){

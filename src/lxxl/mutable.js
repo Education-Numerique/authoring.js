@@ -63,12 +63,19 @@ jsBoot.pack('jsBoot.types', function() {
   };
 });
 
-// Simple TypedMutable for collections
+// Simple TypedMutable for collections that DOESNT DISPATCH WITHOUT EMBER BEWARE!!!!!
 jsBoot.use('jsBoot.types.EventDispatcher').as('dispatcher');
 jsBoot.pack('jsBoot.types', function(api) {
   'use strict';
   this.ArrayMutable = function(subType, initialMesh) {
     var f = [];
+
+    // Still work without Ember
+    if(!('replace' in f))
+      f.replace = f.splice;
+    if(!('pushObject' in f))
+      f.pushObject = f.push;
+
     Object.keys(api.dispatcher.prototype).forEach(function(item) {
       this[item] = api.dispatcher.prototype[item];
     }, f);
@@ -139,16 +146,20 @@ jsBoot.pack('jsBoot.types', function(api) {
             get: function() {
               // XXX super dirty and dangerous - cause of the bind
               // Verify this in IE and other non-bindable browsers
-              if (item.constructor == Function) {
+              if (item.isDirty || item.constructor != Function)
+                return item(lastMesh[i]);
+              else {
                 if (typeof privatePool[i] == 'undefined') {
                   privatePool[i] = new item(lastMesh[i] || null);
                 }
                 return privatePool[i];
-              }else
-                return item(lastMesh[i]);
+              }
             },
             set: function(value) {
               privatePool[i] = value;
+              // XXX dirty trix to let polymorph descriptors do whatever job need be be done
+              if (item.isDirty)
+                privatePool[i] = item(value);
             }
           });
           break;

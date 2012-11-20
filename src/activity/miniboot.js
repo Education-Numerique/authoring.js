@@ -62,7 +62,6 @@
 
   jsBoot.loader.use('bootstrap', version || 'stable');
 
-  jsBoot.loader.use('apiwrapper' + suffix + 'js');
   jsBoot.loader.use('lxxl-standalone-library' + suffix + 'js');
 
   // Callback for when the first part of the stack is loaded
@@ -100,20 +99,13 @@
     });
   });
 
+  jsBoot.loader.use('apiwrapper' + suffix + 'js');
+  jsBoot.loader.wait();
   // jsBoot.loader.use('activity' + suffix + 'css');
   jsBoot.loader.use('activity' + suffix + 'js');
 
   jsBoot.loader.wait(function() {
     if (debug)
       jsBoot.debug.tick('Application stack fully loaded - will bootstrap now');
-    // Activity may be passed as a json url, or embedded as a datauri?
-    var a = new LxxlLib.activity();
-    a.setupViewport($('#lxxlroot'), true);
-    // a.addStyle('body{background-color: blue;}');
-
-    a.setupTemplate('activity.tpl');
-
-    a.showActivity('activity.json');
-
   });
 })();

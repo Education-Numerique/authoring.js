@@ -494,7 +494,17 @@
       }
     }),
 
+    DoExport: Em.View.extend({
+      tagName: 'button'
+    }),
 
+    DoPublish: Em.View.extend({
+      tagName: 'button'
+    }),
+
+    DoSave: Em.View.extend({
+      tagName: 'button'
+    }),
 
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {

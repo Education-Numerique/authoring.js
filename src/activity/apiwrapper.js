@@ -7,7 +7,7 @@
    'GetDiagnostic'].forEach(function(key) {
     window.API[key] = function() {
       console.log('Fake LMS API debug. Method:', key, 'args', arguments);
-      return 'whatever';
+      return '0';
     };
   });
 
@@ -51,6 +51,10 @@
   // local variable definitions
   var api;
 
+  var scormAPI = window.scorm = {};
+  scormAPI.hasAPI = false;
+  scormAPI.deprecated = false;
+
   var initHandler = function() {
     if (!api) {
       api = findAPI(window) || (window.opener && findAPI(window.opener));
@@ -69,11 +73,6 @@
     }
     scormAPI.hasAPI = !!api;
   };
-
-  var scormAPI = {};
-
-  scormAPI.hasAPI = false;
-  scormAPI.deprecated = false;
 
   scormAPI.errors = {
     NO_ERROR: 0,
@@ -116,7 +115,7 @@
     initHandler();
     if (!api)
       return;
-    return initialized || (initialized = api.Initialize(''));
+    return initialized || (initialized = !!api.Initialize(''));
   };
 
   scormAPI.shutdown = function() {
@@ -212,11 +211,12 @@
 
 
   var mapper = function(cacheHolder, key, mapping, parse, serialize, value) {
-    if (arguments.length < 5) {
+    console.warn("gonna do something", key, arguments);
+    if (value === undefined) {
       if (scormAPI.hasAPI && !cacheHolder.hasOwnProperty(key)) {
         cacheHolder[key] = scormAPI.getValue('cmi.' + mapping);
         if (parse)
-          parse(cacheHolder[key]);
+          cacheHolder[key] = parse(cacheHolder[key]);
       }
       return cacheHolder[key];
     }
@@ -242,28 +242,35 @@
       var serialize = descriptor[key].write;
       if (descriptor[key].write === undefined)
         serialize = function() {
-          throw new Error('Write-only');
+          throw new Error('Read-only');
         };
       innerDescriptor[key] = innerMapper.bind({}, key, descriptor[key].mapping, parse, serialize);
+      innerDescriptor[key].isDirty = true;
     });
-    return jsBoot.types.TypedMutable.bind({}, innerDescriptor);
+    return jsBoot.types.TypedMutable.bind({}, innerDescriptor, null, true);
   };
 
   var score = function(prefix) {
     return getScormMutable({
       raw: {
-        mapping: prefix + 'raw',
-        read: null,
+        mapping: prefix + '.raw',
+        read: function(v){
+          return parseInt(v, 10);
+        },
         write: null
       },
       max: {
-        mapping: prefix + 'max',
-        read: null,
+        mapping: prefix + '.max',
+        read: function(v){
+          return parseInt(v, 10);
+        },
         write: null
       },
       min: {
-        mapping: prefix + 'min',
-        read: null,
+        mapping: prefix + '.min',
+        read: function(v){
+          return parseInt(v, 10);
+        },
         write: null
       }
     });
@@ -389,9 +396,10 @@
 
     totalTime: {
       mapping: 'core.total_time',
-      read: function(value) {
+      read: null, /*function(value) {
+        // XXX convert to int
         return new Date(value);
-      }
+      }*/
     },
 
     mode: {
@@ -436,9 +444,13 @@
     sessionTime: {
       mapping: 'core.session_time',
       read: function(value) {
-        return new Date(value);
+        var d = /(?:([0-9]{,2}):)?(?:([0-9]{,2}):)?([0-9]{,2})/.match(value);
+        return parseInt(d.pop(), 10) + parseInt(d.pop(), 10) * 60 + parseInt(d.pop(), 10) * 60 * 60;
       },
       write: function(value) {
+        var secs = (value % 60);
+        var mins = ((value - secs) / 60 % 60);
+        var hours = ((value - secs - min) / 60 % 60);
         return value.toString();
       }
     },
@@ -471,12 +483,17 @@
     interactions: jsBoot.types.ArrayMutable.bind({}, interaction)
   });
 
-  LxxlLib.session = function() {
+  LxxlLib.sessionManager = new (function() {
     var cmip;
     var startTime;
-    this.start = function(/*activity*/) {
+
+    this.activity = null;
+
+    this.start = function(activity) {
       startTime = (new Date()).getTime();
+      this.activity = new LxxlLib.model.Activity(activity);
       scormAPI.boot();
+
       // Create inner session object to be manipulate the learner session
       cmip = new Cmi({
         objectives: [
@@ -504,8 +521,9 @@
     this.end = function() {
       scormAPI.shutdown();
       startTime = null;
+      this.activity = null;
     };
-  };
+  });
 })();
 
 
