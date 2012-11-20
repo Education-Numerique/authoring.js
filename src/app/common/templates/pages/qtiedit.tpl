@@ -16,10 +16,10 @@
                     -->
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
-                {{#view view.DoPreview classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
-                {{#view view.DoExport classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Exporter{{/view}}
-                {{#view view.DoSave classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Sauvegarder{{/view}}
-                {{#view view.DoPublish classNames="btn"}}<!--<i class="icon-eye-open spacify"></i>-->Publier{{/view}}
+                {{#view view.DoPreview classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
+                {{#view view.DoExport classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Exporter{{/view}}
+                {{#view view.DoSave classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Sauvegarder{{/view}}
+                {{#view view.DoPublish classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Publier{{/view}}
 
             </div>
             <div class="widget-content nopadding main-container">
