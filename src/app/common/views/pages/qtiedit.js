@@ -503,15 +503,24 @@
     }),
 
     DoExport: Em.View.extend({
-      tagName: 'button'
+      tagName: 'button',
+      click: function(/*e*/) {
+        return false;
+      }
     }),
 
     DoPublish: Em.View.extend({
-      tagName: 'button'
+      tagName: 'button',
+      click: function(/*e*/) {
+        return false;
+      }
     }),
 
     DoSave: Em.View.extend({
-      tagName: 'button'
+      tagName: 'button',
+      click: function(/*e*/) {
+        return false;
+      }
     }),
 
     AddPageButton: Em.View.extend({

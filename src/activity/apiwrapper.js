@@ -483,15 +483,23 @@
     interactions: jsBoot.types.ArrayMutable.bind({}, interaction)
   });
 
+  // XXX manu
   LxxlLib.sessionManager = new (function() {
     var cmip;
     var startTime;
+    var dom;
 
     this.activity = null;
 
+    this.bindDocument = function(d){
+      dom = d;
+      // XXX manu bind behaviors if you want
+      tatBehavior();
+    };
+
     this.start = function(activity) {
       startTime = (new Date()).getTime();
-      this.activity = new LxxlLib.model.Activity(activity);
+      this.activity = ('isMutable' in activity) ? activity : new LxxlLib.model.Activity(activity);
       scormAPI.boot();
 
       // Create inner session object to be manipulate the learner session
@@ -523,6 +531,28 @@
       startTime = null;
       this.activity = null;
     };
+
+
+    var tatBehavior = function(){
+      // Tat thingies
+      console.error($('[data-type="tat"]', dom).length);
+      $('[data-type="tat"]', dom).each(function(ind, item) {
+        console.log('Found some tat', item);
+/*        item = $(item);
+        var clue = item.attr('data-clue');
+        // var alt = item.attr('data-alt').split(',');
+        // var answer = item.html();
+        item.html('trou à remplir');
+        item.on('click', function() {
+          console.warn('HAS CLICKYCLICK');
+          $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
+          var stuff = '<h5>' + clue + '</h5>' +
+              '<input type="text"></input>';
+          $('#modal-preview-tat-body').html(stuff);
+        });*/
+      });
+    };
+
   });
 })();
 

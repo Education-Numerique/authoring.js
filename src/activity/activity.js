@@ -106,6 +106,7 @@
         act = data;
       init++;
       if (init == done) {
+        // ++ All that should migrate into sessionManager
         LxxlLib.sessionManager.start(act);
         LxxlLib.sessionManager.activity.styleData = [];
         LxxlLib.sessionManager.activity.styleUri = [];
@@ -127,7 +128,8 @@
           ifr.html(res);
         else
           ifr.innerHTML = res;
-        // LxxlLib.sessionManager.session.start(ifr);
+        LxxlLib.sessionManager.bindDocument(ifr);
+        // -- All that should migrate into sessionManager
         loadingComplete();
       }
     };
@@ -297,22 +299,7 @@ var date = new Date(null);
         }
       });
 
-      // Tat thingies
-      $('[data-type="tat"]', dom).each(function(ind, item) {
-        console.log('Found some tat', item);
-        item = $(item);
-        var clue = item.attr('data-clue');
-        // var alt = item.attr('data-alt').split(',');
-        // var answer = item.html();
-        item.html('trou à remplir');
-        item.on('click', function() {
-          console.warn('HAS CLICKYCLICK');
-          $('#modal-preview-tat').modal({keyboard: false, backdrop: true});
-          var stuff = '<h5>' + clue + '</h5>' +
-              '<input type="text"></input>';
-          $('#modal-preview-tat-body').html(stuff);
-        });
-      });
+
 
       // Make page 0 active, if any
       var acti = $('.pages-list > li', dom);

@@ -95,7 +95,7 @@
 
 
     doPreview: function(node, activity) {
-      var a = new LxxlLib.activity();
+      var a = new LxxlLib.Masher();
       a.setupViewport(node, true);
       // a.addStyle('body{background-color: blue;}');
       /*

@@ -10,10 +10,8 @@
         <div class="widget-box">
             <div class="widget-title">
                 <div class="qti-title span3">
-                    <!--
-                    <span class="icon"><span class="icon-edit"></span></span>
-                    <h5 class="text-ellipsis unselectable">{{content.title}}</h5>
-                    -->
+                    <span style="display: none;" class="icon"><span class="icon-edit"></span></span>
+                    <h5 style="display: none;" class="text-ellipsis unselectable">{{content.title}}</h5>
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
                 {{#view view.DoPreview classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}

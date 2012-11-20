@@ -56,6 +56,7 @@
           <li class="page-tat">
           {{/ifequalhelp}}
             <a href="#">
+              <!--
               <span class="icon">
                 {{#ifequalhelp flavor "simple"}}
                 <span class="icon-file"></span>
@@ -67,6 +68,7 @@
                 <span class="icon-text-width"></span>
                 {{/ifequalhelp}}
               </span>
+              -->
               <span class="page-title">{{title}}</span>
             </a>
           </li>
@@ -77,26 +79,26 @@
 
 <!-- Pour chaque page -->
 {{#each pages}}
-  {{#ifequalhelp flavor "simple"}}
-  <section class="page-simple">
+  {{#ifequalhelp flavor.id "simple"}}
+  <section class="page-simple" id="page-{{id}}">
   {{/ifequalhelp}}
-  {{#ifequalhelp flavor "quizz"}}
+  {{#ifequalhelp flavor.id "quizz"}}
   <section class="page-quizz">
   {{/ifequalhelp}}
-  {{#ifequalhelp flavor "tat"}}
+  {{#ifequalhelp flavor.id "tat"}}
   <section class="page-tat">
   {{/ifequalhelp}}
     <div>
-      <span class="icon">
+      <!--<span class="icon">
         <i class="icon-th-list"></i>
-      </span>
+      </span>-->
       <h5>{{title}}</h5>
       {{#if subtitle}}
       <blockquote><p>{{subtitle}}</p></blockquote>
       {{/if}}
     </div>
     <article>
-      <!-- Chronomètre pour le temps limité -->
+      <!-- Chronomètre pour le temps limité de la page (à cacher si limitedTime, voir behaviors) -->
       <h4 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h4>
       {{#if advice}}
       <h4>{{{advice}}}</h4>
@@ -104,9 +106,81 @@
       {{#if document}}
       <p>{{{document}}}</p>
       {{/if}}
+
+      {{#ifequalhelp flavor.id "quizz"}}
+      <dl id="questions-{{id}}">
+        {{#each questions}}
+          <dt>{{{text}}}</dt>
+<!--              {{coef}} -->
+          <dd>
+            <ul>
+              {{#each answers}}
+              <li id="answer-{{../id}}-{{id}}">
+
+                <input type="radio" />
+                {{text}} <quote>{{comment}}</quote>
+  <!--                    {{isCorrect}}
+                {{weight}} -->
+              </li>
+              {{/each}}
+            </ul>
+          </dd>
+        {{/each}}
+      </dl>
+      {{/ifequalhelp}}
+
+      {{#ifequalhelp flavor.id "tat"}}
+        <p>{{{tat}}}</p>
+      {{/ifequalhelp}}
+
+
     </article>
   </section>
 {{/each}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
