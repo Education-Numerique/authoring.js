@@ -446,7 +446,6 @@
           ],
           add: function(e, data) {
             $(this).fileupload('process', data).done(function() {
-              console.log('========>', data);
               _loadImage(data.files[0]);
 
             });

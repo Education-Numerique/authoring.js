@@ -199,10 +199,13 @@
     air: false,
     oneLine: false,
 
+    buttons: '',
+
     _infoBox: null,
 
     didInsertElement: function() {
-      var plugins = [];
+      var plugins, buttons;
+      plugins = buttons = [];
 
       if (this.get('plugins').trim()) {
         plugins = this.get('plugins').trim().split(',').filter(function(item) {
@@ -210,6 +213,21 @@
         }).map(function(item) {
           return item.trim().toLowerCase();
         });
+      }
+
+      if (this.get('buttons').trim()) {
+        buttons = this.get('buttons').trim().split(',').filter(function(item) {
+          return !!item.trim();
+        }).map(function(item) {
+          return item.trim().toLowerCase();
+        });
+      }
+
+      if (!buttons.length) {
+        buttons = ['formatting', '|', 'bold', 'italic', 'deleted', '|',
+          'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
+          'image', 'video', 'file', 'table', 'link', '|',
+          'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'];
       }
 
       var timer = new LxxlLib.utils.Timer(500, function() {
@@ -233,7 +251,8 @@
         air: this.get('air'),
         focus: false,
         plugins: plugins,
-        airButtons: ['bold', 'italic']
+        airButtons: ['bold', 'italic'],
+        buttons: buttons
       });
 
 
