@@ -50,7 +50,7 @@
             </div>
             <div class="input-prepend">
                     <label class="add-on" for="form-page-explanation">Consigne</label>
-                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax" id="form-page-explanation"}}
+                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip" id="form-page-explanation"}}
                 </div>
         </div>
     </div>
@@ -63,7 +63,7 @@
             <h5>Document</h5>
         </div>
         <div class="widget-content slidify-on nopadding" id="page-document">
-                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax" classNames="redactorjs"}}
+                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tooltip" classNames="redactorjs"}}
         </div>
     </div>
     {{/if}}
@@ -77,7 +77,7 @@
             <h5>Texte à trous</h5>
         </div>
         <div class="widget-content slidify-on nopadding" id="page-tat">
-                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.tat" plugins="mathjax,tat" classNames="redactorjs"}}
+                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.tat" plugins="mathjax,tat,tooltip" classNames="redactorjs"}}
         </div>
     </div>
         
