@@ -413,7 +413,7 @@
       if (this.get('value') == this.$().getCode())
         return;
 
-      this.$().getEditor().html(this.get('value'));
+      this.$().getEditor().html(this.get('value') || '<p><br></p>');
       this.$().data('redactor').syncCode();
     }.observes('value')
   });
