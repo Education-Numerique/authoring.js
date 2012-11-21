@@ -3,13 +3,7 @@
 */
 
 <div class="container-fluid">
-    <div class="widget-box noborder">
-      <div class="alert alert-info">
-        <a href="#" data-dismiss="alert" class="close">×</a>
-        <h4 class="alert-heading">Besoin d'aide?</h4>
-        Une page texte à trous bla bla bla.
-      </div>
-    </div>
+
     <div class="widget-box noborder">
         <div class="widget-content slidify-on" id="page-informations">
             
@@ -74,15 +68,6 @@
     </div>
     {{/if}}
 
-
-    <div class="alert alert-info">
-      <a href="#" data-dismiss="alert" class="close">×</a>
-      <h4 class="alert-heading">Besoin d'aide?</h4>
-      Pour créer un texte à trous : tapez ou collez votre texte ci-dessus, puis sélectionnez le mot que vous souhaitez supprimer. Un bouton apparaît alors. Cliquez ce bouton pour ouvrir le dialogue de gestion du trou.
-      Vous pouvez créer autant de trous que vous le souhaitez et même créer des trous avec plusieurs mots, mais méfiez-vous : votre exercice sera très difficile s’il propose trop de trous ou des trous trop compliqués.
-      Le bouton Gestion vous permet d’afficher ou non la liste des mots enlevés et également d’éditer la liste des mots que vous avez supprimés avec leurs options.
-      Pour reboucher un trou, sélectionnez-le à nouveau et ouvrez le dialogue. Vous pourrez alors modifier les paramètres du trou ou le reboucher.
-    </div>
 
     <div class="widget-box">
         <div class="widget-title" data-toggle="slidify" data-target="#page-tat">

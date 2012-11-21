@@ -5,15 +5,6 @@
 <div class="container-fluid">
 
     <div class="widget-box noborder">
-      <div class="alert alert-info">
-        <a href="#" data-dismiss="alert" class="close">×</a>
-        <h4 class="alert-heading">Besoin d'aide?</h4>
-        Une page simple est informative uniquement, et fournit des indications génériques à l'étudiant concernant l'exercice à venir.<br />
-        Vous pouvez modifier le titre de cette page, et rédiger un document la constituant.
-      </div>
-    </div>
-
-    <div class="widget-box noborder">
         <div class="widget-content" id="page-informations">
             
             <div class="control-group">

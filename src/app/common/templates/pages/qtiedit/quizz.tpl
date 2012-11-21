@@ -3,13 +3,7 @@
 */
 
 <div class="container-fluid">
-    <div class="widget-box noborder">
-      <div class="alert alert-info">
-        <a href="#" data-dismiss="alert" class="close">×</a>
-        <h4 class="alert-heading">Besoin d'aide?</h4>
-        Une page quizz bla bla bla.
-      </div>
-    </div>
+
 
 
     <div class="widget-box noborder">

@@ -4,13 +4,7 @@
 
 <div class="container-fluid">
     <div class="widget-box noborder">
-      <div class="alert alert-info">
-        <a href="#" data-dismiss="alert" class="close">×</a>
-        <h4 class="alert-heading">Besoin d'aide?</h4>
-        Commencez par documenter les informations générales de votre activité ci-dessous.<br />
-        Vous pouvez ensuite créer autant de pages additionnelles que souhaité (texte à trous, quizz, etc).<br />
-        À tout moment, vous pouvez revenir sur ces informations en cliquant sur l'onglet "informations" à gauche.
-      </div>
+
     
         <div class="widget-content" id="page-informations">
             <div class="control-group " style="width:60%">
