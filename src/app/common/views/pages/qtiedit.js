@@ -116,11 +116,13 @@
         }.property('tats.length', 'current')),
 
         goNext: function() {
-          this.incrementProperty('current');
+          if (this.get('hasNext'))
+            this.incrementProperty('current');
         },
 
         goPrevious: function() {
-          this.decrementProperty('current');
+          if (this.get('hasPrevious'))
+            this.decrementProperty('current');
         }
 
       })
