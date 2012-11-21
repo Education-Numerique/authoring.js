@@ -182,4 +182,130 @@
 
   })();
 
+  this.RedactorPlugins.tooltip = new (function() {
+    this.init = function() {
+      var redactorScope;
+      var text = '', target = undefined;
+
+      var callback = (function() {
+
+        var container = $('#redactor_modal');
+
+        if ($.uniform) {
+          $('input[type=radio]', container).uniform();
+        }
+
+        $('.redactor_btn_modal_remove', container).hide();
+
+        this.saveSelection();
+        var sel = this.getSelection();
+
+
+        // if ($.browser.msie)
+        // {
+        //     var parent = this.getParentNode();
+        //     if (parent.nodeName === 'A')
+        //     {
+        //         this.insert_link_node = $(parent);
+        //         text = this.insert_link_node.text();
+        //         url = this.insert_link_node.attr('href');
+        //         target = this.insert_link_node.attr('target');
+        //     }
+        //     else
+        //     {
+        //         if (this.oldIE())
+        //         {
+        //             text = sel.text;
+        //         }
+        //         else
+        //         {
+        //             text = sel.toString();
+        //         }
+        //     }
+        // }
+        // else
+        // {
+        if (sel && sel.anchorNode && sel.anchorNode.parentNode.tagName === 'A')
+        {
+          target = sel.anchorNode.parentNode;
+          text = $(target).text();
+          $('.redactor_btn_modal_remove', container).show();
+
+        }
+        else
+        {
+          target = $('<a />');
+          text = this.getSelectedHtml();
+        }
+
+        $('.text', container).val(text);
+        $('.content', container).val($(target).attr('title'));
+
+        var placement = $(target).attr('data-placement');
+        if (placement) {
+          $('[name=placement]', container).removeAttr('checked');
+          $('[name=placement][value=' + placement + ']', container).attr('checked', 'checked');
+          $.uniform.update($('[name=placement]', container));
+        }
+
+
+
+        $('#redactor_modal .redactor_btn_modal_insert').bind('click', function() {
+          insertFromMyModal(target);
+        });
+
+        $('#redactor_modal .redactor_btn_modal_remove').bind('click', function() {
+          untagTat(target);
+        });
+
+      }.bind(this));
+
+
+      this.addBtn('tooltip', 'Tooltip', function(obj, e) {
+        redactorScope = obj;
+        obj.getBtn('tat').data('target', null);
+
+        obj.modalInit('Tooltip', '#redactor-tooltip', 500, callback);
+      });
+
+      var untagTat = function(el) {
+        redactorScope.$editor.focus();
+        redactorScope.restoreSelection();
+        if ($(el).attr('href')) {
+          $(el).removeAttr('rel');
+          $(el).removeAttr('title');
+          $(el).removeAttr('data-placement');
+        } else {
+          $(el).replaceWith($(el).text());
+        }
+        redactorScope.syncCode();
+        redactorScope.modalClose();
+      };
+
+      var insertFromMyModal = function(el) {
+        var container = $('#redactor_modal');
+        var text = $('.text', container).val();
+        var tooltip = $('.content', container).val();
+        var placement = $('[name=placement]:checked').val();
+        redactorScope.$editor.focus();
+        redactorScope.restoreSelection();
+
+        $(el).attr('rel', 'tooltip');
+        $(el).attr('title', tooltip);
+        $(el).attr('data-placement', placement);
+        $(el).text(text);
+
+
+        if (!$(el).closest('html').length) {
+          redactorScope.execCommand('inserthtml', $(el)[0].outerHTML + '&nbsp;');
+        }
+        redactorScope.syncCode();
+        redactorScope.modalClose();
+      };
+    };
+
+
+
+  })();
+
 }).apply(this);

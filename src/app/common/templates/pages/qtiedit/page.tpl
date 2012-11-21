@@ -24,7 +24,7 @@
             <h5>Document</h5>
         </div>
         <div class="widget-content slidify-on nopadding" id="page-document">
-            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax" classNames="redactorjs"}}
+            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tooltip" classNames="redactorjs"}}
         </div>
     </div>
 </div>

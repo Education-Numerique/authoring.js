@@ -186,6 +186,28 @@
     </div>
 </div>
 
+<div id="redactor-tooltip" style="display: none;">
+      <div id="redactor_modal_content">
+        <label>Texte </label>
+        <input type="text" class="text redactor_input" value="" />
+        <label>Tooltip </label>
+        <input type="text" class="content redactor_input" value="" />
+        <label>Emplacement </label>
+        <label><input type="radio" name="placement" value="top" checked="checked" /> Haut</label>
+        <label><input type="radio" name="placement" value="right" /> Droite</label>
+        <label><input type="radio" name="placement" value="bottom" /> Bas</label>
+        <label><input type="radio" name="placement" value="left" /> Gauche</label>
+
+    </div>
+    <hr class="clear" />
+
+    <div id="redactor_modal_footer">
+        <a class="redactor_modal_btn redactor_btn_modal_insert">Insérer</a>
+        <a class="redactor_modal_btn redactor_btn_modal_remove">Supprimer</a>
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Annuler</a>
+    </div>
+</div>
+
 {{#view view.ModalBox modalName="deleteSideDocument"}}
 <div class="modal hide" id="modal-delete-side-document">
      <div class="modal-header">

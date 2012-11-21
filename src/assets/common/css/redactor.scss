@@ -76,12 +76,15 @@
                 background-size:26px 52px;
             }
         }
+
+        a.redactor_btn_tooltip {
+            background: url('images/redactor/tooltip.png') center center no-repeat;
+        }
+
+
     }
 }
 
-// .redactor_box .redactor_toolbar>li:first-of-type,  .redactor_box .redactor_toolbar>li:first-of-type + li.redactor_separator {
-//     display:none;
-// }
 
 .redactor_tabs a:hover, .redactor_tabs a.redactor_tabs_act {
     background-color: #ddd;
