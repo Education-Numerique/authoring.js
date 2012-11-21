@@ -146,6 +146,7 @@
   jsBoot.loader.use('libs/js/jquery.flot' + suffix + 'js');
   jsBoot.loader.use('libs/js/jquery.flot.pie' + suffix + 'js');
 
+  jsBoot.loader.use('libs/js/file-upload/canvas-to-blob' + suffix + 'js');
   jsBoot.loader.use('libs/js/file-upload/load-image' + suffix + 'js');
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload' + suffix + 'js');
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload-fp' + suffix + 'js');

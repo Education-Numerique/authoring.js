@@ -435,8 +435,10 @@
             },
             {
                       action: 'resize',
-                      maxWidth: 1440,
-                      maxHeight: 900
+                      maxWidth: 800,
+                      maxHeight: 800,
+                      minWidth: 40,
+                      minHeight: 40
             },
             {
                       action: 'save'
@@ -444,6 +446,7 @@
           ],
           add: function(e, data) {
             $(this).fileupload('process', data).done(function() {
+              console.log('========>', data);
               _loadImage(data.files[0]);
 
             });
