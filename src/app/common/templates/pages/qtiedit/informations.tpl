@@ -59,7 +59,7 @@
 
             <div class="input-prepend">
                     <label class="add-on" for="form-page-explanation">Description</label>
-                    {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" maxLength=200 classNames="redactorjs" id="form-page-explanation"}}
+                    {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" maxLength=200 classNames="redactorjs 4lines" id="form-page-explanation"}}
                 </div>
         </div>
     </div>

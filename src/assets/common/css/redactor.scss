@@ -1,5 +1,10 @@
 .redactor_box, .redactor_air {
+
+
     .redactor_editor {
+        &.redactor_4lines {
+            min-height:100px;
+        }
         min-height:120px;
    }
 
