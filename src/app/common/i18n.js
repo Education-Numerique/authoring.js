@@ -59,7 +59,7 @@
         },
 
         qtiedit: {
-          title: 'Créer une activité',
+          title: 'Éditer une activité',
           bread: ''
         }
       },

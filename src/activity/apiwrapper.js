@@ -592,7 +592,7 @@
           response = response.concat(it.attr('data-alt').split(';'));
           var clue = it.attr('data-clue');
           var h = '<input id="tat-' + ind + '-hole-' + idx + '" type="text"></input>';
-          h += ' <button style="display: none">Afficher un indice</button>';
+          h += ' <button style="display: none">?</button>';
           h = $('<span />').html(h);
           it.replaceWith(h);
           if (clue) {
