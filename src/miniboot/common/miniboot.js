@@ -41,8 +41,8 @@
       location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-author']).pop());
 
   // IE deserves to be raped :)
-  if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
-    jsBoot.loader.use('ie7', '2.1');
+  // if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
+  //   jsBoot.loader.use('ie7', '2.1');
 
   // Callback for when the first part of the stack is loaded
   var onEmberBoot = function() {
