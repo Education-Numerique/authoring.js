@@ -2,6 +2,8 @@ jsBoot.use('jsBoot.types.TypedMutable');
 jsBoot.use('jsBoot.types.getPooledMutable');
 jsBoot.use('jsBoot.types.ArrayMutable');
 jsBoot.use('jsBoot.types.utils');
+jsBoot.use('jsBoot.core.Error');
+jsBoot.use('LxxlLib.service.activities', true).as('service');
 jsBoot.pack('LxxlLib.model', function(api) {
   'use strict';
 
@@ -81,7 +83,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     questions: api.ArrayMutable.bind({}, this.Question)
   });
 
-  this.Activity = api.TypedMutable.bind({}, {
+  var Activity = api.TypedMutable.bind({}, {
     id: 0,
     title: '',
     description: '',
@@ -94,4 +96,37 @@ jsBoot.pack('LxxlLib.model', function(api) {
     pages: api.ArrayMutable.bind({}, this.Page)
   });
 
+  var success = function(){
+    console.log('Successful activity creation');
+  };
+
+  var failure = function(){
+    throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
+  };
+
+  this.Activity = function(initialMesh){
+    var i = new Activity(initialMesh);
+    i.pull = function(){
+      if(!this.id || !api.service)
+        return;
+      api.service.read(function(d){
+        console.warn("wooo reading data", d);
+      }, failure);
+    };
+
+    i.push = function(){
+      if(!api.service)
+        return;
+      if(!this.id){
+        api.service.create((function(d){
+          this.set('id', d.id);
+        }.bind(this)), failure, this.toObject());
+      }else{
+        api.service.patch(success, failure, this.toObject());
+      }
+    };
+    return i;
+  };
+
+  
 });

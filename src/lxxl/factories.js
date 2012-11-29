@@ -4,6 +4,11 @@ jsBoot.pack('LxxlLib.factories', function(api) {
   'use strict';
 
   this.activities = new (function() {
+    this.getActivity = function(mesh){
+      mesh = mesh || {};
+      return new api.model.Activity(mesh);
+    };
+
     this.getById = function(id) {
       var ret = new api.model.Activity({id: id});
       var p1 = new api.model.Page({flavor: {id: 'simple'}});

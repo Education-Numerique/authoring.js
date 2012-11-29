@@ -28,8 +28,8 @@
   // var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
   // IE deserves to be raped :)
-  if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
-    jsBoot.loader.use('ie7', '2.1');
+  // if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
+  //   jsBoot.loader.use('ie7', '2.1');
 
   jsBoot.loader.use('normalize', 2.0);
   jsBoot.loader.use('h5bp', 4.0);
