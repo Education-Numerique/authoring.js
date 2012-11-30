@@ -122,7 +122,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
           this.set('id', d.id);
         }.bind(this)), failure, this.toObject());
       }else{
-        api.service.patch(success, failure, this.toObject());
+        var p = this.toObject();
+        delete p.id;
+        api.service.patch(success, failure, this.id, p);
       }
     };
     return i;
