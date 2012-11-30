@@ -138,13 +138,6 @@ jsBoot.pack('LxxlLib.model', function(api) {
       this.id = null;
     };
 
-
-    i.seen = function(){
-      if(!this.id || !api.service)
-        return;
-      api.service.seen(success, failure, this.id);
-    };
-
     i.report = function(){
       if(!this.id || !api.service)
         return;
