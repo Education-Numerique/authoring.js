@@ -109,9 +109,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.pull = function(){
       if(!this.id || !api.service)
         return;
-      api.service.read(function(d){
-        console.warn("wooo reading data", d);
-      }, failure, this.id);
+      api.service.read((function(d){
+        this.fromObject(d);
+      }.bind(this)), failure, this.id);
     };
 
     i.push = function(){
