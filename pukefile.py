@@ -167,8 +167,8 @@ def build():
   lxxl = [
     'src/lxxl/data.js',
     'src/lxxl/mutable.js',
-    'src/lxxl/model/model.js',
     'src/lxxl/service/activities.js',
+    'src/lxxl/model/model.js',
     'src/lxxl/factories.js'
   ]
   combine(lxxl, VERSIONED_ROOT + "/lxxl-standalone-library.js", replace=sed)
