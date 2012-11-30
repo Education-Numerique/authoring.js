@@ -111,7 +111,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
         return;
       api.service.read(function(d){
         console.warn("wooo reading data", d);
-      }, failure);
+      }, failure, this.id);
     };
 
     i.push = function(){
@@ -127,6 +127,49 @@ jsBoot.pack('LxxlLib.model', function(api) {
         api.service.patch(success, failure, this.id, p);
       }
     };
+
+    var d = i.destroy;
+    i.destroy = function(){
+      d.apply(this);
+      if(!this.id || !api.service)
+        return;
+      api.service.remove(success, failure, this.id);
+      // XXX should reset the object entirely though...
+      this.id = null;
+    };
+
+
+    i.seen = function(){
+      if(!this.id || !api.service)
+        return;
+      api.service.seen(success, failure, this.id);
+    };
+
+    i.report = function(){
+      if(!this.id || !api.service)
+        return;
+      api.service.report(success, failure, this.id);
+    };
+
+    i.seen = function(){
+      if(!this.id || !api.service)
+        return;
+      api.service.seen(success, failure, this.id);
+    };
+
+    // Should imply a push
+    i.publish = function(){
+      if(!this.id || !api.service)
+        return;
+      api.service.publish(success, failure, this.id);
+    };
+
+    i.unpublish = function(){
+      if(!this.id || !api.service)
+        return;
+      api.service.unpublish(success, failure, this.id);
+    };
+
     return i;
   };
 
