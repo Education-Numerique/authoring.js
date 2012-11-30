@@ -84,7 +84,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   });
 
   var Activity = api.TypedMutable.bind({}, {
-    id: 0,
+    id: '',
     title: '',
     description: '',
     level: new this.Level({id: 'other'}),
