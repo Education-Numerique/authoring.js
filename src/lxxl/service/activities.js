@@ -12,7 +12,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var CMD_PUBLISH = 'publish';
   var CMD_UNPUBLISH = 'unpublish';
   var CMD_SEEN = 'seen';
-  var CMD_SEEN = 'seen';
+  var CMD_THUMBNAIL = 'thumbnail';
 
   this.activities = new (function() {
 
@@ -33,6 +33,27 @@ jsBoot.pack('LxxlLib.service', function(api) {
         // XXX Dirty trick while manu fixes his internal redirects lacking trailing slash
         command: '#',
         payload: payload || {}
+      });
+    };
+
+    this.addThumbnail = function(onSuccess, onFailure, id, payload) {
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: CMD_THUMBNAIL,
+        payload: payload || {}
+      });
+    };
+
+    this.removeThumbnail = function(onSuccess, onFailure, id, payload) {
+      requestor.query(requestor.DELETE, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: CMD_THUMBNAIL
       });
     };
 
