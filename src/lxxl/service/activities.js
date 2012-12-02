@@ -47,16 +47,6 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.removeThumbnail = function(onSuccess, onFailure, id, payload) {
-      requestor.query(requestor.DELETE, {
-        service: SERVICE,
-        onsuccess: onSuccess,
-        onfailure: onFailure,
-        id: id,
-        command: CMD_THUMBNAIL
-      });
-    };
-
     this.patch = function(onSuccess, onFailure, id, payload){
       requestor.query(requestor.POST, {
         service: SERVICE,

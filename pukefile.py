@@ -168,6 +168,7 @@ def build():
     'src/lxxl/data.js',
     'src/lxxl/mutable.js',
     'src/lxxl/service/activities.js',
+    'src/lxxl/service/blob.js',
     'src/lxxl/model/model.js',
     'src/lxxl/factories.js'
   ]
