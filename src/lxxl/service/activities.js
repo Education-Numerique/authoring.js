@@ -15,6 +15,9 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var CMD_THUMBNAIL = 'thumbnail';
   var CMD_MEDIA = 'media';
   var CMD_ATTACHMENT = 'attachment';
+  var CMD_MINE = 'mine';
+  var CMD_REPORTED = 'reported';
+  var CMD_PUBLISHED = 'published';
 
   this.activities = new (function() {
 
@@ -24,6 +27,33 @@ jsBoot.pack('LxxlLib.service', function(api) {
         onsuccess: onSuccess,
         onfailure: onFailure,
         command: '#'
+      });
+    };
+
+    this.listMine = function(onSuccess, onFailure){
+      requestor.query(requestor.GET, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        command: CMD_MINE
+      });
+    };
+
+    this.listReported = function(onSuccess, onFailure){
+      requestor.query(requestor.GET, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        command: CMD_REPORTED
+      });
+    };
+
+    this.listPublished = function(onSuccess, onFailure){
+      requestor.query(requestor.GET, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        command: CMD_PUBLISHED + '?draft.difficulty.id=easy'
       });
     };
 
