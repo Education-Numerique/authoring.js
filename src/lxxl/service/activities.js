@@ -13,6 +13,8 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var CMD_UNPUBLISH = 'unpublish';
   var CMD_SEEN = 'seen';
   var CMD_THUMBNAIL = 'thumbnail';
+  var CMD_MEDIA = 'media';
+  var CMD_ATTACHMENT = 'attachment';
 
   this.activities = new (function() {
 
@@ -47,6 +49,27 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
+    this.addMedia = function(onSuccess, onFailure, id, payload) {
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: CMD_MEDIA,
+        payload: payload || {}
+      });
+    };
+
+    this.addAttachment = function(onSuccess, onFailure, id, payload) {
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: CMD_ATTACHMENT,
+        payload: payload || {}
+      });
+    };
     this.patch = function(onSuccess, onFailure, id, payload){
       requestor.query(requestor.POST, {
         service: SERVICE,
