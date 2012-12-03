@@ -17,7 +17,7 @@
                 <button type="button" {{action saveActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Sauvegarder</button>
                 {{#view view.DoExport classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Exporter{{/view}}
                 {{#view view.DoPreview classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
-                {{#view view.DoPublish classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Publier{{/view}}
+                <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Publier</button>
 
             </div>
             <div class="widget-content nopadding main-container">

@@ -379,7 +379,7 @@
 
 
         var _loadImage = function(img) {
-            self.get('controller.content').setThumbnail(img);
+          self.get('controller.content').setThumbnail(img);
         };
 
         $('#fileupload').fileupload();

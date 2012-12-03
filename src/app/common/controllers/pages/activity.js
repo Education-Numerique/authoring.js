@@ -9,6 +9,10 @@
       this.get('content').push();
     },
 
+    publishActivity: function() {
+      this.get('content').publish();
+    },
+
     // thumb: (function(key, value) {
     //   if (!this.get('content'))
     //     return;
