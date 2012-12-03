@@ -97,7 +97,6 @@ jsBoot.pack('LxxlLib.model', function(api) {
   });
 
   var success = function() {
-    console.log('Successful activity creation');
   };
 
   var failure = function() {
@@ -139,6 +138,12 @@ jsBoot.pack('LxxlLib.model', function(api) {
       if (!this.id || !api.service)
         return;
       api.service.report(success, failure, this.id);
+    };
+
+    i.unreport = function() {
+      if (!this.id || !api.service)
+        return;
+      api.service.unreport(success, failure, this.id);
     };
 
     i.seen = function() {

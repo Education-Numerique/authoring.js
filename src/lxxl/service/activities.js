@@ -12,7 +12,6 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var CMD_UNREPORT = 'unreport';
   var CMD_PUBLISH = 'publish';
   var CMD_UNPUBLISH = 'unpublish';
-  var CMD_SEEN = 'seen';
   var CMD_THUMBNAIL = 'thumbnail';
   var CMD_MEDIA = 'media';
   var CMD_ATTACHMENT = 'attachment';
