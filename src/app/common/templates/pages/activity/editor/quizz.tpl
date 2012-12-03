@@ -1,5 +1,5 @@
 /*
-* @template : pages/qtiedit/quizz
+* @template : pages/activity/editor/quizz
 */
 
 <div class="container-fluid">

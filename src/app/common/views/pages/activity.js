@@ -22,11 +22,11 @@
   this.ActivityEditView = Ember.View.extend({
 
     StaticPage: Em.View.extend({
-      templateName: 'pages/qtiedit/page'
+      templateName: 'pages/activity/editor/page'
     }),
 
     TatPage: Em.View.extend({
-      templateName: 'pages/qtiedit/tat',
+      templateName: 'pages/activity/editor/tat',
       TimeButton: Em.View.extend({
         tagName: 'button',
         type: 'button',
@@ -129,7 +129,7 @@
     }),
 
     QuizzPage: Em.View.extend({
-      templateName: 'pages/qtiedit/quizz',
+      templateName: 'pages/activity/editor/quizz',
       TimeButton: Em.View.extend({
         tagName: 'button',
         type: 'button',
@@ -372,7 +372,7 @@
     }),
 
     InformationTab: Em.View.extend({
-      templateName: 'pages/qtiedit/informations',
+      templateName: 'pages/activity/editor/informations',
 
       didInsertElement: function() {
         var self = this;
@@ -651,7 +651,7 @@
     }),
 
     templateName: function() {
-      return 'pages/qtiedit';
+      return 'pages/activity/editor';
     }.property(),
 
     didInsertElement: function() {

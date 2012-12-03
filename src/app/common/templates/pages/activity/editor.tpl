@@ -1,5 +1,5 @@
 /*
-* @template : pages/qtiedit
+* @template : pages/activity/editor
 */
 
 <form class="form-horizontal">

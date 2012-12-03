@@ -1,5 +1,5 @@
 /*
-* @template : pages/qtiedit/tat
+* @template : pages/activity/editor/tat
 */
 
 <div class="container-fluid">
