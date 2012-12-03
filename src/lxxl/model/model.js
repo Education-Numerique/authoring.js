@@ -3,6 +3,7 @@ jsBoot.use('jsBoot.types.getPooledMutable');
 jsBoot.use('jsBoot.types.ArrayMutable');
 jsBoot.use('jsBoot.types.utils');
 jsBoot.use('jsBoot.core.Error');
+jsBoot.use('jsBoot.service.core').as('servicesCore');
 jsBoot.use('LxxlLib.service.activities', true).as('service');
 jsBoot.pack('LxxlLib.model', function(api) {
   'use strict';
@@ -131,8 +132,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
       if (!this.id || !api.service)
         return;
       api.service.addThumbnail((function(d){
-        console.warn("sucessfully published thumbnail blob with return", d);
-        this.set('thumbnailUrl', d);
+        this.set('thumbnailUrl', '//' + api.servicesCore.requestor.hostPort + d.url);
       }.bind(this)), function(){}, this.id, blob);
     };
 
