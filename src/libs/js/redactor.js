@@ -1250,7 +1250,7 @@ var RLANG = {
             {
                 $(this.opts.toolbarExternal).empty();
             }
-
+            //XXX patch here
             if (this.air) this.air.remove();
 
             for (var i = 0; i < this.dropdowns.length; i++)
@@ -1312,7 +1312,7 @@ var RLANG = {
             {
                 return false;
             }
-
+            //XXX patch here
             this.$editor.find('img:not([uneditable])').each($.proxy(function(i,s)
             {
                 if ($.browser.msie)
