@@ -483,7 +483,7 @@
     InformationButton: Em.View.extend({
       tagName: 'button',
       classNames: 'section-active',
-      
+
       click: function(e) {
         e.preventDefault();
         this.get('controller').set('currentPage', null);
