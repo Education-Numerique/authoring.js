@@ -11,12 +11,13 @@ jsBoot.pack('LxxlLib.factories', function(api) {
 
     this.getById = function(id) {
       var ret = new api.model.Activity({id: id});
+      // XXX debugging for craft
       var p1 = new api.model.Page({flavor: {id: 'simple'}});
       var p2 = new api.model.Page({flavor: {id: 'quizz'}});
       var p3 = new api.model.Page({flavor: {id: 'tat'}});
-      ret.pages.pushObject(p1);
-      ret.pages.pushObject(p2);
-      ret.pages.pushObject(p3);
+      ret.draft.pages.pushObject(p1);
+      ret.draft.pages.pushObject(p2);
+      ret.draft.pages.pushObject(p3);
       return ret;
     };
   })();

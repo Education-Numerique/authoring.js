@@ -84,10 +84,17 @@ jsBoot.pack('LxxlLib.model', function(api) {
     questions: api.ArrayMutable.bind({}, this.Question)
   });
 
-  var Activity = api.TypedMutable.bind({}, {
-    id: '',
+
+  this.User = api.TypedMutable.bind({}, {
+    uid: '',
+    username: ''
+  });
+
+  var SubActivity = api.TypedMutable.bind({}, {
     title: '',
     description: '',
+    contributors: api.ArrayMutable.bind({}, this.User),
+    extraContributors: api.ArrayMutable.bind({}, ''),
     level: new this.Level({id: 'other'}),
     matter: new this.Matter({id: 'other'}),
     duration: new this.Length({id: 0}),
@@ -95,6 +102,19 @@ jsBoot.pack('LxxlLib.model', function(api) {
     category: api.ArrayMutable.bind({}, this.Category),
     thumbnailUrl: null,
     pages: api.ArrayMutable.bind({}, this.Page)
+  });
+
+  var Activity = api.TypedMutable.bind({}, {
+    id: '',
+    creationDate: Date,
+    publicationDate: Date,
+    author: this.User,
+    seenCount: 0,
+    isDeleted: false,
+    isPublished: false,
+    isReported: false,
+    draft: SubActivity,
+    published: SubActivity
   });
 
   var success = function() {
@@ -106,10 +126,19 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
   this.Activity = function(initialMesh) {
     var i = new Activity(initialMesh);
+    i.draft.set('controller', this);
+
+    // var i = {};
+    // var i.draft = new Activity(initialMesh);
+    // var i.published = new Activity(initialMesh);
+
     i.pull = function() {
+      console.warn(api.service, this.id);
       if (!this.id || !api.service)
         return;
+      console.warn("pullklihnnihn");
       api.service.read((function(d) {
+        console.warn("----------------->", d);
         this.fromObject(d);
       }.bind(this)), failure, this.id);
     };
@@ -122,22 +151,30 @@ jsBoot.pack('LxxlLib.model', function(api) {
           this.set('id', d.id);
         }.bind(this)), failure, this.toObject());
       }else {
-        var p = this.toObject();
-        delete p.id;
+        var p = this.draft.toObject();
         api.service.patch(success, failure, this.id, p);
       }
     };
 
-    i.setThumbnail = function(blob){
+    i.addMedia = function(blob, success, error) {
+      if (!this.id || !api.service)
+        return;
+      api.service.addMedia(function(d){
+        success('//' + api.servicesCore.requestor.hostPort + d.url);
+      }, function(){
+      }, this.id, blob);
+    };
+
+    i.setThumbnail = function(blob) {
       if (!this.id || !api.service)
         return;
       api.service.addThumbnail((function(d){
-        this.set('thumbnailUrl', '//' + api.servicesCore.requestor.hostPort + d.url + '?' + Math.random());
+        this.draft.set('thumbnailUrl', '//' + api.servicesCore.requestor.hostPort + d.url + '?' + Math.random());
       }.bind(this)), function(){}, this.id, blob);
     };
 
     i.removeThumbnail = function(blob){
-      this.set('thumbnailUrl', null);
+      this.draft.set('thumbnailUrl', null);
       if (!this.id || !api.service)
         return;
       // XXX not plugged service-side
