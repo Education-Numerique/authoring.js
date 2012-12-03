@@ -14,9 +14,9 @@
                     <h5 style="display: none;" class="text-ellipsis unselectable">{{content.title}}</h5>
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
-                {{#view view.DoPreview classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
+                <button type="button" {{action saveActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Sauvegarder</button>
                 {{#view view.DoExport classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Exporter{{/view}}
-                {{#view view.DoSave classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Sauvegarder{{/view}}
+                {{#view view.DoPreview classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
                 {{#view view.DoPublish classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Publier{{/view}}
 
             </div>

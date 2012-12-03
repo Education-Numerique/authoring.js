@@ -521,13 +521,6 @@
       }
     }),
 
-    DoSave: Em.View.extend({
-      tagName: 'button',
-      click: function(/*e*/) {
-        return false;
-      }
-    }),
-
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {
         this.get('controller').addPage();

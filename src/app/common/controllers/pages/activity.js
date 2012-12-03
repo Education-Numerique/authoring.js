@@ -4,6 +4,12 @@
     /**
      * To be handled somewhere else...
      */
+    
+    saveActivity: function () {
+      this.get('content').push();
+    },
+
+
     thumb: (function(key, value) {
       if (!this.get('content'))
         return;
