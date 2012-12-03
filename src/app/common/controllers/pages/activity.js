@@ -4,8 +4,8 @@
     /**
      * To be handled somewhere else...
      */
-    
-    saveActivity: function () {
+
+    saveActivity: function() {
       this.get('content').push();
     },
 
