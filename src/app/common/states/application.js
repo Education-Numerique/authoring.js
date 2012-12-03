@@ -202,16 +202,7 @@
 
 
       // Special routes, not top-level in the navigation
-      showNewQTI: Ember.Route.transitionTo('newQTI'),
-      newQTI: Ember.Route.extend({
-        route: '/qtiNew',
-        enter: function(router) {
-          router.set('applicationController.selected', 'qtiNew');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('qtiNew');
-        }
-      }),
+
 
       showNewCategory: Ember.Route.transitionTo('newCategory'),
       newCategory: Ember.Route.extend({
@@ -226,20 +217,29 @@
 
       // Routes not accessible from navigation itself
       showPlayQTI: Ember.Route.transitionTo('playQTI'),
-      showEditQTI: Ember.Route.transitionTo('editQTI'),
+      editCategory: Ember.Route.extend({route: '/categoryEdit/:cat_id'}),
+      editUser: Ember.Route.extend({route: '/userEdit/:user_id'}),
+
+
       playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
-      editQTI: Ember.Route.extend(
-          {
-            route: '/qtiEdit/:id',
-            connectOutlets: function(router, qti) {
-              router.get('applicationController').connectOutlet('qtiEdit',
-                  LxxlLib.factories.activities.getById(qti.id));
-            }
-          }),
 
-      editCategory: Ember.Route.extend({route: '/categoryEdit/:cat_id'}),
-      editUser: Ember.Route.extend({route: '/userEdit/:user_id'})
+      showNewActivity: Em.Route.transitionTo('newActivity'),
+      showEditQTI: Ember.Route.transitionTo('editActivity'),
+      editActivity: Ember.Route.extend({
+        route: '/activity/:id',
+        connectOutlets: function(router, qti) {
+          router.get('applicationController').connectOutlet('activityEdit',
+              LxxlLib.factories.activities.getById(qti.id));
+        }
+      }),
+      newActivity: Ember.Route.extend({
+        route: '/activity/new',
+        connectOutlets: function(router, qti) {
+          router.get('applicationController').connectOutlet('activityEdit',
+              LxxlLib.factories.activities.getActivity());
+        }
+      })
     })
   });
 }).apply(LxxlApp);

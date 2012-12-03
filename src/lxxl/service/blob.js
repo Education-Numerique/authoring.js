@@ -35,7 +35,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.readDraft = function(onSuccess, onFailure, id){
+    this.readDraft = function(onSuccess, onFailure, id) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -45,7 +45,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.readPublished = function(onSuccess, onFailure, id){
+    this.readPublished = function(onSuccess, onFailure, id) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,

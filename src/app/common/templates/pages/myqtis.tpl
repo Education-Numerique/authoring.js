@@ -22,7 +22,7 @@
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Mes activités</h4>
     Sur cette page vous pouvez visualiser l'ensemble de vos activités, chercher une de vos activités, la modifier...<br />
-    Vous pouvez également <a {{action showNewQTI href=true}}>en créer une nouvelle.</a>
+    Vous pouvez également <a {{action showNewActivity href=true}}>en créer une nouvelle.</a>
   </div>
 
   <div class="widget-box">

@@ -20,7 +20,7 @@
         jsBoot.debug.tick('Ember application is ready!', true);
       this._super();
       //XXX remove
-      jsBoot.service.core.authenticate(Em.K, Em.K, "void@webitup.fr", "toto42");
+      jsBoot.service.core.authenticate(Em.K, Em.K, 'void@webitup.fr', 'toto42');
     },
     init: function() {
       if (jsBoot.debug)

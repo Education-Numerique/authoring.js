@@ -21,7 +21,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
 
   this.activities = new (function() {
 
-    this.list = function(onSuccess, onFailure){
+    this.list = function(onSuccess, onFailure) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -30,7 +30,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.listMine = function(onSuccess, onFailure){
+    this.listMine = function(onSuccess, onFailure) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -39,7 +39,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.listReported = function(onSuccess, onFailure){
+    this.listReported = function(onSuccess, onFailure) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -48,7 +48,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.listPublished = function(onSuccess, onFailure){
+    this.listPublished = function(onSuccess, onFailure) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -100,7 +100,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
         payload: payload || {}
       });
     };
-    this.patch = function(onSuccess, onFailure, id, payload){
+    this.patch = function(onSuccess, onFailure, id, payload) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -112,7 +112,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.read = function(onSuccess, onFailure, id){
+    this.read = function(onSuccess, onFailure, id) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -122,7 +122,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.remove = function(onSuccess, onFailure, id){
+    this.remove = function(onSuccess, onFailure, id) {
       requestor.query(requestor.DELETE, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -133,7 +133,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
     };
 
 
-    this.publish = function(onSuccess, onFailure, id){
+    this.publish = function(onSuccess, onFailure, id) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -143,7 +143,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.unpublish = function(onSuccess, onFailure, id){
+    this.unpublish = function(onSuccess, onFailure, id) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -153,7 +153,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.seen = function(onSuccess, onFailure, id){
+    this.seen = function(onSuccess, onFailure, id) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
@@ -163,7 +163,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.report = function(onSuccess, onFailure, id){
+    this.report = function(onSuccess, onFailure, id) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,

@@ -41,7 +41,7 @@
         <a class="tip-right" title="{{localize nav.act.tip}}" id="navigation-myQtis" {{action showMyQTIs href=true}}><i class="icon icon-th-list"></i> <span>{{localize nav.act.text}}</span></a>
         <ul>
           <li><a class="tip-right" title="{{localize nav.actlist.tip}}" {{action showMyQTIs href=true}}>{{localize nav.actlist.text}}</a></li>
-          <li><a class="tip-right" title="{{localize nav.actnew.tip}}" {{action showNewQTI href=true}}>{{localize nav.actnew.text}}</a></li>
+          <li><a class="tip-right" title="{{localize nav.actnew.tip}}" {{action showNewActivity href=true}}>{{localize nav.actnew.text}}</a></li>
         </ul>
       </li>
 

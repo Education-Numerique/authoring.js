@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  this.QtiEditController = Ember.ObjectController.extend({
+  this.ActivityEditController = Ember.ObjectController.extend({
     /**
      * To be handled somewhere else...
      */
@@ -312,22 +312,6 @@
       }),
       selected: {id: 0, title: '0 seconde'}
     })
-
-    /**
-     * Various select handling
-     */
-
-
-    /*
-    reset: function(){
-    }
- */
-
-    // cheat: "*********************/// *******************",
-
-    // toto: function(){
-    //   return this.get('content');
-    // }.property('content'),
 
   });
 

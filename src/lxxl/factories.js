@@ -4,7 +4,7 @@ jsBoot.pack('LxxlLib.factories', function(api) {
   'use strict';
 
   this.activities = new (function() {
-    this.getActivity = function(mesh){
+    this.getActivity = function(mesh) {
       mesh = mesh || {};
       return new api.model.Activity(mesh);
     };

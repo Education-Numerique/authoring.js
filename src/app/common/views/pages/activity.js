@@ -19,7 +19,7 @@
 
   })();
 
-  this.QtiEditView = Ember.View.extend({
+  this.ActivityEditView = Ember.View.extend({
 
     StaticPage: Em.View.extend({
       templateName: 'pages/qtiedit/page'
@@ -387,6 +387,7 @@
             return;
           } else {
             var r = new FileReader();
+            window.RAGOUT = img;
             r.onload = function(e) {
               self.get('controller.content').set('thumbnail', e.target.result);
             };

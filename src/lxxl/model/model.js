@@ -96,32 +96,32 @@ jsBoot.pack('LxxlLib.model', function(api) {
     pages: api.ArrayMutable.bind({}, this.Page)
   });
 
-  var success = function(){
+  var success = function() {
     console.log('Successful activity creation');
   };
 
-  var failure = function(){
+  var failure = function() {
     throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
   };
 
-  this.Activity = function(initialMesh){
+  this.Activity = function(initialMesh) {
     var i = new Activity(initialMesh);
-    i.pull = function(){
-      if(!this.id || !api.service)
+    i.pull = function() {
+      if (!this.id || !api.service)
         return;
-      api.service.read((function(d){
+      api.service.read((function(d) {
         this.fromObject(d);
       }.bind(this)), failure, this.id);
     };
 
-    i.push = function(){
-      if(!api.service)
+    i.push = function() {
+      if (!api.service)
         return;
-      if(!this.id){
-        api.service.create((function(d){
+      if (!this.id) {
+        api.service.create((function(d) {
           this.set('id', d.id);
         }.bind(this)), failure, this.toObject());
-      }else{
+      }else {
         var p = this.toObject();
         delete p.id;
         api.service.patch(success, failure, this.id, p);
@@ -129,36 +129,36 @@ jsBoot.pack('LxxlLib.model', function(api) {
     };
 
     var d = i.destroy;
-    i.destroy = function(){
+    i.destroy = function() {
       d.apply(this);
-      if(!this.id || !api.service)
+      if (!this.id || !api.service)
         return;
       api.service.remove(success, failure, this.id);
       // XXX should reset the object entirely though...
       this.id = null;
     };
 
-    i.report = function(){
-      if(!this.id || !api.service)
+    i.report = function() {
+      if (!this.id || !api.service)
         return;
       api.service.report(success, failure, this.id);
     };
 
-    i.seen = function(){
-      if(!this.id || !api.service)
+    i.seen = function() {
+      if (!this.id || !api.service)
         return;
       api.service.seen(success, failure, this.id);
     };
 
     // Should imply a push
-    i.publish = function(){
-      if(!this.id || !api.service)
+    i.publish = function() {
+      if (!this.id || !api.service)
         return;
       api.service.publish(success, failure, this.id);
     };
 
-    i.unpublish = function(){
-      if(!this.id || !api.service)
+    i.unpublish = function() {
+      if (!this.id || !api.service)
         return;
       api.service.unpublish(success, failure, this.id);
     };
@@ -166,5 +166,5 @@ jsBoot.pack('LxxlLib.model', function(api) {
     return i;
   };
 
-  
+
 });
