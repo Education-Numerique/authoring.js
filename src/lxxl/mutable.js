@@ -1,37 +1,37 @@
 // Simple polymorph mutable object on top of EventDispatcher
 // Whether or not in Ember context, will behave seemlessly
 /*jshint newcap:false*/
-jsBoot.use('jsBoot.types.EventDispatcher').as('dispatcher');
-jsBoot.pack('jsBoot.types', function(api) {
-  /*global Ember*/
-  'use strict';
+// jsBoot.use('jsBoot.types.EventDispatcher').as('dispatcher');
+// jsBoot.pack('jsBoot.types', function(api) {
+//   /*global Ember*/
+//   'use strict';
 
-  this.Mutable = function() {
-    if (typeof Ember != 'undefined') {
-      var em = new Ember.Object();
-      for (var i in em) {
-        if (i != 'constructor' && i != 'set')
-          this[i] = em[i];
-      }
-    }
-    api.dispatcher.apply(this);
-  };
+//   this.Mutable = function() {
+//     if (typeof Ember != 'undefined') {
+//       var em = new Ember.Object();
+//       for (var i in em) {
+//         if (i != 'constructor' && i != 'set')
+//           this[i] = em[i];
+//       }
+//     }
+//     api.dispatcher.apply(this);
+//   };
 
-  Object.keys(api.dispatcher.prototype).forEach(function(x) {
-    this.Mutable.prototype[x] = api.dispatcher.prototype[x];
-  }, this);
+//   Object.keys(api.dispatcher.prototype).forEach(function(x) {
+//     this.Mutable.prototype[x] = api.dispatcher.prototype[x];
+//   }, this);
 
-  this.Mutable.prototype.set = function(key, value) {
-    if (value == this[key])
-      return;
-    var ov = this[key];
-    this.dispatchEvent(this.CHANGE, {key: key, oldValue: ov, newValue: value});
-    if (typeof Ember != 'undefined')
-      Ember.set(this, key, value);
-    else
-      this[key] = value;
-  };
-});
+//   this.Mutable.prototype.set = function(key, value) {
+//     if (value == this[key])
+//       return;
+//     var ov = this[key];
+//     this.dispatchEvent(this.CHANGE, {key: key, oldValue: ov, newValue: value});
+//     if (typeof Ember != 'undefined')
+//       Ember.set(this, key, value);
+//     else
+//       this[key] = value;
+//   };
+// });
 
 
 
@@ -130,7 +130,8 @@ jsBoot.pack('jsBoot.types', function(api) {
           this[i] = parseInt(item, 10);
           break;
         case 'boolean':
-          this[i] = (item == 'true');
+          // XXX ??? wtf 'true'
+          this[i] = (item === true);
           break;
         case 'string':
           this[i] = '' + item;
@@ -166,8 +167,29 @@ jsBoot.pack('jsBoot.types', function(api) {
       }
     }, this);
 
-    this.free = function() {
+    var t = this.destroy;
+    this.destroy = function() {
+      t.apply(this);
       privatePool = {};
+      lastMesh = {};
+      Object.keys(descriptor).forEach(function(i) {
+        var item = descriptor[i];
+        switch (typeof item) {
+          case 'number':
+            this[i] = parseInt(item, 10);
+            break;
+          case 'boolean':
+            this[i] = (item === true);
+            break;
+          case 'string':
+            this[i] = '' + item;
+            break;
+          case 'object':
+            // May be null, an array, or an object-object
+            this[i] = item;
+            break;
+        }
+      });
     };
 
     this.toObject = function() {

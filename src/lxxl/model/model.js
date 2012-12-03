@@ -130,12 +130,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
     var d = i.destroy;
     i.destroy = function() {
+      if (this.id && api.service)
+        api.service.remove(success, failure, this.id);
       d.apply(this);
-      if (!this.id || !api.service)
-        return;
-      api.service.remove(success, failure, this.id);
-      // XXX should reset the object entirely though...
-      this.id = null;
     };
 
     i.report = function() {
@@ -162,9 +159,6 @@ jsBoot.pack('LxxlLib.model', function(api) {
         return;
       api.service.unpublish(success, failure, this.id);
     };
-
     return i;
   };
-
-
 });

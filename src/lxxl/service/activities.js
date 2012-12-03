@@ -9,6 +9,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var SERVICE = 'activities';
   var CMD_SEEN = 'seen';
   var CMD_REPORT = 'report';
+  var CMD_UNREPORT = 'unreport';
   var CMD_PUBLISH = 'publish';
   var CMD_UNPUBLISH = 'unpublish';
   var CMD_SEEN = 'seen';
@@ -39,21 +40,31 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.listReported = function(onSuccess, onFailure) {
+    this.listReported = function(onSuccess, onFailure, params) {
+      var p = {};
+      Object.keys(params).forEach(function(key) {
+        p['published.' + key] = params[key];
+      });
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
         onfailure: onFailure,
-        command: CMD_REPORTED
+        command: CMD_REPORTED,
+        params: p
       });
     };
 
-    this.listPublished = function(onSuccess, onFailure) {
+    this.listPublished = function(onSuccess, onFailure, params) {
+      var p = {};
+      Object.keys(params).forEach(function(key) {
+        p['published.' + key] = params[key];
+      });
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
         onfailure: onFailure,
-        command: CMD_PUBLISHED + '?draft.difficulty.id=easy'
+        command: CMD_PUBLISHED,
+        params: p
       });
     };
 
@@ -100,6 +111,18 @@ jsBoot.pack('LxxlLib.service', function(api) {
         payload: payload || {}
       });
     };
+    /*
+    this.removeAttachment = function(onSuccess, onFailure, id, aid) {
+      requestor.query(requestor.DELETE, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: CMD_ATTACHMENT + '/' + aid
+      });
+    };
+    */
+
     this.patch = function(onSuccess, onFailure, id, payload) {
       requestor.query(requestor.POST, {
         service: SERVICE,
@@ -131,7 +154,6 @@ jsBoot.pack('LxxlLib.service', function(api) {
         command: '#'
       });
     };
-
 
     this.publish = function(onSuccess, onFailure, id) {
       requestor.query(requestor.POST, {
@@ -173,6 +195,40 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
+    this.unreport = function(onSuccess, onFailure, id) {
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: CMD_UNREPORT
+      });
+    };
   })();
-
 });
+
+/*
+
+
+Add thumbnail : /X.Y/activities/AID/thumbnail -> return blob
+add media : /X.Y/activivties/AID/media -> return blob
+add attachments : add media : /X.Y/activivties/AID/attachment -> return blob
+update blob : /X.Y/blob/blobid/ [POST]
+remove blob : /X.Y/blob/blobid/ [DELETE] -> get blob : /X.Y/blob/blobid/(draft|published)
+publish / unpublish fait le ménage automatique dans les blobs
+activity.draft.blobs
+activity.published.blobs
+-> {'thumbnail' : ['id'], 'media' : ['id', 'id'], 'attachments' : ['id'...]]}
+18:54
+filtres sur la commande list :
+/X.Y/activities/ (all)
+/X.Y/activities/mine (mine only)
+/X.Y/activities/published
+/X.Y/activities/reported
+pour filtrer :  ?author.uid=
+possible de chercher sur n'importe quelle key
+?draft.matter.id =
+?draft.difficulty.id=easy
+
+
+*/
