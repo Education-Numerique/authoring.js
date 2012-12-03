@@ -656,7 +656,7 @@
 
     didInsertElement: function() {
       LxxlLib.behaviors.bindBehaviors(this.get('element'));
-      this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.qtiedit.title'));
+      this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));
 
       this.get('controller').set('currentPage', this.get('controller.content.pages')[0]);
     }

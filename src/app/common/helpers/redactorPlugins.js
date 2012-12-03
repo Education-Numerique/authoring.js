@@ -32,7 +32,7 @@
             math.Text($('#redactor_modal .formula').val());
           });
 
-        }
+        };
 
 
         $('#redactor_modal .redactor_tabs a').bind('click', function() {

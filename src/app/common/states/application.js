@@ -200,9 +200,7 @@
         }
       }),
 
-
       // Special routes, not top-level in the navigation
-
 
       showNewCategory: Ember.Route.transitionTo('newCategory'),
       newCategory: Ember.Route.extend({
@@ -225,7 +223,7 @@
 
 
       showNewActivity: Em.Route.transitionTo('newActivity'),
-      showEditQTI: Ember.Route.transitionTo('editActivity'),
+      showEditActivity: Ember.Route.transitionTo('editActivity'),
       editActivity: Ember.Route.extend({
         route: '/activity/:id',
         connectOutlets: function(router, qti) {
@@ -235,7 +233,17 @@
       }),
       newActivity: Ember.Route.extend({
         route: '/activity/new',
+        enter: function(router) {
+          var act = LxxlLib.factories.activities.getActivity();
+          act.push();
+          act.addObserver('id', function() {
+            console.warn('BEEN PUSHED', act.id);
+            router.transitionTo('editActivity', act);
+          });
+        },
         connectOutlets: function(router, qti) {
+          // XXX @todo
+          // XXX page de choix template activité
           router.get('applicationController').connectOutlet('activityEdit',
               LxxlLib.factories.activities.getActivity());
         }

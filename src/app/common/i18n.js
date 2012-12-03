@@ -19,48 +19,37 @@
           // No bread means no bread ;)
         },
         register: {
-          title: 'Création de compte',
-          bread: 'Créer votre compte en trois étapes simples'
+          title: 'Création de compte'
         },
         settings: {
-          title: 'Réglages',
-          bread: 'Vos réglages'
+          title: 'Réglages'
         },
         profile: {
-          title: 'Votre profil',
-          bread: 'Gestion de votre profil'
+          title: 'Votre profil'
         },
 
         categories: {
-          title: 'Catégories',
-          bread: 'Exploration des catégories'
+          title: 'Catégories'
         },
         users: {
-          title: 'Utilisateurs',
-          bread: 'Gestion des utilisateurs'
+          title: 'Utilisateurs'
         },
         qtis: {
-          title: 'Activités',
-          bread: 'Administration de toutes les activités'
+          title: 'Activités'
         },
 
         sandbox: {
-          title: 'Sandbox',
-          bread: 'Les activités dans la sandbox'
+          title: 'Vivier'
         },
         dashboard: {
-          title: 'Accueil',
-          bread: 'Lxxl page d\'accueil'
+          title: 'Accueil'
         },
-
         myqtis: {
-          title: 'Mes Activités',
-          bread: 'Gestion de mes activités'
+          title: 'Mes Activités'
         },
 
-        qtiedit: {
-          title: 'Éditer une activité',
-          bread: ''
+        activityedit: {
+          title: 'Édition activité'
         }
       },
 
@@ -94,8 +83,8 @@
         },
 
         sandbox: {
-          tip: 'Accès à la sandbox',
-          text: 'Sandbox'
+          tip: 'Accéder au vivier',
+          text: 'Vivier'
         },
 
         act: {
