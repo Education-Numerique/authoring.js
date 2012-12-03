@@ -126,7 +126,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
   this.Activity = function(initialMesh) {
     var i = new Activity(initialMesh);
-    i.draft.set('controller', this);
+    i.draft.controller = i;
 
     // var i = {};
     // var i.draft = new Activity(initialMesh);
