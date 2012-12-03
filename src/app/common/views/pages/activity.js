@@ -482,6 +482,8 @@
 
     InformationButton: Em.View.extend({
       tagName: 'button',
+      classNames: 'section-active',
+      
       click: function(e) {
         e.preventDefault();
         this.get('controller').set('currentPage', null);
@@ -650,8 +652,6 @@
     didInsertElement: function() {
       LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));
-
-      this.get('controller').set('currentPage', false);
     }
   });
 }).apply(LxxlApp);
