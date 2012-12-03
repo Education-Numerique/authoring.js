@@ -386,47 +386,40 @@
             $('.dropzone .preview').removeClass('default');
             return;
           } else {
-            var r = new FileReader();
-            window.RAGOUT = img;
-            r.onload = function(e) {
-              self.get('controller.content').set('thumbnail', e.target.result);
-            };
-
-            r.readAsDataURL(img);
+            self.get('controller.content').setThumbnail(img);
           }
 
 
-          window.loadImage(img, function(img) {
-            $('.dropzone .preview').empty();
-            $('.dropzone .preview').append(img);
-            $('.dropzone .preview').removeClass('default');
+          // window.loadImage(img, function(img) {
+          //   $('.dropzone .preview').empty();
+          //   $('.dropzone .preview').append(img);
+          //   $('.dropzone .preview').removeClass('default');
 
-            var container = $('.dropzone .preview');
-            var node = container.find('canvas,img');
-            var w = node.width() * 100 / container.width();
-            var h = node.height() * 100 / container.height();
+          //   var container = $('.dropzone .preview');
+          //   var node = container.find('canvas,img');
+          //   var w = node.width() * 100 / container.width();
+          //   var h = node.height() * 100 / container.height();
 
-            node.css({
-              'top' : ((100 - h) / 2) + '%',
-              'left' : ((100 - w) / 2) + '%'
-            });
-          }, {
-            maxWidth: 300,
-            maxHeight: 300,
-            canvas: true
-          });
+          //   node.css({
+          //     'top' : ((100 - h) / 2) + '%',
+          //     'left' : ((100 - w) / 2) + '%'
+          //   });
+          // }, {
+          //   maxWidth: 300,
+          //   maxHeight: 300,
+          //   canvas: true
+          // });
 
 
         };
 
-        if (self.get('controller.content.thumbnail'))
-          _loadImage(self.get('controller.content.thumbnail'));
+        // if (self.get('controller.content.thumbnail'))
+        //   _loadImage(self.get('controller.content.thumbnail'));
 
 
         $('#fileupload').fileupload();
         $('#fileupload').fileupload('option', {
           dropZone: this.$('.dropzone')[0],
-          url: '//roxee.tv/',
           limitMultiFileUploads: 1,
           maxFileSize: 5000000,
           acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,

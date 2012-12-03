@@ -9,18 +9,18 @@
       this.get('content').push();
     },
 
-
-    thumb: (function(key, value) {
-      if (!this.get('content'))
-        return;
-      if (!this.get('content.thumbnail'))
-        return;
-      var reader = new FileReader();
-      reader.onload = (function(event) {
-        this.content.set('img', event.target.result);
-      }.bind(this));
-      reader.readAsDataURL(this.get('content.thumbnail'));//Convert the blob from clipboard to base64
-    }).observes('content.thumbnail'),
+    // thumb: (function(key, value) {
+    //   if (!this.get('content'))
+    //     return;
+    //   if (!this.get('content.thumbnail'))
+    //     return;
+    //   var reader = new FileReader();
+    //   reader.onload = (function(event) {
+    //     this.content.set('img', event.target.result);
+    //   }.bind(this));
+    //   reader.readAsDataURL(this.get('content.thumbnail'));//Convert the blob from clipboard to base64
+    //   console.log('========> force what ? thumbnail');
+    // }).observes('content.thumbnail'),
 
     // isSimple: (function(key, value) {
     //   if(!this.get('content'))
