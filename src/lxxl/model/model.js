@@ -160,7 +160,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
       if (!this.id || !api.service)
         return;
       api.service.addMedia(function(d){
-        success('//' + api.servicesCore.requestor.hostPort + d.url);
+        success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
       }, function(){
       }, this.id, blob);
     };

@@ -192,7 +192,6 @@
   });
 
   LxxlLib.Em.Wysiwyg = Em.TextArea.extend({
-    imageUpload: '/file_upload.php',
     autoresize: true,
     plugins: '',
     maxLength: null,
@@ -226,7 +225,7 @@
       if (!buttons.length) {
         buttons = ['formatting', '|', 'bold', 'italic', 'deleted', '|',
           'unorderedlist', 'orderedlist', 'outdent', 'indent', '|',
-          'image', 'video', 'file', 'table', 'link', '|',
+          'video', 'file', 'table', 'link', '|',
           'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'];
       }
 
@@ -243,10 +242,9 @@
         this.set('value', this.$().getCode());
       }.bind(this));
 
-
       this.$().redactor({
         lang: 'fr',
-        imageUpload: this.get('imageUpload'),
+        imageUpload: true,
         autoresize: this.get('autoresize'),
         air: this.get('air'),
         focus: false,

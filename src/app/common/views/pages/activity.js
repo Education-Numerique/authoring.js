@@ -379,7 +379,7 @@
 
 
         var _loadImage = function(img) {
-          self.get('controller.content').setThumbnail(img);
+          self.get('controller.content').controller.setThumbnail(img);
         };
 
         $('#fileupload').fileupload();
@@ -610,6 +610,7 @@
     didInsertElement: function() {
       LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));
+
     }
   });
 }).apply(LxxlApp);

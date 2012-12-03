@@ -227,8 +227,10 @@
       editActivity: Ember.Route.extend({
         route: '/activity/:id',
         connectOutlets: function(router, qti) {
+          var activity = LxxlLib.factories.activities.getById(qti.id);
+          activity.pull();
           router.get('applicationController').connectOutlet('activityEdit',
-              LxxlLib.factories.activities.getById(qti.id).draft);
+              activity.draft);
         }
       }),
       newActivity: Ember.Route.extend({

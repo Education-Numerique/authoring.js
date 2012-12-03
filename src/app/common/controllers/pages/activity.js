@@ -6,35 +6,20 @@
      */
 
     saveActivity: function() {
-      this.get('content').push();
+      this.get('content').controller.push();
     },
 
     publishActivity: function() {
-      this.get('content').publish();
+      this.get('content').controller.publish();
     },
 
-    // thumb: (function(key, value) {
-    //   if (!this.get('content'))
-    //     return;
-    //   if (!this.get('content.thumbnail'))
-    //     return;
-    //   var reader = new FileReader();
-    //   reader.onload = (function(event) {
-    //     this.content.set('img', event.target.result);
-    //   }.bind(this));
-    //   reader.readAsDataURL(this.get('content.thumbnail'));//Convert the blob from clipboard to base64
-    //   console.log('========> force what ? thumbnail');
-    // }).observes('content.thumbnail'),
-
-    // isSimple: (function(key, value) {
-    //   if(!this.get('content'))
-    //     return;
-    //   if(!this.get('content').get('flavor'))
-    //     return;
-    //   this.content.set('isSimple', this.get('flavor').title == I18n.translate('activities.pageFlavors').simple);
-    //   this.content.set('isQuizz', this.get('flavor').title == I18n.translate('activities.pageFlavors').quizz);
-    //   this.content.set('isTat', this.get('flavor').title == I18n.translate('activities.pageFlavors').tat);
-    // }).observes('content.flavor'),
+    addMedia: function(file, succes, error) {
+      this.get('content').controller.addMedia(file, function(url) {
+        succes({filelink: url});
+      }, function(error) {
+        error({error: error});
+      });
+    },
 
 
     /**
@@ -324,6 +309,7 @@
     })
 
   });
+
 
 }).apply(LxxlApp);
 

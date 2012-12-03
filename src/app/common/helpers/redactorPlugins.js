@@ -3,6 +3,79 @@
   'use strict';
   if (typeof this.RedactorPlugins === 'undefined') this.RedactorPlugins = {};
 
+  this.RedactorPlugins.imagemanager = new (function() {
+    this.init = function() {
+      var redactorScope;
+
+      var callback = (function() {
+        var nodeContainer = $('#redactor_modal');
+        var dropZone = nodeContainer.find('.redactor_dropareabox');
+        this.saveSelection();
+        nodeContainer.find('.redactor_imageupload').fileupload();
+        nodeContainer.find('.redactor_imageupload').fileupload('option', {
+          dropZone: dropZone[0],
+          limitMultiFileUploads: 1,
+          maxFileSize: 5000000,
+          acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+          process: [
+            {
+                      action: 'load',
+                      fileTypes: /^image\/(gif|jpeg|png)$/,
+                      maxFileSize: 20000000 // 20MB
+            },
+            {
+                      action: 'resize',
+                      maxWidth: 800,
+                      maxHeight: 800,
+                      minWidth: 40,
+                      minHeight: 40
+            },
+            {
+                      action: 'save'
+            }
+          ],
+          add: function(e, data) {
+            $(this).fileupload('process', data).done(function() {
+              LxxlApp.get('router.activityEditController.content').controller.addMedia(data.files[0], function(url, blobId) {
+                insertImage(url, blobId);
+              }, function() {
+                console.log('=========> error', arguments);
+              });
+            });
+          }
+        });
+
+        $('#redactor_modal .redactor_dropareabox').bind('dragover', function(e) {
+          dropZone.addClass('hover');
+        });
+        $('#redactor_modal .redactor_dropareabox').bind('dragleave', function(e) {
+          dropZone.removeClass('hover');
+        });
+        $('#redactor_modal .redactor_dropareabox').bind('drop', function(e) {
+          dropZone.removeClass('hover').addClass('drop');
+        });
+
+
+
+
+        var insertImage = (function(link, blobId) {
+          this.restoreSelection();
+          var html = '<img src="' + link + '" data-blobid="' + blobId + '"/>';
+
+          this.execCommand('inserthtml', html);
+
+          this.modalClose();
+          this.observeImages();
+        }.bind(this));
+      }.bind(this));
+
+      this.addBtnBefore('video', 'imagemanager', 'Insérer une image', function(obj, e) {
+        redactorScope = obj;
+        obj.modalInit('Insérer une image', '#redactor-imagemanager', 500, callback);
+      });
+    }
+  })();
+
 
   this.RedactorPlugins.mathjax = new (function() {
     this.init = function() {

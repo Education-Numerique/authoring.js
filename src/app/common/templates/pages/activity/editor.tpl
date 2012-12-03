@@ -168,6 +168,20 @@
     </div>
 </div>
 
+<div id="redactor-imagemanager" style="display: none;">
+    <div id="redactor_modal_content">
+        <div class="redactor_droparea"><div class="redactor_dropareabox">Déposez le fichier ici</div></div>
+        <button class="btn btn-large add-thumbnail">
+            <i class="icon-plus"></i>
+            <input class="redactor_imageupload" type="file" name="file" class="">
+            Ajouter une image
+        </button>
+    </div>
+    <div id="redactor_modal_footer">
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Fermer</a>
+    </div>
+</div>
+
 <div id="redactor-tat" style="display: none;">
       <div id="redactor_modal_content">
         <label>Mot supprimé : </label>

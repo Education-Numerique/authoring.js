@@ -69,10 +69,10 @@
       id: 'TEST',
       secret: 'TEST'
     }, {
-      // host: 'localhost',
-      // port: '8081',
-      host: 'snap.lxxl.com',
-      port: '90',
+      host: 'localhost',
+      port: '8081',
+      // host: 'snap.lxxl.com',
+      // port: '90',
       version: '1.0'
     }, {
       id: 'anonymous',
