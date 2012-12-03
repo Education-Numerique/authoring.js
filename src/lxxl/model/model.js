@@ -132,7 +132,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
       if (!this.id || !api.service)
         return;
       api.service.addThumbnail((function(d){
-        this.set('thumbnailUrl', '//' + api.servicesCore.requestor.hostPort + d.url);
+        this.set('thumbnailUrl', '//' + api.servicesCore.requestor.hostPort + d.url + '?' + Math.random());
       }.bind(this)), function(){}, this.id, blob);
     };
 
