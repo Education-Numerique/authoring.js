@@ -92,7 +92,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     duration: new this.Length({id: 0}),
     difficulty: new this.Difficulty({id: 'easy'}),
     category: api.ArrayMutable.bind({}, this.Category),
-    thumbnail: null,
+    thumbnailUrl: null,
     pages: api.ArrayMutable.bind({}, this.Page)
   });
 
@@ -125,6 +125,26 @@ jsBoot.pack('LxxlLib.model', function(api) {
         delete p.id;
         api.service.patch(success, failure, this.id, p);
       }
+    };
+
+    i.setThumbnail = function(blob){
+      if (!this.id || !api.service)
+        return;
+      api.service.addThumbnail((function(d){
+        console.warn("sucessfully published thumbnail blob with return", d);
+        this.set('thumbnailUrl', d);
+      }.bind(this)), function(){}, this.id, blob);
+    };
+
+    i.removeThumbnail = function(blob){
+      this.set('thumbnailUrl', null);
+      if (!this.id || !api.service)
+        return;
+      // XXX not plugged service-side
+      // api.service.addThumbnail((function(d){
+      //   console.warn("sucessfully published thumbnail blob with return", d);
+      //   this.set('thumbnailUrl', d);
+      // }.bind(this)), function(){}, this.id, blob);
     };
 
     var d = i.destroy;

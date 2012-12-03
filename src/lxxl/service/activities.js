@@ -40,6 +40,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
     };
 
     this.listReported = function(onSuccess, onFailure, params) {
+      params = params || {};
       var p = {};
       Object.keys(params).forEach(function(key) {
         p['published.' + key] = params[key];
@@ -54,6 +55,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
     };
 
     this.listPublished = function(onSuccess, onFailure, params) {
+      params = params || {};
       var p = {};
       Object.keys(params).forEach(function(key) {
         p['published.' + key] = params[key];
