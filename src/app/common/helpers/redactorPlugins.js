@@ -324,6 +324,10 @@
         {
           target = $('<a />');
           text = this.getSelectedHtml();
+          var tmp = $('<p />');
+          tmp.html(text);
+          text = tmp.text();
+          tmp = null;
         }
 
         $('.text', container).val(text);
