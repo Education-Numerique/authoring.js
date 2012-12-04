@@ -230,7 +230,7 @@
         text: 'Texte',
         mailto: 'Courriel',
         web: 'Adresse URL',
-        video_html_code: 'Code d\'intégration du vidéo',
+        video_html_code: 'Code d\'intégration de la vidéo',
         file: 'Insérer un fichier...',
         upload: 'Téléverser',
         download: 'Télécharger',
@@ -247,7 +247,7 @@
         link_new_tab: 'Ouvrir le lien dans un nouvel onglet',
         underline: 'Souligné',
         alignment: 'Alignement'
-      },
+      }/*,
 
 
       // You can add new matters here - but DONT RENAME existing keys!!!! - you can still rename
@@ -273,7 +273,7 @@
             // document: '',
           }
         }
-      }
+      }*/
     }
   };
 
