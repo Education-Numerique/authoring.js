@@ -111,13 +111,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
     duration: new this.Length({id: 0}),
     difficulty: new this.Difficulty({id: 'easy'}),
     category: api.ArrayMutable.bind({}, this.Category),
-    thumbnailUrl: '',/*function(v){
-      return '//' + api.servicesCore.requestor.hostPort + v;
-    },*/
+    thumbnailUrl: '',
     blobs: MetaBlob,
     pages: api.ArrayMutable.bind({}, this.Page)
-//    media: api.ArrayMutable.bind({}, Blobby),
-//    attachments: api.ArrayMutable.bind({}, Blobby)
   });
 
   var Activity = api.TypedMutable.bind({}, {
@@ -144,14 +140,6 @@ jsBoot.pack('LxxlLib.model', function(api) {
     var i = new Activity(initialMesh);
     i.draft.controller = i;
 
-    // var i = {};
-    // var i.draft = new Activity(initialMesh);
-    // var i.published = new Activity(initialMesh);
-
-    var refork = function(){
-
-    };
-
     i.pull = function() {
       console.warn(api.service, this.id);
       if (!this.id || !api.service)
@@ -161,38 +149,22 @@ jsBoot.pack('LxxlLib.model', function(api) {
           Object.keys(d.draft.blobs).forEach(function(key){
             d.draft.blobs[key] = d.draft.blobs[key].map(function(id){
               return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/' + id + '/draft';
-// //snap.lxxl.com:90/1.0/blobs/50bd49e474957159d7d8d2ed/draft
             }, this);
           }, this);
+          if('thumbnail' in d.draft.blobs)
+            this.draft.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
         }
 
         if('blobs' in d.published){
           Object.keys(d.published.blobs).forEach(function(key){
             d.published.blobs[key] = d.published.blobs[key].map(function(id){
               return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/' + id + '/published';
-// //snap.lxxl.com:90/1.0/blobs/50bd49e474957159d7d8d2ed/draft
             }, this);
           }, this);
+          if('thumbnail' in d.published.blobs)
+            this.published.set('thumbnailUrl', d.published.blobs.thumbnail.pop());
         }
 
-        //   if('thumbnail' in d.draft.blobs){
-        //     d.draft.thumbnailUrl = '//' + api.servicesCore.requestor.hostPort + d.draft.blobs.thumbnail.pop();
-        //   }
-        // }
-        // if('blobs' in d.published){
-        //   if('thumbnail' in d.published.blobs){
-        //     d.published.thumbnailUrl = '//' + api.servicesCore.requestor.hostPort + d.published.blobs.thumbnail.pop();
-        //   }
-        // }
-
-          // if('media' in d.blobs){
-          //   d.media = d.blobs.media;
-          //   delete d.blobs.media;
-          // }
-          // if('attachments' in d.blobs){
-          //   d.attachments = d.blobs.attachments;
-          //   delete d.blobs.attachments;
-          // }
         this.fromObject(d);
       }.bind(this)), failure, this.id);
     };
@@ -260,6 +232,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.seen = function() {
       if (!this.id || !api.service)
         return;
+      this.seenCount++;
       api.service.seen(success, failure, this.id);
     };
 
