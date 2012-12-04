@@ -212,7 +212,7 @@ jsBoot.pack('jsBoot.types', function(api) {
             this.set(i, parseInt(item, 10));
             break;
           case 'boolean':
-            this.set(i, (item == 'true'));
+            this.set(i, (item === true));
             break;
           case 'string':
             this.set(i, '' + ((item !== null) ? item : ''));

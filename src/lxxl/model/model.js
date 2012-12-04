@@ -101,6 +101,17 @@ jsBoot.pack('LxxlLib.model', function(api) {
     attachments: api.ArrayMutable.bind({}, null)
   });
 
+  var Attachee = api.TypedMutable.bind({}, {
+    id: '',
+    url: '',
+    type: '',
+    name: ''
+  });
+
+  var Extra = api.TypedMutable.bind({}, {
+    attachments: api.ArrayMutable.bind({}, Attachee)
+  });
+
   var SubActivity = api.TypedMutable.bind({}, {
     title: '',
     description: '',
@@ -113,13 +124,19 @@ jsBoot.pack('LxxlLib.model', function(api) {
     category: api.ArrayMutable.bind({}, this.Category),
     thumbnailUrl: '',
     blobs: MetaBlob,
-    pages: api.ArrayMutable.bind({}, this.Page)
+    pages: api.ArrayMutable.bind({}, this.Page),
+    extra: Extra
   });
+
+  var dirtyDateConverter = function(v){
+    return new Date(v * 1000);
+  };
+  dirtyDateConverter.isDirty = true;
 
   var Activity = api.TypedMutable.bind({}, {
     id: '',
-    creationDate: Date,
-    publicationDate: Date,
+    creationDate: dirtyDateConverter,
+    publicationDate: dirtyDateConverter,
     author: this.User,
     seenCount: 0,
     isDeleted: false,
@@ -139,6 +156,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   this.Activity = function(initialMesh) {
     var i = new Activity(initialMesh);
     i.draft.controller = i;
+    i.published.controller = i;
 
     i.pull = function() {
       console.warn(api.service, this.id);
@@ -188,6 +206,22 @@ jsBoot.pack('LxxlLib.model', function(api) {
       api.service.addMedia(function(d){
         success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
       }, function(){
+      }, this.id, blob);
+    };
+
+    // XXX handle remove attachments
+    i.addAttachment = function(blob, name, success, error){
+      if (!this.id || !api.service)
+        return;
+      api.service.addAttachment((function(d){
+        this.draft.extra.attachments.pushObject(new Attachee({
+          id: d.blobId,
+          url: '//' + api.servicesCore.requestor.hostPort + d.url,
+          name: name,
+          type: blob.type
+        }));
+        success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
+      }.bind(this)), function(){
       }, this.id, blob);
     };
 

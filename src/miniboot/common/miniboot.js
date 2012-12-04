@@ -107,6 +107,9 @@
   // Redactor rich text editing
   jsBoot.loader.use('validate', version || '1.10');
 
+  // Moment js for date formatting
+  jsBoot.loader.use('moment', version || '1.7');
+
   // Custom forms
   jsBoot.loader.use('uniform', version || '1.5');
 
