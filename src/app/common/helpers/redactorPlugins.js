@@ -11,6 +11,21 @@
         var nodeContainer = $('#redactor_modal');
         var dropZone = nodeContainer.find('.redactor_dropareabox');
         this.saveSelection();
+
+        var gallery = nodeContainer.find('#redactor_image_box');
+        gallery.empty();
+        LxxlApp.get('router.activityEditController.content').blobs.media.forEach(function(e) {
+          var img = $('<img />');
+          var blobId = e.split('/');
+          blobId.pop();
+          blobId = blobId.pop();
+          img.attr('src', e);
+          img.attr('data-blobid', blobId);
+          img.click(function() {
+            insertImage($(this).attr('src'), $(this).attr('data-blobid'));
+          });
+          gallery.append(img);
+        });
         nodeContainer.find('.redactor_imageupload').fileupload();
         nodeContainer.find('.redactor_imageupload').fileupload('option', {
           dropZone: dropZone[0],

@@ -3633,19 +3633,23 @@ var RLANG = {
             }
 
             // tabs
-            if ($('#redactor_tabs').size() !== 0)
+            // XXX Patch selector (added #redactor_modal prefix)
+            if ($('#redactor_modal #redactor_tabs').size() !== 0)
             {
                 var that = this;
-                $('#redactor_tabs a').each(function(i,s)
+                $('#redactor_modal #redactor_tab1').show();
+
+                $('#redactor_modal #redactor_tabs a').each(function(i,s)
                 {
                     i++;
+
                     $(s).click(function()
                     {
-                        $('#redactor_tabs a').removeClass('redactor_tabs_act');
+                        $('#redactor_modal #redactor_tabs a').removeClass('redactor_tabs_act');
                         $(this).addClass('redactor_tabs_act');
                         $('.redactor_tab').hide();
-                        $('#redactor_tab' + i).show();
-                        $('#redactor_tab_selected').val(i);
+                        $('#redactor_modal #redactor_tab' + i).show();
+                        $('#redactor_modal #redactor_tab_selected').val(i);
 
                         if (that.isMobile() === false)
                         {

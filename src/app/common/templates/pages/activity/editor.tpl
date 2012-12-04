@@ -170,12 +170,23 @@
 
 <div id="redactor-imagemanager" style="display: none;">
     <div id="redactor_modal_content">
-        <div class="redactor_droparea"><div class="redactor_dropareabox">Déposez le fichier ici</div></div>
-        <button class="btn btn-large add-thumbnail">
-            <i class="icon-plus"></i>
-            <input class="redactor_imageupload" type="file" name="file" class="">
-            Ajouter une image
-        </button>
+        <div id="redactor_tabs">
+            <a href="javascript:void(null);" class="redactor_tabs_act">Upload</a>
+            <a href="javascript:void(null);">Galerie</a>
+        </div>
+        <div id="redactor_tab1" class="redactor_tab">
+            <div class="redactor_droparea"><div class="redactor_dropareabox">Déposez le fichier ici</div></div>
+            <button class="btn btn-large add-thumbnail">
+                <i class="icon-plus"></i>
+                <input class="redactor_imageupload" type="file" name="file" class="">
+                Ajouter une image
+            </button>
+        </div>
+        <div id="redactor_tab2" class="redactor_tab" style="display:none">
+            <div id="redactor_image_box">
+                
+            </div>
+        </div>
     </div>
     <div id="redactor_modal_footer">
         <a  class="redactor_modal_btn redactor_btn_modal_close">Fermer</a>
