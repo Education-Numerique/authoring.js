@@ -90,6 +90,19 @@ jsBoot.pack('LxxlLib.model', function(api) {
     username: ''
   });
 
+  // var tt = function(v){
+  //   return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/activities/' + v;
+  // };
+
+  // tt.isDirty = true;
+
+  var blanket = function(v){ return v; };
+  blanket.isDirty = true;
+  var MetaBlob = api.TypedMutable.bind({}, {
+    media: api.ArrayMutable.bind({}, blanket),
+    attachments: api.ArrayMutable.bind({}, blanket)
+  });
+
   var SubActivity = api.TypedMutable.bind({}, {
     title: '',
     description: '',
@@ -100,8 +113,13 @@ jsBoot.pack('LxxlLib.model', function(api) {
     duration: new this.Length({id: 0}),
     difficulty: new this.Difficulty({id: 'easy'}),
     category: api.ArrayMutable.bind({}, this.Category),
-    thumbnailUrl: null,
+    thumbnailUrl: '',/*function(v){
+      return '//' + api.servicesCore.requestor.hostPort + v;
+    },*/
+    blobs: MetaBlob,
     pages: api.ArrayMutable.bind({}, this.Page)
+//    media: api.ArrayMutable.bind({}, Blobby),
+//    attachments: api.ArrayMutable.bind({}, Blobby)
   });
 
   var Activity = api.TypedMutable.bind({}, {
@@ -132,13 +150,51 @@ jsBoot.pack('LxxlLib.model', function(api) {
     // var i.draft = new Activity(initialMesh);
     // var i.published = new Activity(initialMesh);
 
+    var refork = function(){
+
+    };
+
     i.pull = function() {
       console.warn(api.service, this.id);
       if (!this.id || !api.service)
         return;
-      console.warn("pullklihnnihn");
       api.service.read((function(d) {
-        console.warn("----------------->", d);
+        if('blobs' in d.draft){
+          Object.keys(d.draft.blobs).forEach(function(key){
+            d.draft.blobs[key] = d.draft.blobs[key].map(function(id){
+              return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/' + id + '/draft';
+// //snap.lxxl.com:90/1.0/blobs/50bd49e474957159d7d8d2ed/draft
+            }, this);
+          }, this);
+        }
+
+        if('blobs' in d.published){
+          Object.keys(d.published.blobs).forEach(function(key){
+            d.published.blobs[key] = d.published.blobs[key].map(function(id){
+              return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/' + id + '/published';
+// //snap.lxxl.com:90/1.0/blobs/50bd49e474957159d7d8d2ed/draft
+            }, this);
+          }, this);
+        }
+
+        //   if('thumbnail' in d.draft.blobs){
+        //     d.draft.thumbnailUrl = '//' + api.servicesCore.requestor.hostPort + d.draft.blobs.thumbnail.pop();
+        //   }
+        // }
+        // if('blobs' in d.published){
+        //   if('thumbnail' in d.published.blobs){
+        //     d.published.thumbnailUrl = '//' + api.servicesCore.requestor.hostPort + d.published.blobs.thumbnail.pop();
+        //   }
+        // }
+
+          // if('media' in d.blobs){
+          //   d.media = d.blobs.media;
+          //   delete d.blobs.media;
+          // }
+          // if('attachments' in d.blobs){
+          //   d.attachments = d.blobs.attachments;
+          //   delete d.blobs.attachments;
+          // }
         this.fromObject(d);
       }.bind(this)), failure, this.id);
     };
