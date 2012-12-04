@@ -96,11 +96,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
   // tt.isDirty = true;
 
-  var blanket = function(v){ return v; };
-  blanket.isDirty = true;
   var MetaBlob = api.TypedMutable.bind({}, {
-    media: api.ArrayMutable.bind({}, blanket),
-    attachments: api.ArrayMutable.bind({}, blanket)
+    media: api.ArrayMutable.bind({}, null),
+    attachments: api.ArrayMutable.bind({}, null)
   });
 
   var SubActivity = api.TypedMutable.bind({}, {
