@@ -88,8 +88,20 @@
       // showCharte: Ember.Route.transitionTo('dashboard.charte'),
       // showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
+      showCnil: Ember.Route.transitionTo('cnil'),
+
+      cnil: Ember.Route.extend({
+        route: '/cnil',
+        enter: function(router) {
+          router.set('applicationController.selected', 'cnil');
+        },
+        connectOutlets: function(router) {
+          console.warn("GRAND WARN");
+          router.get('applicationController').connectOutlet('cnil');
+        }
+      }),
+
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
-      showCnil: Ember.Route.transitionTo('dashboard.cnil'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
 
       dashboard: Ember.Route.extend({
@@ -110,12 +122,6 @@
           }
         }),
 
-        cnil: Ember.Route.extend({
-          route: '/cnil',
-          connectOutlets: function(router) {
-            router.set('dashboardController.selected', 'cnil');
-          }
-        }),
         charte: Ember.Route.extend({
           route: '/charte',
           connectOutlets: function(router) {

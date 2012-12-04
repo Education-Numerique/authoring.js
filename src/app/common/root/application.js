@@ -13,6 +13,10 @@
 (function() {
   'use strict';
 
+  // Redactor language rebinding
+  window.RELANG = {};
+  RELANG['fr'] = I18n.translations.fr.redactor;
+
   this.LxxlApp = {
     rootElement: $('#lxxlroot'),
     ready: function() {

@@ -14,6 +14,10 @@
 
       // Breadcrumb - these specify the main title of the page, along with the optional breadcrumb
       breadcrumb: {
+        cnil: {
+          title: 'CNIL: respect de la vie privée, données personnelles'
+        },
+
         login: {
           title: 'Login'
           // No bread means no bread ;)
@@ -247,38 +251,8 @@
         link_new_tab: 'Ouvrir le lien dans un nouvel onglet',
         underline: 'Souligné',
         alignment: 'Alignement'
-      }/*,
-
-
-      // You can add new matters here - but DONT RENAME existing keys!!!! - you can still rename
-      // the value obviously
-      activities: {
-        defaultValues: {
-          title: 'Titre par défaut de l\'activité',
-          // level: '',
-          // matter: '',
-          // category: '',
-          description: 'Description par défaut de l\'activité',
-          duration: 10,
-          difficulty: 'easy',
-
-          page: {
-            title: 'Titre par défaut de la page',
-            subtitle: 'Sous-titre par défaut de la page',
-            flavor: 'simple',
-            coef: 0,
-            limitedTime: 0, // // 0 == infinity - X seconds = time
-            sequencing: -1 // -1 = follow through | 0 = random sur la totalité | X = random sur un subset
-            // advice: '',
-            // document: '',
-          }
-        }
-      }*/
+      }
     }
   };
-
-  // Don't touch this
-  window.RELANG = {};
-  RELANG['fr'] = I18n.translations.fr.redactor;
 
 })();

@@ -11,17 +11,17 @@
 -->
 
 <article id="cnil" class="widget-box">
+<!--
   <header class="widget-title">
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
     <h5 >Respect de la vie privée - Données personnelles - CNIL</h5>
-<!--
     <div class="buttons">
       <a title="Icon Title" class="btn btn-mini" href="#"><i class="icon-print"></i> Print</a>
     </div>
-  -->
   </header>
+  -->
   <section class="widget-content">
     <ul syle="text-align: justify;">
       <li>
