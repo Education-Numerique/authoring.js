@@ -5,6 +5,7 @@ jsBoot.use('jsBoot.types.utils');
 jsBoot.use('jsBoot.core.Error');
 jsBoot.use('jsBoot.service.core').as('servicesCore');
 jsBoot.use('LxxlLib.service.activities', true).as('service');
+jsBoot.use('LxxlLib.service.blob', true).as('blobService');
 jsBoot.pack('LxxlLib.model', function(api) {
   'use strict';
 
@@ -208,6 +209,13 @@ jsBoot.pack('LxxlLib.model', function(api) {
       }, function(){
       }, this.id, blob);
     };
+
+    var handleDetachChange = function(arr, start, removeCount, addCount){
+      for(var x = start, item; x < start + removeCount; x++)
+        api.blobService.remove(function(){}, function(){}, arr[x].id);
+    };
+
+    i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: function(){}});
 
     // XXX handle remove attachments
     i.addAttachment = function(blob, name, success, error){
