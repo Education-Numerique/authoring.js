@@ -134,7 +134,7 @@ jsBoot.pack('jsBoot.types', function(api) {
           this[i] = (item === true);
           break;
         case 'string':
-          this[i] = '' + item;
+          this[i] = '' + ((item !== null) ? item : '');
           break;
         case 'object':
           // May be null, an array, or an object-object
@@ -215,7 +215,7 @@ jsBoot.pack('jsBoot.types', function(api) {
             this.set(i, (item == 'true'));
             break;
           case 'string':
-            this.set(i, '' + item);
+            this.set(i, '' + ((item !== null) ? item : ''));
             break;
           case 'object':
             // May be null, an array, or an object-object
