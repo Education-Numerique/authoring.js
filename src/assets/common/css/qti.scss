@@ -660,16 +660,19 @@ Style specific to activity edition
             }
         }
 
-        &.in {
+        &.drop {
             width: 100%;
             height: 100%;
             background-color:#cecece;
             img, canvas {
-                display:none;
+                opacity:0!important;
             }
         }
-        &:hover {
-            //background-color:#d8d6d6;
+        &.hover {
+            background-color:#d8d6d6;
+            img,canvas {
+                opacity:0!important;
+            }
         }
 
         &.fade {
@@ -679,6 +682,15 @@ Style specific to activity edition
             -o-transition: all 0.3s ease-out;
             transition: all 0.3s ease-out;
             opacity: 1;
+
+            img,canvas {
+                -webkit-transition: opacity 0.5s ease-out;
+                -moz-transition: opacity 0.5s ease-out;
+                -ms-transition: opacity 0.5s ease-out;
+                -o-transition: opacity 0.5s ease-out;
+                transition: opacity 0.5s ease-out;
+                opacity: 1;
+            }
         }
     }
 
@@ -700,6 +712,20 @@ Style specific to activity edition
             bottom:0;
             right:0;
         }
+    }
+}
+
+.attachments .add-file {
+    position:relative;
+    input {
+        width:100%;
+        height:100%;
+        opacity:0;
+        position:absolute;
+        top:0;
+        left:0;
+        bottom:0;
+        right:0;
     }
 }
 
@@ -751,4 +777,110 @@ body .chzn-container .chzn-results {
     .active-result {
         padding-left:15px;
     }
-} 
+}
+
+
+.attachments {
+    .dropzone {
+        z-index: 1;
+        position: relative;
+        text-align: center;
+        width: 100%;
+        background-color: white;
+        padding: 20px 0;
+        border: 2px dashed #BBB;
+        -webkit-transition: all 0.3s ease-out;
+        -moz-transition: all 0.3s ease-out;
+        -ms-transition: all 0.3s ease-out;
+        -o-transition: all 0.3s ease-out;
+        transition: all 0.3s ease-out;
+        opacity: 1;
+
+        &.hover {
+            background: #d8d6d6;
+            border-color: #aaa;
+        }
+        &.error {
+            background: #f7e5e5;
+            border-color: #dcc3c3;
+        }
+        &.drop {
+            background: #cecece;
+            border-color: #e0e5d6;
+        }
+    }
+}
+
+.attachments-list {
+    float:left;
+    width:100%;
+    margin:10px 0;
+    li {
+        display:inline-block;
+        list-style:none;
+        position:relative;
+        float:left;
+        margin:10px 2.332%;
+        width:12%;
+        padding:10px;
+
+        background: #f9f9f9;
+        background: -moz-linear-gradient(top,  #f9f9f9 0%, #eeeeee 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#eeeeee));
+        background: -webkit-linear-gradient(top,  #f9f9f9 0%,#eeeeee 100%);
+        background: -o-linear-gradient(top,  #f9f9f9 0%,#eeeeee 100%);
+        background: -ms-linear-gradient(top,  #f9f9f9 0%,#eeeeee 100%);
+        background: linear-gradient(to bottom,  #f9f9f9 0%,#eeeeee 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#eeeeee',GradientType=0 );
+        @include rounded(3px);
+        @include multiple-shadows(0px,1px,3px,rgba(0,0,0,0.3), 0px,1px,1px,rgba(255,255,255,1));
+        @include box-sizing(border-box);
+        min-height:50px;
+        text-align:center;
+        color: #666;
+        font-size: 12px;
+        font-weight: bold;
+        cursor:pointer;
+
+        &:nth-of-type(6n+1) {
+            clear:both;
+        }
+
+        .delete {
+            display:none;
+            position:absolute;
+            top:0px;
+            right:0px;
+            padding:2px;
+            @include scale(0.7);
+            opacity:0.8;
+
+            &:hover {
+                opacity:1;
+            }
+        }
+        &:hover {
+            .delete {
+                display:block;
+            }
+        }
+    }
+
+    .illustration {
+        max-width:128px;
+        max-height:128px;
+        width:100%;
+        height:120px;
+
+
+        &.mp3 {    
+            background:transparent url(images/fileicons/mp3.png) center center no-repeat;
+            background-size:90%;
+        }
+
+        &.pdf {
+            background:transparent url(images/fileicons/pdf.png) center center no-repeat;
+            background-size:90%;
+        }
+    }
+}

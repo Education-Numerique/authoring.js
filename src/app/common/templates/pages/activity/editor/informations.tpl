@@ -39,8 +39,8 @@
                 
             </div>
 
-            <div class="dropzone-container">
-                <div class="dropzone">
+            <div class="dropzone-container thumbnail-uploader">
+                <div class="dropzone fade">
                     <div class="preview default">
                         {{#bind content.thumbnailUrl}}
                             {{view Em.Image srcBinding="this"}}
@@ -60,5 +60,22 @@
                 </div>
         </div>
     </div>
-        
+    <div class="widget-box questions-toolbar attachments noborder">
+        <div class="widget-title">
+            <span class="icon">
+                <i class="icon-file"></i>
+            </span>
+            <h5>Fichiers joints</h5>
+            <button class="btn btn-mini btn-success add-file"><i class="icon-plus icon-white spacify"></i><input id="fileattachmentupload" type="file" name="fileupload" />Ajouter un fichier</button>
+        </div>
+        <div class="widget-content">
+            <div class="dropzone">Déposer un ou plusieurs fichiers ici</div>
+            {{#collection view.AttachmentsList contentBinding="content.extra.attachments" classNames="attachments-list" tagName="ul"}}
+                <div {{bindAttr class=":illustration view.type"}}></div>
+                {{view.content.name}}
+                <button type="button" {{action deleteAttachment target="view"}}class="btn btn-danger btn-mini delete" ><i class="icon-remove icon-white full-opacity"></i></button>
+            {{/collection}}
+
+        </div>
+    </div>
 </div>

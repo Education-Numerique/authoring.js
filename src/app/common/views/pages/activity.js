@@ -374,20 +374,36 @@
     InformationTab: Em.View.extend({
       templateName: 'pages/activity/editor/informations',
 
+      AttachmentsList: Em.CollectionView.extend({
+        itemViewClass: Em.View.extend({
+          tagName: 'li',
+          classNames: '',
+          type: '',
+
+          init: function() {
+            this._super();
+            if (this.get('content.type').search('pdf') !== -1) {
+              this.set('type', 'pdf');
+            } else {
+              this.set('type', 'mp3');
+            }
+          },
+
+          deleteAttachment: function() {
+            this.get('parentView.content').removeObject(this.get('content'));
+          }
+        })
+      }),
+
       didInsertElement: function() {
         var self = this;
 
-
-        var _loadImage = function(img) {
-          self.get('controller.content').controller.setThumbnail(img);
-        };
-
         $('#fileupload').fileupload();
         $('#fileupload').fileupload('option', {
-          dropZone: this.$('.dropzone')[0],
+          dropZone: this.$('.thumbnail-uploader .dropzone')[0],
           limitMultiFileUploads: 1,
-          maxFileSize: 5000000,
-          acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
+          // maxFileSize: 5000000,
+          // acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
           process: [
             {
                       action: 'load',
@@ -407,29 +423,50 @@
           ],
           add: function(e, data) {
             $(this).fileupload('process', data).done(function() {
-              _loadImage(data.files[0]);
-
+              self.get('controller.content').controller.setThumbnail(data.files[0]);
             });
           }
+
         });
 
-        $(document).bind('dragover', function(e) {
-          var dropZone = $('.dropzone'),
-              timeout = window.dropZoneTimeout;
-          if (!timeout) {
-            dropZone.addClass('in');
-          } else {
-            clearTimeout(timeout);
+        $('#fileattachmentupload').fileupload();
+        $('#fileattachmentupload').fileupload('option', {
+          dropZone: this.$('.attachments .dropzone')[0],
+          limitMultiFileUploads: 1,
+
+          add: function(e, data) {
+            var validation = /(application\/pdf|audio\/mpeg3|audio\/mp3|audio\/x-mpeg-3)$/i;
+            var maxFileSize = 5000000;
+
+            data.files.forEach(function(file) {
+              console.warn('Adding file ', file.type, file.size);
+              if (validation.test(file.type) && file.size < maxFileSize) {
+                self.get('controller.content').controller.addAttachment(file, file.name, function() {
+
+                }, function() {
+
+                });
+              }
+            });
+          },
+          fail: function() {
+            console.error(arguments);
           }
-          if (e.target === dropZone[0]) {
-            dropZone.addClass('hover');
-          } else {
-            dropZone.removeClass('hover');
-          }
-          window.dropZoneTimeout = setTimeout(function() {
-            window.dropZoneTimeout = null;
-            dropZone.removeClass('in hover');
-          }, 100);
+
+        });
+
+        this.$('.dropzone').bind('dragover', function(e) {
+          $(this).addClass('hover');
+        });
+        this.$('.dropzone').bind('dragleave', function(e) {
+          $(this).removeClass('hover');
+        });
+        this.$('.dropzone').bind('drop', function(e) {
+          $(this).removeClass('hover').addClass('drop');
+          window.setTimeout(function() {
+            $(this).removeClass('drop');
+          }.bind(this), 1000);
+
         });
       }
     }),

@@ -96,7 +96,7 @@
           router.set('applicationController.selected', 'cnil');
         },
         connectOutlets: function(router) {
-          console.warn("GRAND WARN");
+          console.warn('GRAND WARN');
           router.get('applicationController').connectOutlet('cnil');
         }
       }),
