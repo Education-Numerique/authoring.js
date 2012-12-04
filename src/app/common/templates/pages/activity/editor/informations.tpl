@@ -42,7 +42,9 @@
             <div class="dropzone-container">
                 <div class="dropzone">
                     <div class="preview default">
-                        {{view Em.Image srcBinding="content.thumbnailUrl"}}
+                        {{#bind content.thumbnailUrl}}
+                            {{view Em.Image srcBinding="this"}}
+                        {{/bind}}
                     </div>
                 </div>
                 <button class="btn btn-large add-thumbnail">

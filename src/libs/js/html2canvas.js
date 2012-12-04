@@ -23,6 +23,7 @@ html2canvas;
 
 
 function h2clog(a) {
+    window.console.log(a);
     if (_html2canvas.logging && window.console && window.console.log) {
         window.console.log(a);
     }
@@ -2090,7 +2091,7 @@ _html2canvas.Preload = function( options ) {
     count = 0,
     element = options.elements[0] || document.body,
     doc = element.ownerDocument,
-    domImages = doc.images, // TODO probably should limit it to images present in the element only
+    domImages = element.getElementsByTagName('image'), // XXX PATCHED -> TODO probably should limit it to images present in the element only
     imgLen = domImages.length,
     link = doc.createElement("a"),
     supportCORS = (function( img ){
@@ -2130,7 +2131,7 @@ _html2canvas.Preload = function( options ) {
         var callback_name,
         scriptUrl = options.proxy,
         script;
-
+        console.error('proxy load', arguments);
         link.href = url;
         url = link.href; // work around for pages with base href="" set - WARNING: this may change the url
 
@@ -2413,6 +2414,7 @@ _html2canvas.Preload = function( options ) {
     h2clog('html2canvas: Preload: Finding images');
     // load <img> images
     for (i = 0; i < imgLen; i+=1){
+        console.warn('load image', domImages[i]);
         methods.loadImage( domImages[i].getAttribute( "src" ) );
     }
 

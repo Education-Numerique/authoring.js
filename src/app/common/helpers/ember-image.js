@@ -75,7 +75,7 @@
 
     didLoad: function() {
       set(this, 'status', 'loaded');
-
+      
       var width = this.$().width();
       var height = this.$().height();
 
