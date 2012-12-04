@@ -175,7 +175,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
       if (!this.id) {
         api.service.create((function(d) {
           this.set('id', d.id);
-        }.bind(this)), failure, this.toObject());
+        }.bind(this)), failure, this.draft.toObject());
       }else {
         var p = this.draft.toObject();
         api.service.patch(success, failure, this.id, p);
