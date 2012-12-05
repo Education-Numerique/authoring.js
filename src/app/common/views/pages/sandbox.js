@@ -9,6 +9,7 @@
     }).appendTo('body').fadeIn(200);
   };*/
 
+/*
   t.data = (function() {
     if (!this.get('element'))
       return;
@@ -63,7 +64,7 @@
   }.property('controller.authors'));
 
   t.doOnInsert = function() {
-
+*/
     /*
     var data = [];
     var series = Math.floor(Math.random()*10)+1;
@@ -96,7 +97,7 @@
     //     }
     //   }
     // });
-  };
+//  };
 
   this.SandboxView = Ember.View.extend(t);
 

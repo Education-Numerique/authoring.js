@@ -13,6 +13,18 @@
 (function() {
   'use strict';
   LxxlLib.behaviors = new (function() {
+    $('html').tooltip({selector: '[rel=tooltip]'});
+
+
+    // $('html').popover({selector: '[rel=popover]'});
+
+        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-title', 'titre');
+        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-html', '<h4>toto</h4>');
+        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-placement', 'top');
+        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-trigger', 'hover');
+
+
+
     // Toggle active state on one menu item
     this.makeMenuItemActive = function(node) {
       var parentLi = node.parents('li');
@@ -43,14 +55,14 @@
     this.bindBehaviors = function(node) {
       // Chosen stuff
       // $('select.chzn-select').chosen();
-      $(':not(.data-table) select').chosen();
+      $(':not(.data-table) select', node).chosen();
 
       // Tips
-      $('.tip', node).tooltip();
-      $('.tip-left', node).tooltip({ placement: 'left' });
-      $('.tip-right', node).tooltip({ placement: 'right' });
-      $('.tip-top', node).tooltip({ placement: 'top' });
-      $('.tip-bottom', node).tooltip({ placement: 'bottom' });
+      // $('.tip', node).tooltip();
+      // $('.tip-left', node).tooltip({ placement: 'left' });
+      // $('.tip-right', node).tooltip({ placement: 'right' });
+      // $('.tip-top', node).tooltip({ placement: 'top' });
+      // $('.tip-bottom', node).tooltip({ placement: 'bottom' });
 
       // $('[class*="tip-"]', node).each(function(ind, item){
       //   console.warn(item);
@@ -66,7 +78,7 @@
       // });
       $('input[type=checkbox],input[type=radio]', node).uniform();
 
-      $('.icon-print').each(function(ind, item) {
+      $('.icon-print', node).each(function(ind, item) {
         var p = $(item).parent();
         if (p.hasClass('will-print'))
           return;
@@ -76,7 +88,7 @@
         });
       });
 
-      $('.data-table').each(function(ind, item) {
+      $('.data-table', node).each(function(ind, item) {
         if ($(item).hasClass('dataTable'))
           return;
         $(item).dataTable({
@@ -87,7 +99,7 @@
         });
 
 
-        $('span.icon input:checkbox, th input:checkbox').click(function() {
+        $('span.icon input:checkbox, th input:checkbox', node).click(function() {
           var checkedStatus = this.checked;
           var checkbox = $(this).parents('.widget-box').find('tr td:first-child input:checkbox');
           checkbox.each(function() {
@@ -100,7 +112,7 @@
             }
           });
         });
-        $('select').chosen();
+        $('select', node).chosen();
       });
     };
   })();

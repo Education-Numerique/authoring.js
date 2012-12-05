@@ -96,10 +96,23 @@
           router.set('applicationController.selected', 'cnil');
         },
         connectOutlets: function(router) {
-          console.warn('GRAND WARN');
           router.get('applicationController').connectOutlet('cnil');
         }
       }),
+
+      showSandbox: Ember.Route.transitionTo('sandbox'),
+      sandbox: Ember.Route.extend({
+        route: '/sandbox',
+        enter: function(router) {
+          router.set('applicationController.selected', 'sandbox');
+        },
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('sandbox');
+        }
+      }),
+
+
+
 
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
@@ -147,17 +160,6 @@
       }),
 
 
-
-      showSandbox: Ember.Route.transitionTo('sandbox'),
-      sandbox: Ember.Route.extend({
-        route: '/sandbox',
-        enter: function(router) {
-          router.set('applicationController.selected', 'sandbox');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('sandbox');
-        }
-      }),
 
       // QTIs
       showMyQTIs: Ember.Route.transitionTo('myQTIs'),
@@ -227,8 +229,6 @@
 
       playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
-
-      showNewActivity: Em.Route.transitionTo('newActivity'),
       showEditActivity: Ember.Route.transitionTo('editActivity'),
       editActivity: Ember.Route.extend({
         route: '/activity/:id',
@@ -239,6 +239,8 @@
               activity.draft);
         }
       }),
+
+      showNewActivity: Em.Route.transitionTo('newActivity'),
       newActivity: Ember.Route.extend({
         route: '/activity/new',
         enter: function(router) {
