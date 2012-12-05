@@ -111,7 +111,7 @@
   jsBoot.loader.use('moment', version || '1.7');
 
   // Custom forms
-  jsBoot.loader.use('uniform', version || '1.5');
+  jsBoot.loader.use('uniform', version || '1.7');
 
   // Data tables - no style from them though
   jsBoot.loader.use('datatable', version || '1.9', 'js$');
