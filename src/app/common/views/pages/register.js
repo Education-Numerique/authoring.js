@@ -4,7 +4,7 @@
 
   t.doOnInsert = function() {
     $('#form-wizard').formwizard({
-      formPluginEnabled: true,
+      formPluginEnabled: false,
       validationEnabled: true,
       focusFirstInput: true,
       disableUIStyles: true,
@@ -27,18 +27,31 @@
         rules: {
           email: {
             required: true,
-            email: true
+            email: true,
+            minlength: 6,
+            maxlength: 25
           },
-          password: 'required',
+          password: {
+            required: true,
+            minlength: 6,
+            maxlength: 25
+          },
           password2: {
             required: true,
             equalTo: '#password'
           },
           eula: 'required',
-          username: 'required'
+          username: {
+            required: true,
+            minlength: 5,
+            maxlength: 25
+          }
         },
         messages: {
-          username: 'Merci de fournir un nom d\'utilisateur',
+          username: {
+            required: 'Merci de fournir un nom d\'utilisateur',
+            minlength: jQuery.format('At least {0} characters required!')
+          },
           password: 'Vous devez choisir un mot de passe',
           password2: {
             required: 'Merci de répéter le mot de passe choisi',
@@ -61,39 +74,22 @@
       }
     });
 
-    var setProgress = function(c) {
-      if (!c)
-        c = ($('#form-wizard').formwizard('state').activatedSteps.length - 1) / 4 * 100;
-      if (!c)
-        c = 5;
-      $('#register-progress').width(c + '%');
-      if (c < 20)
-        $('.form-actions').hide();
-    };
+    $('#form-wizard').bind('step_shown', function(e, state) {
+      var currentStep = 0;
 
-    $('#next,#back').on('click', setProgress);
+      state.steps.each(function(i,item) {
+        if (item.id == state.currentStep)
+          currentStep = i + 1;
+      });
 
-    $('#register-regular').on('click', function() {
-      $('#form-wizard').formwizard('show', 'step-regular');
-      $('.form-actions').show();
-      setProgress();
+      var percent = (currentStep) / (state.steps.length + 1) * 100;
+      $('#register-progress').width(percent + '%');
     });
-
-    $('#register-facebook').on('click', function() {
-      $('#form-wizard').formwizard('show', 'step-facebook');
-      $('.form-actions').show();
-      setProgress();
-    });
-
-    $('.form-actions').hide();
-    // XXX debugging
-    // $('#form-wizard').formwizard('show', 'step-conclusion');
 
 
     $('#form-wizard').on('submit', function() {
       $('#form-wizard input').attr('disabled', 'disabled');
       // XXX do the actual registration
-      // console.warn($('#form-wizard').formwizard('state'));
       var submitor = {};
       Array.prototype.forEach.call(document.getElementsByTagName('form')[0], function(item) {
         if ((item.name != 'Submit') && (item.name != 'Back'))
@@ -123,6 +119,7 @@
               $(this).hide();
             });
           }*/);
+          $('#form-wizard').formwizard('show', 'step-regular');
           break;
         default:
         case this.get('controller').UNKNOWN:
@@ -134,7 +131,7 @@
     }.bind(this));
 
     var onsuccess = (function(type) {
-      setProgress(100);
+      $('#register-progress').width('100%');
       $('#form-wizard').fadeTo(500, 0, function() {
         $(this).hide();
       });

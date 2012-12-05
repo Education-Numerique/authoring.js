@@ -2,21 +2,7 @@
 * @template : pages/register
 */
 
-<div class="row-fluid">
-  <div class="alert alert-info">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Page de création de compte</h4>
-    Ceci est la page de création de compte utilisateur
-  </div>
 
-  <article id="home" class="widget-box">
-    <div>
-      En attente validation et fourniture contenus / textes lot 2
-    </div>
-  </article>
-</div>
-
-<!--
 
 <div class="row-fluid">
   <div class="alert alert-info">
@@ -51,36 +37,6 @@
 
       <form id="form-wizard" class="form-horizontal" method="post">
         <div id="creation-error" class="alert alert-error" style="display: none"></div>
-
-        <div style="text-align: center" id="form-step-start" class="step">
-          <div class="alert alert-info">Veuillez tout d'abord choisir votre méthode d'enregistrement.
-            <a href="#" data-dismiss="alert" class="close">×</a>
-          </div>
-
-          <ul class="quick-actions">
-            <li>
-              <a id="register-facebook" class="tip-top" title="À partir de vos informations Facebook">
-                <i class="icon-facebook"></i>
-                Enregistrement avec Facebook
-              </a>
-            </li>
-            <li>
-              <a id="register-regular" class="tip-top" title="Manuellement">
-                <i class="icon-people"></i>
-                Enregistrement traditionnel
-              </a>
-            </li>
-          </ul>
-        </div>
-
-        <div id="step-facebook" class="step">
-          <div class="alert alert-error">
-            Coin! Facebook Connect is not plugged-in yet. You should go back now.
-            <a href="#" data-dismiss="alert" class="close">×</a>
-          </div>
-
-        </div>
-
 
         <div id="step-regular" class="step">
           <div class="alert alert-info">Veuillez maintenant fournir les informations permettant de vous identifier sur le service.
@@ -120,7 +76,7 @@
             </div>
           </div>
 
-          <!-- XXX finish-up the label for attributes --!>
+          <!-- XXX finish-up the label for attributes -->
           <div class="control-group">
             <label for="firstname" class="control-label">Prénom</label>
             <div class="controls">
@@ -233,14 +189,13 @@
             <input id="next" class="btn btn-primary" type="submit" value="Next" />
             <!--
             <div id="status">Status?</div>
-            --!>
+            -->
         </div>
       </form>
 <!--
       <div id="submitted" style="display: none;"><h5 class="throbbering">En cours de traitement</h5></div>
---!>
+-->
     </div>
   </div>
 </div>
 
--->
