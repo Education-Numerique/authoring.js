@@ -67,6 +67,14 @@
       $('#lxxlroot').removeClass('user-admin');
     };
 
+
+    this.update = function(){
+      var d = this.get('profile').toObject();
+      LxxlLib.service.user.profile.push(function(){
+      }, function(){
+      }, d);
+    };
+
   })();
 
   this.UserController = Ember.ObjectController.extend(uControl);
