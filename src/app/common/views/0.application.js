@@ -32,13 +32,13 @@
     var argg;
     return {
       templateName: function() {
-        return 'pages/' + name;
+        return name;
       }.property(),
 
       didInsertElement: function() {
         // Bind behaviors
         LxxlLib.behaviors.bindBehaviors(this.get('element'));
-        this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.' + name + '.title'));
+        this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.' + name.replace('/', '.').replace('pages.', '') + '.title'));
         /*        var bread = LxxlLib.Locale.getData('breadcrumb.' + name + '.bread');
         if (bread) {
           argg = this.get('parentView.controller.breadcrumbs');

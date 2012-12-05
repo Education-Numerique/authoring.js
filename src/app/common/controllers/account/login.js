@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  this.LoginController = Ember.ObjectController.extend({
+  this.AccountLoginController = Ember.ObjectController.extend({
     tryLogin: function(data, successCbk, failureCbk) {
       successCbk();
       // failureCbk(this.ALREADY_USED_NICK);// or facebook

@@ -14,14 +14,14 @@
   <nav id="user-nav" class="navbar" role="navigation">
     <!-- Logged-out, default -->
     <ul class="nav btn-group user-logged-out">
-      <li class="btn btn-inverse" ><a title="{{localize nav.login.tip}}" {{action showLogin href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-lock"></i><span class="text">Log-in</span></a></li>
-      <li class="btn btn-mini btn-inverse"><a title="{{localize nav.register.tip}}"  {{action showRegister href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-user"></i> <span class="text">{{localize nav.register.text}}</span></a></li>
+      <li class="btn btn-inverse" ><a title="{{localize nav.login.tip}}" {{action showAccountLogin href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-lock"></i><span class="text">Log-in</span></a></li>
+      <li class="btn btn-mini btn-inverse"><a title="{{localize nav.register.tip}}"  {{action showAccountRegister href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-user"></i> <span class="text">{{localize nav.register.text}}</span></a></li>
     </ul>
 
     <!-- Logged-in -->
     <ul class="nav btn-group user-logged-in">
-      <li class="btn btn-inverse" ><a title="{{localize nav.profile.tip}}" {{action showProfile href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-user"></i><span class="text">{{localize nav.profile.text}}</span></a></li>
-      <li class="btn btn-mini btn-inverse"><a title="{{localize nav.settings.tip}}"  {{action showSettings href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-cog"></i> <span class="text">{{localize nav.settings.text}}</span></a></li>
+      <li class="btn btn-inverse" ><a title="{{localize nav.profile.tip}}" {{action showAccountProfile href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-user"></i><span class="text">{{localize nav.profile.text}}</span></a></li>
+      <li class="btn btn-mini btn-inverse"><a title="{{localize nav.settings.tip}}"  {{action showAccountSettings href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-cog"></i> <span class="text">{{localize nav.settings.text}}</span></a></li>
       <li class="btn btn-mini btn-inverse"><a title="{{localize nav.logout.tip}}" href="#callcontrollerlogout" rel="tooltip" data-placement="bottom"><i class="icon icon-off"></i> <span class="text">{{localize nav.logout.text}}</span></a></li>
     </ul>
   </nav>

@@ -109,7 +109,7 @@
         <tbody>
           {{#each qti}}
             <tr>
-              <td class="user-reviewer2"><button {{action showEditQTI this href=true}} class="icon-edit"></button></td>
+              <td class="user-reviewer2"><button {{action showActivityEdit this href=true}} class="icon-edit"></button></td>
               <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
               <td>{{title}}</td>
               <td>{{category}}</td>

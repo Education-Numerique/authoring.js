@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var t = this.lxxlPageView('dashboard');
+  var t = this.lxxlPageView('pages/dashboard');
 
   t.selectedItem = (function() {
     if (this.get('element')) {

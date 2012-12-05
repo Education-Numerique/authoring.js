@@ -18,19 +18,28 @@
           title: 'CNIL: respect de la vie privée, données personnelles'
         },
 
-        login: {
-          title: 'Login'
-          // No bread means no bread ;)
+        account: {
+          validation : {
+            title: 'Validation de compte'
+          },
+          login: {
+            title: 'Login'
+            // No bread means no bread ;)
+          },
+          register: {
+            title: 'Création de compte'
+          },
+          settings: {
+            title: 'Réglages'
+          },
+          profile: {
+            title: 'Votre profil'
+          },
         },
-        register: {
-          title: 'Création de compte'
-        },
-        settings: {
-          title: 'Réglages'
-        },
-        profile: {
-          title: 'Votre profil'
-        },
+
+        
+        
+        
 
         categories: {
           title: 'Catégories'

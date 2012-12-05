@@ -1,5 +1,5 @@
 /*
-* @template : pages/profile
+* @template : account/profile
 */
 
 <div class="row-fluid">

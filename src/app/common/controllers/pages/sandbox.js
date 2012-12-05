@@ -66,7 +66,7 @@
         nn.fnAddData([
           '',
           '',
-          // $()<button {{action showEditActivity this href=true}} class="icon-edit"></button>,
+          // $()<button {{action showActivityEdit this href=true}} class="icon-edit"></button>,
           item.published.title,
           moment(item.publicationDate).fromNow(),
           item.seenCount,
@@ -93,7 +93,7 @@
           item.bind('click', function(e){
             // item.id);
             var id = e.target.parentNode.parentNode.lastChild.innerText;
-            LxxlApp.router.send('showEditActivity', {id: id});
+            LxxlApp.router.send('showActivityEdit', {id: id});
           });
         }
       });
@@ -110,7 +110,7 @@
             }).pop();
 
             doPreview($('#modal-preview-body'), a);
-            // LxxlApp.router.send('showEditActivity', {id: item.id});
+            // LxxlApp.router.send('showActivityEdit', {id: item.id});
             // console.warn("play", e);
           });
         }
@@ -131,7 +131,7 @@
 
 
         // {{#collection contentBinding="activities" tagName="tbody"}}
-        //     <td class="user-reviewer"><button {{action showEditActivity this href=true}} class="icon-edit"></button></td>
+        //     <td class="user-reviewer"><button {{action showActivityEdit this href=true}} class="icon-edit"></button></td>
         //     <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
         //     <td>{{view.content.title}}</td>
         //     <td>

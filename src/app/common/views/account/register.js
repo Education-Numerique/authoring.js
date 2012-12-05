@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var t = this.lxxlPageView('register');
+  var t = this.lxxlPageView('account/register');
 
   t.doOnInsert = function() {
     $('#form-wizard').formwizard({
@@ -87,7 +87,9 @@
     });
 
 
-    $('#form-wizard').on('submit', function() {
+    $('#form-wizard').on('submit', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
       $('#form-wizard input').attr('disabled', 'disabled');
       // XXX do the actual registration
       var submitor = {};
@@ -96,6 +98,7 @@
           submitor[item.name] = item.value;
       });
       this.get('controller').tryRegister(submitor, onsuccess, onfailure);
+      
       return false;
     }.bind(this));
 
@@ -156,5 +159,5 @@
 
   };
 
-  this.RegisterView = Ember.View.extend(t);
+  this.AccountRegisterView = Ember.View.extend(t);
 }).apply(LxxlApp);

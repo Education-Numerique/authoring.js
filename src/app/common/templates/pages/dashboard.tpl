@@ -33,7 +33,7 @@
   <section class="widget-content slidify" id="home-collapse">
     <h5>Enregistrez-vous en tant qu'auteur E&amp;N...<br />
     c'est gratuit, public, la&iuml;que, open source, creative commons et pas obligatoire !</h5>
-    <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showRegister href=true}}>cliquez ici</a></p>
+    <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showAccountRegister href=true}}>cliquez ici</a></p>
 
     <h5>Lorsque vous devenez auteur E&amp;N, vous avez acc&egrave;s...</h5>
 
@@ -52,7 +52,7 @@
             E&amp;N vous propose  de diffuser vos activit&eacute;s et de vous r&eacute;tribuer proportionnellement aux t&eacute;l&eacute;chargements. </p>
             <ul>
               <li><a  {{action showCharte href=true}}>        Consultez la charte des auteurs E&amp;N</a></li>
-              <li><a  {{action showRegister href=true}}>Inscrivez-vous </a></li>
+              <li><a  {{action showAccountRegister href=true}}>Inscrivez-vous </a></li>
             </ul>
           </section>
         </article>
@@ -139,13 +139,13 @@
             </a>
           </li>
           <li class="user-author">
-            <a {{action showProfile href=true}} class="tip-top" title="Accéder à votre profil et données personnelles">
+            <a {{action showAccountProfile href=true}} class="tip-top" title="Accéder à votre profil et données personnelles">
               <i class="icon-client"></i>
               Profil
             </a>
           </li>
           <li class="user-author">
-            <a {{action showSettings href=true}} class="tip-top" title="Accéder à vos paramètres">
+            <a {{action showAccountSettings href=true}} class="tip-top" title="Accéder à vos paramètres">
               <i class="icon-lock"></i>
               Réglages
             </a>

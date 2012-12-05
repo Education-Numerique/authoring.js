@@ -1,5 +1,5 @@
 /*
-* @template : pages/register
+* @template : account/register
 */
 
 

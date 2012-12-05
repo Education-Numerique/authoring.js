@@ -36,52 +36,54 @@
 
 
       // User account related
-      showLogin: Ember.Route.transitionTo('login'),
-      login: Ember.Route.extend({
-        route: '/login',
-        enter: function(router) {
-          router.set('applicationController.selected', 'login');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('login');
-        }
+      account: Ember.Route.extend({
+        route: '/account',
+
+        
+        login: Ember.Route.extend({
+          route: '/login',
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountLogin');
+          }
+        }),
+
+
+        
+        register: Ember.Route.extend({
+          route: '/register',
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountRegister');
+          }
+        }),
+
+        validate: Ember.Route.extend({
+          route: '/validate',
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountValidation');
+          }
+        }),
+
+        
+        profile: Ember.Route.extend({
+          route: '/profile',
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('profile');
+          }
+        }),
+
+        
+        settings: Ember.Route.extend({
+          route: '/settings',
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountSettings');
+          }
+        }),
       }),
 
-
-      showRegister: Ember.Route.transitionTo('register'),
-      register: Ember.Route.extend({
-        route: '/register',
-        enter: function(router) {
-          router.set('applicationController.selected', 'register');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('register');
-        }
-      }),
-
-      showProfile: Ember.Route.transitionTo('profile'),
-      profile: Ember.Route.extend({
-        route: '/profile',
-        enter: function(router) {
-          router.set('applicationController.selected', 'profile');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('profile');
-        }
-      }),
-
-      showSettings: Ember.Route.transitionTo('settings'),
-      settings: Ember.Route.extend({
-        route: '/settings',
-        enter: function(router) {
-          router.set('applicationController.selected', 'settings');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('settings');
-        }
-      }),
-
-
+      showAccountLogin: Ember.Route.transitionTo('account.login'),
+      showAccountRegister: Ember.Route.transitionTo('account.register'),
+      showAccountProfile: Ember.Route.transitionTo('account.profile'),
+      showAccountSettings: Ember.Route.transitionTo('account.settings'),
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
       // showCnil: Ember.Route.transitionTo('dashboard.cnil'),
@@ -229,7 +231,7 @@
 
       playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
-      showEditActivity: Ember.Route.transitionTo('editActivity'),
+      showActivityEdit: Ember.Route.transitionTo('editActivity'),
       editActivity: Ember.Route.extend({
         route: '/activity/:id',
         connectOutlets: function(router, qti) {

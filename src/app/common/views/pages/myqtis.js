@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var t = this.lxxlPageView('qtis');
+  var t = this.lxxlPageView('pages/qtis');
 
   /*var flotTip = function(x, y, contents) {
     $('<div id="tooltip">' + contents + '</div>').css({
