@@ -439,21 +439,38 @@
             var maxFileSize = 5000000;
 
             data.files.forEach(function(file) {
-              console.warn('Adding file ', file.type, file.size);
               if (validation.test(file.type) && file.size < maxFileSize) {
                 self.get('controller.content').controller.addAttachment(file, file.name, function() {
-
-                }, function() {
-
+                  showOkMessage('Le fichier <b>' + file.name + '</b> a bien été ajouté');
+                }, function(e) {
+                  showErrorMessage();
                 });
+              } else {
+                if (!validation.test(file.type))
+                  showErrorMessage('Le fichier <b>' + file.name + '</b> n\'est pas autorisé (' + file.type + ')');
+                else if (file.size >= maxFileSize)
+                  showErrorMessage('Le fichier <b>' + file.name + '</b> est trop volumineux. La limite est 5Mo.');
               }
             });
           },
           fail: function() {
-            console.error(arguments);
+            showErrorMessage();
           }
 
         });
+
+        var showErrorMessage = function(message) {
+          if (!message)
+            message = 'Une erreure est survenue';
+          $('.attachments-error span').html(message);
+          $('.attachments-error').clearQueue();
+          $('.attachments-error').fadeIn().delay(3000).fadeOut();
+        };
+        var showOkMessage = function(message) {
+          $('.upload-ok').html(message);
+          $('.upload-ok').clearQueue();
+          $('.upload-ok').fadeIn().delay(3000).fadeOut();
+        }
 
         this.$('.dropzone').bind('dragover', function(e) {
           $(this).addClass('hover');

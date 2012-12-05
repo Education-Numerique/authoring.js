@@ -41,7 +41,7 @@
 
             <div class="dropzone-container thumbnail-uploader">
                 <div class="dropzone fade">
-                    <div class="preview default">
+                    <div {{bindAttr class=":preview content.thumbnailUrl:hasThumbnail:default"}}>
                         {{#bind content.thumbnailUrl}}
                             {{view Em.Image srcBinding="this"}}
                         {{/bind}}
@@ -69,11 +69,18 @@
             <button class="btn btn-mini btn-success add-file"><i class="icon-plus icon-white spacify"></i><input id="fileattachmentupload" type="file" name="fileupload" />Ajouter un fichier</button>
         </div>
         <div class="widget-content">
-            <div class="dropzone">Déposer un ou plusieurs fichiers ici</div>
+            <div class="dropzone">Déposer un ou plusieurs fichiers ici<div class="upload-ok" style="display:none"></div></div>
+            <div class="alert alert-error attachments-error" style="display:none">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                <span></span>
+              
+            </div>
             {{#collection view.AttachmentsList contentBinding="content.extra.attachments" classNames="attachments-list" tagName="ul"}}
-                <div {{bindAttr class=":illustration view.type"}}></div>
-                {{view.content.name}}
-                <button type="button" {{action deleteAttachment target="view"}}class="btn btn-danger btn-mini delete" ><i class="icon-remove icon-white full-opacity"></i></button>
+                <a {{bindAttr href="view.content.url"}} target="_blank">
+                    <div {{bindAttr class=":illustration view.type"}}></div>
+                    {{view.content.name}}
+                    <button type="button" {{action deleteAttachment target="view"}}class="btn btn-danger btn-mini delete" ><i class="icon-remove icon-white full-opacity"></i></button>
+                </a>
             {{/collection}}
 
         </div>
