@@ -16,6 +16,10 @@
   this.Router = Ember.Router.extend({
     enableLogging: !!jsBoot.debug,
 
+    meController: (function(){
+      return LxxlApp.UserController.create();
+    }).property(),
+
     root: Ember.Route.extend({
       // redirectsTo: 'dashboard',
       /*      index: lxxlRoute('/'),*/

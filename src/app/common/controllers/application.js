@@ -27,31 +27,41 @@
     this.REVIEWER = 2;
     this.ADMIN = 3;
 
-    var loginSuccess = (function(level) {
-      switch (level) {
-        default:
-        case this.AUTHOR:
-          $('#lxxlroot').addClass('user-author');
-          break;
-        case this.REVIEWER:
-          $('#lxxlroot').addClass('user-reviewer');
-          break;
-        case this.ADMIN:
-          $('#lxxlroot').addClass('user-admin');
-          break;
-      }
-
-    }.bind(this));
+    this.profile = new LxxlLib.model.User();
+    this.profile.controller = this;
 
     var loginFailure = function() {
       // XXX Show the failure banner on the login view
     };
 
-    this.login = function(login, password) {
-      loginSuccess();
+    this.login = function(login, password, suc, fai) {
+      jsBoot.service.core.authenticate((function(){
+        this.profile.set('uid', jsBoot.service.core.id);
+        // Need level here?
+        // switch (level) {
+        //   default:
+        //   case this.AUTHOR:
+        //     $('#lxxlroot').addClass('user-author');
+        //     break;
+        //   case this.REVIEWER:
+        //     $('#lxxlroot').addClass('user-reviewer');
+        //     break;
+        //   case this.ADMIN:
+        //     $('#lxxlroot').addClass('user-admin');
+        //     break;
+        // }
+
+        LxxlLib.service.user.profile.pull((function(data){
+          this.profile.fromObject(data);
+        }.bind(this)), function(){});
+        suc();
+      }.bind(this)), function(){
+        fai();
+      }, login, password);
     };
 
     this.logout = function() {
+      this.set('profile', new LxxlLib.model.User());
       $('#lxxlroot').removeClass('user-author');
       $('#lxxlroot').removeClass('user-reviewer');
       $('#lxxlroot').removeClass('user-admin');
@@ -71,7 +81,7 @@
     // Which node ios actually selected
     selected: null,
     pageTitle: null,
-    breadcrumbs: []
+    breadcrumbs: [],
 
     // connectOutlet: function(name, context){
     //   if(name == 'qtiEdit'){

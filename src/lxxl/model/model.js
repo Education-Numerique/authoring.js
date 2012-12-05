@@ -88,7 +88,10 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
   this.User = api.TypedMutable.bind({}, {
     uid: '',
-    username: ''
+    username: '',
+    email: '',
+    level: '',
+    profile: {}
   });
 
   // var tt = function(v){
