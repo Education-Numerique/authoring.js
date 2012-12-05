@@ -159,34 +159,46 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.draft.controller = i;
     i.published.controller = i;
 
+    var prefix = '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/';
     i.pull = function() {
-      console.warn(api.service, this.id);
       if (!this.id || !api.service)
         return;
       api.service.read((function(d) {
         if('blobs' in d.draft){
           Object.keys(d.draft.blobs).forEach(function(key){
             d.draft.blobs[key] = d.draft.blobs[key].map(function(id){
-              return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/' + id + '/draft';
+              return prefix + id + '/draft';
             }, this);
           }, this);
           if('thumbnail' in d.draft.blobs)
-            this.draft.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
+            this.draft.set('thumbnailUrl', prefix + d.draft.blobs.thumbnail.pop() + '/draft');
         }
 
         if('blobs' in d.published){
           Object.keys(d.published.blobs).forEach(function(key){
             d.published.blobs[key] = d.published.blobs[key].map(function(id){
-              return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/' + id + '/published';
+              return prefix + id + '/published';
             }, this);
           }, this);
           if('thumbnail' in d.published.blobs)
-            this.published.set('thumbnailUrl', d.published.blobs.thumbnail.pop());
+            this.published.set('thumbnailUrl', prefix + d.draft.blobs.thumbnail.pop() + '/published');
         }
 
         this.fromObject(d);
       }.bind(this)), failure, this.id);
     };
+
+    // Don't fail to init stuff in lists
+    if(initialMesh && initialMesh.published){
+      if('blobs' in initialMesh.draft){
+        if('thumbnail' in initialMesh.draft.blobs)
+          i.draft.set('thumbnailUrl', prefix + initialMesh.draft.blobs.thumbnail.pop() + '/draft');
+      }
+      if('blobs' in initialMesh.published){
+        if('thumbnail' in initialMesh.published.blobs)
+          i.published.set('thumbnailUrl', prefix + initialMesh.published.blobs.thumbnail.pop() + '/published');
+      }
+    }
 
     i.push = function() {
       if (!api.service)

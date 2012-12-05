@@ -94,6 +94,8 @@
   // Redactor rich text editing
   //jsBoot.loader.use('redactor', 'stable');
 
+  jsBoot.loader.use('raphael', version || '2.1', '.js$');
+
   // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't
   // fit well with the vanilla bootstrap stylesheet
   jsBoot.loader.use('bootstrap', version || 'stable', '.js$');

@@ -1,6 +1,6 @@
 (function(){
-  // Bootstrap popover is a piece of shite
-  var popover = $('<div class="popover fade in">' +
+  // Bootstrap popover is a piece of shite - use our own in place, recycling just their style
+  var popover = $('<div class="popover">' +
       '<div class="arrow"></div>' +
       '<div class="popover-inner">' + 
       '<h3 class="popover-title"></h3>' +
@@ -9,14 +9,12 @@
       '</div>');
 
   $(function(){
-    console.warn('terady');
     $('body').append(popover);
     popover.hide();
   });
 
-  $('[rel=popover]').live('mouseover', function(e){
-    // console.warn('overing shite', e.target.parentNode.innerHTML);
-    var n = $(e.target);
+  $(document).on('mouseenter.popover', '[rel=popover]', function(e){
+    var n = $(this);
     var pos = n.data('placement') || 'top';
     var title = n.data('title');
     var html = n.data('html');
@@ -61,8 +59,7 @@
     popover.show();
   });
 
-  $('[rel=popover]').live('mouseout', function(){
-    console.warn('out shite');
+  $(document).on('mouseleave.popover', '[rel=popover]', function(e){
     popover.hide();
   });
 })();

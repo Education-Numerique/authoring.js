@@ -127,13 +127,13 @@
       <div class="span12 center" style="text-align: center;">         
         <ul class="quick-actions">
           <li>
-            <a {{action showSandbox href=true}} class="tip-top" title="Accéder aux activités publiquement disponibles">
+            <a {{action showSandbox href=true}} rel="tooltip" data-placement="top" title="Accéder aux activités publiquement disponibles">
               <i class="icon-home"></i>
               Sandbox
             </a>
           </li>
           <li class="user-author">
-            <a {{action showMyQTIs href=true}} class="tip-top" title="Accéder à vos activités">
+            <a {{action showMyQTIs href=true}} rel="tooltip" data-placement="top" title="Accéder à vos activités">
               <i class="icon-book"></i>
               Activités
             </a>

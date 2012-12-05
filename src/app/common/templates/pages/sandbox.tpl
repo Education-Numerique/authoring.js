@@ -5,17 +5,41 @@
 
 <div class="row-fluid">
 
-<div id="example" class="btn btn-success">hover for popover</div>
-
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Le vivier</h4>
     Retrouvez ici toutes les activités publiées par nos auteurs, en libre consultation.
   </div>
 
+  <div class="row-fluid">
+    <div class="span6">
+    <div class="widget-box">
+      <div class="widget-title"><h5>Matières</h5></div>
+      <div class="widget-content">
+        <div id="piepie"></div>
+        <ul>
+        {{#each matters}}
+        <li>
+          <span {{bindAttr style="style"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;{{title}} - {{id}} - {{count}}
+        </li>
+        {{/each}}
+        </ul>
+      </div>
+    </div>
+    </div>
+    <div class="span6">
+    <div class="widget-box">
+      <div class="widget-title"><h5>Niveaux</h5></div>
+      <div class="widget-content">
+        <div id="piepielev"></div>
+      </div>
+    </div>
+    </div>
+  </div>
+
   <div class="widget-box">
     <div class="widget-title">
-      <h5>Liste des activités dans la sandbox</h5>
+      <h5>Activités</h5>
     </div>
     <div class="widget-content nopadding">
       <table class="sandbox table table-bordered data-table">
@@ -25,10 +49,12 @@
             <th style="width: 10px;"></th>
             <th>Titre</th>
             <th>Date de publication</th>
-            <th>Nombre de visualisations</th>
+            <th>Nombre de bues</th>
+            <!--
             <th>Durée</th>
             <th>Difficulté</th>
             <th>Auteur</th>
+          -->
             <th>Id</th>
           </tr>
         </thead>
