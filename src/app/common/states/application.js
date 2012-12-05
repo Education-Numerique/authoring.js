@@ -67,6 +67,13 @@
           }
         }),
 
+        reminder: Ember.Route.extend({
+          route: '/lost-password',
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountReminder');
+          }
+        }),
+
         
         profile: Ember.Route.extend({
           route: '/profile',
@@ -88,6 +95,7 @@
       showAccountRegister: Ember.Route.transitionTo('account.register'),
       showAccountProfile: Ember.Route.transitionTo('account.profile'),
       showAccountSettings: Ember.Route.transitionTo('account.settings'),
+      showAccountReminder: Ember.Route.transitionTo('account.reminder'),
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
       // showCnil: Ember.Route.transitionTo('dashboard.cnil'),

@@ -35,6 +35,9 @@
           profile: {
             title: 'Votre profil'
           },
+          reminder: {
+            title: 'Mot de passe perdu'
+          }
         },
 
         
