@@ -198,18 +198,6 @@
         }
       }),
 
-      // Categories
-      showAllCategories: Ember.Route.transitionTo('categories'),
-      categories: Ember.Route.extend({
-        route: '/categories',
-        enter: function(router) {
-          router.set('applicationController.selected', 'categories');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('categories');
-        }
-      }),
-
       // Users
       showAllUsers: Ember.Route.transitionTo('users'),
       users: Ember.Route.extend({

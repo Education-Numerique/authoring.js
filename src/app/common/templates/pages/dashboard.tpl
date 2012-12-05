@@ -163,12 +163,6 @@
             </a>
           </li>
           <li class="user-admin">
-            <a {{action showAllCategories href=true}} class="tip-bottom" title="Gérer le graph des catégories">
-              <i class="icon-graph"></i>
-              Arbre des catégories
-            </a>
-          </li>
-          <li class="user-admin">
             <a {{action showAllUsers href=true}} class="tip-bottom" title="Gérer les comptes utilisateurs">
               <i class="icon-people"></i>
               Comptes utilisateurs

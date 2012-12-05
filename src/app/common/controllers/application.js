@@ -27,8 +27,8 @@
     this.REVIEWER = 2;
     this.ADMIN = 3;
 
-    this.profile = new LxxlLib.model.User();
-    this.profile.controller = this;
+    this.content = new LxxlLib.model.User();
+    this.content.controller = this;
 
     var loginFailure = function() {
       // XXX Show the failure banner on the login view
@@ -36,7 +36,7 @@
 
     this.login = function(login, password, suc, fai) {
       jsBoot.service.core.authenticate((function(){
-        this.profile.set('uid', jsBoot.service.core.id);
+        this.content.set('uid', jsBoot.service.core.id);
         // Need level here?
         // switch (level) {
         //   default:
@@ -52,7 +52,7 @@
         // }
 
         LxxlLib.service.user.profile.pull((function(data){
-          this.profile.fromObject(data);
+          this.content.fromObject(data);
         }.bind(this)), function(){});
         suc();
       }.bind(this)), function(){
@@ -61,7 +61,7 @@
     };
 
     this.logout = function() {
-      this.set('profile', new LxxlLib.model.User());
+      this.set('content', new LxxlLib.model.User());
       $('#lxxlroot').removeClass('user-author');
       $('#lxxlroot').removeClass('user-reviewer');
       $('#lxxlroot').removeClass('user-admin');
@@ -69,7 +69,7 @@
 
 
     this.update = function(){
-      var d = this.get('profile').toObject();
+      var d = this.get('content').toObject().profile;
       LxxlLib.service.user.profile.push(function(){
       }, function(){
       }, d);
