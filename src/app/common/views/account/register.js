@@ -8,21 +8,7 @@
       validationEnabled: true,
       focusFirstInput: true,
       disableUIStyles: true,
-      /*
-      formOptions :{
-        success: function(data){
-          $("#status").fadeTo(500,1,function(){
-            $(this).html("<span>Form was submitted!</span>").fadeTo(5000, 0);
-          })
-        },
-        beforeSubmit: function(data){
-          $("#submitted").html("<span>Form was submitted with ajax. Data sent to the server: " +
-          $.param(data) + "</span>");
-        },
-        dataType: 'json',
-        resetForm: true
-      },
-      */
+
       validationOptions: {
         rules: {
           email: {
@@ -91,7 +77,6 @@
       e.preventDefault();
       e.stopImmediatePropagation();
       $('#form-wizard input').attr('disabled', 'disabled');
-      // XXX do the actual registration
       var submitor = {};
       Array.prototype.forEach.call(document.getElementsByTagName('form')[0], function(item) {
         if ((item.name != 'Submit') && (item.name != 'Back'))
@@ -117,11 +102,7 @@
         case this.get('controller').ALREADY_USED_EMAIL:
           // XXX maybe do something here
           $('#creation-error').html('Cet email a déjà été utilisé pour créer un compte.');
-          $('#creation-error').fadeTo(1000, 1/*, function(){
-            $(this).fadeTo(10000, 0, function(){
-              $(this).hide();
-            });
-          }*/);
+          $('#creation-error').fadeTo(1000, 1);
           $('#form-wizard').formwizard('show', 'step-regular');
           break;
         default:
@@ -138,22 +119,11 @@
       $('#form-wizard').fadeTo(500, 0, function() {
         $(this).hide();
       });
-      /*      $.gritter.add({
-        title: 'Compte créé',
-        text: 'Votre compte a bien été créé. Vous recevrez sous peu un mail de validation.',
-        // image:  'assets/demo/envelope.png',
-        sticky: false
-      });*/
+
       if (type == 'regular') {
         $('#success-regular').fadeTo(500, 1);
         return;
       }
-      $('#success-facebook').fadeTo(500, 1, function() {
-        $(this).fadeTo(2000, 0.9, function() {
-          // XXX navigate login page
-        });
-      });
-
 
     }.bind(this));
 
