@@ -174,7 +174,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
             }, this);
           }, this);
           if('thumbnail' in d.draft.blobs)
-            this.draft.set('thumbnailUrl', prefix + d.draft.blobs.thumbnail.pop() + '/draft');
+            this.draft.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
         }
 
         if('blobs' in d.published){
@@ -184,7 +184,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
             }, this);
           }, this);
           if('thumbnail' in d.published.blobs)
-            this.published.set('thumbnailUrl', prefix + d.draft.blobs.thumbnail.pop() + '/published');
+            this.published.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
         }
 
         this.fromObject(d);
