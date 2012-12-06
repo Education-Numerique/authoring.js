@@ -27,6 +27,8 @@
     this.REVIEWER = 2;
     this.ADMIN = 3;
 
+    this.isLogged = false;
+
     this.content = new LxxlLib.model.User();
     this.content.controller = this;
 
@@ -37,19 +39,21 @@
     this.login = function(login, password, suc, fai) {
       jsBoot.service.core.authenticate((function(){
         this.content.set('uid', jsBoot.service.core.id);
+        this.set('isLogged', true);
+        var level = this.get('content.level');
         // Need level here?
-        // switch (level) {
-        //   default:
-        //   case this.AUTHOR:
-        //     $('#lxxlroot').addClass('user-author');
-        //     break;
-        //   case this.REVIEWER:
-        //     $('#lxxlroot').addClass('user-reviewer');
-        //     break;
-        //   case this.ADMIN:
-        //     $('#lxxlroot').addClass('user-admin');
-        //     break;
-        // }
+        switch (level) {
+          default:
+          case this.AUTHOR:
+            $('#lxxlroot').addClass('user-author');
+            break;
+          case this.REVIEWER:
+            $('#lxxlroot').addClass('user-reviewer');
+            break;
+          case this.ADMIN:
+            $('#lxxlroot').addClass('user-admin');
+            break;
+        }
 
         LxxlLib.service.user.profile.pull((function(data){
           this.content.fromObject(data);
@@ -65,6 +69,8 @@
       $('#lxxlroot').removeClass('user-author');
       $('#lxxlroot').removeClass('user-reviewer');
       $('#lxxlroot').removeClass('user-admin');
+      this.set('isLogged', false);
+
     };
 
 

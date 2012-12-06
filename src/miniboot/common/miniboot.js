@@ -36,9 +36,9 @@
   // Root of the versioned app
   var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
-  // To be removed when service login lands
+  // // To be removed when service login lands
   var debugUser = debug && ((location.href.match(/user-anonymous/) || location.href.match(/user-author/) ||
-      location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-author']).pop());
+      location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-anonymous']).pop());
 
   // IE deserves to be raped :)
   // if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
