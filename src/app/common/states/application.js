@@ -175,6 +175,7 @@
         },
         connectOutlets: function(router) {
           router.get('applicationController').connectOutlet('sandbox');
+          router.get('sandboxController').pull();
         }
       }),
 
@@ -264,22 +265,8 @@
         }
       }),
 
-      // Special routes, not top-level in the navigation
-
-      showNewCategory: Ember.Route.transitionTo('newCategory'),
-      newCategory: Ember.Route.extend({
-        route: '/categoryNew',
-        enter: function(router) {
-          router.set('applicationController.selected', 'categoryNew');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('categoryNew');
-        }
-      }),
-
       // Routes not accessible from navigation itself
       showPlayQTI: Ember.Route.transitionTo('playQTI'),
-      editCategory: Ember.Route.extend({route: '/categoryEdit/:cat_id'}),
       editUser: Ember.Route.extend({route: '/userEdit/:user_id'}),
 
 

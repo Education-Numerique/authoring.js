@@ -30,6 +30,18 @@
     var allM = 'toutes les matières';
     this.displayMatter = allM;
 
+    this.domReady = false;
+    this.dataReady = false;
+
+
+
+    this._drawIt = function() {
+      if (this.get('domReady') && this.get('dataReady')) {
+        drawPie();
+        drawPieLevel();
+      }
+    }.observes('domReady', 'dataReady');
+
     this.matters = (function(){
       if(!innerMatters.length){
         LxxlLib.factories.metadata.matters.forEach(function(item, idx){
@@ -275,12 +287,12 @@
             this.activities.pushObject(act);
           }
         }, this);
+        this.set('dataReady', true);
       }.bind(this)), function(){
         // Errrr
       });
 
-      drawPie();
-      drawPieLevel();
+      
     };
 
     var doPreview = function(node, activity) {
