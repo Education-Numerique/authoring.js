@@ -1,5 +1,5 @@
 /*
-* @template : pages/myqtis
+* @template : pages/myactivities
 */
 
 <div class="row-fluid">

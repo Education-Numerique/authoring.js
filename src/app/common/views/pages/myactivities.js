@@ -99,7 +99,7 @@
     this._super();
   };
 
-  this.MyQtisView = Ember.View.extend(t);
+  this.MyActivitiesView = Ember.View.extend(t);
 
 }).apply(LxxlApp);
 

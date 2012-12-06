@@ -175,7 +175,7 @@
         clearTimeout(tout);
         tout = null;
       }
-      tout = setTimeout(draw, 1000);
+      tout = setTimeout(draw, 300);
     };
 
     var draw = (function() {

@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  this.MyQtisController = Ember.ObjectController.extend({
+  this.MyActivitiesController = Ember.ObjectController.extend({
     qti: (function() {
       var ret = [
         {id: 'abc', author: 'Roger Doe', title: 'Stuff', category: 'Anglais pas littéraire'},

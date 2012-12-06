@@ -6,6 +6,24 @@ table td:last-child {
   display: none;
 }
 
+table th:first-child {
+  display: none;
+}
+
+table td:first-child {
+  display: none;
+}
+
+.user-reviewer, .user-admin {
+  table th:first-child {
+    display: default;
+  }
+
+  table td:first-child {
+    display: default;
+  }
+}
+
 .popover .avatar {
   width: 25px;
   height: 25px;
@@ -31,6 +49,7 @@ table td:last-child {
   }
 
 }
+
 
 #piepie, #piepielevel {
   height: 300px;
@@ -60,7 +79,7 @@ table td:last-child {
       color: #555555;
     }
 
-    li.hovering > a{
+    li:hover:not(.active) > a, li.hovering:not(.active) > a{
       color: blue;
     }
 

@@ -133,7 +133,7 @@
             </a>
           </li>
           <li class="user-author">
-            <a {{action showMyQTIs href=true}} rel="tooltip" data-placement="top" title="Accéder à vos activités">
+            <a {{action showMyActivities href=true}} rel="tooltip" data-placement="top" title="Accéder à vos activités">
               <i class="icon-book"></i>
               Activités
             </a>

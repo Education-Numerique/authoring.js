@@ -60,7 +60,7 @@
         dashboard: {
           title: 'Accueil'
         },
-        myqtis: {
+        myactivities: {
           title: 'Mes Activités'
         },
 

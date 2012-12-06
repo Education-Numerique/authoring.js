@@ -231,14 +231,14 @@
 
 
       // QTIs
-      showMyQTIs: Ember.Route.transitionTo('myQTIs'),
-      myQTIs: Ember.Route.extend({
-        route: '/myQtis',
+      showMyActivities: Ember.Route.transitionTo('myActivities'),
+      myActivities: Ember.Route.extend({
+        route: '/myactivities',
         enter: function(router) {
-          router.set('applicationController.selected', 'myQtis');
+          router.set('applicationController.selected', 'myActivities');
         },
         connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('myQtis');
+          router.get('applicationController').connectOutlet('myActivities');
         }
       }),
 
