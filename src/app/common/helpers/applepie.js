@@ -30,7 +30,7 @@
       return ret;
     };
 
-    var process = function(angle, cx, cy, r1, r2, value, label, total, top, bot, segment, animation, onOver, onOut) {
+    var process = function(angle, cx, cy, r1, r2, value, label, total, top, bot, segment, animation, onOver, onOut, onClick, index) {
       top = Raphael.rgb2hsb(Raphael.getRGB(top));
       bot = Raphael.rgb2hsb(Raphael.getRGB(bot));
 
@@ -54,13 +54,16 @@
       };
 
       p.mouseover(function() {
-        p.doMouseOver();
+        // p.doMouseOver();
         if (onOver)
-          onOver(p);
+          onOver(p, chart);
       }).mouseout(function() {
-        p.doMouseOut();
+        // p.doMouseOut();
         if (onOut)
-          onOut(p);
+          onOut(p, chart);
+      }).click(function(){
+        if (onClick)
+          onClick(p, chart);
       });
 
       angle += angleplus;
@@ -73,10 +76,11 @@
         p.stop().animate({transform: ''}, animation.ms / 2, 'easeInOut');
       }
       );
+      p.index = index;
       return angle;
     };
 
-    chart.doTheDirtyDeed = function(startAngle, limit, cx, cy, r1, r2, values, anim, onOver, onOut, revert, plain) {
+    chart.doTheDirtyDeed = function(startAngle, limit, cx, cy, r1, r2, values, anim, onOver, onOut, onClick, revert, plain) {
       var angle = 0;
       angle = startAngle;
       var total = values.reduce(function(previousValue, currentValue) {
@@ -91,7 +95,7 @@
         window.setTimeout(
             function() {
               angle = process(angle, cx, cy, r1, r2, parseInt(value, 10), label, total, top, bot, plain ? 1 : 0.5, anim,
-                  onOver, onOut);
+                  onOver, onOut, onClick, idx);
             },
             revert ? (100 * (values.length - idx)) : (100 * idx));
       });
@@ -120,6 +124,7 @@
 
     this.onover = null;
     this.onout = null;
+    this.onclick = null;
 
     this.fill = false;
     this.reverse = false;
@@ -128,6 +133,7 @@
     this.valign = this.CENTER;
 
     var s = Raphael(node, '100%', '100%').pieChart();
+    this.controllers = s;
 
     var colors = [];
     this.addColor = function(top, bottom) {
@@ -237,13 +243,14 @@
       });
 
       s.clear();
+      console.error('biiiiiitch', s, s.clear());
 
       s.doTheDirtyDeed(this.halign == this.RIGHT ? 90 : -90, 0.5, x, y, r1, r2, data,
           {
             ms: 500,
             factor: factor,
             easing: 'elastic'
-          }, this.onover, this.onout, this.reverse, this.mode == this.FULL);
+          }, this.onover, this.onout, this.onclick, this.reverse, this.mode == this.FULL);
     }.bind(this));
   };
 

@@ -13,14 +13,6 @@
 
 (function() {
   'use strict';
-  /*
-  var mainUser = new (function(){
-    // Bla
-    this.login;
-    this.name;
-
-  })();
-  */
 
   var uControl = new (function() {
     this.AUTHOR = 1;

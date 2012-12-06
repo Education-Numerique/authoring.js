@@ -19,24 +19,57 @@
         <div id="piepie"></div>
         <ul>
         {{#each matters}}
-        <li>
-          <span {{bindAttr style="style"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>&nbsp;{{title}} - {{id}} - {{count}}
-        </li>
+          {{#if count}}
+          <li>
+            <a {{action clickyClickMatter id target="controller"}}>
+              {{title}} ({{count}})
+              &nbsp;<span {{bindAttr style="style"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </a>
+          </li>
+          {{/if}}
         {{/each}}
+          <li class="active">
+            <hr />
+            <a {{action clickyClickMatter "reset" target="controller"}}>
+              Toutes les matières&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+          </li>
         </ul>
       </div>
     </div>
     </div>
     <div class="span6">
     <div class="widget-box">
-      <div class="widget-title"><h5>Niveaux</h5></div>
+      <div class="widget-title"><h5>Niveaux ({{displayMatter}})</h5></div>
       <div class="widget-content">
-        <div id="piepielev"></div>
+        <div id="piepielevel"></div>
+        <ul>
+        {{#each levels}}
+          {{#if count}}
+          <li>
+            <a {{action clickyClickLevel id target="controller"}}>
+              {{title}} ({{count}})
+              &nbsp;<span {{bindAttr style="style"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            </a>
+          </li>
+          {{/if}}
+        {{/each}}
+          <li class="active">
+            <hr />
+            <a {{action clickyClickLevel "reset" target="controller"}}>
+              Tous les niveaux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+          </li>
+        </ul>
+      </div>
       </div>
     </div>
     </div>
   </div>
 
+  <div class="row-fluid">
+    <h4>Filtre: {{displayMatter}}, {{displayLevel}}</h4>
+  </div>
   <div class="widget-box">
     <div class="widget-title">
       <h5>Activités</h5>

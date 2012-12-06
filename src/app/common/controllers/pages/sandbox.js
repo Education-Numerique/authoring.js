@@ -19,11 +19,16 @@
   var ctl = new (function(){
 
     var ach = this.activities = [];
+    var fach = this.filteredActivities = [];
 
     var colors = ['#abbd2b', '#79961e', '#af4227', '#8e2f1c', '#d23a95', '#b13d7b', '#6eb4ce', '#3b86ae'];
 
+    var matterRestrict;
     var hashMatters = Ember.Object.create({});
     var innerMatters = [];
+
+    var allM = 'toutes les matières';
+    this.displayMatter = allM;
 
     this.matters = (function(){
       if(!innerMatters.length){
@@ -31,8 +36,7 @@
           var mt = Ember.Object.create({
             id: item.id,
             title: item.title,
-            count: 0,
-            style: 'background-color: ' + colors[(idx) % colors.length]
+            count: 0
             /*, (idx * 2 + 1) % colors.length]*/
           });
           hashMatters.set(item.id, mt);
@@ -42,19 +46,99 @@
       innerMatters.forEach(function(i){
         i.set('count', 0);
       });
-      console.warn('-----------> mattering');
       var a = this.get('activities');
-      console.warn('-----------> mattering');
       a.forEach(function(j){
-        console.warn('/', j.published.matter);
-        hashMatters[j.published.matter.id].set('count', d[j.published.matter.id].get('count') + 1);
+        hashMatters[j.published.matter.id].set('count', hashMatters[j.published.matter.id].get('count') + 1);
       });
+
+      var x = 0;
+      innerMatters.forEach(function(i){
+        if(i.get('count')){
+          i.set('style', 'background-color: ' + colors[(x * 2) % colors.length]);
+          i.set('index', x);
+          x++;
+        }else{
+          i.set('index', -1);
+        }
+      });
+
       return innerMatters;
-    }).property('LxxlLib.factories.metadata.matters', 'activities');
+    }).property('LxxlLib.factories.metadata.matters.@each', 'activities.@each');
+
+    this.clickyClickMatter = function(d){
+      matterRestrict = (d.context == 'reset') ? null : d.context;
+      this.set('displayMatter', matterRestrict ? hashMatters[matterRestrict].title : allM);
+      // console.warn('Click on my ass', d, d.target, $(d.target).parent());
+      d = $(d.target);
+      d.parent().parent().children('li').removeClass('active');
+      d.parent().addClass('active');
+      rehash();
+      if(matterRestrict)
+        piePie.onclick(piePie.controllers[hashMatters[matterRestrict].index]);
+      levelRestrict = null;
+      this.set('displayLevel', allL);
+      LxxlApp.router.sandboxController.set('_dirtyTrick', Date.now());
+    };
+
+    var active = null;
+
+    var piePie;
+    var drawPie = function(){
+      piePie = new LxxlLib.widgets.ApplePie($('#piepie')[0]);
+      piePie.halign = piePie.CENTER;
+      piePie.reverse = false;
+      piePie.fill = true;
+      piePie.mode = piePie.FULL;
+      piePie.addColor('#abbd2b', '#79961e');
+      piePie.addColor('#af4227', '#8e2f1c');
+      piePie.addColor('#d23a95', '#b13d7b');
+      piePie.addColor('#6eb4ce', '#3b86ae');
+      piePie.bind({array: innerMatters, valueKey: 'count', labelKey: 'title'});
+
+      piePie.onover = function(sector){
+        if(!sector.active) {
+          sector.doMouseOver();
+          $($('#piepie + ul li')[sector.index]).addClass('hovering');
+        }
+      };
+      piePie.onout = function(sector){
+        if(!sector.active) {
+          sector.doMouseOut();
+          $($('#piepie + ul li')[sector.index]).removeClass('hovering');
+        }
+      };
+      piePie.onclick = function(sector){
+        if(active && active != sector){
+          active.doMouseOut();
+          $($('#piepie + ul li')[active.index]).removeClass('active');
+          active.active = null;
+        }
+        $($('#piepie + ul li')[sector.index]).removeClass('hovering');
+        $($('#piepie + ul li')[sector.index]).addClass('active');
+        sector.doMouseOver();
+        sector.active = true;
+
+        active = sector;
+        matterRestrict = innerMatters.filter(function(item){
+          return item.index == sector.index;
+        }).pop().id;
+        LxxlApp.router.sandboxController.set('displayMatter', hashMatters[matterRestrict].title);
+        LxxlApp.router.sandboxController.set('_dirtyTrick', Date.now());
+        rehash();
+      };
+    };
 
 
+
+
+
+    var levelRestrict;
     var hashLevels = Ember.Object.create({});
     var innerLevels = [];
+
+    this._dirtyTrick = null;
+    var allL = 'tous les niveaux';
+    this.displayLevel = allL;
 
     this.levels = (function(){
       if(!innerLevels.length){
@@ -62,8 +146,7 @@
           var mt = Ember.Object.create({
             id: item.id,
             title: item.title,
-            count: 0,
-            style: 'background-color: ' + colors[(idx) % colors.length]
+            count: 0
             /*, (idx * 2 + 1) % colors.length]*/
           });
           hashLevels.set(item.id, mt);
@@ -75,24 +158,114 @@
       });
       var a = this.get('activities');
       a.forEach(function(j){
-        hashLevels[j.published.level.id].set('count', d[j.published.level.id].get('count') + 1);
+        if(!matterRestrict || j.published.matter.id == matterRestrict)
+          hashLevels[j.published.level.id].set('count', hashLevels[j.published.level.id].get('count') + 1);
       });
+
+      var x = 0;
+      innerLevels.forEach(function(i){
+        if(i.get('count')){
+          i.set('style', 'background-color: ' + colors[(x * 2) % colors.length]);
+          i.set('index', x);
+          x++;
+        }else{
+          i.set('index', -1);
+        }
+      });
+
       return innerLevels;
-    }).property('LxxlLib.factories.metadata.levels', 'activities');
+    }).property('LxxlLib.factories.metadata.levels.@each', 'activities.@each', '_dirtyTrick');
 
-
-    var drawPie = function(){
-      var piePie = new LxxlLib.widgets.ApplePie($('#piepie')[0]);
-      piePie.halign = piePie.CENTER;
-      piePie.reverse = false;
-      piePie.fill = true;
-      piePie.mode = piePie.FULL;
-      piePie.addColor('#abbd2b', '#79961e');
-      piePie.addColor('#af4227', '#8e2f1c');
-      piePie.addColor('#d23a95', '#b13d7b');
-      piePie.addColor('#6eb4ce', '#3b86ae');
-      piePie.bind({array: innerMatters, valueKey: 'count', labelKey: 'title'});
+    this.clickyClickLevel = function(d){
+      levelRestrict = (d.context == 'reset') ? null : d.context;
+      this.set('displayLevel', levelRestrict ? hashLevels[levelRestrict].title : allL);
+      // console.warn('Click on my ass', d, d.target, $(d.target).parent());
+      d = $(d.target);
+      d.parent().parent().children('li').removeClass('active');
+      d.parent().addClass('active');
+      rehash();
+      if(levelRestrict)
+        piePieLev.onclick(piePieLev.controllers[hashLevels[levelRestrict].index]);
     };
+
+    var activeLevel = null;
+
+    var piePieLev;
+    var drawPieLevel = function(){
+      piePieLev = new LxxlLib.widgets.ApplePie($('#piepielevel')[0]);
+      piePieLev.halign = piePieLev.CENTER;
+      piePieLev.reverse = false;
+      piePieLev.fill = true;
+      piePieLev.mode = piePieLev.FULL;
+      piePieLev.addColor('#abbd2b', '#79961e');
+      piePieLev.addColor('#af4227', '#8e2f1c');
+      piePieLev.addColor('#d23a95', '#b13d7b');
+      piePieLev.addColor('#6eb4ce', '#3b86ae');
+      piePieLev.bind({array: innerLevels, valueKey: 'count', labelKey: 'title'});
+
+      piePieLev.onover = function(sector){
+        if(!sector.active) {
+          sector.doMouseOver();
+          $($('#piepielevel + ul li')[sector.index]).addClass('hovering');
+        }
+      };
+      piePieLev.onout = function(sector){
+        if(!sector.active) {
+          sector.doMouseOut();
+          $($('#piepielevel + ul li')[sector.index]).removeClass('hovering');
+        }
+      };
+      piePieLev.onclick = function(sector){
+        if(activeLevel && activeLevel != sector){
+          activeLevel.doMouseOut();
+          $($('#piepielevel + ul li')[activeLevel.index]).removeClass('active');
+          activeLevel.active = null;
+        }
+        $($('#piepielevel + ul li')[sector.index]).removeClass('hovering');
+        $($('#piepielevel + ul li')[sector.index]).addClass('active');
+        sector.doMouseOver();
+        sector.active = true;
+
+        activeLevel = sector;
+        levelRestrict = innerLevels.filter(function(item){
+          return item.index == sector.index;
+        }).pop().id;
+        LxxlApp.router.sandboxController.set('displayLevel', hashLevels[levelRestrict].title);
+        rehash();
+      };
+    };
+
+    // var hashLevels = Ember.Object.create({});
+    // var innerLevels = [];
+
+    // this.levels = (function(){
+    //   if(!innerLevels.length){
+    //     LxxlLib.factories.metadata.levels.forEach(function(item, idx){
+    //       var mt = Ember.Object.create({
+    //         id: item.id,
+    //         title: item.title,
+    //         count: 0
+    //         /*, (idx * 2 + 1) % colors.length]*/
+    //       });
+    //       hashLevels.set(item.id, mt);
+    //       innerLevels.pushObject(mt);
+    //     });
+    //   }
+    //   innerLevels.forEach(function(i){
+    //     i.set('count', 0);
+    //   });
+    //   var a = this.get('activities');
+    //   a.forEach(function(j){
+    //     hashLevels[j.published.level.id].set('count', hashLevels[j.published.level.id].get('count') + 1);
+    //   });
+    //   return innerLevels;
+    // }).property('LxxlLib.factories.metadata.levels', 'activities');
+
+
+
+
+
+
 
     this.pull = function(){
       LxxlLib.service.activities.listPublished((function(d){
@@ -107,6 +280,7 @@
       });
 
       drawPie();
+      drawPieLevel();
     };
 
     var doPreview = function(node, activity) {
@@ -144,6 +318,7 @@
       '<div>{description}</div>';
 
     var did = function(arr, start, removeCount, addCount) {
+
       var nn = $('.sandbox.data-table').dataTable();
       for(var x = start, item; x < start + addCount; x++){
         item = arr[x];
@@ -218,11 +393,23 @@
       // $('.sandbox')html
     };
 
-    this.activities.addArrayObserver(this, { willChange: will, didChange: did});
+    this.filteredActivities.addArrayObserver(this, { willChange: will, didChange: did});
+
+
+    var rehash = function(){
+      fach.replace(0, fach.length);
+      ach.forEach(function(item){
+        if((!matterRestrict || item.published.matter.id == matterRestrict) &&
+            (!levelRestrict || item.published.level.id == levelRestrict))
+            fach.pushObject(item);
+      });
+    };
+
+    this.activities.addArrayObserver(this, { willChange: function(){}, didChange: rehash});
 
   })();
 
-  window.CUL = this.SandboxController = Ember.ObjectController.extend(ctl);
+  window.SHIT = this.SandboxController = Ember.ObjectController.extend(ctl);
 
 
         // {{#collection contentBinding="activities" tagName="tbody"}}
