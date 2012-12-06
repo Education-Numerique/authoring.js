@@ -43,13 +43,64 @@
       account: Ember.Route.extend({
         route: '/account',
 
-        
         login: Ember.Route.extend({
           route: '/login',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (isLogged)
+                router.transitionTo('account.profile');
+            });
+          },
           connectOutlets: function(router) {
             router.get('applicationController').connectOutlet('accountLogin');
           }
         }),
+
+        
+        register: Ember.Route.extend({
+          route: '/register',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (isLogged)
+                router.transitionTo('account.profile');
+            });
+          },
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountRegister');
+          }
+        }),
+
+
+        validate: Ember.Route.extend({
+          route: '/validate',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (isLogged)
+                router.transitionTo('account.profile');
+            });
+          },
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountValidation');
+          }
+        }),
+
+        reminder: Ember.Route.extend({
+          route: '/lost-password',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (isLogged)
+                router.transitionTo('account.profile');
+            });
+          },
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('accountReminder');
+          }
+        }),
+
 
         logout: Ember.Route.extend({
           route: '/logout',
@@ -59,31 +110,17 @@
 
           },
         }),
-        
-        register: Ember.Route.extend({
-          route: '/register',
-          connectOutlets: function(router) {
-            router.get('applicationController').connectOutlet('accountRegister');
-          }
-        }),
-
-        validate: Ember.Route.extend({
-          route: '/validate',
-          connectOutlets: function(router) {
-            router.get('applicationController').connectOutlet('accountValidation');
-          }
-        }),
-
-        reminder: Ember.Route.extend({
-          route: '/lost-password',
-          connectOutlets: function(router) {
-            router.get('applicationController').connectOutlet('accountReminder');
-          }
-        }),
 
         
         profile: Ember.Route.extend({
           route: '/profile',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (!isLogged)
+                router.transitionTo('account.login');
+            });
+          },
           connectOutlets: function(router) {
             router.get('applicationController').connectOutlet('profile');
           }
@@ -92,6 +129,13 @@
         
         settings: Ember.Route.extend({
           route: '/settings',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (!isLogged)
+                router.transitionTo('account.login');
+            });
+          },
           connectOutlets: function(router) {
             router.get('applicationController').connectOutlet('accountSettings');
           }
