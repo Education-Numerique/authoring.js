@@ -281,6 +281,7 @@
 
     this.pull = function(){
       LxxlLib.service.activities.listPublished((function(d){
+        this.activities.replace(0, this.activities.length);
         d.forEach(function(item){
           var act = LxxlLib.factories.activities.getActivity(item);
           if(act.isPublished){
