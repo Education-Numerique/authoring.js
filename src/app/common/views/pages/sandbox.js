@@ -4,9 +4,7 @@
 
 
   t.doOnInsert = function () {
-    console.log('insert');
     this.set('controller.domReady', true);
-    
   };
 
   /*  var flotTip = function(x, y, contents) {

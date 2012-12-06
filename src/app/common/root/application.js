@@ -25,7 +25,7 @@
       this._super();
       //XXX remove
       //      jsBoot.service.core.authenticate(Em.K, Em.K, 'void@webitup.fr', 'toto42');
-      this.get('router.meController').login('void@webitup.fr', 'toto42', Em.K, Em.K);
+      // this.get('router.meController').login('void@webitup.fr', 'toto42', Em.K, Em.K);
     },
     init: function() {
       if (jsBoot.debug)
