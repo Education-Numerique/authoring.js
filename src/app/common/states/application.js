@@ -106,8 +106,9 @@
           route: '/logout',
           enter: function (router) {
             router.get('meController').logout();
-            router.transitionTo('index');
-
+            Ember.run.next(function() {
+              router.transitionTo('index');
+            });
           },
         }),
 
