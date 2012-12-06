@@ -100,7 +100,7 @@
             revert ? (100 * (values.length - idx)) : (100 * idx));
       });
     };
-    return chart;
+    return [paper, chart];
   };
 
 
@@ -133,6 +133,8 @@
     this.valign = this.CENTER;
 
     var s = Raphael(node, '100%', '100%').pieChart();
+    var pap = this.underpie = s.shift();
+    s = s.shift();
     this.controllers = s;
 
     var colors = [];
@@ -242,8 +244,8 @@
         });
       });
 
+      pap.clear();
       s.clear();
-      console.error('biiiiiitch', s, s.clear());
 
       s.doTheDirtyDeed(this.halign == this.RIGHT ? 90 : -90, 0.5, x, y, r1, r2, data,
           {

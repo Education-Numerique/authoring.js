@@ -82,7 +82,7 @@
             <th style="width: 10px;"></th>
             <th>Titre</th>
             <th>Date de publication</th>
-            <th>Nombre de bues</th>
+            <th>Nombre de vues</th>
             <!--
             <th>Durée</th>
             <th>Difficulté</th>

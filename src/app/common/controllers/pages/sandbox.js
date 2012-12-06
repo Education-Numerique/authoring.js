@@ -84,12 +84,12 @@
       d = $(d.target);
       d.parent().parent().children('li').removeClass('active');
       d.parent().addClass('active');
-      rehash();
       if(matterRestrict)
         piePie.onclick(piePie.controllers[hashMatters[matterRestrict].index]);
       levelRestrict = null;
       this.set('displayLevel', allL);
       LxxlApp.router.sandboxController.set('_dirtyTrick', Date.now());
+      rehash();
     };
 
     var active = null;
@@ -195,15 +195,16 @@
       d = $(d.target);
       d.parent().parent().children('li').removeClass('active');
       d.parent().addClass('active');
-      rehash();
       if(levelRestrict)
         piePieLev.onclick(piePieLev.controllers[hashLevels[levelRestrict].index]);
+      rehash();
     };
 
     var activeLevel = null;
 
     var piePieLev;
     var drawPieLevel = function(){
+      console.warn('drawing piepie');
       piePieLev = new LxxlLib.widgets.ApplePie($('#piepielevel')[0]);
       piePieLev.halign = piePieLev.CENTER;
       piePieLev.reverse = false;
@@ -280,6 +281,34 @@
 
 
     this.pull = function(){
+      if(piePie){
+        piePie.destroy();
+        try{
+          piePie.underpie.remove();
+        }catch(e){
+          
+        }
+        piePie = null;
+      }
+      if(piePieLev){
+        piePieLev.destroy();
+        try{
+          piePieLev.underpie.remove();
+        }catch(e){
+
+        }
+        piePieLev = null;
+        this.set('dataReady', false);
+      }
+
+      matterRestrict = null;
+      levelRestrict = null;
+      this.set('displayLevel', allL);
+      this.set('displayMatter', allM);
+      innerMatters.replace(0, innerMatters.length);
+      innerLevels.replace(0, innerLevels.length);
+      hashMatters = Ember.Object.create({});
+      hashLevels = Ember.Object.create({});
       LxxlLib.service.activities.listPublished((function(d){
         this.activities.replace(0, this.activities.length);
         d.forEach(function(item){
