@@ -285,34 +285,56 @@
 
       playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
-      showActivityEdit: Ember.Route.transitionTo('editActivity'),
-      editActivity: Ember.Route.extend({
-        route: '/activity/:id',
-        connectOutlets: function(router, qti) {
-          var activity = LxxlLib.factories.activities.getById(qti.id);
-          activity.pull();
-          router.get('applicationController').connectOutlet('activityEdit',
-              activity.draft);
-        }
-      }),
+      showActivityEdit: Ember.Route.transitionTo('activity.edit'),
+      showNewActivity: Em.Route.transitionTo('activity.create'),
 
-      showNewActivity: Em.Route.transitionTo('newActivity'),
-      newActivity: Ember.Route.extend({
-        route: '/activity/new',
-        enter: function(router) {
-          var act = LxxlLib.factories.activities.getActivity();
-          act.push();
-          act.addObserver('id', function() {
-            console.warn('BEEN PUSHED', act.id);
-            router.transitionTo('editActivity', act);
-          });
-        },
-        connectOutlets: function(router, qti) {
-          // XXX @todo
-          // XXX page de choix template activité
-          router.get('applicationController').connectOutlet('activityEdit',
-              LxxlLib.factories.activities.getActivity());
-        }
+      activity: Em.Route.extend({
+        create: Ember.Route.extend({
+          route: '/activity/new',
+          enter: function(router) {
+            var isLogged = router.get('meController.isLogged');
+            var act = LxxlLib.factories.activities.getActivity();
+            Ember.run.next(function() {
+              if (!isLogged)
+                router.transitionTo('account.login');
+              else {
+                act.push();
+                act.addObserver('id', function() {
+                  console.warn('BEEN PUSHED', act.id);
+                  router.transitionTo('activity.edit', act);
+                });
+              }
+            });
+            
+            
+          },
+          connectOutlets: function(router, qti) {
+            // XXX @todo
+            // XXX page de choix template activité
+            router.get('applicationController').connectOutlet('activityEdit',
+                LxxlLib.factories.activities.getActivity());
+          }
+        }),
+
+        edit: Ember.Route.extend({
+          route: '/activity/:id',
+          enter: function (router) {
+            var isLogged = router.get('meController.isLogged');
+            Ember.run.next(function() {
+              if (!isLogged)
+                router.transitionTo('account.login');
+            });
+          },
+          connectOutlets: function(router, qti) {
+            var activity = LxxlLib.factories.activities.getById(qti.id);
+            activity.pull();
+            router.get('applicationController').connectOutlet('activityEdit',
+                activity.draft);
+          }
+        })
+
+        
+        
       })
     })
   });
