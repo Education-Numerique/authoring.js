@@ -51,7 +51,14 @@
           }
         }),
 
+        logout: Ember.Route.extend({
+          route: '/logout',
+          enter: function (router) {
+            router.get('meController').logout();
+            router.transitionTo('index');
 
+          },
+        }),
         
         register: Ember.Route.extend({
           route: '/register',
@@ -96,6 +103,7 @@
       showAccountProfile: Ember.Route.transitionTo('account.profile'),
       showAccountSettings: Ember.Route.transitionTo('account.settings'),
       showAccountReminder: Ember.Route.transitionTo('account.reminder'),
+      showAccountLogout: Ember.Route.transitionTo('account.logout'),
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
       // showCnil: Ember.Route.transitionTo('dashboard.cnil'),
@@ -130,10 +138,11 @@
 
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
+      showCharte: Ember.Route.transitionTo('dashboard.charte'),
+      showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
       dashboard: Ember.Route.extend({
-        showCharte: Ember.Route.transitionTo('dashboard.charte'),
-        showAdvice: Ember.Route.transitionTo('dashboard.advices'),
+        
 
         index: Ember.Route.extend({
           route: '/',
