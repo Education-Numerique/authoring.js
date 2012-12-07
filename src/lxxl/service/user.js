@@ -126,7 +126,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
             break;
         }
 
-        var url = '/' + requestor.version + '/' + USER;
+        var url = '/' + requestor.version + '/' + SERVICE;
         if (id)
           url += '/' + id;
 
