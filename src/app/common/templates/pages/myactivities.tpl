@@ -2,126 +2,112 @@
 * @template : pages/myactivities
 */
 
+
+
 <div class="row-fluid">
-  <div class="alert alert-info">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Page de gestion de mes activités</h4>
-    Ceci est la page de gestion de mes activités
-  </div>
 
-  <article id="home" class="widget-box">
-    <div>
-      En attente validation et fourniture contenus / textes lot 2
-    </div>
-  </article>
-</div>
-
-
-<div class="row-fluid " style="visibility: hidden;">
+  {{#if activities.length}}
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Mes activités</h4>
-    Sur cette page vous pouvez visualiser l'ensemble de vos activités, chercher une de vos activités, la modifier...<br />
-    Vous pouvez également <a {{action showNewActivity href=true}}>en créer une nouvelle.</a>
+    Retrouvez ici toutes vos activités, publiées et non publiées.<br />
+    Vous pouvez également, <a {{action showNewActivity href=true}}>créer une nouvelle activité.</a>
   </div>
-
-  <div class="widget-box">
-    <div class="widget-title">
-      <h5>Statistiques</h5>
-    </div>
-    <div class="widget-content center">
-      <ul class="stats-plain">
-        <li>                    
-          <h4>{{nbActivities}}</h4>
-          <span>Activités</span>
-        </li>
-        <li>                    
-          <h4>{{nbAuthors}}</h4>
-          <span>Auteurs</span>
-        </li>
-        <li>                    
-          <h4>{{nbCategories}}</h4>
-          <span>Catégories</span>
-        </li>
-      </ul>
-    </div>
-
-    <div class="widget-content">
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title">
-            <span class="icon">
-              <i class="icon-signal"></i>
-            </span>
-            <h5>Répartition des activités par catégorie</h5>
-          </div>
-          <div class="widget-content">
-            <div class="pie"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title">
-            <span class="icon">
-              <i class="icon-eye-open"></i>
-            </span>
-            <h5>Top auteur</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered">
-              <thead>
-                <tr>
-                  <th>Auteurs</th>
-                  <th>Nombre de QTIs</th>
-                </tr>
-              </thead>
-              <tbody>
-                {{#each view.top}}
-                <tr>
-                  <td>{{name}}</td>
-                  <td>{{nb}}</td>
-                </tr>
-                {{/each}}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </div>
+  {{/if}}
+  {{#unless activities.length}}
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Aucune activité pour l'instant</h4>
+    Créez votre première activité <a {{action showNewActivity href=true}}>en cliquant ici.</a>
   </div>
+  {{/unless}}
 
+  <div class="row-fluid">
+    <h4>Mes activités publiées</h4>
+  </div>
   <div class="widget-box">
+    <!--
     <div class="widget-title">
-      <h5>Liste des activités dans la sandbox</h5>
+      <h5>Activités</h5>
     </div>
+    -->
     <div class="widget-content nopadding">
-      <table class="table table-bordered data-table">
+      <table class="mypublished table table-bordered data-table">
         <thead>
           <tr style="cursor: pointer; table-striped with-check">
-            <th class="user-reviewer2" style="width: 10px;"></th>
+            <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th>Titre</th>
-            <th>Category</th>
-            <th>Author</th>
+            <th>Durée</th>
+            <th>Difficulté</th>
+            <th>Matière</th>
+            <th>Niveau</th>
+            <th>Date de publication</th>
+            <th>Nombre de vues</th>
+            <th>Auteur</th>
+            <th>Id</th>
           </tr>
         </thead>
         <tbody>
-          {{#each qti}}
-            <tr>
-              <td class="user-reviewer2"><button {{action showActivityEdit this href=true}} class="icon-edit"></button></td>
-              <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
-              <td>{{title}}</td>
-              <td>{{category}}</td>
-              <td>{{author}}</td>
-            </tr>
-          {{/each}}
         </tbody>
       </table>  
     </div>
   </div>
+  <!-- Can't do that because of concurrency with arrayObservers which kick in before this shite -->
+  {{#if publishedActivities.length}}
+  {{/if}}
+
+  {{#if draftActivities.length}}
+  {{/if}}
+
+  <div class="row-fluid">
+    <h4>Mes activités non encore publiées</h4>
+  </div>
+
+  <div class="widget-box">
+    <!--
+    <div class="widget-title">
+      <h5>Activités</h5>
+    </div>
+    -->
+    <div class="widget-content nopadding">
+      <table class="mydrafts table table-bordered data-table">
+        <thead>
+          <tr style="cursor: pointer; table-striped with-check">
+            <th style="width: 10px;"></th>
+            <th style="width: 10px;"></th>
+            <th>Titre</th>
+            <th>Durée</th>
+            <th>Difficulté</th>
+            <th>Matière</th>
+            <th>Niveau</th>
+            <th>Date de publication</th>
+            <th>Nombre de vues</th>
+            <th>Auteur</th>
+            <th>Id</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>  
+    </div>
+  </div>
+
+
 </div>
+
+<div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="modal-preview-label">Preview</h3>
+  </div>
+  <div class="modal-body">
+    <p id="modal-preview-body"></p>
+  </div>
+</div>
+
+
+
 
 
             <!--

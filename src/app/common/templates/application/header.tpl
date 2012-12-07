@@ -37,12 +37,14 @@
         <a rel="tooltip" data-placement="right" title="{{localize nav.sandbox.tip}}" id="navigation-sandbox" {{action showSandbox href=true}}><i class="icon icon-eye-open"></i> <span>{{localize nav.sandbox.text}}</span></a>
       </li>
 
-      <li class="submenu user-author">
+      <li class="user-author">
         <a rel="tooltip" data-placement="right" title="{{localize nav.act.tip}}" id="navigation-myActivities" {{action showMyActivities href=true}}><i class="icon icon-th-list"></i> <span>{{localize nav.act.text}}</span></a>
+        <!--
         <ul>
           <li><a rel="tooltip" data-placement="right" title="{{localize nav.actlist.tip}}" {{action showMyActivities href=true}}>{{localize nav.actlist.text}}</a></li>
           <li><a rel="tooltip" data-placement="right" title="{{localize nav.actnew.tip}}" {{action showNewActivity href=true}}>{{localize nav.actnew.text}}</a></li>
         </ul>
+      -->
       </li>
 
       <li class="submenu user-reviewer">

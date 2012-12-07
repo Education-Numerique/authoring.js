@@ -93,6 +93,16 @@
       return jsBootApp.status == jsBootApp.USER_READY;
     }).property('_jsBootApp.status');
 
+
+    this.isLocked = (function(){
+      if(jsBootApp.status == jsBootApp.LOCKED_OUT){
+        $('#already-locked').modal({keyboard: false, backdrop: 'static'});
+        $('#already-locked').modal('show');
+      }else
+        $('#already-locked').modal('hide');
+      return (jsBootApp.status == jsBootApp.LOCKED_OUT);
+    }).property('_jsBootApp.status');
+
     // Bind "status"
     this.status = (function(){
       return jsBootApp.status;

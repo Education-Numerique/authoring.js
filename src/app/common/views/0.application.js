@@ -47,6 +47,7 @@
         if (this.doOnInsert)
           this.doOnInsert();
 
+        this._super();
       },
 
       willDestroy: function() {

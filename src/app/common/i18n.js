@@ -104,7 +104,7 @@
         },
 
         act: {
-          //          tip: 'Gérer les activités',
+          tip: 'Mes activités',
           text: 'Mes Activités'
         },
 

@@ -38,9 +38,9 @@
             </li>
 
             <li class="user-logged-out">
-              <a {{action showAccountRegister href=true}} rel="tooltip" data-placement="top" title="Créer un compte afin de pouvoir contribuer">
+              <a {{action showAccountLogin href=true}} rel="tooltip" data-placement="top" title="Connexion au service">
                 <i class="icon-client"></i>
-                Créer un compte
+                Se connecter
               </a>
             </li>
 
