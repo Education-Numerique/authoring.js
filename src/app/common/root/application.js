@@ -19,18 +19,6 @@
 
   this.LxxlApp = {
     rootElement: $('#lxxlroot'),
-    classNameBindings: function () {
-      console.log('========>', LxxlApp.get('router.applicationController.isLogged'))
-      return [
-        ':user-admin',
-        'LxxlApp.router.applicationController.isAuthor:user-author',
-        'LxxlApp.router.applicationController.isLogged:user-logged:user-anonymous'
-      ];
-    }.property(),
-
-    _isAuthorChanged: (function () {
-      
-    }.observes('LxxlApp.router.applicationController.isAuthor')),
 
     ready: function() {
       if (jsBoot.debug)
