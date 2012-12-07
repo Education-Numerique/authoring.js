@@ -37,8 +37,8 @@
   var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
   // // To be removed when service login lands
-  var debugUser = debug && ((location.href.match(/user-anonymous/) || location.href.match(/user-author/) ||
-      location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-anonymous']).pop());
+  // var debugUser = debug && ((location.href.match(/user-anonymous/) || location.href.match(/user-author/) ||
+  //     location.href.match(/user-reviewer/) || location.href.match(/user-admin/) || ['user-anonymous']).pop());
 
   // IE deserves to be raped :)
   // if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
@@ -53,7 +53,7 @@
       $('html').addClass('unsupported-browser');
     if (debug) {
       // To be removed - allow to spoof user level when debugging
-      $('body').addClass(debugUser);
+      // $('body').addClass(debugUser);
       jsBoot.debug.tick('Ember stack loaded');
       // Set reasonable verbosity
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |

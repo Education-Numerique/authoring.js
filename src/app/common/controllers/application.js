@@ -58,10 +58,6 @@
         user = new LxxlLib.model.User()
         user.controller = this;
         this.set('user', user);
-        // Clean-up classes
-        $('#lxxlroot').removeClass('user-author');
-        $('#lxxlroot').removeClass('user-reviewer');
-        $('#lxxlroot').removeClass('user-admin');
         // Say ready once done
         notifyReady();
       }.bind(this)));
@@ -87,23 +83,14 @@
       return this.get('user.level') == this.ADMIN;
     }).property('_jsBootApp.status');
 
+    this.isAuthor = (function(){
+      return this.get('user.level') == this.AUTHOR;
+    }).property('_jsBootApp.status');
+
+
+
     // Bind "isLogged"
     this.isLogged = (function(){
-      if(jsBootApp.status == jsBootApp.USER_READY){
-        var level = this.get('user.level');
-        switch (level) {
-          default:
-          case this.AUTHOR:
-            $('#lxxlroot').addClass('user-author');
-            break;
-          // case this.REVIEWER:
-          //   $('#lxxlroot').addClass('user-reviewer');
-          //   break;
-          case this.ADMIN:
-            $('#lxxlroot').addClass('user-admin');
-            break;
-        }
-      }
       return jsBootApp.status == jsBootApp.USER_READY;
     }).property('_jsBootApp.status');
 
@@ -112,12 +99,6 @@
       console.warn('Status property recomputed:', jsBootApp.status);
       return jsBootApp.status;
     }).property('_jsBootApp.status');
-
-    // XXX debugging
-    // jsBootApp.addObserver('status', function(){
-    //   console.warn('Observer on jsBoot status says:', jsBootApp.status);
-    // });
-
 
     // Which node is actually selected
     this.selected = null;
@@ -154,6 +135,8 @@
     jsBootApp.delay(jsBootApp.USER_READY, function(notifyReady){
       console.warn("----------------> delaying user ready");
       LxxlLib.service.user.profile.pull(function(data){
+        //XXX remove me
+        data.level = 1;
         user.fromObject(data);
         notifyReady();
       }, function(){

@@ -119,7 +119,10 @@
             });
           },
           connectOutlets: function(router) {
-            router.get('applicationController').connectOutlet('profile');
+            router.get('applicationController').connectOutlet({
+              viewClass: LxxlApp.ProfileView,
+              controller: router.get('meController')
+            });
           }
         }),
 

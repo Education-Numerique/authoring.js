@@ -897,3 +897,26 @@ body .chzn-container .chzn-results {
         }
     }
 }
+
+
+.profile {
+    .input-prepend {
+        clear:both;
+    }
+
+    h4 {
+        float:left;
+        clear:both;
+        margin:10px 0 5px 0;
+    }
+
+    .profile-fields {
+        input, select, .chzn-container {
+            width:70%!important;
+        }
+    }
+
+    .dropzone-container {
+        margin-top:40px;
+    }
+}

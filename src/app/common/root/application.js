@@ -19,13 +19,51 @@
 
   this.LxxlApp = {
     rootElement: $('#lxxlroot'),
+    classNameBindings: function () {
+      console.log('========>', LxxlApp.get('router.applicationController.isLogged'))
+      return [
+        ':user-admin',
+        'LxxlApp.router.applicationController.isAuthor:user-author',
+        'LxxlApp.router.applicationController.isLogged:user-logged:user-anonymous'
+      ];
+    }.property(),
+
+    _isAuthorChanged: (function () {
+      
+    }.observes('LxxlApp.router.applicationController.isAuthor')),
+
     ready: function() {
       if (jsBoot.debug)
         jsBoot.debug.tick('Ember application is ready!', true);
+
       this._super();
-      //XXX remove
-      //      jsBoot.service.core.authenticate(Em.K, Em.K, 'void@webitup.fr', 'toto42');
-      // this.get('router.meController').login('void@webitup.fr', 'toto42', Em.K, Em.K);
+      
+      LxxlApp.router.applicationController.addObserver('isAuthor', function () {
+        var value = LxxlApp.get('router.applicationController.isAuthor');
+        if (value)
+          $('#lxxlroot').addClass('user-author');
+        else
+          $('#lxxlroot').removeClass('user-author');
+      });
+
+      LxxlApp.router.applicationController.addObserver('isAdmin', function () {
+        var value = LxxlApp.get('router.applicationController.isAdmin');
+        if (value)
+          $('#lxxlroot').addClass('user-admin');
+        else
+          $('#lxxlroot').removeClass('user-admin');
+      });
+
+      LxxlApp.router.applicationController.addObserver('isLogged', function () {
+        var value = LxxlApp.get('router.applicationController.isLogged');
+        if (value) {
+          $('#lxxlroot').removeClass('user-anonymous');
+          $('#lxxlroot').addClass('user-logged');
+        } else {
+          $('#lxxlroot').addClass('user-anonymous');
+          $('#lxxlroot').removeClass('user-logged');
+        }
+      });
     },
     init: function() {
       if (jsBoot.debug)
