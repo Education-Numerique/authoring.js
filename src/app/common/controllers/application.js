@@ -14,89 +14,155 @@
 (function() {
   'use strict';
 
-  var uControl = new (function() {
-    this.AUTHOR = 1;
-    this.REVIEWER = 2;
-    this.ADMIN = 3;
+  /**
+   * Configuration constants
+   * XXX to be puked
+   */
+  var SERVICE_CONFIG = {
+    key: {
+      id: 'TEST',
+      secret: 'TEST'
+    },
+    server: {
+      // host: 'localhost',
+      // port: '8081',
+      host: 'snap.lxxl.com',
+      port: '90',
+      version: '1.0'
+    },
+    anonymous: {
+      id: 'anonymous',
+      login: 'anonymous',
+      password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+    }
+  };
 
-    this.isLogged = false;
+  var STORE_KEY = 'LxxlWebAppKey';
 
-    this.content = new LxxlLib.model.User();
-    this.content.controller = this;
+  // Application controller
+  this.ApplicationController = Ember.ObjectController.extend(new (function(){
 
-    var loginFailure = function() {
-      // XXX Show the failure banner on the login view
+    // User properties
+    this.user = null;
+    var user;
+
+    // jsBoot application shortcut
+    var jsBootApp = this._jsBootApp = jsBoot.controllers.application;
+
+    this.init = function() {
+
+      // Will delay jsBoot init event until the user object is ready
+      // This code will be executed once "boot" is done, and after "logout"
+      jsBootApp.delay(jsBootApp.INITIALIZED, (function(notifyReady){
+        console.warn("----------------> delaying initialization");
+        user = new LxxlLib.model.User()
+        user.controller = this;
+        this.set('user', user);
+        // Clean-up classes
+        $('#lxxlroot').removeClass('user-author');
+        $('#lxxlroot').removeClass('user-reviewer');
+        $('#lxxlroot').removeClass('user-admin');
+        // Say ready once done
+        notifyReady();
+      }.bind(this)));
+
+      // Boot jsBoot
+      jsBootApp.boot(STORE_KEY, SERVICE_CONFIG);
+
+      // Super shit
+      this._super();
     };
 
-    this.login = function(login, password, suc, fai) {
-      jsBoot.service.core.authenticate((function(){
-        this.content.set('uid', jsBoot.service.core.id);
-        this.set('isLogged', true);
-        var level = this.get('content.level');
-        // Need level here?
+    // Bind user identifier
+    this.uid = (function(){
+      return jsBootApp.userIdentifier;
+    }).property('_jsBootApp.userIdentifier');
+
+    this.AUTHOR = 1;
+    // this.REVIEWER = 2;
+    this.ADMIN = 3;
+
+    // Bind "isAdmin"
+    this.isAdmin = (function(){
+      return this.get('user.level') == this.ADMIN;
+    }).property('_jsBootApp.status');
+
+    // Bind "isLogged"
+    this.isLogged = (function(){
+      if(jsBootApp.status == jsBootApp.USER_READY){
+        var level = this.get('user.level');
         switch (level) {
           default:
           case this.AUTHOR:
             $('#lxxlroot').addClass('user-author');
             break;
-          case this.REVIEWER:
-            $('#lxxlroot').addClass('user-reviewer');
-            break;
+          // case this.REVIEWER:
+          //   $('#lxxlroot').addClass('user-reviewer');
+          //   break;
           case this.ADMIN:
             $('#lxxlroot').addClass('user-admin');
             break;
         }
+      }
+      return jsBootApp.status == jsBootApp.USER_READY;
+    }).property('_jsBootApp.status');
 
-        LxxlLib.service.user.profile.pull((function(data){
-          this.content.fromObject(data);
-        }.bind(this)), function(){});
-        suc();
-      }.bind(this)), function(){
-        fai();
-      }, login, password);
+    // Bind "status"
+    this.status = (function(){
+      console.warn('Status property recomputed:', jsBootApp.status);
+      return jsBootApp.status;
+    }).property('_jsBootApp.status');
+
+    // XXX debugging
+    // jsBootApp.addObserver('status', function(){
+    //   console.warn('Observer on jsBoot status says:', jsBootApp.status);
+    // });
+
+
+    // Which node is actually selected
+    this.selected = null;
+    this.pageTitle = null;
+    this.breadcrumbs = [];
+
+
+    // Show the failure banner on the login view
+    this.USER_FAIL = jsBootApp.USER_FAIL;
+    // Show the banner about ONLY ONE FUCKING TAB OPENED
+    this.LOCKED_OUT = jsBootApp.LOCKED_OUT;
+
+    this.USER_READY = jsBootApp.USER_READY;
+    this.INITIALIZED = jsBootApp.INITIALIZED;
+    this.USER_OUT = jsBootApp.USER_OUT;
+    this.SHUTDOWN = jsBootApp.SHUTDOWN;
+
+
+    // Public Methods
+    this.login = function(login, password) {
+      jsBootApp.login(login, password);
     };
 
     this.logout = function() {
-      this.set('content', new LxxlLib.model.User());
-      $('#lxxlroot').removeClass('user-author');
-      $('#lxxlroot').removeClass('user-reviewer');
-      $('#lxxlroot').removeClass('user-admin');
-      this.set('isLogged', false);
-
+      jsBootApp.logout();
     };
 
+    this.save = function(){
+      var d = this.get('user').toObject().profile;
+      LxxlLib.service.user.profile.push(Em.K, Em.K, d);
+    };
 
-    this.update = function(){
-      var d = this.get('content').toObject().profile;
-      LxxlLib.service.user.profile.push(function(){
+    // Delay user ready until the profile is fetched and ok
+    jsBootApp.delay(jsBootApp.USER_READY, function(notifyReady){
+      console.warn("----------------> delaying user ready");
+      LxxlLib.service.user.profile.pull(function(data){
+        user.fromObject(data);
+        notifyReady();
       }, function(){
-      }, d);
-    };
+        // XXX Something bad happens on the service - say something?
+        notifyReady();
+      });
+    });
 
-  })();
-
-  this.UserController = Ember.ObjectController.extend(uControl);
-
-
-  this.ApplicationController = Ember.ObjectController.extend({
-    init: function() {
-      // Get a ref to the user account
-      // console.warn(this.content);
-      this._super();
-    },
-    // Which node ios actually selected
-    selected: null,
-    pageTitle: null,
-    breadcrumbs: [],
-
-    // connectOutlet: function(name, context){
-    //   if(name == 'qtiEdit'){
-
-    //   }
-    //   this._super(name, context);
-    // },
-
-  });
+  })());
 
 }).apply(LxxlApp);
 

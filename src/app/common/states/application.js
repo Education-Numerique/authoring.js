@@ -16,10 +16,6 @@
   this.Router = Ember.Router.extend({
     enableLogging: !!jsBoot.debug,
 
-    meController: (function(){
-      return LxxlApp.UserController.create();
-    }).property(),
-
     root: Ember.Route.extend({
       // redirectsTo: 'dashboard',
       /*      index: lxxlRoute('/'),*/
@@ -46,10 +42,10 @@
         login: Ember.Route.extend({
           route: '/login',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
-                router.transitionTo('account.profile');
+                router.transitionTo('dashboard');
             });
           },
           connectOutlets: function(router) {
@@ -61,7 +57,7 @@
         register: Ember.Route.extend({
           route: '/register',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
                 router.transitionTo('account.profile');
@@ -76,7 +72,7 @@
         validate: Ember.Route.extend({
           route: '/validate',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
                 router.transitionTo('account.profile');
@@ -90,7 +86,7 @@
         reminder: Ember.Route.extend({
           route: '/lost-password',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
                 router.transitionTo('account.profile');
@@ -105,7 +101,7 @@
         logout: Ember.Route.extend({
           route: '/logout',
           enter: function (router) {
-            router.get('meController').logout();
+            router.get('applicationController').logout();
             Ember.run.next(function() {
               router.transitionTo('index');
             });
@@ -116,7 +112,7 @@
         profile: Ember.Route.extend({
           route: '/profile',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (!isLogged)
                 router.transitionTo('account.login');
@@ -131,7 +127,7 @@
         settings: Ember.Route.extend({
           route: '/settings',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (!isLogged)
                 router.transitionTo('account.login');
@@ -279,7 +275,7 @@
         create: Ember.Route.extend({
           route: '/activity/new',
           enter: function(router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             var act = LxxlLib.factories.activities.getActivity();
             Ember.run.next(function() {
               if (!isLogged)
@@ -306,7 +302,7 @@
         edit: Ember.Route.extend({
           route: '/activity/:id',
           enter: function (router) {
-            var isLogged = router.get('meController.isLogged');
+            var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (!isLogged)
                 router.transitionTo('account.login');
