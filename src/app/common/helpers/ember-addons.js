@@ -242,6 +242,8 @@
         this.set('value', this.$().getCode());
       }.bind(this));
 
+
+
       this.$().redactor({
         lang: 'fr',
         imageUpload: true,
@@ -346,7 +348,6 @@
 
 
       this.updateContent();
-      this.updateCharCount();
 
       this.$().getEditor().focus(function() {
         timer.start();
@@ -413,6 +414,7 @@
 
       this.$().getEditor().html(this.get('value') || '<p><br></p>');
       this.$().data('redactor').syncCode();
+      this.updateCharCount();
     }.observes('value')
   });
 
