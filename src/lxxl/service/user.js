@@ -96,36 +96,29 @@ jsBoot.pack('LxxlLib.service', function(api) {
     })();
 
     this.avatar = new (function(){
-      this.LARGE = 'large';
-      this.MEDIUM = 'medium';
-      this.THUMBNAIL = 'thumbnail';
-      this.SQUARE = 'square';
 
-      this.push = function(onSuccess, onFailure, payload) {
+      this.push = function(onSuccess, onFailure, payload, id) {
         requestor.query(requestor.POST, {
           service: SERVICE,
           onsuccess: onSuccess,
           onfailure: onFailure,
-          id: api.core.id,
+          id: id || api.core.id,
           command: USER_AVATAR,
           payload: payload
         });
       };
 
-      this.getUrl = function(w, id) {
-        /*jshint regexp:false*/
-        // XXX IMPLEMENT ME
-        switch (w) {
-          case this.THUMBNAIL:
-          case this.SQUARE:
-          case this.MEDIUM:
-          case this.LARGE:
-            break;
-          default:
-            w = this.THUMBNAIL;
-            break;
-        }
+      this.remove = function(onSuccess, onFailure, id){
+        requestor.query(requestor.DELETE, {
+          service: SERVICE,
+          onsuccess: onSuccess,
+          onfailure: onFailure,
+          id: id || api.core.id,
+          command: USER_AVATAR
+        });
+      };
 
+      this.getUrl = function(id) {
         var url = '/' + requestor.version + '/' + SERVICE;
         if (id)
           url += '/' + id;
@@ -133,7 +126,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
         var seed = Math.round(Math.abs((url.charCodeAt(url.length - 5) - 28) / 10));
         var crap = requestor.hostPort.replace(/^([^.]+)(\..*)/, '$1' + seed + '$2');
 
-        url += '/' + USER_AVATAR + '/' + w;
+        url += '/' + USER_AVATAR;
         return '//' + crap + url;
       };
 
