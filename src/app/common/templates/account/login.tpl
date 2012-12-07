@@ -19,14 +19,14 @@
                     <div class="control-group">
                         <div class="controls">
                             <div class="input-prepend">
-                                <span class="add-on"><i class="icon-user"></i></span><input type="text" id="email" name="email" placeholder="E-mail" />
+                                <span class="add-on"><i class="icon-user"></i></span><input type="text" id="email" name="email" placeholder="Addresse mail" />
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
                             <div class="input-prepend">
-                                <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="password" name="password" placeholder="Password" />
+                                <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="password" name="password" placeholder="Mot de passe" />
                             </div>
                         </div>
                     </div>

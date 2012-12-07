@@ -83,19 +83,19 @@
         },
         settings: {
           tip: 'Accéder aux réglages',
-          text: 'Settings'
+          text: 'Réglages'
         },
         logout: {
           tip: 'Se déconnecter',
-          text: 'Logout'
+          text: 'Déconnexion'
         },
         login: {
           tip: 'Se connecter',
-          text: 'Login'
+          text: 'Connexion'
         },
         register: {
           tip: 'Créer un compte',
-          text: 'Register'
+          text: 'S\'enregistrer'
         },
 
         sandbox: {

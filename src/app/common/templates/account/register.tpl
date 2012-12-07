@@ -94,7 +94,7 @@
           <div class="control-group">
             <label class="control-label">Discipline</label>
             <div class="controls">
-              <select id="discipline" name="discipline">
+              <select data-placeholder="Choisissez une discipline" id="discipline" name="discipline">
                 <option value=""></option>
                 <option value="hg">Histoire et Géographie</option>
                 <option value="fr">Français</option>

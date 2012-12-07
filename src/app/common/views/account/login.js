@@ -24,7 +24,7 @@
           }
         },
         messages: {
-          password: 'Vous devez choisir un mot de passe',
+          password: 'Le mot de passe contient de 6 à 25 caractères',
           email: {
             required: 'Merci de fournir votre email',
             email: 'Le format d\'email correct est nom@domaine.com'
