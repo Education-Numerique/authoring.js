@@ -91,6 +91,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     username: '',
     email: '',
     level: '',
+    hasAvatar: false,
     profile: {}
   });
 
