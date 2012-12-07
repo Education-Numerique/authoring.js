@@ -72,8 +72,8 @@
 
             <div class="dropzone-container thumbnail-uploader">
                 <div class="dropzone fade">
-                    <div {{bindAttr class=":preview content.thumbnailUrl:hasThumbnail:default"}}>
-                        {{#bind content.thumbnailUrl}}
+                    <div {{bindAttr class=":preview avatar:hasThumbnail:default"}}>
+                        {{#bind avatar}}
                             {{view Em.Image srcBinding="this"}}
                         {{/bind}}
                     </div>

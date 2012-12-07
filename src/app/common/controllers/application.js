@@ -24,10 +24,10 @@
       secret: 'TEST'
     },
     server: {
-      // host: 'localhost',
-      // port: '8081',
-      host: 'snap.lxxl.com',
-      port: '90',
+      host: 'localhost',
+      port: '8081',
+      // host: 'snap.lxxl.com',
+      // port: '90',
       version: '1.0'
     },
     anonymous: {
@@ -124,11 +124,6 @@
 
     this.logout = function() {
       jsBootApp.logout();
-    };
-
-    this.save = function(){
-      var d = this.get('user').toObject().profile;
-      LxxlLib.service.user.profile.push(Em.K, Em.K, d);
     };
 
     // Delay user ready until the profile is fetched and ok

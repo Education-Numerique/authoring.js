@@ -31,13 +31,7 @@
       ],
       add: function(e, data) {
         $(this).fileupload('process', data).done(function() {
-            LxxlLib.service.user.avatar.push(function() {
-
-            }, function () {
-
-            }, data.files[0]);
-          console.log('=======> set avatar');
-          // self.get('controller.content').controller.setThumbnail(data.files[0]);
+            self.get('controller').setAvatar(data.files[0]);   
         });
       }
 

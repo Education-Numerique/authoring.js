@@ -121,8 +121,10 @@
           connectOutlets: function(router) {
             router.get('applicationController').connectOutlet({
               viewClass: LxxlApp.ProfileView,
-              controller: router.get('meController')
+              controller: router.get('userController')
             });
+
+            router.set('userController.content', router.get('applicationController.user'));
           }
         }),
 
