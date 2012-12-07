@@ -20,13 +20,13 @@
 
 <div class="row-fluid">
   <article id="actions" class="widget-box">
-    <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#actions-collapse">
+    <header class="widget-title">
       <span class="icon">
         <i class="icon-th-list"></i>
       </span>
       <h5>Mon dashboard</h5>
     </header>
-    <section class="widget-content slidify" id="actions-collapse">
+    <section class="widget-content">
       <div class="row-fluid">
         <div class="span12 center" style="text-align: center;">         
           <ul class="quick-actions">
@@ -36,13 +36,13 @@
                 Accéder au vivier
               </a>
             </li>
-            <!--
+
             <li class="user-logged-out">
               <a {{action showAccountRegister href=true}} rel="tooltip" data-placement="top" title="Créer un compte afin de pouvoir contribuer">
-                <i class="icon-home"></i>
+                <i class="icon-client"></i>
                 Créer un compte
               </a>
-            </li>-->
+            </li>
 
             <li class="user-author">
               <a {{action showMyActivities href=true}} rel="tooltip" data-placement="top" title="Accéder à vos activités">
@@ -51,13 +51,13 @@
               </a>
             </li>
             <li class="user-author">
-              <a {{action showAccountProfile href=true}} class="tip-top" title="Accéder à votre profil et données personnelles">
+              <a {{action showAccountProfile href=true}} rel="tooltip" data-placement="top" title="Accéder à votre profil et données personnelles">
                 <i class="icon-client"></i>
                 Profil
               </a>
             </li>
             <li class="user-author">
-              <a {{action showAccountSettings href=true}} class="tip-top" title="Accéder à vos paramètres">
+              <a {{action showAccountSettings href=true}} rel="tooltip" data-placement="top" title="Accéder à vos paramètres">
                 <i class="icon-lock"></i>
                 Réglages
               </a>

@@ -35,7 +35,7 @@
                             <a {{action showAccountRegister href=true}} class="flip-link" id="to-recover">Pas encore de compte?</a><br />
                             <a {{action showAccountReminder href=true}} class="flip-link" id="to-recover">Mot de passe oublié? </a>
                         </span>
-                        <span class="pull-left"><input type="submit" style="margin-left:50px;" class="btn btn-inverse" value="Login"></span>
+                        <span class="pull-left"><input type="submit" style="margin-left:50px;" class="btn btn-inverse" value="Se connecter" /></span>
                     </div>
                 </div>
             </form>
