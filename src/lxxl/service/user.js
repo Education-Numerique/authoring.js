@@ -107,7 +107,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
           onsuccess: onSuccess,
           onfailure: onFailure,
           id: api.core.id,
-          command: USER_SETTINGS,
+          command: USER_AVATAR,
           payload: payload
         });
       };
