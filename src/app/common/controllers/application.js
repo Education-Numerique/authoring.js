@@ -24,9 +24,9 @@
       secret: 'TEST'
     },
     server: {
-      host: 'localhost',
-      port: '8081',
-      // host: 'snap.lxxl.com',
+      host: '{PUKE-SERVICE-HOST}',
+      port: '{PUKE-SERVICE-PORT}',
+      // host: 'snap.lxxl.com',8081
       // port: '90',
       version: '1.0'
     },

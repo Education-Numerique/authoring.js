@@ -89,6 +89,10 @@ config-jenkins-linux:
     self:
       url: '//app.sn.ackitup.net/'
 
+  service:
+    port: ''
+    host: 'snap.lxxl.com'
+
 
   ACCESS:
       LXXL:
@@ -122,6 +126,10 @@ config-raildecom-darwin:
         url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
     self:
       url: '//dev.app.sn.ackitup.net/'
+
+  service:
+    port: '8081'
+    host: 'locahost'
 
 
   ACCESS:
@@ -158,6 +166,9 @@ config-dmp-darwin:
       self:
         url: '//app.loft.sn.ackitup.net:4242/'
 
+  service:
+    port: '90'
+    host: 'snap.lxxl.com'
 
   ACCESS:
       LXXL:

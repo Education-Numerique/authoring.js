@@ -111,6 +111,9 @@ def build():
   sed.add('{JSBOOT}', bootman['jsbootstrap'].encode('latin-1'))
   sed.add('{MINIBOOT}', 'miniboot-min.js')
 
+  sed.add('{PUKE-SERVICE-HOST}', Yak.service['host'])
+  sed.add('{PUKE-SERVICE-PORT}', Yak.service['port'])
+
   sed.add('{PUKE_ANALYTICS}', Yak.ACCESS['GA'])
   sed.add('{PUKE_FBKEY}', Yak.ACCESS['FACEBOOK']['KEY'])
   sed.add('{PUKE_KEY}', Yak.ACCESS['LXXL']['KEY'])

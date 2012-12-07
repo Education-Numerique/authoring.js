@@ -39,8 +39,7 @@
   "dependencies": {
     "Spitfire.js": "1.0.x",
     "Airstrip.js": "1.0.x",
-    "jsBoot.js": "0.2.x",
-    "roxeecore": "0.7.x"
+    "jsBoot.js": "0.2.x"
   },
 
   "homepage": "http://education-numerique.com/",
