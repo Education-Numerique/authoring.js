@@ -911,7 +911,7 @@ body .chzn-container .chzn-results {
     }
 
     .profile-fields {
-        input, select, .chzn-container {
+        input:not([type=submit]), select, .chzn-container {
             width:70%!important;
         }
     }

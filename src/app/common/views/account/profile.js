@@ -36,6 +36,15 @@
       }
 
     });
+
+    $('#profile-form').on('submit', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      
+      this.get('controller').save();
+
+      return false;
+    }.bind(this));
   };
 
   this.ProfileView = Ember.View.extend(t);

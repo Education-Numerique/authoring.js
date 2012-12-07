@@ -6,7 +6,7 @@
     <div class="widget-box noborder">
 
       <div class="widget-content">
-
+        <form id="profile-form">
             <div class="control-group profile-fields" style="width:60%; float:left">
                 <h4>Votre compte</h4>
                 <div class="input-prepend">
@@ -67,7 +67,10 @@
                     <label class="add-on" for="form-page-subtitle">Page web</label>
                     {{view Ember.TextField valueBinding="content.profile.web"   }}
                 </div>
-                
+                <hr class="clear" />
+                <div class="form-actions" style="text-align: center; padding: 0; padding-top: 20px; padding-bottom: 20px;">
+                    <input id="submit" class="btn btn-primary ui-wizard-content ui-formwizard-button" type="submit" value="Valider" />
+                </div>
             </div>
 
             <div class="dropzone-container thumbnail-uploader">
@@ -84,6 +87,7 @@
                     Ajouter un avatar
                 </button>
             </div>
+        </form>
       </div>
     </div>
 </div>
