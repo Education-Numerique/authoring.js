@@ -42,15 +42,16 @@
     });
 
     this.get('controller').addObserver('isAttemptFailed', function(){
-      console.warn('************************* fail', this.get('controller.isAttemptFailed'));
       if(!!this.get('controller.isAttemptFailed'))
         $('.login-error-box').fadeIn().delay(3000).fadeOut();
     }.bind(this));
 
     this.get('controller').addObserver('isAttemptSuccessful', function(){
-      console.warn('************************* success', this.get('controller.isAttemptSuccessful'));
-      if(!!this.get('controller.isAttemptSuccessful'))
-        LxxlApp.get('router').transitionTo('dashboard');
+      if(!!this.get('controller.isAttemptSuccessful')) {
+        Ember.run.next(function() {
+          LxxlApp.get('router').transitionTo('dashboard');
+        });
+      }
     }.bind(this));
 
       // switch(appc.get('status')){

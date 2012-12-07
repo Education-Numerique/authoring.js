@@ -60,7 +60,7 @@
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
-                router.transitionTo('account.profile');
+                router.transitionTo('dashboard');
             });
           },
           connectOutlets: function(router) {
@@ -75,7 +75,7 @@
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
-                router.transitionTo('account.profile');
+                router.transitionTo('dashboard');
             });
           },
           connectOutlets: function(router) {
@@ -89,7 +89,7 @@
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
-                router.transitionTo('account.profile');
+                router.transitionTo('dashboard');
             });
           },
           connectOutlets: function(router) {
@@ -115,7 +115,7 @@
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (!isLogged)
-                router.transitionTo('account.login');
+                router.transitionTo('dashboard');
             });
           },
           connectOutlets: function(router) {

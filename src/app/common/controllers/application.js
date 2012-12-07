@@ -54,7 +54,6 @@
       // Will delay jsBoot init event until the user object is ready
       // This code will be executed once "boot" is done, and after "logout"
       jsBootApp.delay(jsBootApp.INITIALIZED, (function(notifyReady){
-        console.warn("----------------> delaying initialization");
         user = new LxxlLib.model.User()
         user.controller = this;
         this.set('user', user);
@@ -96,7 +95,6 @@
 
     // Bind "status"
     this.status = (function(){
-      console.warn('Status property recomputed:', jsBootApp.status);
       return jsBootApp.status;
     }).property('_jsBootApp.status');
 
@@ -128,7 +126,6 @@
 
     // Delay user ready until the profile is fetched and ok
     jsBootApp.delay(jsBootApp.USER_READY, function(notifyReady){
-      console.warn("----------------> delaying user ready");
       LxxlLib.service.user.profile.pull(function(data){
         //XXX remove me
         data.level = 1;
