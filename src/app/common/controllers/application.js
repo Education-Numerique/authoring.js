@@ -119,7 +119,7 @@
 
     // Public Methods
     this.login = function(login, password) {
-      jsBootApp.login(login, password);
+      jsBootApp.login(login, password, true);
     };
 
     this.logout = function() {
