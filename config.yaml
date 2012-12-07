@@ -129,7 +129,7 @@ config-raildecom-darwin:
 
   service:
     port: '8081'
-    host: 'locahost'
+    host: 'localhost'
 
 
   ACCESS:

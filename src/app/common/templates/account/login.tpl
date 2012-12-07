@@ -18,20 +18,20 @@
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <div class="input-prepend">
-                                <span class="add-on"><i class="icon-user"></i></span><input type="text" id="email" name="email" placeholder="Addresse mail" />
+                            <div class="input-prepend" style="width:40%">
+                                <span class="add-on"  style="float:left"><i class="icon-user" ></i></span><input type="text" style="float:left" id="email" name="email" placeholder="Addresse mail" />
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls">
-                            <div class="input-prepend">
-                                <span class="add-on"><i class="icon-lock"></i></span><input type="password" id="password" name="password" placeholder="Mot de passe" />
+                            <div class="input-prepend"  style="width:40%">
+                                <span class="add-on"  style="float:left"><i class="icon-lock"></i></span><input type="password" style="float:left" id="password" name="password" placeholder="Mot de passe" />
                             </div>
                         </div>
                     </div>
-                    <div class="form-actions">
-                        <span class="pull-left">
+                    <div class="form-actions" style="margin-top:20px">
+                        <span class="pull-left" style="padding-left:40px;">
                             <a {{action showAccountRegister href=true}} class="flip-link" id="to-recover">Pas encore de compte?</a><br />
                             <a {{action showAccountReminder href=true}} class="flip-link" id="to-recover">Mot de passe oublié? </a>
                         </span>
