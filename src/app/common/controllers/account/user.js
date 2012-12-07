@@ -12,10 +12,9 @@
     avatar: (function () {
         if (!this.get('content.hasAvatar'))
             return false;
-        var size = LxxlLib.service.user.avatar.LARGE;
 
         var bust = (this.get('_forceRefreshAvatar') ? '?bust='+this.get('_forceRefreshAvatar') : '');
-        return LxxlLib.service.user.avatar.getUrl(size, this.get('content.uid')) + bust;
+        return LxxlLib.service.user.avatar.getUrl(this.get('content.uid')) + bust;
     }.property('content.uid', 'content.hasAvatar', '_forceRefreshAvatar')),
 
     setAvatar: function (blob) {
