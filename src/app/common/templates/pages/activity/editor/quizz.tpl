@@ -76,7 +76,8 @@
                     <i class="icon-th-list"></i>
                 </span>
                 <h5>Questions</h5>
-                {{#view view.AddQuestionButton tagName="button" classNames="btn btn-success btn-mini"}}<i class="icon-plus icon-white spacify"></i>Ajouter une question{{/view}}
+                <button type="button" {{action addQRM target="view"}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter un QRM</button>
+                <button type="button" {{action addQCM target="view"}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter un QCM</button>
                 {{#view view.CollapseAllQuestions tagName="button" classNames="btn btn-mini" }}
                     <i class="icon-resize-small spacify"></i>Collapse all
                 {{/view}}
@@ -109,7 +110,7 @@
                             <th></th>
                         </tr>
                     </thead>
-                    {{#if isQuizzMulti}}
+                    {{#if view.content.isQRM}}
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" questionBinding="view.content" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>

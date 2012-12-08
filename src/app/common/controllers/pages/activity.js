@@ -229,6 +229,8 @@
       else
         this.get('currentPage.questions').replace(at, 0, nq);
       this.set('currentQuestion', nq);
+      this.addAnswer();
+      return nq;
     },
 
     deleteQuestion: function(question) {

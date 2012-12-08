@@ -413,6 +413,10 @@ Style specific to activity edition
                 &.multicontrol {
                     @include shadow(0,0,0,#FFF);
                     border:0px;
+
+                    .checker {
+                        float:left;
+                    }
                 }
 
                 &.radioblock {

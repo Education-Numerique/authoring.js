@@ -176,13 +176,20 @@
           // console.log('====> go model');
         }
       }),
-      AddQuestionButton: Em.View.extend({
-        click: function(e) {
-          this.get('controller').addQuestion();
-          e.preventDefault();
-          return false;
-        }
-      }),
+
+      addQCM : function (e) {
+        this.get('controller').addQuestion();
+        e.preventDefault();
+        return false;
+      },
+
+      addQRM: function (e) {
+        var q = this.get('controller').addQuestion();
+        q.set('isQRM', true);
+        e.preventDefault();
+        return false;
+      },
+
 
       CollapseAllQuestions: Em.View.extend({
         init: function() {

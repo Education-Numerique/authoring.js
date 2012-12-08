@@ -308,10 +308,10 @@
           route: '/activity/:id',
           enter: function (router) {
             var isLogged = router.get('applicationController.isLogged');
-            Ember.run.next(function() {
-              if (!isLogged)
-                router.transitionTo('account.login');
-            });
+            // Ember.run.next(function() {
+            //   if (!isLogged)
+            //     router.transitionTo('account.login');
+            // });
           },
           connectOutlets: function(router, qti) {
             var activity = LxxlLib.factories.activities.getById(qti.id);
