@@ -412,7 +412,12 @@
       if (this.get('value') == this.$().getCode())
         return;
 
-      this.$().getEditor().html(this.get('value') || '<p><br></p>');
+      var value = this.get('value');
+
+      if (!value && !this.get('oneLine'))
+        value = '<p><br/></p>';
+
+      this.$().getEditor().html(value);
       this.$().data('redactor').syncCode();
       this.updateCharCount();
     }.observes('value')
