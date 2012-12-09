@@ -39,7 +39,7 @@
                     sequencing || Random : All | number
                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                 //-->
-                    {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span class="name btn">Séquenceur</span>{{/view}}
+                    {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span data-toggle="modal" href="#modal-page-sequencing"  class="name btn">Séquenceur</span>{{/view}}
 
 
                     <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">

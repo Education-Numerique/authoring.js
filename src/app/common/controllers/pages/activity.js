@@ -198,11 +198,38 @@
       if (arguments.length === 1) {
         return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
       }
+      this.set('quizzSequencingIsNaturalOrder', false);
+      this.set('quizzSequencingIsRandom', false);
+      this.set('quizzSequencingIsRandomSubset', false);
+      var seq = this.get('currentPage.sequencing');
+      console.warn('********** set bool', seq);
+      if (seq == -1)
+        this.set('quizzSequencingIsNaturalOrder', true);
+      else if (seq == 0)
+        this.set('quizzSequencingIsRandom', true);
+      else
+        this.set('quizzSequencingIsRandomSubset', true);
 
-      this.get('currentPage').set('sequencing', value ? 0 : -1);
       return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
 
     }).property('currentPage.sequencing'),
+
+
+    quizzSequencingIsNaturalOrder : true,
+    quizzSequencingIsRandom: false,
+    quizzSequencingIsRandomSubset: false,
+
+    setQuizzSequencing : (function (key, value) {
+      if (arguments.length === 1)
+        return this.get('currentPage.sequencing');
+      value = parseInt(value, 10);
+      console.log('* - * - *', value);
+      if (value < 1) {
+        this.set('currentPage.sequencing', value);
+      } else {
+        console.log('======> todo');
+      }
+    }.property()),
 
     _storedCurrentQuestion: null,
 

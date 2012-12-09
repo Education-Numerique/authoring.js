@@ -166,14 +166,15 @@
       },
       SequenceButton: Em.View.extend({
         tagName: 'button',
+        type: 'button',
+        attributeBindings: ['type'],
 
         click: function(e) {
-          // console.log('====> click');
-          if (this.$('.checker').has($(e.target)).length) {
-            return true;
-          }
+          if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
+            $('#modal-page-sequencing').modal('show');
+          else if (this.$('[data-toggle]')[0] == e.target) {
 
-          // console.log('====> go model');
+          }
         }
       }),
 

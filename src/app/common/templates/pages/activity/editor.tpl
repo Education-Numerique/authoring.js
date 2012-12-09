@@ -136,6 +136,27 @@
     </div>
 </div>
 
+<div class="modal hide" id="modal-page-sequencing">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Séquenceur</h3>
+    </div>
+    <div class="modal-body" style="height:200px">
+        <form>
+          <fieldset>
+            
+            <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayAll"}}Afficher toutes les questions</label> <br />
+            <label>Afficher les questions par ordre:</label>
+            {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsNaturalOrder" value="-1" title="Naturel" groupBinding="setQuizzSequencing"}}
+            {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsRandom" value="0" title="Aléatoire sur la totalité" groupBinding="setQuizzSequencing"}}
+            {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsRandomSubset" value="1" title="Aléatoire sur un nombre de questions" groupBinding="setQuizzSequencing"}}
+          </fieldset>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+    </div>
+</div>
 
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
   <div class="modal-header">

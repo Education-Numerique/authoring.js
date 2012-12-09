@@ -81,7 +81,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     displayHoles: false,
     displayHolesRandomly: false, // false = alphabetical, true = random
 
-    displayAll: false,
+    displayAll: true,
     questions: api.ArrayMutable.bind({}, this.Question)
   });
 
