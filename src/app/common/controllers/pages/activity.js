@@ -215,11 +215,11 @@
     }).property('currentPage.sequencing'),
 
 
-    quizzSequencingIsNaturalOrder : true,
+    quizzSequencingIsNaturalOrder: true,
     quizzSequencingIsRandom: false,
     quizzSequencingIsRandomSubset: false,
 
-    setQuizzSequencing : (function (key, value) {
+    setQuizzSequencing: (function(key, value) {
       if (arguments.length === 1)
         return this.get('currentPage.sequencing');
       value = parseInt(value, 10);

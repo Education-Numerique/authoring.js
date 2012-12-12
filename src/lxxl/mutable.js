@@ -86,7 +86,7 @@ jsBoot.pack('jsBoot.types', function(api) {
       mesh.forEach(function(item, idx) {
         if (subType && !subType.isDirty && (subType.constructor == Function)) {
           this.pushObject(new subType(item, idx));
-        }else{
+        }else {
           this.pushObject(subType ? subType(item, idx) : item);
         }
       }, f);

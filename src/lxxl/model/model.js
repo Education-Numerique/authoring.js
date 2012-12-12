@@ -9,6 +9,8 @@ jsBoot.use('LxxlLib.service.blob', true).as('blobService');
 jsBoot.pack('LxxlLib.model', function(api) {
   'use strict';
 
+  var blanket = function() {};
+
   /**
    * This is the base model describing activities metadata
    */
@@ -96,7 +98,8 @@ jsBoot.pack('LxxlLib.model', function(api) {
   });
 
   // var tt = function(v){
-  //   return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/activities/' + v;
+  //   return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/activities/' +
+  //   v;
   // };
 
   // tt.isDirty = true;
@@ -133,7 +136,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     extra: Extra
   });
 
-  var dirtyDateConverter = function(v){
+  var dirtyDateConverter = function(v) {
     return new Date(v * 1000);
   };
   dirtyDateConverter.isDirty = true;
@@ -168,23 +171,23 @@ jsBoot.pack('LxxlLib.model', function(api) {
       if (!this.id || !api.service)
         return;
       api.service.read((function(d) {
-        if('blobs' in d.draft){
-          Object.keys(d.draft.blobs).forEach(function(key){
-            d.draft.blobs[key] = d.draft.blobs[key].map(function(id){
+        if ('blobs' in d.draft) {
+          Object.keys(d.draft.blobs).forEach(function(key) {
+            d.draft.blobs[key] = d.draft.blobs[key].map(function(id) {
               return prefix + id + '/draft';
             }, this);
           }, this);
-          if('thumbnail' in d.draft.blobs)
+          if ('thumbnail' in d.draft.blobs)
             this.draft.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
         }
 
-        if('blobs' in d.published){
-          Object.keys(d.published.blobs).forEach(function(key){
-            d.published.blobs[key] = d.published.blobs[key].map(function(id){
+        if ('blobs' in d.published) {
+          Object.keys(d.published.blobs).forEach(function(key) {
+            d.published.blobs[key] = d.published.blobs[key].map(function(id) {
               return prefix + id + '/published';
             }, this);
           }, this);
-          if('thumbnail' in d.published.blobs)
+          if ('thumbnail' in d.published.blobs)
             this.published.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
         }
 
@@ -193,13 +196,13 @@ jsBoot.pack('LxxlLib.model', function(api) {
     };
 
     // Don't fail to init stuff in lists
-    if(initialMesh && initialMesh.published){
-      if('blobs' in initialMesh.draft){
-        if('thumbnail' in initialMesh.draft.blobs)
+    if (initialMesh && initialMesh.published) {
+      if ('blobs' in initialMesh.draft) {
+        if ('thumbnail' in initialMesh.draft.blobs)
           i.draft.set('thumbnailUrl', prefix + initialMesh.draft.blobs.thumbnail.pop() + '/draft');
       }
-      if('blobs' in initialMesh.published){
-        if('thumbnail' in initialMesh.published.blobs)
+      if ('blobs' in initialMesh.published) {
+        if ('thumbnail' in initialMesh.published.blobs)
           i.published.set('thumbnailUrl', prefix + initialMesh.published.blobs.thumbnail.pop() + '/published');
       }
     }
@@ -217,27 +220,27 @@ jsBoot.pack('LxxlLib.model', function(api) {
       }
     };
 
-    i.addMedia = function(blob, success, error) {
+    i.addMedia = function(blob, success/*, error*/) {
       if (!this.id || !api.service)
         return;
-      api.service.addMedia(function(d){
+      api.service.addMedia(function(d) {
         success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
-      }, function(){
+      }, function() {
       }, this.id, blob);
     };
 
-    var handleDetachChange = function(arr, start, removeCount, addCount){
-      for(var x = start, item; x < start + removeCount; x++)
-        api.blobService.remove(function(){}, function(){}, arr[x].id);
+    var handleDetachChange = function(arr, start, removeCount/*, addCount*/) {
+      for (var x = start; x < start + removeCount; x++)
+        api.blobService.remove(blanket, blanket, arr[x].id);
     };
 
-    i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: function(){}});
+    i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: blanket});
 
     // XXX handle remove attachments
-    i.addAttachment = function(blob, name, success, error){
+    i.addAttachment = function(blob, name, success/*, error*/) {
       if (!this.id || !api.service)
         return;
-      api.service.addAttachment((function(d){
+      api.service.addAttachment((function(d) {
         this.draft.extra.attachments.pushObject(new Attachee({
           id: d.blobId,
           url: '//' + api.servicesCore.requestor.hostPort + d.url,
@@ -245,19 +248,19 @@ jsBoot.pack('LxxlLib.model', function(api) {
           type: blob.type
         }));
         success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
-      }.bind(this)), function(){
+      }.bind(this)), function() {
       }, this.id, blob);
     };
 
     i.setThumbnail = function(blob) {
       if (!this.id || !api.service)
         return;
-      api.service.addThumbnail((function(d){
+      api.service.addThumbnail((function(d) {
         this.draft.set('thumbnailUrl', '//' + api.servicesCore.requestor.hostPort + d.url + '?' + Math.random());
-      }.bind(this)), function(){}, this.id, blob);
+      }.bind(this)), blanket, this.id, blob);
     };
 
-    i.removeThumbnail = function(blob){
+    i.removeThumbnail = function() {
       this.draft.set('thumbnailUrl', null);
       if (!this.id || !api.service)
         return;

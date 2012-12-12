@@ -51,11 +51,12 @@
           ],
           add: function(e, data) {
             $(this).fileupload('process', data).done(function() {
-              LxxlApp.get('router.activityEditController.content').controller.addMedia(data.files[0], function(url, blobId) {
-                insertImage(url, blobId);
-              }, function() {
-                console.log('=========> error', arguments);
-              });
+              LxxlApp.get('router.activityEditController.content').controller.addMedia(data.files[0],
+                  function(url, blobId) {
+                    insertImage(url, blobId);
+                  }, function() {
+                    console.log('=========> error', arguments);
+                  });
             });
           }
         });
@@ -88,7 +89,7 @@
         redactorScope = obj;
         obj.modalInit('Insérer une image', '#redactor-imagemanager', 500, callback);
       });
-    }
+    };
   })();
 
 

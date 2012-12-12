@@ -8,9 +8,9 @@
       var profile = {};
 
       for (var key in data) {
-        if (['','username', 'email', 'password', 'password2'].indexOf(key) != -1)
+        if (['', 'username', 'email', 'password', 'password2'].indexOf(key) != -1)
           continue;
-        
+
         profile[key] = data[key];
       }
 

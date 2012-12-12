@@ -18,10 +18,10 @@
 
     // $('html').popover({selector: '[rel=popover]'});
 
-        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-title', 'titre');
-        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-html', '<h4>toto</h4>');
-        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-placement', 'top');
-        // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-trigger', 'hover');
+    // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-title', 'titre');
+    // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-html', '<h4>toto</h4>');
+    // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-placement', 'top');
+    // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-trigger', 'hover');
 
 
 

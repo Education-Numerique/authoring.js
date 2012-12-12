@@ -4,7 +4,7 @@
  * - add the learner environemnent including feedback and other consumer related behaviors
  */
 
-/*global console, Mingus, Handlebars*/
+/*global Mingus, Handlebars*/
 (function() {
   'use strict';
   /**
@@ -21,7 +21,7 @@
     }
   });
 
-  var helpers = (function() {
+  (function() {
     var nameIndex = 0;
     Handlebars.registerHelper('index', function() {
       nameIndex++;
@@ -146,7 +146,7 @@
     };
 
 
-    var session;
+    // var session;
     var ifr;
     this.setupViewport = function(node, noframe) {
       if (ifr)
@@ -204,6 +204,7 @@
   });*/
 
 
+  /*
   var helpers = new (function() {
     var pad = function(subject, n, pattern) {
       subject = subject + '';
@@ -213,15 +214,14 @@
       return subject;
     };
 
-    /*
-XXX use this instead of the other crap
+// XXX use this instead of the other crap
 
-var date = new Date(null);
-      date.setSeconds(this.get('currentPage.limitedTime'));
-      var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
-        return parseInt(i);
-      });
- */
+// var date = new Date(null);
+//       date.setSeconds(this.get('currentPage.limitedTime'));
+//       var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
+//         return parseInt(i);
+//       });
+
 
     this.chronometer = function(node, seconds, toutCbk) {
       var cur = seconds;
@@ -256,6 +256,7 @@ var date = new Date(null);
       };
     };
   })();
+  */
 
 
 
@@ -265,8 +266,7 @@ var date = new Date(null);
 
 
 
-
-
+  /*
   var ActivityUserController = function(mesh) {
     this.activity = new LxxlLib.model.Activity(mesh);
 
@@ -312,11 +312,12 @@ var date = new Date(null);
 
     };
   };
+  */
 }).apply(this);
 
 
 // Activity may be passed as a json url, or embedded as a datauri?
-if (/activity.html/.test(location.href)) {
+if (/activity\.html/.test(location.href)) {
   var a = new LxxlLib.Masher();
   a.setupViewport($('#lxxlroot'), true);
   // a.addStyle('body{background-color: blue;}');

@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  this.MyActivitiesController = Ember.ObjectController.extend(new (function(){
+  this.MyActivitiesController = Ember.ObjectController.extend(new (function() {
 
 
   })());

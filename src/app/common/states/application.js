@@ -41,7 +41,7 @@
 
         login: Ember.Route.extend({
           route: '/login',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
@@ -53,10 +53,10 @@
           }
         }),
 
-        
+
         register: Ember.Route.extend({
           route: '/register',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
@@ -71,7 +71,7 @@
 
         validate: Ember.Route.extend({
           route: '/validate',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
@@ -85,7 +85,7 @@
 
         reminder: Ember.Route.extend({
           route: '/lost-password',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (isLogged)
@@ -100,18 +100,18 @@
 
         logout: Ember.Route.extend({
           route: '/logout',
-          enter: function (router) {
+          enter: function(router) {
             router.get('applicationController').logout();
             Ember.run.next(function() {
               router.transitionTo('index');
             });
-          },
+          }
         }),
 
-        
+
         profile: Ember.Route.extend({
           route: '/profile',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (!isLogged)
@@ -128,10 +128,10 @@
           }
         }),
 
-        
+
         settings: Ember.Route.extend({
           route: '/settings',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             Ember.run.next(function() {
               if (!isLogged)
@@ -141,7 +141,7 @@
           connectOutlets: function(router) {
             router.get('applicationController').connectOutlet('accountSettings');
           }
-        }),
+        })
       }),
 
       showAccountLogin: Ember.Route.transitionTo('account.login'),
@@ -189,7 +189,7 @@
       showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
       dashboard: Ember.Route.extend({
-        
+
 
         index: Ember.Route.extend({
           route: '/',
@@ -293,8 +293,8 @@
                 });
               }
             });
-            
-            
+
+
           },
           connectOutlets: function(router, qti) {
             // XXX @todo
@@ -306,7 +306,7 @@
 
         edit: Ember.Route.extend({
           route: '/activity/:id',
-          enter: function (router) {
+          enter: function(router) {
             var isLogged = router.get('applicationController.isLogged');
             // Ember.run.next(function() {
             //   if (!isLogged)
@@ -321,8 +321,8 @@
           }
         })
 
-        
-        
+
+
       })
     })
   });

@@ -41,31 +41,31 @@
       }
     });
 
-    this.get('controller').addObserver('isAttemptFailed', function(){
-      if(!!this.get('controller.isAttemptFailed'))
+    this.get('controller').addObserver('isAttemptFailed', function() {
+      if (!!this.get('controller.isAttemptFailed'))
         $('.login-error-box').fadeIn().delay(3000).fadeOut();
     }.bind(this));
 
-    this.get('controller').addObserver('isAttemptSuccessful', function(){
-      if(!!this.get('controller.isAttemptSuccessful')) {
+    this.get('controller').addObserver('isAttemptSuccessful', function() {
+      if (!!this.get('controller.isAttemptSuccessful')) {
         Ember.run.next(function() {
           LxxlApp.get('router').transitionTo('dashboard');
         });
       }
     }.bind(this));
 
-      // switch(appc.get('status')){
-      //   case appc.USER_READY:
-      //   break;
-      //   case appc.USER_FAIL:
-      //   break;
-      // }
+    // switch(appc.get('status')){
+    //   case appc.USER_READY:
+    //   break;
+    //   case appc.USER_FAIL:
+    //   break;
+    // }
 
-    $('#loginform').on('submit', function (e) {
-        e.preventDefault();
-        e.stopImmediatePropagation();
-        this.get('controller').tryLogin($('#email').val(), $('#password').val());
-        return false;
+    $('#loginform').on('submit', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      this.get('controller').tryLogin($('#email').val(), $('#password').val());
+      return false;
     }.bind(this));
   };
 

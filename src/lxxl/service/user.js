@@ -26,7 +26,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.profile = new (function(){
+    this.profile = new (function() {
       this.push = function(onSuccess, onFailure, payload) {
         requestor.query(requestor.POST, {
           service: SERVICE,
@@ -49,7 +49,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       };
     })();
 
-    this.preferences = new (function(){
+    this.preferences = new (function() {
       this.push = function(onSuccess, onFailure, payload) {
         requestor.query(requestor.POST, {
           service: SERVICE,
@@ -72,7 +72,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       };
     })();
 
-    this.settings = new (function(){
+    this.settings = new (function() {
       this.push = function(onSuccess, onFailure, payload) {
         requestor.query(requestor.POST, {
           service: SERVICE,
@@ -95,7 +95,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       };
     })();
 
-    this.avatar = new (function(){
+    this.avatar = new (function() {
 
       this.push = function(onSuccess, onFailure, payload, id) {
         requestor.query(requestor.POST, {
@@ -108,7 +108,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
         });
       };
 
-      this.remove = function(onSuccess, onFailure, id){
+      this.remove = function(onSuccess, onFailure, id) {
         requestor.query(requestor.DELETE, {
           service: SERVICE,
           onsuccess: onSuccess,
@@ -119,6 +119,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       };
 
       this.getUrl = function(id) {
+        /*jshint regexp:false*/
         var url = '/' + requestor.version + '/' + SERVICE;
         if (id)
           url += '/' + id;

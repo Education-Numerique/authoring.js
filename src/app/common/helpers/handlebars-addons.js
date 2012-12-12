@@ -78,11 +78,11 @@
     if (Object.prototype.toString.call(d) !== '[object Date]')
       return false;
     return !isNaN(d.getTime());
-  }
+  };
 
   Ember.Handlebars.registerHelper('moment', function(property, options) {
     var value = Ember.Handlebars.get(this, property, options);
-    console.warn("-------------------->", value);
+    console.warn('-------------------->', value);
 
     if (Object.prototype.toString.call(value) === '[object String]')
       value = new Date(value);

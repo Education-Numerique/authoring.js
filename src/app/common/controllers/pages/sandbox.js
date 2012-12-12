@@ -14,9 +14,9 @@
   'use strict';
 
   // All that stupid gymnastic is meant to splice together damn dataTable and Handlebars together.
-  // Technically, both do manipulate the DOM in incompatible ways, so, we have to override HB 
+  // Technically, both do manipulate the DOM in incompatible ways, so, we have to override HB
   // entirely and replace it with DT inner methods calls.
-  var ctl = new (function(){
+  var ctl = new (function() {
 
     var ach = this.activities = [];
     var fach = this.filteredActivities = [];
@@ -35,16 +35,16 @@
 
 
 
-    this._drawIt = function() {
+    this._drawIt = (function() {
       if (this.get('domReady') && this.get('dataReady')) {
         drawPie();
         drawPieLevel();
       }
-    }.observes('domReady', 'dataReady');
+    }.observes('domReady', 'dataReady'));
 
-    this.matters = (function(){
-      if(!innerMatters.length){
-        LxxlLib.factories.metadata.matters.forEach(function(item, idx){
+    this.matters = (function() {
+      if (!innerMatters.length) {
+        LxxlLib.factories.metadata.matters.forEach(function(item, idx) {
           var mt = Ember.Object.create({
             id: item.id,
             title: item.title,
@@ -55,21 +55,21 @@
           innerMatters.pushObject(mt);
         });
       }
-      innerMatters.forEach(function(i){
+      innerMatters.forEach(function(i) {
         i.set('count', 0);
       });
       var a = this.get('activities');
-      a.forEach(function(j){
+      a.forEach(function(j) {
         hashMatters[j.published.matter.id].set('count', hashMatters[j.published.matter.id].get('count') + 1);
       });
 
       var x = 0;
-      innerMatters.forEach(function(i){
-        if(i.get('count')){
+      innerMatters.forEach(function(i) {
+        if (i.get('count')) {
           i.set('style', 'background-color: ' + colors[(x * 2) % colors.length]);
           i.set('index', x);
           x++;
-        }else{
+        }else {
           i.set('index', -1);
         }
       });
@@ -77,14 +77,14 @@
       return innerMatters;
     }).property('LxxlLib.factories.metadata.matters.@each', 'activities.@each');
 
-    this.clickyClickMatter = function(d){
+    this.clickyClickMatter = function(d) {
       matterRestrict = (d.context == 'reset') ? null : d.context;
       this.set('displayMatter', matterRestrict ? hashMatters[matterRestrict].title : allM);
       // console.warn('Click on my ass', d, d.target, $(d.target).parent());
       d = $(d.target);
       d.parent().parent().children('li').removeClass('active');
       d.parent().addClass('active');
-      if(matterRestrict)
+      if (matterRestrict)
         piePie.onclick(piePie.controllers[hashMatters[matterRestrict].index]);
       levelRestrict = null;
       this.set('displayLevel', allL);
@@ -95,7 +95,7 @@
     var active = null;
 
     var piePie;
-    var drawPie = function(){
+    var drawPie = function() {
       piePie = new LxxlLib.widgets.ApplePie($('#piepie')[0]);
       piePie.halign = piePie.CENTER;
       piePie.reverse = false;
@@ -107,20 +107,20 @@
       piePie.addColor('#6eb4ce', '#3b86ae');
       piePie.bind({array: innerMatters, valueKey: 'count', labelKey: 'title'});
 
-      piePie.onover = function(sector){
-        if(!sector.active) {
+      piePie.onover = function(sector) {
+        if (!sector.active) {
           sector.doMouseOver();
           $($('#piepie + ul li')[sector.index]).addClass('hovering');
         }
       };
-      piePie.onout = function(sector){
-        if(!sector.active) {
+      piePie.onout = function(sector) {
+        if (!sector.active) {
           sector.doMouseOut();
           $($('#piepie + ul li')[sector.index]).removeClass('hovering');
         }
       };
-      piePie.onclick = function(sector){
-        if(active && active != sector){
+      piePie.onclick = function(sector) {
+        if (active && active != sector) {
           active.doMouseOut();
           $($('#piepie + ul li')[active.index]).removeClass('active');
           active.active = null;
@@ -131,7 +131,7 @@
         sector.active = true;
 
         active = sector;
-        matterRestrict = innerMatters.filter(function(item){
+        matterRestrict = innerMatters.filter(function(item) {
           return item.index == sector.index;
         }).pop().id;
         LxxlApp.router.sandboxController.set('displayMatter', hashMatters[matterRestrict].title);
@@ -152,9 +152,9 @@
     var allL = 'tous les niveaux';
     this.displayLevel = allL;
 
-    this.levels = (function(){
-      if(!innerLevels.length){
-        LxxlLib.factories.metadata.levels.forEach(function(item, idx){
+    this.levels = (function() {
+      if (!innerLevels.length) {
+        LxxlLib.factories.metadata.levels.forEach(function(item, idx) {
           var mt = Ember.Object.create({
             id: item.id,
             title: item.title,
@@ -165,22 +165,22 @@
           innerLevels.pushObject(mt);
         });
       }
-      innerLevels.forEach(function(i){
+      innerLevels.forEach(function(i) {
         i.set('count', 0);
       });
       var a = this.get('activities');
-      a.forEach(function(j){
-        if(!matterRestrict || j.published.matter.id == matterRestrict)
+      a.forEach(function(j) {
+        if (!matterRestrict || j.published.matter.id == matterRestrict)
           hashLevels[j.published.level.id].set('count', hashLevels[j.published.level.id].get('count') + 1);
       });
 
       var x = 0;
-      innerLevels.forEach(function(i){
-        if(i.get('count')){
+      innerLevels.forEach(function(i) {
+        if (i.get('count')) {
           i.set('style', 'background-color: ' + colors[(x * 2) % colors.length]);
           i.set('index', x);
           x++;
-        }else{
+        }else {
           i.set('index', -1);
         }
       });
@@ -188,14 +188,14 @@
       return innerLevels;
     }).property('LxxlLib.factories.metadata.levels.@each', 'activities.@each', '_dirtyTrick');
 
-    this.clickyClickLevel = function(d){
+    this.clickyClickLevel = function(d) {
       levelRestrict = (d.context == 'reset') ? null : d.context;
       this.set('displayLevel', levelRestrict ? hashLevels[levelRestrict].title : allL);
       // console.warn('Click on my ass', d, d.target, $(d.target).parent());
       d = $(d.target);
       d.parent().parent().children('li').removeClass('active');
       d.parent().addClass('active');
-      if(levelRestrict)
+      if (levelRestrict)
         piePieLev.onclick(piePieLev.controllers[hashLevels[levelRestrict].index]);
       rehash();
     };
@@ -203,7 +203,7 @@
     var activeLevel = null;
 
     var piePieLev;
-    var drawPieLevel = function(){
+    var drawPieLevel = function() {
       console.warn('drawing piepie');
       piePieLev = new LxxlLib.widgets.ApplePie($('#piepielevel')[0]);
       piePieLev.halign = piePieLev.CENTER;
@@ -216,20 +216,20 @@
       piePieLev.addColor('#6eb4ce', '#3b86ae');
       piePieLev.bind({array: innerLevels, valueKey: 'count', labelKey: 'title'});
 
-      piePieLev.onover = function(sector){
-        if(!sector.active) {
+      piePieLev.onover = function(sector) {
+        if (!sector.active) {
           sector.doMouseOver();
           $($('#piepielevel + ul li')[sector.index]).addClass('hovering');
         }
       };
-      piePieLev.onout = function(sector){
-        if(!sector.active) {
+      piePieLev.onout = function(sector) {
+        if (!sector.active) {
           sector.doMouseOut();
           $($('#piepielevel + ul li')[sector.index]).removeClass('hovering');
         }
       };
-      piePieLev.onclick = function(sector){
-        if(activeLevel && activeLevel != sector){
+      piePieLev.onclick = function(sector) {
+        if (activeLevel && activeLevel != sector) {
           activeLevel.doMouseOut();
           $($('#piepielevel + ul li')[activeLevel.index]).removeClass('active');
           activeLevel.active = null;
@@ -240,7 +240,7 @@
         sector.active = true;
 
         activeLevel = sector;
-        levelRestrict = innerLevels.filter(function(item){
+        levelRestrict = innerLevels.filter(function(item) {
           return item.index == sector.index;
         }).pop().id;
         LxxlApp.router.sandboxController.set('displayLevel', hashLevels[levelRestrict].title);
@@ -280,21 +280,21 @@
 
 
 
-    this.pull = function(){
-      if(piePie){
+    this.pull = function() {
+      if (piePie) {
         piePie.destroy();
-        try{
+        try {
           piePie.underpie.remove();
-        }catch(e){
-          
+        }catch (e) {
+
         }
         piePie = null;
       }
-      if(piePieLev){
+      if (piePieLev) {
         piePieLev.destroy();
-        try{
+        try {
           piePieLev.underpie.remove();
-        }catch(e){
+        }catch (e) {
 
         }
         piePieLev = null;
@@ -309,20 +309,20 @@
       innerLevels.replace(0, innerLevels.length);
       hashMatters = Ember.Object.create({});
       hashLevels = Ember.Object.create({});
-      LxxlLib.service.activities.listPublished((function(d){
+      LxxlLib.service.activities.listPublished((function(d) {
         this.activities.replace(0, this.activities.length);
-        d.forEach(function(item){
+        d.forEach(function(item) {
           var act = LxxlLib.factories.activities.getActivity(item);
-          if(act.isPublished){
+          if (act.isPublished) {
             this.activities.pushObject(act);
           }
         }, this);
         this.set('dataReady', true);
-      }.bind(this)), function(){
+      }.bind(this)), function() {
         // Errrr
       });
 
-      
+
     };
 
     var doPreview = function(node, activity) {
@@ -341,7 +341,7 @@
 
     var will = function(arr, start, removeCount, addCount) {
       var nn = $('.sandbox.data-table').dataTable();
-      for(var x = start + removeCount - 1; x >= start; x--)
+      for (var x = start + removeCount - 1; x >= start; x--)
         nn.fnDeleteRow(x);
     };
 
@@ -353,16 +353,16 @@
     // $('.data-table button').bind('click', clickHandler)
 
 
-    var popoverContent = '<div class="thumbnail">{thumbnail}</div>' + 
-      '<h5>{nickname}</h5>' +
-      '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
-      '<div class="avatar">{useravatar}</div>' +
-      '<div>{description}</div>';
+    var popoverContent = '<div class="thumbnail">{thumbnail}</div>' +
+        '<h5>{nickname}</h5>' +
+        '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
+        '<div class="avatar">{useravatar}</div>' +
+        '<div>{description}</div>';
 
     var did = function(arr, start, removeCount, addCount) {
 
       var nn = $('.sandbox.data-table').dataTable();
-      for(var x = start, item; x < start + addCount; x++){
+      for (var x = start, item; x < start + addCount; x++) {
         item = arr[x];
         nn.fnAddData([
           '',
@@ -376,15 +376,15 @@
           item.id
         ]);
         var s = $('.sandbox.data-table tbody tr:last-of-type td:first-child+td');
-        s.attr('data-title', item.published.title)
+        s.attr('data-title', item.published.title);
         var ct = popoverContent.replace('{nickname}', item.author.username);
         ct = ct.replace('{thumbnail}', item.published.thumbnailUrl ?
-              '<img src="' + item.published.thumbnailUrl + '" />' :
-              '');
+            '<img src="' + item.published.thumbnailUrl + '" />' :
+            '');
         ct = ct.replace('{duration}', item.published.duration.title);
         var needle = '<span class="icon-warning-sign" />';
         var df = '';
-        switch(item.published.difficulty.id){
+        switch (item.published.difficulty.id) {
           case 'hard':
             df += needle;
           case 'normal':
@@ -392,7 +392,7 @@
           default:
           case 'easy':
             df += needle;
-          break;
+            break;
         }
         ct = ct.replace('{difficulty}', df);
         ct = ct.replace('{useravatar}', item.author.avatarUrl ?
@@ -404,25 +404,25 @@
         s.attr('rel', 'popover');
       }
 
-      $('.sandbox.data-table tr>td:first-child').each(function(ind, item){
+      $('.sandbox.data-table tr>td:first-child').each(function(ind, item) {
         item = $(item);
-        if(!item.html()){
+        if (!item.html()) {
           item.html('<button class="icon-edit"></button>');
-          item.bind('click', function(e){
+          item.bind('click', function(e) {
             var id = e.target.parentNode.parentNode.lastChild.innerText;
             LxxlApp.router.send('showActivityEdit', {id: id});
           });
         }
       });
 
-      $('.sandbox.data-table tr>td:first-child+td').each(function(ind, item){
+      $('.sandbox.data-table tr>td:first-child+td').each(function(ind, item) {
         item = $(item);
-        if(!item.html()){
+        if (!item.html()) {
           item.html('<button class="icon-eye-open"></button>');
-          item.bind('click', function(e){
+          item.bind('click', function(e) {
             $('#modal-preview').modal({keyboard: false, backdrop: true});
             var id = e.target.parentNode.parentNode.lastChild.innerText;
-            var a = ach.filter(function(item){
+            var a = ach.filter(function(item) {
               return item.id == id;
             }).pop();
             doPreview($('#modal-preview-body'), a);
@@ -430,45 +430,45 @@
         }
       });
 
-/*
-*/
+      /*
+      */
       // $('.sandbox')html
     };
 
     this.filteredActivities.addArrayObserver(this, { willChange: will, didChange: did});
 
 
-    var rehash = function(){
+    var rehash = function() {
       fach.replace(0, fach.length);
-      ach.forEach(function(item){
-        if((!matterRestrict || item.published.matter.id == matterRestrict) &&
+      ach.forEach(function(item) {
+        if ((!matterRestrict || item.published.matter.id == matterRestrict) &&
             (!levelRestrict || item.published.level.id == levelRestrict))
-            fach.pushObject(item);
+          fach.pushObject(item);
       });
     };
 
-    this.activities.addArrayObserver(this, { willChange: function(){}, didChange: rehash});
+    this.activities.addArrayObserver(this, { willChange: function() {}, didChange: rehash});
 
   })();
 
   window.SHIT = this.SandboxController = Ember.ObjectController.extend(ctl);
 
 
-        // {{#collection contentBinding="activities" tagName="tbody"}}
-        //     <td class="user-reviewer"><button {{action showActivityEdit this href=true}} class="icon-edit"></button></td>
-        //     <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
-        //     <td>{{view.content.title}}</td>
-        //     <td>
-        //       {{moment view.content.controller.publicationDate fromNow="false"}}
-        //     </td>
-        //     <td>{{view.content.controller.seenCount}}</td>
-        //     <td>{{view.content.length.title}}</td>
-        //     <td>{{view.content.difficulty.title}}</td>
-        //     <td>{{view.content.controller.author.username}}</td>
-        // {{/collection}}
+  // {{#collection contentBinding="activities" tagName="tbody"}}
+  //     <td class="user-reviewer"><button {{action showActivityEdit this href=true}} class="icon-edit"></button></td>
+  //     <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
+  //     <td>{{view.content.title}}</td>
+  //     <td>
+  //       {{moment view.content.controller.publicationDate fromNow="false"}}
+  //     </td>
+  //     <td>{{view.content.controller.seenCount}}</td>
+  //     <td>{{view.content.length.title}}</td>
+  //     <td>{{view.content.difficulty.title}}</td>
+  //     <td>{{view.content.controller.author.username}}</td>
+  // {{/collection}}
 
 
-    /*
+  /*
     qti: (function() {
       var ret = [
         {id: 'abc', author: 'Roger Doe', title: 'Stuff', category: 'Anglais pas littéraire'},

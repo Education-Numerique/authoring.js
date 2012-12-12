@@ -19,7 +19,7 @@
         },
 
         account: {
-          validation : {
+          validation: {
             title: 'Validation de compte'
           },
           login: {
@@ -40,9 +40,9 @@
           }
         },
 
-        
-        
-        
+
+
+
 
         categories: {
           title: 'Catégories'

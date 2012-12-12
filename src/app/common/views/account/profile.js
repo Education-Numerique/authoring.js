@@ -3,7 +3,7 @@
   var t = this.lxxlPageView('account/profile');
 
 
-  t.doOnInsert = function () {
+  t.doOnInsert = function() {
     var self = this;
 
     $('#fileupload').fileupload();
@@ -31,16 +31,16 @@
       ],
       add: function(e, data) {
         $(this).fileupload('process', data).done(function() {
-            self.get('controller').setAvatar(data.files[0]);   
+          self.get('controller').setAvatar(data.files[0]);
         });
       }
 
     });
 
-    $('#profile-form').on('submit', function (e) {
+    $('#profile-form').on('submit', function(e) {
       e.preventDefault();
       e.stopImmediatePropagation();
-      
+
       this.get('controller').save();
 
       return false;

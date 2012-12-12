@@ -30,7 +30,8 @@
       return ret;
     };
 
-    var process = function(angle, cx, cy, r1, r2, value, label, total, top, bot, segment, animation, onOver, onOut, onClick, index) {
+    var process = function(angle, cx, cy, r1, r2, value, label, total, top, bot, segment, animation, onOver,
+        onOut, onClick, index) {
       top = Raphael.rgb2hsb(Raphael.getRGB(top));
       bot = Raphael.rgb2hsb(Raphael.getRGB(bot));
 
@@ -61,7 +62,7 @@
         // p.doMouseOut();
         if (onOut)
           onOut(p, chart);
-      }).click(function(){
+      }).click(function() {
         if (onClick)
           onClick(p, chart);
       });
@@ -80,7 +81,8 @@
       return angle;
     };
 
-    chart.doTheDirtyDeed = function(startAngle, limit, cx, cy, r1, r2, values, anim, onOver, onOut, onClick, revert, plain) {
+    chart.doTheDirtyDeed = function(startAngle, limit, cx, cy, r1, r2, values, anim, onOver, onOut, onClick,
+        revert, plain) {
       var angle = 0;
       angle = startAngle;
       var total = values.reduce(function(previousValue, currentValue) {
@@ -225,7 +227,8 @@
           top: colors[idx % colors.length].top,
           bottom: colors[idx % colors.length].bottom,
           value: (item.object.get ? item.object.get(item.valueKey) : item.object[item.valueKey]),
-          label: item.labelKey ? (item.object.get ? item.object.get(item.labelKey) : item.object[item.labelKey]) : item.label
+          label: item.labelKey ? (item.object.get ? item.object.get(item.labelKey) : item.object[item.labelKey]) :
+              item.label
         };
       });
 

@@ -63,7 +63,7 @@
     $('#form-wizard').bind('step_shown', function(e, state) {
       var currentStep = 0;
 
-      state.steps.each(function(i,item) {
+      state.steps.each(function(i, item) {
         if (item.id == state.currentStep)
           currentStep = i + 1;
       });
@@ -83,7 +83,7 @@
           submitor[item.name] = item.value;
       });
       this.get('controller').tryRegister(submitor, onsuccess, onfailure);
-      
+
       return false;
     }.bind(this));
 

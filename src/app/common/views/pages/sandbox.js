@@ -3,7 +3,7 @@
   var t = this.lxxlPageView('pages/sandbox');
 
 
-  t.doOnInsert = function () {
+  t.doOnInsert = function() {
     this.set('controller.domReady', true);
   };
 
@@ -14,7 +14,7 @@
     }).appendTo('body').fadeIn(200);
   };*/
 
-/*
+  /*
   t.data = (function() {
     if (!this.get('element'))
       return;
@@ -69,8 +69,8 @@
   }.property('controller.authors'));
 
   t.doOnInsert = function() {
-*/
-    /*
+  */
+  /*
     var data = [];
     var series = Math.floor(Math.random()*10)+1;
     for( var i = 0; i<series; i++)
@@ -78,31 +78,31 @@
       data[i] = { label: "Series"+(i+1), data: Math.floor(Math.random()*100)+1 }
     }
     */
-    // var pie = $.plot($(".pie"), data,{
-    //     series: {
-    //         pie: {
-    //             show: true,
-    //             radius: 3/4,
-    //             label: {
-    //                 show: true,
-    //                 radius: 3/4,
-    //                 formatter: function(label, series){
-    //                     return '<div style="font-size:8pt;text-align:center;padding:2px;
-    //                     color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
-    //                 },
-    //                 background: {
-    //                     opacity: 0.5,
-    //                     color: '#000'
-    //                 }
-    //             },
-    //             innerRadius: 0.2
-    //         },
-    //     legend: {
-    //       show: false
-    //     }
-    //   }
-    // });
-//  };
+  // var pie = $.plot($(".pie"), data,{
+  //     series: {
+  //         pie: {
+  //             show: true,
+  //             radius: 3/4,
+  //             label: {
+  //                 show: true,
+  //                 radius: 3/4,
+  //                 formatter: function(label, series){
+  //                     return '<div style="font-size:8pt;text-align:center;padding:2px;
+  //                     color:white;">'+label+'<br/>'+Math.round(series.percent)+'%</div>';
+  //                 },
+  //                 background: {
+  //                     opacity: 0.5,
+  //                     color: '#000'
+  //                 }
+  //             },
+  //             innerRadius: 0.2
+  //         },
+  //     legend: {
+  //       show: false
+  //     }
+  //   }
+  // });
+  //  };
 
   this.SandboxView = Ember.View.extend(t);
 

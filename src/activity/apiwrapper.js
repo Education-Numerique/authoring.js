@@ -444,14 +444,15 @@
     sessionTime: {
       mapping: 'core.session_time',
       read: function(value) {
-        var d = /(?:([0-9]{,2}):)?(?:([0-9]{,2}):)?([0-9]{,2})/.match(value);
+        var d = /(?:([0-9]{1,2}):)?(?:([0-9]{1,2}):)?([0-9]{1,2})/.match(value);
         return parseInt(d.pop(), 10) + parseInt(d.pop(), 10) * 60 + parseInt(d.pop(), 10) * 60 * 60;
       },
       write: function(value) {
         var secs = (value % 60);
         var mins = ((value - secs) / 60 % 60);
-        var hours = ((value - secs - min) / 60 % 60);
-        return value.toString();
+        var hours = ((value - secs - mins * 60) / 60 / 60 % (60 * 60));
+        return hours + ':' + mins + ':' + secs;
+        // return value.toString();
       }
     },
 
@@ -576,8 +577,8 @@
 
     var tatBehavior = function() {
       // Tat thingies
-      var tat =
-          $('section[id^=tat-]', dom).each(function(ind, item) {
+      // var tat =
+      $('section[id^=tat-]', dom).each(function(ind, item) {
         var id = item.id.replace(/tat-/, '');
         var wordList = [];
 
@@ -609,8 +610,8 @@
           var plist = wordList;
           if (activity.pages[ind].displayHolesRandomly) {
             wordList = [];
-            while (pList.length) {
-              wordList.push(pList.splice(Math.round(Math.random() * (pList.length - 1)), 1));
+            while (plist.length) {
+              wordList.push(plist.splice(Math.round(Math.random() * (plist.length - 1)), 1));
             }
           }else {
             wordList.sort();
@@ -622,7 +623,7 @@
       });
     };
 
-  });
+  })();
 })();
 
 

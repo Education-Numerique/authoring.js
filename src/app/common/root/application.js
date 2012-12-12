@@ -25,8 +25,8 @@
         jsBoot.debug.tick('Ember application is ready!', true);
 
       this._super();
-      
-      LxxlApp.router.applicationController.addObserver('isAuthor', function () {
+
+      LxxlApp.router.applicationController.addObserver('isAuthor', function() {
         var value = LxxlApp.get('router.applicationController.isAuthor');
         if (value)
           $('#lxxlroot').addClass('user-author');
@@ -34,7 +34,7 @@
           $('#lxxlroot').removeClass('user-author');
       });
 
-      LxxlApp.router.applicationController.addObserver('isAdmin', function () {
+      LxxlApp.router.applicationController.addObserver('isAdmin', function() {
         var value = LxxlApp.get('router.applicationController.isAdmin');
         if (value)
           $('#lxxlroot').addClass('user-admin');
@@ -42,7 +42,7 @@
           $('#lxxlroot').removeClass('user-admin');
       });
 
-      LxxlApp.router.applicationController.addObserver('isLogged', function () {
+      LxxlApp.router.applicationController.addObserver('isLogged', function() {
         var value = LxxlApp.get('router.applicationController.isLogged');
         if (value) {
           $('#lxxlroot').removeClass('user-anonymous');

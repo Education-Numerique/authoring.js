@@ -178,13 +178,13 @@
         }
       }),
 
-      addQCM : function (e) {
+      addQCM: function(e) {
         this.get('controller').addQuestion();
         e.preventDefault();
         return false;
       },
 
-      addQRM: function (e) {
+      addQRM: function(e) {
         var q = this.get('controller').addQuestion();
         q.set('isQRM', true);
         e.preventDefault();
@@ -478,7 +478,7 @@
           $('.upload-ok').html(message);
           $('.upload-ok').clearQueue();
           $('.upload-ok').fadeIn().delay(3000).fadeOut();
-        }
+        };
 
         this.$('.dropzone').bind('dragover', function(e) {
           $(this).addClass('hover');

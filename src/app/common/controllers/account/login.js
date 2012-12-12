@@ -7,12 +7,14 @@
       // console.warn(JSON.stringify(data));
     },
 
-    isAttemptSuccessful: (function(){
-      return LxxlApp.get('router.applicationController.status') == LxxlApp.get('router.applicationController.USER_READY');
+    isAttemptSuccessful: (function() {
+      return LxxlApp.get('router.applicationController.status') ==
+          LxxlApp.get('router.applicationController.USER_READY');
     }.property('LxxlApp.router.applicationController.status')),
 
-    isAttemptFailed: (function(){
-      return LxxlApp.get('router.applicationController.status') == LxxlApp.get('router.applicationController.USER_FAIL');
+    isAttemptFailed: (function() {
+      return LxxlApp.get('router.applicationController.status') ==
+          LxxlApp.get('router.applicationController.USER_FAIL');
     }.property('LxxlApp.router.applicationController.status')),
 
     sendReminder: function(email) {

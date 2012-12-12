@@ -40,7 +40,7 @@
   var STORE_KEY = 'LxxlWebAppKey';
 
   // Application controller
-  this.ApplicationController = Ember.ObjectController.extend(new (function(){
+  this.ApplicationController = Ember.ObjectController.extend(new (function() {
 
     // User properties
     this.user = null;
@@ -53,8 +53,8 @@
 
       // Will delay jsBoot init event until the user object is ready
       // This code will be executed once "boot" is done, and after "logout"
-      jsBootApp.delay(jsBootApp.INITIALIZED, (function(notifyReady){
-        user = new LxxlLib.model.User()
+      jsBootApp.delay(jsBootApp.INITIALIZED, (function(notifyReady) {
+        user = new LxxlLib.model.User();
         user.controller = this;
         this.set('user', user);
         // Say ready once done
@@ -69,7 +69,7 @@
     };
 
     // Bind user identifier
-    this.uid = (function(){
+    this.uid = (function() {
       return jsBootApp.userIdentifier;
     }).property('_jsBootApp.userIdentifier');
 
@@ -78,24 +78,24 @@
     this.ADMIN = 3;
 
     // Bind "isAdmin"
-    this.isAdmin = (function(){
+    this.isAdmin = (function() {
       return this.get('user.level') == this.ADMIN;
     }).property('_jsBootApp.status');
 
-    this.isAuthor = (function(){
+    this.isAuthor = (function() {
       return this.get('user.level') == this.AUTHOR;
     }).property('_jsBootApp.status');
 
 
 
     // Bind "isLogged"
-    this.isLogged = (function(){
+    this.isLogged = (function() {
       return jsBootApp.status == jsBootApp.USER_READY;
     }).property('_jsBootApp.status');
 
 
-    this.isLocked = (function(){
-      if(jsBootApp.status == jsBootApp.LOCKED_OUT){
+    this.isLocked = (function() {
+      if (jsBootApp.status == jsBootApp.LOCKED_OUT) {
         $('#already-locked').modal({keyboard: false, backdrop: 'static'});
         $('#already-locked').modal('show');
       }else
@@ -104,7 +104,7 @@
     }).property('_jsBootApp.status');
 
     // Bind "status"
-    this.status = (function(){
+    this.status = (function() {
       return jsBootApp.status;
     }).property('_jsBootApp.status');
 
@@ -135,13 +135,13 @@
     };
 
     // Delay user ready until the profile is fetched and ok
-    jsBootApp.delay(jsBootApp.USER_READY, function(notifyReady){
-      LxxlLib.service.user.profile.pull(function(data){
+    jsBootApp.delay(jsBootApp.USER_READY, function(notifyReady) {
+      LxxlLib.service.user.profile.pull(function(data) {
         //XXX remove me
         data.level = 1;
         user.fromObject(data);
         notifyReady();
-      }, function(){
+      }, function() {
         // XXX Something bad happens on the service - say something?
         notifyReady();
       });
