@@ -90,8 +90,8 @@ config-jenkins-linux:
       url: '//app.sn.ackitup.net/'
 
   service:
-    port: ''
-    host: 'snap.lxxl.com'
+    port: '90'
+    host: 'api.education-et-numerique.fr'
 
 
   ACCESS:
@@ -168,7 +168,7 @@ config-dmp-darwin:
 
   service:
     port: '90'
-    host: 'snap.lxxl.com'
+    host: 'api.education-et-numerique.fr'
 
   ACCESS:
       LXXL:

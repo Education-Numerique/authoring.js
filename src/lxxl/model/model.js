@@ -41,7 +41,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   });
 
   var catDescriptor = {
-    id: 0,
+    id: '',
     title: '',
     matter: this.Matter,
     level: this.Level
