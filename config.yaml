@@ -90,7 +90,7 @@ config-jenkins-linux:
       url: '//app.sn.ackitup.net/'
 
   service:
-    port: '90'
+    port: ''
     # host: 'app.lxxl.com'
     host: 'api.education-et-numerique.fr'
 
