@@ -87,7 +87,7 @@ config-jenkins-linux:
         version: '0.2'
         url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
     self:
-      url: '//app.sn.ackitup.net/'
+      url: '//www.education-et-numerique.fr/'
 
   service:
     port: ''
