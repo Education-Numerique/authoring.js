@@ -87,27 +87,45 @@
   </article>
 </div>
 
-<!--
 <div class="row-fluid" id="accordion2">
-  <div class="alert alert-info">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Bienvenue!</h4>
-    Ceci est la page d'accueil de Lxxl</div>
 
 <article id="home" class="widget-box">
-  <header class="widget-title" data-toggle="slidify" data-parent="#accordion2" data-target="#home-collapse">
+  <header class="widget-title">
+  <!-- data-toggle="slidify" data-parent="#accordion2" data-target="#home-collapse">-->
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
     <h5>Accueil</h5>
   </header>
-  <section class="widget-content slidify" id="home-collapse">
-    <h5>Enregistrez-vous en tant qu'auteur E&amp;N...<br />
-    c'est gratuit, public, la&iuml;que, open source, creative commons et pas obligatoire !</h5>
-    <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showAccountRegister href=true}}>cliquez ici</a></p>
+  <section class="widget-content" id="home-collapse">
+    <h4>Enregistrez-vous en tant qu'auteur E&amp;N...</h4>
+    <div class="widget-box">
+      <section class="widget-content">
+        <p>... c'est gratuit, public, la&iuml;que, open source, creative commons et pas obligatoire !</p>
+        <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showAccountRegister href=true}}>cliquez ici</a></p>
+      </section>
+    </div>
 
-    <h5>Lorsque vous devenez auteur E&amp;N, vous avez acc&egrave;s...</h5>
+    <h4>Lorsque vous devenez auteur E&amp;N, vous avez acc&egrave;s...</h4>
+    <div class="widget-box">
+      <section class="widget-content">
+        <h5>à l'environnement Auteur</h5>
+        <p>En utilisant les outils et les mod&egrave;les mis &agrave; votre disposition, vous cr&eacute;ez rapidement des activit&eacute;s de qualit&eacute;. <br />
+          Vous demeurez propri&eacute;taire de tout ce que vous produisez et vous pourrez l'exploiter librement. <br />
+        E&amp;N vous propose  de diffuser vos activit&eacute;s et de vous r&eacute;tribuer proportionnellement aux t&eacute;l&eacute;chargements. </p>
 
+        <h5>au bac à sable</h5>
+        <ul>
+          <li>visualisez vos cr&eacute;ations telles qu'elles appara&icirc;tront &agrave; vos lecteurs,</li>
+          <li>partagez avec vos coll&egrave;ques vos trucs pour cr&eacute;er des activit&eacute;s spectaculaires.</li>
+        </ul>
+      </section>
+    </div>
+  </section>
+</article>
+</div>
+
+<!--
     <div class="row-fluid">
       <div class="span4">
         <article class="widget-box">
@@ -184,6 +202,8 @@
 
   </section>
 </article>
+</div>
+
 
 
 <article id="actions" class="widget-box">
