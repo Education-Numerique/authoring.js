@@ -71,7 +71,7 @@
             break;
           default:
             $('#creation-error').html(
-                'Something went wrong on the server side. Sorry. Please try again later.');
+                'Malheur! Quelque chose n\'a pas fonctionné correctement. Merci de réessayer plus tard...');
             $('#creation-error').fadeTo(1000, 1);
             break;
         }

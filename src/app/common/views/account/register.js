@@ -38,7 +38,7 @@
             required: 'Merci de fournir un nom d\'utilisateur',
             minlength: jQuery.format('At least {0} characters required!')
           },
-          password: 'Vous devez choisir un mot de passe',
+          password: 'Vous devez choisir un mot de passe (6 à 25 caractères)',
           password2: {
             required: 'Merci de répéter le mot de passe choisi',
             equalTo: 'Le mot de passe saisi est différent'
@@ -108,7 +108,7 @@
         default:
         case this.get('controller').UNKNOWN:
           $('#creation-error').html(
-              'Something went wrong on the server side. Sorry. Please try again later.');
+              'Malheur! Quelque chose n\'a pas fonctionné correctement. Merci de réessayer plus tard...');
           $('#creation-error').fadeTo(1000, 1);
           break;
       }
