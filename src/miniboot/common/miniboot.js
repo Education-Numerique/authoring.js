@@ -69,7 +69,7 @@
   jsBoot.boot.ember(onEmberBoot, debug, version);
 
   // Bundled assets (vanilla bootstrap style doesn't work properly)
-  jsBoot.loader.use('libs/css/bootstrap.css');
+  jsBoot.loader.use('libs/css/bootstrap' + suffix + 'css');
   // jsBoot.loader.use('libs/css/bootstrap-responsive.css');
 
   // Fullscreen shim-like - not used for now

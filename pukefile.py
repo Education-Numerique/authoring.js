@@ -108,7 +108,7 @@ def build():
 
   bootman = PH.getmanifest('jsboot')
 
-  sed.add('{JSBOOT}', bootman['jsbootstrap'].encode('latin-1'))
+  sed.add('{JSBOOT}', bootman['jsbootstrap'].encode('latin-1').replace('only.jsboot.js', 'only.jsboot-min.js'))
   sed.add('{MINIBOOT}', 'miniboot-min.js')
 
   sed.add('{PUKE-SERVICE-HOST}', Yak.service['host'])
