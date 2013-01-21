@@ -7,6 +7,7 @@
     tryRegister: function(data, successCbk, failureCbk) {
       var profile = {};
 
+      console.warn("---------------------> Going to register with", JSON.stringify(data));
       for (var key in data) {
         if (['', 'username', 'email', 'password', 'password2'].indexOf(key) != -1)
           continue;
