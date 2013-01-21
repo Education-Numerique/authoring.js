@@ -130,7 +130,7 @@
           </div>
 
           <div class="control-group">
-            <label class="control-label">Addresse de l'établissement</label>
+            <label class="control-label">Code postal de l'établissement</label>
             <div class="controls">
               <input id="company-address" type="text" name="company-address" />
             </div>
