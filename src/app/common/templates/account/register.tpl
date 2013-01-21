@@ -99,6 +99,7 @@
                 <option value="hg">Histoire et Géographie</option>
                 <option value="fr">Français</option>
                 <option value="mt">Maths</option>
+                <option value="an">Anglais</option>
                 <option value="ph">Physique</option>
               </select>
             </div>
