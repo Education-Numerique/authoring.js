@@ -78,10 +78,15 @@
       e.stopImmediatePropagation();
       $('#form-wizard input').attr('disabled', 'disabled');
       var submitor = {};
-      Array.prototype.forEach.call(document.getElementsByTagName('form')[0], function(item) {
+
+      var form = document.getElementsByTagName('form')[0];
+      var item;
+      for (var i = 0; i < form.length; i++) {
+        item = form[i];
         if ((item.name != 'Submit') && (item.name != 'Back'))
-          submitor[item.name] = item.value;
-      });
+          submitor[item.name] = item.value; 
+      }
+      
       this.get('controller').tryRegister(submitor, onsuccess, onfailure);
 
       return false;
