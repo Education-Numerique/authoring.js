@@ -240,7 +240,7 @@ config-dmp-darwin:
         url: '//app.loft.sn.ackitup.net:4242/'
 
   service:
-    port: '90'
+    port: ''
     # host: 'app.lxxl.com'
     host: 'api.education-et-numerique.fr'
 
