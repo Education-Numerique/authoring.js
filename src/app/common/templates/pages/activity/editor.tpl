@@ -53,6 +53,9 @@
                                 {{#if isTat}}
                                     {{view view.TatPage}}
                                 {{/if}}
+                                {{#if isMixnmatch}}
+                                    {{view view.MixnmatchPage}}
+                                {{/if}}
                             {{else}}
                                 {{view view.InformationTab}}
                             {{/if}}

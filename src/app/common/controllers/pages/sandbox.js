@@ -361,9 +361,19 @@
 
     var did = function(arr, start, removeCount, addCount) {
 
-      var nn = $('.sandbox.data-table').dataTable();
+      var nn = $('.sandbox.data-table').dataTable({
+        "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+          console.log(arguments);
+        }
+      });
       for (var x = start, item; x < start + addCount; x++) {
         item = arr[x];
+        if (!item.published.duration)
+          item.published.duration = {title: '', id: 0};
+
+        if (!item.published.difficulty)
+          item.published.difficulty = {title: '', id: 0};
+
         nn.fnAddData([
           '',
           '',

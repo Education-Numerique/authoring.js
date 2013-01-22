@@ -52,7 +52,10 @@
       parentLi.addClass('active');
     };
 
-    this.bindBehaviors = function(node) {
+    this.bindBehaviors = function(node, options) {
+
+      if (!options)
+        options = {};
       // Chosen stuff
       // $('select.chzn-select').chosen();
       $(':not(.data-table) select', node).chosen();
@@ -91,12 +94,12 @@
       $('.data-table', node).each(function(ind, item) {
         if ($(item).hasClass('dataTable'))
           return;
-        $(item).dataTable({
+        $(item).dataTable($.extend({
           'oLanguage': LxxlLib.Locale.getData('tables'),
           'bJQueryUI': true,
           'sPaginationType': 'full_numbers',
           'sDom': '<""l>t<"F"fp>'
-        });
+        }, options));
 
 
         $('span.icon input:checkbox, th input:checkbox', node).click(function() {

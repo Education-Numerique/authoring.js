@@ -127,6 +127,57 @@
 
       })
     }),
+  
+    MixnmatchPage: Em.View.extend({
+      templateName: 'pages/activity/editor/mixnmatch',
+      TimeButton: Em.View.extend({
+        tagName: 'button',
+        type: 'button',
+        attributeBindings: ['type'],
+
+        didInsertElement: function() {
+          // var self = this.$('.checker');
+          this.$().on('click', function(e) {
+            if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
+              $('#modal-page-timer').modal('show');
+            else if (this.$('[data-toggle]')[0] == e.target) {
+              if (!this.get('controller.pageActivatedLimitedTime'))
+                this.set('controller.pageActivatedLimitedTime', true);
+            }
+
+          }.bind(this));
+        }
+      }),
+      SequenceButton: Em.View.extend({
+        tagName: 'button',
+        type: 'button',
+        attributeBindings: ['type'],
+
+        click: function(e) {
+          if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
+            $('#modal-page-sequencing').modal('show');
+          else if (this.$('[data-toggle]')[0] == e.target) {
+
+          }
+        }
+      }),
+      toggleSideDocument: function(e) {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+        var hasDocument = this.get('controller.currentPage.hasDocument');
+
+        if (hasDocument) {
+          modalHandler.save('deleteSideDocument', function() {
+            this.set('controller.currentPage.document', '');
+            this.set('controller.currentPage.hasDocument', false);
+          }.bind(this));
+          $('#modal-delete-side-document').modal('show');
+        } else {
+          this.set('controller.currentPage.hasDocument', true);
+        }
+        return false;
+      },
+    }),
 
     QuizzPage: Em.View.extend({
       templateName: 'pages/activity/editor/quizz',
@@ -146,9 +197,7 @@
             }
 
           }.bind(this));
-        }
-
-
+        },
       }),
 
       toggleSideDocument: function() {
