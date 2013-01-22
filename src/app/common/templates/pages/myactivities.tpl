@@ -81,7 +81,7 @@
             <th>Difficulté</th>
             <th>Matière</th>
             <th>Niveau</th>
-            <th>Date de publication</th>
+            <th>Date de création</th>
             <th>Nombre de vues</th>
             <th>Auteur</th>
             <th>Id</th>

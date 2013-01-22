@@ -137,7 +137,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
   });
 
   var dirtyDateConverter = function(v) {
-    return new Date(v * 1000);
+    if(v)
+      return new Date(v * 1000);
+    return null;
   };
   dirtyDateConverter.isDirty = true;
 

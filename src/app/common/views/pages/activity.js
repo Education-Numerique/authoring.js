@@ -464,7 +464,7 @@
           process: [
             {
                       action: 'load',
-                      fileTypes: /^image\/(gif|jpeg|png)$/,
+                      fileTypes: /^image\/(gif|jpe?g|png)$/,
                       maxFileSize: 20000000 // 20MB
             },
             {
