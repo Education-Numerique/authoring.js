@@ -15,8 +15,8 @@
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
                 <button type="button" {{action saveActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Sauvegarder</button>
-                {{#view view.DoExport classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Exporter{{/view}}
-                {{#view view.DoPreview classNames="btn btn-mini"}}<!--<i class="icon-eye-open spacify"></i>-->Preview{{/view}}
+                <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Exporter</button>
+                <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Preview</button>
                 <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Publier</button>
 
             </div>
@@ -168,6 +168,46 @@
   </div>
   <div class="modal-body">
     <p id="modal-preview-body"></p>
+  </div>
+</div>
+
+<div class="modal hide" id="action-saved" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Activité sauvegardée</h3>
+  </div>
+  <div class="modal-body">
+    Le brouillon de votre activité a bien été sauvegardé.<br />
+    Pour rendre cette version publiquement consultable, cliquez sur "publier".
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+  </div>
+</div>
+
+<div class="modal hide" id="action-published" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Activité publiée</h3>
+  </div>
+  <div class="modal-body">
+    Cette version de votre activité a bien été publiée. Elle est désormais consultable par tous dans le vivier.
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+  </div>
+</div>
+
+<div class="modal hide" id="action-embed" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Code d'insertion</h3>
+  </div>
+  <div class="modal-body">
+    Vous pouvez exporter votre activité dans votre blog ou sur votre site en copiant-collant le code suivant:
+    <pre>
+
+    </pre>
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Ok</a>
   </div>
 </div>
 

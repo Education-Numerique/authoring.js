@@ -6,7 +6,7 @@
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Validation de votre email</h4>
-      Vous recevrez le code de validation de votre compte dans quelques instants à l’adresse mail que vous avez donnée ci-dessus.
+      Vous recevrez le code de validation de votre compte d'ici quelques minutes à l’adresse mail que vous avez donnée ci-dessus.
       Pensez à vérifier votre dossier spam si le mail de confirmation ne semble pas arrivé.
   </div>
 
@@ -15,7 +15,7 @@
       <span class="icon">
         <i class="icon-pencil"></i>
       </span>
-      <h5>Code d'activation</h5>
+      <h5>Code d'activation fourni par mail:</h5>
     </div>
 
     <div class="widget-content">

@@ -7,11 +7,23 @@
 
     saveActivity: function() {
       this.get('content').controller.push();
+      $('#action-saved').modal('show');
     },
 
     publishActivity: function() {
       this.get('content').controller.publish();
+      $('#action-published').modal('show');
     },
+
+    previewActivity: function() {
+      $('#modal-preview').modal({keyboard: false, backdrop: true});
+      this.doPreview($('#modal-preview-body'));
+    },
+
+    embedActivity: function() {
+      $('#action-embed').modal('show');
+    },
+
 
     addMedia: function(file, succes, error) {
       this.get('content').controller.addMedia(file, function(url) {

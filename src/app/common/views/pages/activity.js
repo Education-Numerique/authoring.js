@@ -654,29 +654,29 @@
       }.observes('controller.currentPage')
     }),
 
-    DoPreview: Em.View.extend({
-      tagName: 'button',
-      click: function(e) {
-        e.preventDefault();
-        $('#modal-preview').modal({keyboard: false, backdrop: true});
-        this.get('controller').doPreview($('#modal-preview-body'));
-        return false;
-      }
-    }),
+    // DoPreview: Em.View.extend({
+    //   tagName: 'button',
+    //   click: function(e) {
+    //     e.preventDefault();
+    //     $('#modal-preview').modal({keyboard: false, backdrop: true});
+    //     this.get('controller').doPreview($('#modal-preview-body'));
+    //     return false;
+    //   }
+    // }),
 
-    DoExport: Em.View.extend({
-      tagName: 'button',
-      click: function(/*e*/) {
-        return false;
-      }
-    }),
+    // DoExport: Em.View.extend({
+    //   tagName: 'button',
+    //   click: function(/*e*/) {
+    //     return false;
+    //   }
+    // }),
 
-    DoPublish: Em.View.extend({
-      tagName: 'button',
-      click: function(/*e*/) {
-        return false;
-      }
-    }),
+    // DoPublish: Em.View.extend({
+    //   tagName: 'button',
+    //   click: function(/*e*/) {
+    //     return false;
+    //   }
+    // }),
 
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {
