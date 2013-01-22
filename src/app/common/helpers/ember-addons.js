@@ -201,6 +201,7 @@
     buttons: '',
 
     _infoBox: null,
+    _timer: null,
 
     didInsertElement: function() {
       var plugins, buttons;
@@ -229,7 +230,7 @@
           'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'];
       }
 
-      var timer = new LxxlLib.utils.Timer(500, function() {
+      this._timer = new LxxlLib.utils.Timer(500, function() {
 
         if (this.get('state') != 'inDOM')
           return;
@@ -242,6 +243,7 @@
         this.set('value', this.$().getCode());
       }.bind(this));
 
+      
 
 
       this.$().redactor({
@@ -348,14 +350,14 @@
 
 
       this.updateContent();
+      this._timer.start();
+      // this.$().getEditor().focus(function() {
+      //   timer.start();
+      // });
 
-      this.$().getEditor().focus(function() {
-        timer.start();
-      });
-
-      this.$().getEditor().focusout(function() {
-        timer.stop();
-      });
+      // this.$().getEditor().focusout(function() {
+      //   timer.stop();
+      // });
 
       $(document).focus();
       $(document).blur();
@@ -378,7 +380,7 @@
 
 
     willDestroyElement: function() {
-
+      this._timer.stop();
       if (this.get('state') != 'inDOM' || !this.$().data('redactor'))
         return;
 

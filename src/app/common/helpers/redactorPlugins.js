@@ -23,6 +23,7 @@
           img.attr('data-blobid', blobId);
           img.click(function() {
             insertImage($(this).attr('src'), $(this).attr('data-blobid'));
+
           });
           gallery.append(img);
         });
@@ -79,7 +80,7 @@
           var html = '<img src="' + link + '" data-blobid="' + blobId + '"/>';
 
           this.execCommand('inserthtml', html);
-
+          this.$editor.focus();
           this.modalClose();
           this.observeImages();
         }.bind(this));
