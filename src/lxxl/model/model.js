@@ -80,6 +80,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     limitedTime: 0,// // 0 == infinity - X seconds = time
     coef: 0,
     sequencing: -1,// -1 = follow through | 0 = random sur la totalité | X = random sur un subset
+    // M&M: 0 ordered, 1 random
     displayHoles: false,
     displayHolesRandomly: false, // false = alphabetical, true = random
 

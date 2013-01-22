@@ -33,6 +33,7 @@
         attributeBindings: ['type'],
 
         didInsertElement: function() {
+
           // var self = this.$('.checker');
           this.$().on('click', function(e) {
             if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
@@ -807,7 +808,31 @@
       return 'pages/activity/editor';
     }.property(),
 
+
+    disableSave: false,
+    autoSaveListener: null,
+
+    autoSave: function(){
+      if (jsBoot.controllers.userActivity.staled && !this.get('disableSave')) {
+        this.set('disableSave', true);
+        console.warn('should autosave stuffy');
+      }
+      console.warn('active bitch', jsBoot.controllers.userActivity.status);
+      if (jsBoot.controllers.userActivity.status == jsBoot.controllers.userActivity.ACTIVE){
+        console.warn('he is godamn active shit');
+        this.set('disableSave', false);
+      }
+    },
+
+    willDestroyElement: function(){
+      jsBoot.controllers.userActivity.removeEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
+    },
+
     didInsertElement: function() {
+      this.set('disableSave', false);
+      this.autoSaveListener = this.autoSave.bind(this);
+      jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
+
       LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));
 
