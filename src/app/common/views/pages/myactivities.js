@@ -37,16 +37,18 @@
       var preview = $(nRow).find('td:eq(1)');
       var item = hookBack(id);
 
-      preview.attr('data-title', item.published.title);
+      var infos = item.isPublished ? item.published : item.draft;
+
+      preview.attr('data-title', infos.title);
       preview.html('<button class="icon-eye-open"></button>');
       var ct = popoverContent.replace('{nickname}', item.author.username);
-      ct = ct.replace('{thumbnail}', item.published.thumbnailUrl ?
-          '<img src="' + item.published.thumbnailUrl + '" />' :
+      ct = ct.replace('{thumbnail}', infos.thumbnailUrl ?
+          '<img src="' + infos.thumbnailUrl + '" />' :
           '');
-      ct = ct.replace('{duration}', item.published.duration.title);
+      ct = ct.replace('{duration}', infos.duration.title);
       var needle = '<span class="icon-warning-sign" />';
       var df = '';
-      switch (item.published.difficulty.id) {
+      switch (infos.difficulty.id) {
         case 'hard':
           df += needle;
         case 'normal':
@@ -60,7 +62,7 @@
       ct = ct.replace('{useravatar}', item.author.avatarUrl ?
           '<img src="' + item.author.avatarUrl + '" />' :
           '');
-      ct = ct.replace('{description}', item.published.description);
+      ct = ct.replace('{description}', infos.description);
       preview.attr('data-html', ct);
       preview.attr('data-placement', 'right');
       preview.attr('rel', 'popover');
@@ -123,21 +125,28 @@ Date de publication
       }
       // console.warn(nn);
 
-      for (var x = start, item; x < start + addCount; x++) {
+      for (var x = start, item, infos; x < start + addCount; x++) {
         item = arr[x];
+        window.CUL = item;
+        if (cc == '.mydrafts')
+          infos = item.draft;
+        else
+          infos = item.published;
 
-        if (!item.published.duration)
-          item.published.duration = {title: '', id: 0};
+
+
+        if (!infos.duration)
+          infos.duration = {title: '', id: 0};
 
         if (!item.published.difficulty)
-          item.published.difficulty = {title: '', id: 0};
+          infos.difficulty = {title: '', id: 0};
         
         nn.fnAddData([
           '',
           '',
-          item.published.title,
-          item.published.duration.title,
-          item.published.difficulty.title,
+          infos.title,
+          infos.duration.title,
+          infos.difficulty.title,
           '', //Matière
           '', //Niveau
           item.publicationDate ? moment(item.publicationDate).fromNow() : '',
