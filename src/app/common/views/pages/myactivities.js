@@ -25,6 +25,59 @@
 
 
 
+  var will = function(arr, start, removeCount, addCount) {
+    var nn = $('.mydrafts.data-table').dataTable();
+    if (arr == pactivities) {
+      nn = $('.mypublished.data-table').dataTable();
+    }
+    for (var x = start + removeCount - 1; x >= start; x--)
+      nn.fnDeleteRow(x);
+  };
+
+
+  var did = function(arr, start, removeCount, addCount) {
+
+    var nn = $('.mydrafts.data-table').dataTable();
+    var cc = '.mydrafts';
+    if (arr == pactivities) {
+      nn = $('.mypublished.data-table').dataTable();
+      cc = '.mypublished';
+    }
+    // console.warn(nn);
+    // 
+
+    for (var x = start, item, infos; x < start + addCount; x++) {
+      item = arr[x];
+      if (cc == '.mydrafts')
+        infos = item.draft;
+      else
+        infos = item.published;
+
+
+      if (!infos.duration)
+        infos.duration = {title: '', id: 0};
+
+      if (!item.published.difficulty)
+        infos.difficulty = {title: '', id: 0};
+      
+      nn.fnAddData([
+        '',
+        '',
+        infos.title,
+        infos.duration.title,
+        infos.difficulty.title,
+        '', //Matière
+        '', //Niveau
+        item.publicationDate ? moment(item.publicationDate).fromNow() : '',
+        item.seenCount,
+        item.author.username,
+        item.id
+      ]);
+
+      
+    }
+  };
+
   var TABLE_OPTIONS = {
     "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
       var id = aData[aData.length - 1];
@@ -83,10 +136,9 @@
   };
   
   
-  var activities = t.activities = [];
-  var pactivities = t.publishedActivities = [];
-  var dactivities = t.draftActivities = [];
-
+  var activities,
+    pactivities,
+    dactivities;
 
   var hookBack = function(id){
     return activities.filter(function(item){
@@ -94,78 +146,19 @@
     }).pop();
   };
 
+  t.willDestroyElement = function () {
+    this.publishedActivities.removeArrayObserver(this, { willChange: will, didChange: did});
+    this.draftActivities.removeArrayObserver(this, { willChange: will, didChange: did});
+  };
+
 
   t.didInsertElement = function() {
-
-    var will = function(arr, start, removeCount, addCount) {
-      var nn = $('.mydrafts.data-table').dataTable();
-      if (arr == pactivities) {
-        nn = $('.mypublished.data-table').dataTable();
-      }
-
-      for (var x = start + removeCount - 1; x >= start; x--)
-        nn.fnDeleteRow(x);
-    };
-
-    /*
-Titre
-Durée
-Difficulté
-Matière
-Niveau
-Date de publication
-    */
-    var did = function(arr, start, removeCount, addCount) {
-
-      var nn = $('.mydrafts.data-table').dataTable();
-      var cc = '.mydrafts';
-      if (arr == pactivities) {
-        nn = $('.mypublished.data-table').dataTable();
-        cc = '.mypublished';
-      }
-      // console.warn(nn);
-
-      for (var x = start, item, infos; x < start + addCount; x++) {
-        item = arr[x];
-        window.CUL = item;
-        if (cc == '.mydrafts')
-          infos = item.draft;
-        else
-          infos = item.published;
-
-
-
-        if (!infos.duration)
-          infos.duration = {title: '', id: 0};
-
-        if (!item.published.difficulty)
-          infos.difficulty = {title: '', id: 0};
-        
-        nn.fnAddData([
-          '',
-          '',
-          infos.title,
-          infos.duration.title,
-          infos.difficulty.title,
-          '', //Matière
-          '', //Niveau
-          item.publicationDate ? moment(item.publicationDate).fromNow() : '',
-          item.seenCount,
-          item.author.username,
-          item.id
-        ]);
-
-        
-      }
-    };
-
-    var rehash = function() {
-
-    };
-
-    this.activities.addArrayObserver(this, { willChange: function() {}, didChange: rehash});
-    this.publishedActivities.addArrayObserver(this, { willChange: will, didChange: did});
-    this.draftActivities.addArrayObserver(this, { willChange: will, didChange: did});
+    activities = this.activities = [];
+    pactivities = this.publishedActivities = [];
+    dactivities = this.draftActivities = [];
+    window.CUL = this;
+    this.get('publishedActivities').addArrayObserver(this, { willChange: will, didChange: did});
+    this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
 
     // XXX listMine
     LxxlLib.service.activities.list(function(d) {
@@ -173,7 +166,7 @@ Date de publication
       d.forEach(function(item) {
         var act = LxxlLib.factories.activities.getActivity(item);
         activities.pushObject(act);
-        if (activities.isPublished)
+        if (act.isPublished)
           pactivities.pushObject(act);
         else
           dactivities.pushObject(act);
