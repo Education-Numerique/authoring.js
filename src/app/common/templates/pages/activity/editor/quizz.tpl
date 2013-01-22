@@ -79,7 +79,7 @@
                 <button type="button" {{action addQRM target="view"}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter un QRM</button>
                 <button type="button" {{action addQCM target="view"}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter un QCM</button>
                 {{#view view.CollapseAllQuestions tagName="button" classNames="btn btn-mini" }}
-                    <i class="icon-resize-small spacify"></i>Collapse all
+                    <i class="icon-resize-small spacify"></i>Réduire tout
                 {{/view}}
             </div>
         </div>

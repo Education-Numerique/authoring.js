@@ -667,6 +667,9 @@
           } else if (value.id == 'tat') {
             this.set('flavorIcon', 'icon-text-width');
             this.set('pageType', 'page-tat');
+          } else if (value.id == 'jmt') {
+            this.set('flavorIcon', 'icon-fullscreen');
+            this.set('pageType', 'page-jmt');
           }
         }.observes('content.flavor'),
 
