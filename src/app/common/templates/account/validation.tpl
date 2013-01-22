@@ -6,8 +6,8 @@
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Validation de votre email</h4>
-        Vous avez dû recevoir un email de confirmation qui vous permettra de valider celui-ci.
-          Pensez à vérifier votre dossier spam si le mail de confirmation n'arrive pas.
+      Vous recevrez le code de validation de votre compte dans quelques instants à l’adresse mail que vous avez donnée ci-dessus.
+      Pensez à vérifier votre dossier spam si le mail de confirmation ne semble pas arrivé.
   </div>
 
   <div class="widget-box">
