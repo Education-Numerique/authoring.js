@@ -48,17 +48,11 @@
 
     for (var x = start, item, infos; x < start + addCount; x++) {
       item = arr[x];
+
       if (cc == '.mydrafts')
         infos = item.draft;
       else
         infos = item.published;
-
-
-      if (!infos.duration)
-        infos.duration = {title: '', id: 0};
-
-      if (!item.published.difficulty)
-        infos.difficulty = {title: '', id: 0};
       
       nn.fnAddData([
         '',
@@ -66,9 +60,9 @@
         infos.title,
         infos.duration.title,
         infos.difficulty.title,
-        '', //Matière
-        '', //Niveau
-        item.publicationDate ? moment(item.publicationDate).fromNow() : '',
+        infos.matter.title, //Matière
+        infos.level.title, //Niveau
+        item.publicationDate ? moment(item.publicationDate || item.creationDate).fromNow() : '',
         item.seenCount,
         item.author.username,
         item.id
@@ -156,7 +150,6 @@
     activities = this.activities = [];
     pactivities = this.publishedActivities = [];
     dactivities = this.draftActivities = [];
-    window.CUL = this;
     this.get('publishedActivities').addArrayObserver(this, { willChange: will, didChange: did});
     this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
 
