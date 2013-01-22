@@ -15,6 +15,11 @@
 (function() {
   'use strict';
 
+  if(!/^www\./.test(location.hostname) && !/^app\./.test(location.hostname)){
+    location.href = location.href.replace(/^([^:]+:\/\/)/, '\1www.');
+    return;
+  }
+
   // Ember global configuration
   window.ENV = {
     RAISE_ON_DEPRECATION: true
