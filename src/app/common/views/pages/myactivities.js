@@ -5,10 +5,6 @@
   var doPreview = function(node, activity) {
     var a = new LxxlLib.Masher();
     a.setupViewport(node, true);
-    // a.addStyle('body{background-color: blue;}');
-    /*
-  a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
-  */
     a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
     a.showActivity(activity.published, function() {
@@ -53,7 +49,7 @@
         infos = item.draft;
       else
         infos = item.published;
-      
+
       nn.fnAddData([
         '',
         '',
@@ -62,7 +58,7 @@
         infos.difficulty.title,
         infos.matter.title, //Matière
         infos.level.title, //Niveau
-        item.publicationDate ? moment(item.publicationDate || item.creationDate).fromNow() : '',
+        moment(item.publicationDate || item.creationDate).fromNow(),
         item.seenCount,
         item.author.username,
         item.id
