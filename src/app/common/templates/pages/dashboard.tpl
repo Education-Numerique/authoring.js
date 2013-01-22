@@ -20,12 +20,14 @@
 
 <div class="row-fluid">
   <article id="actions" class="widget-box">
+    <!--
     <header class="widget-title">
       <span class="icon">
         <i class="icon-th-list"></i>
       </span>
       <h5>Mon dashboard</h5>
     </header>
+  -->
     <section class="widget-content">
       <div class="row-fluid">
         <div class="span12 center" style="text-align: center;">         
@@ -83,15 +85,23 @@
           </ul>
         </div>  
       </div>
+      <div class="row-fluid" style="text-align: center;">
+  <!-- XXX very temporary hopefully -->
+        <div class="span12 center" style="text-align: center;">         
+          <img src="0.2/images/home.jpg" />
+        </div>
+      </div>
+      <div class="row-fluid" style="text-align: center;">
+      </div>
     </section>
   </article>
 </div>
 
+  <!--
 <div class="row-fluid" id="accordion2">
 
 <article id="home" class="widget-box">
   <header class="widget-title">
-  <!-- data-toggle="slidify" data-parent="#accordion2" data-target="#home-collapse">-->
     <span class="icon">
       <i class="icon-th-list"></i>
     </span>
@@ -124,6 +134,7 @@
   </section>
 </article>
 </div>
+-->
 
 <!--
     <div class="row-fluid">
