@@ -240,6 +240,11 @@
             return 'widget-question-' + this.get('elementId');
           }.property('elementId'),
 
+          answer: (function () {
+            this.get('content.answers')[0].set('isCorrect', true);
+            return this.get('content.answers')[0];
+          }).property('content.answers'),
+
           DeleteQuestionButton: Em.View.extend({
             tagName: 'button',
             question: null,

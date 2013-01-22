@@ -99,7 +99,7 @@
                     <tbody>
                         <tr>
                             <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
-                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
+                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.answer.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
                         </tr>
                     </tbody>
                 </table>
