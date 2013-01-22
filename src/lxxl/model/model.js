@@ -225,9 +225,10 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.addMedia = function(blob, success/*, error*/) {
       if (!this.id || !api.service)
         return;
-      api.service.addMedia(function(d) {
+      api.service.addMedia((function(d) {
+        this.draft.blobs.media.pushObject('//' + api.servicesCore.requestor.hostPort + d.url);
         success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
-      }, function() {
+      }.bind(this)), function() {
       }, this.id, blob);
     };
 
