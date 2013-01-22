@@ -79,4 +79,31 @@
             <button type="button" {{action addElement target="view"}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Ajouter un élément</button>
         </div>
     </div>
+     {{#collection view.elementsCollectionView contentBinding="currentPage.questions" classNames="questions-list"}}
+            <div class="widget-title" data-toggle="slidify" {{bindAttr data-target="view.widgetIdAnchor"}}>
+                <span class="icon">
+                    <i class="icon-bullhorn"></i>
+                </span>
+                <h5 class="text-ellipsis">Elément {{view.questionNumber}}</h5>
+                {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>{{/view}}
+                
+            </div>
+            <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
+                <table class="table mix-and-match table-bordered table-striped with-check">
+                    <thead>
+                        <tr>
+                            <th>Question</th>
+                            <th>Réponse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
+                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        {{/collection}}
+        
 </div>

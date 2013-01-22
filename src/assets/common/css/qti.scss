@@ -924,3 +924,12 @@ body .chzn-container .chzn-results {
         margin-top:40px;
     }
 }
+
+table.mix-and-match {
+    th, td {
+        width: 50% !important;
+        display: block !important;
+        box-sizing: border-box;
+        display: inline-block !important;
+    }
+}

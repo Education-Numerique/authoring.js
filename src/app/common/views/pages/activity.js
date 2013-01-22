@@ -177,6 +177,87 @@
         }
         return false;
       },
+
+      addElement: function (e) {
+        this.get('controller').addQuestion();
+        e.preventDefault();
+        return false;
+      },
+
+      elementsCollectionView: Em.CollectionView.extend({
+        lastMove: 0,
+
+        moveItem: function(fromIndex, toIndex) {
+          var items = this.get('content');
+          var item = items.objectAt(fromIndex);
+
+          this.get('controller').moveQuestion(item, toIndex);
+          this.set('lastMove', (new Date().getTime()));
+        },
+        didInsertElement: function() {
+          var view = this;
+          view.$().sortable({
+            handle: '.widget-title',
+            placeholder: 'ui-sortable-placeholder',
+            axis: 'y',
+            delay: 150,
+            start: function(event, ui) {
+              ui.item.previousIndex = ui.item.index();
+            },
+            stop: function(event, ui) {
+              view.moveItem(ui.item.previousIndex, ui.item.index());
+              if ($(ui.item).find('.widget-content').hasClass('slidify-on')) {
+                $(ui.item).find('.widget-content').show();
+              }
+            },
+            beforeStart: function(event, ui) {
+              if ($(ui.item).find('.widget-content').hasClass('slidify-on')) {
+                $(ui.item).find('.widget-content').hide();
+              }
+            },
+            containment: 'parent',
+            tolerance: 'pointer'
+          });
+        },
+
+        emptyView: Ember.View.extend({
+          classNames: ['empty'],
+          template: Ember.Handlebars.compile('<i>Aucune question</i>')
+        }),
+
+        itemViewClass: Em.View.extend({
+          classNames: ['widget-box', 'question-box'],
+
+          questionNumber: (function() {
+            return this.get('parentView.content').indexOf(this.get('content')) + 1;
+          }.property('parentView.lastMove')),
+
+          widgetIdAnchor: function() {
+            return '#widget-question-' + this.get('elementId');
+          }.property('elementId'),
+
+          widgetId: function() {
+            return 'widget-question-' + this.get('elementId');
+          }.property('elementId'),
+
+          DeleteQuestionButton: Em.View.extend({
+            tagName: 'button',
+            question: null,
+            modalName: null,
+
+            attributeBindings: ['href', 'data-toggle'],
+
+            click: function(event) {
+              modalHandler.save(this.get('modalName'), function() {
+                this.get('controller').deleteQuestion(this.get('question'));
+              }.bind(this));
+              $(this.get('href')).modal('show');
+              event.preventDefault();
+              return false;
+            }
+          }),
+        }),
+      })
     }),
 
     QuizzPage: Em.View.extend({
