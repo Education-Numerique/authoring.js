@@ -9,6 +9,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
 
   // User sub commands
   var SERVICE = 'users';
+  var ACL = 'acl';
   var USER_PROFILE = 'profile';
   var USER_AVATAR = 'avatar';
   var USER_SETTINGS = 'settings';
@@ -45,6 +46,19 @@ jsBoot.pack('LxxlLib.service', function(api) {
           onfailure: onFailure,
           id: id || api.core.id,
           command: USER_PROFILE
+        });
+      };
+    })();
+
+    this.acl = new (function(onSuccess, onFailure, id, level) {
+      this.push = function(){
+        requestor.query(requestor.POST, {
+          service: SERVICE,
+          onsuccess: onSuccess,
+          onfailure: onFailure,
+          id: id,
+          command: ACL + '/' + (level == 3 ? 'admin' : 'author'),
+          payload: {}
         });
       };
     })();
