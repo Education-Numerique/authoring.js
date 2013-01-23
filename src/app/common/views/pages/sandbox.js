@@ -123,7 +123,7 @@
   };
 
   t.willDestroyElement = function () {
-    this.activities.removeArrayObserver(this, { willChange: will, didChange: did});
+    this.filteredActivities.removeArrayObserver(this, { willChange: will, didChange: did});
   };
 
   t.dataReady = false;
@@ -394,12 +394,14 @@
     hashMatters = Ember.Object.create({});
     hashLevels = Ember.Object.create({});
 
+    console.warn('did insert stuff');
+    this.activities.replace(0, this.activities.length);
+    rehash();
+
     this.activities.replace(0, this.activities.length);
     this.get('filteredActivities').addArrayObserver(this, { willChange: will, didChange: did});
 
-    // XXX listMine
     LxxlLib.service.activities.listPublished((function(d) {
-      this.activities.replace(0, this.activities.length);
       d.forEach(function(item) {
         var act = LxxlLib.factories.activities.getActivity(item);
         if (act.isPublished) {
