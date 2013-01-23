@@ -218,7 +218,7 @@
       this.set('quizzSequencingIsRandom', false);
       this.set('quizzSequencingIsRandomSubset', false);
       var seq = this.get('currentPage.sequencing');
-      console.warn('********** set bool', seq);
+
       if (seq == -1)
         this.set('quizzSequencingIsNaturalOrder', true);
       else if (seq == 0)

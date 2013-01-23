@@ -61,6 +61,10 @@
           this.set('controller.currentPage.hasDocument', true);
         }
       },
+
+      
+
+
       TatGestion: Em.View.extend({
         tats: [],
         current: 0,
@@ -177,6 +181,10 @@
           this.set('controller.currentPage.hasDocument', true);
         }
         return false;
+      },
+
+      toggleRandom: function(e) {
+        this.set('controller.currentPage.sequencing', !this.get('controller.currentPage.sequencing'));
       },
 
       addElement: function (e) {
@@ -313,6 +321,8 @@
           }
         }
       }),
+
+
 
       addQCM: function(e) {
         this.get('controller').addQuestion();
