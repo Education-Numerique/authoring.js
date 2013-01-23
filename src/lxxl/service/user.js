@@ -28,12 +28,12 @@ jsBoot.pack('LxxlLib.service', function(api) {
     };
 
     this.profile = new (function() {
-      this.push = function(onSuccess, onFailure, payload) {
+      this.push = function(onSuccess, onFailure, payload, id) {
         requestor.query(requestor.POST, {
           service: SERVICE,
           onsuccess: onSuccess,
           onfailure: onFailure,
-          id: api.core.id,
+          id: id || api.core.id,
           command: USER_PROFILE,
           payload: payload
         });
@@ -50,8 +50,8 @@ jsBoot.pack('LxxlLib.service', function(api) {
       };
     })();
 
-    this.acl = new (function(onSuccess, onFailure, id, level) {
-      this.push = function(){
+    this.acl = new (function() {
+      this.push = function(onSuccess, onFailure, id, level){
         requestor.query(requestor.POST, {
           service: SERVICE,
           onsuccess: onSuccess,

@@ -33,6 +33,9 @@
   })();
 
 
+  // var session;
+  var ifr;
+  var bb;
 
   // Explicit API
   this.LxxlLib.Masher = function() {
@@ -146,13 +149,18 @@
     };
 
 
-    // var session;
-    var ifr;
     this.setupViewport = function(node, noframe) {
       if (ifr)
         ifr.parentNode.removeChild(ifr);
+      if (bb){
+        console.warn('removing shit');
+        bb.parentNode.removeChild(bb);
+      }
       if (!noframe) {
+        if(!('appendChild' in node))
+          node = node[0];
         ifr = document.createElement('iframe');
+        bb = ifr;
         node.appendChild(ifr);
         ifr = ifr.contentDocument.body;
       }else

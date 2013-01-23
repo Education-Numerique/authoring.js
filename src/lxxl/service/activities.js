@@ -146,6 +146,16 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
+    this.readUrl = function(onSuccess, onFailure, id) {
+      requestor.getUrl(requestor.GET, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id,
+        command: '#'
+      });
+    };
+
     this.remove = function(onSuccess, onFailure, id) {
       requestor.query(requestor.DELETE, {
         service: SERVICE,
