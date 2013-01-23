@@ -103,7 +103,6 @@ Copyright (c) 2011 by Harvest
   AbstractChosen = (function() {
 
     function AbstractChosen(form_field, options) {
-      console.warn('chosen', arguments);
       this.form_field = form_field;
       this.options = options != null ? options : {};
       this.set_default_values();
