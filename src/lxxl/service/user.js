@@ -125,10 +125,10 @@ jsBoot.pack('LxxlLib.service', function(api) {
           url += '/' + id;
 
         var seed = Math.round(Math.abs((url.charCodeAt(url.length - 5) - 28) / 10));
-        var crap = requestor.hostPort.replace(/^([^.]+)(\..*)/, '$1' + seed + '$2');
+        // var crap = requestor.hostPort.replace(/^([^.]+)(\..*)/, '$1' + seed + '$2');
 
         url += '/' + USER_AVATAR;
-        return '//' + crap + url;
+        return '//' + requestor.hostPort + url;
       };
 
     })();
