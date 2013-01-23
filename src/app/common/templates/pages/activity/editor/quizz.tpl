@@ -97,7 +97,7 @@
                         <label class="add-on" for="form-question-title">Intitulé</label>
                         {{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" air=true oneLine=true plugins="mathjax" classNames="redactorjs"}}
                     </div>
-                    {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini" tagName="button"}}<i class="icon-plus icon-white spacify"></i>Ajouter une réponse{{/view}}
+                    
 
                 <table class="table answers table-bordered table-striped with-check">
                     <thead>
@@ -129,7 +129,9 @@
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                         {{/collection}}
                     {{/if}}
+
                 </table>
+                {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini add-answer-button" tagName="button"}}<i class="icon-plus icon-white spacify"></i>Ajouter une réponse{{/view}}
             </div>
         {{/collection}}
         

@@ -516,7 +516,7 @@ Style specific to activity edition
 
         table.answers {
             border-top:1px solid #DDD;
-            
+            border-bottom:1px solid #DDD;
             i {
                 opacity:0.6;
             }
@@ -840,6 +840,7 @@ body .chzn-container .chzn-results {
         margin:10px 2.332%;
         width:12%;
         padding:10px;
+        word-wrap: break-word;
 
         background: #f9f9f9;
         background: -moz-linear-gradient(top,  #f9f9f9 0%, #eeeeee 100%);
@@ -932,4 +933,8 @@ table.mix-and-match {
         box-sizing: border-box;
         display: inline-block !important;
     }
+}
+
+.add-answer-button {
+    margin:10px;
 }

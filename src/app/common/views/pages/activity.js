@@ -447,8 +447,7 @@
             moveItem: function(fromIndex, toIndex) {
               var items = this.get('content');
               var item = items.objectAt(fromIndex);
-
-              this.get('controller').set('currentQuestion', this.get('_parentView.content'));
+              this.set('controller.currentQuestion', this.get('_parentView._parentView.content'));
               this.get('controller').moveAnswer(item, toIndex);
             },
 
@@ -693,6 +692,9 @@
       click: function(/*e*/) {
         this.get('controller').addPage();
         this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected'));
+        if (this.get('controller.isQuizz') || this.get('controller.isMixnmatch'))
+          this.get('controller').addQuestion();
+
         $('#modal-create-page').modal('hide');
       }
     }),
