@@ -575,7 +575,6 @@ Copyright (c) 2011 by Harvest
 
     Chosen.prototype.results_show = function() {
       var dd_top;
-      console.log('********* max limit', this.max_selected_options);
       if (!this.is_multiple) {
         this.selected_item.addClass("chzn-single-with-drop");
         if (this.result_single_selected) {
