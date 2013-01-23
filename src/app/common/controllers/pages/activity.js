@@ -15,6 +15,11 @@
       $('#action-published').modal('show');
     },
 
+    deleteActivity: function(){
+      this.get('content').controller.destroy();
+      LxxlApp.router.send('showMyActivities');
+    },
+
     previewActivity: function() {
       $('#modal-preview').modal({keyboard: false, backdrop: true});
       this.doPreview($('#modal-preview-body'));

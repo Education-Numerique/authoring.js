@@ -189,7 +189,7 @@ jsBoot.pack('jsBoot.types', function(api) {
             this[i] = item;
             break;
         }
-      });
+      }, this);
     };
 
     this.toObject = function() {

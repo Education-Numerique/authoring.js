@@ -14,10 +14,11 @@
                     <h5 style="display: none;" class="text-ellipsis unselectable">{{content.title}}</h5>
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
-                <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Sauvegarder</button>
-                <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Exporter</button>
-                <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Preview</button>
-                <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini"><!--<i class="icon-eye-open spacify"></i>-->Publier</button>
+                <button type="button" {{action deleteActivity target="controller"}} class="btn btn-mini">Supprimer</button>
+                <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Exporter</button>
+                <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
+                <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
+                <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
 
             </div>
             <div class="widget-content nopadding main-container">

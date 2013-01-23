@@ -130,6 +130,8 @@
     pactivities,
     dactivities;
 
+  t.activities = [];    
+
   var hookBack = function(id){
     return activities.filter(function(item){
       return item.id == id;
@@ -143,14 +145,15 @@
 
 
   t.didInsertElement = function() {
-    activities = this.activities = [];
+    activities = this.activities;
+    this.activities.replace(0, this.activities.length);
     pactivities = this.publishedActivities = [];
     dactivities = this.draftActivities = [];
     this.get('publishedActivities').addArrayObserver(this, { willChange: will, didChange: did});
     this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
 
     // XXX listMine
-    LxxlLib.service.activities.list(function(d) {
+    LxxlLib.service.activities.listMine(function(d) {
       activities.replace(0, activities.length);
       d.forEach(function(item) {
         var act = LxxlLib.factories.activities.getActivity(item);

@@ -5,8 +5,7 @@
 
 
 <div class="row-fluid">
-
-  {{#if activities.length}}
+  {{#if view.activities.length}}
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Mes activités</h4>
@@ -14,7 +13,9 @@
     Vous pouvez également, <a {{action showNewActivity href=true}}>créer une nouvelle activité.</a>
   </div>
   {{/if}}
-  {{#unless activities.length}}
+
+
+  {{#unless view.activities.length}}
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Aucune activité pour l'instant</h4>
@@ -92,6 +93,7 @@
       </table>  
     </div>
   </div>
+
 
 
 </div>

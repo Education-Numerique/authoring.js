@@ -61,7 +61,10 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     lit: 'Littérature',
     mat: 'Maths',
     mate: 'Maths éco',
-    sci: 'Sciences éco',
+    sciec: 'Sciences éco',
+    sci: 'Sciences',
+    phys: 'Physique',
+    chim: 'Chimie',
     svt: 'SVT',
     his: 'Histoire',
     geo: 'Géographie',
@@ -97,27 +100,115 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
   this.categories = [
     {
-      id: 1,
-      title: 'Ceci est une catégorie attachée au français de terminale S',
+      id: 1, // Arbo 1 : Anglais, niveaux multiples ...
+      title: 'Anglais',
+      matter: {id: 'eng'},
+      level: {id: 'ts'},
       content: [
         {
           id: 11,
-          title: '1ère sous-catégorie'
+          title: 'COMPRÉHENSION ÉCRITE',
+          content: [  // pour les sous-catégories de niveau 2, ce serait "nice to have"
+                      // de mettre un CSS padding-left: 15px;
+            {
+              id: 111,
+              title: "Comprendre l'essentiel d'un texte écrit"
+            },
+            {
+              id: 112,
+              title: "De l'explicite à l'implicite"
+            },
+            {
+              id: 113,
+              title: "Répondre aux questions"
+            },
+            {
+              id: 114,
+              title: "Traduire"
+            },
+            {
+              id: 115,
+              title: "Annales du Bac"
+            }
+          ]
         },
         {
           id: 12,
-          title: '2nd sous-catégorie'
+          title: 'PRODUCTION ÉCRITE',
+          content: [
+            {
+              id: 121,
+              title: "Rédiger un dialogue"
+            },
+            {
+              id: 122,
+              title: "Rédiger une lettre"
+            },
+            {
+              id: 123,
+              title: "Rédiger un récit"
+            },
+            {
+              id: 124,
+              title: "Rédiger une argumentation"
+            },
+            {
+              id: 125,
+              title: "Rédiger un essai organisé"
+            }
+          ]
+        },
+        {
+          id: 13,
+          title: 'MONDE ANGLOPHONE',
+          content: [
+            {
+              id: 131,
+              title: "Culture"
+            },
+            {
+              id: 132,
+              title: "Civilisation"
+            }
+          ]
+        },
+        {
+          id: 14,
+          title: 'LANGUE ANGLAISE',
+          content: [
+            {
+              id: 141,
+              title: "Le lexique"
+            },
+            {
+              id: 142,
+              title: "La syntaxe"
+            },
+            {
+              id: 143,
+              title: "Les formes verbales"
+            },
+            {
+              id: 144,
+              title: "Traduire"
+            },
+            {
+              id: 145,
+              title: "Annales du Bac"
+            }
+          ]
         }
-      ],
-      matter: {id: 'fra'},
-      level: {id: 'ts'}
-    },
+      ]
+    }
+/*
     {
       id: 2,
       title: 'Ceci est une catégorie attachée au français de terminale L, sans subtree',
       matter: {id: 'fra'},
       level: {id: 'tl'}
     },
+
+
     {
       id: 3,
       title: ' français autre',
@@ -151,6 +242,48 @@ jsBoot.pack('LxxlLib.model.defines', function() {
       ],
       matter: {id: 'fra'},
       level: {id: 'other'}
-    }
+    }*/
   ];
+
+
+  this.categories.push({
+    id: 2,
+    title: 'Anglais',
+    matter: {id: 'eng'},
+    level: {id: 'tl'},
+    content: this.categories[0].content
+  });
+
+  this.categories.push({
+    id: 3,
+    title: 'Anglais',
+    matter: {id: 'eng'},
+    level: {id: 'tes'},
+    content: this.categories[0].content
+  });
+
+  this.categories.push({
+    id: 4,
+    title: 'Anglais',
+    matter: {id: 'eng'},
+    level: {id: 'ps'},
+    content: this.categories[0].content
+  });
+
+  this.categories.push({
+    id: 5,
+    title: 'Anglais',
+    matter: {id: 'eng'},
+    level: {id: 'pes'},
+    content: this.categories[0].content
+  });
+
+  this.categories.push({
+    id: 6,
+    title: 'Anglais',
+    matter: {id: 'eng'},
+    level: {id: 'pl'},
+    content: this.categories[0].content
+  });
+
 });
