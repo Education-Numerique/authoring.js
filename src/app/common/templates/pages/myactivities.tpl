@@ -23,15 +23,15 @@
   </div>
   {{/unless}}
 
+<!--
   <div class="row-fluid">
     <h4>Mes activités publiées</h4>
   </div>
+-->
   <div class="widget-box">
-    <!--
     <div class="widget-title">
-      <h5>Activités</h5>
+      <h5>Mes activités publiées</h5>
     </div>
-    -->
     <div class="widget-content nopadding">
       <table class="mypublished table table-bordered data-table">
         <thead>
@@ -39,13 +39,13 @@
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th>Titre</th>
-            <th>Durée</th>
+<!--            <th>Durée</th>-->
             <th>Difficulté</th>
             <th>Matière</th>
             <th>Niveau</th>
             <th>Date de publication</th>
-            <th>Nombre de vues</th>
-            <th>Auteur</th>
+<!--            <th>Nombre de vues</th>
+            <th>Auteur</th>-->
             <th>Id</th>
           </tr>
         </thead>
@@ -62,15 +62,12 @@
   {{/if}}
 
   <div class="row-fluid">
-    <h4>Mes activités non encore publiées</h4>
   </div>
 
   <div class="widget-box">
-    <!--
     <div class="widget-title">
-      <h5>Activités</h5>
+      <h5>Mes activités non encore publiées</h5>
     </div>
-    -->
     <div class="widget-content nopadding">
       <table class="mydrafts table table-bordered data-table">
         <thead>
@@ -78,13 +75,15 @@
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th>Titre</th>
+<!--
             <th>Durée</th>
+          -->
             <th>Difficulté</th>
             <th>Matière</th>
             <th>Niveau</th>
             <th>Date de création</th>
-            <th>Nombre de vues</th>
-            <th>Auteur</th>
+<!--            <th>Nombre de vues</th>
+            <th>Auteur</th>-->
             <th>Id</th>
           </tr>
         </thead>

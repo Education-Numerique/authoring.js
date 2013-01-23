@@ -54,13 +54,13 @@
         '',
         '',
         infos.title,
-        infos.duration.title,
+//        infos.duration.title,
         infos.difficulty.title,
         infos.matter.title, //Matière
         infos.level.title, //Niveau
         moment(item.publicationDate || item.creationDate).fromNow(),
-        item.seenCount,
-        item.author.username,
+//        item.seenCount,
+//        item.author.username,
         item.id
       ]);
 

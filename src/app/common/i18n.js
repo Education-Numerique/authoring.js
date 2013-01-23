@@ -152,7 +152,10 @@
           sSortDescending: ' - cliquez/return pour classer par ordre décroissant'
         },
         oPaginate: {
-          sFirst: 'Première page'
+          sFirst: 'Première page',
+          sLast: 'Dernière page',
+          sNext: 'Page suivante',
+          sPrevious: 'Page précédente'
         },
         sSearch: 'Chercher:',
         sLengthMenu: 'Limiter à _MENU_ entrées par page'
