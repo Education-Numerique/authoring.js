@@ -53,6 +53,7 @@
       nn.fnAddData([
         '',
         '',
+        '',
         infos.title,
 //        infos.duration.title,
         infos.difficulty.title,
@@ -121,6 +122,33 @@
       button.bind('click', function (e) {
         LxxlApp.router.send('showActivityEdit', item);
       });
+
+      if(infos.blobs.media.length || infos.blobs.attachments.length)
+        return;
+      button = $(nRow).find('td:eq(2)');
+      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" title="Créer une nouvelle activité à partir de ce modèle"></button>');
+
+      button.bind('click', function (e) {
+        var onCreate = function(){
+          act.draft = infos;// .toObject();
+          act.push(function(){
+            // Something is rotten in Denmark
+            // act = LxxlLib.factories.activities.getActivity({id: act.id});
+            LxxlApp.router.send('showActivityEdit', act);
+          });
+          act.removeObserver('id', onCreate);
+        };
+
+        var act = LxxlLib.factories.activities.getActivity();
+        act.addObserver('id', onCreate);
+        act.push();
+        // Ember.run.next(function() {
+        // });
+
+
+        // LxxlApp.router.send('showActivityEdit', item);
+      });
+
       // console.log(preview.html('bite'));
     }
   };

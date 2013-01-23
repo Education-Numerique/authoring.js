@@ -41,6 +41,7 @@
       nn.fnAddData([
         '',
         '',
+        '',
         infos.title,
         // infos.duration.title,
         // infos.difficulty.title,
@@ -90,9 +91,7 @@
           break;
       }
       ct = ct.replace('{difficulty}', df);
-      ct = ct.replace('{useravatar}', item.author.avatarUrl ?
-          '<img src="' + item.author.avatarUrl + '" />' :
-          '');
+      ct = ct.replace('{useravatar}', '<div><img src="' + LxxlLib.service.user.avatar.getUrl(item.author.uid) + '" /></div>');
       ct = ct.replace('{description}', infos.description);
       preview.attr('data-html', ct);
       preview.attr('data-placement', 'right');
@@ -109,12 +108,42 @@
       button.bind('click', function (e) {
         LxxlApp.router.send('showActivityEdit', item);
       });
+
+      if(item.published.blobs.media.length || item.published.blobs.attachments.length)
+        return;
+      button = $(nRow).find('td:eq(2)');
+      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" title="Créer une nouvelle activité à partir de ce modèle"></button>');
+
+      button.bind('click', function (e) {
+        console.warn('Fork activity', item.published.toObject());
+        var onCreate = function(){
+          act.draft = item.published;// .toObject();
+          act.push(function(){
+            // Something is rotten in Denmark
+            // act = LxxlLib.factories.activities.getActivity({id: act.id});
+            LxxlApp.router.send('showActivityEdit', act);
+          });
+          act.removeObserver('id', onCreate);
+        };
+
+        var act = LxxlLib.factories.activities.getActivity();
+        act.addObserver('id', onCreate);
+        act.push();
+        // Ember.run.next(function() {
+        // });
+
+
+        // LxxlApp.router.send('showActivityEdit', item);
+      });
+
+
+
       // console.log(preview.html('bite'));
     }
   };
   
   
-  var activities = t.activities = [];    
+  var activities = t.activities = [];
 
   var hookBack = function(id){
     return activities.filter(function(item){
@@ -415,7 +444,7 @@
     });
 
     LxxlLib.behaviors.bindBehaviors(this.get('element'), TABLE_OPTIONS);
-    this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.myactivities.title'));
+    this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.sandbox.title'));
 
     this._super();
   };

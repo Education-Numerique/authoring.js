@@ -40,7 +40,7 @@
     </div>
     <div class="span6">
     <div class="widget-box">
-      <div class="widget-title"><h5>Niveaux ({{displayMatter}})</h5></div>
+      <div class="widget-title"><h5>Niveaux ({{view.displayMatter}})</h5></div>
       <div class="widget-content">
         <div id="piepielevel"></div>
         <ul>
@@ -78,6 +78,7 @@
       <table class="sandbox table table-bordered data-table">
         <thead>
           <tr style="cursor: pointer; table-striped with-check">
+            <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th>Titre</th>

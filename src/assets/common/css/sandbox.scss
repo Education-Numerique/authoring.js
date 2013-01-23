@@ -6,33 +6,32 @@ table td:last-child {
   display: none;
 }
 
-.sandbox table th:first-child {
+table.sandbox th:first-child {
   display: none;
 }
 
-.sandbox table td:first-child {
+table.sandbox td:first-child {
   display: none;
 }
 
 .user-reviewer, .user-admin {
-  table th:first-child {
+  table.sandbox th:first-child {
     display: default;
   }
 
-  table td:first-child {
+  table.sandbox td:first-child {
     display: default;
   }
 }
-
-.popover .avatar {
+.popover .avatar div {
   width: 25px;
   height: 25px;
   border: 0;
   padding: 0;
-  margin: 10px;
-  background:url('images/default.png') center center no-repeat;
+  margin: 0px;
+  margin-left: 80px;
+/*  background:url('images/default.png') center center no-repeat;*/
 }
-
 
 .popover {
   .thumbnail {
@@ -47,7 +46,6 @@ table td:last-child {
   .thumbnail:empty {
     background:url('images/default.png') center center no-repeat;
   }
-
 }
 
 

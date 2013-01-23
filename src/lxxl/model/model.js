@@ -210,7 +210,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
       }
     }
 
-    i.push = function() {
+    i.push = function(altSuccess) {
       if (!api.service)
         return;
       if (!this.id) {
@@ -219,7 +219,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
         }.bind(this)), failure, this.draft.toObject());
       }else {
         var p = this.draft.toObject();
-        api.service.patch(success, failure, this.id, p);
+        api.service.patch(altSuccess || success, failure, this.id, p);
       }
     };
 

@@ -38,6 +38,7 @@
           <tr style="cursor: pointer; table-striped with-check">
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
+            <th style="width: 10px;"></th>
             <th>Titre</th>
 <!--            <th>Durée</th>-->
             <th>Difficulté</th>
@@ -72,6 +73,7 @@
       <table class="mydrafts table table-bordered data-table">
         <thead>
           <tr style="cursor: pointer; table-striped with-check">
+            <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th>Titre</th>
