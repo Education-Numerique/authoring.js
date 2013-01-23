@@ -241,7 +241,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: blanket});
 
     // XXX handle remove attachments
-    i.addAttachment = function(blob, name, success/*, error*/) {
+    i.addAttachment = function(blob, name, success, error) {
       if (!this.id || !api.service)
         return;
       api.service.addAttachment((function(d) {
@@ -252,7 +252,8 @@ jsBoot.pack('LxxlLib.model', function(api) {
           type: blob.type
         }));
         success('//' + api.servicesCore.requestor.hostPort + d.url, d.blobId);
-      }.bind(this)), function() {
+      }.bind(this)), function(d) {
+        error(d);
       }, this.id, blob);
     };
 

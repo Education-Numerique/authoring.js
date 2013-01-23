@@ -108,9 +108,9 @@
   jsBoot.loader.use('datatable', version || '1.9', 'js$');
 
   // Unicorn base theming
-  jsBoot.loader.use('libs/css/unicorn.main.css');
-  jsBoot.loader.use('libs/css/unicorn.grey.css');
-  jsBoot.loader.use('libs/css/redactor.css');
+  jsBoot.loader.use('libs/css/unicorn.main' + suffix + 'css');
+  jsBoot.loader.use('libs/css/unicorn.grey' + suffix + 'css');
+  jsBoot.loader.use('libs/css/redactor' + suffix + 'css');
 
   jsBoot.loader.use('libs/js/chosen.jquery' + suffix + 'js');
   // Wizard depend on this crap, and possibly flot as well

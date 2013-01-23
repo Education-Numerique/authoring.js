@@ -825,11 +825,10 @@
     autoSave: function(){
       if (jsBoot.controllers.userActivity.staled && !this.get('disableSave')) {
         this.set('disableSave', true);
-        console.warn('should autosave stuffy');
+        // Save
+        this.get('controller').get('content').controller.push();
       }
-      console.warn('active bitch', jsBoot.controllers.userActivity.status);
       if (jsBoot.controllers.userActivity.status == jsBoot.controllers.userActivity.ACTIVE){
-        console.warn('he is godamn active shit');
         this.set('disableSave', false);
       }
     },
