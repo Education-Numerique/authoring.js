@@ -58,7 +58,9 @@
         options = {};
       // Chosen stuff
       // $('select.chzn-select').chosen();
-      $(':not(.data-table) select', node).chosen();
+      $(':not(.data-table) select', node).chosen({
+        max_selected_options: 3
+      });
 
       // Tips
       // $('.tip', node).tooltip();

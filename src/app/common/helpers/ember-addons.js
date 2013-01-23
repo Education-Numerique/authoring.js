@@ -35,7 +35,9 @@
 
   LxxlLib.Em.Select = Em.Select.extend({
     didInsertElement: function() {
-      this.$().chosen();
+      this.$().chosen({
+        max_selected_options: 3
+      });
     },
 
     contentUpdated: function() {
@@ -67,8 +69,9 @@
 
     didInsertElement: function() {
       this.$().chosen({
-        max_selected_options: 4
+        max_selected_options: 3
       });
+
       this.set('_forceRefresh', new Date().getTime());
     },
 
