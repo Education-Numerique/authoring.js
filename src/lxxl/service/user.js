@@ -14,7 +14,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var USER_AVATAR = 'avatar';
   var USER_SETTINGS = 'settings';
   var USER_PREFERENCES = 'preferences';
-  var USER_CMD_LIST = 'list';
+  // var USER_CMD_LIST = 'list';
 
   this.user = new (function() {
 
@@ -22,8 +22,8 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
-        command: USER_CMD_LIST
+        onfailure: onFailure
+        // command: USER_CMD_LIST
       });
     };
 
