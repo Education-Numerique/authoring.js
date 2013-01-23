@@ -27,7 +27,7 @@
       <div id="success-regular" class="alert alert-success" style="display: none;">
         <h5>Votre compte a été créé avec succès</h5>
         <p>Vous allez recevoir un email de confirmation qui vous permettra de valider celui-ci.
-          Pensez à vérifier votre dossier spam si le mail de confirmation n'arrive pas.
+          Pensez à vérifier votre dossier spam si le mail de confirmation n'arrive pas. <br /> <br />
           <button class="btn btn-primary btn-large" {{action showAccountValidate href=true}}>Valider mon compte</button></p>
       </div>
 
