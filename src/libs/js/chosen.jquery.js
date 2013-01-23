@@ -804,7 +804,8 @@ Copyright (c) 2011 by Harvest
       regex = new RegExp(regexAnchor + searchText.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i');
       zregex = new RegExp(searchText.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i');
       _ref = this.results_data;
-      foundInText = false;
+      found = false;
+
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         option = _ref[_i];
         if (!option.disabled && !option.empty) {
@@ -815,28 +816,13 @@ Copyright (c) 2011 by Harvest
             result_id = option.dom_id;
             result = $("#" + result_id);
             // XXX dirty fix
-            
-            if (regex.test(option.html)) {
-              found = true;
-              results += 1;
-            } else if (regex.test(option.text)) {
+            if (regex.test(option.text)) {
               found = true;
               foundInText = true;
               results += 1;
-            } else if (option.html.indexOf(" ") >= 0 || option.html.indexOf("[") === 0) {
-              parts = option.html.replace(/\[|\]/g, "").split(" ");
-              if (parts.length) {
-                for (_j = 0, _len2 = parts.length; _j < _len2; _j++) {
-                  part = parts[_j];
-                  if (regex.test(part)) {
-                    found = true;
-                    results += 1;
-                  }
-                }
-              }
             }
             if (found) {
-              var foundPart = foundInText ? option.text : option.html;
+              var foundPart = option.text;
               if (searchText.length) {
                 startpos = foundPart.search(zregex);
                 text = foundPart.substr(0, startpos + searchText.length) + '</em>' + foundPart.substr(startpos + searchText.length);
