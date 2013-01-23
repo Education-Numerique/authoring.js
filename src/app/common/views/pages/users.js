@@ -20,6 +20,31 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
+      if (item.get('level') != "3") {
+        var admin = $(nRow).find('td:eq(1)');
+        admin.html('<button class="icon-arrow-up"></button>');
+
+
+        admin.bind('click', function(e) {
+          LxxlLib.service.user.acl.push(Em.K, Em.K, item.uid, 3);
+          item.set('level', 3);
+
+          authors.removeObject(item);
+          admins.pushObject(item);
+        });
+      } else {
+        var admin = $(nRow).find('td:eq(1)');
+        admin.html('<button class="icon-arrow-down"></button>');
+
+
+        admin.bind('click', function(e) {
+          LxxlLib.service.user.acl.push(Em.K, Em.K, item.uid, 1);
+          item.set('level', 1);
+          authors.pushObject(item);
+          admins.removeObject(item);
+        });
+      }
+
       button.bind('click', function (e) {
         LxxlApp.router.send('showAdminUser', item);
       });
@@ -33,6 +58,7 @@
   };
 
   var will = function(arr, start, removeCount, addCount) {
+
     var nn = $('.authors.data-table').dataTable();
     if (arr == admins) {
       nn = $('.admins.data-table').dataTable();
@@ -43,7 +69,6 @@
 
 
   var did = function(arr, start, removeCount, addCount) {
-
     var nn = $('.authors.data-table').dataTable();
     if (arr == admins) {
       nn = $('.admins.data-table').dataTable();
