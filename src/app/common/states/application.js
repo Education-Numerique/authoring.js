@@ -150,6 +150,7 @@
       showAccountSettings: Ember.Route.transitionTo('account.settings'),
       showAccountReminder: Ember.Route.transitionTo('account.reminder'),
       showAccountLogout: Ember.Route.transitionTo('account.logout'),
+      showAccountValidate: Em.Route.transitionTo('account.validate'),
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
       // showCnil: Ember.Route.transitionTo('dashboard.cnil'),
