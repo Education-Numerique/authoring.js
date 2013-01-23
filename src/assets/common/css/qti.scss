@@ -3,6 +3,14 @@ Style specific to activity edition
 */
 
 .qti {
+
+
+    table td, th {
+        &:last-child {
+            display:table-cell;
+        }
+    }
+
     &.row-fluid:first-child {
         margin-top:0px!important;
     }

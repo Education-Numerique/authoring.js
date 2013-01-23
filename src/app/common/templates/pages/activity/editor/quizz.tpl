@@ -106,7 +106,7 @@
                             <th><i class="icon-ok"></i></th>
                             <th>Réponse</th>
                             <th>Explication</th>
-                            <th>Coef</th>
+                            <!-- <th>Coef</th> -->
                             <th></th>
                         </tr>
                     </thead>
@@ -116,7 +116,7 @@
                             <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                            <td></td>
+                            <!-- <td></td> -->
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.question" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                         {{/collection}}
                     {{else}}
@@ -125,7 +125,7 @@
                             <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
-                            <td></td>
+                            <!-- <td></td> -->
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                         {{/collection}}
                     {{/if}}
