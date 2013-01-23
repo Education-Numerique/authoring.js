@@ -36,6 +36,33 @@
 
 
       // User account related
+      // 
+      admin: Ember.Route.extend({
+        route: '/admin',
+
+        user: Ember.Route.extend({
+          route: '/user/:uid',
+          enter: function(router) {
+            var isLogged = router.get('applicationController.isLogged');
+            var isAdmin = router.get('applicationController.user.level') == 3;
+            Ember.run.next(function() {
+              if (!isLogged || !isAdmin)
+                router.transitionTo('dashboard');
+            });
+          },
+          connectOutlets: function(router, user) {
+            router.get('applicationController').connectOutlet({
+              viewClass: LxxlApp.ProfileView,
+              controller: router.get('userController')
+            });
+
+            router.set('userController.content', user);
+          }
+        }),
+      }),
+
+      showAdminUser: Em.Route.transitionTo('admin.user'),
+
       account: Ember.Route.extend({
         route: '/account',
 
@@ -108,6 +135,8 @@
           }
         }),
 
+        
+
 
         profile: Ember.Route.extend({
           route: '/profile',
@@ -127,6 +156,9 @@
             router.set('userController.content', router.get('applicationController.user'));
           }
         }),
+
+
+
 
 
         settings: Ember.Route.extend({
@@ -151,6 +183,7 @@
       showAccountReminder: Ember.Route.transitionTo('account.reminder'),
       showAccountLogout: Ember.Route.transitionTo('account.logout'),
       showAccountValidate: Em.Route.transitionTo('account.validate'),
+      
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
       // showCnil: Ember.Route.transitionTo('dashboard.cnil'),

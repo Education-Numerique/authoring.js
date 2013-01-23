@@ -5,7 +5,7 @@
 
     save: function() {
       var d = this.get('content').toObject().profile;
-      LxxlLib.service.user.profile.push(Em.K, Em.K, d);
+      LxxlLib.service.user.profile.push(Em.K, Em.K, d, this.get('content.uid'));
     },
 
     avatar: (function() {
@@ -22,7 +22,7 @@
         this.set('content.hasAvatar', true);
       }.bind(this), function() {
 
-      }, blob);
+      }, blob, this.get('content.uid'));
     }
   });
 

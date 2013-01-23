@@ -146,8 +146,6 @@
     // Delay user ready until the profile is fetched and ok
     jsBootApp.delay(jsBootApp.USER_READY, function(notifyReady) {
       LxxlLib.service.user.profile.pull(function(data) {
-        //XXX remove me
-        data.level = 1;
         user.fromObject(data);
         notifyReady();
       }, function() {

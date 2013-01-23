@@ -10,22 +10,48 @@
     Ceci est la page de gestion des comptes utilisateurs
   </div>
 
-  <article id="home" class="widget-box">
-    <div>
-      En attente validation et fourniture contenus / textes lot 2
+ <div class="widget-box">
+    <div class="widget-title">
+      <h5>Les auteurs</h5>
     </div>
-  </article>
-</div>
-
-
-<!--
-<div class="row-fluid ">
-  <div class="alert alert-info">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Administration des comptes utilisateurs</h4>
-    Cette page réservée aux administrateurs permet d'accéder à l'ensemble des comptes utilisateurs.
+    <div class="widget-content nopadding">
+      <table class="authors table table-bordered data-table">
+        <thead>
+          <tr style="cursor: pointer; table-striped with-check">
+            <th style="width: 10px;"></th>
+            <th style="width: 10px;"></th>
+            <th>Username</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>  
+    </div>
   </div>
-  USERS
+   <div class="row-fluid">
+    </div>
+  <div class="widget-box">
+   
+    <div class="widget-title">
+      <h5>Les administrateurs</h5>
+    </div>
+    <div class="widget-content nopadding">
+      <table class="admins table table-bordered data-table">
+        <thead>
+          <tr style="cursor: pointer; table-striped with-check">
+            <th style="width: 10px;"></th>
+            <th style="width: 10px;"></th>
+            <th>Username</th>
+            <th>Email</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>  
+    </div>
+  </div>
 </div>
 
--->
