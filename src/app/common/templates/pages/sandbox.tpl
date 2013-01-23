@@ -18,10 +18,10 @@
       <div class="widget-content">
         <div id="piepie"></div>
         <ul>
-        {{#each matters}}
+        {{#each view.matters}}
           {{#if count}}
           <li>
-            <a {{action clickyClickMatter id target="controller"}}>
+            <a {{action clickyClickMatter id target="this"}}>
               {{title}} ({{count}})
               &nbsp;<span {{bindAttr style="style"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </a>
@@ -30,7 +30,7 @@
         {{/each}}
           <li class="active">
             <hr />
-            <a {{action clickyClickMatter "reset" target="controller"}}>
+            <a {{action clickyClickMatter "reset" target="this"}}>
               Toutes les matières&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
           </li>
@@ -44,10 +44,10 @@
       <div class="widget-content">
         <div id="piepielevel"></div>
         <ul>
-        {{#each levels}}
+        {{#each view.levels}}
           {{#if count}}
           <li>
-            <a {{action clickyClickLevel id target="controller"}}>
+            <a {{action clickyClickLevel id target="this"}}>
               {{title}} ({{count}})
               &nbsp;<span {{bindAttr style="style"}}>&nbsp;&nbsp;&nbsp;&nbsp;</span>
             </a>
@@ -56,7 +56,7 @@
         {{/each}}
           <li class="active">
             <hr />
-            <a {{action clickyClickLevel "reset" target="controller"}}>
+            <a {{action clickyClickLevel "reset" target="this"}}>
               Tous les niveaux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </a>
           </li>
@@ -68,7 +68,7 @@
   </div>
 
   <div class="row-fluid">
-    <h4>Filtre: {{displayMatter}}, {{displayLevel}}</h4>
+    <h4>Filtre: {{view.displayMatter}}, {{view.displayLevel}}</h4>
   </div>
   <div class="widget-box">
     <div class="widget-title">

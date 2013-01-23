@@ -176,7 +176,8 @@
         },
         connectOutlets: function(router) {
           router.get('applicationController').connectOutlet('sandbox');
-          router.get('sandboxController').pull();
+          router.get('sandboxController');
+          // router.get('sandboxController').pull();
         }
       }),
 

@@ -12,6 +12,12 @@
 
 (function() {
   'use strict';
+  this.SandboxController = Ember.ObjectController.extend(new (function() {
+  })());
+
+
+  return;
+
 
   // All that stupid gymnastic is meant to splice together damn dataTable and Handlebars together.
   // Technically, both do manipulate the DOM in incompatible ways, so, we have to override HB
@@ -340,6 +346,7 @@
     };
 
     var will = function(arr, start, removeCount, addCount) {
+      console.warn('cleanuyp');
       var nn = $('.sandbox.data-table').dataTable();
       for (var x = start + removeCount - 1; x >= start; x--)
         nn.fnDeleteRow(x);
@@ -361,6 +368,7 @@
 
     var did = function(arr, start, removeCount, addCount) {
 
+      console.warn('reinsert');
       var nn = $('.sandbox.data-table').dataTable({
         "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
           console.log(arguments);
@@ -457,70 +465,12 @@
       });
     };
 
-    this.activities.addArrayObserver(this, { willChange: function() {}, didChange: rehash});
+    // this.activities.addArrayObserver(this, { willChange: function() {}, didChange: rehash});
 
   })();
 
   window.SHIT = this.SandboxController = Ember.ObjectController.extend(ctl);
 
-
-  // {{#collection contentBinding="activities" tagName="tbody"}}
-  //     <td class="user-reviewer"><button {{action showActivityEdit this href=true}} class="icon-edit"></button></td>
-  //     <td><button {{action showPlayQTI this href=true}} class="icon-eye-open"></button></td>
-  //     <td>{{view.content.title}}</td>
-  //     <td>
-  //       {{moment view.content.controller.publicationDate fromNow="false"}}
-  //     </td>
-  //     <td>{{view.content.controller.seenCount}}</td>
-  //     <td>{{view.content.length.title}}</td>
-  //     <td>{{view.content.difficulty.title}}</td>
-  //     <td>{{view.content.controller.author.username}}</td>
-  // {{/collection}}
-
-
-  /*
-    qti: (function() {
-      var ret = [
-        {id: 'abc', author: 'Roger Doe', title: 'Stuff', category: 'Anglais pas littéraire'},
-        {id: 'cde', author: 'Jane Doe', title: 'Stuff 2', category: 'Maths'}
-      ];
-      for (var x = 0; x < 150; x++)
-        ret.push({id: x, author: 'Roger', title: 'Stuff' + x, category: 'Maths > ' + Math.round(10 * Math.random())});
-      return ret;
-    })(),
-
-    authors: function() {
-      var o = {};
-      var k = this.get('qti').forEach(function(item) {
-        if (!(item.author in o))
-          o[item.author] = 0;
-        o[item.author]++;
-      });
-      return o;
-    }.property('qti'),
-
-    categories: function() {
-      var o = {};
-      var k = this.get('qti').forEach(function(item) {
-        if (!(item.category in o))
-          o[item.category] = 0;
-        o[item.category]++;
-      });
-      return o;
-    }.property('qti'),
-
-    nbActivities: function() {
-      return this.get('qti').length;
-    }.property('qti'),
-
-    nbCategories: function() {
-      return Object.keys(this.get('categories')).length;
-    }.property('categories'),
-
-    nbAuthors: function() {
-      return Object.keys(this.get('authors')).length;
-    }.property('authors')
-    */
 
 
 }).apply(LxxlApp);
