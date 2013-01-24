@@ -220,6 +220,12 @@
     d.parent().addClass('active');
     if (matterRestrict)
       piePie.onclick(piePie.controllers[hashMatters[matterRestrict].index]);
+    else{
+      $('#piepie + ul li').removeClass('hovering');
+      $('#piepie + ul li').removeClass('active');
+      active.doMouseOut();
+      active.active = null;
+    }
     levelRestrict = null;
     this.set('displayLevel', allL);
     this.set('_dirtyTrick', Date.now());
@@ -340,6 +346,12 @@
     d.parent().addClass('active');
     if (levelRestrict)
       piePieLev.onclick(piePieLev.controllers[hashLevels[levelRestrict].index]);
+    else{
+      $('#piepielevel + ul li').removeClass('hovering');
+      $('#piepielevel + ul li').removeClass('active');
+      activeLevel.doMouseOut();
+      activeLevel.active = null;
+    }
     rehash();
   };
 
