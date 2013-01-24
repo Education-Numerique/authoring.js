@@ -32,6 +32,9 @@
           {{#ifequalhelp flavor.id "tat"}}
           <li class="page-tat">
           {{/ifequalhelp}}
+          {{#ifequalhelp flavor.id "jmt"}}
+          <li class="page-jmt">
+          {{/ifequalhelp}}
             <a href="#">
               <!--
               <span class="icon">
@@ -66,6 +69,9 @@
   {{#ifequalhelp flavor.id "tat"}}
   <section class="page-tat" id="tat-{{id}}">
   {{/ifequalhelp}}
+  {{#ifequalhelp flavor.id "jmt"}}
+  <section class="page-jmt" id="jmt-{{id}}">
+  {{/ifequalhelp}}
     <div>
       <!--<span class="icon">
         <i class="icon-th-list"></i>
@@ -77,13 +83,31 @@
     </div>
     <article>
       <!-- Chronomètre pour le temps limité de la page (à cacher si limitedTime, voir behaviors) -->
-      <h4 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h4>
+      <h5 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h5>
       {{#if advice}}
-      <h4>{{{advice}}}</h4>
+      <h3>{{{advice}}}</h3>
       {{/if}}
-      {{#if document}}
-      <p>{{{document}}}</p>
-      {{/if}}
+      {{#ifequalhelp flavor.id "simple"}}
+        <div>{{{document}}}</div>
+      {{/ifequalhelp}}
+      {{{log document}}}
+
+
+      {{#ifequalhelp flavor.id "tat"}}
+        <div class="wordlist"></div>
+
+        {{#if hasDocument}}
+          <div class="side-document">{{{document}}}</div>
+        {{/if}}
+
+        <div>
+          <p>{{{tat}}}</p>
+        </div>
+        <div>
+          <p><button id="tat-{{id}}-check">Vérifier mes réponses</button></p>
+        </div>
+      {{/ifequalhelp}}
+
 
       {{#ifequalhelp flavor.id "quizz"}}
       <dl id="questions-{{id}}">
@@ -107,11 +131,6 @@
       </dl>
       {{/ifequalhelp}}
 
-      {{#ifequalhelp flavor.id "tat"}}
-      <p class="wordlist" style="display: none;"></p>
-      <p>{{{tat}}}</p>
-      <p><button id="tat-{{id}}-check">Vérifier mes réponses</button></p>
-      {{/ifequalhelp}}
 
 
     </article>
@@ -225,7 +244,7 @@
       </ul>
     </div>
   </section>
-
+<!--
   <div class="modal hide" id="modal-preview-tat" role="dialog" aria-labelledby="modal-preview-tat-label" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" onclick="$(event.target.parentNode.parentNode).modal('hide');" aria-hidden="true">×</button>
@@ -244,4 +263,5 @@
     <a class="btn btn-large disabled">Page suivante</a>
     <a class="btn btn-large btn-primary disabled">Finir</a>
   </div>
+-->
 </div>

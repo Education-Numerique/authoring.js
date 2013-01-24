@@ -585,7 +585,7 @@
         var wordList = [];
 
         $('#tat-' + id + '-check', item).on('click', function() {
-          alert('checking answer');
+          
         });
 
         $('[data-type="tat"]', item).each(function(idx, it) {
@@ -595,13 +595,13 @@
           response = response.concat(it.attr('data-alt').split(';'));
           var clue = it.attr('data-clue');
           var h = '<input id="tat-' + ind + '-hole-' + idx + '" type="text"></input>';
-          h += ' <button style="display: none">?</button>';
+          h += ' <button style="display: none">(indice ?)</button>';
           h = $('<span />').html(h);
           it.replaceWith(h);
           if (clue) {
             $('button', h).on('click', function(e) {
               // console.warn($(e.target).replace);
-              $(e.target).replaceWith($('<span />').text('(indice: ' + clue + ')'));
+              $(e.target).replaceWith($('<span style="text-decoration: underline;"/>').text('(' + clue + ')'));
             });
             $('button', h)[0].style.display = 'inline';
           }
@@ -618,7 +618,7 @@
           }else {
             wordList.sort();
           }
-          $('.wordlist', item).html(wordList.join(', '));
+          $('.wordlist', item).html('Liste des trous: ' + wordList.join(', '));
           $('.wordlist', item)[0].style.display = 'block';
         }
 

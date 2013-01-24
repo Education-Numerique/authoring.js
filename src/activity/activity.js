@@ -145,14 +145,56 @@
           item.id = ind;
         });
         var res = tpl(deref);
-        if ('html' in ifr)
+        if ('html' in ifr){
           ifr.html(res);
-        else
+          bindCollapser(ifr);
+        }else
           ifr.innerHTML = res;
         LxxlLib.sessionManager.bindDocument(ifr);
         // -- All that should migrate into sessionManager
         loadingComplete();
       }
+    };
+
+    var bindCollapser = function(node){
+      var hide = function() {
+        $(this).data('hack', $(this).height());
+        $(this).height('0px');
+      };
+
+      var show = function() {
+        $(this).height($(this).data('hack') + 'px');
+      };
+
+      $(node).tooltip({selector: '[rel=tooltip]'});
+      $('h4', node).next().slideUp();
+      $('h4', node).append('<i></i>');
+      $('h4', node).data('manuWillHateMeAgain', true);
+      $('h4 > i', node).addClass('icon-arrow-down');
+      node.on('click', 'h4', function(e) {
+        var status = $(this).data('manuWillHateMeAgain');
+        $(this).data('manuWillHateMeAgain', !status);
+        if(status){
+          $('i', this).addClass('icon-arrow-up');
+          $('i', this).removeClass('icon-arrow-down');
+          $(this).next().slideDown(100, show);
+        }
+        else{
+          $('i', this).addClass('icon-arrow-down');
+          $('i', this).removeClass('icon-arrow-up');
+          $(this).next().slideUp(100, hide);
+        }
+      });
+        // var dataParent = $(this).attr('data-parent');
+        // var speed = parseInt($(this).attr('data-speed')) || 500;
+        // var nodeTarget = $($(this).attr('data-target'));
+
+        // if (nodeTarget.hasClass('slidify-on')) {
+        //   nodeTarget.slideUp(speed, hide);
+        // } else {
+        //   if (dataParent)
+        //     $(dataParent).find('.slidify-on').slideUp(speed, hide);
+
     };
 
 

@@ -96,7 +96,6 @@ body {
     background-color: #F2F2F2;
 }*/
 
-
 #activity-preview-body {
     width:90%;
     margin:20px auto;
@@ -108,6 +107,7 @@ body {
     @include shadow(0,5px,15px,rgba(0,0,0,0.5));
 
 
+    /* h4 collapsers */
 
     > header {
         background-color:#08C;
@@ -123,6 +123,50 @@ body {
             padding-left:20px;
         }
     }
+
+
+    h4{
+      background-color: rgb(153, 153, 153);
+      width: 100%;
+    }
+    h4 i{
+      float: right;
+    }
+
+    .wordlist{
+      display: none;
+      border-top: 1px solid blue;
+      border-bottom: 1px solid blue;
+      padding: 10px;
+      margin: 20px;
+    }
+
+    .side-document {
+      float: left;
+      width: 48%;
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    .side-document + div{
+      float: right;
+      width: 48%;
+      border: 1px solid black;
+      padding: 5px;
+    }
+
+    .side-document + div + div{
+      clear: both;
+      margin: auto;
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    input[type=text]{
+      width: 100px !important;
+    }
+
+
 
     .content-container {
         padding:15px;
