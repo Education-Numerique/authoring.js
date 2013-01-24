@@ -33,7 +33,7 @@
                     <div class="form-actions" style="margin-top:20px">
                         <span class="pull-left" style="padding-left:40px;">
                             <a {{action showAccountRegister href=true}} class="flip-link" id="to-recover">Pas encore de compte?</a><br />
-                            <a {{action showAccountReminder href=true}} class="flip-link" id="to-recover">Mot de passe oublié? </a>
+                            <a style="display: none;" {{action showAccountReminder href=true}} class="flip-link" id="to-recover">Mot de passe oublié? </a>
                         </span>
                         <span class="pull-left"><input type="submit" style="margin-left:50px;" class="btn btn-inverse" value="Se connecter" /></span>
                     </div>
