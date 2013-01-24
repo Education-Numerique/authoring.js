@@ -17,7 +17,20 @@
 
   <!-- Sommaire -->
   <div class="row-fluid content-container">
+
   <aside class="span3 side-menu pull-right">
+    <nav>
+      <h2>Documents associés</h2>
+      <ul class="attachments-list">
+        {{#each extra.attachments}}
+          <li class="{{mimetype type}}">
+            <a href="{{url}}" target="_blank" title="{{name}}" rel="tooltip" data-placement="bottom">
+             
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </nav>
     <nav>
       <h2>Plan de l'activité</h2>
       <ol class="pages-list">
@@ -58,7 +71,7 @@
   </aside>
 
 <!-- Pour chaque page -->
-<div class="span9 pages-container pull-left">
+<div class="span8 pages-container pull-left">
 {{#each pages}}
   {{#ifequalhelp flavor.id "simple"}}
   <section class="page-simple" id="page-{{id}}">

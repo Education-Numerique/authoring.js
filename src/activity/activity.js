@@ -21,6 +21,10 @@
     }
   });
 
+  Handlebars.registerHelper('mimetype', function(type) {
+    return type.split('/').pop();
+  });
+
   (function() {
     var nameIndex = 0;
     Handlebars.registerHelper('index', function() {

@@ -196,6 +196,89 @@ body {
                 border-bottom: 1px solid #E8E8E8;
             }
 
+            ul.attachments-list, ol.attachments-list {
+                padding:20px;
+
+                li {
+                    display:inline-block;
+                    width:32px;
+                    height:32px;
+                    margin-right:10px;
+                    list-style:none;
+
+                    background: #f9f9f9;
+                    background: -moz-linear-gradient(top,  #f9f9f9 0%, #eeeeee 100%);
+                    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#eeeeee));
+                    background: -webkit-linear-gradient(top,  #f9f9f9 0%,#eeeeee 100%);
+                    background: -o-linear-gradient(top,  #f9f9f9 0%,#eeeeee 100%);
+                    background: -ms-linear-gradient(top,  #f9f9f9 0%,#eeeeee 100%);
+                    background: linear-gradient(to bottom,  #f9f9f9 0%,#eeeeee 100%);
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#eeeeee',GradientType=0 );
+                    @include rounded(3px);
+                    @include multiple-shadows(0px,1px,3px,rgba(0,0,0,0.3), 0px,1px,1px,rgba(255,255,255,1));
+                    @include box-sizing(border-box);
+                    color: #666;
+                    font-size: 12px;
+                    font-weight: bold;
+                    cursor:pointer;
+
+                    a {
+                        display:block;
+                        width:100%;
+                        height:100%;
+                        padding:0;
+                        margin:0;
+                        
+                    }
+
+                    &.mp3 a {
+                        background: transparent url(images/attachments/mp3.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.pdf a {
+                        background: transparent url(images/attachments/pdf.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.avi a {
+                        background: transparent url(images/attachments/avi.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.jpeg a {
+                        background: transparent url(images/attachments/jpeg.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.pptx a {
+                        background: transparent url(images/attachments/pptx.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.text a {
+                        background: transparent url(images/attachments/text.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.wav a {
+                        background: transparent url(images/attachments/wav.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.xlsx a {
+                        background: transparent url(images/attachments/xlsx.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+
+                    &.zip a {
+                        background: transparent url(images/attachments/zip.png) center center no-repeat;
+                        background-size: 90%;
+                    }
+                }
+
+            }
+
             ol,ul {
                 width:100%;
                 margin:0;
