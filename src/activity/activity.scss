@@ -353,11 +353,12 @@ body {
         }
 
         .questions {
-            li {
+            > li {
                 
                 @include box-sizing(border-box);
                 background-color:#eee;
                 @include rounded(5px);
+                @include shadow(0,0, 3px, rgba(0,0,0,0.5));
 
                 &.ui-state-active {
                     background-color:#ccc;
@@ -400,6 +401,7 @@ body {
                 @include rounded(5px);
                 background-color: #eee;
                 @include unselectable();
+                @include shadow(0,0, 3px, rgba(0,0,0,0.5));
                 cursor:move;
             }
         }
