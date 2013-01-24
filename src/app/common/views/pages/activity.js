@@ -588,7 +588,7 @@
           limitMultiFileUploads: 1,
 
           add: function(e, data) {
-            var validation = /(application\/pdf|audio\/mpeg3|audio\/mp3|audio\/x-mpeg-3)$/i;
+            var validation = /(application\/pdf|audio\/mpeg3|audio\/mpeg|audio\/mp3|audio\/x-mpeg-3)$/i;
             var maxFileSize = 5000000;
 
             data.files.forEach(function(file) {

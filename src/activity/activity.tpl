@@ -125,7 +125,7 @@
             <h3>Exercice complété!</h3>
           </div>
           <div class="modal-body">
-            Résultat: <span class="feedback">%</span>
+            Résultat: <span class="feedback">100%</span>
           </div>
           <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
@@ -168,7 +168,7 @@
             <h3>Exercice complété!</h3>
           </div>
           <div class="modal-body">
-            Résultat: <span class="feedback">%</span>
+            Résultat: <span class="feedback">100%</span>
           </div>
           <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
@@ -256,7 +256,7 @@
               <h3>Exercice complété!</h3>
             </div>
             <div class="modal-body">
-              Résultat: <span class="feedback">%</span>
+              Résultat: <span class="feedback">100%</span>
             </div>
             <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
