@@ -57,6 +57,8 @@
   // jsBoot.loader.use('i18n', trunk ? 'trunk' : '3rc2');
   jsBoot.loader.wait();
 
+  jsBoot.loader.use('../../libs/js/jquery.ui.custom' + suffix + 'js');
+
   // This could be put anywhere, but has to wait for core
   if (debug)
     jsBoot.loader.use(jsBoot.loader.DEBUG);
