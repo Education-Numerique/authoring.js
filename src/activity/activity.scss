@@ -190,7 +190,9 @@ body {
         }
     }
     .side-menu {
-
+        &.pull-right {
+            float:right!important;
+        }
         nav {
             border: 1px solid #DDD;
             margin-top:10px;
@@ -216,6 +218,7 @@ body {
                     height:32px;
                     margin-right:10px;
                     list-style:none;
+                    min-height:32px;
 
                     background: #f9f9f9;
                     background: -moz-linear-gradient(top,  #f9f9f9 0%, #eeeeee 100%);
