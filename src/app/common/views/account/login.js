@@ -14,8 +14,8 @@
           email: {
             required: true,
             email: true,
-            minlength: 6,
-            maxlength: 25
+            minlength: 4,
+            maxlength: 45
           },
           password: {
             required: true,

@@ -260,11 +260,15 @@
           drop: function(event, ui) {
            if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
             var height = ui.draggable.outerHeight();
+            var currentHeight = $(this).find('.title').outerHeight();
+
             // cloning and appending prevents the revert animation from still occurring
+            
             ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
             ui.draggable.remove();
 
-            $(this).find('.title').outerHeight(height + 'px');
+            if (currentHeight < height)
+              $(this).find('.title').outerHeight(height + 'px');
 
             $(this).droppable('disable');
             $(this).addClass('ui-state-correct');
@@ -283,7 +287,8 @@
 
         $('.propositions > li', container).draggable({
           containment: $('.mix-and-match', container),
-          revert:true
+          revert:true,
+          stack: $('.propositions > li', container)
         });
       });
      
