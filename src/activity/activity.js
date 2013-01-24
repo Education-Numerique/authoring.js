@@ -172,6 +172,7 @@
         // ++ All that should migrate into sessionManager
         LxxlLib.sessionManager.start(act, pubVersion);
         var deref = LxxlLib.sessionManager.activity;
+        deref.seen();
         deref = pubVersion ? deref.published : deref.draft;
         deref.styleData = [];
         deref.styleUri = [];
@@ -491,6 +492,28 @@ if (/embed\.html/.test(location.href)) {
       console.warn('All set baby!');
     }, true);
   }
+
+  var SERVICE_CONFIG = {
+    key: {
+      id : 'PROD',
+      secret : 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
+    },
+    server: {
+      host: '{PUKE-SERVICE-HOST}',
+      port: '{PUKE-SERVICE-PORT}',
+      // host: 'snap.lxxl.com',8081
+      // port: '90',
+      version: '1.0'
+    },
+    anonymous: {
+      id: 'anonymous',
+      login: 'anonymous',
+      password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+    }
+  };
+
+  jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
+
 }
 
 

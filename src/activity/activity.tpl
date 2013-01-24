@@ -117,7 +117,30 @@
           <p>{{{tat}}}</p>
         </div>
         <div>
-          <p><button id="tat-{{../id}}-{{id}}-check">Vérifier mes réponses</button></p>
+          <p><button id="tat-{{id}}-check">Vérifier mes réponses</button></p>
+        </div>
+
+        <div class="modal conclusion hide" role="dialog" aria-hidden="true">
+          <div class="modal-header">
+            <h3>Exercice complété!</h3>
+          </div>
+          <div class="modal-body">
+            Résultat: <span class="feedback">%</span>
+          </div>
+          <div class="modal-footer">
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+          </div>
+        </div>
+        <div class="modal feedback hide" role="dialog" aria-hidden="true">
+          <div class="modal-header">
+            <h3>Mmmm...</h3>
+          </div>
+          <div class="modal-body">
+            Pas encore... Essaie avec un indice?
+          </div>
+          <div class="modal-footer">
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+          </div>
         </div>
       {{/ifequalhelp}}
       {{#ifequalhelp flavor.id "jmt"}}
@@ -167,13 +190,24 @@
                           {{comment}}
                         </div>
                         <div class="modal-footer">
-                            <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
                         </div>
                       </div>
                   </form>
                   </li>
                   {{/each}}
-                  <button>Vérifier mes réponses</button>
+                  <button disabled="disabled">Vérifier mes réponses</button>
+                  <div class="modal hide" role="dialog" aria-hidden="true">
+                    <div class="modal-header">
+                      <h3>Ok!</h3>
+                    </div>
+                    <div class="modal-body">
+                      Pas mal...
+                    </div>
+                    <div class="modal-footer">
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+                    </div>
+                  </div>
                 </ul>
                 {{else}}
                 <ul class="qcm">
@@ -190,7 +224,7 @@
                         {{comment}}
                       </div>
                       <div class="modal-footer">
-                          <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
                       </div>
                     </div>
                   </li>
@@ -204,6 +238,19 @@
               </dd>
           {{/each}}
             </dl>
+
+          <div class="modal conclusion hide" role="dialog" aria-hidden="true">
+            <div class="modal-header">
+              <h3>Exercice complété!</h3>
+            </div>
+            <div class="modal-body">
+              Résultat: <span class="feedback">%</span>
+            </div>
+            <div class="modal-footer">
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+            </div>
+          </div>
+
         </div>
       {{/ifequalhelp}}
 

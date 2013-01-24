@@ -584,9 +584,23 @@
       });
     };
 
+    var completeQuestion = function(pid, qid){
+      console.warn(pid, qid);
+      activity[pub].pages[pid].questions[qid].completed = true;
+      var pageComplete = true;
+      activity[pub].pages[pid].questions.forEach(function(item){
+        pageComplete = pageComplete && item.completed;
+      });
+      console.warn('Going?', pageComplete);
+      if(pageComplete){
+        // window.setTimeout(function(){
+        $('.conclusion', $('[id="quizz-' + pid + '"]')).modal('show');
+        // }, 300);
+      }
+    };
+
     var quizzBehavior = function(){
       $('section[id^=quizz-]', dom).each(function(ind, item) {
-        var id = item.id.replace(/tat-/, '');
         $('.qcm button', item).on('click', function() {
           var aid = $(this).parent().attr('id').split('-').pop() - 1;
           var pid = $(this).parent().parent().parent().prev().attr('id').split('-');
@@ -603,6 +617,7 @@
             $(this).show();
             $(this).html('O');
             $(this).attr('style', 'background-color: green;');
+            completeQuestion(pid, qid);
           }else{
             $('.modal', $(this).parent()).modal('show');
             $(this).html('X');
@@ -610,6 +625,17 @@
             $(this).attr('style', 'background-color: red;');
           }
         });
+
+        $('.qrm input', item).on('click', function() {
+          var ok = true;
+          $('li', $(this).parent().parent().parent()).each(function(ind, line){
+            ok = ($('input', $(line))[0].checked || $('input', $(line))[1].checked) && ok;
+          });
+          if(ok){
+            $('button', $(this).parent().parent().parent()).attr('disabled', null);
+          }
+        });
+
 
         $('.qrm button', item).on('click', function() {
           var pid = $(this).parent().parent().prev().attr('id').split('-');
@@ -629,8 +655,17 @@
           });
           if(bads.length){
             var mod = bads[Math.round(Math.random() * (bads.length - 1))];
-            $('.feedback', mod).html(goods + '/' + (bads.length + good));
+            $('.feedback', mod).html(goods + '/' + (bads.length + goods));
             mod.modal('show');
+          }else{
+            $(this).next().modal('show');
+            $(this).attr('disabled', 'disabled');
+            $('li input', $(this).parent()).each(function(ind, item){
+              $(item).attr('disabled', 'disabled');
+            });
+            $(this).next().on('hidden', function(){
+              completeQuestion(pid, qid);
+            });
           }
         });
 
@@ -642,15 +677,38 @@
       // Tat thingies
       // var tat =
       $('section[id^=tat-]', dom).each(function(ind, item) {
-        var id = item.id.replace(/tat-/, '').split('-');
-        var pageId = id.shift();
-        id = id.pop();
+        var id = item.id.split('-');
+        var pageId = id.pop();
         var wordList = [];
 
-        $('#tat-' + pageId + '-' + id + '-check', item).on('click', function() {
-          // XXX tat calculus
-          // XXX response replacement
-          console.warn('');
+        console.warn('#tat-' + pageId + '-check');
+        $('#tat-' + pageId + '-check', item).on('click', function() {
+          var notYet = false;
+          $('input', $(this).parent().parent().prev()).each(function(ind, chose){
+            var response = $(chose).val();
+            var valid = $(chose).data('ans');
+            var isGood = valid.some(function(i){
+              if (response == i)
+                return true;
+              if(i.charAt(i.length -1) == '*'){
+                console.warn(response.substr(0, i.length - 2));
+                return response.substr(0, i.length - 1) + '*' == i;
+              }
+              return false;
+            });
+            if(isGood){
+              $(chose).attr('disabled', 'disabled');
+              $(chose).next().attr('disabled', 'disabled');
+            }else{
+              notYet = true;
+            }
+          });
+          if(notYet){
+            $('.modal.feedback', $('[id="tat-' + pageId + '"]')).modal('show');
+          }else{
+            $(this).attr('disabled', 'disabled');
+            $('.modal.conclusion', $('[id="tat-' + pageId + '"]')).modal('show');
+          }
         });
 
         $('[data-type="tat"]', item).each(function(idx, it) {
@@ -662,6 +720,7 @@
           var h = '<input id="tat-' + ind + '-hole-' + idx + '" type="text"></input>';
           h += ' <button style="display: none">(indice ?)</button>';
           h = $('<span />').html(h);
+          $('input', h).data('ans', response);
           it.replaceWith(h);
           if (clue) {
             $('button', h).on('click', function(e) {

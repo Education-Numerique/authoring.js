@@ -147,6 +147,7 @@
 
 
 
+  jsBoot.loader.use(bootRoot + 'activity/activity' + suffix + 'css');
   // Load the app itself, along its stylesheet
   jsBoot.loader.use(bootRoot + 'lxxl-standalone-library' + suffix + 'js');
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'js');
