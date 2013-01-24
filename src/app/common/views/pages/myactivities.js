@@ -4,7 +4,7 @@
 
   var doPreview = function(node, activity) {
     var a = new LxxlLib.Masher();
-    a.setupViewport(node);//, true);
+    a.setupViewport(node, true);
     a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
     a.showActivity(LxxlLib.service.activities.readUrl(activity.id), function() {
