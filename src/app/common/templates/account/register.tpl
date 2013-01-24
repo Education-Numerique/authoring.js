@@ -15,7 +15,7 @@
     <div id="register-progress" style="width: 5%;" class="bar"></div>
   </div>
 
-  <div class="widget-box">
+  <div class="widget-box" style="padding-bottom: 200px;">
     <div class="widget-title">
       <span class="icon">
         <i class="icon-pencil"></i>
