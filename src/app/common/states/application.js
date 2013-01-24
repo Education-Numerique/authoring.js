@@ -59,9 +59,35 @@
             router.set('userController.content', user);
           }
         }),
+
+        users: Ember.Route.extend({
+          route: '/users',
+          enter: function(router) {
+            router.set('applicationController.selected', 'users');
+          },
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet('users');
+          }
+        }),
+
+        activities: Ember.Route.extend({
+          route: '/activities',
+          enter: function(router) {
+            router.set('applicationController.selected', 'qtis');
+          },
+          connectOutlets: function(router) {
+            router.get('applicationController').connectOutlet({
+              viewClass: LxxlApp.AdminActivitiesView,
+              controller: router.get('adminActivities')
+            });
+          }
+        }),
       }),
 
       showAdminUser: Em.Route.transitionTo('admin.user'),
+      showAdminUsers: Ember.Route.transitionTo('admin.users'),
+      showAdminActivities: Ember.Route.transitionTo('admin.activities'),
+
 
       account: Ember.Route.extend({
         route: '/account',
@@ -288,18 +314,7 @@
           router.get('applicationController').connectOutlet('qtis');
         }
       }),
-
-      // Users
-      showAllUsers: Ember.Route.transitionTo('users'),
-      users: Ember.Route.extend({
-        route: '/users',
-        enter: function(router) {
-          router.set('applicationController.selected', 'users');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('users');
-        }
-      }),
+      
 
       // Routes not accessible from navigation itself
       showPlayQTI: Ember.Route.transitionTo('playQTI'),

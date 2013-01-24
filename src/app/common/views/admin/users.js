@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  var t = this.lxxlPageView('pages/users');
+  var t = this.lxxlPageView('admin/users');
 
   var users,
       admins,
@@ -22,7 +22,7 @@
 
       if (item.get('level') != "3") {
         var admin = $(nRow).find('td:eq(1)');
-        admin.html('<button class="icon-arrow-up"></button>');
+        admin.html('<button class="icon-arrow-up" rel="tooltip" data-placement="right" title="Changer les droits de cet utilisateur en administrateur"></button>');
 
 
         admin.bind('click', function(e) {
@@ -34,7 +34,7 @@
         });
       } else {
         var admin = $(nRow).find('td:eq(1)');
-        admin.html('<button class="icon-arrow-down"></button>');
+        admin.html('<button class="icon-arrow-down" rel="tooltip" data-placement="right" title="Changer les droits de cet utilisateur en auteur"></button>');
 
 
         admin.bind('click', function(e) {
@@ -117,6 +117,8 @@
           authors.pushObject(user);
       });
     }, Em.K);
+
+    this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.admin.users.title'));
   };
 
   this.UsersView = Ember.View.extend(t);

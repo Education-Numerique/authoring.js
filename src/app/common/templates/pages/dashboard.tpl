@@ -71,13 +71,13 @@
         <div class="span12 center" style="text-align: center;">         
           <ul class="quick-actions">
             <li class="user-reviewer">
-              <a {{action showAllQTIs href=true}} class="tip-bottom" title="Modérer et modifier toutes les activités">
+              <a {{action showAdminActivities href=true}} class="tip-bottom" title="Modérer et modifier toutes les activités">
                 <i class="icon-download"></i>
                 Modération des activités
               </a>
             </li>
             <li class="user-admin">
-              <a {{action showAllUsers href=true}} class="tip-bottom" title="Gérer les comptes utilisateurs">
+              <a {{action showAdminUsers href=true}} class="tip-bottom" title="Gérer les comptes utilisateurs">
                 <i class="icon-people"></i>
                 Comptes utilisateurs
               </a>
@@ -259,13 +259,13 @@
       <div class="span12 center" style="text-align: center;">         
         <ul class="quick-actions">
           <li class="user-reviewer">
-            <a {{action showAllQTIs href=true}} class="tip-bottom" title="Modérer et modifier toutes les activités">
+            <a {{action showAdminActivities href=true}} class="tip-bottom" title="Modérer et modifier toutes les activités">
               <i class="icon-download"></i>
               Modération des activités
             </a>
           </li>
           <li class="user-admin">
-            <a {{action showAllUsers href=true}} class="tip-bottom" title="Gérer les comptes utilisateurs">
+            <a {{action showAdminUsers href=true}} class="tip-bottom" title="Gérer les comptes utilisateurs">
               <i class="icon-people"></i>
               Comptes utilisateurs
             </a>

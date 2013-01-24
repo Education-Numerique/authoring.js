@@ -48,11 +48,11 @@
       </li>
 
       <li class="submenu user-reviewer">
-        <a rel="tooltip" data-placement="right" title="{{localize nav.allact.tip}}" id="navigation-qtis" {{action showAllQTIs href=true}}><i class="icon icon-bullhorn"></i> <span>{{localize nav.allact.text}}</span></a>
+        <a rel="tooltip" data-placement="right" title="{{localize nav.allact.tip}}" id="navigation-qtis" {{action showAdminActivities href=true}}><i class="icon icon-bullhorn"></i> <span>{{localize nav.allact.text}}</span></a>
       </li>
 
       <li class="user-admin">
-        <a rel="tooltip" data-placement="right" title="{{localize nav.users.tip}}" id="navigation-users" {{action showAllUsers href=true}}><i class="icon icon-user"></i> <span>{{localize nav.users.text}}</span></a>
+        <a rel="tooltip" data-placement="right" title="{{localize nav.users.tip}}" id="navigation-users" {{action showAdminUsers href=true}}><i class="icon icon-user"></i> <span>{{localize nav.users.text}}</span></a>
       </li>
     </ul>
   </nav>

@@ -1,5 +1,5 @@
 /*
-* @template : pages/users
+* @template : admin/users
 */
 
 

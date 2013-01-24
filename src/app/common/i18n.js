@@ -50,8 +50,13 @@
         users: {
           title: 'Utilisateurs'
         },
-        qtis: {
-          title: 'Activités'
+        admin: {
+          activities: {
+            title: 'Administration des activités'  
+          },
+          users: {
+            title: 'Administration des utilisateurs'
+          }
         },
 
         sandbox: {
