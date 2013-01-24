@@ -333,18 +333,18 @@
 // Activity may be passed as a json url, or embedded as a datauri?
 if (/embed\.html/.test(location.href)) {
   var id = location.href.match(/id=([a-z0-9]+)/i);
-  if(!id)
-    return;
-  id = id.pop();
-  var a = new LxxlLib.Masher();
-  a.setupViewport($('#lxxlroot'), true);
-  // a.addStyle('body{background-color: blue;}');
-  a.setupTemplate('activity.tpl');
-  // activity.published
-  id = '//api.education-et-numerique.fr/1.0/activities/' + id + '/public';
-  a.showActivity(id, function() {
-    console.warn('All set baby!');
-  });
+  if(id){
+    id = id.pop();
+    var a = new LxxlLib.Masher();
+    a.setupViewport($('#lxxlroot'), true);
+    // a.addStyle('body{background-color: blue;}');
+    a.setupTemplate('activity.tpl');
+    // activity.published
+    id = '//api.education-et-numerique.fr/1.0/activities/' + id + '/public';
+    a.showActivity(id, function() {
+      console.warn('All set baby!');
+    });
+  }
 }
 
 
