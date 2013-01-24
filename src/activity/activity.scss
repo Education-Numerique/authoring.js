@@ -170,6 +170,14 @@ body {
       list-style-type: none;
     }
 
+    dd ul li quote{
+      display: none;
+    }
+
+    input[type=radio]{
+      margin: 0;
+    }
+
 
     .content-container {
         padding:15px;

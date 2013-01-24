@@ -99,7 +99,7 @@
       <h5 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h5>
 
       {{#if advice}}
-      <h3>{{{advice}}}</h3>
+      <div>{{{advice}}}</div>
       {{/if}}
 
       {{#ifequalhelp flavor.id "simple"}}
@@ -117,39 +117,74 @@
           <p>{{{tat}}}</p>
         </div>
         <div>
-          <p><button id="tat-{{id}}-check">Vérifier mes réponses</button></p>
+          <p><button id="tat-{{../id}}-{{id}}-check">Vérifier mes réponses</button></p>
         </div>
       {{/ifequalhelp}}
 
 
       {{#ifequalhelp flavor.id "quizz"}}
-      <dl id="questions-{{id}}">
-        {{#each questions}}
-          <dt>{{{text}}}</dt>
-<!--              {{coef}} -->
-          <dd>
-            <ul>
-            {{#if isQRM}}
-              {{#each answers}}
-              <li id="answer-{{../id}}-{{id}}">
-                <button>?</button>
-                {{text}}
-                <quote>{{comment}}</quote>
-              </li>
-              {{/each}}
-            {{else}}
-              {{#each answers}}
-              <li id="answer-{{../id}}-{{id}}">
-                <input type="checkbox" />
-              </li>
-              {{/each}}
-            {{/if}}
-  <!--                    {{isCorrect}}
-                {{weight}} -->
-            </ul>
-          </dd>
-        {{/each}}
-      </dl>
+        {{#if hasDocument}}
+          <div class="side-document">{{{document}}}</div>
+        {{/if}}
+        <div>
+            <dl>
+          {{reset_index "qid"}}
+          {{#each questions}}
+              <dt id="questions-{{../id}}-{{index 'qid'}}">{{{text}}}</dt>
+              <dd>
+                {{#if isQRM}}
+                <ul class="qrm">
+                  {{reset_index "aid"}}
+                  {{#each answers}}
+                  <li id="answer-{{index 'aid'}}">
+                  <form>
+                      <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non:&nbsp;{{text}}
+                      <div class="modal hide" role="dialog" aria-hidden="true">
+                        <div class="modal-header">
+                          <h3>Mmm... Pas tout à fait (<span class="feedback"></span>). Voici un indice.</h3>
+                        </div>
+                        <div class="modal-body">
+                          {{comment}}
+                        </div>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+                        </div>
+                      </div>
+                  </form>
+                  </li>
+                  {{/each}}
+                  <button>Vérifier mes réponses</button>
+                </ul>
+                {{else}}
+                <ul class="qcm">
+                  {{reset_index "aid"}}
+                  {{#each answers}}
+                  <li id="answer-{{index 'aid'}}">
+                    <button>?</button>
+                    {{text}}
+                    <div class="modal hide" role="dialog" aria-hidden="true">
+                      <div class="modal-header">
+                        <h3>Mauvaise réponse, mais voici un indice:</h3>
+                      </div>
+                      <div class="modal-body">
+                        {{comment}}
+                      </div>
+                      <div class="modal-footer">
+                          <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+                      </div>
+                    </div>
+                  </li>
+                  {{/each}}
+                </ul>
+
+
+                {{/if}}
+      <!--                    {{isCorrect}}
+                    {{weight}} -->
+              </dd>
+          {{/each}}
+            </dl>
+        </div>
       {{/ifequalhelp}}
 
 
@@ -160,46 +195,6 @@
 {{/each}}
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -497,6 +497,7 @@
       dom = d;
       // XXX manu bind behaviors if you want
       tatBehavior();
+      quizzBehavior();
       menuBehavior();
     };
 
@@ -579,8 +580,55 @@
     };
 
     var quizzBehavior = function(){
-      $('section[id^=tat-]', dom).each(function(ind, item) {
+      $('section[id^=quizz-]', dom).each(function(ind, item) {
         var id = item.id.replace(/tat-/, '');
+        $('.qcm button', item).on('click', function() {
+          var aid = $(this).parent().attr('id').split('-').pop() - 1;
+          var pid = $(this).parent().parent().parent().prev().attr('id').split('-');
+          var qid = pid.pop() - 1;
+          pid = pid.pop();
+          var getBackTo = activity[pub].pages[pid].questions[qid].answers[aid].isCorrect;
+          if(getBackTo){
+            $('button', $(this).parent().parent()).each(function(ind, item){
+              $(item).attr('disabled', 'disabled');
+              // if($(item).html() != 'X'){
+
+              // }
+            });
+            $(this).show();
+            $(this).html('O');
+            $(this).attr('style', 'background-color: green;');
+          }else{
+            $('.modal', $(this).parent()).modal('show');
+            $(this).html('X');
+            $(this).attr('disabled', 'disabled');
+            $(this).attr('style', 'background-color: red;');
+          }
+        });
+
+        $('.qrm button', item).on('click', function() {
+          var pid = $(this).parent().parent().prev().attr('id').split('-');
+          var qid = pid.pop() - 1;
+          pid = pid.pop();
+          var goods = 0;
+          var bads = [];
+          $('li', $(this).parent()).each(function(ind, item){
+            var aid = $(item).attr('id').split('-').pop() - 1;
+            var isYes = $('input', $(item))[0].checked;
+            if(activity[pub].pages[pid].questions[qid].answers[aid].isCorrect ? isYes : !isYes){
+              console.warn('Pas mal josé!');
+              goods++;
+            }else{
+              bads.push($('.modal', $(item)));
+            }
+          });
+          if(bads.length){
+            var mod = bads[Math.round(Math.random() * (bads.length - 1))];
+            $('.feedback', mod).html(goods + '/' + (bads.length + good));
+            mod.modal('show');
+          }
+        });
+
       });
 
     };
@@ -589,10 +637,12 @@
       // Tat thingies
       // var tat =
       $('section[id^=tat-]', dom).each(function(ind, item) {
-        var id = item.id.replace(/tat-/, '');
+        var id = item.id.replace(/tat-/, '').split('-');
+        var pageId = id.shift();
+        id = id.pop();
         var wordList = [];
 
-        $('#tat-' + id + '-check', item).on('click', function() {
+        $('#tat-' + pageId + '-' + id + '-check', item).on('click', function() {
           // XXX tat calculus
           // XXX response replacement
           console.warn('');
