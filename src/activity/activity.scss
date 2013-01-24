@@ -211,6 +211,7 @@ body {
 
             ul.attachments-list, ol.attachments-list {
                 padding:20px;
+                float:none;
 
                 li {
                     display:inline-block;
@@ -219,6 +220,7 @@ body {
                     margin-right:10px;
                     list-style:none;
                     min-height:32px;
+                    float:none;
 
                     background: #f9f9f9;
                     background: -moz-linear-gradient(top,  #f9f9f9 0%, #eeeeee 100%);
