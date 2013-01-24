@@ -202,7 +202,7 @@
   <div class="modal-body">
     Vous pouvez exporter votre activité dans votre blog ou sur votre site en copiant-collant le code suivant:
     <pre>
-      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.2/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 600px; height: 600px;&quot; /&gt;
+      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.2/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 1000px; max-width: 1000px; height: 600px;&quot; /&gt;
     </pre>
   </div>
   <div class="modal-footer">

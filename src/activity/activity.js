@@ -343,7 +343,7 @@ if (/embed\.html/.test(location.href)) {
     id = '//api.education-et-numerique.fr/1.0/activities/' + id + '/public';
     a.showActivity(id, function() {
       console.warn('All set baby!');
-    });
+    }, true);
   }
 }
 
