@@ -163,6 +163,18 @@
           </ul>
         </div>
 
+        <div class="modal conclusion hide" role="dialog" aria-hidden="true">
+          <div class="modal-header">
+            <h3>Exercice complété!</h3>
+          </div>
+          <div class="modal-body">
+            Résultat: <span class="feedback">%</span>
+          </div>
+          <div class="modal-footer">
+              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+          </div>
+        </div>
+
       {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "quizz"}}

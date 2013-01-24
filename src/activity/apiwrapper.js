@@ -530,6 +530,7 @@
 
 
     this.MixAndMatchComplete = function (pageId) {
+      $('.modal', $('#jmt-' + pageId)).modal('show');
       console.warn('**** mix and match complete', pageId);
     };
 
@@ -685,13 +686,14 @@
         $('#tat-' + pageId + '-check', item).on('click', function() {
           var notYet = false;
           $('input', $(this).parent().parent().prev()).each(function(ind, chose){
-            var response = $(chose).val();
-            var valid = $(chose).data('ans');
+            var response = $(chose).val().toLowerCase().trim();
+            var valid = $(chose).data('ans').map(function(i){
+              return i.toLowerCase().trim();
+            });
             var isGood = valid.some(function(i){
               if (response == i)
                 return true;
               if(i.charAt(i.length -1) == '*'){
-                console.warn(response.substr(0, i.length - 2));
                 return response.substr(0, i.length - 1) + '*' == i;
               }
               return false;
