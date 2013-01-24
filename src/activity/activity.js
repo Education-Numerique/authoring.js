@@ -254,12 +254,18 @@
           hoverClass: 'ui-state-hover',
           drop: function(event, ui) {
            if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
-            $(this).addClass('ui-state-correct');
+            var height = ui.draggable.outerHeight();
             // cloning and appending prevents the revert animation from still occurring
             ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
             ui.draggable.remove();
 
+            $(this).find('.title').outerHeight(height + 'px');
+
             $(this).droppable('disable');
+            $(this).addClass('ui-state-correct');
+
+            if ($('.propositions > li', container).length == 0)
+              LxxlLib.sessionManager.MixAndMatchComplete(index);
            } else {
             $(this).addClass('ui-state-wrong');
             var $this = $(this);

@@ -528,6 +528,11 @@
       }
     });
 
+
+    this.MixAndMatchComplete = function (pageId) {
+      console.warn('**** mix and match complete', pageId);
+    };
+
     this.pause = function() {
     };
 

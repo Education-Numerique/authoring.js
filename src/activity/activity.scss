@@ -347,40 +347,58 @@ body {
     }
 
     .mix-and-match {
-        li {
+        > ul > li {
             list-style:none;
             margin-bottom:20px;
         }
 
         .questions {
             li {
-                background-color:#FFFFE5;
+                
+                @include box-sizing(border-box);
+                background-color:#eee;
+                @include rounded(5px);
 
                 &.ui-state-active {
-                    background-color:#C9FFE5;
+                    background-color:#ccc;
                 }
 
                 &.ui-state-hover {
-                    background-color:blue;
+                    background-color:#999;
                 }
 
                 &.ui-state-wrong {
-                    background-color:red;
+                    background-color:#f2dede;
                 }
 
                 &.ui-state-correct {
-                    background-color;green;
+                    background-color:#dff0d8;
+                    .response {
+                        
+
+                        > li {
+                            background-color:transparent;
+                            @include rounded-right(5px);
+                            padding:20px;
+                            @include box-sizing(border-box);
+                        }
+                    }
                 }
 
                 div.title {
-                    border:1px solid #F0F;
+                    padding:20px;
+                    background-color:#eee;
+                    @include rounded-left(5px);
                 }
             }
         }
 
         .propositions {
             li {
-                border:1px solid blue;
+                padding:20px;
+                @include box-sizing(border-box);
+                @include rounded(5px);
+                background-color: #eee;
                 @include unselectable();
                 cursor:move;
             }
