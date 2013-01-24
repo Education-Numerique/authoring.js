@@ -21,7 +21,8 @@
                 allElems.splice(random, 1);
                 return randEl;
            });
- 
+        var max = this.length;
+
         this.each(function(i){
             $(this).replaceWith($(shuffled[i]));
         });
@@ -200,6 +201,11 @@
     };
 
     var bindCollapser = function(node){
+
+      var currentActivity = LxxlLib.sessionManager.activity;
+      currentActivity = pubVersion ? currentActivity.published : currentActivity.draft;
+
+
       var hide = function() {
         $(this).data('hack', $(this).height());
         $(this).height('0px');
@@ -228,38 +234,48 @@
           $(this).next().slideUp(100, hide);
         }
       });
-      $('.questions > li').each(function (index, item) {
-        $(item).data('lxxl-question', index);
-      });
 
-      $('.propositions > li').each(function (index, item) {
-        $(item).data('lxxl-proposition', index);
-      });
+      currentActivity.pages.forEach(function (page, index) {
+        if (page.flavor.id != 'jmt')
+          return;
 
-      $('.questions > li').droppable({
-        activeClass: 'ui-state-active',
-        hoverClass: 'ui-state-hover',
-        drop: function(event, ui) {
-         if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
-          $(this).addClass('ui-state-correct');
-          // cloning and appending prevents the revert animation from still occurring
-          ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
-          ui.draggable.remove();
+        var container = $('[data-page="'+index+'"]');
 
-          $(this).droppable('disable');
-         } else {
-          $(this).addClass('ui-state-wrong');
-          var $this = $(this);
-          setTimeout(function(){ $this.removeClass('ui-state-wrong') }, 1000);
-         }
-        }
+         $('.questions > li', container).each(function (index, item) {
+          $(item).data('lxxl-question', index);
+        });
+
+        $('.propositions > li', container).each(function (index, item) {
+          $(item).data('lxxl-proposition', index);
+        });
+
+        $('.questions > li', container).droppable({
+          activeClass: 'ui-state-active',
+          hoverClass: 'ui-state-hover',
+          drop: function(event, ui) {
+           if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
+            $(this).addClass('ui-state-correct');
+            // cloning and appending prevents the revert animation from still occurring
+            ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
+            ui.draggable.remove();
+
+            $(this).droppable('disable');
+           } else {
+            $(this).addClass('ui-state-wrong');
+            var $this = $(this);
+            setTimeout(function(){ $this.removeClass('ui-state-wrong') }, 1000);
+           }
+          }
+        });
+        $('.propositions > li', container).shuffle();
+        $('.propositions > li', container).shuffle();
+
+        $('.propositions > li', container).draggable({
+          containment: $('.mix-and-match', container),
+          revert:true
+        });
       });
-      $('.propositions > li').shuffle();
-      
-      $('.propositions > li').draggable({
-        containment: $('.mix-and-match'),
-        revert:true
-      });
+     
 
 
 

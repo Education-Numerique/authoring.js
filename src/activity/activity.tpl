@@ -74,16 +74,16 @@
 <div class="span8 pages-container pull-left">
 {{#each pages}}
   {{#ifequalhelp flavor.id "simple"}}
-  <section class="page-simple" id="page-{{id}}">
+  <section class="page-simple" id="page-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
   {{#ifequalhelp flavor.id "quizz"}}
-  <section class="page-quizz" id="quizz-{{id}}">
+  <section class="page-quizz" id="quizz-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
   {{#ifequalhelp flavor.id "tat"}}
-  <section class="page-tat" id="tat-{{id}}">
+  <section class="page-tat" id="tat-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
   {{#ifequalhelp flavor.id "jmt"}}
-  <section class="page-jmt" id="jmt-{{id}}">
+  <section class="page-jmt" id="jmt-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
     <div>
       <!--<span class="icon">
@@ -134,7 +134,7 @@
           <ul class="span4 propositions">
             {{#each questions}}
               {{#each answers}}
-                <li class="correct">{{{text}}}</li>
+                <li>{{{text}}}</li>
               {{/each}}
             {{/each}}
           </ul>
