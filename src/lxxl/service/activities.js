@@ -146,13 +146,13 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.readUrl = function(onSuccess, onFailure, id) {
-      requestor.getUrl(requestor.GET, {
+    this.readUrl = function(id) {
+      return requestor.url({
         service: SERVICE,
-        onsuccess: onSuccess,
-        onfailure: onFailure,
+        onsuccess: function(){},
+        onfailure: function(){},
         id: id,
-        command: '#'
+        command: 'public'
       });
     };
 

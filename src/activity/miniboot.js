@@ -21,6 +21,10 @@
   // Not minified if debugging
   var suffix = !debug ? '-min.' : '.';
 
+  var bootRoot = location.href.split('/');
+  bootRoot.pop();
+  bootRoot = bootRoot.join('/');
+
   // No analytics for now
   // var gaTracker = '{PUKE_ANALYTICS}';
 
@@ -41,15 +45,12 @@
   jsBoot.loader.use(jsBoot.loader.SHIMS);
   // jsBoot.loader.use('stacktrace', version || '0.4', null, debug);
   jsBoot.loader.wait();
-  // XXX compact every other needed script
+  // // XXX compact every other needed script
   jsBoot.loader.use(jsBoot.loader.MINGUS);
-  if (debug)
-    jsBoot.loader.use('stacktrace', version || '0.4', null, debug);
-  jsBoot.loader.wait();
   jsBoot.loader.use(jsBoot.loader.CORE);
   jsBoot.loader.wait();
-  if (debug)
-    jsBoot.loader.use(jsBoot.loader.DEBUG, null, null, debug);
+  // if (debug)
+  //   jsBoot.loader.use(jsBoot.loader.DEBUG, null, null, debug);
   jsBoot.loader.use(jsBoot.loader.SERVICE);
   jsBoot.loader.use('jquery', version || '1.8');
   jsBoot.loader.use('handlebars', version || '1.0', 'main');// b6
@@ -62,7 +63,12 @@
 
   jsBoot.loader.use('bootstrap', version || 'stable');
 
-  jsBoot.loader.use('lxxl-standalone-library' + suffix + 'js');
+  console.warn(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
+  try{
+    jsBoot.loader.use(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
+  }catch(e){
+    console.error(e);
+  }
 
   // Callback for when the first part of the stack is loaded
   jsBoot.loader.wait(function() {
@@ -72,7 +78,7 @@
     // if ((typeof chrome == 'undefined') && (typeof XPCNativeWrapper == 'undefined'))
     //   $('html').addClass('unsupported-browser');
     if (debug) {
-      jsBoot.debug.tick('Ember stack loaded');
+      jsBoot.debug.tick('Base stack loaded');
       // Set reasonable verbosity
       jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
           jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR |
@@ -81,24 +87,10 @@
       // Mute console while in production
       jsBoot.core.toggleConsole(false);
     }
-
-    // Initialize service - to be {PUKE-*}-ed
-    jsBoot.service.core.initialize({
-      id: 'TEST',
-      secret: 'TEST'
-    }, {
-      // host: 'localhost',
-      // port: '8081',
-      host: 'snap.lxxl.com',
-      port: '90',
-      version: '1.0'
-    }, {
-      id: 'anonymous',
-      login: 'anonymous',
-      password: '860b9dbbda6ee5f71ddf3b44e54c469e'
-    });
+    console.warn('really OK?');
   });
 
+  console.warn('OK?');
   jsBoot.loader.use('apiwrapper' + suffix + 'js');
   jsBoot.loader.wait();
   jsBoot.loader.use('activity' + suffix + 'css');

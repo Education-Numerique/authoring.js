@@ -119,7 +119,7 @@
     */
       a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
-      a.showActivity(this.content, function() {
+      a.showActivity(this.get('content').controller, function() {
         console.warn('All set baby!');
       });
     },

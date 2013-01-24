@@ -36,6 +36,7 @@
   // var session;
   var ifr;
   var bb;
+  var pubVersion;
 
   // Explicit API
   this.LxxlLib.Masher = function() {
@@ -43,6 +44,10 @@
       switch (flavor) {
         case 'application/json':
           return JSON.parse(payload);
+          // Workaround nasty shit when on public
+          // if(!('draft' in ret))
+          //   ret.draft = ret.published;
+          // return ret;
         case 'text/html':
           // return (new DOMParser()).parseFromString(payload, 'text/xml');
           return Handlebars.compile(payload);
@@ -92,7 +97,7 @@
           r.open('GET', iri);
           r.onreadystatechange = function() {
             if (r.readyState == 4) {
-              callback(parse(r.responseText, guessType(toLoad.path.split('.').pop())));
+              callback(parse(r.responseText, guessType(toLoad.path.split('.').pop()) || 'application/json'));
             }
           };
           r.send();
@@ -121,23 +126,25 @@
       init++;
       if (init == done) {
         // ++ All that should migrate into sessionManager
-        LxxlLib.sessionManager.start(act);
-        LxxlLib.sessionManager.activity.styleData = [];
-        LxxlLib.sessionManager.activity.styleUri = [];
+        LxxlLib.sessionManager.start(act, pubVersion);
+        var deref = LxxlLib.sessionManager.activity;
+        deref = pubVersion ? deref.published : deref.draft;
+        deref.styleData = [];
+        deref.styleUri = [];
         // Style mashuping
         styles.forEach(function(item) {
           try {
             Mingus.grammar.IRI.parse(item);
-            LxxlLib.sessionManager.activity.styleUri.push({data: item});
+            deref.styleUri.push({data: item});
           }catch (e) {
-            LxxlLib.sessionManager.activity.styleData.push({data: item});
+            deref.styleData.push({data: item});
           }
         });
         // Fixing the activity
-        LxxlLib.sessionManager.activity.pages.forEach(function(item, ind) {
+        deref.pages.forEach(function(item, ind) {
           item.id = ind;
         });
-        var res = tpl(LxxlLib.sessionManager.activity);
+        var res = tpl(deref);
         if ('html' in ifr)
           ifr.html(res);
         else
@@ -150,10 +157,9 @@
 
 
     this.setupViewport = function(node, noframe) {
-      if (ifr)
+      if (ifr && ifr.parentNode)
         ifr.parentNode.removeChild(ifr);
-      if (bb){
-        console.warn('removing shit');
+      if (bb && bb.parentNode){
         bb.parentNode.removeChild(bb);
       }
       if (!noframe) {
@@ -177,7 +183,8 @@
       loader(templateIri || 'activity.tpl', note);
     };
 
-    this.showActivity = function(activityIri, callback) {
+    this.showActivity = function(activityIri, callback, published) {
+      pubVersion = published;
       done++;
       completionCallback = callback;
       loader(activityIri, note);
@@ -323,16 +330,21 @@
   */
 }).apply(this);
 
-
 // Activity may be passed as a json url, or embedded as a datauri?
-if (/activity\.html/.test(location.href)) {
+if (/embed\.html/.test(location.href)) {
+  var id = location.href.match(/id=([a-z0-9]+)/i);
+  if(!id)
+    return;
+  id = id.pop();
   var a = new LxxlLib.Masher();
   a.setupViewport($('#lxxlroot'), true);
   // a.addStyle('body{background-color: blue;}');
-
   a.setupTemplate('activity.tpl');
-
-  a.showActivity('activity.json');
+  // activity.published
+  id = '//api.education-et-numerique.fr/1.0/activities/' + id + '/public';
+  a.showActivity(id, function() {
+    console.warn('All set baby!');
+  });
 }
 
 

@@ -206,7 +206,7 @@ def build():
 
   # css application
   css = FileList("src/assets/common/css", filter = "*.css,*.scss")
-  # css.merge("src/activity/activity.scss")
+  css.merge("src/activity/activity.scss")
   # css.merge(FileList("src/assets/desktop/css", filter = "*.css,*.scss"))
   combine(css, VERSIONED_ROOT + "/lxxl.css", replace=sed)
 

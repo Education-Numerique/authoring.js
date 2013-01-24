@@ -10,8 +10,6 @@
         <div class="widget-box">
             <div class="widget-title">
                 <div class="qti-title span3">
-                    <span style="display: none;" class="icon"><span class="icon-edit"></span></span>
-                    <h5 style="display: none;" class="text-ellipsis unselectable">{{content.title}}</h5>
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
                 <button type="button" {{action deleteActivity target="controller"}} class="btn btn-mini">Supprimer</button>
@@ -204,7 +202,7 @@
   <div class="modal-body">
     Vous pouvez exporter votre activité dans votre blog ou sur votre site en copiant-collant le code suivant:
     <pre>
-
+      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.2/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 600px; height: 600px;&quot; /&gt;
     </pre>
   </div>
   <div class="modal-footer">

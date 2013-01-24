@@ -238,7 +238,8 @@ jsBoot.pack('LxxlLib.model', function(api) {
         api.blobService.remove(blanket, blanket, arr[x].id);
     };
 
-    i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: blanket});
+    if(typeof Ember != 'undefined')
+      i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: blanket});
 
     // XXX handle remove attachments
     i.addAttachment = function(blob, name, success, error) {
@@ -314,6 +315,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
         return;
       api.service.unpublish(success, failure, this.id);
     };
+
     return i;
   };
 });

@@ -4,13 +4,13 @@
 
   var doPreview = function(node, activity) {
     var a = new LxxlLib.Masher();
-    a.setupViewport(node);// , true
-    console.error("------", LxxlLib.service.activities.readUrl(activity.id));
+    a.setupViewport(node, true);
     a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
-    a.showActivity(activity.published, function() {
+    // activity.published
+    a.showActivity(LxxlLib.service.activities.readUrl(activity.id), function() {
       console.warn('All set baby!');
-    });
+    }, true);
   };
 
 

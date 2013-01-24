@@ -490,6 +490,7 @@
     var startTime;
     var dom;
     var activity;
+    var pub;
     this.activity = null;
 
     this.bindDocument = function(d) {
@@ -499,7 +500,8 @@
       menuBehavior();
     };
 
-    this.start = function(act) {
+    this.start = function(act, pubVersion) {
+      pub = pubVersion ? 'published' : 'draft';
       startTime = (new Date()).getTime();
       activity = this.activity = ('isMutable' in act) ? act : new LxxlLib.model.Activity(act);
       scormAPI.boot();
@@ -606,9 +608,9 @@
 
         });
 
-        if (activity.pages[ind].displayHoles) {
+        if (activity[pub].pages[ind].displayHoles) {
           var plist = wordList;
-          if (activity.pages[ind].displayHolesRandomly) {
+          if (activity[pub].pages[ind].displayHolesRandomly) {
             wordList = [];
             while (plist.length) {
               wordList.push(plist.splice(Math.round(Math.random() * (plist.length - 1)), 1));
