@@ -345,4 +345,44 @@ body {
             }
         }
     }
+
+    .mix-and-match {
+        li {
+            list-style:none;
+            margin-bottom:20px;
+        }
+
+        .questions {
+            li {
+                background-color:#FFFFE5;
+
+                &.ui-state-active {
+                    background-color:#C9FFE5;
+                }
+
+                &.ui-state-hover {
+                    background-color:blue;
+                }
+
+                &.ui-state-wrong {
+                    background-color:red;
+                }
+
+                &.ui-state-correct {
+                    background-color;green;
+                }
+
+                div.title {
+                    border:1px solid #F0F;
+                }
+            }
+        }
+
+        .propositions {
+            li {
+                border:1px solid blue;
+            }
+        }
+
+    }
 }

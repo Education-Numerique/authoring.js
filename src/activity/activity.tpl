@@ -120,7 +120,27 @@
           <p><button id="tat-{{../id}}-{{id}}-check">Vérifier mes réponses</button></p>
         </div>
       {{/ifequalhelp}}
+      {{#ifequalhelp flavor.id "jmt"}}
 
+        <div class="span12 row-fluid mix-and-match">
+          <ul class="span8  questions">
+            {{#each questions}}
+              <li class="row-fluid " id="">
+                <div class="span6 title">{{{text}}}</div>
+                <div class="span6 response"></div>
+              </li>
+            {{/each}}
+          </ul>
+          <ul class="span4 propositions">
+            {{#each questions}}
+              {{#each answers}}
+                <li class="correct">{{{text}}}</li>
+              {{/each}}
+            {{/each}}
+          </ul>
+        </div>
+
+      {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "quizz"}}
         {{#if hasDocument}}

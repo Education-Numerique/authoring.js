@@ -4,7 +4,35 @@
  * - add the learner environemnent including feedback and other consumer related behaviors
  */
 
+
 /*global Mingus, Handlebars*/
+
+(function($){
+ 
+    $.fn.shuffle = function() {
+ 
+        var allElems = this.get(),
+            getRandom = function(max) {
+                return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function(){
+                var random = getRandom(allElems.length),
+                    randEl = $(allElems[random]).clone(true)[0];
+                allElems.splice(random, 1);
+                return randEl;
+           });
+ 
+        this.each(function(i){
+            $(this).replaceWith($(shuffled[i]));
+        });
+ 
+        return $(shuffled);
+ 
+    };
+ 
+})(jQuery);
+
+
 (function() {
   'use strict';
   /**
@@ -42,7 +70,7 @@
         namedIndex[property] = 0;
         return;
        }
-       
+
       globalIndex = 0;
     });
   })();
@@ -200,6 +228,41 @@
           $(this).next().slideUp(100, hide);
         }
       });
+      $('.questions > li').each(function (index, item) {
+        $(item).data('lxxl-question', index);
+      });
+
+      $('.propositions > li').each(function (index, item) {
+        $(item).data('lxxl-proposition', index);
+      });
+
+      $('.questions > li').droppable({
+        activeClass: 'ui-state-active',
+        hoverClass: 'ui-state-hover',
+        drop: function(event, ui) {
+         if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
+          $(this).addClass('ui-state-correct');
+          // cloning and appending prevents the revert animation from still occurring
+          ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
+          ui.draggable.remove();
+
+          $(this).droppable('disable');
+         } else {
+          $(this).addClass('ui-state-wrong');
+          var $this = $(this);
+          setTimeout(function(){ $this.removeClass('ui-state-wrong') }, 1000);
+         }
+        }
+      });
+      $('.propositions > li').shuffle();
+      
+      $('.propositions > li').draggable({
+        containment: $('.mix-and-match'),
+        revert:true
+      });
+
+
+
         // var dataParent = $(this).attr('data-parent');
         // var speed = parseInt($(this).attr('data-speed')) || 500;
         // var nodeTarget = $($(this).attr('data-target'));
