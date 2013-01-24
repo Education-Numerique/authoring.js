@@ -249,6 +249,10 @@
           $(item).data('lxxl-proposition', index);
         });
 
+        if (page.sequencing > 0) {
+          $('.questions > li', container).shuffle();
+          $('.questions > li', container).shuffle();
+        }
         $('.questions > li', container).droppable({
           activeClass: 'ui-state-active',
           hoverClass: 'ui-state-hover',
