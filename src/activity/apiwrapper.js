@@ -506,7 +506,7 @@
       activity = this.activity = ('isMutable' in act) ? act : new LxxlLib.model.Activity(act);
       scormAPI.boot();
 
-      // Create inner session object to be manipulate the learner session
+      // Create inner session object to manipulate the learner session
       cmip = new Cmi({
         objectives: [
           {
@@ -535,6 +535,7 @@
       startTime = null;
       this.activity = activity = null;
     };
+
     var menuBehavior = function() {
       var acti = $('.pages-list > li', dom);
       if (acti.length) {
@@ -577,6 +578,13 @@
       });
     };
 
+    var quizzBehavior = function(){
+      $('section[id^=tat-]', dom).each(function(ind, item) {
+        var id = item.id.replace(/tat-/, '');
+      });
+
+    };
+
     var tatBehavior = function() {
       // Tat thingies
       // var tat =
@@ -585,7 +593,9 @@
         var wordList = [];
 
         $('#tat-' + id + '-check', item).on('click', function() {
-          
+          // XXX tat calculus
+          // XXX response replacement
+          console.warn('');
         });
 
         $('[data-type="tat"]', item).each(function(idx, it) {

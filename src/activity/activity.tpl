@@ -97,14 +97,14 @@
     <article>
       <!-- Chronomètre pour le temps limité de la page (à cacher si limitedTime, voir behaviors) -->
       <h5 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h5>
+
       {{#if advice}}
       <h3>{{{advice}}}</h3>
       {{/if}}
+
       {{#ifequalhelp flavor.id "simple"}}
         <div>{{{document}}}</div>
       {{/ifequalhelp}}
-      {{{log document}}}
-
 
       {{#ifequalhelp flavor.id "tat"}}
         <div class="wordlist"></div>
@@ -129,15 +129,23 @@
 <!--              {{coef}} -->
           <dd>
             <ul>
+            {{#if isQRM}}
               {{#each answers}}
               <li id="answer-{{../id}}-{{id}}">
-
-                <input type="radio" />
-                {{text}} <quote>{{comment}}</quote>
-  <!--                    {{isCorrect}}
-                {{weight}} -->
+                <button>?</button>
+                {{text}}
+                <quote>{{comment}}</quote>
               </li>
               {{/each}}
+            {{else}}
+              {{#each answers}}
+              <li id="answer-{{../id}}-{{id}}">
+                <input type="checkbox" />
+              </li>
+              {{/each}}
+            {{/if}}
+  <!--                    {{isCorrect}}
+                {{weight}} -->
             </ul>
           </dd>
         {{/each}}
