@@ -98,11 +98,11 @@
               <select data-placeholder="Choisissez une discipline" id="discipline" name="discipline">
                 <option value=""></option>
                 <option value="hg">Histoire et Géographie</option>
-                <option value="fr">Français</option>
-                <option value="mt">Maths</option>
-                <option value="an">Anglais</option>
-                <option value="ph">Physique</option>
-                <option value="ot">Autre</option>
+                <option value="fra">Français</option>
+                <option value="mat">Maths</option>
+                <option value="eng">Anglais</option>
+                <option value="phys">Physique</option>
+                <option value="other">Autre</option>
               </select>
             </div>
           </div>

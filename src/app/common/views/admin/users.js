@@ -110,6 +110,7 @@
       users.replace(0, users.length);
       d.forEach(function(item) {
         var user = new LxxlLib.model.User(item);
+        console.warn(user.profile.discipline);
         users.pushObject(user);
         if (user.level == "3")
           admins.pushObject(user);

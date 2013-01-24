@@ -28,6 +28,7 @@ jsBoot.pack('LxxlLib.factories', function(api) {
     var le = api.defines.lengths;
     var di = api.defines.difficulties;
     var fl = api.defines.flavors;
+    var dis = api.defines.discipline;
 
     this.matters = Object.keys(mt).map(function(id) {
       return new api.model.Matter({id: id, title: mt[id]});
@@ -48,6 +49,10 @@ jsBoot.pack('LxxlLib.factories', function(api) {
     this.difficulties = Object.keys(di).map(function(id) {
       return new api.model.Difficulty({id: id, title: di[id]});
     });
+
+    this.discipline = Object.keys(dis).map(function(id) {
+      return {id : id, title: dis[id]};
+    })
 
     var categories = api.defines.categories.map(function(item) {
       return new api.model.Category(item);

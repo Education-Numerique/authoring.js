@@ -98,6 +98,15 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     other: 'Autre'
   };
 
+  this.discipline = {
+    hg: 'Histoire et Géographie',
+    fra: 'Français', 
+    mat: 'Maths',
+    eng: 'Anglais',
+    phys: 'Physique',
+    other: 'Autre'
+  }
+
   this.categories = [
     {
       id: 1, // Arbo 1 : Anglais, niveaux multiples ...

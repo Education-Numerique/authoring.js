@@ -30,7 +30,7 @@
                 </div>
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Discipline</label>
-                    {{view LxxlLib.Em.Select contentBinding="lengths.content" selectionBinding="content.duration" optionLabelPath="content.title" optionValuePath="content.id"}}
+                    {{view LxxlLib.Em.Select contentBinding="disciplines.content" selectionBinding="discipline" optionLabelPath="content.title" optionValuePath="content.id"}}
                 </div>
                 <h4>Votre établissement</h4>
                 <div class="input-prepend">

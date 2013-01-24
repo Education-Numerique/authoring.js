@@ -83,7 +83,11 @@
       var item;
       for (var i = 0; i < form.length; i++) {
         item = form[i];
-        if ((item.name != 'Submit') && (item.name != 'Back'))
+
+        if (item.name == 'discipline') {
+          submitor[item.name] = {id : item.value, title: $(item).find('option[value='+item.value+']').text()};
+        }
+        else if ((item.name != 'Submit') && (item.name != 'Back'))
           submitor[item.name] = item.value; 
       }
       
