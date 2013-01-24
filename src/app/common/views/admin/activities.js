@@ -7,7 +7,8 @@
     a.setupViewport(node, true);
     a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
-    a.showActivity(LxxlLib.service.activities.readUrl(activity.id), function() {
+    // a.showActivity(LxxlLib.service.activities.readUrl(activity.id), function() {
+    a.showActivity(activity, function() {
       console.warn('All set baby!');
     });
   };
