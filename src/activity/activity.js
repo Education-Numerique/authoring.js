@@ -26,13 +26,24 @@
   });
 
   (function() {
-    var nameIndex = 0;
-    Handlebars.registerHelper('index', function() {
-      nameIndex++;
-      return nameIndex;
+    var globalIndex = 0;
+    var namedIndex = {};
+    Handlebars.registerHelper('index', function(property) {
+      if (typeof(property) == 'string') {
+        if (!namedIndex[property])
+          namedIndex[property] = 0;
+
+        return ++namedIndex[property];
+      }
+      return ++globalIndex;
     });
-    Handlebars.registerHelper('reset_index', function() {
-      nameIndex = 0;
+    Handlebars.registerHelper('reset_index', function(property) {
+       if (typeof(property) == 'string') {
+        namedIndex[property] = 0;
+        return;
+       }
+       
+      globalIndex = 0;
     });
   })();
 
