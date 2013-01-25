@@ -842,7 +842,7 @@
     didInsertElement: function() {
       this.set('disableSave', false);
       this.autoSaveListener = this.autoSave.bind(this);
-      jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
+      // jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
 
       // LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));
