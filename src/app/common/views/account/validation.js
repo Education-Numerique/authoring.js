@@ -15,7 +15,7 @@
             required: true,
             email: true,
             minlength: 6,
-            maxlength: 25
+            maxlength: 256
           },
           code: {
             required: true,

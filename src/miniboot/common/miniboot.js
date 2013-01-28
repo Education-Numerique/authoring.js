@@ -28,6 +28,8 @@
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin
   var debug = /use-debug/.test(location.href);
+  // XXX disable minification for now
+  debug = true;
   // Trunk version - don't do this, kid!
   var version = /use-trunk/.test(location.href) && 'trunk';
   // Not minified if debugging
