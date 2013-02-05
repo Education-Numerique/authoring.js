@@ -1,9 +1,11 @@
-table th:last-child {
-  display: none;
-}
+table.sandbox, table.mypublished, table.mydrafts {
+  th:last-child {
+    display: none;
+  }
 
-table td:last-child {
-  display: none;
+  td:last-child {
+    display: none;
+  }
 }
 
 table.sandbox th:first-child {
@@ -14,15 +16,37 @@ table.sandbox td:first-child {
   display: none;
 }
 
+table.sandbox th:first-child + th + th{
+  display: none;
+}
+
+table.sandbox td:first-child + td + td{
+  display: none;
+}
+
+
 .user-reviewer, .user-admin {
   table.sandbox th:first-child {
-    display: default;
+    display: table-cell;
   }
 
   table.sandbox td:first-child {
-    display: default;
+    display: table-cell;
+  }
+
+}
+
+.user-logged {
+  table.sandbox th:first-child + th + th{
+    display: table-cell !important;
+  }
+
+  table.sandbox td:first-child + td + td{
+    display: table-cell !important;
   }
 }
+
+
 .popover .avatar div {
   width: 25px;
   height: 25px;

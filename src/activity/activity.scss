@@ -141,7 +141,7 @@ body {
       margin: 20px;
     }
 
-    .side-document {
+    div:not(.mix-and-match) > .side-document {
       float: left;
       width: 45%;
       border: 1px solid black;

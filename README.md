@@ -3,21 +3,29 @@ clients.lxxl.authoring
 
 Authoring environment for lxxl.
 
+If you want to contribute...
+----------------------
 
-How to build
+You need to be familiar with:
+- git, and github
+- good javascript level at the very least
+- knowledge of jquery and bootstrap are mandatory
+- notions about handlebars and Ember.js
+
+How to build your own
 ----------------------
 
 Git clone the repository: git clone git@github.com:Education-Numerique/authoring.js.git
 
 Install puke in order to build `pip install puke` (you need python obviously, along with pip, which probably means you need brew under osx - more about puke: https://github.com/webitup/puke)
 
-Edit the config.yaml file to fit your mileage if you want (add a custom node, see the file).
+Edit the config.yaml file to fit your mileage (read the file and inline comments, and copy an existing custom node).
 
 
 How to deploy
 ----------------------
 
-Serve the build directory with any http webserver.
+Serve the build directory with any http webserver, under the chosen domain name you used in your config.yaml.
 
 
 How to contribute
@@ -49,7 +57,7 @@ Files at the root
 
 The only file you may edit is the config.yaml build descriptor, in case you want to customize the build output directory.
 
-To do so, create a node with your (unix) username and lowercase os name (`uname`), and document paths/deploy:
+To do so, create a node with your (unix) username and lowercase os name (`uname`), and document:
 
 ```
 config-YOUR_NAME-YOUR_OS:
@@ -144,7 +152,8 @@ This project is built on top of jsboot, which itself in turn depends on airstrip
 
 If you REALLY think there is a problem in these, you may report a bug there - otherwise, it's probably just something you can override.
 
-Note that once packaged for release, every such dependency will be bundled inside the project itself.
+Note that these dependencies are served from the production server (or development server), along with the service API (see config.yaml for detailed
+url if you want to change that, and see the separate projects configurations informations if you want to go there).
 
 
 About dependencies
@@ -188,5 +197,4 @@ And to a lesser use:
 - jquery.file-upload
 
 
-The release version of the project will bundle all these inside the dep directory.
 All of these (but redactor) are free to use components released under open-source AGPL compatible licenses.

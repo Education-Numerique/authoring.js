@@ -175,7 +175,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.published.controller = i;
 
     var prefix = '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/blob/';
-    i.pull = function() {
+    i.pull = function(onready) {
       if (!this.id || !api.service)
         return;
       api.service.read((function(d) {
@@ -200,6 +200,8 @@ jsBoot.pack('LxxlLib.model', function(api) {
         }
 
         this.fromObject(d);
+        if(onready)
+          onready();
       }.bind(this)), failure, this.id);
     };
 

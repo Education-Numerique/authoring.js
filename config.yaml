@@ -44,13 +44,20 @@ defaultYank:
   links:
     airstrip:
       version: '1.0'
-      url: 'https://static.sn.ackitup.net/airstrip.json'
+      url: 'https://www.education-et-numerique.fr/airstrip.json'
     spitfire:
         version: '1.0'
-        url: 'https://static.sn.ackitup.net/lib/webitup/spitfire.json'
+        url: 'https://www.education-et-numerique.fr/spitfire.json'
     jsboot:
         version: '0.2'
-        url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
+        url: 'https://www.education-et-numerique.fr/jsboot.json'
+    self:
+      url: '//www.education-et-numerique.fr/'
+
+  service:
+    port: ''
+    # host: 'app.lxxl.com'
+    host: 'api.education-et-numerique.fr'
 
   settings:
       # Instruct puke to copy trunk versions of the shims - only of use for me:
@@ -71,44 +78,7 @@ defaultYank:
   MINIFY: 'true'
 
 
-
 # Integration
-config-jenkins-linux:
-  paths:
-    deploy: '/var/www/deploy/static/clients/lxxl'
-  links:
-    airstrip:
-      version: '1.0'
-      url: 'https://static.sn.ackitup.net/airstrip.json'
-    spitfire:
-        version: '1.0'
-        url: 'https://static.sn.ackitup.net/lib/webitup/spitfire.json'
-    jsboot:
-        version: '0.2'
-        url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
-    self:
-      url: '//www.education-et-numerique.fr/'
-
-  service:
-    port: ''
-    # host: 'app.lxxl.com'
-    host: 'api.education-et-numerique.fr'
-
-
-  ACCESS:
-      LXXL:
-          KEY: 'XXX'
-          SECRET: 'XXXXXXX'
-      FACEBOOK:
-          # KEY: '182703758509672'
-          KEY: 'XXXXXX'
-          # SECRET: 'fe4d6a584dfc7bfad6b3b385b19a7c7e'
-      GA: 'UA-XXXXX'
-
-  DEBUG: 'true'
-  MINIFY: 'true'
-
-# Prod
 config-jenkins-linux:
   paths:
     deploy: '/var/www/deploy/static/clients/lxxl'
@@ -265,30 +235,18 @@ config-JB-darwin:
   root: "${HOME}/tmp-lxxl"
   paths:
     deploy: "${HOME}/Sites/lxxl"
-
   links:
-      airstrip:
+    airstrip:
+      version: '1.0'
+      url: 'https://www.education-et-numerique.fr/airstrip.json'
+    spitfire:
         version: '1.0'
-        url: 'http://static.loft.sn.ackitup.net:4242/airstrip.json'
-      spitfire:
-          version: '1.0'
-          url: 'http://static.loft.sn.ackitup.net:4242/lib/webitup/spitfire.json'
-      jsboot:
-          version: '0.2'
-          url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
-      self:
-        url: '//app.loft.sn.ackitup.net:4242/'
-
-
-  ACCESS:
-      LXXL:
-          KEY: 'XXX'
-          SECRET: 'XXXXXXX'
-      FACEBOOK:
-          # KEY: '182703758509672'
-          KEY: 'XXXXXX'
-          # SECRET: 'fe4d6a584dfc7bfad6b3b385b19a7c7e'
-      GA: 'UA-XXXXX'
+        url: 'https://www.education-et-numerique.fr/spitfire.json'
+    jsboot:
+        version: '0.2'
+        url: 'https://www.education-et-numerique.fr/jsboot.json'
+    self:
+      url: '//dev.app.sn.ackitup.net/'
 
   DEBUG: 'true'
   MINIFY: 'false'

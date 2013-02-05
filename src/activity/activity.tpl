@@ -146,6 +146,10 @@
       {{#ifequalhelp flavor.id "jmt"}}
 
         <div class="span12 row-fluid mix-and-match">
+        {{#if hasDocument}}
+          <div class="side-document">{{{document}}}</div>
+        {{/if}}
+
           <ul class="span8  questions">
             {{#each questions}}
               <li class="row-fluid " id="">

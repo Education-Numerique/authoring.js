@@ -304,24 +304,24 @@
         }
       }),
 
-      showAllQTIs: Ember.Route.transitionTo('allQTIs'),
-      allQTIs: Ember.Route.extend({
-        route: '/qtis',
-        enter: function(router) {
-          router.set('applicationController.selected', 'qtis');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('qtis');
-        }
-      }),
+      // showAllQTIs: Ember.Route.transitionTo('allQTIs'),
+      // allQTIs: Ember.Route.extend({
+      //   route: '/qtis',
+      //   enter: function(router) {
+      //     router.set('applicationController.selected', 'qtis');
+      //   },
+      //   connectOutlets: function(router) {
+      //     router.get('applicationController').connectOutlet('qtis');
+      //   }
+      // }),
       
 
       // Routes not accessible from navigation itself
-      showPlayQTI: Ember.Route.transitionTo('playQTI'),
+      // showPlayQTI: Ember.Route.transitionTo('playQTI'),
       editUser: Ember.Route.extend({route: '/userEdit/:user_id'}),
 
 
-      playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
+      // playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
       showActivityEdit: Ember.Route.transitionTo('activity.edit'),
       showNewActivity: Em.Route.transitionTo('activity.create'),
@@ -365,9 +365,7 @@
           },
           connectOutlets: function(router, qti) {
             var activity = LxxlLib.factories.activities.getById(qti.id);
-            activity.pull();
-            router.get('applicationController').connectOutlet('activityEdit',
-                activity.draft);
+            router.get('applicationController').connectOutlet('activityEdit', activity.draft);
           }
         })
 
