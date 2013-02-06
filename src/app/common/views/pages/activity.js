@@ -699,7 +699,22 @@
       }
     }),
 
+    DeleteActivityButton: Em.View.extend({
+      tagName: 'button',
+      page: null,
+      modalName: null,
 
+      attributeBindings: ['href', 'data-toggle'],
+
+      click: function(event) {
+        modalHandler.save(this.get('modalName'), function() {
+          this.get('controller').deleteActivity();
+        }.bind(this));
+        $(this.get('href')).modal('show');
+        event.preventDefault();
+        return false;
+      }
+    }),
 
 
     pagesCollectionView: Em.CollectionView.extend({

@@ -12,7 +12,10 @@
                 <div class="qti-title span3">
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
+                {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
+<!--
                 <button type="button" {{action deleteActivity target="controller"}} class="btn btn-mini btn-danger" style="margin-left:20px">Supprimer</button>
+            -->
                 <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Exporter</button>
                 <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
@@ -102,6 +105,20 @@
      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
         <h3>Voulez-vous vraiment supprimer cette page ?</h3>
+    </div>
+    <div class="modal-footer">
+        {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
+        {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
+    </div>
+</div>
+{{/view}}
+
+
+{{#view view.ModalBox modalName="deleteActivity"}}
+<div class="modal" style="display:none" id="modal-delete-activity">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Voulez-vous vraiment supprimer cette activité ?</h3>
     </div>
     <div class="modal-footer">
         {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}

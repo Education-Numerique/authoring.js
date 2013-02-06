@@ -15,7 +15,8 @@
       $('#action-published').modal('show');
     },
 
-    deleteActivity: function(){
+    deleteActivity: function() {
+      jsBoot.controllers.userActivity.removeEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
       this.get('content').controller.destroy();
       LxxlApp.router.send('showMyActivities');
     },
