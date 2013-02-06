@@ -128,8 +128,10 @@ body .redactor_box_fullscreen {
 }
 .redactor_editor blockquote {
     margin-left: 3em !important;
+/*
     font-style: italic !important;
     color: #777;
+*/
 }
 .redactor_editor ul,
 .redactor_editor ol {
@@ -371,8 +373,8 @@ body .redactor_toolbar li a.redactor_btn_alignment          { background-positio
     Toolbar classes
 */
 .redactor_format_blockquote {
-    font-style: italic;
-    color: #666 !important;
+/*    font-style: italic;
+    color: #666 !important;*/
     padding-left: 10px;
 }
 .redactor_format_pre {
