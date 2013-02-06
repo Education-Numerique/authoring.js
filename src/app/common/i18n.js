@@ -8,7 +8,7 @@
     fr: {
       // Some common stuff
       breadHome: 'Maison',
-      copyright: 'Copyright © 2011 LxxL - Education & Numérique. Tous droits réservés. | ',
+      copyright: 'Copyright © 2013 LxxL - Education & Numérique. Tous droits réservés. | ',
       conditions: 'Conditions générales & Respect de la vie privée',
       welcome: 'Bienvenue!',
 
