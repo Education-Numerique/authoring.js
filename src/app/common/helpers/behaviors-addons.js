@@ -81,7 +81,7 @@
       //   console.warn(p);
       //   $(item).tooltip({placement: p});
       // });
-      $('input[type=checkbox],input[type=radio]', node).uniform();
+      $('input[type=checkbox]:not(#eula),input[type=radio]', node).uniform();
 
       $('.icon-print', node).each(function(ind, item) {
         var p = $(item).parent();
