@@ -166,7 +166,13 @@ jsBoot.pack('LxxlLib.model', function(api) {
   };
 
   var failure = function() {
-    throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
+    try{
+      throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
+    }catch(e){
+      // Might occur in rare legit conditions (race between competing network calls) - doesn't really matter - the
+      // shit returns 404
+      console.error(e);
+    }
   };
 
   this.Activity = function(initialMesh) {
