@@ -176,17 +176,17 @@ jsBoot.pack('jsBoot.types', function(api) {
         var item = descriptor[i];
         switch (typeof item) {
           case 'number':
-            this[i] = parseInt(item, 10);
+            this.set('i', parseInt(item, 10));
             break;
           case 'boolean':
-            this[i] = (item === true);
+            this.set('i', (item === true));
             break;
           case 'string':
-            this[i] = '' + item;
+            this.set('i', '' + item);
             break;
           case 'object':
             // May be null, an array, or an object-object
-            this[i] = item;
+            this.set('i', item);
             break;
         }
       }, this);
