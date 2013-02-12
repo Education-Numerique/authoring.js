@@ -242,11 +242,23 @@
       }),
 
 
-
-
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
-      showCharte: Ember.Route.transitionTo('dashboard.charte'),
+
+      showCharte: Ember.Route.transitionTo('charte'), // allez, je me lance (JB)
+
+      charte: Ember.Route.extend({
+        route: '/charte',
+        enter: function(router) {
+          router.set('applicationController.selected', 'charte');
+        },
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('charte');
+        }
+      }),
+
+
+
       showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
       dashboard: Ember.Route.extend({

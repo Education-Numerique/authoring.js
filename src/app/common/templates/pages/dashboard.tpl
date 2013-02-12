@@ -85,56 +85,73 @@
           </ul>
         </div>  
       </div>
-      <div class="row-fluid" style="text-align: center;">
-  <!-- XXX very temporary hopefully -->
-        <div class="span12 center" style="text-align: center;">         
-          <img src="0.2/images/home.jpg" />
-        </div>
-      </div>
-      <div class="row-fluid" style="text-align: center;">
-      </div>
+
+
+  <!-- XXX very temporary hopefully !!! Actually, YES It's my first commit !!!! JBT ;-) -->
+
+      <div class="row-fluid" style="text-align: center;"></div>
     </section>
+
+    <section class="widget-content" id="home-collapse">
+        <div class="widget-box"  style="float:left; width:40%; height:220px; overflow:hidden;">
+          <h4> </h4>
+          <section class="widget-content">
+            <p>En un clic, rejoignez la communauté des auteurs <em>Education & Numérique</em>. Mettez à disposition vos exercices, activités et méthodes éprouvés avec vos élèves.<br />
+            Vous aiderez tous ceux qui préparent un examen (Brevet, Bac, concours) à réussir, en révisant et en s’entrainant efficacement.</p>
+            <p>Vous demeurez propriétaire de toutes vos productions et pouvez donc les exploiter librement.<br />
+            </p><ul>
+            <li><a  {{action showCnil href=true}}>Consultez la charte des auteurs E&amp;N</a></li>
+            <li><a  {{action showAccountRegister href=true}}>Inscrivez-vous </a></li>
+            </ul>
+            <p></p>
+          </section>
+        </div>
+
+        <div class="widget-box"  style="float:left; width:40%; height:220px; overflow:hidden;">
+          <h4>L’environnement auteur</h4>
+          <section class="widget-content">
+            <p>À l’aide des gabarits conçus spécialement par <em>Education & Numérique</em>, créez facilement activités et exercices que vous pouvez ensuite <b>publier dans le Vivier</b>. </p>
+
+            <p>C’est <b>libre, gratuit</b>, Open source, sous licence Creative Commons et <b>compatible</b> PC, tablette, smartphone… </p>
+
+            <p>Si <b>l’ENT de votre établissement accepte des contenus compatibles SCORM</b>, vous pourrez exporter vos activités dans ce contexte et assurer le suivi de vos élèves.</p>       
+          </section>
+        </div>
+    
+        <div class="widget-box"  style="float:left; width:40%; height:220px; overflow:hidden;">
+          <h4>Le Vivier</h4>
+          <section class="widget-content">
+            <p>Prévisualisez vos séquences telles qu’elles seront vues par les utilisateurs. Faites-les connaître à vos collègues et à vos élèves. </p>
+            <p></p>
+            <ul><li><a src="http://www.education-et-numerique.fr/0.2/activity/embed.html?id=510eaff63361eb667e4c26f7" target="_blank">découvrez Ellena !</a></li></ul>
+          </section>
+        </div>
+    
+        <div class="widget-box"  style="float:left; width:40%; height:220px; overflow:hidden;">
+          <h3>L’environnement auteur</h3>
+          <section class="widget-content">
+            <p>Échangez expériences, astuces et conseils sur la meilleure manière d’aborder <b>les notions qui mettent régulièrement les élèves en difficulté</b> et donnent lieu à des types d’erreurs récurrentes.</p>
+            <p>Pour partager vos idées avec vos collègues :<br />
+            </p><ul>
+            <li><a src="http://www.education-et-numerique.org" target="_blank">Le blog</a></li>
+            <li>Le fil twitter</li>
+            <li>Aidez-nous à concevoir de nouveaux modèles d'activités, parrainez des collègues qui veulent rejoindre Education & Numérique.</li>
+            <li>Contactez-nous : Rejoignez l’association E & N (lien qui sera renvoyé vers les statuts de l’association)</li>
+            </ul>
+            <p></p>
+          </section>
+         </div>
+<!-- Droit au Bac
+Education & Numérique proposera par ailleurs Droit au Bac : un site élève associé, gratuit, multi-matières, entièrement dédié au soutien scolaire. 
+Proposez vos activités les mieux adaptées.
+•	Contactez-nous
+•	url de droit au bac
+-->
+
+      </section>
+  <!-- fin JBT -->
   </article>
 </div>
-
-  <!--
-<div class="row-fluid" id="accordion2">
-
-<article id="home" class="widget-box">
-  <header class="widget-title">
-    <span class="icon">
-      <i class="icon-th-list"></i>
-    </span>
-    <h5>Accueil</h5>
-  </header>
-  <section class="widget-content" id="home-collapse">
-    <h4>Enregistrez-vous en tant qu'auteur E&amp;N...</h4>
-    <div class="widget-box">
-      <section class="widget-content">
-        <p>... c'est gratuit, public, la&iuml;que, open source, creative commons et pas obligatoire !</p>
-        <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showAccountRegister href=true}}>cliquez ici</a></p>
-      </section>
-    </div>
-
-    <h4>Lorsque vous devenez auteur E&amp;N, vous avez acc&egrave;s...</h4>
-    <div class="widget-box">
-      <section class="widget-content">
-        <h5>à l'environnement Auteur</h5>
-        <p>En utilisant les outils et les mod&egrave;les mis &agrave; votre disposition, vous cr&eacute;ez rapidement des activit&eacute;s de qualit&eacute;. <br />
-          Vous demeurez propri&eacute;taire de tout ce que vous produisez et vous pourrez l'exploiter librement. <br />
-        E&amp;N vous propose  de diffuser vos activit&eacute;s et de vous r&eacute;tribuer proportionnellement aux t&eacute;l&eacute;chargements. </p>
-
-        <h5>au bac à sable</h5>
-        <ul>
-          <li>visualisez vos cr&eacute;ations telles qu'elles appara&icirc;tront &agrave; vos lecteurs,</li>
-          <li>partagez avec vos coll&egrave;ques vos trucs pour cr&eacute;er des activit&eacute;s spectaculaires.</li>
-        </ul>
-      </section>
-    </div>
-  </section>
-</article>
-</div>
--->
 
 <!--
     <div class="row-fluid">

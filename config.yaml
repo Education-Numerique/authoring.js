@@ -229,8 +229,6 @@ config-dmp-darwin:
 
 
 
-
-
 config-JB-darwin:
   root: "${HOME}/tmp-lxxl"
   paths:
