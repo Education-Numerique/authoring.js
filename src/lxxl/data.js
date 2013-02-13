@@ -84,52 +84,28 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
   // You can add new levels here - but DONT RENAME existing keys!!!! - you can still change the value obviously
   this.levels = {
-    tt_lycee: 'Tout le Lycée', // wild pour ts, tes, tl, ps, pes, pl et two
-    tt_terminales: 'Toutes Terminales',
     ts: 'Terminale S',
     tes: 'Terminale ES',
     tl: 'Terminale L',
-    tt_1res: 'Toutes Premières', // wild pour ps, pes et pl
-    ps: '1re S',
-    pes: '1re ES',
-    pl: '1re L',
+    ps: '1 S',
+    pes: '1 ES',
+    pl: '1 L',
     two: '2',
-    tt_college: 'Tout le collège',
     three: '3',
     four: '4',
     five: '5',
     six: '6',
-    prim: 'primaire',
     other: 'Autre'
   };
 
-// this.discipline devrait être identique à this.matters 
   this.discipline = {
-    fra: 'Français',
-    lit: 'Littérature',
+    hg: 'Histoire et Géographie',
+    fra: 'Français', 
     mat: 'Maths',
-    mate: 'Maths éco',
-    sciec: 'Sciences éco',
-    sci: 'Sciences',
-    phys: 'Physique',
-    chim: 'Chimie',
-    svt: 'SVT',
-    his: 'Histoire',
-    geo: 'Géographie',
-    phi: 'Philosophie',
-    all: 'Allemand',
     eng: 'Anglais',
-    esp: 'Espagnol',
-    ita: 'Italien',
-    lat: 'Latin',
-    gre: 'Grec',
-    mus: 'Musique',
-    eps: 'EPS',
-    tpe: 'TPE',
-    inf: 'Informatique',
+    phys: 'Physique',
     other: 'Autre'
-  };
-
+  }
 
   this.categories = [
     {
