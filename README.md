@@ -15,7 +15,7 @@ You need to be familiar with:
 How to build your own
 ----------------------
 
-Git clone the repository: git clone git@github.com:Education-Numerique/authoring.js.git
+Git clone the repository: git clone git@github.com:Éducation-Numerique/authoring.js.git
 
 Install puke in order to build `pip install puke` (you need python obviously, along with pip, which probably means you need brew under osx - more about puke: https://github.com/webitup/puke)
 

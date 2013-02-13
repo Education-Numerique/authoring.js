@@ -228,25 +228,6 @@
         }
       }),
 
-      showCharte: Ember.Route.transitionTo('charte'), // allez, je me lance (JB)
-
-      charte: Ember.Route.extend({
-        route: '/charte',
-        enter: function(router) {
-          router.set('applicationController.selected', 'charte');
-        },
-        connectOutlets: function(router) {
-          router.get('applicationController').connectOutlet('charte');
-        }
-      }),
-
-/*      charte: Ember.Route.extend({
-        route: '/charte',
-        connectOutlets: function(router) {
-          router.set('dashboardController.selected', 'charte');
-        }
-      }),
-*/
       showSandbox: Ember.Route.transitionTo('sandbox'),
       sandbox: Ember.Route.extend({
         route: '/sandbox',
@@ -261,16 +242,23 @@
       }),
 
 
-<<<<<<< HEAD
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
-=======
->>>>>>> parent of a019dce... My Fist !
+
+      showCharte: Ember.Route.transitionTo('charte'), // allez, je me lance (JB)
+
+      charte: Ember.Route.extend({
+        route: '/charte',
+        enter: function(router) {
+          router.set('applicationController.selected', 'charte');
+        },
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('charte');
+        }
+      }),
 
 
-      showDashboard: Ember.Route.transitionTo('dashboard.index'),
-      showActions: Ember.Route.transitionTo('dashboard.actions'),
-      showCharte: Ember.Route.transitionTo('dashboard.charte'),
+
       showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
       dashboard: Ember.Route.extend({
@@ -290,6 +278,13 @@
           }
         }),
 
+//        charte: Ember.Route.extend({
+//          route: '/charte',
+//          connectOutlets: function(router) {
+//            router.set('dashboardController.selected', 'charte');
+//          }
+//        }),
+      
         advices: Ember.Route.extend({
           route: '/advices',
           connectOutlets: function(router) {

@@ -2,14 +2,15 @@
 * @template : pages/dashboard
 */
 
-<!--
+
 <div class="row-fluid">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Page d'accueil</h4>
-    Ceci est la page d'accueil de Lxxl
+    <h4 class="alert-heading">ATTENTION !!!!</h4>
+    Ceci est la version Apha 0.0 de l'Environnement Auteur d'Education & Numérique. Elle n'est pas encore vraiment publique et nous serions curieux de savoir comment vous l'avez découverte...<br />Il y a encore beaucoup de choses qui ne fonctionnent pas bien, beaucoup de bugs. Nous y travaillons d'arrache-pied ! N'hésitez surtout pas à vous inscrire, à essayer, à nous faire part de vos remarques et suggestions.<br />
+    Vous pouvez prendre contact avec <a href="mailto:jbt@txtnet.com">Jean-Baptiste Touchard</a>
   </div>
-
+<!--
   <article id="home" class="widget-box">
     <div>
       En attente validation et fourniture contenus / textes lot 2
@@ -85,7 +86,6 @@
           </ul>
         </div>  
       </div>
-<<<<<<< HEAD
 
 
   <!-- XXX very temporary hopefully !!! Actually, YES It's my first commit !!!! JBT ;-) -->
@@ -97,66 +97,35 @@
         <div style="float:left; width:45%; height:220px; overflow:hidden; border:1px solid #CCC; padding:10px; margin:0 15px 20px 15px;">
           <h4> </h4>
           <section class="widget-content">
-            <p>En un clic, rejoignez la communauté des auteurs <em>Education & Numérique</em>. Mettez à disposition vos exercices, activités et méthodes éprouvés avec vos élèves.<br />
+            <p>En un clic, rejoignez la communauté des auteurs <em>Éducation & Numérique</em>. Mettez à disposition vos exercices, activités et méthodes éprouvés avec vos élèves.<br />
             Vous aiderez tous ceux qui préparent un examen (Brevet, Bac, concours) à réussir, en révisant et en s’entrainant efficacement.</p>
             <p>Vous demeurez propriétaire de toutes vos productions et pouvez donc les exploiter librement.<br />
             </p><ul>
-            <li><a  {{action showCharte href=true}}>Consultez la charte des auteurs E&amp;N</a></li>
+            <li><a  {{action showCnil href=true}}>Consultez la charte des auteurs E&amp;N</a></li>
             <li><a  {{action showAccountRegister href=true}}>Inscrivez-vous </a></li>
             </ul>
             <p></p>
           </section>
-=======
-      <div class="row-fluid" style="text-align: center;">
-  <!-- XXX very temporary hopefully -->
-        <div class="span12 center" style="text-align: center;">         
-          <img src="0.2/images/home.jpg" />
->>>>>>> parent of a019dce... My Fist !
         </div>
-      </div>
-      <div class="row-fluid" style="text-align: center;">
-      </div>
-    </section>
-  </article>
-</div>
 
-<<<<<<< HEAD
         <div style="float:left; width:45%; height:220px; overflow:hidden; border:1px solid #CCC; padding:10px; margin:0 15px 20px 15px;">
-          <h3>Education & Numérique</h3>
+          <h3>Créez vos activités</h3>
           <section class="widget-content">
-=======
-  <!--
-<div class="row-fluid" id="accordion2">
->>>>>>> parent of a019dce... My Fist !
+           
 
-<article id="home" class="widget-box">
-  <header class="widget-title">
-    <span class="icon">
-      <i class="icon-th-list"></i>
-    </span>
-    <h5>Accueil</h5>
-  </header>
-  <section class="widget-content" id="home-collapse">
-    <h4>Enregistrez-vous en tant qu'auteur E&amp;N...</h4>
-    <div class="widget-box">
-      <section class="widget-content">
-        <p>... c'est gratuit, public, la&iuml;que, open source, creative commons et pas obligatoire !</p>
-        <p>En un clic, rejoignez la communaut&eacute; des auteurs Education &amp; Num&eacute;rique et proposez-nous comme vos coll&egrave;gues les meilleures activit&eacute;s pour traiter les difficult&eacute;s r&eacute;currentes des &eacute;l&egrave;ves. Aidez-les ainsi &agrave; r&eacute;ussir au Baccalaur&eacute;at, aux examens et aux concours : <a {{action showAccountRegister href=true}}>cliquez ici</a></p>
-      </section>
-    </div>
+            <p>C’est <b>libre, gratuit</b>, Open source, sous licence Creative Commons et <b>compatible</b> PC, tablette, smartphone… </p>
 
-<<<<<<< HEAD
-            <p>Si <b>l’ENT de votre établissement accepte des contenus compatibles SCORM</b>, vous pourrez exporter vos activités dans ce contexte et assurer le suivi de vos élèves.</p>       
+            <p>Si <b>l’ENT de votre établissement</b> accepte des contenus compatibles </b>SCORM</b>, vous pourrez exporter vos activités dans ce contexte et assurer le suivi de vos élèves.</p>       
           </section>
         </div>
     
         <div style="float:left; width:45%; height:220px; overflow:hidden; border:1px solid #CCC; padding:10px; margin:0 15px 20px 15px;">
           <h3>Le Vivier</h3>
           <section class="widget-content">
-            <p>À l’aide des gabarits conçus spécialement par <em>Education & Numérique</em>, créez facilement activités et exercices que vous pouvez ensuite <b>publier dans le Vivier</b>. </p>
             <p>Prévisualisez vos séquences telles qu’elles seront vues par les utilisateurs. Faites-les connaître à vos collègues et à vos élèves. </p>
+             <p>À l’aide des gabarits conçus spécialement par <em>Éducation & Numérique</em>, créez facilement activités et exercices que vous pouvez ensuite <b>publier dans le Vivier</b>. </p>
             <p></p>
-            <ul><li><a src="http://www.education-et-numerique.fr/0.2/activity/embed.html?id=510eaff63361eb667e4c26f7" target="_blank">découvrez Ellena !</a></li></ul>
+            <ul><li><a href="http://www.education-et-numerique.fr/0.2/activity/embed.html?id=510eaff63361eb667e4c26f7" target="_blank">découvrez Ellena !</a></li></ul>
           </section>
         </div>
     
@@ -165,46 +134,28 @@
           <section class="widget-content">
             <p>Échangez expériences, astuces et conseils sur la meilleure manière d’aborder <b>les notions qui mettent régulièrement les élèves en difficulté</b> et donnent lieu à des types d’erreurs récurrentes.</p>
             <p>Pour partager vos idées avec vos collègues :<br />
-            </p><ul>
-            <li><a src="http://www.education-et-numerique.org" target="_blank">Le blog</a></li>
-            <li>Le fil twitter</li>
+            </p>
+            <ul>
+              <li><a href="http://www.education-et-numerique.org" target="_blank">Le blog</a></li>
+              <li>Le fil twitter</li>
             </ul>
-            <p>Aidez-nous à concevoir de nouveaux modèles d'activités, parrainez des collègues qui veulent rejoindre Education & Numérique.<br />
-            Contactez-nous : Rejoignez l’association E & N </p>
+            <p>Aidez-nous à concevoir de nouveaux modèles d'activités, parrainez des collègues qui veulent rejoindre Éducation & Numérique.<br />
+            Contactez-nous : Rejoignez l’association E & N</p>
             </ul>
             <p></p>
           </section>
          </div>
 <!-- Droit au Bac
-Education & Numérique proposera par ailleurs Droit au Bac : un site élève associé, gratuit, multi-matières, entièrement dédié au soutien scolaire. 
+Éducation & Numérique proposera par ailleurs Droit au Bac : un site élève associé, gratuit, multi-matières, entièrement dédié au soutien scolaire. 
 Proposez vos activités les mieux adaptées.
-•	Contactez-nous
-•	url de droit au bac
+• Contactez-nous
+• url de droit au bac
 -->
-     </section>
+
+      </section>
   <!-- fin JBT -->
   </article>
-=======
-    <h4>Lorsque vous devenez auteur E&amp;N, vous avez acc&egrave;s...</h4>
-    <div class="widget-box">
-      <section class="widget-content">
-        <h5>à l'environnement Auteur</h5>
-        <p>En utilisant les outils et les mod&egrave;les mis &agrave; votre disposition, vous cr&eacute;ez rapidement des activit&eacute;s de qualit&eacute;. <br />
-          Vous demeurez propri&eacute;taire de tout ce que vous produisez et vous pourrez l'exploiter librement. <br />
-        E&amp;N vous propose  de diffuser vos activit&eacute;s et de vous r&eacute;tribuer proportionnellement aux t&eacute;l&eacute;chargements. </p>
-
-        <h5>au bac à sable</h5>
-        <ul>
-          <li>visualisez vos cr&eacute;ations telles qu'elles appara&icirc;tront &agrave; vos lecteurs,</li>
-          <li>partagez avec vos coll&egrave;ques vos trucs pour cr&eacute;er des activit&eacute;s spectaculaires.</li>
-        </ul>
-      </section>
-    </div>
-  </section>
-</article>
->>>>>>> parent of a019dce... My Fist !
 </div>
--->
 
 <!--
     <div class="row-fluid">

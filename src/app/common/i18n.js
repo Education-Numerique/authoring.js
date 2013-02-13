@@ -8,7 +8,7 @@
     fr: {
       // Some common stuff
       breadHome: 'Maison',
-      copyright: 'Copyright © 2013 LxxL - Education & Numérique. Tous droits réservés. | ',
+      copyright: 'Copyright © 2013 LxxL - Éducation & Numérique. Tous droits réservés. | ',
       conditions: 'Conditions générales & Respect de la vie privée',
       welcome: 'Bienvenue!',
 
@@ -16,6 +16,9 @@
       breadcrumb: {
         cnil: {
           title: 'CNIL: respect de la vie privée, données personnelles'
+        },
+        charte: {
+          title: "Conditions d'utilisation des services d'Éducation & Numérique"
         },
 
         account: {

@@ -26,7 +26,7 @@
     <ul syle="text-align: justify;">
       <li>
         <h5>Dispositions générales</h5>
-        <p>LxxL - Education &amp; Numérique s’engage à ne jamais partager, vendre ou louer vos renseignements personnels à moins d’y être contraint par la loi. Lorsque vous nous confiez des informations personnelles, celles-ci sont uniquement disponibles auprès de nos collaborateurs afin de vous contacter  en réponse à vos demandes ou dans le cadre du suivi des productions que vous réalisez à l'aide des outils mis à disposition par LxxL, ou encore dans le cadre strict des relations commerciales qui vous lient à LxxL lorsque vous décidez de lui confier l'une de vos productions à des fins de distribution / diffusion.</p>
+        <p>LxxL - Éducation &amp; Numérique s’engage à ne jamais partager, vendre ou louer vos renseignements personnels à moins d’y être contraint par la loi. Lorsque vous nous confiez des informations personnelles, celles-ci sont uniquement disponibles auprès de nos collaborateurs afin de vous contacter  en réponse à vos demandes ou dans le cadre du suivi des productions que vous réalisez à l'aide des outils mis à disposition par LxxL, ou encore dans le cadre strict des relations commerciales qui vous lient à LxxL lorsque vous décidez de lui confier l'une de vos productions à des fins de distribution / diffusion.</p>
       </li>
       <li>
         <h5>Références juridiques</h5>
@@ -35,12 +35,12 @@
           <li>Directive 2002/58/CE du Parlement Européen et du Conseil du 12 Juillet 2002</li>
           <li>Loi n° 2004-575 du 21 juin 2004 pour la confiance dans l’économie numérique (LCEN)</li>
           <li>Articles 323-1 à 323-7 du Code Pénal</li>
-          <li>Article 9 du Code Civil relatif au &quot;droit au respect de la vie privée&quot;</li>
+          <li>Article 9 du Code Civil relatif au &quot;droit au respect de la vie privée&quot;<br /><br /></li>
         </ul>
       </li>
       <li>
         <h5>Déclaration CNIL</h5>
-        <p>En application de la Loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, ce site, géré par des professionnels de l'éducation, n'est pas tenu de faire une déclaration de ses clients et partenaires. Toutefois, LxxL - Education &amp; Numérique s'engage à se conformer strictement aux usages admis dans le cadre de la loi.</p>
+        <p>En application de la Loi 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, ce site, géré par des professionnels de l'éducation, n'est pas tenu de faire une déclaration de ses clients et partenaires. Toutefois, LxxL - Éducation &amp; Numérique s'engage à se conformer strictement aux usages admis dans le cadre de la loi.</p>
       </li>
       <li>
         <h5>Données personnelles</h5>
@@ -48,12 +48,13 @@
         Vous pouvez exercer ce droit en écrivant par courrier recommandé à :</p>
         <p style="text-align: center">
           Monsieur le président-directeur général<br />
-            LxxL - Education &amp; Numérique<br />
+            LxxL - Éducation &amp; Numérique<br />
             47 rue Meslay <br />
             75003 PARIS.
         </p>
     </ul>
-    <p class="help-block">Mise à jour le mercredi 27 juillet 2011</p>
+    <p>Consultez les <a  {{action showCharte href=true}}>Conditions Générales d'Utilisation</a><br />
+    <span class="help-block">Mise à jour le mercredi 27 juillet 2011</span></p>
   </section>
 </article>
 
