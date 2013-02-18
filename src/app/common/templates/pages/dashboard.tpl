@@ -7,7 +7,7 @@
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">ATTENTION !!!!</h4>
-    Ceci est la version Apha 0.0 de l'Environnement Auteur d'Education & Numérique. Elle n'est pas encore vraiment publique et nous serions curieux de savoir comment vous l'avez découverte...<br />Il y a encore beaucoup de choses qui ne fonctionnent pas bien, beaucoup de bugs. Nous y travaillons d'arrache-pied ! N'hésitez surtout pas à vous inscrire, à essayer, à nous faire part de vos remarques et suggestions.<br />
+    Ceci est la version Apha 0.0 de l'Environnement Auteur d'Éducation & Numérique. Elle n'est pas encore vraiment publique et nous serions curieux de savoir comment vous l'avez découverte...<br />Il y a encore beaucoup de choses qui ne fonctionnent pas bien, beaucoup de bugs. Nous y travaillons d'arrache-pied ! N'hésitez surtout pas à vous inscrire, à essayer, à nous faire part de vos remarques et suggestions.<br />
     Vous pouvez prendre contact avec <a href="mailto:jbt@txtnet.com">Jean-Baptiste Touchard</a>
   </div>
 <!--
@@ -34,14 +34,15 @@
         <div class="span12 center" style="text-align: center;">         
           <ul class="quick-actions">
             <li>
-              <a {{action showSandbox href=true}} rel="tooltip" data-placement="top" title="Accéder aux activités publiquement disponibles">
+              <a {{action showSandbox href=true}} rel="tooltip" data-placement="top" title="Accéder aux activités publées">
                 <i class="icon-home"></i>
-                Accéder au vivier
+                Le Vivier
               </a>
             </li>
 
             <li class="user-logged-out">
-              <a {{action showAccountLogin href=true}} rel="tooltip" data-placement="top" title="Connexion au service">
+<!--              <a {{action showAccountLogin href=true}} rel="tooltip" data-placement="top" title="Connexion au service"> -->
+              <a {{action showAccountLogin href=true}}>
                 <i class="icon-client"></i>
                 Se connecter
               </a>
@@ -50,7 +51,7 @@
             <li class="user-author">
               <a {{action showMyActivities href=true}} rel="tooltip" data-placement="top" title="Accéder à vos activités">
                 <i class="icon-book"></i>
-                Activités
+                Mes activités
               </a>
             </li>
             <li class="user-author">
@@ -59,12 +60,12 @@
                 Profil
               </a>
             </li>
-            <li class="user-author">
+<!--            <li class="user-author">
               <a {{action showAccountSettings href=true}} rel="tooltip" data-placement="top" title="Accéder à vos paramètres">
                 <i class="icon-lock"></i>
                 Réglages
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>  
       </div>
