@@ -41,11 +41,11 @@
           password: 'Vous devez choisir un mot de passe (6 à 25 caractères)',
           password2: {
             required: 'Merci de répéter le mot de passe choisi',
-            equalTo: 'Le mot de passe saisi est différent'
+            equalTo: ''
           },
           email: {
-            required: 'Merci de fournir votre email',
-            email: 'Le format d\'email correct est nom@domaine.com'
+            required: 'Merci de fournir votre adresse électronique',
+            email: ''
           },
           eula: 'Vous devez accepter les conditions générales'
         },
@@ -110,14 +110,14 @@
           break;
         case this.get('controller').ALREADY_USED_EMAIL:
           // XXX maybe do something here
-          $('#creation-error').html('Cet email a déjà été utilisé pour créer un compte.');
+          $('#creation-error').html('Cette adresse électronique a déjà été utilisée pour créer un compte.');
           $('#creation-error').fadeTo(1000, 1);
           $('#form-wizard').formwizard('show', 'step-regular');
           break;
         default:
         case this.get('controller').UNKNOWN:
           $('#creation-error').html(
-              'Malheur! Quelque chose n\'a pas fonctionné correctement. Merci de réessayer plus tard...');
+              'Désolé, la procédure d\'inscription a échoué. Veuillez réessayer ...');
           $('#creation-error').fadeTo(1000, 1);
           break;
       }

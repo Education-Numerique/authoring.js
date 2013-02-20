@@ -2,9 +2,8 @@
 * @template : pages/myactivities
 */
 
-
-
 <div class="row-fluid">
+<!--
   {{#if view.activities.length}}
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
@@ -22,11 +21,6 @@
     Créez votre première activité <a {{action showNewActivity href=true}}>en cliquant ici.</a>
   </div>
   {{/unless}}
-
-<!--
-  <div class="row-fluid">
-    <h4>Mes activités publiées</h4>
-  </div>
 -->
   <div class="widget-box">
     <div class="widget-title">
@@ -55,7 +49,7 @@
       </table>  
     </div>
   </div>
-  <!-- Can't do that because of concurrency with arrayObservers which kick in before this shite -->
+  <!-- Can't do that because of concurrency with arrayObservers which kick in before this shit -->
   {{#if publishedActivities.length}}
   {{/if}}
 
@@ -67,7 +61,9 @@
 
   <div class="widget-box">
     <div class="widget-title">
-      <h5>Mes activités non encore publiées</h5>
+      <h5 style="margin-top:-3px;">Mes activités non encore publiées</h5>
+      <div style="margin-top:7px;"><a {{action showNewActivity href=true}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Créer une activité</a></div>
+
     </div>
     <div class="widget-content nopadding">
       <table class="mydrafts table table-bordered data-table">

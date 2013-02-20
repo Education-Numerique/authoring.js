@@ -2,13 +2,11 @@
 * @template : account/register
 */
 
-
-
 <div class="row-fluid">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Inscription</h4>
-    Bienvenue dans le processus d'inscription! Votre compte sera créé en quatre étapes simples.
+    <!--<h4 class="alert-heading">Inscription</h4>-->
+    Bienvenue dans la procedure. Votre compte sera créé en trois étapes.
   </div>
 
   <div class="progress progress-striped active">
@@ -25,9 +23,9 @@
 
     <div class="widget-content">
       <div id="success-regular" class="alert alert-success" style="display: none;">
-        <h5>Votre compte a été créé avec succès</h5>
-        <p>Vous allez recevoir un email de confirmation qui vous permettra de valider celui-ci.
-          Pensez à vérifier votre dossier spam si le mail de confirmation n'arrive pas. <br /> <br />
+        <h5>Votre compte a été créé avec succès.</h5>
+        <p>Vous allez recevoir un courrier électronique de confirmation pour le valider.
+          Pensez à vérifier votre dossier spam si le courrier n'arrive pas.<br /> <br />
           <button class="btn btn-primary btn-large" {{action showAccountValidate href=true}}>Valider mon compte</button></p>
       </div>
 
@@ -40,25 +38,25 @@
         <div id="creation-error" class="alert alert-error" style="display: none"></div>
 
         <div id="step-regular" class="step">
-          <div class="alert alert-info">Veuillez maintenant fournir les informations permettant de vous identifier sur le service.
+          <div class="alert alert-info">Veuillez entrer ci-dessous les informations qui permettont de vous identifier.
             <a href="#" data-dismiss="alert" class="close">×</a>
           </div>
 
           <div class="control-group">
-            <label for="email" class="control-label">Email</label>
+            <label for="email" class="control-label">Adresse électronique</label>
             <div class="controls">
               <input id="email" type="text" name="email" />
             </div>
           </div>
 
           <div class="control-group">
-            <label for="password" class="control-label">Password</label>
+            <label for="password" class="control-label">Mot de passe</label>
             <div class="controls">
               <input id="password" type="password" name="password" />
             </div>
           </div>
           <div class="control-group">
-            <label for="password2" class="control-label">Confirm Password</label>
+            <label for="password2" class="control-label">Confirmez votre mot de passe</label>
             <div class="controls">
               <input id="password2" type="password" name="password2" />
             </div>
@@ -141,7 +139,7 @@
 
 
           <h4 style="margin: 5px;">
-            Vous
+            Vos informations personnelles
           </h4>
           <div class="control-group">
             <label class="control-label">Téléphone</label>

@@ -7,7 +7,7 @@
 
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Le vivier</h4>
+    <!--<h4 class="alert-heading">Le vivier</h4>-->
     Retrouvez ici toutes les activités publiées par nos auteurs, en libre consultation.
   </div>
 

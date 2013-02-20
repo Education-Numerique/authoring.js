@@ -6,8 +6,8 @@
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Validation de votre email</h4>
-      Vous recevrez le code de validation de votre compte d'ici quelques minutes à l’adresse mail que vous avez donnée ci-dessus.
-      Pensez à vérifier votre dossier spam si le mail de confirmation ne semble pas arrivé.
+      Vous recevrez le code de validation de votre compte d'ici quelques minutes à l’adresse électronique que vous avez donnée ci-dessus.
+      Pensez à vérifier votre dossier spam si le courrier de confirmation ne semble pas arrivé.
   </div>
 
   <div class="widget-box">
@@ -21,7 +21,7 @@
     <div class="widget-content">
       <div id="success-validation" class="alert alert-success" style="display: none;">
         <h5>Votre compte a été créé avec succès</h5>
-        <p>Vous pouvez maintenant vous connecter et accéder à votre compte.</p>
+        <p>Vous pouvez maintenant vous connecter et accéder à l'environnement auteur.</p>
         <button class="btn btn-primary btn-large" {{action showAccountLogin href=true}}>Se connecter</button>
       </div>
 

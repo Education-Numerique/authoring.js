@@ -25,13 +25,13 @@
         },
         messages: {
           code: {
-            required: 'Merci de fournir un le code d\'activation',
-            minlength: 'Le code doit contenir 16 caractères'
+            required: 'Merci d\'entrer le code d\'activation que vous avez reçu.',
+            minlength: 'Le code contient 16 caractères.'
           },
 
           email: {
-            required: 'Merci de fournir votre email',
-            email: 'Le format d\'email correct est nom@domaine.com'
+            required: 'Merci de fournir votre adresse électronique.',
+            email: ''
           }
         },
         errorClass: 'help-inline',

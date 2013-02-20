@@ -8,7 +8,7 @@
     fr: {
       // Some common stuff
       breadHome: 'Maison',
-      copyright: 'Copyright © 2013 LxxL - Éducation & Numérique. Tous droits réservés. | ',
+      copyright: 'Association Éducation & Numérique - Siège social : 47 rue Meslay, 75003 Paris | ',
       conditions: 'Conditions générales & Respect de la vie privée',
       welcome: 'Bienvenue!',
 
@@ -26,17 +26,17 @@
             title: 'Validation de compte'
           },
           login: {
-            title: 'Login'
+            title: 'Bienvenue'
             // No bread means no bread ;)
           },
           register: {
-            title: 'Création de compte'
+            title: 'Créez votre compte'
           },
           settings: {
-            title: 'Réglages'
+            title: 'Mes préférences'
           },
           profile: {
-            title: 'Votre profil'
+            title: 'Mon profil'
           },
           reminder: {
             title: 'Mot de passe perdu'
@@ -66,7 +66,7 @@
           title: 'Vivier'
         },
         dashboard: {
-          title: 'Accueil'
+          title: 'Bienvenue'
         },
         myactivities: {
           title: 'Mes Activités'
@@ -87,11 +87,11 @@
 
         profile: {
           tip: 'Accéder à mon profil',
-          text: 'Profil'
+          text: 'Mon profil'
         },
         settings: {
-          tip: 'Accéder aux réglages',
-          text: 'Réglages'
+          tip: 'Accéder à mes préférences',
+          text: 'Mes préférences'
         },
         logout: {
           tip: 'Se déconnecter',
@@ -103,11 +103,11 @@
         },
         register: {
           tip: 'Créer un compte',
-          text: 'S\'enregistrer'
+          text: 'S\'inscrire'
         },
 
         sandbox: {
-          tip: 'Accéder au vivier',
+          tip: 'Accéder au Vivier',
           text: 'Vivier'
         },
 

@@ -21,7 +21,7 @@
     </section>
 
     <footer id="footer">
-      <p>{{localize copyright}}<a {{action showCnil href=true}}>{{localize conditions}}</a>.
+      <p>{{localize copyright}}<a {{action showCharte href=true}}>{{localize conditions}}</a>.
     </footer>
   </article>
 
