@@ -16,7 +16,6 @@
   </article>
 </div>
 
-
 <div class="row-fluid " style="visibility: hidden;">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>

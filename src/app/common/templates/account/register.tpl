@@ -90,16 +90,33 @@
             </div>
           </div>
 
+<!-- je ne comprends pas que cette table soit en dur !!! -->
           <div class="control-group">
             <label class="control-label">Discipline</label>
             <div class="controls">
               <select data-placeholder="Choisissez une discipline" id="discipline" name="discipline">
-                <option value=""></option>
-                <option value="hg">Histoire et Géographie</option>
                 <option value="fra">Français</option>
+                <option value="lit">Littérature</option>
                 <option value="mat">Maths</option>
-                <option value="eng">Anglais</option>
+                <option value="mate">Maths éco</option>
+                <option value="sciec">Sciences éco</option>
+                <option value="sci">Sciences</option>
                 <option value="phys">Physique</option>
+                <option value="chim">Chimie</option>
+                <option value="svt">SVT</option>
+                <option value="his">Histoire</option>
+                <option value="geo">Géographie</option>
+                <option value="phi">Philosophie</option>
+                <option value="all">Allemand</option>
+                <option value="eng">Anglais</option>
+                <option value="esp">Espagnol</option>
+                <option value="ita">Italien</option>
+                <option value="lat">Latin</option>
+                <option value="gre">Grec</option>
+                <option value="mus">Musique</option>
+                <option value="eps">EPS</option>
+                <option value="tpe">TPE</option>
+                <option value="inf">Informatique</option>
                 <option value="other">Autre</option>
               </select>
             </div>

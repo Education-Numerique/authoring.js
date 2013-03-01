@@ -24,10 +24,10 @@
           }
         },
         messages: {
-          password: 'Le mot de passe contient de 6 à 25 caractères',
+          password: 'Le mot de passe doit contenir entre 6 à 25 caractères',
           email: {
-            required: 'Merci de fournir votre email',
-            email: 'Le format d\'email correct est nom@domaine.com'
+            required: 'Merci de fournir votre adresse électronique',
+            email: ''
           }
         },
         errorClass: 'help-inline',

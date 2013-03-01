@@ -99,7 +99,7 @@ The lxxl folder
 Contains the *generic* lxxl library: the one that defines the data model and that is used when producing standalone activities, which provides APIs to display and manipulate activities.
 
 Modifying it means you impact consumers.
-You should think twice about it before doing that... but this is there the model is defined.
+You should think twice about it before doing that... but the model is defined there.
 
 
 The src/assets/common folder

@@ -52,10 +52,35 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     simple: 'Page simple',
     quizz: 'Page quizz',
     tat: 'Page texte à trous',
-    jmt: 'Page mix and match'
+    jmt: 'Page glisser-déposer'
   };
 
   // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
+  this.discipline = {
+    fra: 'Français',
+    lit: 'Littérature',
+    mat: 'Maths',
+    mate: 'Maths éco',
+    sciec: 'Sciences éco',
+    sci: 'Sciences',
+    phys: 'Physique',
+    chim: 'Chimie',
+    svt: 'SVT',
+    his: 'Histoire',
+    geo: 'Géographie',
+    phi: 'Philosophie',
+    all: 'Allemand',
+    eng: 'Anglais',
+    esp: 'Espagnol',
+    ita: 'Italien',
+    lat: 'Latin',
+    gre: 'Grec',
+    mus: 'Musique',
+    eps: 'EPS',
+    tpe: 'TPE',
+    inf: 'Informatique',
+    other: 'Autre'  }
+
   this.matters = {
     fra: 'Français',
     lit: 'Littérature',
@@ -84,38 +109,34 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
   // You can add new levels here - but DONT RENAME existing keys!!!! - you can still change the value obviously
   this.levels = {
+    tt_lycee: 'Tout le lycée',
+    tt_tles: 'Toutes terminales',
     ts: 'Terminale S',
     tes: 'Terminale ES',
     tl: 'Terminale L',
+    tt_prem: 'Toutes premières',
     ps: '1 S',
     pes: '1 ES',
     pl: '1 L',
     two: '2',
+    tt_colg: 'Tout le collège',
     three: '3',
     four: '4',
     five: '5',
     six: '6',
+    prim: 'primaire',
     other: 'Autre'
   };
 
-  this.discipline = {
-    hg: 'Histoire et Géographie',
-    fra: 'Français', 
-    mat: 'Maths',
-    eng: 'Anglais',
-    phys: 'Physique',
-    other: 'Autre'
-  }
-
   this.categories = [
     {
-      id: 1, // Arbo 1 : Anglais, niveaux multiples ...
+      id: "eng_1", // Arbo 1 : Anglais, niveaux multiples ...
       title: 'Anglais',
       matter: {id: 'eng'},
       level: {id: 'ts'},
       content: [
         {
-          id: 11,
+          id: "eng_1_1",
           title: 'COMPRÉHENSION ÉCRITE',
           content: [  // pour les sous-catégories de niveau 2, ce serait "nice to have"
                       // de mettre un CSS padding-left: 15px;
@@ -142,7 +163,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           ]
         },
         {
-          id: 12,
+          id: "eng_1_2",
           title: 'PRODUCTION ÉCRITE',
           content: [
             {
@@ -168,7 +189,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           ]
         },
         {
-          id: 13,
+          id: "eng_1_3",
           title: 'MONDE ANGLOPHONE',
           content: [
             {
@@ -182,7 +203,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           ]
         },
         {
-          id: 14,
+          id: "eng_1_4",
           title: 'LANGUE ANGLAISE',
           content: [
             {
@@ -294,5 +315,4 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     level: {id: 'pl'},
     content: this.categories[0].content
   });
-
 });
