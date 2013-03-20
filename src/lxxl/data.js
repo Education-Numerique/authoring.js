@@ -129,155 +129,127 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   };
 
   this.categories = [
+// categories[0] : Anglais, tout le lycée ...
+    { id: "eng_0", title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
+        {id: "eng_0_1", title: 'COMPRÉHENSION ÉCRITE', content: [
+            {id: "eng_0_1_1", title: "Comprendre l'essentiel d'un texte écrit"},
+            {id: "eng_0_1_2", title: "De l'explicite à l'implicite"},
+            {id: "eng_0_1_3", title: "Répondre aux questions"},
+            {id: "eng_0_1_4", title: "Traduire"},
+            {id: "eng_0_1_5", title: "Annales du Bac"}
+        ]},
+        {id: "eng_0_2", title: 'PRODUCTION ÉCRITE', content: [
+            {id: "eng_0_2_1", title: "Rédiger un dialogue"},
+            {id: "eng_0_2_2", title: "Rédiger une lettre"},
+            {id: "eng_0_2_3", title: "Rédiger un récit"},
+            {id: "eng_0_2_4", title: "Rédiger une argumentation"},
+            {id: "eng_0_2_5", title: "Rédiger un essai organisé"}
+        ]},
+        {id: "eng_0_3", title: 'MONDE ANGLOPHONE', content: [
+            {id: "eng_0_3_1", title: "Culture"},
+            {id: "eng_0_3_2", title: "Civilisation"}
+        ]},
+        {id: "eng_0_4", title: 'LANGUE ANGLAISE', content: [
+            {id: "eng_0_4_1", title: "Le lexique"},
+            {id: "eng_0_4_2", title: "La syntaxe"},
+            {id: "eng_0_4_3", title: "Les formes verbales"},
+            {id: "eng_0_4_4", title: "Traduire"},
+            {id: "eng_0_4_5", title: "Annales du Bac"}
+        ]}
+    ]},
+    // categories[1] : Histoire, premières multiples ...
+    {id: "his_0", title: 'Histoire', matter: {id: 'his'}, level: {id: 'tt_prem'}, long_title: "Questions pour comprendre le 20e siècle", content: [
+        {id: "his_0_1", title: 'LE 19e SIÈCLE', content: [
+            {id: "his_0_1_1", title: "Croissance et mondialisation"},
+            {id: "his_0_1_2", title: "Mutation des sociétés"}
+        ]},
+        {id: "his_0_2", title: 'LA GUERRE AU 20e SIÈCLE', content: [
+            {id: "his_0_2_1", title: "Guerres mondiales et paix"},
+            {id: "his_0_2_2", title: "Guerre froide et nouveaux conflits"}
+        ]},
+        {id: "his_0_3", title: 'LES TOTALITARISMES', content: [
+            {id: "his_0_3_1", title: "Développement des totalitarismes"},
+            {id: "his_0_3_2", title: "Fin des totalitarismes"}
+        ]},
+        {id: "his_0_4", title: 'LA COLONISATION ET SA FIN', content: [
+            {id: "his_0_4_1", title: "Le temps des dominations coloniales"},
+            {id: "his_0_4_2", title: "La décolonisation"}
+        ]},
+        {id: "his_0_5", title: 'LES FRANÇAIS ET LEUR RÈPUBLIQUE', content: [
+            {id: "his_0_5_1", title: "La République, trois républiques"},
+            {id: "his_0_5_2", title: "La République et la société française"}
+        ]},
+        {id: "his_0_6", title: 'MÈTHODOLOGIE', content: [
+            {id: "his_0_6_1", title: "La composition"},
+            {id: "his_0_6_2", title: "L'étude d'un document"},
+            {id: "his_0_6_3", title: "L'étude de deux documents"}
+         ]}
+    ]},
+    // categories[2] : Maths, Terminale S ...
     {
-      id: "eng_1", // Arbo 1 : Anglais, niveaux multiples ...
-      title: 'Anglais',
-      matter: {id: 'eng'},
-      level: {id: 'ts'},
+      title: "Mathématiques", matter: {id: 'mat'}, level: {id: 'ts'}, id: "maths_0",
       content: [
-        {
-          id: "eng_1_1",
-          title: 'COMPRÉHENSION ÉCRITE',
-          content: [  // pour les sous-catégories de niveau 2, ce serait "nice to have"
-                      // de mettre un CSS padding-left: 15px;
-            {
-              id: 111,
-              title: "Comprendre l'essentiel d'un texte écrit"
-            },
-            {
-              id: 112,
-              title: "De l'explicite à l'implicite"
-            },
-            {
-              id: 113,
-              title: "Répondre aux questions"
-            },
-            {
-              id: 114,
-              title: "Traduire"
-            },
-            {
-              id: 115,
-              title: "Annales du Bac"
-            }
-          ]
-        },
-        {
-          id: "eng_1_2",
-          title: 'PRODUCTION ÉCRITE',
-          content: [
-            {
-              id: 121,
-              title: "Rédiger un dialogue"
-            },
-            {
-              id: 122,
-              title: "Rédiger une lettre"
-            },
-            {
-              id: 123,
-              title: "Rédiger un récit"
-            },
-            {
-              id: 124,
-              title: "Rédiger une argumentation"
-            },
-            {
-              id: 125,
-              title: "Rédiger un essai organisé"
-            }
-          ]
-        },
-        {
-          id: "eng_1_3",
-          title: 'MONDE ANGLOPHONE',
-          content: [
-            {
-              id: 131,
-              title: "Culture"
-            },
-            {
-              id: 132,
-              title: "Civilisation"
-            }
-          ]
-        },
-        {
-          id: "eng_1_4",
-          title: 'LANGUE ANGLAISE',
-          content: [
-            {
-              id: 141,
-              title: "Le lexique"
-            },
-            {
-              id: 142,
-              title: "La syntaxe"
-            },
-            {
-              id: 143,
-              title: "Les formes verbales"
-            },
-            {
-              id: 144,
-              title: "Traduire"
-            },
-            {
-              id: 145,
-              title: "Annales du Bac"
-            }
-          ]
-        }
-      ]
-    }
-/*
-    {
-      id: 2,
-      title: 'Ceci est une catégorie attachée au français de terminale L, sans subtree',
-      matter: {id: 'fra'},
-      level: {id: 'tl'}
-    },
-
-
-    {
-      id: 3,
-      title: ' français autre',
-      content: [
-        {
-          id: 31,
-          title: 'Francais autre',
-          content: [
-            {
-              id: 311,
-              title: 'subfrancais'
-            },
-            {
-              id: 312,
-              title: 'subfrancais2'
-            },
-            {
-              id: 313,
-              title: 'subfrancais3'
-            },
-            {
-              id: 314,
-              title: 'subfrancais4'
-            },
-            {
-              id: 315,
-              title: 'subfrancais5'
-            }
-          ]
-        }
-      ],
-      matter: {id: 'fra'},
-      level: {id: 'other'}
-    }*/
+        {title: "SUITES NUMERIQUES", id: "math_0_1", content: [
+            {title: "Suites arithmétiques et géométriques", id: "math_0_1_1"},
+            {title: "Convergence", id: "math_0_1_2"},
+            {title: "Suites Adjacentes", id: "math_0_1_3"}
+        ]},
+        {title: "FONCTIONS", id: "math_0_2", content: [
+            {title: "Limites et dérivabilité", id: "math_0_2_1"},
+            {title: "Variations et extremums", id: "math_0_2_2"}
+        ]},
+        {title: "CALCUL INTEGRAL", id: "math_0_3", content: [
+            {title: "Primitives et intégrales", id: "math_0_3_1"},
+            {title: "Inégalités et intégrales", id: "math_0_3_2"}
+        ]},
+        {title: "EQUATIONS DIFFERENTIELLES", id: "math_0_4"},
+        {title: "NOMBRES COMPLEXES ", id: "math_0_5", content: [
+            {title: "Calculs", id: "math_0_5_1"},
+            {title: "Géométrie", id: "math_0_5_2"}
+        ]},
+        {title: "PROBABILITES ", id: "math_0_6", content: [
+            {title: "Dénombrements", id: "math_0_6_1"},
+            {title: "Probabilités conditionnelles", id: "math_0_6_2"},
+            {title: "Loi binomiale ", id: "math_0_6_3"},
+            {title: "Lois continues", id: "math_0_6_4"},
+            {title: "Loi uniforme", id: "math_0_6_5"},
+            {title: "Loi exponentielle", id: "math_0_6_6"}
+        ]},
+        {title: "PRODUIT SCALAIRE", id: "math_0_7"},
+        {title: "PLANS ET DROITES", id: "math_0_8", content: [
+            {title: "Equations d'un plan", id: "math_0_8_1"},
+            {title: "Représentation paramétrique d'une droite", id: "math_0_8_2"},
+            {title: "Intersections de plans ou de droites", id: "math_0_8_3"}
+        ]},
+        {title: "BARYCENTRES", id: "math_0_9", content: [
+            {title: "Lignes de niveau", id: "math_0_9_1"}
+        ]},
+        {title: "DIVISIBILITE (Sp)", id: "math_0_Sp_1", content: [
+            {title: "Divisibilité dans Z", id: "math_0_Sp_1_1"},
+            {title: "Division euclidienne", id: "math_0_Sp_1_2"},
+            {title: "congruences", id: "math_0_Sp_1_3"},
+            {title: "Nombres premiers", id: "math_0_Sp_1_4"}
+        ]},
+        {title: "PPCM ET PGCD (Sp)", id: "math_0_Sp_2", content: [
+            {title: "PGCD", id: "math_0_Sp_2_1"},
+            {title: "PPCM", id: "math_0_Sp_2_2"}
+        ]},
+        {title: "SIMILITUDES (Sp)", id: "math_0_Sp_3", content: [
+            {title: "Similitudes directes", id: "math_0_Sp_3_1"},
+            {title: "Similitudes indirectes", id: "math_0_Sp_3_2"}
+        ]},
+        {title: "GEOMETRIE DANS L'ESPACE (Sp)", id: "math_0_Sp_4", content: [
+            {title: "Cylindres", id: "math_0_Sp_4_1"},
+            {title: "Cônes", id: "math_0_Sp_4_2"},
+            {title: "Surfaces", id: "math_0_Sp_4_3"}
+        ]}
+   ]}
+   // categories[3] : 
   ];
 
-
+  // On populate l'anglais pour les autres levels
   this.categories.push({
-    id: 2,
+    id: "eng_0",
     title: 'Anglais',
     matter: {id: 'eng'},
     level: {id: 'tl'},
@@ -285,7 +257,15 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   });
 
   this.categories.push({
-    id: 3,
+    id: "eng_2",
+    title: 'Anglais',
+    matter: {id: 'eng'},
+    level: {id: 'tl'},
+    content: this.categories[0].content
+  });
+
+  this.categories.push({
+    id: "eng_3",
     title: 'Anglais',
     matter: {id: 'eng'},
     level: {id: 'tes'},
@@ -293,7 +273,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   });
 
   this.categories.push({
-    id: 4,
+    id: "eng_4",
     title: 'Anglais',
     matter: {id: 'eng'},
     level: {id: 'ps'},
@@ -301,7 +281,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   });
 
   this.categories.push({
-    id: 5,
+    id: "eng_5",
     title: 'Anglais',
     matter: {id: 'eng'},
     level: {id: 'pes'},
@@ -309,10 +289,38 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   });
 
   this.categories.push({
-    id: 6,
+    id: "eng_6",
     title: 'Anglais',
     matter: {id: 'eng'},
     level: {id: 'pl'},
     content: this.categories[0].content
+  });
+
+  // On populate l'histoire pour les autres levels
+  this.categories.push({
+    id: "his_1", 
+    title: 'Histoire',
+    long_title: "Questions pour comprendre le 20e siècle",
+    matter: {id: 'his'},
+    level: {id: 'ps'},
+    content: this.categories[1].content
+  });
+
+  this.categories.push({
+    id: "his_2", 
+    title: 'Histoire',
+    long_title: "Questions pour comprendre le 20e siècle",
+    matter: {id: 'his'},
+    level: {id: 'pes'},
+    content: this.categories[1].content
+  });
+
+  this.categories.push({
+    id: "his_3", 
+    title: 'Histoire',
+    long_title: "Questions pour comprendre le 20e siècle",
+    matter: {id: 'his'},
+    level: {id: 'pl'},
+    content: this.categories[1].content
   });
 });

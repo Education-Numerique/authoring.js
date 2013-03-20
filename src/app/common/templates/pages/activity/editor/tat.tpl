@@ -43,11 +43,12 @@
                  <button data-toggle="modal" href="#modal-tat-gestion" class="name btn">
                     Gestion
                 </button>
-
+<!--
                 <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">
                     {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"}}
                     Side document
                 </button>
+-->
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
             <div class="input-prepend">

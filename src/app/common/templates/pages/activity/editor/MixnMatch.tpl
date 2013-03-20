@@ -14,10 +14,12 @@
                     <label class="add-on" for="form-page-title">Titre</label>
                     {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
                 </div>
+<!--
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Sous-titre</label>
                     {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
                 </div>
+-->
                 
             </div>
             <div class="options">
@@ -43,12 +45,12 @@
                         {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.sequencing"}}
                         Aléatoire
                     </button>
-
+<!--
                     <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">
                         {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"}}
                         Side document
                     </button>
-                
+-->
                 
                 <!-- <button class="btn">Coefficient</button> -->
             </div>

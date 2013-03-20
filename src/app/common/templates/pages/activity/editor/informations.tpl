@@ -50,7 +50,7 @@
                 <button class="btn btn-large add-thumbnail">
                     <i class="icon-plus"></i>
                     <input id="fileupload" type="file" name="file" />
-                    Ajouter une thumbnail
+                    Ajouter une vignette
                 </button>
             </div>
 
