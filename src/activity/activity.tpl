@@ -122,7 +122,7 @@
 
         <div class="modal conclusion hide" role="dialog" aria-hidden="true">
           <div class="modal-header">
-            <h3>Exercice complété!</h3>
+            <h3>Exercice terminé!</h3>
           </div>
           <div class="modal-body">
             Résultat: <span class="feedback">100%</span>
@@ -169,7 +169,7 @@
 
         <div class="modal conclusion hide" role="dialog" aria-hidden="true">
           <div class="modal-header">
-            <h3>Exercice complété!</h3>
+            <h3>Exercice terminé!</h3>
           </div>
           <div class="modal-body">
             Résultat: <span class="feedback">100%</span>
@@ -257,7 +257,7 @@
 
           <div class="modal conclusion hide" role="dialog" aria-hidden="true">
             <div class="modal-header">
-              <h3>Exercice complété!</h3>
+              <h3>Exercice terminé!</h3>
             </div>
             <div class="modal-body">
               Résultat: <span class="feedback">100%</span>

@@ -132,11 +132,19 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 // categories[0] : Anglais, tout le lycée ...
     { id: "eng_0", title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
         {id: "eng_0_1", title: 'COMPRÉHENSION ÉCRITE', content: [
+            {id: "eng_0_1_0", title: "Evaluations diagnostiques"},
             {id: "eng_0_1_1", title: "Comprendre l'essentiel d'un texte écrit"},
             {id: "eng_0_1_2", title: "De l'explicite à l'implicite"},
             {id: "eng_0_1_3", title: "Répondre aux questions"},
             {id: "eng_0_1_4", title: "Traduire"},
             {id: "eng_0_1_5", title: "Annales du Bac"}
+        ]},
+        {id: "eng_0_1o", title: 'COMPRÉHENSION ORALE', content: [
+            {id: "eng_0_1o_0", title: "Evaluations diagnostiques"},
+            {id: "eng_0_1o_1", title: "Se préparer à l'écoute"},
+            {id: "eng_0_1o_2", title: "Relever les indices"},
+            {id: "eng_0_1o_3", title: "Déduire le sens des mots inconnus"},
+            {id: "eng_0_1o_4", title: "Synthétiser"},
         ]},
         {id: "eng_0_2", title: 'PRODUCTION ÉCRITE', content: [
             {id: "eng_0_2_1", title: "Rédiger un dialogue"},
@@ -145,6 +153,9 @@ jsBoot.pack('LxxlLib.model.defines', function() {
             {id: "eng_0_2_4", title: "Rédiger une argumentation"},
             {id: "eng_0_2_5", title: "Rédiger un essai organisé"}
         ]},
+        {id: "eng_0_2o", title: 'PRODUCTION ORALE', content: [
+            {id: "eng_0_2o_1", title: "La prononciation"}
+        ]},
         {id: "eng_0_3", title: 'MONDE ANGLOPHONE', content: [
             {id: "eng_0_3_1", title: "Culture"},
             {id: "eng_0_3_2", title: "Civilisation"}
@@ -152,9 +163,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         {id: "eng_0_4", title: 'LANGUE ANGLAISE', content: [
             {id: "eng_0_4_1", title: "Le lexique"},
             {id: "eng_0_4_2", title: "La syntaxe"},
-            {id: "eng_0_4_3", title: "Les formes verbales"},
-            {id: "eng_0_4_4", title: "Traduire"},
-            {id: "eng_0_4_5", title: "Annales du Bac"}
+            {id: "eng_0_4_3", title: "La grammaire"}
         ]}
     ]},
     // categories[1] : Histoire, premières multiples ...
@@ -185,7 +194,35 @@ jsBoot.pack('LxxlLib.model.defines', function() {
             {id: "his_0_6_3", title: "L'étude de deux documents"}
          ]}
     ]},
-    // categories[2] : Maths, Terminale S ...
+    // categories[2] : Géographie, premières multiples ...
+    {id: "geo_0", title: 'Géographie', matter: {id: 'geo'}, level: {id: 'tt_prem'}, long_title: "Questions pour comprendre le 20e siècle", content: [
+        {id: "his_0_1", title: 'LE 19e SIÈCLE', content: [
+            {id: "his_0_1_1", title: "Croissance et mondialisation"},
+            {id: "his_0_1_2", title: "Mutation des sociétés"}
+        ]},
+        {id: "his_0_2", title: 'LA GUERRE AU 20e SIÈCLE', content: [
+            {id: "his_0_2_1", title: "Guerres mondiales et paix"},
+            {id: "his_0_2_2", title: "Guerre froide et nouveaux conflits"}
+        ]},
+        {id: "his_0_3", title: 'LES TOTALITARISMES', content: [
+            {id: "his_0_3_1", title: "Développement des totalitarismes"},
+            {id: "his_0_3_2", title: "Fin des totalitarismes"}
+        ]},
+        {id: "his_0_4", title: 'LA COLONISATION ET SA FIN', content: [
+            {id: "his_0_4_1", title: "Le temps des dominations coloniales"},
+            {id: "his_0_4_2", title: "La décolonisation"}
+        ]},
+        {id: "his_0_5", title: 'LES FRANÇAIS ET LEUR RÈPUBLIQUE', content: [
+            {id: "his_0_5_1", title: "La République, trois républiques"},
+            {id: "his_0_5_2", title: "La République et la société française"}
+        ]},
+        {id: "his_0_6", title: 'MÈTHODOLOGIE', content: [
+            {id: "his_0_6_1", title: "La composition"},
+            {id: "his_0_6_2", title: "L'étude d'un document"},
+            {id: "his_0_6_3", title: "L'étude de deux documents"}
+         ]}
+    ]},
+    // categories[3] : Maths, Terminale S ...
     {
       title: "Mathématiques", matter: {id: 'mat'}, level: {id: 'ts'}, id: "maths_0",
       content: [
@@ -249,10 +286,10 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
   // On populate l'anglais pour les autres levels
   this.categories.push({
-    id: "eng_0",
+    id: "eng_1",
     title: 'Anglais',
     matter: {id: 'eng'},
-    level: {id: 'tl'},
+    level: {id: 'ts'},
     content: this.categories[0].content
   });
 

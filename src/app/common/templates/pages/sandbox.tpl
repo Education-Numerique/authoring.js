@@ -4,12 +4,14 @@
 
 
 <div class="row-fluid">
-
+<!-- Keep for later use !!! -->
+<!--
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
-    <!--<h4 class="alert-heading">Le vivier</h4>-->
+    <h4 class="alert-heading">Le vivier</h4>
     Retrouvez ici toutes les activités publiées par nos auteurs, en libre consultation.
   </div>
+-->
 
   <div class="row-fluid">
     <div class="span6">
@@ -38,6 +40,7 @@
       </div>
     </div>
     </div>
+
     <div class="span6">
     <div class="widget-box">
       <div class="widget-title"><h5>Niveaux ({{view.displayMatter}})</h5></div>
@@ -64,12 +67,14 @@
       </div>
       </div>
     </div>
-    </div>
-  </div>
 
-  <div class="row-fluid">
-    <h4>Filtre: {{view.displayMatter}}, {{view.displayLevel}}</h4>
   </div>
+</div>
+
+<div class="row-fluid">
+  <h4>Filtre: {{view.displayMatter}}, {{view.displayLevel}}</h4>
+</div>
+
   <div class="widget-box">
     <div class="widget-title">
       <h5>Activités</h5>
@@ -98,12 +103,12 @@
     </div>
   </div>
 
-</div>
+</div> <!-- JB : no corresponding <div> in this file ??? Or higher in the DOM ??? -->
 
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="modal-preview-label">Preview</h3>
+    <h3 id="modal-preview-label">Voir</h3>
   </div>
   <div class="modal-body">
     <p id="modal-preview-body"></p>

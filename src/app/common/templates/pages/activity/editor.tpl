@@ -133,7 +133,7 @@
         <h3>Créer une nouvelle page</h3>
     </div>
     <div class="modal-body" style="height:200px">
-        <p>Choisissez le template de votre page</p>
+        <p>Choisissez le modèle de votre page</p>
         <p>{{view Ember.Select contentBinding="flavors.content" selectionBinding="flavors.selected" optionLabelPath="content.title" optionValuePath="content.id"}}</p>
     </div>
     <div class="modal-footer">
