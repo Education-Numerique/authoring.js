@@ -20,7 +20,7 @@
 
   <aside class="span3 side-menu pull-right">
     <nav>
-      <h2>Documents associés</h2>
+      <h2>Documents</h2>
       <ul class="attachments-list">
         {{#each extra.attachments}}
           <li class="{{mimetype type}}">

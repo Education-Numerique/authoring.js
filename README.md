@@ -75,7 +75,7 @@ Contains the html shell along with very basic style and waiting logo, meant to b
 
 - while the application boots-up
 - if the user doesn't have javascript enabled
-- if the user have an unsupported browser
+- if the user has an unsupported browser
 
 You may edit at will any of the following files in that folder, namely:
 
