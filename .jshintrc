@@ -67,13 +67,5 @@
     "I18n": true,
     "LxxlApp": true,
     "LxxlLib": true
-    /*,
-    "Mingus": true,
-    "YT": true,
-    "moment": true,
-    "History": true,
-    "App": true,
-    "console" : true
-    */
   }
 }

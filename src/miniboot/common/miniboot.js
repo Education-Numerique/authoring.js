@@ -16,33 +16,35 @@
   /*jshint maxstatements:50*/
   'use strict';
 
-  if (!/^www\./.test(location.hostname) && !/^app\./.test(location.hostname) && !/^dev\./.test(location.hostname)) {
+  // Redirect if nomen
+  if (!/^(?:www|app|dev)\./.test(location.hostname)) {
     location.href = location.href.replace(/^([^:]+:\/\/)/, '$1www.');
     return;
   }
 
-  // Ember global configuration
-  window.ENV = {
-    RAISE_ON_DEPRECATION: true
-  };
+  // Root of the versioned app
+  var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin
   var debug = /use-debug/.test(location.href);
-  // XXX disable minification for now
-  debug = true;
+
+  // Ember global configuration
+  window.ENV = {
+    RAISE_ON_DEPRECATION: debug
+  };
+
   // Trunk version - don't do this, kid!
   var version = /use-trunk/.test(location.href) && 'trunk';
   // Not minified if debugging
+  // XXX disable minification for now
   var suffix = !debug ? '-min.' : '.';
+  suffix = '.';
 
   // No analytics for now
   // var gaTracker = '{PUKE_ANALYTICS}';
 
   var cdnJax = /use-cdnjax/.test(location.href);
-
-  // Root of the versioned app
-  var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
   // // To be removed when service login lands
   // var debugUser = debug && ((location.href.match(/user-anonymous/) || location.href.match(/user-author/) ||

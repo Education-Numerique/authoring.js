@@ -8,8 +8,8 @@ import json
 
 @task("Default task")
 def default():
+  # executeTask("verify")
   executeTask("build")
-  # executeTask("tests")
   executeTask("deploy")
 
 @task("Verify")
@@ -21,9 +21,7 @@ def verify():
 @task("All")
 def all():
   executeTask("verify")
-  # executeTask("hint")
   executeTask("build")
-  # executeTask("tests")
   executeTask("deploy")
   executeTask("mint")
   executeTask("deploy")
@@ -120,10 +118,10 @@ def build():
   sed.add('{PUKE-SERVICE-HOST}', Yak.service['host'])
   sed.add('{PUKE-SERVICE-PORT}', Yak.service['port'])
 
-  sed.add('{PUKE_ANALYTICS}', Yak.ACCESS['GA'])
-  sed.add('{PUKE_FBKEY}', Yak.ACCESS['FACEBOOK']['KEY'])
-  sed.add('{PUKE_KEY}', Yak.ACCESS['LXXL']['KEY'])
-  sed.add('{PUKE_SECRET}', Yak.ACCESS['LXXL']['SECRET'])
+  # sed.add('{PUKE_ANALYTICS}', Yak.ACCESS['GA'])
+  # sed.add('{PUKE_FBKEY}', Yak.ACCESS['FACEBOOK']['KEY'])
+  # sed.add('{PUKE_KEY}', Yak.ACCESS['LXXL']['KEY'])
+  # sed.add('{PUKE_SECRET}', Yak.ACCESS['LXXL']['SECRET'])
 
   BOOTSTRAP_BUILD = FileSystem.join(Yak.build_root)
   VERSIONED_ROOT = FileSystem.join(Yak.build_root, Yak.package['version'])
