@@ -254,15 +254,16 @@
         var word = $('#redactor_modal .word').val();
         var clue = $('#redactor_modal .clue').val();
         var alts = $('#redactor_modal .alternatives').val();
-
-        var markup = '<a data-type="tat" data-clue="' + redactorScope.stripTags(clue) + '" data-alt="' +
-            redactorScope.stripTags(alts) + '">' + word + '</a>&nbsp';
+        var markup = $('<div><a data-type="tat" />&nbsp</div>');
+        markup.find('a').attr('data-clue', redactorScope.stripTags(clue));
+        markup.find('a').attr('data-alt',  redactorScope.stripTags(alts));
+        markup.find('a').text( word );
 
         if (el && el.attr('data-type') == 'tat') {
-          el.replaceWith(markup);
+          el.replaceWith(markup.html());
         } else {
           redactorScope.restoreSelection();
-          redactorScope.execCommand('inserthtml', markup);
+          redactorScope.execCommand('inserthtml', markup.html());
         }
         redactorScope.modalClose();
       };
