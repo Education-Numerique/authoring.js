@@ -12,6 +12,12 @@ def default():
   # executeTask("tests")
   executeTask("deploy")
 
+@task("Verify")
+def verify():
+  executeTask("lint")
+  # executeTask("hint")
+
+
 @task("All")
 def all():
   executeTask("lint")
@@ -21,7 +27,7 @@ def all():
   executeTask("deploy")
   executeTask("mint")
   executeTask("deploy")
-  executeTask("doc")
+  # executeTask("doc")
   executeTask("stats")
 
 
