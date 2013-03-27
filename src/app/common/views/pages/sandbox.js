@@ -60,7 +60,7 @@
   };
 
   var TABLE_OPTIONS = {
-    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
       var id = aData[aData.length - 1];
 
       if ($(nRow).attr('data-rid'))
@@ -93,7 +93,8 @@
           break;
       }
       ct = ct.replace('{difficulty}', df);
-      ct = ct.replace('{useravatar}', '<div><img src="' + LxxlLib.service.user.avatar.getUrl(item.author.uid) + '" /></div>');
+      ct = ct.replace('{useravatar}', '<div><img src="' + LxxlLib.service.user.avatar.getUrl(item.author.uid) +
+          '" /></div>');
       ct = ct.replace('{description}', infos.description);
       preview.attr('data-html', ct);
       preview.attr('data-placement', 'right');
@@ -114,7 +115,8 @@
       if (item.published.blobs.media.length || item.published.blobs.attachments.length)
         return;
       button = $(nRow).find('td:eq(2)');
-      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" title="Créer une nouvelle activité à partir de ce modèle"></button>');
+      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
+          'title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
       button.bind('click', function(e) {
         console.warn('Fork activity', item.published.toObject());

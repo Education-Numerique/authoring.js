@@ -852,7 +852,8 @@
 
     willDestroyElement: function() {
       this.get('controller').get('content').controller.push();
-      jsBoot.controllers.userActivity.removeEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
+      jsBoot.controllers.userActivity.removeEventListener(jsBoot.controllers.userActivity.STATE_CHANGED,
+          this.autoSaveListener);
     },
 
     didInsertElement: function() {
@@ -860,10 +861,12 @@
       this.autoSaveListener = this.autoSave.bind(this);
       if (this.get('controller').get('content').controller)
         this.get('controller').get('content').controller.pull(function() {
-          jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
+          jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED,
+              this.autoSaveListener);
         }.bind(this));
       else
-        jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
+        jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED,
+            this.autoSaveListener);
 
       // LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));

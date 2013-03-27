@@ -69,7 +69,7 @@
   };
 
   var TABLE_OPTIONS = {
-    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
       var id = aData[aData.length - 1];
 
       if ($(nRow).attr('data-rid'))
@@ -125,7 +125,8 @@
       if (infos.blobs.media.length || infos.blobs.attachments.length)
         return;
       button = $(nRow).find('td:eq(2)');
-      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" title="Créer une nouvelle activité à partir de ce modèle"></button>');
+      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
+          'title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
       button.bind('click', function(e) {
         var onCreate = function() {

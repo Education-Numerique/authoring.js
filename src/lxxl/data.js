@@ -158,98 +158,100 @@ jsBoot.pack('LxxlLib.model.defines', function() {
       ]}
     ]},
     // categories[1] : Histoire, premières multiples ...
-    {id: 'his_tt_prem', title: 'Histoire', matter: {id: 'his'}, level: {id: 'tt_prem'}, long_title: 'Questions pour comprendre le 20e siècle', content: [
-      {id: 'his_tt_prem_1', title: 'LE 19e SIÈCLE', content: [
-        {id: 'his_tt_prem_1_1', title: 'Croissance et mondialisation'},
-        {id: 'his_tt_prem_1_2', title: 'Mutation des sociétés'}
-      ]},
-      {id: 'his_tt_prem_2', title: 'LA GUERRE AU 20e SIÈCLE', content: [
-        {id: 'his_tt_prem_2_1', title: 'Guerres mondiales et paix'},
-        {id: 'his_tt_prem_2_2', title: 'Guerre froide et nouveaux conflits'}
-      ]},
-      {id: 'his_tt_prem_3', title: 'LES TOTALITARISMES', content: [
-        {id: 'his_tt_prem_3_1', title: 'Développement des totalitarismes'},
-        {id: 'his_tt_prem_3_2', title: 'Fin des totalitarismes'}
-      ]},
-      {id: 'his_tt_prem_4', title: 'LA COLONISATION ET SA FIN', content: [
-        {id: 'his_tt_prem_4_1', title: 'Le temps des dominations coloniales'},
-        {id: 'his_tt_prem_4_2', title: 'La décolonisation'}
-      ]},
-      {id: 'his_tt_prem_5', title: 'LES FRANÇAIS ET LEUR RÈPUBLIQUE', content: [
-        {id: 'his_tt_prem_5_1', title: 'La République, trois républiques'},
-        {id: 'his_tt_prem_5_2', title: 'La République et la société française'}
-      ]},
-      {id: 'his_tt_prem_6', title: 'MÈTHODOLOGIE', content: [
-        {id: 'his_tt_prem_6_1', title: 'La composition'},
-        {id: 'his_tt_prem_6_2', title: "L'étude d'un document"},
-        {id: 'his_tt_prem_6_3', title: "L'étude de deux documents"}
-      ]}
-    ]},
+    {id: 'his_tt_prem', title: 'Histoire', matter: {id: 'his'}, level: {id: 'tt_prem'}, long_title:
+          'Questions pour comprendre le 20e siècle', content: [
+            {id: 'his_tt_prem_1', title: 'LE 19e SIÈCLE', content: [
+              {id: 'his_tt_prem_1_1', title: 'Croissance et mondialisation'},
+              {id: 'his_tt_prem_1_2', title: 'Mutation des sociétés'}
+            ]},
+            {id: 'his_tt_prem_2', title: 'LA GUERRE AU 20e SIÈCLE', content: [
+              {id: 'his_tt_prem_2_1', title: 'Guerres mondiales et paix'},
+              {id: 'his_tt_prem_2_2', title: 'Guerre froide et nouveaux conflits'}
+            ]},
+            {id: 'his_tt_prem_3', title: 'LES TOTALITARISMES', content: [
+              {id: 'his_tt_prem_3_1', title: 'Développement des totalitarismes'},
+              {id: 'his_tt_prem_3_2', title: 'Fin des totalitarismes'}
+            ]},
+            {id: 'his_tt_prem_4', title: 'LA COLONISATION ET SA FIN', content: [
+              {id: 'his_tt_prem_4_1', title: 'Le temps des dominations coloniales'},
+              {id: 'his_tt_prem_4_2', title: 'La décolonisation'}
+            ]},
+            {id: 'his_tt_prem_5', title: 'LES FRANÇAIS ET LEUR RÈPUBLIQUE', content: [
+              {id: 'his_tt_prem_5_1', title: 'La République, trois républiques'},
+              {id: 'his_tt_prem_5_2', title: 'La République et la société française'}
+            ]},
+            {id: 'his_tt_prem_6', title: 'MÈTHODOLOGIE', content: [
+              {id: 'his_tt_prem_6_1', title: 'La composition'},
+              {id: 'his_tt_prem_6_2', title: "L'étude d'un document"},
+              {id: 'his_tt_prem_6_3', title: "L'étude de deux documents"}
+            ]}
+          ]},
     // categories[2] : Géo, premières multiples ...
-	{id: 'geo_tt_prem', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'tt_prem'}, long_title: 'France et Europe : dynamiques des territoires dans la mondialisation', content: [
-		{id: 'geo_tt_prem_1', title: 'Territoires de proximité', content: [
-			{id: 'geo_tt_prem_2_1', title: 'Territoires du quotidien'},
-			{id: 'geo_tt_prem_2_2', title: 'Territoire de la région'}
-      ]},
-		{id: 'geo_tt_prem_2', title: 'Territoire français', content: [
-			{id: 'geo_tt_prem_3_1', title: 'Valoriser et ménager les milieux'},
-			{id: 'geo_tt_prem_3_2', title: 'La France en villes'},
-			{id: 'geo_tt_prem_3_3', title: 'Dynamiques des espaces productifs'},
-			{id: 'geo_tt_prem_3_4', title: 'Mobilités, flux et réseaux de communication'}
-      ]},
-		{id: 'geo_tt_prem_3', title: "L'Union européenne", content: [
-			{id: 'geo_tt_prem_4_1', title: 'Europe et Union européenne'},
-			{id: 'geo_tt_prem_4_2', title: 'Les territoires ultramarins'}
-      ]},
-		{id: 'geo_tt_prem_4', title: 'France, Europe et monde', content: [
-			{id: 'geo_tt_prem_5_1', title: "L'UE dans la mondialisation"},
-			{id: 'geo_tt_prem_5_2', title: 'La France dans la mondialisation'}
-      ]},
-		{id: 'geo_tt_prem_5', title: 'Méthodologie', content: [
-			{id: 'geo_tt_prem_6_1', title: 'La composition'},
-			{id: 'geo_tt_prem_6_2', title: "L'étude d'un document"},
-			{id: 'geo_tt_prem_6_3', title: "L'étude de deux documents"},
-			{id: 'geo_tt_prem_6_4', title: 'Le croquis'},
-			{id: 'geo_tt_prem_6_5', title: 'Le schéma'}
-      ]}
-    ]},
+    {id: 'geo_tt_prem', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'tt_prem'}, long_title:
+          'France et Europe : dynamiques des territoires dans la mondialisation', content: [
+            {id: 'geo_tt_prem_1', title: 'Territoires de proximité', content: [
+              {id: 'geo_tt_prem_2_1', title: 'Territoires du quotidien'},
+              {id: 'geo_tt_prem_2_2', title: 'Territoire de la région'}
+            ]},
+            {id: 'geo_tt_prem_2', title: 'Territoire français', content: [
+              {id: 'geo_tt_prem_3_1', title: 'Valoriser et ménager les milieux'},
+              {id: 'geo_tt_prem_3_2', title: 'La France en villes'},
+              {id: 'geo_tt_prem_3_3', title: 'Dynamiques des espaces productifs'},
+              {id: 'geo_tt_prem_3_4', title: 'Mobilités, flux et réseaux de communication'}
+            ]},
+            {id: 'geo_tt_prem_3', title: "L'Union européenne", content: [
+              {id: 'geo_tt_prem_4_1', title: 'Europe et Union européenne'},
+              {id: 'geo_tt_prem_4_2', title: 'Les territoires ultramarins'}
+            ]},
+            {id: 'geo_tt_prem_4', title: 'France, Europe et monde', content: [
+              {id: 'geo_tt_prem_5_1', title: "L'UE dans la mondialisation"},
+              {id: 'geo_tt_prem_5_2', title: 'La France dans la mondialisation'}
+            ]},
+            {id: 'geo_tt_prem_5', title: 'Méthodologie', content: [
+              {id: 'geo_tt_prem_6_1', title: 'La composition'},
+              {id: 'geo_tt_prem_6_2', title: "L'étude d'un document"},
+              {id: 'geo_tt_prem_6_3', title: "L'étude de deux documents"},
+              {id: 'geo_tt_prem_6_4', title: 'Le croquis'},
+              {id: 'geo_tt_prem_6_5', title: 'Le schéma'}
+            ]}
+          ]},
 
     // categories[3] : Maths, Prem ES ...
-	{id: 'mat_pes ', title: '', matter: {id: 'mat'}, level: {id: 'pes'}, long_title: '', content: [
-		{id: 'mat_pes_1', title: 'Algèbre/ analyse', content: [
-			{id: 'mat_pes_2_1', title: 'Second degré'},
-			{id: 'mat_pes_2_2', title: 'Etude de fonction'},
-			{id: 'mat_pes_2_3', title: 'Pourcentages'},
-			{id: 'mat_pes_2_4', title: 'Suites'}
-		]},
-		{id: 'mat_pes_2', title: 'Statistiques / probabilités', content: [
-			{id: 'mat_pes_3_1', title: 'Statistique, analyse de données, Probabilités'},
-			{id: 'mat_pes_3_2', title: 'Échantillonnage'}
-		]},
-		{id: 'mat_pes_3', title: 'Algorithmique'},
-		{id: 'mat_pes_4', title: 'Notations / raisonnements'}
+    {id: 'mat_pes ', title: '', matter: {id: 'mat'}, level: {id: 'pes'}, long_title: '', content: [
+      {id: 'mat_pes_1', title: 'Algèbre/ analyse', content: [
+        {id: 'mat_pes_2_1', title: 'Second degré'},
+        {id: 'mat_pes_2_2', title: 'Etude de fonction'},
+        {id: 'mat_pes_2_3', title: 'Pourcentages'},
+        {id: 'mat_pes_2_4', title: 'Suites'}
+      ]},
+      {id: 'mat_pes_2', title: 'Statistiques / probabilités', content: [
+        {id: 'mat_pes_3_1', title: 'Statistique, analyse de données, Probabilités'},
+        {id: 'mat_pes_3_2', title: 'Échantillonnage'}
+      ]},
+      {id: 'mat_pes_3', title: 'Algorithmique'},
+      {id: 'mat_pes_4', title: 'Notations / raisonnements'}
     ]},
 
     // categories[4] : Maths, Première S
-	{id: 'mat_ps ', title: '', matter: {id: 'mat'}, level: {id: 'ps'}, long_title: '', content: [
-		{id: 'math_ps_1', title: 'Analyse', content: [
-			{id: 'math_ps_2_1', title: 'Second degré'},
-			{id: 'math_ps_2_2', title: 'Etude de fonction'},
-			{id: 'math_ps_2_3', title: 'Dérivation'},
-			{id: 'math_ps_2_4', title: 'Suites'}
-		]},
-		{id: 'math_ps_2', title: 'Géométrie', content: [
-			{id: 'math_ps_3_1', title: 'Géométrie plane'},
-			{id: 'math_ps_3_2', title: 'Trigonométrie'},
-			{id: 'math_ps_3_3', title: 'Produit scalaire dans le plan'}
-		]},
-		{id: 'math_ps_3', title: 'Statistiques/ probabilités', content: [
-			{id: 'math_ps_4_1', title: 'Statistique descriptive, analyse de données'},
-			{id: 'math_ps_4_2', title: 'Probabilités'},
-			{id: 'math_ps_4_3', title: 'Echantillonnage'}
-		]},
-		{id: 'math_ps_4', title: 'Algorithmique'},
-		{id: 'math_ps_5', title: 'Notations et raisonnements en mathématiques'}
+    {id: 'mat_ps ', title: '', matter: {id: 'mat'}, level: {id: 'ps'}, long_title: '', content: [
+      {id: 'math_ps_1', title: 'Analyse', content: [
+        {id: 'math_ps_2_1', title: 'Second degré'},
+        {id: 'math_ps_2_2', title: 'Etude de fonction'},
+        {id: 'math_ps_2_3', title: 'Dérivation'},
+        {id: 'math_ps_2_4', title: 'Suites'}
+      ]},
+      {id: 'math_ps_2', title: 'Géométrie', content: [
+        {id: 'math_ps_3_1', title: 'Géométrie plane'},
+        {id: 'math_ps_3_2', title: 'Trigonométrie'},
+        {id: 'math_ps_3_3', title: 'Produit scalaire dans le plan'}
+      ]},
+      {id: 'math_ps_3', title: 'Statistiques/ probabilités', content: [
+        {id: 'math_ps_4_1', title: 'Statistique descriptive, analyse de données'},
+        {id: 'math_ps_4_2', title: 'Probabilités'},
+        {id: 'math_ps_4_3', title: 'Echantillonnage'}
+      ]},
+      {id: 'math_ps_4', title: 'Algorithmique'},
+      {id: 'math_ps_5', title: 'Notations et raisonnements en mathématiques'}
     ]},
 
     // categories[5] : Maths, Terminale S ...
@@ -351,38 +353,44 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
   // On populate l'histoire pour les autres levels
   this.categories.push({
-    id: 'his_ps', title: 'Histoire', matter: {id: 'his'}, level: {id: 'ps'}, long_title: 'Questions pour comprendre le 20e siècle',
+    id: 'his_ps', title: 'Histoire', matter: {id: 'his'}, level: {id: 'ps'}, long_title:
+        'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   this.categories.push({
-    id: 'his_pes', title: 'Histoire', matter: {id: 'his'}, level: {id: 'pes'}, long_title: 'Questions pour comprendre le 20e siècle',
+    id: 'his_pes', title: 'Histoire', matter: {id: 'his'}, level: {id: 'pes'}, long_title:
+        'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   this.categories.push({
-    id: 'his_pl', title: 'Histoire', matter: {id: 'his'}, level: {id: 'pl'}, long_title: 'Questions pour comprendre le 20e siècle',
+    id: 'his_pl', title: 'Histoire', matter: {id: 'his'}, level: {id: 'pl'}, long_title:
+        'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   // On populate la géo pour les autres levels
   this.categories.push({
-	id: 'geo_ps', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'ps'}, long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
+    id: 'geo_ps', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'ps'}, long_title:
+        'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
   this.categories.push({
-	id: 'geo_pes', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'pes'}, long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
+    id: 'geo_pes', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'pes'}, long_title:
+        'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
   this.categories.push({
-	id: 'geo_pl', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'pl'}, long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
+    id: 'geo_pl', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'pl'}, long_title:
+        'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
   this.categories.push({
- 	 id: 'mat_pl ', title: '', matter: {id: 'mat'}, level: {id: 'pl'},
+    id: 'mat_pl ', title: '', matter: {id: 'mat'}, level: {id: 'pl'},
     content: this.categories[3].content
   });
 

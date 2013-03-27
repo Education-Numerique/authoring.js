@@ -8,7 +8,7 @@
 
 
   var TABLE_OPTIONS = {
-    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
       var id = aData[aData.length - 1];
       if ($(nRow).attr('data-uid'))
         return;
@@ -22,7 +22,8 @@
 
       if (item.get('level') != '3') {
         var admin = $(nRow).find('td:eq(1)');
-        admin.html('<button class="icon-arrow-up" rel="tooltip" data-placement="right" title="Changer les droits de cet utilisateur en administrateur"></button>');
+        admin.html('<button class="icon-arrow-up" rel="tooltip" data-placement="right" ' +
+            'title="Changer les droits de cet utilisateur en administrateur"></button>');
 
 
         admin.bind('click', function(e) {
@@ -34,7 +35,8 @@
         });
       } else {
         var admin = $(nRow).find('td:eq(1)');
-        admin.html('<button class="icon-arrow-down" rel="tooltip" data-placement="right" title="Changer les droits de cet utilisateur en auteur"></button>');
+        admin.html('<button class="icon-arrow-down" rel="tooltip" data-placement="right" ' +
+            'title="Changer les droits de cet utilisateur en auteur"></button>');
 
 
         admin.bind('click', function(e) {
