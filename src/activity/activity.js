@@ -287,7 +287,7 @@
         $('.propositions > li', container).shuffle();
 
         $('.propositions > li', container).draggable({
-          containment: $('.mix-and-match', container),
+          containment: 'body', //$('.mix-and-match', container),
           revert: true,
           stack: $('.propositions > li', container)
         });
