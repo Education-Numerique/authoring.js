@@ -14,7 +14,7 @@ def default():
 
 @task("All")
 def all():
-  # executeTask("lint")
+  executeTask("lint")
   # executeTask("hint")
   executeTask("build")
   # executeTask("tests")
