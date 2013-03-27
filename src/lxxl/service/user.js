@@ -51,7 +51,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
     })();
 
     this.acl = new (function() {
-      this.push = function(onSuccess, onFailure, id, level){
+      this.push = function(onSuccess, onFailure, id, level) {
         requestor.query(requestor.POST, {
           service: SERVICE,
           onsuccess: onSuccess,

@@ -66,9 +66,9 @@
   jsBoot.loader.use('bootstrap', version || 'stable');
 
   console.warn(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
-  try{
+  try {
     jsBoot.loader.use(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
-  }catch(e){
+  }catch (e) {
     console.error(e);
   }
 

@@ -143,7 +143,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   });
 
   var dirtyDateConverter = function(v) {
-    if(v)
+    if (v)
       return new Date(v * 1000);
     return null;
   };
@@ -166,9 +166,9 @@ jsBoot.pack('LxxlLib.model', function(api) {
   };
 
   var failure = function() {
-    try{
+    try {
       throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
-    }catch(e){
+    }catch (e) {
       // Might occur in rare legit conditions (race between competing network calls) - doesn't really matter - the
       // shit returns 404
       console.error(e);
@@ -206,7 +206,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
         }
 
         this.fromObject(d);
-        if(onready)
+        if (onready)
           onready();
       }.bind(this)), failure, this.id);
     };
@@ -251,7 +251,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
         api.blobService.remove(blanket, blanket, arr[x].id);
     };
 
-    if(typeof Ember != 'undefined')
+    if (typeof Ember != 'undefined')
       i.draft.extra.attachments.addArrayObserver(i, {willChange: handleDetachChange, didChange: blanket});
 
     // XXX handle remove attachments

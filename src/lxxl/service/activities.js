@@ -149,8 +149,8 @@ jsBoot.pack('LxxlLib.service', function(api) {
     this.readUrl = function(id) {
       return requestor.url({
         service: SERVICE,
-        onsuccess: function(){},
-        onfailure: function(){},
+        onsuccess: function() {},
+        onfailure: function() {},
         id: id,
         command: 'public'
       });

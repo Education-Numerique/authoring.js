@@ -15,10 +15,10 @@
 
 
   var popoverContent = '<div class="thumbnail">{thumbnail}</div>' +
-        '<h5>{nickname}</h5>' +
-        '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
-        '<div class="avatar">{useravatar}</div>' +
-        '<div>{description}</div>';
+      '<h5>{nickname}</h5>' +
+      '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
+      '<div class="avatar">{useravatar}</div>' +
+      '<div>{description}</div>';
 
 
 
@@ -41,7 +41,7 @@
       cc = '.mypublished';
     }
     // console.warn(nn);
-    // 
+    //
 
     for (var x = start, item, infos; x < start + addCount; x++) {
       item = arr[x];
@@ -64,12 +64,12 @@
         item.id
       ]);
 
-      
+
     }
   };
 
   var TABLE_OPTIONS = {
-    "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
       var id = aData[aData.length - 1];
 
       if ($(nRow).attr('data-rid'))
@@ -118,19 +118,19 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
-      button.bind('click', function (e) {
+      button.bind('click', function(e) {
         LxxlApp.router.send('showActivityEdit', item);
       });
 
-      if(infos.blobs.media.length || infos.blobs.attachments.length)
+      if (infos.blobs.media.length || infos.blobs.attachments.length)
         return;
       button = $(nRow).find('td:eq(2)');
       button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
-      button.bind('click', function (e) {
-        var onCreate = function(){
+      button.bind('click', function(e) {
+        var onCreate = function() {
           act.draft = infos;// .toObject();
-          act.push(function(){
+          act.push(function() {
             // Something is rotten in Denmark
             // act = LxxlLib.factories.activities.getActivity({id: act.id});
             LxxlApp.router.send('showActivityEdit', act);
@@ -151,21 +151,21 @@
       // console.log(preview.html('bite'));
     }
   };
-  
-  
+
+
   var activities,
-    pactivities,
-    dactivities;
+      pactivities,
+      dactivities;
 
-  t.activities = [];    
+  t.activities = [];
 
-  var hookBack = function(id){
-    return activities.filter(function(item){
+  var hookBack = function(id) {
+    return activities.filter(function(item) {
       return item.id == id;
     }).pop();
   };
 
-  t.willDestroyElement = function () {
+  t.willDestroyElement = function() {
     this.publishedActivities.removeArrayObserver(this, { willChange: will, didChange: did});
     this.draftActivities.removeArrayObserver(this, { willChange: will, didChange: did});
   };

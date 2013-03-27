@@ -15,7 +15,7 @@
 (function() {
   'use strict';
 
-  if(!/^www\./.test(location.hostname) && !/^app\./.test(location.hostname) && !/^dev\./.test(location.hostname)){
+  if (!/^www\./.test(location.hostname) && !/^app\./.test(location.hostname) && !/^dev\./.test(location.hostname)) {
     location.href = location.href.replace(/^([^:]+:\/\/)/, '$1www.');
     return;
   }

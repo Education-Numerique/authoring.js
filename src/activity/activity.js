@@ -7,30 +7,30 @@
 
 /*global Mingus, Handlebars*/
 
-(function($){
- 
-    $.fn.shuffle = function() {
- 
-        var allElems = this.get(),
-            getRandom = function(max) {
-                return Math.floor(Math.random() * max);
-            },
-            shuffled = $.map(allElems, function(){
-                var random = getRandom(allElems.length),
-                    randEl = $(allElems[random]).clone(true)[0];
-                allElems.splice(random, 1);
-                return randEl;
-           });
-        var max = this.length;
+(function($) {
 
-        this.each(function(i){
-            $(this).replaceWith($(shuffled[i]));
-        });
- 
-        return $(shuffled);
- 
-    };
- 
+  $.fn.shuffle = function() {
+
+    var allElems = this.get(),
+            getRandom = function(max) {
+          return Math.floor(Math.random() * max);
+            };,
+    shuffled = $.map(allElems, function() {
+      var random = getRandom(allElems.length),
+              randEl = $(allElems[random]).clone(true)[0];
+      allElems.splice(random, 1);
+      return randEl;
+    });
+    var max = this.length;
+
+    this.each(function(i) {
+      $(this).replaceWith($(shuffled[i]));
+    });
+
+    return $(shuffled);
+
+  };
+
 })(jQuery);
 
 
@@ -67,10 +67,10 @@
       return ++globalIndex;
     });
     Handlebars.registerHelper('reset_index', function(property) {
-       if (typeof(property) == 'string') {
+      if (typeof(property) == 'string') {
         namedIndex[property] = 0;
         return;
-       }
+      }
 
       globalIndex = 0;
     });
@@ -190,7 +190,7 @@
           item.id = ind;
         });
         var res = tpl(deref);
-        if ('html' in ifr){
+        if ('html' in ifr) {
           ifr.html(res);
           bindCollapser(ifr);
         }else
@@ -201,7 +201,7 @@
       }
     };
 
-    var bindCollapser = function(node){
+    var bindCollapser = function(node) {
 
       var currentActivity = LxxlLib.sessionManager.activity;
       currentActivity = pubVersion ? currentActivity.published : currentActivity.draft;
@@ -224,29 +224,29 @@
       node.on('click', 'h4', function(e) {
         var status = $(this).data('manuWillHateMeAgain');
         $(this).data('manuWillHateMeAgain', !status);
-        if(status){
+        if (status) {
           $('i', this).addClass('icon-arrow-up');
           $('i', this).removeClass('icon-arrow-down');
           $(this).next().slideDown(100, show);
         }
-        else{
+        else {
           $('i', this).addClass('icon-arrow-down');
           $('i', this).removeClass('icon-arrow-up');
           $(this).next().slideUp(100, hide);
         }
       });
 
-      currentActivity.pages.forEach(function (page, index) {
+      currentActivity.pages.forEach(function(page, index) {
         if (page.flavor.id != 'jmt')
           return;
 
-        var container = $('[data-page="'+index+'"]');
+        var container = $('[data-page="' + index + '"]');
 
-         $('.questions > li', container).each(function (index, item) {
+        $('.questions > li', container).each(function(index, item) {
           $(item).data('lxxl-question', index);
         });
 
-        $('.propositions > li', container).each(function (index, item) {
+        $('.propositions > li', container).each(function(index, item) {
           $(item).data('lxxl-proposition', index);
         });
 
@@ -258,28 +258,28 @@
           activeClass: 'ui-state-active',
           hoverClass: 'ui-state-hover',
           drop: function(event, ui) {
-           if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
-            var height = ui.draggable.outerHeight();
-            var currentHeight = $(this).find('.title').outerHeight();
+            if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
+              var height = ui.draggable.outerHeight();
+              var currentHeight = $(this).find('.title').outerHeight();
 
-            // cloning and appending prevents the revert animation from still occurring
-            
-            ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
-            ui.draggable.remove();
+              // cloning and appending prevents the revert animation from still occurring
 
-            if (currentHeight < height)
-              $(this).find('.title').outerHeight(height + 'px');
+              ui.draggable.clone(true).css('position', 'inherit').appendTo($(this).find('.response'));
+              ui.draggable.remove();
 
-            $(this).droppable('disable');
-            $(this).addClass('ui-state-correct');
+              if (currentHeight < height)
+                $(this).find('.title').outerHeight(height + 'px');
 
-            if ($('.propositions > li', container).length == 0)
-              LxxlLib.sessionManager.MixAndMatchComplete(index);
-           } else {
-            $(this).addClass('ui-state-wrong');
-            var $this = $(this);
-            setTimeout(function(){ $this.removeClass('ui-state-wrong') }, 1000);
-           }
+              $(this).droppable('disable');
+              $(this).addClass('ui-state-correct');
+
+              if ($('.propositions > li', container).length == 0)
+                LxxlLib.sessionManager.MixAndMatchComplete(index);
+            } else {
+              $(this).addClass('ui-state-wrong');
+              var $this = $(this);
+              setTimeout(function() { $this.removeClass('ui-state-wrong') }, 1000);
+            }
           }
         });
         $('.propositions > li', container).shuffle();
@@ -287,23 +287,23 @@
 
         $('.propositions > li', container).draggable({
           containment: $('.mix-and-match', container),
-          revert:true,
+          revert: true,
           stack: $('.propositions > li', container)
         });
       });
-     
 
 
 
-        // var dataParent = $(this).attr('data-parent');
-        // var speed = parseInt($(this).attr('data-speed')) || 500;
-        // var nodeTarget = $($(this).attr('data-target'));
 
-        // if (nodeTarget.hasClass('slidify-on')) {
-        //   nodeTarget.slideUp(speed, hide);
-        // } else {
-        //   if (dataParent)
-        //     $(dataParent).find('.slidify-on').slideUp(speed, hide);
+      // var dataParent = $(this).attr('data-parent');
+      // var speed = parseInt($(this).attr('data-speed')) || 500;
+      // var nodeTarget = $($(this).attr('data-target'));
+
+      // if (nodeTarget.hasClass('slidify-on')) {
+      //   nodeTarget.slideUp(speed, hide);
+      // } else {
+      //   if (dataParent)
+      //     $(dataParent).find('.slidify-on').slideUp(speed, hide);
 
     };
 
@@ -311,11 +311,11 @@
     this.setupViewport = function(node, noframe) {
       if (ifr && ifr.parentNode)
         ifr.parentNode.removeChild(ifr);
-      if (bb && bb.parentNode){
+      if (bb && bb.parentNode) {
         bb.parentNode.removeChild(bb);
       }
       if (!noframe) {
-        if(!('appendChild' in node))
+        if (!('appendChild' in node))
           node = node[0];
         ifr = document.createElement('iframe');
         bb = ifr;
@@ -486,7 +486,7 @@
 if (/embed\.html/.test(location.href)) {
   var requestDraft = location.href.match(/draft/i);
   var id = location.href.match(/id=([a-z0-9]+)/i);
-  if(id){
+  if (id) {
     id = id.pop();
     var a = new LxxlLib.Masher();
     a.setupViewport($('#lxxlroot'), true);
@@ -501,8 +501,8 @@ if (/embed\.html/.test(location.href)) {
 
   var SERVICE_CONFIG = {
     key: {
-      id : 'PROD',
-      secret : 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
+      id: 'PROD',
+      secret: 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
     },
     server: {
       host: '{PUKE-SERVICE-HOST}',

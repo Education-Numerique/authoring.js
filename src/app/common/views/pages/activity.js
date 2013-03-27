@@ -62,7 +62,7 @@
         }
       },
 
-      
+
 
 
       TatGestion: Em.View.extend({
@@ -132,7 +132,7 @@
 
       })
     }),
-  
+
     MixnmatchPage: Em.View.extend({
       templateName: 'pages/activity/editor/mixnmatch',
       TimeButton: Em.View.extend({
@@ -187,7 +187,7 @@
         this.set('controller.currentPage.sequencing', !this.get('controller.currentPage.sequencing'));
       },
 
-      addElement: function (e) {
+      addElement: function(e) {
         this.get('controller').addQuestion();
         e.preventDefault();
         return false;
@@ -249,7 +249,7 @@
             return 'widget-question-' + this.get('elementId');
           }.property('elementId'),
 
-          answer: (function () {
+          answer: (function() {
             this.get('content.answers')[0].set('isCorrect', true);
             return this.get('content.answers')[0];
           }).property('content.answers'),
@@ -269,8 +269,8 @@
               event.preventDefault();
               return false;
             }
-          }),
-        }),
+          })
+        })
       })
     }),
 
@@ -292,7 +292,7 @@
             }
 
           }.bind(this));
-        },
+        }
       }),
 
       toggleSideDocument: function() {
@@ -839,18 +839,18 @@
     disableSave: false,
     autoSaveListener: null,
 
-    autoSave: function(){
+    autoSave: function() {
       if (jsBoot.controllers.userActivity.staled && !this.get('disableSave')) {
         this.set('disableSave', true);
         // Save
         this.get('controller').get('content').controller.push();
       }
-      if (jsBoot.controllers.userActivity.status == jsBoot.controllers.userActivity.ACTIVE){
+      if (jsBoot.controllers.userActivity.status == jsBoot.controllers.userActivity.ACTIVE) {
         this.set('disableSave', false);
       }
     },
 
-    willDestroyElement: function(){
+    willDestroyElement: function() {
       this.get('controller').get('content').controller.push();
       jsBoot.controllers.userActivity.removeEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
     },
@@ -858,8 +858,8 @@
     didInsertElement: function() {
       this.set('disableSave', true);
       this.autoSaveListener = this.autoSave.bind(this);
-      if(this.get('controller').get('content').controller)
-        this.get('controller').get('content').controller.pull(function(){
+      if (this.get('controller').get('content').controller)
+        this.get('controller').get('content').controller.pull(function() {
           jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED, this.autoSaveListener);
         }.bind(this));
       else

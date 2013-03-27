@@ -529,7 +529,7 @@
     });
 
 
-    this.MixAndMatchComplete = function (pageId) {
+    this.MixAndMatchComplete = function(pageId) {
       $('.modal', $('#jmt-' + pageId)).modal('show');
       console.warn('**** mix and match complete', pageId);
     };
@@ -585,22 +585,22 @@
       });
     };
 
-    var completeQuestion = function(pid, qid){
+    var completeQuestion = function(pid, qid) {
       console.warn(pid, qid);
       activity[pub].pages[pid].questions[qid].completed = true;
       var pageComplete = true;
-      activity[pub].pages[pid].questions.forEach(function(item){
+      activity[pub].pages[pid].questions.forEach(function(item) {
         pageComplete = pageComplete && item.completed;
       });
       console.warn('Going?', pageComplete);
-      if(pageComplete){
+      if (pageComplete) {
         // window.setTimeout(function(){
         $('.conclusion', $('[id="quizz-' + pid + '"]')).modal('show');
         // }, 300);
       }
     };
 
-    var quizzBehavior = function(){
+    var quizzBehavior = function() {
       $('section[id^=quizz-]', dom).each(function(ind, item) {
         $('.qcm button', item).on('click', function() {
           var aid = $(this).parent().attr('id').split('-').pop() - 1;
@@ -608,8 +608,8 @@
           var qid = pid.pop() - 1;
           pid = pid.pop();
           var getBackTo = activity[pub].pages[pid].questions[qid].answers[aid].isCorrect;
-          if(getBackTo){
-            $('button', $(this).parent().parent()).each(function(ind, item){
+          if (getBackTo) {
+            $('button', $(this).parent().parent()).each(function(ind, item) {
               $(item).attr('disabled', 'disabled');
               // if($(item).html() != 'X'){
 
@@ -619,7 +619,7 @@
             $(this).html('O');
             $(this).attr('style', 'background-color: green;');
             completeQuestion(pid, qid);
-          }else{
+          }else {
             $('.modal', $(this).parent()).modal('show');
             $(this).html('X');
             $(this).attr('disabled', 'disabled');
@@ -629,10 +629,10 @@
 
         $('.qrm input', item).on('click', function() {
           var ok = true;
-          $('li', $(this).parent().parent().parent()).each(function(ind, line){
+          $('li', $(this).parent().parent().parent()).each(function(ind, line) {
             ok = ($('input', $(line))[0].checked || $('input', $(line))[1].checked) && ok;
           });
-          if(ok){
+          if (ok) {
             $('button', $(this).parent().parent().parent()).attr('disabled', null);
           }
         });
@@ -644,27 +644,27 @@
           pid = pid.pop();
           var goods = 0;
           var bads = [];
-          $('li', $(this).parent()).each(function(ind, item){
+          $('li', $(this).parent()).each(function(ind, item) {
             var aid = $(item).attr('id').split('-').pop() - 1;
             var isYes = $('input', $(item))[0].checked;
-            if(activity[pub].pages[pid].questions[qid].answers[aid].isCorrect ? isYes : !isYes){
+            if (activity[pub].pages[pid].questions[qid].answers[aid].isCorrect ? isYes : !isYes) {
               console.warn('Pas mal josé!');
               goods++;
-            }else{
+            }else {
               bads.push($('.modal', $(item)));
             }
           });
-          if(bads.length){
+          if (bads.length) {
             var mod = bads[Math.round(Math.random() * (bads.length - 1))];
             $('.feedback', mod).html(goods + '/' + (bads.length + goods));
             mod.modal('show');
-          }else{
+          }else {
             $(this).next().modal('show');
             $(this).attr('disabled', 'disabled');
-            $('li input', $(this).parent()).each(function(ind, item){
+            $('li input', $(this).parent()).each(function(ind, item) {
               $(item).attr('disabled', 'disabled');
             });
-            $(this).next().on('hidden', function(){
+            $(this).next().on('hidden', function() {
               completeQuestion(pid, qid);
             });
           }
@@ -685,29 +685,29 @@
         console.warn('#tat-' + pageId + '-check');
         $('#tat-' + pageId + '-check', item).on('click', function() {
           var notYet = false;
-          $('input', $(this).parent().parent().prev()).each(function(ind, chose){
+          $('input', $(this).parent().parent().prev()).each(function(ind, chose) {
             var response = $(chose).val().toLowerCase().trim();
-            var valid = $(chose).data('ans').map(function(i){
+            var valid = $(chose).data('ans').map(function(i) {
               return i.toLowerCase().trim();
             });
-            var isGood = valid.some(function(i){
+            var isGood = valid.some(function(i) {
               if (response == i)
                 return true;
-              if(i.charAt(i.length -1) == '*'){
+              if (i.charAt(i.length - 1) == '*') {
                 return response.substr(0, i.length - 1) + '*' == i;
               }
               return false;
             });
-            if(isGood){
+            if (isGood) {
               $(chose).attr('disabled', 'disabled');
               $(chose).next().attr('disabled', 'disabled');
-            }else{
+            }else {
               notYet = true;
             }
           });
-          if(notYet){
+          if (notYet) {
             $('.modal.feedback', $('[id="tat-' + pageId + '"]')).modal('show');
-          }else{
+          }else {
             $(this).attr('disabled', 'disabled');
             $('.modal.conclusion', $('[id="tat-' + pageId + '"]')).modal('show');
           }

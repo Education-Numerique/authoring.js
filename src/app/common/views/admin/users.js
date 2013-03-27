@@ -8,7 +8,7 @@
 
 
   var TABLE_OPTIONS = {
-    "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
       var id = aData[aData.length - 1];
       if ($(nRow).attr('data-uid'))
         return;
@@ -20,7 +20,7 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
-      if (item.get('level') != "3") {
+      if (item.get('level') != '3') {
         var admin = $(nRow).find('td:eq(1)');
         admin.html('<button class="icon-arrow-up" rel="tooltip" data-placement="right" title="Changer les droits de cet utilisateur en administrateur"></button>');
 
@@ -45,14 +45,14 @@
         });
       }
 
-      button.bind('click', function (e) {
+      button.bind('click', function(e) {
         LxxlApp.router.send('showAdminUser', item);
       });
     }
   };
 
-  var hookBack = function(id){
-    return users.filter(function(item){
+  var hookBack = function(id) {
+    return users.filter(function(item) {
       return item.uid == id;
     }).pop();
   };
@@ -85,18 +85,18 @@
         item.uid
       ]);
 
-      
+
     }
   };
 
 
-  t.willDestroyElement = function  () {
+  t.willDestroyElement = function() {
     this.get('authors').removeArrayObserver(this, { willChange: will, didChange: did});
     this.get('admins').removeArrayObserver(this, { willChange: will, didChange: did});
   };
 
 
-  t.didInsertElement = function () {
+  t.didInsertElement = function() {
     LxxlLib.behaviors.bindBehaviors(this.get('element'), TABLE_OPTIONS);
     users = this.users = [];
     admins = this.admins = [];
@@ -106,13 +106,13 @@
     this.get('admins').addArrayObserver(this, { willChange: will, didChange: did});
 
 
-    LxxlLib.service.user.list(function (d) {
+    LxxlLib.service.user.list(function(d) {
       users.replace(0, users.length);
       d.forEach(function(item) {
         var user = new LxxlLib.model.User(item);
         console.warn(user.profile.discipline);
         users.pushObject(user);
-        if (user.level == "3")
+        if (user.level == '3')
           admins.pushObject(user);
         else
           authors.pushObject(user);

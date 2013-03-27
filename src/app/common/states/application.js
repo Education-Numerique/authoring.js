@@ -36,7 +36,7 @@
 
 
       // User account related
-      // 
+      //
       admin: Ember.Route.extend({
         route: '/admin',
 
@@ -81,7 +81,7 @@
               controller: router.get('adminActivities')
             });
           }
-        }),
+        })
       }),
 
       showAdminUser: Em.Route.transitionTo('admin.user'),
@@ -161,7 +161,7 @@
           }
         }),
 
-        
+
 
 
         profile: Ember.Route.extend({
@@ -209,7 +209,7 @@
       showAccountReminder: Ember.Route.transitionTo('account.reminder'),
       showAccountLogout: Ember.Route.transitionTo('account.logout'),
       showAccountValidate: Em.Route.transitionTo('account.validate'),
-      
+
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
       // showCnil: Ember.Route.transitionTo('dashboard.cnil'),
@@ -278,13 +278,13 @@
           }
         }),
 
-//        charte: Ember.Route.extend({
-//          route: '/charte',
-//          connectOutlets: function(router) {
-//            router.set('dashboardController.selected', 'charte');
-//          }
-//        }),
-      
+        //        charte: Ember.Route.extend({
+        //          route: '/charte',
+        //          connectOutlets: function(router) {
+        //            router.set('dashboardController.selected', 'charte');
+        //          }
+        //        }),
+
         advices: Ember.Route.extend({
           route: '/advices',
           connectOutlets: function(router) {
@@ -327,7 +327,7 @@
       //     router.get('applicationController').connectOutlet('qtis');
       //   }
       // }),
-      
+
 
       // Routes not accessible from navigation itself
       // showPlayQTI: Ember.Route.transitionTo('playQTI'),

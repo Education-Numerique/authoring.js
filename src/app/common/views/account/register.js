@@ -85,12 +85,12 @@
         item = form[i];
 
         if (item.name == 'discipline') {
-          submitor[item.name] = {id : item.value, title: $(item).find('option[value='+item.value+']').text()};
+          submitor[item.name] = {id: item.value, title: $(item).find('option[value=' + item.value + ']').text()};
         }
         else if ((item.name != 'Submit') && (item.name != 'Back'))
-          submitor[item.name] = item.value; 
+          submitor[item.name] = item.value;
       }
-      
+
       this.get('controller').tryRegister(submitor, onsuccess, onfailure);
 
       return false;

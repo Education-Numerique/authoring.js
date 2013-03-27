@@ -15,10 +15,10 @@
 
 
   var popoverContent = '<div class="thumbnail">{thumbnail}</div>' +
-        '<h5>{nickname}</h5>' +
-        '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
-        '<div class="avatar">{useravatar}</div>' +
-        '<div>{description}</div>';
+      '<h5>{nickname}</h5>' +
+      '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
+      '<div class="avatar">{useravatar}</div>' +
+      '<div>{description}</div>';
 
 
 
@@ -54,13 +54,13 @@
         item.id
       ]);
 
-      
+
     }
     // nn.fnSort([4, 'asc']);
   };
 
   var TABLE_OPTIONS = {
-    "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
       var id = aData[aData.length - 1];
 
       if ($(nRow).attr('data-rid'))
@@ -107,20 +107,20 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
-      button.bind('click', function (e) {
+      button.bind('click', function(e) {
         LxxlApp.router.send('showActivityEdit', item);
       });
 
-      if(item.published.blobs.media.length || item.published.blobs.attachments.length)
+      if (item.published.blobs.media.length || item.published.blobs.attachments.length)
         return;
       button = $(nRow).find('td:eq(2)');
       button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
-      button.bind('click', function (e) {
+      button.bind('click', function(e) {
         console.warn('Fork activity', item.published.toObject());
-        var onCreate = function(){
+        var onCreate = function() {
           act.draft = item.published;// .toObject();
-          act.push(function(){
+          act.push(function() {
             // Something is rotten in Denmark
             // act = LxxlLib.factories.activities.getActivity({id: act.id});
             LxxlApp.router.send('showActivityEdit', act);
@@ -143,17 +143,17 @@
       // console.log(preview.html('bite'));
     }
   };
-  
-  
+
+
   var activities = t.activities = [];
 
-  var hookBack = function(id){
-    return activities.filter(function(item){
+  var hookBack = function(id) {
+    return activities.filter(function(item) {
       return item.id == id;
     }).pop();
   };
 
-  t.willDestroyElement = function () {
+  t.willDestroyElement = function() {
     this.filteredActivities.removeArrayObserver(this, { willChange: will, didChange: did});
   };
 
@@ -175,7 +175,7 @@
       drawPie();
       drawPieLevel();
     }
-  }.observes('dataReady')); 
+  }.observes('dataReady'));
 
   t.matters = (function() {
     if (!innerMatters.length) {
@@ -221,7 +221,7 @@
     d.parent().addClass('active');
     if (matterRestrict)
       piePie.onclick(piePie.controllers[hashMatters[matterRestrict].index]);
-    else{
+    else {
       $('#piepie + ul li').removeClass('hovering');
       $('#piepie + ul li').removeClass('active');
       active.doMouseOut();
@@ -347,7 +347,7 @@
     d.parent().addClass('active');
     if (levelRestrict)
       piePieLev.onclick(piePieLev.controllers[hashLevels[levelRestrict].index]);
-    else{
+    else {
       $('#piepielevel + ul li').removeClass('hovering');
       $('#piepielevel + ul li').removeClass('active');
       activeLevel.doMouseOut();

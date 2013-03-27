@@ -232,7 +232,7 @@
           'video', 'file', 'table', 'link', '|',
           'fontcolor', 'backcolor', '|', 'alignment', '|', 'horizontalrule'];
       }
-      if(LxxlApp.get('router.applicationController.isAdmin'))
+      if (LxxlApp.get('router.applicationController.isAdmin'))
         buttons.push('html');
 
       this._timer = new LxxlLib.utils.Timer(500, function() {
@@ -248,7 +248,7 @@
         this.set('value', this.$().getCode());
       }.bind(this));
 
-      
+
 
 
       this.$().redactor({

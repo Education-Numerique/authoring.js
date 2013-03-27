@@ -51,8 +51,8 @@ jsBoot.pack('LxxlLib.factories', function(api) {
     });
 
     this.discipline = Object.keys(dis).map(function(id) {
-      return {id : id, title: dis[id]};
-    })
+      return {id: id, title: dis[id]};
+    });
 
     var categories = api.defines.categories.map(function(item) {
       return new api.model.Category(item);

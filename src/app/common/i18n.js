@@ -55,7 +55,7 @@
         },
         admin: {
           activities: {
-            title: 'Administration des activités'  
+            title: 'Administration des activités'
           },
           users: {
             title: 'Administration des utilisateurs'
