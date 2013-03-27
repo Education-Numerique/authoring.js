@@ -160,13 +160,13 @@ config-raildecom-darwin:
   links:
     airstrip:
       version: '1.0'
-      url: 'https://www.education-et-numerique.fr/airstrip.json'
+      url: 'https://static.sn.ackitup.net/airstrip.json'
     spitfire:
         version: '1.0'
-        url: 'https://www.education-et-numerique.fr/spitfire.json'
+        url: 'https://static.sn.ackitup.net/lib/webitup/spitfire.json'
     jsboot:
         version: '0.2'
-        url: 'https://www.education-et-numerique.fr/jsboot.json'
+        url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
     self:
       url: '//dev.app.sn.ackitup.net/'
 

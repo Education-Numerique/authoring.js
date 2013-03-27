@@ -213,7 +213,7 @@
       redactor: {
         html: 'Code HTML',
         video: 'Insérer une vidéo...',
-        image: 'Insérer une image...',
+        image: 'Paramètres de l\'image',
         table: 'Tableau',
         link: 'Lien',
         link_insert: 'Insérer un lien...',
