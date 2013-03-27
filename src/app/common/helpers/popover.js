@@ -1,4 +1,6 @@
 (function() {
+  'use strict';
+
   // Bootstrap popover is a piece of shite - use our own in place, recycling just their style
   var popover = $('<div class="popover">' +
       '<div class="arrow"></div>' +
@@ -13,7 +15,7 @@
     popover.hide();
   });
 
-  $(document).on('mouseenter.popover', '[rel=popover]', function(e) {
+  $(document).on('mouseenter.popover', '[rel=popover]', function(/*e*/) {
     var n = $(this);
     var pos = n.data('placement') || 'top';
     var title = n.data('title');
@@ -26,9 +28,9 @@
     else
       $('.popover-content p', popover).html(html);
 
-    var off = n.offset();
-    var w = n.width();
-    var h = n.width();
+    // var off = n.offset();
+    // var w = n.width();
+    // var h = n.width();
 
     popover.removeClass('top');
     popover.removeClass('bottom');
@@ -52,6 +54,7 @@
         popover.css('top', (n.offset().top + n.height() + 20) + 'px');
         break;
       case 'top':
+        /* falls through */
       default:
         popover.css('top', (n.offset().top - popover.height() - 20) + 'px');
         break;
@@ -59,7 +62,7 @@
     popover.show();
   });
 
-  $(document).on('mouseleave.popover', '[rel=popover]', function(e) {
+  $(document).on('mouseleave.popover', '[rel=popover]', function(/*e*/) {
     popover.hide();
   });
 })();

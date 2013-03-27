@@ -7,12 +7,12 @@
     tryRegister: function(data, successCbk, failureCbk) {
       var profile = {};
 
-      for (var key in data) {
+      Object.keys(data).forEach(function(key) {
         if (['', 'username', 'email', 'password', 'password2'].indexOf(key) != -1)
-          continue;
+          return;
 
         profile[key] = data[key];
-      }
+      });
 
       jsBoot.service.account.create(function() {
         successCbk('regular');

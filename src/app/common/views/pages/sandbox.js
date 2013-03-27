@@ -1,4 +1,5 @@
 (function() {
+  /*global moment:false*/
   'use strict';
   var t = this.lxxlPageView('pages/sandbox');
 
@@ -9,7 +10,7 @@
 
     // activity.published
     a.showActivity(LxxlLib.service.activities.readUrl(activity.id), function() {
-      console.warn('All set baby!');
+      // console.warn('All set baby!');
     }, true);
   };
 
@@ -22,7 +23,7 @@
 
 
 
-  var will = function(arr, start, removeCount, addCount) {
+  var will = function(arr, start, removeCount/*, addCount*/) {
     var nn = $('.sandbox.data-table').dataTable();
     for (var x = start + removeCount - 1; x >= start; x--)
       nn.fnDeleteRow(x);
@@ -32,7 +33,7 @@
   var did = function(arr, start, removeCount, addCount) {
 
     var nn = $('.sandbox.data-table').dataTable();
-    var cc = '.sandbox';
+    // var cc = '.sandbox';
 
     for (var x = start, item, infos; x < start + addCount; x++) {
       item = arr[x];
@@ -60,7 +61,7 @@
   };
 
   var TABLE_OPTIONS = {
-    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+    'fnRowCallback': function(nRow, aData/*, iDisplayIndex, iDisplayIndexFull*/) {
       var id = aData[aData.length - 1];
 
       if ($(nRow).attr('data-rid'))
@@ -85,9 +86,12 @@
       switch (infos.difficulty.id) {
         case 'hard':
           df += needle;
+          /* falls through */
         case 'normal':
           df += needle;
+          /* falls through */
         default:
+          /* falls through */
         case 'easy':
           df += needle;
           break;
@@ -100,7 +104,7 @@
       preview.attr('data-placement', 'right');
       preview.attr('rel', 'popover');
 
-      preview.bind('click', function(e) {
+      preview.bind('click', function(/*e*/) {
         $('#modal-preview').modal({keyboard: false, backdrop: true});
         doPreview($('#modal-preview-body'), item);
       });
@@ -108,7 +112,7 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
-      button.bind('click', function(e) {
+      button.bind('click', function(/*e*/) {
         LxxlApp.router.send('showActivityEdit', item);
       });
 
@@ -118,8 +122,8 @@
       button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
           'title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
-      button.bind('click', function(e) {
-        console.warn('Fork activity', item.published.toObject());
+      button.bind('click', function(/*e*/) {
+        // console.warn('Fork activity', item.published.toObject());
         var onCreate = function() {
           act.draft = item.published;// .toObject();
           act.push(function() {
@@ -181,7 +185,7 @@
 
   t.matters = (function() {
     if (!innerMatters.length) {
-      LxxlLib.factories.metadata.matters.forEach(function(item, idx) {
+      LxxlLib.factories.metadata.matters.forEach(function(item/*, idx*/) {
         var mt = Ember.Object.create({
           id: item.id,
           title: item.title,
@@ -212,7 +216,7 @@
     });
 
     return innerMatters;
-  }).property('LxxlLib.factories.metadata.matters.@each', 'activities.@each');
+  }.property('LxxlLib.factories.metadata.matters.@each', 'activities.@each'));
 
   t.clickyClickMatter = function(d) {
     matterRestrict = (d.context == 'reset') ? null : d.context;
@@ -304,9 +308,9 @@
   t.displayLevel = allL;
 
   t.levels = (function() {
-    console.warn('**** using levels');
+    // console.warn('**** using levels');
     if (!innerLevels.length) {
-      LxxlLib.factories.metadata.levels.forEach(function(item, idx) {
+      LxxlLib.factories.metadata.levels.forEach(function(item/*, idx*/) {
         var mt = Ember.Object.create({
           id: item.id,
           title: item.title,
@@ -338,7 +342,7 @@
     });
 
     return innerLevels;
-  }).property('LxxlLib.factories.metadata.levels.@each', 'activities.@each', '_dirtyTrick');
+  }.property('LxxlLib.factories.metadata.levels.@each', 'activities.@each', '_dirtyTrick'));
 
   t.clickyClickLevel = function(d) {
     levelRestrict = (d.context == 'reset') ? null : d.context;
@@ -362,7 +366,7 @@
 
   var piePieLev;
   var drawPieLevel = function() {
-    console.warn('drawing piepie');
+    // console.warn('drawing piepie');
     piePieLev = new LxxlLib.widgets.ApplePie($('#piepielevel')[0]);
     piePieLev.halign = piePieLev.CENTER;
     piePieLev.reverse = false;
@@ -439,7 +443,7 @@
     hashMatters = Ember.Object.create({});
     hashLevels = Ember.Object.create({});
 
-    console.warn('did insert stuff');
+    // console.warn('did insert stuff');
     this.activities.replace(0, this.activities.length);
     rehash();
 

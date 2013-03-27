@@ -1,4 +1,5 @@
 (function() {
+  /*global moment:false*/
   'use strict';
   var t = this.lxxlPageView('pages/myactivities');
 
@@ -9,7 +10,6 @@
 
     // LxxlLib.service.activities.readUrl(activity.id)
     a.showActivity(activity, function() {
-      console.warn('All set baby!');
     });
   };
 
@@ -22,7 +22,7 @@
 
 
 
-  var will = function(arr, start, removeCount, addCount) {
+  var will = function(arr, start, removeCount/*, addCount*/) {
     var nn = $('.mydrafts.data-table').dataTable();
     if (arr == pactivities) {
       nn = $('.mypublished.data-table').dataTable();
@@ -71,7 +71,7 @@
   };
 
   var TABLE_OPTIONS = {
-    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+    'fnRowCallback': function(nRow, aData/*, iDisplayIndex, iDisplayIndexFull*/) {
       var id = aData[aData.length - 1];
 
       if ($(nRow).attr('data-rid'))
@@ -96,9 +96,12 @@
       switch (infos.difficulty.id) {
         case 'hard':
           df += needle;
+          /* falls through */
         case 'normal':
           df += needle;
+          /* falls through */
         default:
+          /* falls through */
         case 'easy':
           df += needle;
           break;
@@ -112,7 +115,7 @@
       preview.attr('data-placement', 'right');
       preview.attr('rel', 'popover');
 
-      preview.bind('click', function(e) {
+      preview.bind('click', function(/*e*/) {
         $('#modal-preview').modal({keyboard: false, backdrop: true});
         doPreview($('#modal-preview-body'), item);
       });
@@ -120,7 +123,7 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
-      button.bind('click', function(e) {
+      button.bind('click', function(/*e*/) {
         LxxlApp.router.send('showActivityEdit', item);
       });
 
@@ -130,7 +133,7 @@
       button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
           'title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
-      button.bind('click', function(e) {
+      button.bind('click', function(/*e*/) {
         var onCreate = function() {
           act.draft = infos;// .toObject();
           act.push(function() {

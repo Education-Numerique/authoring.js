@@ -14,7 +14,8 @@
 
     authors: function() {
       var o = {};
-      var k = this.get('qti').forEach(function(item) {
+      // var k =
+      this.get('qti').forEach(function(item) {
         if (!(item.author in o))
           o[item.author] = 0;
         o[item.author]++;
@@ -24,7 +25,8 @@
 
     categories: function() {
       var o = {};
-      var k = this.get('qti').forEach(function(item) {
+      // var k =
+      this.get('qti').forEach(function(item) {
         if (!(item.category in o))
           o[item.category] = 0;
         o[item.category]++;

@@ -32,9 +32,9 @@
     },
 
 
-    addMedia: function(file, succes, error) {
+    addMedia: function(file, success/*, error*/) {
       this.get('content').controller.addMedia(file, function(url) {
-        succes({filelink: url});
+        success({filelink: url});
       }, function(error) {
         error({error: error});
       });
@@ -112,7 +112,7 @@
     },
 
 
-    doPreview: function(node, activity) {
+    doPreview: function(node/*, activity*/) {
       var a = new LxxlLib.Masher();
       a.setupViewport(node, true);
       // a.addStyle('body{background-color: blue;}');
@@ -122,7 +122,7 @@
       a.setupTemplate('{PUKE-PACKAGE-VERSION}/activity/activity.tpl');
 
       a.showActivity(this.get('content').controller, function() {
-        console.warn('All set baby!');
+        // console.warn('All set baby!');
       });
     },
 
@@ -146,7 +146,7 @@
       // Setter
       this.set('_storedCurrentPage', value);
       return value;
-    }).property('content', 'content.pages.length'),
+    }.property('content', 'content.pages.length')),
 
     tatIsAlphabetical: (function(k, v) {
       if (arguments.length === 1) {
@@ -176,7 +176,7 @@
 
       return !!this.get('currentPage.limitedTime');
 
-    }).property('currentPage', 'currentPage.limitedTime'),
+    }.property('currentPage', 'currentPage.limitedTime')),
 
 
     limitedTimeUpdated: function() {
@@ -197,7 +197,7 @@
 
       date.setSeconds(this.get('currentPage.limitedTime'));
       var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
-        return parseInt(i);
+        return parseInt(i, 10);
       });
 
       var selectedMinute = null;
@@ -217,7 +217,7 @@
       this.set('seconds.selected', selectedSecond);
     }.observes('currentPage.limitedTime'),
 
-    pageActivatedSequencing: (function(key, value) {
+    pageActivatedSequencing: (function(/*key, value*/) {
       if (arguments.length === 1) {
         return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
       }
@@ -228,14 +228,14 @@
 
       if (seq == -1)
         this.set('quizzSequencingIsNaturalOrder', true);
-      else if (seq == 0)
+      else if (!seq)
         this.set('quizzSequencingIsRandom', true);
       else
         this.set('quizzSequencingIsRandomSubset', true);
 
       return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
 
-    }).property('currentPage.sequencing'),
+    }.property('currentPage.sequencing')),
 
 
     quizzSequencingIsNaturalOrder: true,
@@ -246,12 +246,12 @@
       if (arguments.length === 1)
         return this.get('currentPage.sequencing');
       value = parseInt(value, 10);
-      console.log('* - * - *', value);
+      // console.log('* - * - *', value);
       if (value < 1) {
         this.set('currentPage.sequencing', value);
-      } else {
+      }/* else {
         console.log('======> todo');
-      }
+      }*/
     }.property()),
 
     _storedCurrentQuestion: null,
@@ -269,7 +269,7 @@
       // Setter
       this.set('_storedCurrentQuestion', value);
       return value;
-    }).property('currentPage', 'currentPage.questions.length'),
+    }.property('currentPage', 'currentPage.questions.length')),
 
 
     addQuestion: function(at) {

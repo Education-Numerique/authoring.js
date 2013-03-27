@@ -8,7 +8,7 @@
 
 
   var TABLE_OPTIONS = {
-    'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+    'fnRowCallback': function(nRow, aData/*, iDisplayIndex, iDisplayIndexFull*/) {
       var id = aData[aData.length - 1];
       if ($(nRow).attr('data-uid'))
         return;
@@ -20,13 +20,14 @@
       var button = $(nRow).find('td:eq(0)');
       button.html('<button class="icon-edit"></button>');
 
+      var admin;
       if (item.get('level') != '3') {
-        var admin = $(nRow).find('td:eq(1)');
+        admin = $(nRow).find('td:eq(1)');
         admin.html('<button class="icon-arrow-up" rel="tooltip" data-placement="right" ' +
             'title="Changer les droits de cet utilisateur en administrateur"></button>');
 
 
-        admin.bind('click', function(e) {
+        admin.bind('click', function(/*e*/) {
           LxxlLib.service.user.acl.push(Em.K, Em.K, item.uid, 3);
           item.set('level', 3);
 
@@ -34,12 +35,12 @@
           admins.pushObject(item);
         });
       } else {
-        var admin = $(nRow).find('td:eq(1)');
+        admin = $(nRow).find('td:eq(1)');
         admin.html('<button class="icon-arrow-down" rel="tooltip" data-placement="right" ' +
             'title="Changer les droits de cet utilisateur en auteur"></button>');
 
 
-        admin.bind('click', function(e) {
+        admin.bind('click', function(/*e*/) {
           LxxlLib.service.user.acl.push(Em.K, Em.K, item.uid, 1);
           item.set('level', 1);
           authors.pushObject(item);
@@ -47,7 +48,7 @@
         });
       }
 
-      button.bind('click', function(e) {
+      button.bind('click', function(/*e*/) {
         LxxlApp.router.send('showAdminUser', item);
       });
     }
@@ -59,7 +60,7 @@
     }).pop();
   };
 
-  var will = function(arr, start, removeCount, addCount) {
+  var will = function(arr, start, removeCount/*, addCount*/) {
 
     var nn = $('.authors.data-table').dataTable();
     if (arr == admins) {
@@ -112,7 +113,7 @@
       users.replace(0, users.length);
       d.forEach(function(item) {
         var user = new LxxlLib.model.User(item);
-        console.warn(user.profile.discipline);
+        // console.warn(user.profile.discipline);
         users.pushObject(user);
         if (user.level == '3')
           admins.pushObject(user);

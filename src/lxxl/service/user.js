@@ -138,7 +138,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
         if (id)
           url += '/' + id;
 
-        var seed = Math.round(Math.abs((url.charCodeAt(url.length - 5) - 28) / 10));
+        // var seed = Math.round(Math.abs((url.charCodeAt(url.length - 5) - 28) / 10));
         // var crap = requestor.hostPort.replace(/^([^.]+)(\..*)/, '$1' + seed + '$2');
 
         url += '/' + USER_AVATAR;

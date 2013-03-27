@@ -1,4 +1,6 @@
 (function() {
+  /*crappy plugin require this*/
+  /*jshint camelcase:false*/
   'use strict';
   I18n.translations = {
 
@@ -18,7 +20,7 @@
           title: 'CNIL: respect de la vie privée, données personnelles'
         },
         charte: {
-          title: "Conditions d'utilisation des services d'Éducation & Numérique"
+          title: 'Conditions d\'utilisation des services d\'Éducation & Numérique'
         },
 
         account: {

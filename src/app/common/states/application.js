@@ -351,7 +351,7 @@
               else {
                 act.push();
                 act.addObserver('id', function() {
-                  console.warn('BEEN PUSHED', act.id);
+                  // console.warn('BEEN PUSHED', act.id);
                   router.transitionTo('activity.edit', act);
                 });
               }
@@ -359,7 +359,7 @@
 
 
           },
-          connectOutlets: function(router, qti) {
+          connectOutlets: function(router/*, qti*/) {
             // XXX @todo
             // XXX page de choix template activité
             router.get('applicationController').connectOutlet('activityEdit',
@@ -369,8 +369,8 @@
 
         edit: Ember.Route.extend({
           route: '/activity/:id',
-          enter: function(router) {
-            var isLogged = router.get('applicationController.isLogged');
+          enter: function(/*router*/) {
+            // var isLogged = router.get('applicationController.isLogged');
             // Ember.run.next(function() {
             //   if (!isLogged)
             //     router.transitionTo('account.login');

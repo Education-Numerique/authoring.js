@@ -56,19 +56,19 @@
                   function(url, blobId) {
                     insertImage(url, blobId);
                   }, function() {
-                    console.log('=========> error', arguments);
+                    // console.log('=========> error', arguments);
                   });
             });
           }
         });
 
-        $('#redactor_modal .redactor_dropareabox').bind('dragover', function(e) {
+        $('#redactor_modal .redactor_dropareabox').bind('dragover', function(/*e*/) {
           dropZone.addClass('hover');
         });
-        $('#redactor_modal .redactor_dropareabox').bind('dragleave', function(e) {
+        $('#redactor_modal .redactor_dropareabox').bind('dragleave', function(/*e*/) {
           dropZone.removeClass('hover');
         });
-        $('#redactor_modal .redactor_dropareabox').bind('drop', function(e) {
+        $('#redactor_modal .redactor_dropareabox').bind('drop', function(/*e*/) {
           dropZone.removeClass('hover').addClass('drop');
         });
 
@@ -86,7 +86,7 @@
         }.bind(this));
       }.bind(this));
 
-      this.addBtnBefore('video', 'imagemanager', 'Insérer une image', function(obj, e) {
+      this.addBtnBefore('video', 'imagemanager', 'Insérer une image', function(obj/*, e*/) {
         redactorScope = obj;
         obj.modalInit('Insérer une image', '#redactor-imagemanager', 500, callback);
       });
@@ -164,7 +164,7 @@
       }.bind(this));
 
 
-      this.addBtn('mathjax', 'Math', function(obj, e) {
+      this.addBtn('mathjax', 'Math', function(obj/*, e*/) {
         redactorScope = obj;
         target = obj.getBtn('mathjax').data('target');
         obj.getBtn('mathjax').data('target', null);
@@ -237,7 +237,7 @@
       }.bind(this));
 
 
-      this.addBtn('tat', 'Texte à trous', function(obj, e) {
+      this.addBtn('tat', 'Texte à trous', function(obj/*, e*/) {
         redactorScope = obj;
         target = obj.getBtn('tat').data('target') ? $(obj.getBtn('tat').data('target')) : null;
         obj.getBtn('tat').data('target', null);
@@ -275,7 +275,8 @@
   this.RedactorPlugins.tooltip = new (function() {
     this.init = function() {
       var redactorScope;
-      var text = '', target = undefined;
+      var text = '';
+      var target;
 
       var callback = (function() {
 
@@ -355,7 +356,7 @@
       }.bind(this));
 
 
-      this.addBtn('tooltip', 'Tooltip', function(obj, e) {
+      this.addBtn('tooltip', 'Tooltip', function(obj/*, e*/) {
         redactorScope = obj;
         obj.getBtn('tat').data('target', null);
 

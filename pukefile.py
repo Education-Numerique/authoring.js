@@ -15,7 +15,7 @@ def default():
 @task("Verify")
 def verify():
   executeTask("lint")
-  # executeTask("hint")
+  executeTask("hint")
 
 
 @task("All")

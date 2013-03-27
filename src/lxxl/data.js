@@ -1,5 +1,7 @@
 // jsBoot.use('LxxlLib.model.Activity');
 jsBoot.pack('LxxlLib.model.defines', function() {
+  /* Unfortunately, non camel case identifiers are used */
+  /*jshint camelcase:false*/
   'use strict';
 
   this.lengths = {
@@ -132,8 +134,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     // categories[0] : Anglais, tout le lycée ...
     { id: 'eng_tt_lycee', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
       {id: 'eng_tt_lycee_1', title: 'COMPRÉHENSION ÉCRITE', content: [
-        {id: 'eng_tt_lycee_1_1', title: "Comprendre l'essentiel d'un texte écrit"},
-        {id: 'eng_tt_lycee_1_2', title: "De l'explicite à l'implicite"},
+        {id: 'eng_tt_lycee_1_1', title: 'Comprendre l\'essentiel d\'un texte écrit'},
+        {id: 'eng_tt_lycee_1_2', title: 'De l\'explicite à l\'implicite'},
         {id: 'eng_tt_lycee_1_3', title: 'Répondre aux questions'},
         {id: 'eng_tt_lycee_1_4', title: 'Traduire'},
         {id: 'eng_tt_lycee_1_5', title: 'Annales du Bac'}
@@ -182,8 +184,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
             ]},
             {id: 'his_tt_prem_6', title: 'MÈTHODOLOGIE', content: [
               {id: 'his_tt_prem_6_1', title: 'La composition'},
-              {id: 'his_tt_prem_6_2', title: "L'étude d'un document"},
-              {id: 'his_tt_prem_6_3', title: "L'étude de deux documents"}
+              {id: 'his_tt_prem_6_2', title: 'L\'étude d\'un document'},
+              {id: 'his_tt_prem_6_3', title: 'L\'étude de deux documents'}
             ]}
           ]},
     // categories[2] : Géo, premières multiples ...
@@ -199,18 +201,18 @@ jsBoot.pack('LxxlLib.model.defines', function() {
               {id: 'geo_tt_prem_3_3', title: 'Dynamiques des espaces productifs'},
               {id: 'geo_tt_prem_3_4', title: 'Mobilités, flux et réseaux de communication'}
             ]},
-            {id: 'geo_tt_prem_3', title: "L'Union européenne", content: [
+            {id: 'geo_tt_prem_3', title: 'L\'Union européenne', content: [
               {id: 'geo_tt_prem_4_1', title: 'Europe et Union européenne'},
               {id: 'geo_tt_prem_4_2', title: 'Les territoires ultramarins'}
             ]},
             {id: 'geo_tt_prem_4', title: 'France, Europe et monde', content: [
-              {id: 'geo_tt_prem_5_1', title: "L'UE dans la mondialisation"},
+              {id: 'geo_tt_prem_5_1', title: 'L\'UE dans la mondialisation'},
               {id: 'geo_tt_prem_5_2', title: 'La France dans la mondialisation'}
             ]},
             {id: 'geo_tt_prem_5', title: 'Méthodologie', content: [
               {id: 'geo_tt_prem_6_1', title: 'La composition'},
-              {id: 'geo_tt_prem_6_2', title: "L'étude d'un document"},
-              {id: 'geo_tt_prem_6_3', title: "L'étude de deux documents"},
+              {id: 'geo_tt_prem_6_2', title: 'L\'étude d\'un document'},
+              {id: 'geo_tt_prem_6_3', title: 'L\'étude de deux documents'},
               {id: 'geo_tt_prem_6_4', title: 'Le croquis'},
               {id: 'geo_tt_prem_6_5', title: 'Le schéma'}
             ]}
@@ -285,8 +287,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         ]},
         {id: 'mat_ts_7', title: 'PRODUIT SCALAIRE'},
         {id: 'mat_ts_8', title: 'PLANS ET DROITES', content: [
-          {id: 'mat_ts_8_1', title: "Equations d'un plan"},
-          {id: 'mat_ts_8_2', title: "Représentation paramétrique d'une droite"},
+          {id: 'mat_ts_8_1', title: 'Equations d\'un plan'},
+          {id: 'mat_ts_8_2', title: 'Représentation paramétrique d\'une droite'},
           {id: 'mat_ts_8_3', title: 'Intersections de plans ou de droites'}
         ]},
         {id: 'mat_ts_9', title: 'BARYCENTRES', content: [
@@ -306,7 +308,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           {id: 'mat_ts_sp_3_1', title: 'Similitudes directes'},
           {id: 'mat_ts_sp_3_2', title: 'Similitudes indirectes'}
         ]},
-        {id: 'mat_ts_sp_4', title: "GEOMETRIE DANS L'ESPACE (sp)", content: [
+        {id: 'mat_ts_sp_4', title: 'GEOMETRIE DANS L\'ESPACE (sp)', content: [
           {id: 'mat_ts_sp_4_1', title: 'Cylindres'},
           {id: 'mat_ts_sp_4_2', title: 'Cônes'},
           {id: 'mat_ts_sp_4_3', title: 'Surfaces'}

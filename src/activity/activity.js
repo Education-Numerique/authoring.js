@@ -8,6 +8,7 @@
 /*global Mingus, Handlebars*/
 
 (function($) {
+  'use strict';
 
   $.fn.shuffle = function() {
 
@@ -21,7 +22,7 @@
       allElems.splice(random, 1);
       return randEl;
     });
-    var max = this.length;
+    // var max = this.length;
 
     this.each(function(i) {
       $(this).replaceWith($(shuffled[i]));
@@ -31,7 +32,7 @@
 
   };
 
-})(jQuery);
+})($);
 
 
 (function() {
@@ -221,7 +222,7 @@
       $('h4', node).append('<i></i>');
       $('h4', node).data('manuWillHateMeAgain', true);
       $('h4 > i', node).addClass('icon-arrow-down');
-      node.on('click', 'h4', function(e) {
+      node.on('click', 'h4', function(/*e*/) {
         var status = $(this).data('manuWillHateMeAgain');
         $(this).data('manuWillHateMeAgain', !status);
         if (status) {
@@ -273,12 +274,12 @@
               $(this).droppable('disable');
               $(this).addClass('ui-state-correct');
 
-              if ($('.propositions > li', container).length == 0)
+              if (!$('.propositions > li', container).length)
                 LxxlLib.sessionManager.MixAndMatchComplete(index);
             } else {
               $(this).addClass('ui-state-wrong');
               var $this = $(this);
-              setTimeout(function() { $this.removeClass('ui-state-wrong') }, 1000);
+              setTimeout(function() { $this.removeClass('ui-state-wrong'); }, 1000);
             }
           }
         });
@@ -482,46 +483,50 @@
   */
 }).apply(this);
 
-// Activity may be passed as a json url, or embedded as a datauri?
-if (/embed\.html/.test(location.href)) {
-  var requestDraft = location.href.match(/draft/i);
-  var id = location.href.match(/id=([a-z0-9]+)/i);
-  if (id) {
-    id = id.pop();
-    var a = new LxxlLib.Masher();
-    a.setupViewport($('#lxxlroot'), true);
-    // a.addStyle('body{background-color: blue;}');
-    a.setupTemplate('activity.tpl');
-    // activity.published
-    id = '//api.education-et-numerique.fr/1.0/activities/' + id + (requestDraft ? '/draft' : '/public');
-    a.showActivity(id, function() {
-      console.warn('All set baby!');
-    }, true);
+(function() {
+  'use strict';
+
+  // Activity may be passed as a json url, or embedded as a datauri?
+  if (/embed\.html/.test(location.href)) {
+    var requestDraft = location.href.match(/draft/i);
+    var id = location.href.match(/id=([a-z0-9]+)/i);
+    if (id) {
+      id = id.pop();
+      var a = new LxxlLib.Masher();
+      a.setupViewport($('#lxxlroot'), true);
+      // a.addStyle('body{background-color: blue;}');
+      a.setupTemplate('activity.tpl');
+      // activity.published
+      id = '//api.education-et-numerique.fr/1.0/activities/' + id + (requestDraft ? '/draft' : '/public');
+      a.showActivity(id, function() {
+        // console.warn('All set baby!');
+      }, true);
+    }
+
+    var SERVICE_CONFIG = {
+      key: {
+        id: 'PROD',
+        secret: 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
+      },
+      server: {
+        host: '{PUKE-SERVICE-HOST}',
+        port: '{PUKE-SERVICE-PORT}',
+        // host: 'snap.lxxl.com',8081
+        // port: '90',
+        version: '1.0'
+      },
+      anonymous: {
+        id: 'anonymous',
+        login: 'anonymous',
+        password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+      }
+    };
+
+    jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
+
   }
 
-  var SERVICE_CONFIG = {
-    key: {
-      id: 'PROD',
-      secret: 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
-    },
-    server: {
-      host: '{PUKE-SERVICE-HOST}',
-      port: '{PUKE-SERVICE-PORT}',
-      // host: 'snap.lxxl.com',8081
-      // port: '90',
-      version: '1.0'
-    },
-    anonymous: {
-      id: 'anonymous',
-      login: 'anonymous',
-      password: '860b9dbbda6ee5f71ddf3b44e54c469e'
-    }
-  };
-
-  jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
-
-}
-
+})();
 
 /*
 // window.onload = function(){

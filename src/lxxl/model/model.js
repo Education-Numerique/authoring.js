@@ -166,6 +166,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   };
 
   var failure = function() {
+    /*global console:false*/
     try {
       throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
     }catch (e) {

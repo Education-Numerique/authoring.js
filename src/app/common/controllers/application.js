@@ -71,7 +71,7 @@
     // Bind user identifier
     this.uid = (function() {
       return jsBootApp.userIdentifier;
-    }).property('_jsBootApp.userIdentifier');
+    }.property('_jsBootApp.userIdentifier'));
 
     this.AUTHOR = 1;
     // this.REVIEWER = 2;
@@ -80,18 +80,18 @@
     // Bind "isAdmin"
     this.isAdmin = (function() {
       return this.get('user.level') == this.ADMIN;
-    }).property('_jsBootApp.status');
+    }.property('_jsBootApp.status'));
 
     this.isAuthor = (function() {
       return this.get('user.level') == this.AUTHOR;
-    }).property('_jsBootApp.status');
+    }.property('_jsBootApp.status'));
 
 
 
     // Bind "isLogged"
     this.isLogged = (function() {
       return jsBootApp.status == jsBootApp.USER_READY;
-    }).property('_jsBootApp.status');
+    }.property('_jsBootApp.status'));
 
 
     jsBootApp.addObserver('status', function() {
@@ -115,7 +115,7 @@
     // Bind "status"
     this.status = (function() {
       return jsBootApp.status;
-    }).property('_jsBootApp.status');
+    }.property('_jsBootApp.status'));
 
     // Which node is actually selected
     this.selected = null;

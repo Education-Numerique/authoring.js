@@ -13,6 +13,7 @@
  */
 
 (function() {
+  /*jshint maxstatements:50*/
   'use strict';
 
   if (!/^www\./.test(location.hostname) && !/^app\./.test(location.hostname) && !/^dev\./.test(location.hostname)) {

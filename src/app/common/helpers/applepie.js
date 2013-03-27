@@ -1,6 +1,6 @@
 (function() {
   /*global Raphael:true*/
-  /*jshint maxparams:15*/
+  /*jshint maxparams:16*/
   'use strict';
 
   // This below is trash dirty old code
@@ -120,8 +120,8 @@
     if (!computed)
       throw new Error('NOT_INSERTED_NODE');
 
-    var w = parseInt(computed.width, 10);
-    var h = parseInt(computed.height, 10);
+    // var w = parseInt(computed.width, 10);
+    // var h = parseInt(computed.height, 10);
     var factor = 1.3;
 
     this.onover = null;

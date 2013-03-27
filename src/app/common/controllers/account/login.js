@@ -17,7 +17,7 @@
           LxxlApp.get('router.applicationController.USER_FAIL');
     }.property('LxxlApp.router.applicationController.status')),
 
-    sendReminder: function(email) {
+    sendReminder: function(/*email*/) {
     }
   });
 

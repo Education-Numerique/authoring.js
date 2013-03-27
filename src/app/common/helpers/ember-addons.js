@@ -11,6 +11,8 @@
  */
 
 (function() {
+  /*because of chosen...*/
+  /*jshint camelcase:false*/
   'use strict';
 
   if ('undefined' === typeof LxxlLib) {
@@ -117,7 +119,7 @@
     },
 
 
-    change: function(e) {
+    change: function(/*e*/) {
       var options = this.$('option:selected'),
           content = this.get('rawContent'),
           selection = this.get('selection');
@@ -153,8 +155,9 @@
 
       // }
 
-      var value = this.get('rawContent');
-
+      // XXX ????
+      value = this.get('rawContent');
+      // XXX ????
       var c = value;
       var list = [];
 
@@ -303,10 +306,10 @@
         }.bind(this));
 
 
-        var hideTatAir = (function() {
-          ensureTatAir();
-          this.$editor.tatAir.hide();
-        }.bind(this));
+        // var hideTatAir = (function() {
+        //   ensureTatAir();
+        //   this.$editor.tatAir.hide();
+        // }.bind(this));
 
         var ensureTatAir = (function() {
           if (!this.$editor.tatAir) {
@@ -320,7 +323,7 @@
             $('body').prepend(this.$editor.tatAir);
             this.$editor.tatAir.hide();
 
-            this.$editor.tatAir.find('a').click(function(e) {
+            this.$editor.tatAir.find('a').click(function(/*e*/) {
               api.getBtn('tat').click();
               this.$editor.tatAir.hide();
             }.bind(this));
@@ -330,7 +333,7 @@
 
         this.$editor.bind('textselect', showTatAir.bind(this));
 
-        this.$editor.bind('textunselect', function(e) {
+        this.$editor.bind('textunselect', function(/*e*/) {
           this.$editor.tatAir.hide();
           return true;
         }.bind(this));

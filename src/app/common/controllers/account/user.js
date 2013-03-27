@@ -19,7 +19,7 @@
       return LxxlLib.factories.metadata.discipline.filter(function(i) {
         return (i.id == current.id);
       }).pop();
-    }).property('content.profile'),
+    }.property('content.profile')),
 
     disciplines: Em.Object.create({
       content: LxxlLib.factories.metadata.discipline

@@ -65,10 +65,10 @@
 
   jsBoot.loader.use('bootstrap', version || 'stable');
 
-  console.warn(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
   try {
     jsBoot.loader.use(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
   }catch (e) {
+    /*global console:false*/
     console.error(e);
   }
 
@@ -89,10 +89,8 @@
       // Mute console while in production
       jsBoot.core.toggleConsole(false);
     }
-    console.warn('really OK?');
   });
 
-  console.warn('OK?');
   jsBoot.loader.use('apiwrapper' + suffix + 'js');
   jsBoot.loader.wait();
   jsBoot.loader.use('activity' + suffix + 'css');

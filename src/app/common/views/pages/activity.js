@@ -161,9 +161,9 @@
         click: function(e) {
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
             $('#modal-page-sequencing').modal('show');
-          else if (this.$('[data-toggle]')[0] == e.target) {
+          /*else if (this.$('[data-toggle]')[0] == e.target) {
 
-          }
+          }*/
         }
       }),
       toggleSideDocument: function(e) {
@@ -183,7 +183,7 @@
         return false;
       },
 
-      toggleRandom: function(e) {
+      toggleRandom: function(/*e*/) {
         this.set('controller.currentPage.sequencing', !this.get('controller.currentPage.sequencing'));
       },
 
@@ -252,7 +252,7 @@
           answer: (function() {
             this.get('content.answers')[0].set('isCorrect', true);
             return this.get('content.answers')[0];
-          }).property('content.answers'),
+          }.property('content.answers')),
 
           DeleteQuestionButton: Em.View.extend({
             tagName: 'button',
@@ -316,9 +316,9 @@
         click: function(e) {
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
             $('#modal-page-sequencing').modal('show');
-          else if (this.$('[data-toggle]')[0] == e.target) {
+          /*          else if (this.$('[data-toggle]')[0] == e.target) {
 
-          }
+          }*/
         }
       }),
 
@@ -595,7 +595,7 @@
               if (validation.test(file.type) && file.size < maxFileSize) {
                 self.get('controller.content').controller.addAttachment(file, file.name, function() {
                   showOkMessage('Le fichier <b>' + file.name + '</b> a bien été ajouté');
-                }, function(e) {
+                }, function(/*e*/) {
                   showErrorMessage();
                 });
               } else {
@@ -625,13 +625,13 @@
           $('.upload-ok').fadeIn().delay(3000).fadeOut();
         };
 
-        this.$('.dropzone').bind('dragover', function(e) {
+        this.$('.dropzone').bind('dragover', function(/*e*/) {
           $(this).addClass('hover');
         });
-        this.$('.dropzone').bind('dragleave', function(e) {
+        this.$('.dropzone').bind('dragleave', function(/*e*/) {
           $(this).removeClass('hover');
         });
-        this.$('.dropzone').bind('drop', function(e) {
+        this.$('.dropzone').bind('drop', function(/*e*/) {
           $(this).removeClass('hover').addClass('drop');
           window.setTimeout(function() {
             $(this).removeClass('drop');

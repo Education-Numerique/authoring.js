@@ -36,7 +36,7 @@
         messages: {
           username: {
             required: 'Merci de fournir un nom d\'utilisateur',
-            minlength: jQuery.format('Minimum {0} caractères')
+            minlength: $.format('Minimum {0} caractères')
           },
           password: 'Vous devez choisir un mot de passe (6 à 25 caractères)',
           password2: {

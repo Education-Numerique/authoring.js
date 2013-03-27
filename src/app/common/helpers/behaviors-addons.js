@@ -13,6 +13,8 @@
 (function() {
   'use strict';
   LxxlLib.behaviors = new (function() {
+    /*because of chosen*/
+    /*jshint camelcase:false*/
     $('html').tooltip({selector: '[rel=tooltip]'});
 
 
@@ -88,7 +90,7 @@
         if (p.hasClass('will-print'))
           return;
         p.addClass('will-print');
-        p.click(function(e) {
+        p.click(function(/*e*/) {
           print();
         });
       });
@@ -165,9 +167,9 @@
         $(this).addClass('slidify-on');
       };
 
-      $('body').on('click.slidify.data-api', '[data-toggle=slidify]', function(e) {
+      $('body').on('click.slidify.data-api', '[data-toggle=slidify]', function(/*e*/) {
         var dataParent = $(this).attr('data-parent');
-        var speed = parseInt($(this).attr('data-speed')) || 500;
+        var speed = parseInt($(this).attr('data-speed'), 10) || 500;
         var nodeTarget = $($(this).attr('data-target'));
 
         if (nodeTarget.hasClass('slidify-on')) {
