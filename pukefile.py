@@ -20,7 +20,7 @@ def verify():
 
 @task("All")
 def all():
-  executeTask("lint")
+  executeTask("verify")
   # executeTask("hint")
   executeTask("build")
   # executeTask("tests")
