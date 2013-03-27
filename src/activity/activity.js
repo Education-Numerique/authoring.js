@@ -484,6 +484,7 @@
 
 // Activity may be passed as a json url, or embedded as a datauri?
 if (/embed\.html/.test(location.href)) {
+  var requestDraft = location.href.match(/draft/i);
   var id = location.href.match(/id=([a-z0-9]+)/i);
   if(id){
     id = id.pop();
@@ -492,7 +493,7 @@ if (/embed\.html/.test(location.href)) {
     // a.addStyle('body{background-color: blue;}');
     a.setupTemplate('activity.tpl');
     // activity.published
-    id = '//api.education-et-numerique.fr/1.0/activities/' + id + '/public';
+    id = '//api.education-et-numerique.fr/1.0/activities/' + id + (requestDraft ? '/draft' : '/public');
     a.showActivity(id, function() {
       console.warn('All set baby!');
     }, true);
