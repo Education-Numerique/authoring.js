@@ -19,13 +19,23 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var CMD_REPORTED = 'reported';
   var CMD_PUBLISHED = 'published';
 
+  var wrapIt = function(callback) {
+    return function(e) {
+      delete e.details.error;
+      var info = $('.network-crash div');
+      info.html(info.html() + '<pre style="whitespace: pre;">' + JSON.stringify(e) + '</pre>');
+      $('.network-crash').show();
+      callback();
+    };
+  };
+
   this.activities = new (function() {
 
     this.list = function(onSuccess, onFailure) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         command: '#'
       });
     };
@@ -34,7 +44,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         command: CMD_MINE
       });
     };
@@ -48,7 +58,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         command: CMD_REPORTED,
         params: p
       });
@@ -63,7 +73,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         command: CMD_PUBLISHED,
         params: p
       });
@@ -73,7 +83,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         // XXX Dirty trick while manu fixes his internal redirects lacking trailing slash
         command: '#',
         payload: payload || {}
@@ -84,7 +94,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_THUMBNAIL,
         payload: payload || {}
@@ -95,7 +105,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_MEDIA,
         payload: payload || {}
@@ -106,7 +116,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_ATTACHMENT,
         payload: payload || {}
@@ -117,7 +127,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.DELETE, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_ATTACHMENT + '/' + aid
       });
@@ -128,7 +138,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         // XXX Dirty trick while manu fixes his internal redirects lacking trailing slash
         id: id,
         command: '#',
@@ -140,7 +150,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: '#'
       });
@@ -150,7 +160,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       return requestor.url({
         service: SERVICE,
         onsuccess: function() {},
-        onfailure: function() {},
+        onfailure: wrapIt(function() {}),
         id: id,
         command: 'public'
       });
@@ -160,7 +170,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.DELETE, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: '#'
       });
@@ -170,7 +180,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_PUBLISH
       });
@@ -180,7 +190,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_UNPUBLISH
       });
@@ -190,7 +200,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_SEEN
       });
@@ -200,7 +210,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_REPORT
       });
@@ -210,7 +220,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
-        onfailure: onFailure,
+        onfailure: wrapIt(onFailure),
         id: id,
         command: CMD_UNREPORT
       });

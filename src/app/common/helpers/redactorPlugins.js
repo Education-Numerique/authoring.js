@@ -256,8 +256,8 @@
         var alts = $('#redactor_modal .alternatives').val();
         var markup = $('<div><a data-type="tat" />&nbsp</div>');
         markup.find('a').attr('data-clue', redactorScope.stripTags(clue));
-        markup.find('a').attr('data-alt',  redactorScope.stripTags(alts));
-        markup.find('a').text( word );
+        markup.find('a').attr('data-alt', redactorScope.stripTags(alts));
+        markup.find('a').text(word);
 
         if (el && el.attr('data-type') == 'tat') {
           el.replaceWith(markup.html());

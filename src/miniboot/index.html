@@ -115,6 +115,16 @@
     <img src="miniboot.png" />
   </p>
 
+
+  <section style="position: fixed; top: 0; text-align: center; z-index: 1000;" class="network-crash">
+    <!-- Everything but Chrome and Firefox (and old IEs) will get this -->
+    <div class="alert alert-error">
+      <button class="close" data-dismiss="alert">×</button>
+      <strong>Problème réseau!!!! Soit le serveur, soit votre connexion internet n'a pas répondu. L'application et la donnée en cours de modification est possiblement devenue instable. Merci d'ouvrir un ticket sur github, d'y décrire sommairement ce que vous faisiez, et d'y ajouter les informations ci-dessous.</strong>
+    </div>
+  </section>
+
+
   <!-- jsBoot loader inclusion point -->
   <script type="text/javascript" src="{JSBOOT}"></script>
   <!-- Application script bootstrapper -->
