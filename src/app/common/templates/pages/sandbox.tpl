@@ -92,8 +92,8 @@
             <!--
             <th>Durée</th>
             <th>Difficulté</th>
-            <th>Auteur</th>
           -->
+            <th>Auteur</th>
             <th>Id</th>
           </tr>
         </thead>

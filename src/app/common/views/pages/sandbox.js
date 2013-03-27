@@ -50,12 +50,13 @@
         // infos.level.title, //Niveau
         moment(item.publicationDate || item.creationDate).fromNow(),
         item.seenCount,
-        // item.author.username,
+        item.author.username,
         item.id
       ]);
 
       
     }
+    // nn.fnSort([4, 'asc']);
   };
 
   var TABLE_OPTIONS = {
