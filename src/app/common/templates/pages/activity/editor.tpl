@@ -14,7 +14,7 @@
                 </div>
                 {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
 <!--
-                <button type="button" {{action deleteActivity target="controller"}} class="btn btn-mini btn-danger" style="margin-left:20px">Supprimer</button>
+                <button type="button" [[action deleteActivity target="controller"]] class="btn btn-mini btn-danger" style="margin-left:20px">Supprimer</button>
             -->
                 <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Exporter</button>
                 <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>

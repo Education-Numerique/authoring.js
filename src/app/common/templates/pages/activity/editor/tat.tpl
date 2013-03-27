@@ -15,7 +15,7 @@
                 <!--
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Sous-titre</label>
-                    {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
+                    [[view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"]]
                 </div>
             --> 
                 
@@ -44,8 +44,8 @@
                     Gestion
                 </button>
 <!--
-                <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">
-                    {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"}}
+                <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
+                    [[view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"]]
                     Side document
                 </button>
 -->

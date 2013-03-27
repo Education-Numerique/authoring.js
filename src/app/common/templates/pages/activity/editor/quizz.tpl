@@ -17,7 +17,7 @@
             <!-- Ciao sous-titre ...
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Sous-titre</label>
-                    {{view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"}}
+                    [[view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"]]
                 </div>
             -->
                 
@@ -44,8 +44,8 @@
                     {{#view view.SequenceButton classNames="btn multicontrol nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"}}<span data-toggle="modal" href="#modal-page-sequencing"  class="name btn">Séquenceur</span>{{/view}}
 
                 <!-- Ciao Side Document ....
-                    <button {{action toggleSideDocument target="this"}} type="button" class="name btn radioblock">
-                        {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"}}
+                    <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
+                        [[view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"]]
                         Side document
                     </button>
                 -->
@@ -59,7 +59,7 @@
         </div>
     </div>
 <!-- Ciao Side Document ....
-    {{#if currentPage.hasDocument}}
+    [[#if currentPage.hasDocument]]
     <div class="widget-box">
         <div class="widget-title" data-toggle="slidify" data-target="#page-document">
             <span class="icon">
@@ -68,10 +68,10 @@
             <h5>Document</h5>
         </div>
         <div class="widget-content slidify-on nopadding" id="page-document">
-                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tooltip,imagemanager" classNames="redactorjs"}}
+                [[view LxxlLib.Em.Wysiwyg valueBinding="currentPage.document" plugins="mathjax,tooltip,imagemanager" classNames="redactorjs"]]
         </div>
     </div>
-    {{/if}}
+    [[/if]]
 -->
         <hr class="soften" />
         <div class="widget-box questions-toolbar">

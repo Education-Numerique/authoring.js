@@ -4,23 +4,23 @@
 
 <div class="row-fluid">
 <!--
-  {{#if view.activities.length}}
+  [[#if view.activities.length]]
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Mes activités</h4>
     Retrouvez ici toutes vos activités, publiées et non publiées.<br />
-    Vous pouvez également, <a {{action showNewActivity href=true}}>créer une nouvelle activité.</a>
+    Vous pouvez également, <a [[action showNewActivity href=true]]>créer une nouvelle activité.</a>
   </div>
-  {{/if}}
+  [[/if]]
 
 
-  {{#unless view.activities.length}}
+  [[#unless view.activities.length]]
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Aucune activité pour l'instant</h4>
-    Créez votre première activité <a {{action showNewActivity href=true}}>en cliquant ici.</a>
+    Créez votre première activité <a [[action showNewActivity href=true]]>en cliquant ici.</a>
   </div>
-  {{/unless}}
+  [[/unless]]
 -->
   <div class="widget-box">
     <div class="widget-title">

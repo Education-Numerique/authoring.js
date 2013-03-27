@@ -43,7 +43,7 @@
             </li>
 
             <li class="user-logged-out">
-<!--              <a {{action showAccountLogin href=true}} rel="tooltip" data-placement="top" title="Connexion au service"> -->
+<!--              <a [[action showAccountLogin href=true]] rel="tooltip" data-placement="top" title="Connexion au service"> -->
               <a {{action showAccountLogin href=true}}>
                 <i class="icon-client"></i>
                 Se connecter
@@ -63,7 +63,7 @@
               </a>
             </li>
 <!--            <li class="user-author">
-              <a {{action showAccountSettings href=true}} rel="tooltip" data-placement="top" title="Accéder à vos paramètres">
+              <a [[action showAccountSettings href=true]] rel="tooltip" data-placement="top" title="Accéder à vos paramètres">
                 <i class="icon-lock"></i>
                 Réglages
               </a>
