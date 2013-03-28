@@ -14,6 +14,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var USER_AVATAR = 'avatar';
   var USER_SETTINGS = 'settings';
   var USER_PREFERENCES = 'preferences';
+  var USER_REMINDER = 'reminder';
   // var USER_CMD_LIST = 'list';
 
   this.user = new (function() {
@@ -24,6 +25,31 @@ jsBoot.pack('LxxlLib.service', function(api) {
         onsuccess: onSuccess,
         onfailure: onFailure
         // command: USER_CMD_LIST
+      });
+    };
+
+    this.reminderChangePassword = function(onSuccess, onFailure, email, code, password){
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id || api.core.id,
+        command: USER_REMINDER,
+        payload: {
+          email: email,
+          code: code,
+          password: password
+        }
+      });
+    };
+
+    this.reminderRequestPassword = function(onSuccess, onFailure, email){
+      requestor.query(requestor.GET, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: id || api.core.id,
+        command: USER_REMINDER + '/?email=' + email
       });
     };
 
