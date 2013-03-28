@@ -192,6 +192,7 @@
         });
         var res = tpl(deref);
         if ('html' in ifr) {
+          ifr.html(' ');
           ifr.html(res);
           bindCollapser(ifr);
         }else
@@ -203,6 +204,7 @@
     };
 
     var bindCollapser = function(node) {
+      // console.warn('entering bind collapser', node[0].innerHTML);
 
       var currentActivity = LxxlLib.sessionManager.activity;
       currentActivity = pubVersion ? currentActivity.published : currentActivity.draft;
@@ -219,23 +221,31 @@
 
       $(node).tooltip({selector: '[rel=tooltip]'});
       $('h4', node).next().slideUp();
-      $('h4', node).append('<i></i>');
+      $('h4', node).append('<i class="collapse-binder"></i>');
       $('h4', node).data('manuWillHateMeAgain', true);
-      $('h4 > i', node).addClass('icon-arrow-down');
-      node.on('click', 'h4', function(/*e*/) {
-        var status = $(this).data('manuWillHateMeAgain');
-        $(this).data('manuWillHateMeAgain', !status);
-        if (status) {
-          $('i', this).addClass('icon-arrow-up');
-          $('i', this).removeClass('icon-arrow-down');
-          $(this).next().slideDown(100, show);
-        }
-        else {
-          $('i', this).addClass('icon-arrow-down');
-          $('i', this).removeClass('icon-arrow-up');
-          $(this).next().slideUp(100, hide);
-        }
-      });
+      $('h4 > i.collapse-binder', node).addClass('icon-arrow-down');
+
+      if(!node[0].jobDone){
+        node[0].jobDone = true;
+
+        node.on('click', 'h4', function(/*e*/) {
+          console.warn('Receiving click one');
+          var status = $(this).data('manuWillHateMeAgain');
+          $(this).data('manuWillHateMeAgain', !status);
+          if (status) {
+            $('i.collapse-binder', this).addClass('icon-arrow-up');
+            $('i.collapse-binder', this).removeClass('icon-arrow-down');
+            $(this).next().slideDown(100, show);
+          }
+          else {
+            $('i.collapse-binder', this).addClass('icon-arrow-down');
+            $('i.collapse-binder', this).removeClass('icon-arrow-up');
+            $(this).next().slideUp(100, hide);
+          }
+        });
+      }
+
+      // console.warn('exiting bind collapser', node);
 
       currentActivity.pages.forEach(function(page, index) {
         if (page.flavor.id != 'jmt')
@@ -322,8 +332,10 @@
         bb = ifr;
         node.appendChild(ifr);
         ifr = ifr.contentDocument.body;
-      }else
+      }else{
         ifr = node;
+        node.html(' ');
+      }
     };
 
     this.addStyle = function(styleBlob) {
