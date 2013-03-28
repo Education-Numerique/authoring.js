@@ -17,7 +17,7 @@
   'use strict';
 
   // Redirect if nomen
-  if (!/^(?:www|app|dev)\./.test(location.hostname)) {
+  if (!/^(?:static|www|app|dev)\./.test(location.hostname)) {
     location.href = location.href.replace(/^([^:]+:\/\/)/, '$1www.');
     return;
   }
