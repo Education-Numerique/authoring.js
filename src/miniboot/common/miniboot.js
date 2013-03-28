@@ -22,6 +22,12 @@
     return;
   }
 
+  // Redirect if reload
+  if (!!location.hash) {
+    location.href = location.href.replace(/(#.+)/, '');
+    return;
+  }
+
   // Root of the versioned app
   var bootRoot = '{PUKE-PACKAGE-VERSION}/';
 
