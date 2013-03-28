@@ -115,7 +115,7 @@
           <section class="widget-content">
            
 
-            <p>C’est <b>libre, gratuit</b>, Open source, sous licence Creative Commons et <b>compatible</b> PC, tablette, smartphone… </p>
+            <p>C’est <b>libre, gratuit</b>, Open source, sous licence Creative Commons</p>
 
             <p>Si <b>l’ENT de votre établissement</b> accepte des contenus compatibles SCORM, vous pourrez <b>exporter vos activités</b> dans ce contexte et assurer le suivi de vos élèves.</p>       
           </section>
