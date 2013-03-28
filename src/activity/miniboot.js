@@ -19,7 +19,8 @@
   // Trunk version - don't do this, kid!
   var version = /use-trunk/.test(location.href) && 'trunk';
   // Not minified if debugging
-  var suffix = !debug ? '-min.' : '.';
+  // Disabling minification for now
+  var suffix = '.'; // !debug ? '-min.' : '.';
 
   var bootRoot = location.href.split('/');
   bootRoot.pop();
