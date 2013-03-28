@@ -88,10 +88,10 @@ config-jenkins-linux:
       url: 'https://www.education-et-numerique.fr/airstrip.json'
     spitfire:
         version: '1.0'
-        url: 'https://www.education-et-numerique.fr/lib/webitup/spitfire.json'
+        url: 'https://www.education-et-numerique.fr/spitfire.json'
     jsboot:
         version: '0.2'
-        url: 'https://www.education-et-numerique.fr/lib/webitup/jsboot.json'
+        url: 'https://www.education-et-numerique.fr/jsboot.json'
     self:
       url: '//www.education-et-numerique.fr/'
 
