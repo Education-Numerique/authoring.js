@@ -85,13 +85,13 @@ config-jenkins-linux:
   links:
     airstrip:
       version: '1.0'
-      url: 'https://static.sn.ackitup.net/airstrip.json'
+      url: 'https://www.education-et-numerique.fr/airstrip.json'
     spitfire:
         version: '1.0'
-        url: 'https://static.sn.ackitup.net/lib/webitup/spitfire.json'
+        url: 'https://www.education-et-numerique.fr/lib/webitup/spitfire.json'
     jsboot:
         version: '0.2'
-        url: 'https://static.sn.ackitup.net/lib/webitup/jsboot.json'
+        url: 'https://www.education-et-numerique.fr/lib/webitup/jsboot.json'
     self:
       url: '//www.education-et-numerique.fr/'
 
