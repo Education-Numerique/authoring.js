@@ -699,8 +699,12 @@
               return false;
             });
             if (isGood) {
-              $(chose).attr('disabled', 'disabled');
-              $(chose).next().attr('disabled', 'disabled');
+              $('<b>' + response + '</b>').insertBefore($(chose));
+              $(chose).next().detach();
+              $(chose).detach();
+
+              // $(chose).attr('disabled', 'disabled');
+              // $(chose).next().attr('disabled', 'disabled');
             }else {
               notYet = true;
             }

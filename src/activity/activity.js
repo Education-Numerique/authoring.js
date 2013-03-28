@@ -210,14 +210,18 @@
       currentActivity = pubVersion ? currentActivity.published : currentActivity.draft;
 
 
-      var hide = function() {
-        $(this).data('hack', $(this).height());
-        $(this).height('0px');
-      };
+      // var hide = function() {
+      //   console.error('--_> HIDFE');
+      //   $(this).css('display: none');
+      //   // $(this).data('hack', $(this).height());
+      //   // $(this).height('0px');
+      // };
 
-      var show = function() {
-        $(this).height($(this).data('hack') + 'px');
-      };
+      // var show = function() {
+      //   console.error('--_> SHOW');
+      //   $(this).css('display: block');
+      //   // $(this).height($(this).data('hack') + 'px');
+      // };
 
       $(node).tooltip({selector: '[rel=tooltip]'});
       $('h4', node).next().slideUp();
@@ -229,18 +233,17 @@
         node[0].jobDone = true;
 
         node.on('click', 'h4', function(/*e*/) {
-          console.warn('Receiving click one');
           var status = $(this).data('manuWillHateMeAgain');
           $(this).data('manuWillHateMeAgain', !status);
           if (status) {
             $('i.collapse-binder', this).addClass('icon-arrow-up');
             $('i.collapse-binder', this).removeClass('icon-arrow-down');
-            $(this).next().slideDown(100, show);
+            $(this).next().slideDown(100);//, show);
           }
           else {
             $('i.collapse-binder', this).addClass('icon-arrow-down');
             $('i.collapse-binder', this).removeClass('icon-arrow-up');
-            $(this).next().slideUp(100, hide);
+            $(this).next().slideUp(100);//, hide);
           }
         });
       }

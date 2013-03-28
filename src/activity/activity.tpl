@@ -19,6 +19,7 @@
   <div class="row-fluid content-container">
 
   <aside class="span3 side-menu pull-right">
+    {{#if extra.attachments.length}}
     <nav>
       <h2>Documents</h2>
       <ul class="attachments-list">
@@ -31,6 +32,7 @@
         {{/each}}
       </ul>
     </nav>
+    {{/if}}
     <nav>
       <h2>Plan de l'activité</h2>
       <ol class="pages-list">
