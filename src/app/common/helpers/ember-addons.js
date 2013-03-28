@@ -47,7 +47,10 @@
     }.observes('content.@each'),
 
     selectionUpdated: function() {
-      this.$().val(this.get('selection.id') || 0);
+      if (!this.get('selection.id'))
+        return;
+
+      this.$().val(this.get('selection.id'));
       this.$().trigger('liszt:updated');
     }.observes('selection')
   });
