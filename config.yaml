@@ -214,10 +214,10 @@ config-dmp-darwin:
         url: '//app.loft.sn.ackitup.net:4242/'
 
   service:
-    # port: ''
-    # host: 'api.education-et-numerique.fr'
-    port: '90'
-    host: 'snap.lxxl.com'
+    port: ''
+    host: 'api.education-et-numerique.fr'
+    # port: '90'
+    # host: 'snap.lxxl.com'
 
   # ACCESS:
   #     LXXL:

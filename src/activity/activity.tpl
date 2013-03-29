@@ -127,7 +127,7 @@
             <h3>Exercice terminé!</h3>
           </div>
           <div class="modal-body">
-            Résultat: <span class="feedback">100%</span>
+            Résultat: <span class="feedback">%</span>
           </div>
           <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
@@ -138,7 +138,7 @@
             <h3>Mmmm...</h3>
           </div>
           <div class="modal-body">
-            Pas encore... Essaie avec un indice?
+            Certaines réponses ne sont pas encore bonnes! <span class="feedback">%</span>
           </div>
           <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
@@ -366,3 +366,7 @@
   </div>
 -->
 </div>
+
+
+<!-- The utter stupidity of modals on modals -->
+<div id="modal-on-modal-lynching" style="display: none; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);"></div>

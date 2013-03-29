@@ -43,7 +43,7 @@
 
       this.get('controller').save();
 
-      LxxlApp.router.transitionTo('sandbox');
+      LxxlApp.router.transitionTo('dashboard');
 
       return false;
     }.bind(this));

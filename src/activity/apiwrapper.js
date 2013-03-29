@@ -529,9 +529,15 @@
     });
 
 
-    this.MixAndMatchComplete = function(pageId) {
-      $('.modal', $('#jmt-' + pageId)).modal('show');
-      console.warn('**** mix and match complete', pageId);
+    this.MixAndMatchComplete = function(pageId, score) {
+      $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
+      $('#modal-on-modal-lynching').show();
+      $('.modal', $('#jmt-' + pageId)).modal({
+        backdrop: true
+      });
+      $('.modal', $('#jmt-' + pageId)).on('hide', function(){
+        $('#modal-on-modal-lynching').hide();
+      });
     };
 
     this.pause = function() {
@@ -678,19 +684,38 @@
       // Tat thingies
       // var tat =
       $('section[id^=tat-]', dom).each(function(ind, item) {
+        // Find page
+        var x = 0;
+        var recupPage;
+        activity[pub].pages.some(function(page, dex){
+          if(page.flavor.id == 'tat'){
+            if(x == ind){
+              recupPage = page;
+              return true;
+            }else{
+              x++;
+            }
+            return false;
+          }
+        });
         var id = item.id.split('-');
         var pageId = id.pop();
         var wordList = [];
 
+        var total = $('[data-type="tat"]', item).length;
+        recupPage.scoring = new LxxlScoring.tatScore(total);
+
         console.warn('#tat-' + pageId + '-check');
         $('#tat-' + pageId + '-check', item).on('click', function() {
-          var notYet = false;
+          var notYet = 0;
           $('input', $(this).parent().parent().prev()).each(function(ind, chose) {
             var response = $(chose).val().toLowerCase().trim();
             var valid = $(chose).data('ans').map(function(i) {
               return i.toLowerCase().trim();
             });
             var isGood = valid.some(function(i) {
+              if(!i)
+                return;
               if (response == i)
                 return true;
               if (i.charAt(i.length - 1) == '*') {
@@ -698,6 +723,7 @@
               }
               return false;
             });
+
             if (isGood) {
               $('<b>' + response + '</b>').insertBefore($(chose));
               $(chose).next().detach();
@@ -706,16 +732,33 @@
               // $(chose).attr('disabled', 'disabled');
               // $(chose).next().attr('disabled', 'disabled');
             }else {
-              notYet = true;
+              notYet++;
             }
           });
+          var r = recupPage.scoring.getResult(total - notYet);
           if (notYet) {
-            $('.modal.feedback', $('[id="tat-' + pageId + '"]')).modal('show');
+            recupPage.scoring.addPenalty();
+            $('.modal .feedback', $('#tat-' + pageId)).html(r + '%');
+            $('#modal-on-modal-lynching').show();
+            $('.modal.feedback', $('#tat-' + pageId)).modal('show');
+            $('.modal.feedback', $('#tat-' + pageId)).on('hide', function(){
+              $('#modal-on-modal-lynching').hide();
+            });
+
+            // $('.modal.feedback', $('[id="tat-' + pageId + '"]')).modal('show');
           }else {
             $(this).attr('disabled', 'disabled');
-            $('.modal.conclusion', $('[id="tat-' + pageId + '"]')).modal('show');
+            $('.modal .feedback', $('#tat-' + pageId)).html(r + '%');
+            $('#modal-on-modal-lynching').show();
+
+            $('.modal.conclusion', $('#tat-' + pageId)).modal('show');
+            $('.modal.conclusion', $('#tat-' + pageId)).on('hide', function(){
+              $('#modal-on-modal-lynching').hide();
+            });
           }
+          // Completed
         });
+
 
         $('[data-type="tat"]', item).each(function(idx, it) {
           var response = [it.innerHTML];
@@ -730,6 +773,7 @@
           it.replaceWith(h);
           if (clue) {
             $('button', h).on('click', function(e) {
+              recupPage.scoring.addPenalty();
               // console.warn($(e.target).replace);
               $(e.target).replaceWith($('<span style="text-decoration: underline;"/>').text('(' + clue + ')'));
             });
@@ -738,9 +782,10 @@
 
         });
 
-        if (activity[pub].pages[ind].displayHoles) {
+        console.error('-)------>', recupPage.flavor.id, recupPage.displayHoles);
+        if (recupPage.displayHoles) {
           var plist = wordList;
-          if (activity[pub].pages[ind].displayHolesRandomly) {
+          if (recupPage.displayHolesRandomly) {
             wordList = [];
             while (plist.length) {
               wordList.push(plist.splice(Math.round(Math.random() * (plist.length - 1)), 1));

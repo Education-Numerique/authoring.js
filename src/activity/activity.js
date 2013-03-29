@@ -251,6 +251,7 @@
       // console.warn('exiting bind collapser', node);
 
       currentActivity.pages.forEach(function(page, index) {
+
         if (page.flavor.id != 'jmt')
           return;
 
@@ -268,6 +269,11 @@
           $('.questions > li', container).shuffle();
           $('.questions > li', container).shuffle();
         }
+
+        var total = $('.propositions > li', container).length;
+        page.scoring = new LxxlScoring.mixScore(total);
+
+
         $('.questions > li', container).droppable({
           activeClass: 'ui-state-active',
           hoverClass: 'ui-state-hover',
@@ -287,9 +293,13 @@
               $(this).droppable('disable');
               $(this).addClass('ui-state-correct');
 
-              if (!$('.propositions > li', container).length)
-                LxxlLib.sessionManager.MixAndMatchComplete(index);
+              // console.warn('Result', page.scoring.getResult(total - $('.propositions > li', container).length));
+              if (!$('.propositions > li', container).length){
+                LxxlLib.sessionManager.MixAndMatchComplete(index, page.scoring.getResult(total - $('.propositions > li', container).length));
+              }
             } else {
+              page.scoring.addPenalty();
+              console.warn('Penalty!!!!');
               $(this).addClass('ui-state-wrong');
               var $this = $(this);
               setTimeout(function() { $this.removeClass('ui-state-wrong'); }, 1000);
@@ -305,6 +315,7 @@
           stack: $('.propositions > li', container)
         });
       });
+
 
 
 
