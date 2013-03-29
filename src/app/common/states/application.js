@@ -241,7 +241,7 @@
       // showCharte: Ember.Route.transitionTo('dashboard.charte'),
       // showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
-      showCnil: Ember.Route.transitionTo('cnil'),
+      // showCnil: Ember.Route.transitionTo('cnil'),
 
       cnil: Ember.Route.extend({
         route: '/cnil',
@@ -270,7 +270,7 @@
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
 
-      showCharte: Ember.Route.transitionTo('charte'), // allez, je me lance (JB)
+      // showCharte: Ember.Route.transitionTo('charte'), // allez, je me lance (JB)
 
       charte: Ember.Route.extend({
         route: '/charte',
