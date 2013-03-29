@@ -107,6 +107,16 @@ body {
     @include shadow(0,5px,15px,rgba(0,0,0,0.5));
 
 
+    table {
+      background-color: #EEEEEE; border:none; padding:10px;
+    }
+
+    table td {
+      padding:10px;
+      vertical-align:top;
+    }
+
+
     /* h4 collapsers */
 
     > header {

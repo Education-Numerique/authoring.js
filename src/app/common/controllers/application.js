@@ -62,7 +62,7 @@
       }.bind(this)));
 
       // Boot jsBoot
-      jsBootApp.boot(STORE_KEY, SERVICE_CONFIG);
+      jsBootApp.boot(STORE_KEY, SERVICE_CONFIG, 'disable_instance_lockXXX');
 
       // Super shit
       this._super();
@@ -96,10 +96,12 @@
 
     jsBootApp.addObserver('status', function() {
       if (jsBootApp.status == jsBootApp.LOCKED_OUT) {
-        $('#already-locked').modal({keyboard: false, backdrop: 'static'});
-        $('#already-locked').modal('show');
-      }else
-        $('#already-locked').modal('hide');
+        $('#already-locked').show();
+        // $('#already-locked').modal({keyboard: false, backdrop: 'static'});
+        // $('#already-locked').modal('show');
+      }/*else
+        $('#already-locked').hide();*/
+        // $('#already-locked').modal('hide');
     });
 
     // this.isLocked = (function() {
@@ -125,7 +127,7 @@
 
     // Show the failure banner on the login view
     this.USER_FAIL = jsBootApp.USER_FAIL;
-    // Show the banner about ONLY ONE FUCKING TAB OPENED
+    // Show the banner
     this.LOCKED_OUT = jsBootApp.LOCKED_OUT;
 
     this.USER_READY = jsBootApp.USER_READY;

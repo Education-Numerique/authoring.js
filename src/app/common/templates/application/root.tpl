@@ -17,15 +17,29 @@
     </section>
 
     <section class="container-fluid" id="mainsection">
+      <div id="already-locked" class="alert error hide">
+       <a class="close" data-dismiss="alert" href="#">&times;</a>
+        L'application est déjà ouverte dans un autre onglet.<br />
+        Si vous modifiez une activité simultanément dans les deux onglets, des problèmes vont apparaitre...<br />
+        Il est conseillé de fermer l'un des deux onglets.
+     </div>
+
       {{outlet}}
     </section>
 
     <footer id="footer">
       <p>{{localize copyright}}<a {{action showCharte href=true}}>{{localize conditions}}</a>.
     </footer>
-  </article>
+<!--     <a class="close" data-dismiss="alert" href="#">HOOoOoooOOOOO</a>
+ -->
+<!--  <a onclick="$('#already').show();">test</a>
+ -->
+   </article>
 
-  <div class="modal hide" id="already-locked" role="dialog" aria-hidden="true">
+
+
+
+<!--   <div class="modal hide" id="already-locked" role="dialog" aria-hidden="true">
     <div class="modal-header">
       <h3>Application déjà utilisée</h3>
     </div>
@@ -34,6 +48,6 @@
       Veuillez fermer l'un des deux avant de poursuivre.
     </div>
   </div>
-
+ -->
 
   {{view view.footerView}}
