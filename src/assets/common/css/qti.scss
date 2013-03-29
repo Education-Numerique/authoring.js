@@ -4,7 +4,8 @@ Style specific to activity edition
 
 .qti {
 
-
+    
+    
     table td, th {
         &:last-child {
             display:table-cell;
@@ -619,25 +620,25 @@ Style specific to activity edition
 
 }
 
-@media (max-width: 979px) {
-    #page-management {
-        width:100%!important;
-    }
+// @media (max-width: 979px) {
+//     #page-management {
+//         width:100%!important;
+//     }
 
-    .panel-left {
-        width:100%!important;
-    }
+//     .panel-left {
+//         width:100%!important;
+//     }
 
 
-}
+// }
 
-@media (max-width: 730px) {
-    .input-prepend {
-        label {
-            display:none!important;
-        }
-    }
-}
+// @media (max-width: 730px) {
+//     .input-prepend {
+//         label {
+//             display:none!important;
+//         }
+//     }
+// }
 
 .dropzone-container {
     float:right;

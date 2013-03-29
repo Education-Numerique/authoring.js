@@ -79,6 +79,7 @@ body:not(.user-admin) {
 
 body {
   overflow:visible!important;
+  min-width:1200px;
 }
 
 /* Fix unicorn shady management */
@@ -104,14 +105,6 @@ body {
   }
 }
 
-@media screen and (max-width: 479px) {
-  #sidebar > ul {
-    display: none;
-  }
-  #user-nav > ul {
-    margin-left: -100px;
-  }
-}
 
 /* Fix unicorn css on collapse */
 #charte, #cnil, #advices, #home {
