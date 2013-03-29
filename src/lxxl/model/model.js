@@ -226,7 +226,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
     i.isDead = false;
     i.push = function(altSuccess) {
-      if(this.isDead)
+      if (this.isDead)
         return;
       if (!api.service)
         return;
@@ -339,27 +339,27 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.ONE_PAGE = 'ONE_PAGE';
     i.NO_GOOD_ANSWER = 'NO_GOOD_ANSWER';
 
-    i.canPublish = function(){
+    i.canPublish = function() {
       var err = false;
 
-      var ok = this.draft.pages.every(function(page){
-        if(page.flavor.id == 'quizz'){
-          return page.questions.every(function(question){
-            return question.answers.some(function(answer){
+      var ok = this.draft.pages.every(function(page) {
+        if (page.flavor.id == 'quizz') {
+          return page.questions.every(function(question) {
+            return question.answers.some(function(answer) {
               return (answer.isCorrect == true);
             });
           });
         }else
           return true;
       });
-      if(!ok)
+      if (!ok)
         err = this.NO_GOOD_ANSWER;
 
-      if(this.draft.pages.length < 1)
+      if (this.draft.pages.length < 1)
         err = this.ONE_PAGE;
-      if(this.draft.description.replace(/(<[^>]+>)/g, '').length < 20)
+      if (this.draft.description.replace(/(<[^>]+>)/g, '').length < 20)
         err = this.SHORT_DESCRIPTION;
-      if(this.draft.title.length < 4)
+      if (this.draft.title.length < 4)
         err = this.SHORT_TITLE;
 
       return err;

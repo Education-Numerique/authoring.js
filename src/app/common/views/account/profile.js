@@ -43,6 +43,8 @@
 
       this.get('controller').save();
 
+      LxxlApp.router.transitionTo('sandbox');
+
       return false;
     }.bind(this));
   };
