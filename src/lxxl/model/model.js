@@ -325,12 +325,14 @@ jsBoot.pack('LxxlLib.model', function(api) {
     i.publish = function() {
       if (!this.id || !api.service)
         return;
+      api.set('isPublished', true);
       api.service.publish(success, failure, this.id);
     };
 
     i.unpublish = function() {
       if (!this.id || !api.service)
         return;
+      api.set('isPublished', false);
       api.service.unpublish(success, failure, this.id);
     };
 
