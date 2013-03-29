@@ -174,4 +174,16 @@
   });
 
 
+  window.prefillHack = {
+
+  };
+  var a = location.search.substr(1).split('&');
+  a.forEach(function(item){
+    item = item.split('=');
+    var key = item.shift();
+    if(key){
+      prefillHack[key] = item.join('=');
+    }
+  });
+
 })();
