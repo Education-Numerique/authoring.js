@@ -224,7 +224,10 @@ jsBoot.pack('LxxlLib.model', function(api) {
       }
     }
 
+    i.isDead = false;
     i.push = function(altSuccess) {
+      if(this.isDead)
+        return;
       if (!api.service)
         return;
       if (!this.id) {
@@ -293,6 +296,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
     var d = i.destroy;
     i.destroy = function() {
+      this.isDead = true;
       if (this.id && api.service)
         api.service.remove(success, failure, this.id);
       d.apply(this);
