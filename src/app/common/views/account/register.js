@@ -3,8 +3,10 @@
 
   var checkAvailability = function(callback, login) {
     jsBoot.service.core.authenticate(function() {
+      jsBoot.service.core.logout();
       // success
     }, function(e) {
+      jsBoot.service.core.logout();
       // failure - need type
       if (e.name == 'MISSING')
         callback(true);
