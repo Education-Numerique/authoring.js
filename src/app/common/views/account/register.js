@@ -1,12 +1,12 @@
 (function() {
   'use strict';
 
-  var checkAvailability = function(callback, login){
+  var checkAvailability = function(callback, login) {
     jsBoot.service.core.authenticate(function() {
       // success
     }, function(e) {
       // failure - need type
-      if(e.name == 'MISSING')
+      if (e.name == 'MISSING')
         callback(true);
       else
         callback(false);
@@ -71,6 +71,20 @@
           $(element).parents('.control-group').removeClass('error');
         }
       }
+    });
+
+    $('#email').on('blur', function() {
+      $('#creation-error').hide();
+      if (!$('#email').val())
+        return;
+
+      checkAvailability(function(resp) {
+        if (!resp) {
+          $('#creation-error').html('Cette adresse électronique a déjà été utilisée pour créer un compte.');
+          $('#creation-error').fadeTo(1000, 1);
+        }
+      }, $('#email').val());
+      console.log('email blur');
     });
 
     $('#form-wizard').bind('step_shown', function(e, state) {

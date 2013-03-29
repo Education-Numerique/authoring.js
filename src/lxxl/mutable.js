@@ -154,23 +154,23 @@ jsBoot.pack('jsBoot.types', function(api) {
                   // So, if the initial mesh is null, we will actually get the constructor back, which is totally fucked
                   // XXX this hack is meant to resolve bad problems: pooled mutable that get inited with empty meshes
                   // end-up returning the pool constructor
-                  if(!lastMesh[i]){
-                    switch(i){
+                  if (!lastMesh[i]) {
+                    switch (i) {
                       case 'level':
                         lastMesh[i] = {id: 'other'};
-                      break;
+                        break;
                       case 'matter':
                         lastMesh[i] = {id: 'other'};
-                      break;
+                        break;
                       case 'duration':
                         lastMesh[i] = {id: 0};
-                      break;
+                        break;
                       case 'difficulty':
                         lastMesh[i] = {id: 'easy'};
-                      break;
+                        break;
                       default:
                         console.error('Is this risky?', item == jsBoot.types.getPooledMutable, 'If it is, key is:', i);
-                      break;
+                        break;
                     }
                   }
                   privatePool[i] = new item(lastMesh[i] || null);
@@ -247,10 +247,10 @@ jsBoot.pack('jsBoot.types', function(api) {
             if (typeof privatePool[i] != 'undefined') {
               if (descriptor[i].constructor == Function) {
                 if (!!privatePool[i]) {
-                  if(privatePool[i].isPoolMutable){
+                  if (privatePool[i].isPoolMutable) {
                     privatePool[i] = new descriptor[i](item);
                     this.set(i, privatePool[i]);
-                  }else{
+                  }else {
                     privatePool[i].fromObject(networkMesh[i]);
                   }
                 }else {
