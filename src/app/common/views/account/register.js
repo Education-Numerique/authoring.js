@@ -86,7 +86,6 @@
           $('#creation-error').fadeTo(1000, 1);
         }
       }, $('#email').val());
-      console.log('email blur');
     });
 
     $('#form-wizard').bind('step_shown', function(e, state) {

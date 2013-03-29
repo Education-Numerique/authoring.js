@@ -3,6 +3,9 @@
   var t = this.lxxlPageView('account/validation');
 
   t.doOnInsert = function() {
+
+    $('#email').val(window.prefillHack['email']);
+    $('#code').val(window.prefillHack['code']);
     $('#form-wizard').formwizard({
       formPluginEnabled: false,
       validationEnabled: true,
@@ -76,8 +79,13 @@
             break;
         }
       }.bind(this));
+
+
       return false;
     }.bind(this));
+
+    $('#form-wizard').submit();
+
   };
 
   this.AccountValidationView = Ember.View.extend(t);
