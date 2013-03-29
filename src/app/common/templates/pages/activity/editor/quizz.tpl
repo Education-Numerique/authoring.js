@@ -92,7 +92,7 @@
                 <span class="icon">
                     <i class="icon-bullhorn"></i>
                 </span>
-                <h5 class="text-ellipsis">Question {{view.questionNumber}}</h5>
+                <h5 class="text-ellipsis">Question {{view.questionNumber}} {{view.displayTitle}}</h5>
                 {{#view view.DeleteQuestionButton modalName="deleteQuestion" questionBinding="view.content" data-toggle="modal" href="#modal-delete-question" classNames="btn btn-danger btn-mini"}}<i class="icon-remove icon-white"></i>{{/view}}
                 
             </div>

@@ -406,6 +406,18 @@
             return this.get('parentView.content').indexOf(this.get('content')) + 1;
           }.property('parentView.lastMove')),
 
+
+          displayTitle: (function() {
+            var text = $('<p />').html(this.get('content.text')).text();
+            if (!text)
+              return;
+
+            if (text.length <= 20)
+              return '- ' + text;
+
+            return '- ' + text.slice(0, 20) + ' ...';
+          }.property('content.text')),
+
           widgetIdAnchor: function() {
             return '#widget-question-' + this.get('elementId');
           }.property('elementId'),
