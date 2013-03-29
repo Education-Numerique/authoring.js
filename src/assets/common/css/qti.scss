@@ -937,10 +937,13 @@ body .chzn-container .chzn-results {
 
 table.mix-and-match {
     th, td {
-        width: 50% !important;
+        width: 49% !important;
         display: block !important;
         box-sizing: border-box;
         display: inline-block !important;
+        @include box-sizing(border-box);
+        margin:0;
+        padding:0;
     }
 }
 
