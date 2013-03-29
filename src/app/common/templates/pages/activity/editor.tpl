@@ -167,7 +167,6 @@
             
             <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayAll"}}Afficher toutes les questions</label> <br />
             <label>Afficher les questions par ordre:</label>
-            {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsNaturalOrder" value="-1" title="Naturel" groupBinding="setQuizzSequencing"}}
             {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsRandom" value="0" title="Aléatoire sur la totalité" groupBinding="setQuizzSequencing"}}
             {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsRandomSubset" value="1" title="Aléatoire sur un nombre de questions" groupBinding="setQuizzSequencing"}}
           </fieldset>

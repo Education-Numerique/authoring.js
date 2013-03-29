@@ -313,12 +313,14 @@
         type: 'button',
         attributeBindings: ['type'],
 
-        click: function(e) {
-          if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
-            $('#modal-page-sequencing').modal('show');
-          /*          else if (this.$('[data-toggle]')[0] == e.target) {
-
-          }*/
+        didInsertElement: function() {
+          this.$().on('click', function(e) {
+            if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked')) {
+              $('#modal-page-sequencing').modal('show');
+            } else if (this.$('[data-toggle]')[0] == e.target) {
+              this.set('controller.pageActivatedSequencing', true);
+            }
+          }.bind(this));
         }
       }),
 

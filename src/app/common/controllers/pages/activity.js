@@ -239,10 +239,16 @@
       this.set('seconds.selected', selectedSecond);
     }.observes('currentPage.limitedTime'),
 
-    pageActivatedSequencing: (function(/*key, value*/) {
+    pageActivatedSequencing: (function(key, value) {
       if (arguments.length === 1) {
-        return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
+        return (this.get('currentPage.sequencing') >= 0 ? true : false);
       }
+
+      if (value == true && this.get('currentPage.sequencing') == -1) {
+        this.set('currentPage.sequencing', 0);
+      } else if (value == false && this.get('currentPage.sequencing') >= 0)
+        this.set('currentPage.sequencing', -1);
+
       this.set('quizzSequencingIsNaturalOrder', false);
       this.set('quizzSequencingIsRandom', false);
       this.set('quizzSequencingIsRandomSubset', false);
@@ -255,7 +261,7 @@
       else
         this.set('quizzSequencingIsRandomSubset', true);
 
-      return !!(this.get('currentPage.sequencing') >= 0 ? true : false);
+      return (this.get('currentPage.sequencing') >= 0 ? true : false);
 
     }.property('currentPage.sequencing')),
 
