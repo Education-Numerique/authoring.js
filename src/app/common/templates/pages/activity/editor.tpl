@@ -213,6 +213,20 @@
   </div>
 </div>
 
+<div class="modal hide" id="action-published-error" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Activité publiée</h3>
+  </div>
+  <div class="modal-body">
+    Votre activité n'est pas prête à être publiée. En effet, <span id="pub-err"></span>.
+    Merci de corriger le problème.
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Corriger</a>
+  </div>
+</div>
+
+
 <div class="modal hide" id="action-embed" role="dialog" aria-hidden="true">
   <div class="modal-header">
     <h3>Code d'insertion</h3>

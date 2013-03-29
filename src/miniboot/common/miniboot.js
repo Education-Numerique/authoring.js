@@ -23,7 +23,7 @@
   }
 
   // Redirect if reload
-  if (!!location.hash) {
+  if (!!location.hash && !/#\/account/.test(location.hash)) {
     location.href = location.href.replace(/(#.+)/, '');
     return;
   }

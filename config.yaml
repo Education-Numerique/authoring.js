@@ -171,8 +171,10 @@ config-raildecom-darwin:
       url: '//dev.app.sn.ackitup.net/'
 
   service:
-    port: '8081'
-    host: 'static.sn.ackitup.net'
+    # port: '8081'
+    # host: 'static.sn.ackitup.net'
+    port: '90'
+    host: 'snap.lxxl.com'
     # port: ''
     # host: 'api.education-et-numerique.fr'
 
@@ -212,9 +214,10 @@ config-dmp-darwin:
         url: '//app.loft.sn.ackitup.net:4242/'
 
   service:
-    port: ''
-    # host: 'app.lxxl.com'
-    host: 'api.education-et-numerique.fr'
+    # port: ''
+    # host: 'api.education-et-numerique.fr'
+    port: '90'
+    host: 'snap.lxxl.com'
 
   # ACCESS:
   #     LXXL:

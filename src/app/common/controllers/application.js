@@ -26,10 +26,8 @@
       secret: 'TEST'
     },
     server: {
-      // host: '{PUKE-SERVICE-HOST}',
-      // port: '{PUKE-SERVICE-PORT}',
-      host: 'snap.lxxl.com',
-      port: '90',
+      host: '{PUKE-SERVICE-HOST}',
+      port: '{PUKE-SERVICE-PORT}',
       version: '1.0'
     },
     anonymous: {

@@ -330,6 +330,37 @@ jsBoot.pack('LxxlLib.model', function(api) {
       api.service.unpublish(success, failure, this.id);
     };
 
+    i.SHORT_TITLE = 'SHORT_TITLE';
+    i.SHORT_DESCRIPTION = 'SHORT_DESCRIPTION';
+    i.ONE_PAGE = 'ONE_PAGE';
+    i.NO_GOOD_ANSWER = 'NO_GOOD_ANSWER';
+
+    i.canPublish = function(){
+      var err = false;
+
+      var ok = this.draft.pages.every(function(page){
+        if(page.flavor.id == 'quizz'){
+          return page.questions.every(function(question){
+            return question.answers.some(function(answer){
+              return (answer.isCorrect == true);
+            });
+          });
+        }else
+          return true;
+      });
+      if(!ok)
+        err = this.NO_GOOD_ANSWER;
+
+      if(this.draft.pages.length < 1)
+        err = this.ONE_PAGE;
+      if(this.draft.description.replace(/(<[^>]+>)/g, '').length < 20)
+        err = this.SHORT_DESCRIPTION;
+      if(this.draft.title.length < 4)
+        err = this.SHORT_TITLE;
+
+      return err;
+    };
+
     return i;
   };
 });

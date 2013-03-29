@@ -11,8 +11,30 @@
     },
 
     publishActivity: function() {
-      this.get('content').controller.publish();
-      $('#action-published').modal('show');
+      var ctr = this.get('content').controller;
+      var result = ctr.canPublish();
+      switch(result){
+        case ctr.SHORT_TITLE:
+          $('#action-published-error #pub-err').html('le titre de votre activité doit compter au moins 4 caractères.');
+          $('#action-published-error').modal('show');
+        break;
+        case ctr.SHORT_DESCRIPTION:
+          $('#action-published-error #pub-err').html('la description de votre activité doit compter au moins 20 caractères.');
+          $('#action-published-error').modal('show');
+        break;
+        case ctr.ONE_PAGE:
+          $('#action-published-error #pub-err').html('votre activité doit contenir au moins une page.');
+          $('#action-published-error').modal('show');
+        break;
+        case ctr.NO_GOOD_ANSWER:
+          $('#action-published-error #pub-err').html('certaines de vos questions n\'indiquent pas de bonne réponse!');
+          $('#action-published-error').modal('show');
+        break;
+        default:
+          ctr.publish();
+          $('#action-published').modal('show');
+        break;
+      }
     },
 
     deleteActivity: function() {
