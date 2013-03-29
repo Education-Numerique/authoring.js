@@ -15,6 +15,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var USER_SETTINGS = 'settings';
   var USER_PREFERENCES = 'preferences';
   var USER_REMINDER = 'reminder';
+  var USER_DEACTIVATE = 'deactivate';
   // var USER_CMD_LIST = 'list';
 
   this.user = new (function() {
@@ -25,6 +26,16 @@ jsBoot.pack('LxxlLib.service', function(api) {
         onsuccess: onSuccess,
         onfailure: onFailure
         // command: USER_CMD_LIST
+      });
+    };
+
+    this.deactivate = function(onSuccess, onFailure, uid){
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: uid,
+        command: USER_DEACTIVATE
       });
     };
 
