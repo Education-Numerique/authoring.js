@@ -171,8 +171,10 @@ config-raildecom-darwin:
       url: '//dev.app.sn.ackitup.net/'
 
   service:
-    port: ''
-    host: 'api.education-et-numerique.fr'
+    port: '8081'
+    host: 'static.sn.ackitup.net'
+    # port: ''
+    # host: 'api.education-et-numerique.fr'
 
 
   # ACCESS:

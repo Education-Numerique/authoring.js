@@ -3,45 +3,25 @@
 */
 
 <div class="row-fluid">
-  <div class="alert alert-info">
-    <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Validation de votre email</h4>
-        Vous avez dû recevoir un email de confirmation qui vous permettra de valider celui-ci.
-          Pensez à vérifier votre dossier spam si le mail de confirmation n'arrive pas.
-  </div>
-
   <div class="widget-box">
     <div class="widget-title">
       <span class="icon">
         <i class="icon-pencil"></i>
       </span>
-      <h5>Code d'activation</h5>
+      <h5>Retrouvez votre compte</h5>
     </div>
 
     <div class="widget-content">
-      <div id="success-validation" class="alert alert-success" style="display: none;">
-        <h5>Votre compte a été créé avec succès</h5>
-        <p>Vous pouvez maintenant vous connecter et accéder à votre compte.</p>
-        <button class="btn btn-primary btn-large" {{action showAccountLogin href=true}}>Se connecter</button>
-      </div>
-
       <form id="form-wizard" class="form-horizontal" method="post">
-        <div id="creation-error" class="alert alert-error" style="display: none"></div>
+        <div id="creation-error" class="alert alert-error" style="display: none">Aucun compte n'est associé à cette adresse email</div>
 
         <div id="step-regular" class="step">
 
 
-          <div class="control-group">
+          <div class="control-group" id="email-wrapper">
             <label for="email" class="control-label">Email</label>
             <div class="controls">
               <input id="email" type="text" name="email" />
-            </div>
-          </div>
-
-          <div class="control-group">
-            <label for="password" class="control-label">Code</label>
-            <div class="controls">
-              <input id="code" type="text" name="code" />
             </div>
           </div>
 

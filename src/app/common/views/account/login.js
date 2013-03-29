@@ -3,6 +3,10 @@
   var t = this.lxxlPageView('account/login');
 
   t.doOnInsert = function() {
+
+    if (LxxlApp.router.accountReminderValidateController.get('content'))
+      $('#email').val(LxxlApp.router.get('accountReminderValidateController.content'));
+
     $('#loginform').formwizard({
       formPluginEnabled: false,
       validationEnabled: true,

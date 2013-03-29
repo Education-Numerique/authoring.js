@@ -28,12 +28,11 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.reminderChangePassword = function(onSuccess, onFailure, email, code, password){
+    this.reminderChangePassword = function(onSuccess, onFailure, email, code, password) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
         onfailure: onFailure,
-        id: id || api.core.id,
         command: USER_REMINDER,
         payload: {
           email: email,
@@ -43,13 +42,12 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.reminderRequestPassword = function(onSuccess, onFailure, email){
+    this.reminderRequestPassword = function(onSuccess, onFailure, email) {
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,
         onfailure: onFailure,
-        id: id || api.core.id,
-        command: USER_REMINDER + '/?email=' + email
+        command: USER_REMINDER + '?email=' + email
       });
     };
 

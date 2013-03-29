@@ -42,6 +42,10 @@
           },
           reminder: {
             title: 'Mot de passe perdu'
+          },
+
+          remindervalidate: {
+            title: 'Mot de passe perdu'
           }
         },
 

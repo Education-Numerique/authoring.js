@@ -137,18 +137,43 @@
         }),
 
         reminder: Ember.Route.extend({
-          route: '/lost-password',
-          enter: function(router) {
-            var isLogged = router.get('applicationController.isLogged');
-            Ember.run.next(function() {
-              if (isLogged)
-                router.transitionTo('dashboard');
-            });
-          },
-          connectOutlets: function(router) {
-            router.get('applicationController').connectOutlet('accountReminder');
-          }
+          route: '/password-reminder',
+          index: Em.Route.extend({
+            redirectsTo: 'lookup'
+          }),
+
+          lookup: Ember.Route.extend({
+            route: '/lookup',
+            enter: function(router) {
+              var isLogged = router.get('applicationController.isLogged');
+              Ember.run.next(function() {
+                if (isLogged)
+                  router.transitionTo('dashboard');
+              });
+            },
+            connectOutlets: function(router) {
+              router.get('applicationController').connectOutlet('accountReminderLookup');
+            }
+          }),
+
+          validate: Ember.Route.extend({
+            route: '/validate',
+            enter: function(router) {
+              var isLogged = router.get('applicationController.isLogged');
+              Ember.run.next(function() {
+                if (isLogged)
+                  router.transitionTo('dashboard');
+              });
+            },
+            connectOutlets: function(router, context) {
+              console.log('context', arguments);
+              router.get('applicationController').connectOutlet('accountReminderValidate');
+            }
+          })
+
         }),
+
+
 
 
         logout: Ember.Route.extend({
@@ -206,7 +231,7 @@
       showAccountRegister: Ember.Route.transitionTo('account.register'),
       showAccountProfile: Ember.Route.transitionTo('account.profile'),
       showAccountSettings: Ember.Route.transitionTo('account.settings'),
-      showAccountReminder: Ember.Route.transitionTo('account.reminder'),
+      showAccountReminder: Ember.Route.transitionTo('account.reminder.lookup'),
       showAccountLogout: Ember.Route.transitionTo('account.logout'),
       showAccountValidate: Em.Route.transitionTo('account.validate'),
 

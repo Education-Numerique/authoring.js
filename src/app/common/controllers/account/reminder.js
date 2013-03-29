@@ -1,7 +1,12 @@
 (function() {
   'use strict';
-  this.AccountReminderController = Ember.ObjectController.extend({
+  this.AccountReminderLookupController = Ember.ObjectController.extend({
 
   });
+
+  this.AccountReminderValidateController = Ember.ObjectController.extend({
+
+  });
+
 
 }).apply(LxxlApp);
