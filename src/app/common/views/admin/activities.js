@@ -58,10 +58,10 @@
         '',
         infos.title,
         item.author.username,
-        infos.difficulty.title,
-        infos.matter.title, //Matière
-        infos.level.title, //Niveau
-        moment(item.publicationDate || item.creationDate).fromNow(),
+        (infos.difficulty ? infos.difficulty.title : ''),
+        (infos.matter ? infos.matter.title : ''),
+        (infos.level ? infos.level.title : ''),
+        item.publicationDate || item.creationDate,
         item.id
       ]);
 
@@ -154,7 +154,26 @@
       });
 
       // console.log(preview.html('bite'));
-    }
+    },
+    'aoColumns': [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      { 'sType': 'date', 'mRender':
+            function(date, type) {
+              if (type == 'display')
+                return moment(date).fromNow();
+
+              return date;
+            }
+      },
+      null
+    ]
   };
 
 
