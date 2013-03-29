@@ -1,5 +1,18 @@
 (function() {
   'use strict';
+
+  var checkAvailability = function(callback, login){
+    jsBoot.service.core.authenticate(function() {
+      // success
+    }, function(e) {
+      // failure - need type
+      if(e.name == 'MISSING')
+        callback(true);
+      else
+        callback(false);
+    }, login, '');
+  };
+
   var t = this.lxxlPageView('account/register');
 
   t.doOnInsert = function() {
