@@ -240,47 +240,47 @@
     }.observes('currentPage.limitedTime'),
 
     pageActivatedSequencing: (function(key, value) {
-      if (arguments.length === 1) {
-        return (this.get('currentPage.sequencing') >= 0 ? true : false);
+      if (arguments.length !== 1) {
+        if (value == true && this.get('currentPage.sequencing') == -1) {
+          this.set('currentPage.sequencing', 0);
+        } else if (value == false && this.get('currentPage.sequencing') >= 0)
+          this.set('currentPage.sequencing', -1);
       }
-
-      if (value == true && this.get('currentPage.sequencing') == -1) {
-        this.set('currentPage.sequencing', 0);
-      } else if (value == false && this.get('currentPage.sequencing') >= 0)
-        this.set('currentPage.sequencing', -1);
-
-      this.set('quizzSequencingIsNaturalOrder', false);
-      this.set('quizzSequencingIsRandom', false);
-      this.set('quizzSequencingIsRandomSubset', false);
-      var seq = this.get('currentPage.sequencing');
-
-      if (seq == -1)
-        this.set('quizzSequencingIsNaturalOrder', true);
-      else if (!seq)
-        this.set('quizzSequencingIsRandom', true);
-      else
-        this.set('quizzSequencingIsRandomSubset', true);
 
       return (this.get('currentPage.sequencing') >= 0 ? true : false);
 
     }.property('currentPage.sequencing')),
 
 
-    quizzSequencingIsNaturalOrder: true,
-    quizzSequencingIsRandom: false,
-    quizzSequencingIsRandomSubset: false,
+    quizzSequencingIsNaturalOrder: function() {
+      return this.get('currentPage.sequencing') == -1;
+    }.property('currentPage.sequencing'),
 
-    setQuizzSequencing: (function(key, value) {
-      if (arguments.length === 1)
-        return this.get('currentPage.sequencing');
-      value = parseInt(value, 10);
-      // console.log('* - * - *', value);
-      if (value < 1) {
-        this.set('currentPage.sequencing', value);
-      }/* else {
-        console.log('======> todo');
-      }*/
-    }.property()),
+    quizzSequencingIsRandom: function() {
+      return this.get('currentPage.sequencing') == 0;
+    }.property('currentPage.sequencing'),
+
+    quizzSequencingIsRandomSubset: function() {
+      return this.get('currentPage.sequencing') == 1;
+    }.property('currentPage.sequencing'),
+
+    // setQuizzSequencing: (function(key, value) {
+    //   console.warn('************ set quizz sequencing', value);
+
+    //   if (arguments.length === 1)
+    //     return value;
+    //   value = parseInt(value, 10);
+    //   // console.log('* - * - *', value);
+    //   //
+
+    //   if (value == 0) {
+    //     this.set('currentPage.sequencing', 0);
+    //   } else if (value == 1) {
+    //     this.set('currentPage.sequencing', 1);
+    //   }
+
+    //   return value;
+    // }.property()),
 
     _storedCurrentQuestion: null,
 

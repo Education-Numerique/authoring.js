@@ -318,7 +318,9 @@
             if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked')) {
               $('#modal-page-sequencing').modal('show');
             } else if (this.$('[data-toggle]')[0] == e.target) {
-              this.set('controller.pageActivatedSequencing', true);
+              if (this.get('controller.currentPage.sequencing') == -1) {
+                this.set('controller.currentPage.sequencing', 0);
+              }
             }
           }.bind(this));
         }

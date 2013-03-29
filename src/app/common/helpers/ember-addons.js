@@ -448,8 +448,14 @@
         'bindAttr disabled="view.disabled" name="view.name" checked="view.checked"}} />' +
         '{{view.title}}</label>'),
 
+    didInsertElement: function() {
+      this.$('input').attr('id', 'radio-' + this.get('elementId'));
+      this.$('input').uniform();
+    },
+
+
     change: function() {
-      Ember.run.once(this, this._updateElementValue);
+      this._updateElementValue();
     },
 
     upstreamChanged: (function() {
@@ -467,9 +473,6 @@
 
   LxxlLib.Em.RadioButton = Em.RadioButton.extend({
 
-    didInsertElement: function() {
-      this.$('input').uniform();
-    }
   });
 
 
