@@ -385,7 +385,6 @@
 
           },
           connectOutlets: function(router/*, qti*/) {
-            // XXX @todo
             // XXX page de choix template activité
             router.get('applicationController').connectOutlet('activityEdit',
                 LxxlLib.factories.activities.getActivity());

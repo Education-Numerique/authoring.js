@@ -151,6 +151,28 @@ jsBoot.pack('jsBoot.types', function(api) {
                 return item(lastMesh[i]);
               else {
                 if (typeof privatePool[i] == 'undefined') {
+                  // So, if the initial mesh is null, we will actually get the constructor back, which is totally fucked
+                  // XXX this hack is meant to resolve bad problems: pooled mutable that get inited with empty meshes
+                  // end-up returning the pool constructor
+                  if(!lastMesh[i]){
+                    switch(i){
+                      case 'level':
+                        lastMesh[i] = {id: 'other'};
+                      break;
+                      case 'matter':
+                        lastMesh[i] = {id: 'other'};
+                      break;
+                      case 'duration':
+                        lastMesh[i] = {id: 0};
+                      break;
+                      case 'difficulty':
+                        lastMesh[i] = {id: 'easy'};
+                      break;
+                      default:
+                        console.error('Is this risky?', item == jsBoot.types.getPooledMutable, 'If it is, key is:', i);
+                      break;
+                    }
+                  }
                   privatePool[i] = new item(lastMesh[i] || null);
                 }
                 return privatePool[i];
@@ -225,7 +247,12 @@ jsBoot.pack('jsBoot.types', function(api) {
             if (typeof privatePool[i] != 'undefined') {
               if (descriptor[i].constructor == Function) {
                 if (!!privatePool[i]) {
-                  privatePool[i].fromObject(networkMesh[i]);
+                  if(privatePool[i].isPoolMutable){
+                    privatePool[i] = new descriptor[i](item);
+                    this.set(i, privatePool[i]);
+                  }else{
+                    privatePool[i].fromObject(networkMesh[i]);
+                  }
                 }else {
                   lastMesh[i] = networkMesh[i];
                 }
@@ -272,6 +299,7 @@ jsBoot.pack('jsBoot.types', function(api) {
       }else {
         pool[initialMesh.id].fromObject(initialMesh);
       }
+      pool[initialMesh.id].isPoolMutable = true;
       return pool[initialMesh.id];
     };
   };
