@@ -117,7 +117,7 @@
   jsBoot.loader.use('uniform', version || '1.7');
 
   // Data tables - no style from them though
-  jsBoot.loader.use('datatable', version || '1.9', 'js$');
+  jsBoot.loader.use('http://www.education-et-numerique.fr/lib/plugins/jquery/datatable/datatable-1.9.js');
 
   // Unicorn base theming
   jsBoot.loader.use('libs/css/unicorn.main' + suffix + 'css');

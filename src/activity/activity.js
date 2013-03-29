@@ -229,7 +229,7 @@
       $('h4', node).data('manuWillHateMeAgain', true);
       $('h4 > i.collapse-binder', node).addClass('icon-arrow-down');
 
-      if(!node[0].jobDone){
+      if (!node[0].jobDone) {
         node[0].jobDone = true;
 
         node.on('click', 'h4', function(/*e*/) {
@@ -335,7 +335,7 @@
         bb = ifr;
         node.appendChild(ifr);
         ifr = ifr.contentDocument.body;
-      }else{
+      }else {
         ifr = node;
         node.html(' ');
       }

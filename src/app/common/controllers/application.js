@@ -103,7 +103,7 @@
         // $('#already-locked').modal('show');
       }/*else
         $('#already-locked').hide();*/
-        // $('#already-locked').modal('hide');
+      // $('#already-locked').modal('hide');
     });
 
     // this.isLocked = (function() {
