@@ -68,6 +68,8 @@
 
 
     }
+
+    nn.fnSort([[7, 'desc']]);
   };
 
   var TABLE_OPTIONS = {

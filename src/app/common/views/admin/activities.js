@@ -65,7 +65,7 @@
         item.id
       ]);
 
-
+      nn.fnSort([[8, 'desc']]);
     }
   };
 
