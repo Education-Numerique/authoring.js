@@ -2,10 +2,23 @@
   'use strict';
   var t = this.lxxlPageView('account/profile');
 
+  t.canDelete = function() {
+    if (LxxlApp.get('router.applicationController.user.uid') == this.get('controller.content.uid'))
+      return false;
+
+    return LxxlApp.get('router.applicationController.isAdmin');
+  }.property('content.uid');
+
+
+  t.deactivateUser = function() {
+    console.warn('BAMMMMMMMM');
+
+    LxxlLib.service.user.deactivate(Em.K, Em.K, this.get('controller.content.uid'));
+    LxxlApp.router.transitionTo('sandbox');
+  };
 
   t.doOnInsert = function() {
     var self = this;
-
     $('#fileupload').fileupload();
     $('#fileupload').fileupload('option', {
       dropZone: this.$('.thumbnail-uploader .dropzone')[0],

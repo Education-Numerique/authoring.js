@@ -86,8 +86,32 @@
                     <input id="fileupload" type="file" name="file" />
                     Ajouter un avatar
                 </button>
+
+                {{log view.canDelete}}
+                {{#if view.canDelete}}
+                <div class="deactivate-user">
+                    <button class="btn btn-large btn-danger" data-toggle="modal" href="#modal-deactivate-user">Désactiver cet utilisateur</button>
+                </div>
+                {{/if}}
             </div>
+
+
+
+
+            
         </form>
       </div>
+    </div>
+</div>
+
+
+<div class="modal" style="display:none" id="modal-deactivate-user">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">×</button>
+        <h3>Voulez-vous vraiment désactiver cet utilisateur ?</h3>
+    </div>
+    <div class="modal-footer">
+        <a class="btn" data-dismiss="modal">Annuler</a>
+        <a class="btn btn-danger" data-dismiss="modal" {{action deactivateUser target="view" }}> Désactiver</a>
     </div>
 </div>

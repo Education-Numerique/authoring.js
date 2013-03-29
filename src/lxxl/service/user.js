@@ -29,7 +29,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.deactivate = function(onSuccess, onFailure, uid){
+    this.deactivate = function(onSuccess, onFailure, uid) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,
