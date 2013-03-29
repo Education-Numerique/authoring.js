@@ -592,7 +592,6 @@
     };
 
     var completeQuestion = function(pid, qid) {
-      console.warn(pid, qid);
       activity[pub].pages[pid].questions[qid].completed = true;
       var pageComplete = true;
       activity[pub].pages[pid].questions.forEach(function(item) {
@@ -600,6 +599,7 @@
       });
       console.warn('Going?', pageComplete);
       if (pageComplete) {
+        alert('Got result');
         // window.setTimeout(function(){
         $('.conclusion', $('[id="quizz-' + pid + '"]')).modal('show');
         // }, 300);
@@ -613,7 +613,12 @@
           var pid = $(this).parent().parent().parent().prev().attr('id').split('-');
           var qid = pid.pop() - 1;
           pid = pid.pop();
-          var getBackTo = activity[pub].pages[pid].questions[qid].answers[aid].isCorrect;
+
+          var scb = activity[pub].pages[pid].questions[qid];
+          if(!scb.questionScore)
+            scb.questionScore = new LxxlScoring.questionScore(scb.answers.length);
+
+          var getBackTo = scb.answers[aid].isCorrect;
           if (getBackTo) {
             $('button', $(this).parent().parent()).each(function(ind, item) {
               $(item).attr('disabled', 'disabled');
@@ -623,9 +628,12 @@
             });
             $(this).show();
             $(this).html('O');
+
             $(this).attr('style', 'background-color: green;');
+            scb.questionScore.markAnswered();
             completeQuestion(pid, qid);
           }else {
+            scb.questionScore.addPenalty();
             $('.modal', $(this).parent()).modal('show');
             $(this).html('X');
             $(this).attr('disabled', 'disabled');
@@ -648,19 +656,22 @@
           var pid = $(this).parent().parent().prev().attr('id').split('-');
           var qid = pid.pop() - 1;
           pid = pid.pop();
+          var scb = activity[pub].pages[pid].questions[qid];
+          if(!scb.questionScore)
+            scb.questionScore = new LxxlScoring.questionScore(scb.answers.length);
           var goods = 0;
           var bads = [];
           $('li', $(this).parent()).each(function(ind, item) {
             var aid = $(item).attr('id').split('-').pop() - 1;
             var isYes = $('input', $(item))[0].checked;
             if (activity[pub].pages[pid].questions[qid].answers[aid].isCorrect ? isYes : !isYes) {
-              console.warn('Pas mal josé!');
               goods++;
             }else {
               bads.push($('.modal', $(item)));
             }
           });
           if (bads.length) {
+            scb.questionScore.addPenalty();
             var mod = bads[Math.round(Math.random() * (bads.length - 1))];
             $('.feedback', mod).html(goods + '/' + (bads.length + goods));
             mod.modal('show');
@@ -670,7 +681,9 @@
             $('li input', $(this).parent()).each(function(ind, item) {
               $(item).attr('disabled', 'disabled');
             });
+            scb.questionScore.markAnswered();
             $(this).next().on('hidden', function() {
+              console.error('On what?');
               completeQuestion(pid, qid);
             });
           }
