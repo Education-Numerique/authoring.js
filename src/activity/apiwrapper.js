@@ -535,7 +535,7 @@
       $('.modal', $('#jmt-' + pageId)).modal({
         backdrop: true
       });
-      $('.modal', $('#jmt-' + pageId)).on('hide', function(){
+      $('.modal', $('#jmt-' + pageId)).on('hide', function() {
         $('#modal-on-modal-lynching').hide();
       });
     };
@@ -687,12 +687,12 @@
         // Find page
         var x = 0;
         var recupPage;
-        activity[pub].pages.some(function(page, dex){
-          if(page.flavor.id == 'tat'){
-            if(x == ind){
+        activity[pub].pages.some(function(page, dex) {
+          if (page.flavor.id == 'tat') {
+            if (x == ind) {
               recupPage = page;
               return true;
-            }else{
+            }else {
               x++;
             }
             return false;
@@ -714,7 +714,7 @@
               return i.toLowerCase().trim();
             });
             var isGood = valid.some(function(i) {
-              if(!i)
+              if (!i)
                 return;
               if (response == i)
                 return true;
@@ -741,7 +741,7 @@
             $('.modal .feedback', $('#tat-' + pageId)).html(r + '%');
             $('#modal-on-modal-lynching').show();
             $('.modal.feedback', $('#tat-' + pageId)).modal('show');
-            $('.modal.feedback', $('#tat-' + pageId)).on('hide', function(){
+            $('.modal.feedback', $('#tat-' + pageId)).on('hide', function() {
               $('#modal-on-modal-lynching').hide();
             });
 
@@ -752,7 +752,7 @@
             $('#modal-on-modal-lynching').show();
 
             $('.modal.conclusion', $('#tat-' + pageId)).modal('show');
-            $('.modal.conclusion', $('#tat-' + pageId)).on('hide', function(){
+            $('.modal.conclusion', $('#tat-' + pageId)).on('hide', function() {
               $('#modal-on-modal-lynching').hide();
             });
           }

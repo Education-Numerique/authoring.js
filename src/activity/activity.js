@@ -294,7 +294,7 @@
               $(this).addClass('ui-state-correct');
 
               // console.warn('Result', page.scoring.getResult(total - $('.propositions > li', container).length));
-              if (!$('.propositions > li', container).length){
+              if (!$('.propositions > li', container).length) {
                 LxxlLib.sessionManager.MixAndMatchComplete(index, page.scoring.getResult(total - $('.propositions > li', container).length));
               }
             } else {

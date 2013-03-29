@@ -44,6 +44,10 @@
       LxxlApp.router.send('showMyActivities');
     },
 
+    unpublishActivity: function() {
+      this.get('content.controller').unpublish();
+    },
+
     previewActivity: function() {
       $('#modal-preview').modal({keyboard: false, backdrop: true});
       this.doPreview($('#modal-preview-body'));
