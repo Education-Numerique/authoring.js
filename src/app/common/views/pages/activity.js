@@ -492,7 +492,7 @@
                 },
                 containment: 'parent',
                 tolerance: 'pointer'
-              }).disableSelection();
+              });
             },
 
             emptyView: Ember.View.extend({
