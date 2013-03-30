@@ -46,7 +46,7 @@ def doc():
 def lint():
   PH.linter("src/lxxl")
   PH.linter("src/miniboot")
-  PH.linter("src/activity")
+  PH.linter("src/activity", "*pack.js*")
   PH.linter("src/app")
 
   # PH.linter("src/bootstrap")
@@ -59,7 +59,7 @@ def lint():
 def hint():
   PH.hinter("src/lxxl")
   PH.hinter("src/miniboot/")
-  PH.hinter("src/activity")
+  PH.hinter("src/activity", "*pack.js*")
   PH.hinter("src/app")
 
   # PH.hinter("src/miniboot/")
@@ -77,7 +77,7 @@ def fhint():
 def flint():
   PH.flinter("src/lxxl")
   PH.flinter("src/miniboot")
-  PH.flinter("src/activity")
+  PH.flinter("src/activity", "*pack.js*")
   PH.flinter("src/app")
   # PH.flinter("src/bootstrap")
   # PH.flinter("src/lib/ember")

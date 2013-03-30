@@ -173,7 +173,7 @@
         // ++ All that should migrate into sessionManager
         LxxlLib.sessionManager.start(act, pubVersion);
         var deref = LxxlLib.sessionManager.activity;
-        if(!/scorm/.test(location.href))
+        if (!/scorm/.test(location.href))
           deref.seen();
         deref = pubVersion ? deref.published : deref.draft;
         deref.styleData = [];

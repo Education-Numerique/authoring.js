@@ -2,12 +2,12 @@
   'use strict';
   var t = this.lxxlPageView('account/profile');
 
-  t.canDelete = function() {
+  t.canDelete = (function() {
     if (LxxlApp.get('router.applicationController.user.uid') == this.get('controller.content.uid'))
       return false;
 
     return LxxlApp.get('router.applicationController.isAdmin');
-  }.property('content.uid');
+  }.property('content.uid'));
 
 
   t.deactivateUser = function() {

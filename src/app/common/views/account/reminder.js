@@ -21,7 +21,7 @@
 
       return false;
     });
-  }
+  };
 
 
   this.AccountReminderLookupView = Ember.View.extend(t);
@@ -112,7 +112,7 @@
 
       return false;
     });
-  }
+  };
 
 
   this.AccountReminderValidateView = Ember.View.extend(t);

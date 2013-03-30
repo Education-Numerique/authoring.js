@@ -70,22 +70,22 @@
       $('#action-embed').modal('show');
     },
 
-    exportScorm: function () {
+    exportScorm: function() {
       console.warn('***** export scorm');
       var title = this.get('content.controller.published.title');
-      ScormPacker(this.get('content.controller.id'), title, function(zip){
+      ScormPacker(this.get('content.controller.id'), title, function(zip) {
         var content = zip.generate();
-        var blob = zip.generate({type:"blob"});
+        var blob = zip.generate({type: 'blob'});
         var myLink = $('#download-scorm').get(0);
         myLink.href = window.URL.createObjectURL(blob);
-        myLink.download = title.replace(/[^a-z0-9]/gi, '-').trim() + ".zip";
+        myLink.download = title.replace(/[^a-z0-9]/gi, '-').trim() + '.zip';
         // $('#download-scorm').attr('href', "data:application/zip;base64," + content);
         // $('#download-scorm').attr('download', 'e-and-n');
         $('#download-package-scorm').modal('show');
       });
-//       var zip = new JSZip();
+      //       var zip = new JSZip();
 
-// zip.file("RAGOUT/Hello.txt", "Hello World\n");
+      // zip.file("RAGOUT/Hello.txt", "Hello World\n");
     },
 
 

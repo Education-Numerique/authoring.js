@@ -309,10 +309,10 @@
       // status: status('core.objectives.' + idx + '.status')
     });
     var r = new Mutant(mesh);
-    r.setBrowsed = function(){
+    r.setBrowsed = function() {
       this.set('status', getStatus('BROWSED'));
     };
-    r.setComplete = function(){
+    r.setComplete = function() {
       this.set('status', getStatus('COMPLETED'));
     };
     return r;
@@ -469,7 +469,7 @@
       mapping: 'core.session_time',
       read: function(value) {
         var d = value.match(/(?:([0-9]{1,2}):)?(?:([0-9]{1,2}):)?([0-9]{1,2})/);
-        if(!d)
+        if (!d)
           return;
         return parseInt(d.pop(), 10) + parseInt(d.pop(), 10) * 60 + parseInt(d.pop(), 10) * 60 * 60;
       },
@@ -549,8 +549,8 @@
         // ]
       });
 
-      activity[pub].pages.forEach(function(page, idx){
-        switch(page.flavor.id){
+      activity[pub].pages.forEach(function(page, idx) {
+        switch (page.flavor.id) {
           case 'quizz':
           case 'tat':
           case 'jmt':
@@ -558,17 +558,17 @@
             cmip.objectives.pushObject(o);
             o.score.max = 100;
             o.score.min = 0;
-          break;
+            break;
           default:
             var o = new objective({}, cmip.objectives.length);
             cmip.objectives.pushObject(o);
             o.score.max = 0;
             o.score.min = 0;
-          break;
+            break;
         }
       });
 
-      if(cmip.objectives.length)
+      if (cmip.objectives.length)
         cmip.objectives[0].setBrowsed();
       // cmip.addObjective = function(){
       //   this.objectives.pushObject(new objective({}, this.objectives.length));
@@ -583,9 +583,9 @@
       scormAPI.commit();
     };
 
-        // this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
-        // this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
-        // this.execute(this.SET, ['cmi.objectives.' + idx + '.min', token.min]);
+    // this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
+    // this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
+    // this.execute(this.SET, ['cmi.objectives.' + idx + '.min', token.min]);
 
 
     Object.defineProperty(this, 'content', {
@@ -596,7 +596,7 @@
     });
 
 
-    var onPageComplete = function(pid, score){
+    var onPageComplete = function(pid, score) {
       activity[pub].pages[pid].completed = true;
       activity[pub].pages[pid].score = score;
       console.warn('Page completed', pid, score);
@@ -604,16 +604,16 @@
       cmip.objectives[pid].setComplete();
       var totalScore = 0;
       var nbPages = 0;
-      var allset = activity[pub].pages.every(function(page){
-        if(page.flavor.id == 'simple')
+      var allset = activity[pub].pages.every(function(page) {
+        if (page.flavor.id == 'simple')
           return true;
-        else{
+        else {
           nbPages++;
           totalScore += page.score;
           return !!page.completed;
         }
       });
-      if(allset){
+      if (allset) {
         totalScore = Math.round(totalScore / nbPages);
         cmip.score.raw = totalScore;
         cmip.status = getStatus('COMPLETED');
@@ -661,21 +661,21 @@
       // Pages navigation
       $('.pages-list > li', dom).on('click', function(event) {
         var idx;
-// TOTO.objectives[0].setBrowsed()
-// Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.status"] debug.js:46
-// Fake LMS API debug. Method: GetLastError args [] debug.js:46
-// Fake LMS API debug. Method: SetValue args ["cmi.core.objectives.0.status", "browsed"] debug.js:46
-// undefined
-// TOTO.objectives[0].score.set('max', 100)
-// Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.score.max"] debug.js:46
-// Fake LMS API debug. Method: GetLastError args [] debug.js:46
-// Fake LMS API debug. Method: SetValue args ["cmi.core.objectives.0.score.max", "100"] debug.js:46
-// undefined
-// TOTO.objectives[0].score.set('min', 0)
-// Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.score.min"] debug.js:46
-// Fake LMS API debug. Method: GetLastError args [] debug.js:46
-// undefined
-// TOTO.objectives[0].score.set('raw', 14)
+        // TOTO.objectives[0].setBrowsed()
+        // Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.status"] debug.js:46
+        // Fake LMS API debug. Method: GetLastError args [] debug.js:46
+        // Fake LMS API debug. Method: SetValue args ["cmi.core.objectives.0.status", "browsed"] debug.js:46
+        // undefined
+        // TOTO.objectives[0].score.set('max', 100)
+        // Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.score.max"] debug.js:46
+        // Fake LMS API debug. Method: GetLastError args [] debug.js:46
+        // Fake LMS API debug. Method: SetValue args ["cmi.core.objectives.0.score.max", "100"] debug.js:46
+        // undefined
+        // TOTO.objectives[0].score.set('min', 0)
+        // Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.score.min"] debug.js:46
+        // Fake LMS API debug. Method: GetLastError args [] debug.js:46
+        // undefined
+        // TOTO.objectives[0].score.set('raw', 14)
 
         $('.pages-list > li', dom).each(function(ind, item) {
           if (item == this) {

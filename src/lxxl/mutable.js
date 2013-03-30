@@ -169,7 +169,7 @@ jsBoot.pack('jsBoot.types', function(api) {
                         lastMesh[i] = {id: 'easy'};
                         break;
                       default:
-                        // console.error('Is this risky?', item == jsBoot.types.getPooledMutable, 'If it is, key is:', i);
+                        // console.error('Is this risky?', item == jsBoot.types.getPooledMutable, ' key is:', i);
                         break;
                     }
                   }
