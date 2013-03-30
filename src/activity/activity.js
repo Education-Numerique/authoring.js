@@ -271,7 +271,7 @@
         }
 
         var total = $('.propositions > li', container).length;
-        page.scoring = new LxxlScoring.mixScore(total);
+        page.score = new LxxlScoring.mixScore(total);
 
 
         $('.questions > li', container).droppable({
@@ -293,12 +293,12 @@
               $(this).droppable('disable');
               $(this).addClass('ui-state-correct');
 
-              // console.warn('Result', page.scoring.getResult(total - $('.propositions > li', container).length));
+              // console.warn('Result', page.score.getResult(total - $('.propositions > li', container).length));
               if (!$('.propositions > li', container).length) {
-                LxxlLib.sessionManager.MixAndMatchComplete(index, page.scoring.getResult(total - $('.propositions > li', container).length));
+                LxxlLib.sessionManager.MixAndMatchComplete(index, page.score.getResult(total - $('.propositions > li', container).length));
               }
             } else {
-              page.scoring.addPenalty();
+              page.score.addPenalty();
               console.warn('Penalty!!!!');
               $(this).addClass('ui-state-wrong');
               var $this = $(this);

@@ -592,16 +592,34 @@
     };
 
     var completeQuestion = function(pid, qid) {
+      console.warn('Completed question', pid, qid);
       activity[pub].pages[pid].questions[qid].completed = true;
       var pageComplete = true;
-      activity[pub].pages[pid].questions.forEach(function(item) {
+      activity[pub].pages[pid].questions.forEach(function(item, idxxx) {
+        console.warn('Is this ok?', activity[pub].pages[pid].questions[idxxx], pid, idxxx, item.completed);
         pageComplete = pageComplete && item.completed;
       });
-      console.warn('Going?', pageComplete);
+      console.warn('Page completed?', pageComplete);
       if (pageComplete) {
-        alert('Got result');
+        var total = activity[pub].pages[pid].questions.length;
+        var actual = 0;
+        activity[pub].pages[pid].questions.forEach(function(question){
+          console.warn('Result for the question?', question.score.getResult());
+          actual += question.score ? question.score.getResult() : 0;
+        });
+
+        $('#modal-on-modal-lynching').show();
+
+        console.error('GOT FINAL RESULT', actual, total);
+        $('.conclusion .feedback', $('#quizz-' + pid)).html(Math.round(actual/total) + '%');
+
+        $('.conclusion', $('#quizz-' + pid)).modal('show');
+
+        $('.conclusion', $('#quizz-' + pid)).on('hide', function() {
+          $('#modal-on-modal-lynching').hide();
+        });
+
         // window.setTimeout(function(){
-        $('.conclusion', $('[id="quizz-' + pid + '"]')).modal('show');
         // }, 300);
       }
     };
@@ -615,8 +633,8 @@
           pid = pid.pop();
 
           var scb = activity[pub].pages[pid].questions[qid];
-          if(!scb.questionScore)
-            scb.questionScore = new LxxlScoring.questionScore(scb.answers.length);
+          if(!scb.score)
+            scb.score = new LxxlScoring.questionScore(scb.answers.length);
 
           var getBackTo = scb.answers[aid].isCorrect;
           if (getBackTo) {
@@ -630,10 +648,10 @@
             $(this).html('O');
 
             $(this).attr('style', 'background-color: green;');
-            scb.questionScore.markAnswered();
+            scb.score.markAnswered();
             completeQuestion(pid, qid);
           }else {
-            scb.questionScore.addPenalty();
+            scb.score.addPenalty();
             $('.modal', $(this).parent()).modal('show');
             $(this).html('X');
             $(this).attr('disabled', 'disabled');
@@ -657,8 +675,8 @@
           var qid = pid.pop() - 1;
           pid = pid.pop();
           var scb = activity[pub].pages[pid].questions[qid];
-          if(!scb.questionScore)
-            scb.questionScore = new LxxlScoring.questionScore(scb.answers.length);
+          if(!scb.score)
+            scb.score = new LxxlScoring.questionScore(scb.answers.length);
           var goods = 0;
           var bads = [];
           $('li', $(this).parent()).each(function(ind, item) {
@@ -671,17 +689,18 @@
             }
           });
           if (bads.length) {
-            scb.questionScore.addPenalty();
+            scb.score.addPenalty();
             var mod = bads[Math.round(Math.random() * (bads.length - 1))];
             $('.feedback', mod).html(goods + '/' + (bads.length + goods));
             mod.modal('show');
           }else {
-            $(this).next().modal('show');
             $(this).attr('disabled', 'disabled');
             $('li input', $(this).parent()).each(function(ind, item) {
               $(item).attr('disabled', 'disabled');
             });
-            scb.questionScore.markAnswered();
+            scb.score.markAnswered();
+            $('span.feedback', $(this).next()).html(scb.score.getResult() + '%');
+            $(this).next().modal('show');
             $(this).next().on('hidden', function() {
               console.error('On what?');
               completeQuestion(pid, qid);
@@ -716,9 +735,8 @@
         var wordList = [];
 
         var total = $('[data-type="tat"]', item).length;
-        recupPage.scoring = new LxxlScoring.tatScore(total);
+        recupPage.score = new LxxlScoring.tatScore(total);
 
-        console.warn('#tat-' + pageId + '-check');
         $('#tat-' + pageId + '-check', item).on('click', function() {
           var notYet = 0;
           $('input', $(this).parent().parent().prev()).each(function(ind, chose) {
@@ -748,9 +766,10 @@
               notYet++;
             }
           });
-          var r = recupPage.scoring.getResult(total - notYet);
+          console.warn('Score engine', recupPage.score);
+          var r = recupPage.score.getResult(total - notYet);
           if (notYet) {
-            recupPage.scoring.addPenalty();
+            recupPage.score.addPenalty();
             $('.modal .feedback', $('#tat-' + pageId)).html(r + '%');
             $('#modal-on-modal-lynching').show();
             $('.modal.feedback', $('#tat-' + pageId)).modal('show');
@@ -786,7 +805,7 @@
           it.replaceWith(h);
           if (clue) {
             $('button', h).on('click', function(e) {
-              recupPage.scoring.addPenalty();
+              recupPage.score.addPenalty();
               // console.warn($(e.target).replace);
               $(e.target).replaceWith($('<span style="text-decoration: underline;"/>').text('(' + clue + ')'));
             });

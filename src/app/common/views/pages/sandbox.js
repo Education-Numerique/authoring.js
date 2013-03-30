@@ -109,6 +109,21 @@
       preview.bind('click', function(/*e*/) {
         $('#modal-preview').modal({keyboard: false, backdrop: true});
         doPreview($('#modal-preview-body'), item);
+
+        // Reset on exit
+        $('#modal-preview').on('hide', function(e){
+          if($(e.target).attr('id') == 'modal-preview'){
+            infos.pages.forEach(function(p){
+              p.score = null;
+              if(p.questions)
+                p.questions.forEach(function(q){
+                  q.score = null;
+                  q.completed = false;
+                });
+            });
+          }
+        });
+
       });
 
       var button = $(nRow).find('td:eq(0)');
@@ -240,7 +255,6 @@
   t.clickyClickMatter = function(d) {
     matterRestrict = (d.context == 'reset') ? null : d.context;
     this.set('displayMatter', matterRestrict ? hashMatters[matterRestrict].title : allM);
-    // console.warn('Click on my ass', d, d.target, $(d.target).parent());
     d = $(d.target);
     d.parent().parent().children('li').removeClass('active');
     d.parent().addClass('active');

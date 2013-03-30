@@ -16,6 +16,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var USER_PREFERENCES = 'preferences';
   var USER_REMINDER = 'reminder';
   var USER_DEACTIVATE = 'deactivate';
+  var CHANGE_PASSWORD = 'password';
   // var USER_CMD_LIST = 'list';
 
   this.user = new (function() {
@@ -36,6 +37,19 @@ jsBoot.pack('LxxlLib.service', function(api) {
         onfailure: onFailure,
         id: uid,
         command: USER_DEACTIVATE
+      });
+    };
+
+    this.changePassword = function(onSuccess, onFailure, uid, newPass){
+      requestor.query(requestor.POST, {
+        service: SERVICE,
+        onsuccess: onSuccess,
+        onfailure: onFailure,
+        id: uid,
+        command: CHANGE_PASSWORD,
+        payload: {
+          password: newPass
+        }
       });
     };
 

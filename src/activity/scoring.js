@@ -18,7 +18,7 @@
   };
 
   LxxlScoring.tatScore = function(total){
-    console.warn('[TAT Score] Creating score for TAT total:', total);
+    console.warn('[TAT Score] creating score for total:', total);
     var penalty = 0;
 
     this.addPenalty = function(){
@@ -44,6 +44,7 @@
   // - being wrong on a question means you loose half the remaining possible point for that question
   // - not answering at all 
   LxxlScoring.questionScore = function(nbAnswers){
+    console.warn('[QUIZZ Score] creating score for total:', nbAnswers);
     var points = nbAnswers;
     var isAnswered = false;
 
@@ -52,11 +53,13 @@
     };
 
     this.addPenalty = function(){
+      console.warn('[QUIZZ Score] penalty for wrong answer');
       points /= 2;
     };
 
     this.getResult = function(){
-      return isAnswered ? (points / nbAnswers) : 0;
+      console.warn('[QUIZZ Score] returning total');
+      return isAnswered ? (points / nbAnswers * 100) : 0;
     };
   };
 
