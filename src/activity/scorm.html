@@ -1,0 +1,222 @@
+<!doctype html public "✰">
+<!--[if lt IE 7]> <html lang="en-us" class="no-js ie6"> <![endif]-->
+<!--[if IE 7]>    <html lang="en-us" class="no-js ie7"> <![endif]-->
+<!--[if IE 8]>    <html lang="en-us" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>   <html lang="en-us" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html lang="en-us" class="no-js "> <!--<![endif]-->
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!--
+  This is a placeholder stylesheet meant to
+  provide *default* styles to be displayed while the app boots-up
+  -->
+  <style type="text/css">
+    /* This is meant only to style no-javascript browsers error */
+    noscript > p{
+      padding: 8px 35px 8px 14px;
+      margin-bottom: 18px;
+      color: #c09853;
+      text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+      background-color: #fcf8e3;
+      border: 1px solid #fbeed5;
+      -webkit-border-radius: 4px;
+         -moz-border-radius: 4px;
+              border-radius: 4px;
+      color: #b94a48;
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      text-align: center;
+    }
+
+    /* Match the product background-color */
+    body {
+      background-color: #444444;
+    }
+
+    /* Placeholders should be hidden once we remove the no-js class */
+    body > p{
+      display: none;
+    }
+
+    /* Show the throbber until the app finishes booting and remove the no-js class */
+    .no-js body > p{
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      margin-top: -90px;
+      left: 50%;
+      margin-left: -78px;
+      display: block;
+    }
+
+    html .unsupported-browser{
+      display: none;
+    }
+
+    html:not(.ie6):not(.ie7):not(.ie8).unsupported-browser .unsupported-browser{
+      display: block;
+    }
+
+  </style>
+
+  <title dir="ltr">Activité Éducation et Numérique</title>
+  <meta name="description" content="Environnement auteur Éducation et Numérique">
+  <meta name="author" content="E&amp;N">
+
+  <!--
+ * @file
+ * @summary Bootstrap html nutshell
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/miniboot/index.html{PUKE-GIT-REVISION}
+  -->
+
+</head>
+<body id="lxxlroot">
+  <!-- Browsers with no javascript support will see this -->
+  <noscript>
+    <p>
+      <strong>Merci d'activer Javascript pour utiliser cette application, puis recharger.</strong>
+    </p>
+  </noscript>
+
+  <!-- oldIES get here -->
+  <!--[if lt IE 9]>
+    <p class="alert alert-error" id="very-outdated-browser">
+    <strong>
+    Votre navigateur est obsolète. Vous devriez <a href="http://browsehappy.com/">vraiment le mettre à jour.</a>, ou <a href="//www.google.com/chromeframe/?redirect=true">installer Google Chrome Frame</a>.
+    </strong>
+    </p>
+  <![endif]-->
+
+  <section style="position: fixed; bottom: 0; text-align: center; z-index: 1000;" class="unsupported-browser row-fluid">
+    <!-- Everything but Chrome and Firefox (and old IEs) will get this -->
+    <p class="alert alert-error">
+      <button class="close" data-dismiss="alert">×</button>
+      <strong>
+      Votre navigateur n'est peut-être pas pris en charge...<br/><a href="http://www.mozilla.org/fr/firefox/new/">Firefox ESR (et supérieur)</a> et <a href="https://www.google.com/intl/fr/chrome/browser/?hl=fr">Google Chrome</a> sont les seuls navigateurs officiellement supportés par cette application.<br/>
+      Les derniers Safari et Opera devraient fonctionner correctement cependant.<br />
+      Pour tout autre navigateur, certaines fonctionnalités peuvent ne pas être opérationnelles, ou le produit pourrait ne pas fonctionner du tout...
+      </strong>
+    </p>
+  </section>
+
+  <!-- Throbber image displayed while the application boots-up -->
+  <p>
+  </p>
+
+  <!-- jsBoot loader inclusion point -->
+  <script type="text/javascript" src="../pack.js"></script>
+  <!-- Application script bootstrapper -->
+  <script type="text/javascript">
+  (function() {
+    'use strict';
+
+    // Allow the use of additional url parameters to trigger specific behavior
+    // Debuggin
+    var debug = /use-debug/.test(location.href);
+    // Trunk version - don't do this, kid!
+    var version = /use-trunk/.test(location.href) && 'trunk';
+    // Not minified if debugging
+    // Disabling minification for now
+    var suffix = '.'; // !debug ? '-min.' : '.';
+
+    var bootRoot = location.href.split('/');
+    bootRoot.pop();
+    bootRoot = bootRoot.join('/');
+
+    jsBoot.loader.use('../pack.css');
+
+    // No analytics for now
+    // var gaTracker = '{PUKE_ANALYTICS}';
+
+    // Root of the versioned app
+    // var bootRoot = '{PUKE-PACKAGE-VERSION}/';
+
+    // IE deserves to be raped :)
+    // if (/ie[0-8]/.test(document.getElementsByTagName('html').className))
+    //   jsBoot.loader.use('ie7', '2.1');
+
+    // jsBoot.loader.use('normalize', 2.0);
+    // jsBoot.loader.use('h5bp', 4.0);
+
+
+    // jsBoot.loader.use('bootstrap', version || 'stable', '.js$');
+
+    try {
+      jsBoot.loader.use(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
+    }catch (e) {
+      /*global console:false*/
+      console.error(e);
+    }
+
+    // Callback for when the first part of the stack is loaded
+    jsBoot.loader.wait(function() {
+      // Js is working here
+      $('html').removeClass('no-js');
+      // Now, go away placeholder
+      // if ((typeof chrome == 'undefined') && (typeof XPCNativeWrapper == 'undefined'))
+      //   $('html').addClass('unsupported-browser');
+      if (debug) {
+        jsBoot.debug.tick('Base stack loaded');
+        // Set reasonable verbosity
+        jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
+            jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR |
+            jsBoot.debug.console.LOG /*| jsBoot.debug.console.DEBUG*/;
+      }else {
+        // Mute console while in production
+        jsBoot.core.toggleConsole(false);
+      }
+    });
+
+    jsBoot.loader.use('apiwrapper' + suffix + 'js');
+    jsBoot.loader.use('scoring' + suffix + 'js');
+    jsBoot.loader.wait();
+    jsBoot.loader.use('activity' + suffix + 'css');
+    jsBoot.loader.use('activity' + suffix + 'js');
+
+    jsBoot.loader.wait(function() {
+      var a = new LxxlLib.Masher();
+      a.setupViewport($('#lxxlroot'), true);
+      // a.addStyle('body{background-color: blue;}');
+      a.setupTemplate('activity.tpl');
+      // activity.published
+      var id = 'activity.json';
+      a.showActivity(id, function() {
+        // console.warn('All set baby!');
+      }, true);
+
+      // var SERVICE_CONFIG = {
+      //   key: {
+      //     id: 'PROD',
+      //     secret: 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
+      //   },
+      //   server: {
+      //     host: '{PUKE-SERVICE-HOST}',
+      //     port: '{PUKE-SERVICE-PORT}',
+      //     // host: 'snap.lxxl.com',8081
+      //     // port: '90',
+      //     version: '1.0'
+      //   },
+      //   anonymous: {
+      //     id: 'anonymous',
+      //     login: 'anonymous',
+      //     password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+      //   }
+      // };
+
+      // jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
+
+
+    });
+  })();
+  </script>
+</body>
+</html>

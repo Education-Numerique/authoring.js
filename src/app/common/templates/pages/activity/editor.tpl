@@ -239,7 +239,7 @@
     <h3>Télécharger le package SCORM</h3>
   </div>
   <div class="modal-body">
-    Bla blab bla
+    Package scorm exporté.
   </div>
   <div class="modal-footer">
         <a class="btn" data-dismiss="modal">Annuler</a>

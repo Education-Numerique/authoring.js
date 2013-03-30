@@ -1,0 +1,41 @@
+<?xml version="1.0" ?>
+<manifest identifier="org.education-et-numerique.scorm" version="1"
+         xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2"
+         xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.imsproject.org/xsd/imscp_rootv1p1p2 imscp_rootv1p1p2.xsd
+                             http://www.imsglobal.org/xsd/imsmd_rootv1p2p1 imsmd_rootv1p2p1.xsd
+                             http://www.adlnet.org/xsd/adlcp_rootv1p2 adlcp_rootv1p2.xsd">
+
+
+
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+    <adlcp:location>metadata.xml</adlcp:location> 
+  </metadata>
+  <organizations default="EetN">
+    <organization identifier="EetN">
+      <title>{{title}}</title>
+      <item identifier="item_1" identifierref="resource_1">
+        <title>{{title}}</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="resource_1" type="webcontent" adlcp:scormtype="sco" href="activity/scorm.html">
+      <file href="activity/LICENSE.txt" />
+      <file href="activity/scorm.html" />
+      <file href="pack.js" />
+      <file href="pack.css" />
+      <file href="activity/activity.css" />
+      <file href="activity/activity.js" />
+      <file href="activity/lxxl-standalone-library.js" />
+      <file href="activity/scoring.js" />
+      <file href="activity/activity.tpl" />
+      <file href="activity/activity.json" />
+      <file href="LICENSE.txt" />
+    </resource>
+  </resources>
+</manifest>
+

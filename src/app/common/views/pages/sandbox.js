@@ -115,6 +115,7 @@
           if ($(e.target).attr('id') == 'modal-preview') {
             infos.pages.forEach(function(p) {
               p.score = null;
+              p.completed = null;
               if (p.questions)
                 p.questions.forEach(function(q) {
                   q.score = null;

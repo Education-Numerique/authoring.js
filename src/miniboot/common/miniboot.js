@@ -160,6 +160,7 @@
 
 
   jsBoot.loader.use(bootRoot + 'activity/activity' + suffix + 'css');
+  jsBoot.loader.use(bootRoot + 'activity/packer' + suffix + 'js');
   // Load the app itself, along its stylesheet
   jsBoot.loader.use(bootRoot + 'lxxl-standalone-library' + suffix + 'js');
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'js');

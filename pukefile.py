@@ -202,6 +202,9 @@ def build():
 
   combine(js, VERSIONED_ROOT + "/lxxl.js", replace=sed)
 
+  deepcopy('src/activity/scorm/', VERSIONED_ROOT);
+
+
   # js.merge(FileList("src/app/desktop/", filter = "*routing.js"))
   # js.merge(FileList("src/app/desktop/", filter = "*hotkeys.js"))
   # js.merge(FileList("src/app/desktop/model/", filter = "*.js"))
@@ -234,6 +237,7 @@ def build():
   # ================================
   # Versioned runner
   # ================================
+
 
   list = FileList('src', filter = '*activity*')
   deepcopy(list, VERSIONED_ROOT, replace=sed)

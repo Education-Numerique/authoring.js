@@ -64,7 +64,8 @@
   if (debug)
     jsBoot.loader.use(jsBoot.loader.DEBUG);
 
-  jsBoot.loader.use('bootstrap', version || 'stable');
+  jsBoot.loader.use('../../libs/css/bootstrap' + suffix + 'css');
+  jsBoot.loader.use('bootstrap', version || 'stable', '.js$');
 
   try {
     jsBoot.loader.use(bootRoot + '/lxxl-standalone-library' + suffix + 'js');
@@ -93,6 +94,7 @@
   });
 
   jsBoot.loader.use('apiwrapper' + suffix + 'js');
+  jsBoot.loader.use('scoring' + suffix + 'js');
   jsBoot.loader.wait();
   jsBoot.loader.use('activity' + suffix + 'css');
   jsBoot.loader.use('activity' + suffix + 'js');

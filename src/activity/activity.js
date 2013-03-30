@@ -173,7 +173,8 @@
         // ++ All that should migrate into sessionManager
         LxxlLib.sessionManager.start(act, pubVersion);
         var deref = LxxlLib.sessionManager.activity;
-        deref.seen();
+        if(!/scorm/.test(location.href))
+          deref.seen();
         deref = pubVersion ? deref.published : deref.draft;
         deref.styleData = [];
         deref.styleUri = [];
@@ -513,7 +514,7 @@
   'use strict';
 
   // Activity may be passed as a json url, or embedded as a datauri?
-  if (/embed\.html/.test(location.href)) {
+  if (/(?:embed\.html)/.test(location.href)) {
     var requestDraft = location.href.match(/draft/i);
     var id = location.href.match(/id=([a-z0-9]+)/i);
     if (id) {

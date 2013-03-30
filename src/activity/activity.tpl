@@ -15,8 +15,19 @@
 
   </header>
 
+  <div id="final-feedback" class="row-fluid content-container" style="display: none">
+  <section class="widget-box">
+    <div class="widget-content nopadding">
+      Félicitations! Vous avez terminé l'activité.<br />
+      Votre score total est de: <span class="feedback"></span>
+    </div>
+  </section>
+  </div>
+
   <!-- Sommaire -->
-  <div class="row-fluid content-container">
+  <div id="playing" class="row-fluid content-container">
+
+
 
   <aside class="span3 side-menu pull-right">
     {{#if extra.attachments.length}}
@@ -366,6 +377,7 @@
   </div>
 -->
 </div>
+
 
 
 <!-- The utter stupidity of modals on modals -->

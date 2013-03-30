@@ -2,14 +2,14 @@
   /*jshint devel: true*/
   'use strict';
 
-  window.API = {};
-  ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
-   'GetDiagnostic'].forEach(function(key) {
-    window.API[key] = function() {
-      console.log('Fake LMS API debug. Method:', key, 'args', arguments);
-      return '0';
-    };
-  });
+  // window.API = {};
+  // ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
+  //  'GetDiagnostic'].forEach(function(key) {
+  //   window.API[key] = function() {
+  //     console.warn('Fake LMS API debug. Method:', key, 'args', arguments);
+  //     return '0';
+  //   };
+  // });
 
   /*
   SCORM 2004 (API_1484_11)
@@ -211,7 +211,7 @@
 
 
   var mapper = function(cacheHolder, key, mapping, parse, serialize, value) {
-    console.warn('gonna do something', key, arguments);
+    // console.warn('gonna do something', key, arguments);
     if (value === undefined) {
       if (scormAPI.hasAPI && !cacheHolder.hasOwnProperty(key)) {
         cacheHolder[key] = scormAPI.getValue('cmi.' + mapping);
@@ -297,9 +297,25 @@
         write: null
       },
       score: score('core.objectives.' + idx + '.score'),
-      status: status('core.objectives.' + idx + '.status')
+      status: {
+        mapping: 'core.objectives.' + idx + '.status',
+        read: function(value) {
+          return getStatus(scormAPI.statusKeys[value]);
+        },
+        write: function(value) {
+          return scormAPI.status[value.id];
+        }
+      }
+      // status: status('core.objectives.' + idx + '.status')
     });
-    return new Mutant(mesh);
+    var r = new Mutant(mesh);
+    r.setBrowsed = function(){
+      this.set('status', getStatus('BROWSED'));
+    };
+    r.setComplete = function(){
+      this.set('status', getStatus('COMPLETED'));
+    };
+    return r;
   };
 
   var interaction = function(mesh, idx) {
@@ -431,7 +447,15 @@
       write: null
     },
 
-    status: status('core.lesson_status'),
+    status: {
+      mapping: 'core.lesson_status',
+      read: function(value) {
+        return getStatus(scormAPI.statusKeys[value]);
+      },
+      write: function(value) {
+        return scormAPI.status[value.id];
+      }
+    }, // status('core.lesson_status'),
 
     score: score('core.score'),
 
@@ -444,14 +468,17 @@
     sessionTime: {
       mapping: 'core.session_time',
       read: function(value) {
-        var d = /(?:([0-9]{1,2}):)?(?:([0-9]{1,2}):)?([0-9]{1,2})/.match(value);
+        var d = value.match(/(?:([0-9]{1,2}):)?(?:([0-9]{1,2}):)?([0-9]{1,2})/);
+        if(!d)
+          return;
         return parseInt(d.pop(), 10) + parseInt(d.pop(), 10) * 60 + parseInt(d.pop(), 10) * 60 * 60;
       },
       write: function(value) {
+        value = value / 1000;
         var secs = (value % 60);
         var mins = ((value - secs) / 60 % 60);
-        var hours = ((value - secs - mins * 60) / 60 / 60 % (60 * 60));
-        return hours + ':' + mins + ':' + secs;
+        var hours = ((value - secs - mins * 60) / 60 / 60 % (24));
+        return hours + ':' + mins + ':' + Math.round(secs);
         // return value.toString();
       }
     },
@@ -505,21 +532,61 @@
       pub = pubVersion ? 'published' : 'draft';
       startTime = (new Date()).getTime();
       activity = this.activity = ('isMutable' in act) ? act : new LxxlLib.model.Activity(act);
+
+
+      window.coin = scormAPI;
       scormAPI.boot();
+
+      // var objs = []
+      // var x = 0;
 
       // Create inner session object to manipulate the learner session
       cmip = new Cmi({
-        objectives: [
-          {
-            id: 0
-          }
-        ]
+        // objectives: [
+        //   {
+        //     id: 0
+        //   }
+        // ]
       });
+
+      activity[pub].pages.forEach(function(page, idx){
+        switch(page.flavor.id){
+          case 'quizz':
+          case 'tat':
+          case 'jmt':
+            var o = new objective({}, cmip.objectives.length);
+            cmip.objectives.pushObject(o);
+            o.score.max = 100;
+            o.score.min = 0;
+          break;
+          default:
+            var o = new objective({}, cmip.objectives.length);
+            cmip.objectives.pushObject(o);
+            o.score.max = 0;
+            o.score.min = 0;
+          break;
+        }
+      });
+
+      if(cmip.objectives.length)
+        cmip.objectives[0].setBrowsed();
+      // cmip.addObjective = function(){
+      //   this.objectives.pushObject(new objective({}, this.objectives.length));
+      // };
+
+      window.TOTO = cmip;
+
       cmip.status = getStatus('BROWSED');
+      cmip.startTime = Date.now();
       cmip.score.min = 0;
       cmip.score.max = 100;
       scormAPI.commit();
     };
+
+        // this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
+        // this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
+        // this.execute(this.SET, ['cmi.objectives.' + idx + '.min', token.min]);
+
 
     Object.defineProperty(this, 'content', {
       enumerable: true,
@@ -529,6 +596,34 @@
     });
 
 
+    var onPageComplete = function(pid, score){
+      activity[pub].pages[pid].completed = true;
+      activity[pub].pages[pid].score = score;
+      console.warn('Page completed', pid, score);
+      cmip.objectives[pid].score.raw = score;
+      cmip.objectives[pid].setComplete();
+      var totalScore = 0;
+      var nbPages = 0;
+      var allset = activity[pub].pages.every(function(page){
+        if(page.flavor.id == 'simple')
+          return true;
+        else{
+          nbPages++;
+          totalScore += page.score;
+          return !!page.completed;
+        }
+      });
+      if(allset){
+        totalScore = Math.round(totalScore / nbPages);
+        cmip.score.raw = totalScore;
+        cmip.status = getStatus('COMPLETED');
+        $('#final-feedback .feedback').html(totalScore + '%');
+        $('#final-feedback').show();
+        $('#playing').hide();
+        scormAPI.shutdown();
+      }
+    };
+
     this.MixAndMatchComplete = function(pageId, score) {
       $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
       $('#modal-on-modal-lynching').show();
@@ -537,6 +632,7 @@
       });
       $('.modal', $('#jmt-' + pageId)).on('hide', function() {
         $('#modal-on-modal-lynching').hide();
+        onPageComplete(pageId, score);
       });
     };
 
@@ -565,6 +661,21 @@
       // Pages navigation
       $('.pages-list > li', dom).on('click', function(event) {
         var idx;
+// TOTO.objectives[0].setBrowsed()
+// Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.status"] debug.js:46
+// Fake LMS API debug. Method: GetLastError args [] debug.js:46
+// Fake LMS API debug. Method: SetValue args ["cmi.core.objectives.0.status", "browsed"] debug.js:46
+// undefined
+// TOTO.objectives[0].score.set('max', 100)
+// Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.score.max"] debug.js:46
+// Fake LMS API debug. Method: GetLastError args [] debug.js:46
+// Fake LMS API debug. Method: SetValue args ["cmi.core.objectives.0.score.max", "100"] debug.js:46
+// undefined
+// TOTO.objectives[0].score.set('min', 0)
+// Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.score.min"] debug.js:46
+// Fake LMS API debug. Method: GetLastError args [] debug.js:46
+// undefined
+// TOTO.objectives[0].score.set('raw', 14)
 
         $('.pages-list > li', dom).each(function(ind, item) {
           if (item == this) {
@@ -586,6 +697,8 @@
             $(item).fadeIn(1000, function() {console.warn('done');});
           // $(item).show();
         });
+
+        cmip.objectives[idx].setBrowsed();
         event.preventDefault();
         return false;
       });
@@ -610,13 +723,13 @@
 
         $('#modal-on-modal-lynching').show();
 
-        console.error('GOT FINAL RESULT', actual, total);
         $('.conclusion .feedback', $('#quizz-' + pid)).html(Math.round(actual / total) + '%');
 
         $('.conclusion', $('#quizz-' + pid)).modal('show');
 
         $('.conclusion', $('#quizz-' + pid)).on('hide', function() {
           $('#modal-on-modal-lynching').hide();
+          onPageComplete(pid, Math.round(actual / total));
         });
 
         // window.setTimeout(function(){
@@ -793,6 +906,7 @@
             $('.modal.conclusion', $('#tat-' + pageId)).modal('show');
             $('.modal.conclusion', $('#tat-' + pageId)).on('hide', function() {
               $('#modal-on-modal-lynching').hide();
+              onPageComplete(pageId, r);
             });
           }
           // Completed
