@@ -20,7 +20,8 @@
 <!--
                 <button type="button" [[action deleteActivity target="controller"]] class="btn btn-mini btn-danger" style="margin-left:20px">Supprimer</button>
             -->
-                <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Exporter</button>
+                <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Partager</button>
+                <button type="button" {{action exportScorm target="controller"}} class="btn btn-mini">Exporter SCORM</button>
 
                 <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>

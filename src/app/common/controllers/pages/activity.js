@@ -69,6 +69,10 @@
       $('#action-embed').modal('show');
     },
 
+    exportScorm: function () {
+      console.warn('***** export scorm');
+    },
+
 
     addMedia: function(file, success/*, error*/) {
       this.get('content').controller.addMedia(file, function(url) {
