@@ -1,32 +1,32 @@
-(function(){
+(function() {
   'use strict';
 
   window.LxxlScoring = {};
-  LxxlScoring.mixScore = function(total){
+  LxxlScoring.mixScore = function(total) {
     console.warn('[MM Score] creqting', total);
     var penalty = 0;
 
-    this.addPenalty = function(){
+    this.addPenalty = function() {
       penalty++;
       console.warn('[MM Score] penalty increment to', penalty);
     };
 
-    this.getResult = function(correct){
+    this.getResult = function(correct) {
       console.warn('[TAT Score] result, correct:', correct, 'total:', total, 'penalties:', penalty);
       return Math.round(Math.max(correct - penalty, 0) / total * 100);
     };
   };
 
-  LxxlScoring.tatScore = function(total){
+  LxxlScoring.tatScore = function(total) {
     console.warn('[TAT Score] creating score for total:', total);
     var penalty = 0;
 
-    this.addPenalty = function(){
+    this.addPenalty = function() {
       penalty++;
       console.warn('[TAT Score] penalty increment to', penalty);
     };
 
-    this.getResult = function(correct){
+    this.getResult = function(correct) {
       console.warn('[TAT Score] result, correct:', correct, 'total:', total, 'penalties:', penalty);
       return Math.round(Math.max(correct - penalty, 0) / total * 100);
     };
@@ -39,42 +39,42 @@
   // The number of tries is used against the total number of good questions, but as QCM and QRM are not implemented
   // like that, the formula doesn't make sense in the context of the app:
   // ((TotAns-((Tries*100)/State[QNum][3]))/(TotAns-1));
-  // 
+  //
   // Conclusion:
   // - being wrong on a question means you loose half the remaining possible point for that question
-  // - not answering at all 
-  LxxlScoring.questionScore = function(nbAnswers){
+  // - not answering at all
+  LxxlScoring.questionScore = function(nbAnswers) {
     console.warn('[QUIZZ Score] creating score for total:', nbAnswers);
     var points = nbAnswers;
     var isAnswered = false;
 
-    this.markAnswered = function(){
+    this.markAnswered = function() {
       isAnswered = true;
     };
 
-    this.addPenalty = function(){
+    this.addPenalty = function() {
       console.warn('[QUIZZ Score] penalty for wrong answer');
       points /= 2;
     };
 
-    this.getResult = function(){
+    this.getResult = function() {
       console.warn('[QUIZZ Score] returning total');
       return isAnswered ? (points / nbAnswers * 100) : 0;
     };
   };
 
 
-  LxxlScoring.quizzScore = function(total){
+  LxxlScoring.quizzScore = function(total) {
     this.qna = [];
-    for(var x = 0; x < total; x++){
+    for (var x = 0; x < total; x++) {
       this.qna[x] = new this.questionScore();
     }
 
     console.warn('[QUIZZ Score] creating score for quizz total', total);
 
-    this.getResult = function(){
+    this.getResult = function() {
       var result;
-      this.qna.forEach(function(q){
+      this.qna.forEach(function(q) {
         result += q.getResult();
       });
       result /= total * 100;

@@ -40,7 +40,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       });
     };
 
-    this.changePassword = function(onSuccess, onFailure, uid, newPass){
+    this.changePassword = function(onSuccess, onFailure, uid, newPass) {
       requestor.query(requestor.POST, {
         service: SERVICE,
         onsuccess: onSuccess,

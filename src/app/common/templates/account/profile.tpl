@@ -69,7 +69,7 @@
                 </div>
                 <hr class="clear" />
                 <div class="form-actions" style="text-align: center; padding: 0; padding-top: 20px; padding-bottom: 20px;">
-                    <input id="submit" class="btn btn-primary ui-wizard-content ui-formwizard-button" type="submit" value="Valider" />
+                    <input id="submit" class="btn btn-primary ui-wizard-content ui-formwizard-button" type="submit" value="Sauvegarder mon profil" />
                 </div>
             </div>
 
@@ -87,7 +87,6 @@
                     Ajouter un avatar
                 </button>
 
-                {{log view.canDelete}}
                 {{#if view.canDelete}}
                 <div class="deactivate-user">
                     <button class="btn btn-large btn-danger" data-toggle="modal" href="#modal-deactivate-user">Désactiver cet utilisateur</button>
@@ -101,6 +100,35 @@
             
         </form>
       </div>
+
+      <div class="widget-content">
+        <form id="password-form" class="form-horizontal">
+            <div class="control-group profile-fields" style="width:60%; float:left">
+                <h4>Changer mon mot de passe</h4>
+<hr class="clear" />
+               <div class="control-group">
+                        <div class="controls" style="margin-left:0px;">
+                            <div class="input-prepend">
+                                 <label class="add-on" style="width:200px;" for="password">Nouveau mot de passe</label><input type="text" type="password" id="password" name="password" placeholder="" style="margin-top: 10px;" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls" style="margin-left:0px;">
+                            <div class="input-prepend">
+                                <label class="add-on" style="width:200px;margin-top: 10px;" for="password2">Confirmez votre mot de passe</label><input type="password"  id="password2" style="margin-top: 10px;" name="password2" />
+                            </div>
+                        </div>
+                    </div>
+                <hr class="clear" />
+                <div class="form-actions" style="text-align: center; padding: 0; padding-top: 20px; padding-bottom: 20px;">
+                    <input  class="btn btn-primary" type="submit" style="color:#FFF!important;border-color:#FFF!important;" value="Changer mon mot de passe" />
+                </div>
+            </div>
+            
+        </form>
+      </div>
+
     </div>
 </div>
 

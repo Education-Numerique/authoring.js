@@ -60,6 +60,65 @@
 
       return false;
     }.bind(this));
+
+
+    $('#password-form').formwizard({
+      formPluginEnabled: false,
+      validationEnabled: true,
+      focusFirstInput: false,
+      disableUIStyles: true,
+      textSubmit: 'Changer mon mot de passe',
+      textNext: 'Changer mon mot de passe',
+
+      validationOptions: {
+        rules: {
+
+          password: {
+            required: true,
+            minlength: 6,
+            maxlength: 25
+          },
+          password2: {
+            required: true,
+            equalTo: '#password'
+          }
+
+        },
+        messages: {
+          password: 'Vous devez choisir un mot de passe (6 à 25 caractères)',
+          password2: {
+            required: 'Merci de répéter le mot de passe choisi',
+            equalTo: 'Merci de répéter le mot de passe choisi'
+          }
+        },
+        errorClass: 'help-inline',
+        errorElement: 'span',
+        highlight: function(element/*, errorClass, validClass*/) {
+          $('#password-form input[type=submit]').attr('disabled', 'disabled');
+          $(element).parents('.control-group').addClass('error');
+        },
+        unhighlight: function(element/*, errorClass, validClass*/) {
+          $(element).parents('.control-group').removeClass('error');
+          $('#password-form input[type=submit]').removeAttr('disabled');
+        }
+      }
+    });
+
+
+
+    $('#password-form').on('submit', function(e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      console.warn('change pwd', $('#password').val());
+      LxxlLib.service.user.changePassword(Em.K, Em.K, this.get('controller.content.uid'), $('#password').val());
+      var me = LxxlApp.get('router.applicationController.user.email');
+
+      if (LxxlApp.get('router.applicationController.user.uid') == this.get('controller.content.uid')) {
+        jsBoot.controllers.application.logout();
+        jsBoot.controllers.application.login(me, $('#password').val());
+      }
+      return false;
+    }.bind(this));
   };
 
   this.ProfileView = Ember.View.extend(t);

@@ -603,7 +603,7 @@
       if (pageComplete) {
         var total = activity[pub].pages[pid].questions.length;
         var actual = 0;
-        activity[pub].pages[pid].questions.forEach(function(question){
+        activity[pub].pages[pid].questions.forEach(function(question) {
           console.warn('Result for the question?', question.score.getResult());
           actual += question.score ? question.score.getResult() : 0;
         });
@@ -611,7 +611,7 @@
         $('#modal-on-modal-lynching').show();
 
         console.error('GOT FINAL RESULT', actual, total);
-        $('.conclusion .feedback', $('#quizz-' + pid)).html(Math.round(actual/total) + '%');
+        $('.conclusion .feedback', $('#quizz-' + pid)).html(Math.round(actual / total) + '%');
 
         $('.conclusion', $('#quizz-' + pid)).modal('show');
 
@@ -633,7 +633,7 @@
           pid = pid.pop();
 
           var scb = activity[pub].pages[pid].questions[qid];
-          if(!scb.score)
+          if (!scb.score)
             scb.score = new LxxlScoring.questionScore(scb.answers.length);
 
           var getBackTo = scb.answers[aid].isCorrect;
@@ -675,7 +675,7 @@
           var qid = pid.pop() - 1;
           pid = pid.pop();
           var scb = activity[pub].pages[pid].questions[qid];
-          if(!scb.score)
+          if (!scb.score)
             scb.score = new LxxlScoring.questionScore(scb.answers.length);
           var goods = 0;
           var bads = [];

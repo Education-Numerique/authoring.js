@@ -111,12 +111,12 @@
         doPreview($('#modal-preview-body'), item);
 
         // Reset on exit
-        $('#modal-preview').on('hide', function(e){
-          if($(e.target).attr('id') == 'modal-preview'){
-            infos.pages.forEach(function(p){
+        $('#modal-preview').on('hide', function(e) {
+          if ($(e.target).attr('id') == 'modal-preview') {
+            infos.pages.forEach(function(p) {
               p.score = null;
-              if(p.questions)
-                p.questions.forEach(function(q){
+              if (p.questions)
+                p.questions.forEach(function(q) {
                   q.score = null;
                   q.completed = false;
                 });
