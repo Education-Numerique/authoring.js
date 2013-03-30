@@ -115,7 +115,9 @@
 
       if (LxxlApp.get('router.applicationController.user.uid') == this.get('controller.content.uid')) {
         jsBoot.controllers.application.logout();
-        jsBoot.controllers.application.login(me, $('#password').val());
+        window.setTimeout(function(){
+          jsBoot.controllers.application.login(me, $('#password').val());
+        }, 1);
       }
       return false;
     }.bind(this));
