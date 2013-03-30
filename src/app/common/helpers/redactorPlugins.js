@@ -246,7 +246,7 @@
       });
 
       var untagTat = function(el) {
-        el.replaceWith(el.text());
+        el.replaceWith(el.html());
         redactorScope.modalClose();
       };
 
@@ -372,7 +372,7 @@
           $(el).removeAttr('title');
           $(el).removeAttr('data-placement');
         } else {
-          $(el).replaceWith($(el).text());
+          $(el).replaceWith($(el).html());
         }
         redactorScope.syncCode();
         redactorScope.modalClose();
