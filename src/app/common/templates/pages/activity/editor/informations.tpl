@@ -47,11 +47,11 @@
                         {{/bind}}
                     </div>
                 </div>
-                <button class="btn btn-large add-thumbnail">
+                <span class="btn btn-large add-thumbnail">
                     <i class="icon-plus"></i>
                     <input id="fileupload" type="file" name="file" />
                     Ajouter une vignette
-                </button>
+                </span>
             </div>
 
             <div class="input-prepend">
@@ -66,7 +66,7 @@
                 <i class="icon-file"></i>
             </span>
             <h5>Fichiers joints</h5>
-            <button class="btn btn-mini btn-success add-file"><i class="icon-plus icon-white spacify"></i><input id="fileattachmentupload" type="file" name="fileupload" />Ajouter un fichier</button>
+            <div class="btn btn-mini btn-success add-file"><i class="icon-plus icon-white spacify"></i><input id="fileattachmentupload" type="file" name="fileupload" />Ajouter un fichier</div>
         </div>
         <div class="widget-content">
             <div class="dropzone">Déposer un ou plusieurs fichiers ici<div class="upload-ok" style="display:none"></div></div>

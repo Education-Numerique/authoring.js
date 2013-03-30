@@ -40,9 +40,9 @@
                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                 //-->
 
-                 <button data-toggle="modal" href="#modal-tat-gestion" class="name btn">
+                 <div  data-toggle="modal" href="#modal-tat-gestion" class="name master-button btn">
                     Gestion
-                </button>
+                </div>
 <!--
                 <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
                     [[view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"]]

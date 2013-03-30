@@ -415,9 +415,10 @@ Style specific to activity edition
             float:right;
             margin-right:6px;
 
-            button {
+            .master-button {
                 width:100%;
                 margin-bottom:10px;
+                @include box-sizing(border-box);
 
                 &.multicontrol {
                     @include shadow(0,0,0,#FFF);
@@ -715,6 +716,7 @@ Style specific to activity edition
         width:100%;
         position:relative;
         margin:10px auto 0 auto;
+        @include box-sizing(border-box);
         input {
             width:100%;
             height:100%;
@@ -730,6 +732,10 @@ Style specific to activity edition
 
 .attachments .add-file {
     position:relative;
+    float: right;
+    margin-top: 9px;
+    margin-right: 10px;
+    
     input {
         width:100%;
         height:100%;

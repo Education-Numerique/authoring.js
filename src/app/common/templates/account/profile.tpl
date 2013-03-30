@@ -72,7 +72,7 @@
                     <input id="submit" class="btn btn-primary ui-wizard-content ui-formwizard-button" type="submit" value="Sauvegarder mon profil" />
                 </div>
             </div>
-
+            </form>
             <div class="dropzone-container thumbnail-uploader">
                 <div class="dropzone fade">
                     <div {{bindAttr class=":preview avatar:hasThumbnail:default"}}>
@@ -81,11 +81,11 @@
                         {{/bind}}
                     </div>
                 </div>
-                <button class="btn btn-large add-thumbnail">
+                <span class="btn btn-large add-thumbnail">
                     <i class="icon-plus"></i>
                     <input id="fileupload" type="file" name="file" />
                     Ajouter un avatar
-                </button>
+                </span>
 
                 {{#if view.canDelete}}
                 <div class="deactivate-user">
@@ -98,7 +98,7 @@
 
 
             
-        </form>
+        
       </div>
 
       <div class="widget-content">

@@ -28,9 +28,8 @@
     TatPage: Em.View.extend({
       templateName: 'pages/activity/editor/tat',
       TimeButton: Em.View.extend({
-        tagName: 'button',
-        type: 'button',
-        attributeBindings: ['type'],
+        tagName: 'div',
+        classNames: 'master-button',
 
         didInsertElement: function() {
 
@@ -136,9 +135,6 @@
     MixnmatchPage: Em.View.extend({
       templateName: 'pages/activity/editor/mixnmatch',
       TimeButton: Em.View.extend({
-        tagName: 'button',
-        type: 'button',
-        attributeBindings: ['type'],
 
         didInsertElement: function() {
           // var self = this.$('.checker');
@@ -154,9 +150,6 @@
         }
       }),
       SequenceButton: Em.View.extend({
-        tagName: 'button',
-        type: 'button',
-        attributeBindings: ['type'],
 
         click: function(e) {
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
@@ -278,9 +271,6 @@
       templateName: 'pages/activity/editor/quizz',
 
       TimeButton: Em.View.extend({
-        tagName: 'button',
-        type: 'button',
-        attributeBindings: ['type'],
 
         didInsertElement: function() {
           // var self = this.$('.checker');
@@ -310,9 +300,6 @@
         }
       },
       SequenceButton: Em.View.extend({
-        tagName: 'button',
-        type: 'button',
-        attributeBindings: ['type'],
 
         didInsertElement: function() {
           this.$().on('click', function(e) {
