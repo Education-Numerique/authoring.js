@@ -64,7 +64,7 @@
   var onEmberBoot = function() {
     // Js is working here
     $('html').removeClass('no-js');
-    $('.network-crash').hide();
+    // $('.network-crash').hide();
     // Now, go away placeholder
     if ((typeof chrome == 'undefined') && (typeof XPCNativeWrapper == 'undefined'))
       $('html').addClass('unsupported-browser');
