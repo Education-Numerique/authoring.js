@@ -109,7 +109,7 @@
                <div class="control-group">
                         <div class="controls" style="margin-left:0px;">
                             <div class="input-prepend">
-                                 <label class="add-on" style="width:200px;" for="password">Nouveau mot de passe</label><input type="text" type="password" id="password" name="password" placeholder="" style="margin-top: 10px;" />
+                                 <label class="add-on" style="width:200px;" for="password">Nouveau mot de passe</label><input  type="password" id="password" name="password" placeholder="" style="margin-top: 10px;" />
                             </div>
                         </div>
                     </div>

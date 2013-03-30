@@ -14,7 +14,7 @@
     console.warn('BAMMMMMMMM');
 
     LxxlLib.service.user.deactivate(Em.K, Em.K, this.get('controller.content.uid'));
-    LxxlApp.router.transitionTo('sandbox');
+    LxxlApp.router.transitionTo('dashboard');
   };
 
   t.doOnInsert = function() {
@@ -115,9 +115,10 @@
 
       if (LxxlApp.get('router.applicationController.user.uid') == this.get('controller.content.uid')) {
         jsBoot.controllers.application.logout();
-        window.setTimeout(function(){
-          jsBoot.controllers.application.login(me, $('#password').val());
-        }, 1);
+        window.setTimeout(function() {
+          jsBoot.controllers.application.login(me, $('#password').val(), true);
+          LxxlApp.router.transitionTo('dashboard');
+        }, 600);
       }
       return false;
     }.bind(this));
