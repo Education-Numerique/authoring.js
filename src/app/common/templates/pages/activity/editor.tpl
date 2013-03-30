@@ -234,6 +234,19 @@
   </div>
 </div>
 
+<div class="modal hide" id="download-package-scorm" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Télécharger le package SCORM</h3>
+  </div>
+  <div class="modal-body">
+    Bla blab bla
+  </div>
+  <div class="modal-footer">
+        <a class="btn" data-dismiss="modal">Annuler</a>
+      <a class="btn btn-primary"  id="download-scorm">Télécharger</a>
+  </div>
+</div>
+
 <div class="modal hide" id="action-published-error" role="dialog" aria-hidden="true">
   <div class="modal-header">
     <h3>Activité publiée</h3>

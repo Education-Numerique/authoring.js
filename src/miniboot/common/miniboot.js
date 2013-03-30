@@ -166,6 +166,7 @@
   jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'css');
   jsBoot.loader.use('libs/js/redactor' + suffix + 'js');
   jsBoot.loader.use('libs/js/html2canvas' + suffix + 'js');
+  jsBoot.loader.use('libs/js/jszip' + suffix + 'js');
 
 
   jsBoot.loader.wait(function() {
