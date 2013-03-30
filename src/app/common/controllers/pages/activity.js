@@ -277,8 +277,19 @@
     }.property('currentPage.sequencing'),
 
     quizzSequencingIsRandomSubset: function() {
-      return this.get('currentPage.sequencing') == 1;
+      return this.get('currentPage.sequencing') >= 1;
     }.property('currentPage.sequencing'),
+
+    quizzSequencingIsRandomSubsetValue: function(key, value) {
+      if (arguments.length === 1)
+        return 1;
+      value = parseInt(value, 10);
+
+      if (!value || value <= 0)
+        value = 1;
+      this.set('currentPage.sequencing', value);
+      return value;
+    }.property(),
 
     // setQuizzSequencing: (function(key, value) {
     //   console.warn('************ set quizz sequencing', value);

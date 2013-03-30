@@ -276,6 +276,7 @@
 
     QuizzPage: Em.View.extend({
       templateName: 'pages/activity/editor/quizz',
+
       TimeButton: Em.View.extend({
         tagName: 'button',
         type: 'button',
@@ -326,8 +327,6 @@
         }
       }),
 
-
-
       addQCM: function(e) {
         this.get('controller').addQuestion();
         e.preventDefault();
@@ -340,7 +339,6 @@
         e.preventDefault();
         return false;
       },
-
 
       CollapseAllQuestions: Em.View.extend({
         init: function() {

@@ -21,7 +21,9 @@
 
   LxxlLib.Ember = LxxlLib.Em = {};
   LxxlLib.utils = {};
-
+  LxxlLib.Em.TextField = Em.TextField.extend({
+    attributeBindings: ['min', 'max']
+  });
   LxxlLib.Em.Checkbox = Em.Checkbox.extend({
 
     didInsertElement: function() {
