@@ -652,7 +652,12 @@
             completeQuestion(pid, qid);
           }else {
             scb.score.addPenalty();
+
+            $('#modal-on-modal-lynching').show();
             $('.modal', $(this).parent()).modal('show');
+            $('.modal', $(this).parent()).on('hide', function() {
+              $('#modal-on-modal-lynching').hide();
+            });
             $(this).html('X');
             $(this).attr('disabled', 'disabled');
             $(this).attr('style', 'background-color: red;');
@@ -700,9 +705,11 @@
             });
             scb.score.markAnswered();
             $('span.feedback', $(this).next()).html(scb.score.getResult() + '%');
+
+            $('#modal-on-modal-lynching').show();
             $(this).next().modal('show');
             $(this).next().on('hidden', function() {
-              console.error('On what?');
+              $('#modal-on-modal-lynching').hide();
               completeQuestion(pid, qid);
             });
           }
@@ -766,7 +773,7 @@
               notYet++;
             }
           });
-          console.warn('Score engine', recupPage.score);
+
           var r = recupPage.score.getResult(total - notYet);
           if (notYet) {
             recupPage.score.addPenalty();
@@ -814,7 +821,6 @@
 
         });
 
-        console.error('-)------>', recupPage.flavor.id, recupPage.displayHoles);
         if (recupPage.displayHoles) {
           var plist = wordList;
           if (recupPage.displayHolesRandomly) {
