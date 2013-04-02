@@ -34,6 +34,7 @@
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin
   var debug = /use-debug/.test(location.href);
+  debug = true;
 
   // Ember global configuration
   window.ENV = {
