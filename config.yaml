@@ -253,6 +253,10 @@ config-JB-darwin:
     self:
       url: '//dev.app.sn.ackitup.net/'
 
+  service:
+    port: ''
+    host: 'api.education-et-numerique.fr'
+
   DEBUG: 'true'
   MINIFY: 'false'
 
