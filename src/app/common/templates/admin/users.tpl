@@ -2,7 +2,7 @@
 * @template : admin/users
 */
 
-
+<!--
 <div class="row-fluid">
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
@@ -10,7 +10,7 @@
     Ceci est la page de gestion des comptes utilisateurs
   </div>
 <div class="widget-box">
-   
+-->
     <div class="widget-title">
       <h5>Les administrateurs</h5>
     </div>
@@ -20,7 +20,7 @@
           <tr style="cursor: pointer; table-striped with-check">
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
-            <th>Username</th>
+            <th>Utilisateur</th>
             <th>Email</th>
             <th></th>
           </tr>
@@ -43,7 +43,7 @@
           <tr style="cursor: pointer; table-striped with-check">
             <th style="width: 10px;"></th>
             <th style="width: 10px;"></th>
-            <th>Username</th>
+            <th>Utilisateur</th>
             <th>Email</th>
             <th></th>
           </tr>
