@@ -249,7 +249,7 @@
 
 <div class="modal hide" id="action-published-error" role="dialog" aria-hidden="true">
   <div class="modal-header">
-    <h3>Activité publiée</h3>
+    <h3>Activité non publiée</h3>
   </div>
   <div class="modal-body">
     Votre activité n'est pas prête à être publiée. En effet, <span id="pub-err"></span>.
@@ -257,6 +257,18 @@
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Corriger</a>
+  </div>
+</div>
+
+<div class="modal hide" id="action-scorm-error" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Package scorm</h3>
+  </div>
+  <div class="modal-body">
+    <span id="pub-err"></span>
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Fermer</a>
   </div>
 </div>
 
