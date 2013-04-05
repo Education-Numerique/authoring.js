@@ -147,16 +147,22 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         {id: 'eng_tt_lycee_2_4', title: 'Rédiger une argumentation'},
         {id: 'eng_tt_lycee_2_5', title: 'Rédiger un essai organisé'}
       ]},
-      {id: 'eng_tt_lycee_3', title: 'MONDE ANGLOPHONE', content: [
-        {id: 'eng_tt_lycee_3_1', title: 'Culture'},
-        {id: 'eng_tt_lycee_3_2', title: 'Civilisation'}
+      {id: 'eng_tt_lycee_3', title: 'COMPRÉHENSION ORALE', content: [
+        {id: 'eng_tt_lycee_3_1', title: 'Se préparer à l\'écoute'},
+        {id: 'eng_tt_lycee_3_2', title: 'Relever des indices'}
       ]},
-      {id: 'eng_tt_lycee_4', title: 'LANGUE ANGLAISE', content: [
-        {id: 'eng_tt_lycee_4_1', title: 'Le lexique'},
-        {id: 'eng_tt_lycee_4_2', title: 'La syntaxe'},
-        {id: 'eng_tt_lycee_4_3', title: 'Les formes verbales'},
-        {id: 'eng_tt_lycee_4_4', title: 'Traduire'},
-        {id: 'eng_tt_lycee_4_5', title: 'Annales du Bac'}
+      {id: 'eng_tt_lycee_4', title: 'PRODUCTION ORALE', content: [
+      ]},
+      {id: 'eng_tt_lycee_5', title: 'MONDE ANGLOPHONE', content: [
+        {id: 'eng_tt_lycee_5_1', title: 'Culture'},
+        {id: 'eng_tt_lycee_5_2', title: 'Civilisation'}
+      ]},
+      {id: 'eng_tt_lycee_6', title: 'LANGUE ANGLAISE', content: [
+        {id: 'eng_tt_lycee_6_1', title: 'Le lexique'},
+        {id: 'eng_tt_lycee_6_2', title: 'La syntaxe'},
+        {id: 'eng_tt_lycee_6_3', title: 'Les formes verbales'},
+        {id: 'eng_tt_lycee_6_4', title: 'Traduire'},
+        {id: 'eng_tt_lycee_6_5', title: 'Annales du Bac'}
       ]}
     ]},
     // categories[1] : Histoire, premières multiples ...
