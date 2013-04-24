@@ -206,9 +206,14 @@ jsBoot.pack('LxxlLib.model', function(api) {
             this.published.set('thumbnailUrl', d.draft.blobs.thumbnail.pop());
         }
 
-        this.fromObject(d);
-        if (onready)
-          onready();
+        try{
+          this.fromObject(d);
+          if (onready)
+            onready();
+        }catch(e){
+          this.isBroken = true;
+          alert('Quelque chose ne va pas et votre activité n\'a pas être chargée. Merci de rapporter ce bug en mentionnant l\'activité');
+        }
       }.bind(this)), failure, this.id);
     };
 

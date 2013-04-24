@@ -870,7 +870,9 @@
     },
 
     willDestroyElement: function() {
-      this.get('controller').get('content').controller.push();
+      var c = this.get('controller').get('content').controller;
+      if(!('isBroken' in c))
+        this.get('controller').get('content').controller.push();
       jsBoot.controllers.userActivity.removeEventListener(jsBoot.controllers.userActivity.STATE_CHANGED,
           this.autoSaveListener);
     },
