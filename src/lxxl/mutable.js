@@ -291,9 +291,11 @@ jsBoot.pack('jsBoot.types', function(api) {
   this.getPooledMutable = function(descriptor) {
     var inner = api.mutable.bind({}, descriptor);
     var pool = {};
+    var reserved = new inner();
+    reserved.isPoolMutable = true;
     return function(initialMesh) {
       if (!initialMesh || !('id' in initialMesh))
-        return null;
+        return reserved;
       if (!(initialMesh.id in pool)) {
         pool[initialMesh.id] = new inner(initialMesh);
       }else {
