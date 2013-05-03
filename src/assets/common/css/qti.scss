@@ -907,12 +907,12 @@ body .chzn-container .chzn-results {
 
 
         &.mp3 {    
-            background:transparent url(images/fileicons/mp3.png) center center no-repeat;
+            background:transparent url("images/fileicons/mp3.png") center center no-repeat;
             background-size:90%;
         }
 
         &.pdf {
-            background:transparent url(images/fileicons/pdf.png) center center no-repeat;
+            background:transparent url("images/fileicons/pdf.png") center center no-repeat;
             background-size:90%;
         }
     }

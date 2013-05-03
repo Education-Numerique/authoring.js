@@ -9,7 +9,7 @@
     // Be also sure that "puke lint" passes ok
     fr: {
       // Some common stuff
-      breadHome: 'Maison',
+      breadHome: 'Accueil',
       copyright: 'Association Éducation & Numérique - Siège social : 47 rue Meslay, 75003 Paris | ',
       conditions: 'Conditions générales & Respect de la vie privée',
       welcome: 'Bienvenue!',
@@ -69,10 +69,10 @@
         },
 
         sandbox: {
-          title: 'Vivier'
+          title: 'Le Catalogue'
         },
         dashboard: {
-          title: 'Bienvenue'
+          title: 'Bienvenue sur la plateforme auteur d’Education & Numérique'
         },
         myactivities: {
           title: 'Mes Activités'
@@ -113,8 +113,8 @@
         },
 
         sandbox: {
-          tip: 'Accéder au Vivier',
-          text: 'Vivier'
+          tip: 'Accéder au Catalogue',
+          text: 'Catalogue'
         },
 
         act: {

@@ -50,21 +50,21 @@
       <li><strong>Généralités</strong>
         <p>La présente Charte tient lieu de contrat entre l'Auteur et l’Association Éducation&nbsp;&amp;&nbsp;Numérique. En cochant la case <em>&quot;J'ai pris connaissance des conditions générales et je les accepte.&quot; </em>au bas du formulaire d'inscription, l'Auteur accepte les conditions décrites ci-dessous&nbsp;:</p>
         <ul>
-          <li>L’Association Éducation &amp; Numérique met à disposition des enseignants la plateforme ELLENA, un environnement auteur gratuit pour créer, organiser puis publier dans le Vivier des activités pédagogiques. Au sens du Code de la Propriété Intellectuelle (loi n° 92-597 du 1er&nbsp;juillet 1992), ces activités ont le statut d’œuvre de l’esprit.</li>
+          <li>L’Association Éducation &amp; Numérique met à disposition des enseignants la plateforme ELLENA, un environnement auteur gratuit pour créer, organiser puis publier dans le Catalogue des activités pédagogiques. Au sens du Code de la Propriété Intellectuelle (loi n° 92-597 du 1er&nbsp;juillet 1992), ces activités ont le statut d’œuvre de l’esprit.</li>
           <li>L’auteur conserve tous les droits de propriété intellectuelle sur son œuvre.</li>
-          <li>L’auteur accepte que son œuvre soit distribuée <strong>gratuitement</strong>, dans le Vivier, par l’association Éducation&nbsp;&amp;&nbsp;Numérique auprès de son public (lycéens, étudiants, mais aussi collègues enseignants, parents…).</li>
-          <li>Le Vivier est un service web qui donne accès à l’ensemble des activités publiées par les auteurs.<br /><br /></li>
+          <li>L’auteur accepte que son œuvre soit distribuée <strong>gratuitement</strong>, dans le Catalogue, par l’association Éducation&nbsp;&amp;&nbsp;Numérique auprès de son public (lycéens, étudiants, mais aussi collègues enseignants, parents…).</li>
+          <li>Le Catalogue est un service web qui donne accès à l’ensemble des activités publiées par les auteurs.<br /><br /></li>
           </ul>
           </li><li><strong>Droits des auteurs</strong></li>
           <ul>
-          <li>Toutes les activités conçues dans l’environnement auteur de l’Association Éducation&nbsp;&amp;&nbsp;Numérique et publiées dans le Vivier de contenus, ont le statut juridique d'œuvres de l'esprit protégées par le Code de la Propriété Intellectuelle. Selon l’article L111.1&nbsp;«&nbsp;<em>L'auteur d'une œuvre de l'esprit jouit sur cette œuvre, du seul fait de sa création, d'un droit de propriété incorporelle exclusif et opposable à tous.</em>&nbsp;»&nbsp;</li>
+          <li>Toutes les activités conçues dans l’environnement auteur de l’Association Éducation&nbsp;&amp;&nbsp;Numérique et publiées dans le Catalogue de contenus, ont le statut juridique d'œuvres de l'esprit protégées par le Code de la Propriété Intellectuelle. Selon l’article L111.1&nbsp;«&nbsp;<em>L'auteur d'une œuvre de l'esprit jouit sur cette œuvre, du seul fait de sa création, d'un droit de propriété incorporelle exclusif et opposable à tous.</em>&nbsp;»&nbsp;</li>
           <li>L'auteur dispose d'un droit moral imprescriptible qui lui permet de jouir du droit au respect de son nom, de sa qualité et de son œuvre. Cela lui donne le droit de paternité de l'œuvre (L113-1 Code de la Propriété Intellectuelle) et de repentir (L121-4 Code de la Propriété Intellectuelle).</li>
           <li>L’auteur peut effectuer toutes les modifications qu’il jugerait nécessaires sur son œuvre, tout au long de son engagement avec l’association Éducation&nbsp;&amp;&nbsp;Numérique.</li>
           <li>La relation entre l’auteur et l’Association Éducation&nbsp;&amp;&nbsp;Numérique ne constitue pas une exclusivité de diffusion. L’auteur peut diffuser son œuvre auprès de tiers, dans un but commercial ou non, dès lors que ce tiers accepte réciproquement que son œuvre puisse être distribuée par l’Association Éducation&nbsp;&amp;&nbsp;Numérique.</li>
           <li>L’auteur est libre de demander la suspension de&nbsp; la diffusion de son œuvre par l’Association Éducation&nbsp;&amp;&nbsp;Numérique à tout moment, par mail adressé à&nbsp;: <a href="mailto:contact@education-et-numerique.org">contact@education-et-numerique.org</a>.<br /><br /></li>
           </ul>
           <li><strong>Obligation des auteurs</strong></li>
-        <p>Pour être publiée dans le Vivier de l’association Éducation&nbsp;&amp;&nbsp;Numérique, l’œuvre doit se présenter comme une séquence complète et exhaustive autour d’une notion constituant une unité pédagogique.<br />
+        <p>Pour être publiée dans le Catalogue de l’association Éducation&nbsp;&amp;&nbsp;Numérique, l’œuvre doit se présenter comme une séquence complète et exhaustive autour d’une notion constituant une unité pédagogique.<br />
           L’auteur, en proposant à l’Association Éducation&nbsp;&amp;&nbsp;Numérique la distribution de son œuvre, s’engage&nbsp;:</p>
         <ul>
           <li>À publier des contenus répondant tant au plan du fond que de la forme au niveau d’exigence et de qualité que Éducation &amp; Numérique souhaite promouvoir. </li>

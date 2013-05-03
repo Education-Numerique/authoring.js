@@ -233,7 +233,7 @@ a:hover {
 }
 
 #content-header h1, #content-header .btn-group {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 #content-header .btn-group .btn {
 	padding: 11px 14px 9px;
@@ -244,7 +244,7 @@ a:hover {
 }
 
 .container-fluid .row-fluid:first-child {
-	margin-top: 20px;
+	margin-top: 5px;
 }
 /* Breadcrumb */
 #breadcrumb {
@@ -326,7 +326,7 @@ a:hover {
 .stat-boxes, .quick-actions, .quick-actions-horizontal, .stats-plain {
     display: inline-block;
     list-style: none outside none;
-    margin: 20px 0 10px;
+    margin: 0;
     text-align: center;
 }
 .stats-plain {
@@ -423,8 +423,11 @@ a:hover {
 .quick-actions i.icon-download {
 	background-image: url('../img/icons/32/download.png');
 }
-.quick-actions i.icon-graph {
-	background-image: url('../img/icons/32/graph.png');
+.quick-actions i.icon-home {
+	background-image: url('../img/icons/32/home.png');
+}
+.quick-actions i.icon-eye {
+	background-image: url('../img/icons/32/eye.png');
 }
 .quick-actions i.icon-home {
 	background-image: url('../img/icons/32/home.png');
@@ -696,7 +699,7 @@ a:hover {
 }
 
 .widget-content {
-	padding: 12px 15px;
+	padding: 5px 15px;
 }
 .widget-box.widget-plain .widget-content {
 	padding: 12px 0 0;

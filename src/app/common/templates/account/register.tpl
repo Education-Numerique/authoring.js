@@ -3,12 +3,13 @@
 */
 
 <div class="row-fluid">
+  <!--
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
-    <!--<h4 class="alert-heading">Inscription</h4>-->
+    <h4 class="alert-heading">Inscription</h4>
     Bienvenue dans la procedure. Votre compte sera créé en trois étapes.
   </div>
-
+  -->
   <div class="progress progress-striped active">
     <div id="register-progress" style="width: 5%;" class="bar"></div>
   </div>
@@ -38,10 +39,11 @@
         <div id="creation-error" class="alert alert-error" style="display: none"></div>
 
         <div id="step-regular" class="step">
+          <!--
           <div class="alert alert-info">Veuillez entrer ci-dessous les informations qui permettont de vous identifier.
             <a href="#" data-dismiss="alert" class="close">×</a>
           </div>
-
+          -->
           <div class="control-group">
             <label for="email" class="control-label">Adresse électronique</label>
             <div class="controls">
@@ -64,10 +66,11 @@
         </div>
 
         <div id="step-basic" class="step">
+<!--          
           <div class="alert alert-info">Prenez quelques secondes pour nous en dire plus sur vous.
             <a href="#" data-dismiss="alert" class="close">×</a>
           </div>
-
+-->
           <div class="control-group">
             <label for="username" class="control-label">Pseudonyme</label>
             <div class="controls">
@@ -133,7 +136,8 @@
 
         <div id="step-conclusion" class="step">
 
-          <div class="alert alert-info">Si vous le souhaitez, vous pouvez compléter votre profil.
+          <div class="alert alert-info">
+            Ces informations sont optionnelles.<br />Vous pourrez les compléter plus tard en modifiant votre profil.
             <a href="#" data-dismiss="alert" class="close">×</a>
           </div>
 
@@ -154,7 +158,7 @@
             </div>
           </div>
 
-
+          <!--
           <h4 style="margin: 5px;">
             Vos informations personnelles
           </h4>
@@ -192,7 +196,7 @@
               <input id="state" type="text" name="state" />
             </div>
           </div>
-
+          -->
           <div class="control-group">
             <label class="control-label">Page web</label>
             <div class="controls">

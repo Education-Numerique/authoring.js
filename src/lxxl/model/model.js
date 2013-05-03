@@ -212,7 +212,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
             onready();
         }catch(e){
           this.isBroken = true;
-          alert('Quelque chose ne va pas et votre activité n\'a pas être chargée. Merci de rapporter ce bug en mentionnant l\'activité');
+          alert('Quelque chose ne va pas et votre activité n\'a pas pu être chargée. Merci de rapporter ce bug en mentionnant l\'activité');
         }
       }.bind(this)), failure, this.id);
     };

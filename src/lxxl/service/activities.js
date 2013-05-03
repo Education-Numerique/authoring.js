@@ -30,6 +30,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
     };
   };
 
+
   this.activities = new (function() {
 
     this.list = function(onSuccess, onFailure) {

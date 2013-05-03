@@ -36,9 +36,7 @@
       <ul class="attachments-list">
         {{#each extra.attachments}}
           <li class="{{mimetype type}}">
-            <a href="{{url}}" target="_blank" title="{{name}}" rel="tooltip" data-placement="bottom">
-             
-            </a>
+            <a href="{{url}}" target="_blank" title="{{name}}" rel="tooltip" data-placement="bottom"></a>
           </li>
         {{/each}}
       </ul>
@@ -46,7 +44,7 @@
     {{/if}}
     <nav>
       <h2>Plan de l'activité</h2>
-      <ol class="pages-list">
+      <ul class="pages-list">
         {{reset_index}}
         {{#each pages}}
           {{#ifequalhelp flavor.id "simple"}}
@@ -99,10 +97,8 @@
   <section class="page-jmt" id="jmt-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
     <div>
-      <!--<span class="icon">
-        <i class="icon-th-list"></i>
-      </span>-->
-      <h5>{{title}}</h5>
+      <p class="page_title">{{title}}</p>
+
       {{#if subtitle}}
       <blockquote><p>{{subtitle}}</p></blockquote>
       {{/if}}
@@ -210,7 +206,7 @@
                   {{#each answers}}
                   <li id="answer-{{index 'aid'}}">
                   <form>
-                      <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non:&nbsp;{{text}}
+                      <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non :&nbsp;&nbsp;&nbsp;{{text}}
                       <div class="modal hide" role="dialog" aria-hidden="true">
                         <div class="modal-header">
                           <h3>Mmm... Pas tout à fait (<span class="feedback"></span>). Voici un indice.</h3>
@@ -225,6 +221,7 @@
                   </form>
                   </li>
                   {{/each}}
+                  <br />
                   <button disabled="disabled">Vérifier mes réponses</button>
                   <div class="modal hide" role="dialog" aria-hidden="true">
                     <div class="modal-header">
@@ -356,6 +353,9 @@
       </ul>
     </div>
   </section>
+  <div>
+    <!-- footer : un peu de padding ... -->
+  </div>
 <!--
   <div class="modal hide" id="modal-preview-tat" role="dialog" aria-labelledby="modal-preview-tat-label" aria-hidden="true">
     <div class="modal-header">

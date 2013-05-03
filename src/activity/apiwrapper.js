@@ -1,16 +1,16 @@
 (function() {
   /*jshint devel: true*/
   'use strict';
-
-  // window.API = {};
-  // ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
-  //  'GetDiagnostic'].forEach(function(key) {
-  //   window.API[key] = function() {
-  //     console.warn('Fake LMS API debug. Method:', key, 'args', arguments);
-  //     return '0';
-  //   };
-  // });
-
+/*
+  window.API = {};
+  ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
+   'GetDiagnostic'].forEach(function(key) {
+    window.API[key] = function(a, b, c) {
+      console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c);
+      return '0';
+    };
+  });
+*/
   /*
   SCORM 2004 (API_1484_11)
 

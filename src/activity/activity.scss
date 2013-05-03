@@ -121,7 +121,6 @@ body {
 
     @include shadow(0,5px,15px,rgba(0,0,0,0.5));
 
-
     table {
       background-color: #EEEEEE; border:none; padding:10px;
     }
@@ -132,27 +131,28 @@ body {
       vertical-align:top;
     }
 
-
-    /* h4 collapsers */
-
     > header {
         background-color:#08C;
         width:100%;
-        > * {
-            display:none;
-        }
+        > * {display:none;}
+
         h1 {
-            display:block;
-            font-size:10px;
-            font-weight:bold;
-            color:#FFF;
-            padding-left:20px;
+            font: 12px Arial; 
+            color: #FFF;
+            display: block;
+            padding: 10px;
         }
     }
 
+    h1 {height:auto; width:100%; font:20px Arial; color:rgb(51, 25, 117);  text-align:justify; margin:24px 0 12px;}
+    h2 {height:auto; width:100%; font: italic 16px Arial; color:#000; letter-spacing:4px; text-align:justify; margin-bottom:8px; text-indent:22px; margin:24px 0 12px;}
+    h3 {height:auto; width:100%; font:14px Times, serif; color:#000; margin:12px 0 0;}
+
+    /* h4 collapsers */
 
     h4{
-      background-color: rgb(153, 153, 153);
+      background-color:#DDDDDD;
+      border-bottom:1px solid white;
       width: 100%;
     }
     h4 i[class*=icon]{
@@ -225,9 +225,11 @@ body {
 
             h2 {
                 background-color:rgb(245, 245, 245);
-                width:100%;
+                letter-spacing:0;
+                padding:15px 0 15px;
                 font-size:16px;
                 font-weight:normal;
+                font-style:normal;
                 margin:0;
                 text-indent:15px;
                 text-transform:uppercase;
@@ -245,6 +247,7 @@ body {
                     height:32px;
                     margin-right:10px;
                     list-style:none;
+                    list-style-type: none;
                     min-height:32px;
                     float:none;
 
@@ -274,47 +277,47 @@ body {
                     }
 
                     &.mp3 a {
-                        background: transparent url(images/attachments/mp3.png) center center no-repeat;
+                        background: transparent url("images/attachments/mp3.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.pdf a {
-                        background: transparent url(images/attachments/pdf.png) center center no-repeat;
+                        background: transparent url("images/attachments/pdf.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.avi a {
-                        background: transparent url(images/attachments/avi.png) center center no-repeat;
+                        background: transparent url("images/attachments/avi.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.jpeg a {
-                        background: transparent url(images/attachments/jpeg.png) center center no-repeat;
+                        background: transparent url("images/attachments/jpeg.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.pptx a {
-                        background: transparent url(images/attachments/pptx.png) center center no-repeat;
+                        background: transparent url("images/attachments/pptx.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.text a {
-                        background: transparent url(images/attachments/text.png) center center no-repeat;
+                        background: transparent url("images/attachments/text.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.wav a {
-                        background: transparent url(images/attachments/wav.png) center center no-repeat;
+                        background: transparent url("images/attachments/wav.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.xlsx a {
-                        background: transparent url(images/attachments/xlsx.png) center center no-repeat;
+                        background: transparent url("images/attachments/xlsx.png") center center no-repeat;
                         background-size: 90%;
                     }
 
                     &.zip a {
-                        background: transparent url(images/attachments/zip.png) center center no-repeat;
+                        background: transparent url("images/attachments/zip.png") center center no-repeat;
                         background-size: 90%;
                     }
                 }

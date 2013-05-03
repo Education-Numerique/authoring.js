@@ -240,6 +240,7 @@
             $('i.collapse-binder', this).addClass('icon-arrow-up');
             $('i.collapse-binder', this).removeClass('icon-arrow-down');
             $(this).next().slideDown(100);//, show);
+            $(this).next().addClass('light_grey_bloc');
           }
           else {
             $('i.collapse-binder', this).addClass('icon-arrow-down');

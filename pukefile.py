@@ -1,4 +1,4 @@
-#!/usr/bin/env puke
+#!/usr/bin/env #!/usr/bin/env puke
 # -*- coding: utf8 -*-
 
 global PH

@@ -9,8 +9,8 @@
     <h4 class="alert-heading">Page d'administration des comptes utilisateur</h4>
     Ceci est la page de gestion des comptes utilisateurs
   </div>
-<div class="widget-box">
 -->
+<div class="widget-box">
     <div class="widget-title">
       <h5>Les administrateurs</h5>
     </div>

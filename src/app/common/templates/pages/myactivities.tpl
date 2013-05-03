@@ -98,7 +98,7 @@
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="modal-preview-label">Preview</h3>
+    <h3 id="modal-preview-label">Prévisualisation</h3>
   </div>
   <div class="modal-body">
     <p id="modal-preview-body"></p>

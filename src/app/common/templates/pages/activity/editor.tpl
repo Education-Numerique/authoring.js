@@ -227,7 +227,7 @@
     <h3>Activité publiée</h3>
   </div>
   <div class="modal-body">
-    Cette version de votre activité a bien été publiée. Elle est désormais consultable par tous dans le vivier.
+    Cette version de votre activité a bien été publiée. Elle est désormais consultable par tous dans le Catalogue.
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Ok</a>

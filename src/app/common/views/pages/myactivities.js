@@ -17,7 +17,7 @@
   var popoverContent = '<div class="thumbnail">{thumbnail}</div>' +
       '<h5>{nickname}</h5>' +
       '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
-      '<div class="avatar">{useravatar}</div>' +
+      //'<div class="avatar">{useravatar}</div>' +
       '<div>{description}</div>';
 
 
@@ -111,7 +111,7 @@
       ct = ct.replace('{difficulty}', df);
       ct = ct.replace('{useravatar}', item.author.avatarUrl ?
           '<img src="' + item.author.avatarUrl + '" />' :
-          '');
+          '');  // not used (JBT)
       ct = ct.replace('{description}', infos.description);
       preview.attr('data-html', ct);
       preview.attr('data-placement', 'right');

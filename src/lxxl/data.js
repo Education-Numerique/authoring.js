@@ -12,37 +12,6 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     45: '45 minutes',
     60: '60 minutes'
   };
-  /*
-  this.minutes = {
-    0: '0 minute',
-    1: '1 minute',
-    2: '2 minutes',
-    3: '3 minutes',
-    4: '4 minutes',
-    5: '5 minutes',
-    10: '10 minutes',
-    15: '15 minutes',
-    30: '30 minutes',
-    45: '45 minutes',
-    60: '60 minutes',
-    90: '90 minutes'
-  };
-
- 0, 1 , 2, 3, 4, 5, 10, 15, 20, 30, 45, 60, 90 / secondes : 0, 10, 20, 30, 45
-
-      content: [0, 10, 20, 30, 45].map(function(key){
-          return {id: key, title: key + (key > 1 ? ' minutes' : ' minute')};
-        }),
-      selected: {id: 0, title: '0 minute'}
-    }),
-
-    seconds: Em.Object.create({
-      content: [0, 10, 20, 30, 45].map(function(key){
-          return {id: key, title: key + (key > 1 ? ' secondes' : ' seconde')};
-        }),
-      selected: {id: 0, title: '0 seconde'}
-  */
-
 
   this.difficulties = {
     easy: 'Facile',
@@ -225,45 +194,47 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           ]},
 
     // categories[3] : Maths, Prem ES ...
-    {id: 'mat_pes ', title: '', matter: {id: 'mat'}, level: {id: 'pes'}, long_title: '', content: [
-      {id: 'mat_pes_1', title: 'Algèbre/ analyse', content: [
-        {id: 'mat_pes_2_1', title: 'Second degré'},
-        {id: 'mat_pes_2_2', title: 'Etude de fonction'},
-        {id: 'mat_pes_2_3', title: 'Pourcentages'},
-        {id: 'mat_pes_2_4', title: 'Suites'}
+    {id: 'mat_pes', title: 'Mathématiques - première ES', matter: {id: 'mat'},
+      level: {id: 'pes'}, long_title: '', content: [
+        {id: 'mat_pes_1', title: 'Algèbre/ analyse', content: [
+          {id: 'mat_pes_2_1', title: 'Second degré'},
+          {id: 'mat_pes_2_2', title: 'Etude de fonction'},
+          {id: 'mat_pes_2_3', title: 'Pourcentages'},
+          {id: 'mat_pes_2_4', title: 'Suites'}
+        ]},
+        {id: 'mat_pes_2', title: 'Statistiques / probabilités', content: [
+          {id: 'mat_pes_3_1', title: 'Statistique, analyse de données, Probabilités'},
+          {id: 'mat_pes_3_2', title: 'Échantillonnage'}
+        ]},
+        {id: 'mat_pes_3', title: 'Algorithmique'},
+        {id: 'mat_pes_4', title: 'Notations / raisonnements'}
       ]},
-      {id: 'mat_pes_2', title: 'Statistiques / probabilités', content: [
-        {id: 'mat_pes_3_1', title: 'Statistique, analyse de données, Probabilités'},
-        {id: 'mat_pes_3_2', title: 'Échantillonnage'}
-      ]},
-      {id: 'mat_pes_3', title: 'Algorithmique'},
-      {id: 'mat_pes_4', title: 'Notations / raisonnements'}
-    ]},
 
     // categories[4] : Maths, Première S
-    {id: 'mat_ps ', title: '', matter: {id: 'mat'}, level: {id: 'ps'}, long_title: '', content: [
-      {id: 'math_ps_1', title: 'Analyse', content: [
-        {id: 'math_ps_2_1', title: 'Second degré'},
-        {id: 'math_ps_2_2', title: 'Etude de fonction'},
-        {id: 'math_ps_2_3', title: 'Dérivation'},
-        {id: 'math_ps_2_4', title: 'Suites'}
+    {id: 'mat_ps', title: 'Mathématiques - première S', matter: {id: 'mat'},
+      level: {id: 'ps'}, long_title: '', content: [
+        {id: 'math_ps_1', title: 'Analyse', content: [
+          {id: 'math_ps_2_1', title: 'Second degré'},
+          {id: 'math_ps_2_2', title: 'Etude de fonction'},
+          {id: 'math_ps_2_3', title: 'Dérivation'},
+          {id: 'math_ps_2_4', title: 'Suites'}
+        ]},
+        {id: 'math_ps_2', title: 'Géométrie', content: [
+          {id: 'math_ps_3_1', title: 'Géométrie plane'},
+          {id: 'math_ps_3_2', title: 'Trigonométrie'},
+          {id: 'math_ps_3_3', title: 'Produit scalaire dans le plan'}
+        ]},
+        {id: 'math_ps_3', title: 'Statistiques/ probabilités', content: [
+          {id: 'math_ps_4_1', title: 'Statistique descriptive, analyse de données'},
+          {id: 'math_ps_4_2', title: 'Probabilités'},
+          {id: 'math_ps_4_3', title: 'Echantillonnage'}
+        ]},
+        {id: 'math_ps_4', title: 'Algorithmique'},
+        {id: 'math_ps_5', title: 'Notations et raisonnements en mathématiques'}
       ]},
-      {id: 'math_ps_2', title: 'Géométrie', content: [
-        {id: 'math_ps_3_1', title: 'Géométrie plane'},
-        {id: 'math_ps_3_2', title: 'Trigonométrie'},
-        {id: 'math_ps_3_3', title: 'Produit scalaire dans le plan'}
-      ]},
-      {id: 'math_ps_3', title: 'Statistiques/ probabilités', content: [
-        {id: 'math_ps_4_1', title: 'Statistique descriptive, analyse de données'},
-        {id: 'math_ps_4_2', title: 'Probabilités'},
-        {id: 'math_ps_4_3', title: 'Echantillonnage'}
-      ]},
-      {id: 'math_ps_4', title: 'Algorithmique'},
-      {id: 'math_ps_5', title: 'Notations et raisonnements en mathématiques'}
-    ]},
 
     // categories[5] : Maths, Terminale S ...
-    {id: 'mat_ts', title: 'Mathématiques', matter: {id: 'mat'}, level: {id: 'ts'},
+    {id: 'mat_ts', title: 'Mathématiques - terminale S', matter: {id: 'mat'}, level: {id: 'ts'},
       content: [
         {id: 'mat_ts_1', title: 'SUITES NUMERIQUES', content: [
           {id: 'mat_ts_1_1', title: 'Suites arithmétiques et géométriques'},
@@ -323,84 +294,102 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     // categories[6] :
   ];
 
-  // On populate l'anglais pour les autres levels
+  // On populate l'anglais pour les autres levels...
   this.categories.push({
-    id: 'eng_tl', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tl'},
+    id: 'eng_tl', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'tl'},
     content: this.categories[0].content
   });
 
   this.categories.push({
-    id: 'eng_ts', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'ts'},
+    id: 'eng_tt_tles', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'tt_tles'},
     content: this.categories[0].content
   });
 
   this.categories.push({
-    id: 'eng_tes', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tes'},
+    id: 'eng_ts', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'ts'},
     content: this.categories[0].content
   });
 
   this.categories.push({
-    id: 'eng_tt_prem', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_prem'},
+    id: 'eng_tes', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'tes'},
     content: this.categories[0].content
   });
 
   this.categories.push({
-    id: 'eng_ps', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'ps'},
+    id: 'eng_tt_prem', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'tt_prem'},
     content: this.categories[0].content
   });
 
   this.categories.push({
-    id: 'eng_pes', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'pes'},
+    id: 'eng_ps', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'ps'},
     content: this.categories[0].content
   });
 
   this.categories.push({
-    id: 'eng_pl', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'pl'},
+    id: 'eng_pes', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'pes'},
+    content: this.categories[0].content
+  });
+
+  this.categories.push({
+    id: 'eng_pl', title: 'Anglais',
+    matter: {id: 'eng'}, level: {id: 'pl'},
     content: this.categories[0].content
   });
 
   // On populate l'histoire pour les autres levels
   this.categories.push({
-    id: 'his_ps', title: 'Histoire', matter: {id: 'his'}, level: {id: 'ps'}, long_title:
-        'Questions pour comprendre le 20e siècle',
+    id: 'his_ps', title: 'Histoire - première S',
+    matter: {id: 'his'}, level: {id: 'ps'},
+    long_title: 'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   this.categories.push({
-    id: 'his_pes', title: 'Histoire', matter: {id: 'his'}, level: {id: 'pes'}, long_title:
-        'Questions pour comprendre le 20e siècle',
+    id: 'his_pes', title: 'Histoire - première ES',
+    matter: {id: 'his'}, level: {id: 'pes'},
+    long_title: 'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   this.categories.push({
-    id: 'his_pl', title: 'Histoire', matter: {id: 'his'}, level: {id: 'pl'}, long_title:
-        'Questions pour comprendre le 20e siècle',
+    id: 'his_pl', title: 'Histoire - première L',
+    matter: {id: 'his'}, level: {id: 'pl'},
+    long_title: 'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   // On populate la géo pour les autres levels
   this.categories.push({
-    id: 'geo_ps', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'ps'}, long_title:
-        'France et Europe : dynamiques des territoires dans la mondialisation',
+    id: 'geo_ps', title: 'Géographie - première S',
+    matter: {id: 'geo'}, level: {id: 'ps'},
+    long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
   this.categories.push({
-    id: 'geo_pes', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'pes'}, long_title:
-        'France et Europe : dynamiques des territoires dans la mondialisation',
+    id: 'geo_pes', title: 'Géographie - première ES',
+    matter: {id: 'geo'}, level: {id: 'pes'},
+    long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
   this.categories.push({
-    id: 'geo_pl', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'pl'}, long_title:
-        'France et Europe : dynamiques des territoires dans la mondialisation',
+    id: 'geo_pl', title: 'Géographie - première S',
+    matter: {id: 'geo'}, level: {id: 'pl'},
+    long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
   this.categories.push({
-    id: 'mat_pl ', title: '', matter: {id: 'mat'}, level: {id: 'pl'},
+    id: 'mat_pl ', title: 'Mathématiques - première L',
+    matter: {id: 'mat'}, level: {id: 'pl'},
     content: this.categories[3].content
   });
-
-
 });
