@@ -1,19 +1,27 @@
 <html class="no-js">
 <head>
-  <meta charset="UTF-8">
-  <!-- premiere balise (IE) charset UTF8  -->
-  <title>mini app</title>
-<style>
-.no-js {background-color:red;}</style>
+  <style type="text/css">
+  .no-js body{
+    background-color: red;
+  }
+
+  #pasjs {
+    display: none;
+  }
+
+  html.no-js #pasjs{
+    display: block;
+  }
+  </style>
 </head>
 <body>
-<!-- docu de ref : html5 boilerplate>  -->
 
+  <div id="pasjs">
+    Pas de bras pas de chocolat!
+  </div>
 
-  <!-- jsBoot loader inclusion point -->
-  <script type="text/javascript" src="{JSBOOT}"></script>  <!-- puke se démerde pour trouver -->
+  <script type="text/javascript" src="{JSBOOT}"></script>
   <!-- Application script bootstrapper -->
   <script type="text/javascript" src="miniboot.js"></script>
-
 </body>
 </html>

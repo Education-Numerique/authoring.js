@@ -1,8 +1,34 @@
-// alert("toto");
+var bootRoot = '../{PUKE-PACKAGE-VERSION}/';
+
+jsBoot.boot.ember(function(){
+  console.warn("J'ai Ember, jquery et handlebars!!!!");
+  $('html').removeClass('no-js');
+});
+
+jsBoot.loader.use('miniboot.css');
+
+jsBoot.loader.use('bootstrap');
+
+jsBoot.loader.use('raphael');
+
+jsBoot.loader.use('validate');
+
+jsBoot.loader.use('datatable');
+
+jsBoot.loader.use(bootRoot + 'activity/activity.css');
+jsBoot.loader.use(bootRoot + 'lxxl-standalone-library.js');
+
+jsBoot.loader.use(bootRoot + 'activity/apiwrapper.js');
+jsBoot.loader.use(bootRoot + 'activity/scoring.js');
+
+jsBoot.loader.wait();
+
+jsBoot.loader.use(bootRoot + 'activity/activity.js');
 
 
- var bootRoot = '../{PUKE-PACKAGE-VERSION}/';
-  /** les clés sont produites dans mongo et mises en oeuvre dans API...   */
+jsBoot.loader.wait(function(){
+});
+
   var SERVICE_CONFIG = {
     key: {
       id: 'PROD',
@@ -27,31 +53,4 @@
 
 
 
-
-jsBoot.boot.ember(function(){
-	console.warn("Handebars + Ember + JQuery chargés ...");
-	$("html").removeClass("no-js");
-
-})
-
-jsBoot.loader.use("miniapp.css");
-
-jsBoot.loader.use('bootstrap'); // js boot est magique, il sait le trouver !!!!
-
- jsBoot.loader.use('raphael');
-
-
-  jsBoot.loader.use(bootRoot + 'activity/activity.css');
-  jsBoot.loader.use(bootRoot + 'lxxl-standalone-library.js');
-  jsBoot.loader.use(bootRoot + 'activity/apiwrapper.js'); // (contenu dans  jsBoot.loader.use(bootRoot + 'lxxl' + suffix + 'js');
-  jsBoot.loader.use(bootRoot + 'activity/scoring.js');
-  jsBoot.loader.wait(); // pour ne pas charger la suite tant que ce qui précède n'est pas dispo (possibilité de callback !!)
-  jsBoot.loader.use(bootRoot + 'activity/activity.js');
-
-jsBoot.loader.wait(function(){ // 
-	jsBoot.controllers.application.boot(STORE_KEY, SERVICE_CONFIG, 'disable_instance_lockXXX');
-	// alert('done');
-});
-
- // Faire quelque chose d'intelligent (de préférence :))
-jsBoot.loader.use("miniapp.js");
+jsBoot.loader.use('miniapp.js');
