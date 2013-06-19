@@ -62,7 +62,7 @@
             required: 'Merci de fournir votre adresse électronique',
             email: ''
           },
-          eula: 'Vous devez accepter les conditions générales'
+          eula: "Vous devez accepter les conditions générales d'utilisation"
         },
         errorClass: 'help-inline',
         errorElement: 'span',
