@@ -14,16 +14,29 @@ LxxlLib.service.user.list(function(d) {
     var user = new LxxlLib.model.User(item);
     console.warn(user.uid);
   });
-}, function(){});
+}, function(){
+  console.error("ARRRGGGG");
+});
 
+
+LxxlLib.service.activities.list(function(d) {
+  d.forEach(function(item) {
+    var act = LxxlLib.factories.activities.getActivity(item);
+    console.warn(act.id);
+  });
+}, function(){
+  console.error("ARRRGGGG");
+});
 
 /**
  * Comment récupérer une activité 
  */
 
 var acti = LxxlLib.factories.activities.getById('517757c83361eb192e9c67b8');
-acti.pull();
-acti.draft.title;
+acti.pull(function(){
+  // -> une fois que l'objet sera mis à jour par le retour réseau de pull
+  console.warn(acti.draft.title);
+});
 
 
 /**
