@@ -175,7 +175,15 @@
         var deref = LxxlLib.sessionManager.activity;
         if (!/scorm/.test(location.href))
           deref.seen();
+        // Re-attach author from the activity to the dereferenced scope
+        var author = deref.author;
+        // Now, the tpl can consume the author name
+        // <h1>{{author.uid}}</h1>
+        // <h1>{{author.username}}</h1>
+
+
         deref = pubVersion ? deref.published : deref.draft;
+        deref.author = author;
         deref.styleData = [];
         deref.styleUri = [];
         // Style mashuping

@@ -12,6 +12,7 @@
   <header>
     <!-- Titre de l'activité -->
     <h1>{{title}}</h1>
+    <!-- see activity.js to access author name (search "username") -->
 
   </header>
 
