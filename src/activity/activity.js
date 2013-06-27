@@ -297,7 +297,8 @@
 
               // console.warn('Result', page.score.getResult(total - $('.propositions > li', container).length));
               if (!$('.propositions > li', container).length) {
-                LxxlLib.sessionManager.MixAndMatchComplete(index, page.score.getResult(total - $('.propositions > li', container).length));
+                LxxlLib.sessionManager.MixAndMatchComplete(index, page.score.getResult(total - $('.propositions > li',
+                    container).length));
               }
             } else {
               page.score.addPenalty();

@@ -72,10 +72,10 @@
 
     exportScorm: function() {
       var ip = this.get('content').controller.isPublished;
-      if(!ip){
+      if (!ip) {
         $('#action-scorm-error #pub-err').html('Seules les activités publiées peuvent être exportées sous cette forme.');
         $('#action-scorm-error').modal('show');
-      }else{
+      }else {
         console.warn('***** export scorm');
         var title = this.get('content.controller.published.title');
         ScormPacker(this.get('content.controller.id'), title, function(zip) {

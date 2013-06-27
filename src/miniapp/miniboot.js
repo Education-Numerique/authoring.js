@@ -1,33 +1,11 @@
-var bootRoot = '../{PUKE-PACKAGE-VERSION}/';
+(function(){
+  'use strict';
 
-jsBoot.boot.ember(function(){
-  console.warn("J'ai Ember, jquery et handlebars!!!!");
-  $('html').removeClass('no-js');
-});
+  /**
+   * Configuration stuff
+   */
 
-jsBoot.loader.use('miniboot.css');
-
-jsBoot.loader.use('bootstrap');
-
-jsBoot.loader.use('raphael');
-
-jsBoot.loader.use('validate');
-
-jsBoot.loader.use('datatable');
-
-jsBoot.loader.use(bootRoot + 'activity/activity.css');
-jsBoot.loader.use(bootRoot + 'lxxl-standalone-library.js');
-
-jsBoot.loader.use(bootRoot + 'activity/apiwrapper.js');
-jsBoot.loader.use(bootRoot + 'activity/scoring.js');
-
-jsBoot.loader.wait();
-
-jsBoot.loader.use(bootRoot + 'activity/activity.js');
-
-
-jsBoot.loader.wait(function(){
-});
+  var bootRoot = '../{PUKE-PACKAGE-VERSION}/';
 
   var SERVICE_CONFIG = {
     key: {
@@ -51,6 +29,55 @@ jsBoot.loader.wait(function(){
   var STORE_KEY = 'LxxlWebAppKey';
 
 
+  /**
+   * Booting
+   */
 
 
-jsBoot.loader.use('miniapp.js');
+  var debug = /use-debug/.test(location.href);
+
+  jsBoot.boot.ember(function(){
+    if(debug){
+      jsBoot.debug.console.VERBOSITY = jsBoot.debug.console.INFO |
+        jsBoot.debug.console.WARN | jsBoot.debug.console.ERROR|
+        jsBoot.debug.console.LOG /*| jsBoot.debug.console.DEBUG*/;
+    }else {
+      // Mute console while in production
+      jsBoot.core.toggleConsole(false);
+    }
+
+    // console.warn("J'ai Ember, jquery et handlebars!!!!");
+    $('html').removeClass('no-js');
+  }, debug);
+
+  // Notre feuille de style
+  jsBoot.loader.use('miniboot.css');
+
+  // Composants tiers
+  jsBoot.loader.use('bootstrap');
+
+  jsBoot.loader.use('raphael');
+
+  jsBoot.loader.use('validate');
+
+  jsBoot.loader.use('datatable');
+
+  // LXXL core components
+  jsBoot.loader.use(bootRoot + 'activity/activity.css');
+  jsBoot.loader.use(bootRoot + 'lxxl-standalone-library.js');
+  jsBoot.loader.use(bootRoot + 'activity/apiwrapper.js');
+  jsBoot.loader.use(bootRoot + 'activity/scoring.js');
+  jsBoot.loader.wait();
+  jsBoot.loader.use(bootRoot + 'activity/activity.js');
+
+
+  // On attend tout ça...
+  jsBoot.loader.wait(function(){
+    // On boot le système
+    jsBoot.controllers.application.boot(STORE_KEY, SERVICE_CONFIG, 'disable_instance_lockXXX');
+    // Et on finit en chargeant miniapp
+    jsBoot.loader.use('miniapp.js');
+  });
+
+})();
+

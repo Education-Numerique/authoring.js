@@ -50,7 +50,7 @@
   // Maximum number of statements in a block
   "maxstatements": 40,
   // Maximum function complexity
-  "maxcomplexity": 10,
+  "maxcomplexity": 11,
   // Maximum line length
   "maxlen": 120,
 
@@ -60,11 +60,11 @@
 
   "globals": {
     // External dependencies
-    "jsBoot": true,
-    "$": true,
-    "Ember": true,
-    "Em": true,
-    "I18n": true,
+    "jsBoot": false,
+    "$": false,
+    "Ember": false,
+    "Em": false,
+    "I18n": false,
     "LxxlApp": true,
     "LxxlLib": true
   }
