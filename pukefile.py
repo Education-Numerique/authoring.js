@@ -249,3 +249,9 @@ def build():
   combine("src/activity/activity.scss", VERSIONED_ROOT + "/activity/activity.css", replace=sed)
   combine("src/activity/miniboot.js", VERSIONED_ROOT + "/activity/miniboot-min.js", replace=sed)
 
+
+
+  # XXX new stuff
+  deepcopy("src/miniapp", Yak.build_root + "/miniapp", replace=sed)
+
+
