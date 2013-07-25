@@ -22,11 +22,12 @@
                     <label class="add-on" for="form-page-subtitle">Niveau</label>
                     {{view LxxlLib.Em.Select contentBinding="levels.content" selectionBinding="content.level" optionLabelPath="content.title" optionValuePath="content.id"}}
                 </div>
-                
+                {{#if categoryTree.content.length}}
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Catégories</label>
                     {{view Em.GroupedSelect rawContentBinding="categoryTree.content" selectionBinding="content.category"}}
                 </div>
+                {{/if}}
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Durée</label>
                     {{view LxxlLib.Em.Select contentBinding="lengths.content" selectionBinding="content.duration" optionLabelPath="content.title" optionValuePath="content.id"}}
