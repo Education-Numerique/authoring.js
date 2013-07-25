@@ -1717,6 +1717,7 @@ var RLANG = {
         },
         cleanupPre: function(s)
         {
+            return s;
             s = s.replace(/<br>/gi, '\n');
             s = s.replace(/<\/p>/gi, '\n');
             s = s.replace(/<\/div>/gi, '\n');
