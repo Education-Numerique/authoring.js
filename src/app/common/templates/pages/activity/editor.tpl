@@ -3,7 +3,7 @@
 */
 
 <form class="form-horizontal">
-<div class="row-fluid qti" {{bindAttr class="isStaticPage isQuizz isTat"}}>
+<div class="row-fluid qti" {{bindAttr class="isStaticPage isQuizz isTat isPerfPage"}}>
 
     <div class="span12">
         
@@ -55,6 +55,9 @@
                             {{#if currentPage}}
                                 {{#if isStaticPage}}
                                     {{view view.StaticPage}}
+                                {{/if}}
+                                {{#if isPerfPage}}
+                                    {{view view.PerfPage}}
                                 {{/if}}
                                 {{#if isQuizz}}
                                     {{view view.QuizzPage}}

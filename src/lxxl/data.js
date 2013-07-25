@@ -23,7 +23,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     simple: 'Page simple',
     quizz: 'Page quizz',
     tat: 'Page texte à trous',
-    jmt: 'Page glisser-déposer'
+    jmt: 'Page glisser-déposer',
+    perf: 'Page performance'
   };
 
   // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously

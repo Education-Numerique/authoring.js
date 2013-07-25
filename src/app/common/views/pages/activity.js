@@ -25,6 +25,10 @@
       templateName: 'pages/activity/editor/page'
     }),
 
+    PerfPage: Em.View.extend({
+      templateName: 'pages/activity/editor/perf'
+    }),
+
     TatPage: Em.View.extend({
       templateName: 'pages/activity/editor/tat',
       TimeButton: Em.View.extend({

@@ -109,6 +109,7 @@
      */
 
     isStaticPage: false,
+    isPerfPage: false,
     isQuizz: false,
     isMixnmatch: false,
     isQuizzQcm: false,
@@ -121,6 +122,7 @@
       var value = this.get('currentPage.flavor');
 
       this.set('isStaticPage', false);
+      this.set('isPerfPage', false);
       this.set('isQuizz', false);
       this.set('isMixnmatch', false);
       this.set('isTat', false);
@@ -142,6 +144,8 @@
         this.set('isTat', true);
       } else if (value.id == 'jmt') {
         this.set('isMixnmatch', true);
+      } else if (value.id == 'perf') {
+        this.set('isPerfPage', true);
       }
 
       this.set('flavorLabel', value.title);// I18n.translate('activities.pageFlavors')[value]);
