@@ -450,7 +450,7 @@ Style specific to activity edition
         }
     }
 
-    &.is-static-page {
+    &.is-static-page, &.is-perf-page {
         #page-informations {
             .control-group {
                 width:100%;

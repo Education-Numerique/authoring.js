@@ -807,6 +807,9 @@
           } else if (value.id == 'jmt') {
             this.set('flavorIcon', 'icon-fullscreen');
             this.set('pageType', 'page-jmt');
+          } else if (value.id == 'perf') {
+            this.set('flavorIcon', 'icon-star');
+            this.set('pageType', 'perf');
           }
         }.observes('content.flavor'),
 
