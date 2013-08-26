@@ -40,6 +40,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     svt: 'SVT',
     his: 'Histoire',
     geo: 'Géographie',
+    edc: 'Education civique',
     phi: 'Philosophie',
     all: 'Allemand',
     eng: 'Anglais',
@@ -47,11 +48,14 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     ita: 'Italien',
     lat: 'Latin',
     gre: 'Grec',
+    hda: 'Histoire de l\'Art',
     mus: 'Musique',
     eps: 'EPS',
     tpe: 'TPE',
     inf: 'Informatique',
-    other: 'Autre' };
+    tuto: 'Tutoriel',
+    other: 'Autre'
+  };
 
   this.matters = {
     fra: 'Français',
@@ -65,6 +69,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     svt: 'SVT',
     his: 'Histoire',
     geo: 'Géographie',
+    edc: 'Education civique',
     phi: 'Philosophie',
     all: 'Allemand',
     eng: 'Anglais',
@@ -72,10 +77,12 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     ita: 'Italien',
     lat: 'Latin',
     gre: 'Grec',
+    hda: 'Histoire de l\'Art',
     mus: 'Musique',
     eps: 'EPS',
     tpe: 'TPE',
     inf: 'Informatique',
+    tuto: 'Tutoriel',
     other: 'Autre'
   };
 
@@ -101,7 +108,6 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   };
 
   this.categories = [
-    // categories[0] : Anglais, tout le lycée ...
     { id: 'eng_tt_lycee', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
       {id: 'eng_tt_lycee_1', title: 'COMPRÉHENSION ÉCRITE', content: [
         {id: 'eng_tt_lycee_1_1', title: 'Comprendre l\'essentiel d\'un texte écrit'},
@@ -135,7 +141,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         {id: 'eng_tt_lycee_6_5', title: 'Annales du Bac'}
       ]}
     ]},
-    // categories[1] : Histoire, premières multiples ...
+    
     {id: 'his_tt_prem', title: 'Histoire', matter: {id: 'his'}, level: {id: 'tt_prem'}, long_title:
           'Questions pour comprendre le 20e siècle', content: [
             {id: 'his_tt_prem_1', title: 'LE 19e SIÈCLE', content: [
@@ -163,8 +169,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
               {id: 'his_tt_prem_6_2', title: 'L\'étude d\'un document'},
               {id: 'his_tt_prem_6_3', title: 'L\'étude de deux documents'}
             ]}
-          ]},
-    // categories[2] : Géo, premières multiples ...
+    ]},
+
     {id: 'geo_tt_prem', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'tt_prem'}, long_title:
           'France et Europe : dynamiques des territoires dans la mondialisation', content: [
             {id: 'geo_tt_prem_1', title: 'Territoires de proximité', content: [
@@ -192,9 +198,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
               {id: 'geo_tt_prem_6_4', title: 'Le croquis'},
               {id: 'geo_tt_prem_6_5', title: 'Le schéma'}
             ]}
-          ]},
+    ]},
 
-    // categories[3] : Maths, Prem ES ...
     {id: 'mat_pes', title: 'Mathématiques - première ES', matter: {id: 'mat'},
       level: {id: 'pes'}, long_title: '', content: [
         {id: 'mat_pes_1', title: 'Algèbre/ analyse', content: [
@@ -209,9 +214,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         ]},
         {id: 'mat_pes_3', title: 'Algorithmique'},
         {id: 'mat_pes_4', title: 'Notations / raisonnements'}
-      ]},
+    ]},
 
-    // categories[4] : Maths, Première S
     {id: 'mat_ps', title: 'Mathématiques - première S', matter: {id: 'mat'},
       level: {id: 'ps'}, long_title: '', content: [
         {id: 'math_ps_1', title: 'Analyse', content: [
@@ -232,9 +236,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         ]},
         {id: 'math_ps_4', title: 'Algorithmique'},
         {id: 'math_ps_5', title: 'Notations et raisonnements en mathématiques'}
-      ]},
+    ]},
 
-    // categories[5] : Maths, Terminale S ...
     {id: 'mat_ts', title: 'Mathématiques - terminale S', matter: {id: 'mat'}, level: {id: 'ts'},
       content: [
         {id: 'mat_ts_1', title: 'SUITES NUMERIQUES', content: [
@@ -291,105 +294,779 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           {id: 'mat_ts_sp_4_2', title: 'Cônes'},
           {id: 'mat_ts_sp_4_3', title: 'Surfaces'}
         ]}
-      ]}
-    // categories[6] :
-  ];
+    ]},
+
+    {id: 'fra_six', title: 'Français - Sixième', matter: {id: 'fra'}, level: {id: 'six'}, long_title: 'Français sixième', content: [
+        {id: 'fra_six_1', title: 'L\'étude de la langue', content: [
+            {id: 'fra_six_1_1', title: 'Grammaire'},
+            {id: 'fra_six_1_2', title: 'Orthographe'}, 
+            {id: 'fra_six_1_3', title: 'Lexique'}
+        ]},
+        {id: 'fra_six_2', title: 'La lecture', content: [
+            {id: 'fra_six_2_1', title: 'Textes de l\'Antiquité'},
+            {id: 'fra_six_2_2', title: 'Contes et récits merveilleux'},
+            {id: 'fra_six_2_3', title: 'Initiation à la poésie'},
+            {id: 'fra_six_2_4', title: 'Initiation au théâtre'},
+            {id: 'fra_six_2_5', title: 'Étude de l\'image'}
+        ]},
+        {id: 'fra_six_3', title: 'L\'expression écrite', content: [
+            {id: 'fra_six_3_1', title: 'Méthodologie'},
+            {id: 'fra_six_3_2', title: 'Récit d\'une expérience'},
+            {id: 'fra_six_3_3', title: 'Récit sur une œuvre, un support'},
+            {id: 'fra_six_3_4', title: 'L\'expression poétique'}
+        ]},
+        {id: 'fra_six_4', title: 'L\'expression orale', content: [
+            {id: 'fra_six_4_1', title: 'Raconter une expérience'}
+        ]},
+        {id: 'fra_six_5', title: 'L\'histoire des arts', content: [
+            {id: 'fra_six_5_1', title: 'Arts, mythes et religions'}
+        ]}
+    ]},
+
+    {id: 'edc_six', title: 'Éducation Civique - Sixième', matter: {id: 'edc'}, level: {id: 'six'}, long_title: 'Éducation Civique', content: [
+        {id: 'edc_six_1', title: ' Le collégien', content: [
+            {id: 'edc_six_1_1', title: 'Les missions et l\'organisation du collège'},
+            {id: 'edc_six_1_2', title: 'L\'éducation : un droit, une nécessité'}
+        ]},
+        {id: 'edc_six_2', title: 'L\'enfant', content: [
+            {id: 'edc_six_2_1', title: 'Une personne'},
+            {id: 'edc_six_2_2', title: 'Un mineur'},
+            {id: 'edc_six_2_3', title: 'Une personne avec droits et devoirs'}
+        ]},
+        {id: 'edc_six_3', title: 'L\'habitant', content: [
+            {id: 'edc_six_3_1', title: 'L\'organisation de la commune'},
+            {id: 'edc_six_3_2', title: 'Citoyenneté et acteurs locaux'}
+        ]}
+    ]},
+
+    {id: 'fra_five', title: 'Français - Cinquième', matter: {id: 'fra'}, level: {id: 'five'}, long_title: 'Cinquième', content: [
+        {id: 'fra_five_1', title: 'L\'étude de la langue', content: [
+            {id: 'fra_five_1_1', title: 'Grammaire'},
+            {id: 'fra_five_1_2', title: 'Orthographe'},
+            {id: 'fra_five_1_3', title: 'Lexique'}
+        ]},
+        {id: 'fra_five_2', title: 'La lecture', content: [
+            {id: 'fra_five_2_1', title: 'Littérature du Moyen-âge et de la Renaissance'},
+            {id: 'fra_five_2_2', title: 'Récits d\'aventures'},
+            {id: 'fra_five_2_3', title: 'Poésie : jeux de langage'},
+            {id: 'fra_five_2_4', title: 'Théâtre : la comédie'},
+            {id: 'fra_five_2_5', title: 'Étude de l\'image'}
+        ]},
+        {id: 'fra_five_3', title: 'L\'expression écrite', content: [
+            {id: 'fra_five_3_1', title: 'Méthodologie'},
+            {id: 'fra_five_3_2', title: 'Récit d\'une expérience'},
+            {id: 'fra_five_3_3', title: 'Descriptions \/ Portraits'},
+            {id: 'fra_five_3_4', title: 'Dialogues'},
+            {id: 'fra_five_3_5', title: 'Récit sur une œuvre, un support'},
+            {id: 'fra_five_3_6', title: 'L\'expression poétique'}
+        ]},
+        {id: 'fra_five_4', title: 'L\'expression orale', content: [
+            {id: 'fra_five_4_1', title: 'Raconter une expérience'},
+            {id: 'fra_five_4_2', title: 'Dialogue, jeux de rôle'}
+        ]},
+        {id: 'fra_five_5', title: 'L\'histoire des arts', content: [
+            {id: 'fra_five_5_1', title: 'Art, États et pouvoir'},
+            {id: 'fra_five_5_2', title: 'Arts du visuel '},
+            {id: 'fra_five_5_3', title: 'Arts du son'},
+            {id: 'fra_five_5_4', title: 'Arts du spectacle vivant'},
+            {id: 'fra_five_5_5', title: 'Arts de l\'espace'}
+        ]}
+    ]},
+
+    {id: 'fra_four', title: 'Français - Quatrième', matter: {id: 'fra'}, level: {id: 'four'}, long_title: 'Quatrième', content: [
+        {id: 'fra_four_1', title: 'L\'étude de la langue', content: [
+            {id: 'fra_four_1_1', title: 'Grammaire'},
+            {id: 'fra_four_1_2', title: 'Orthographe'},
+            {id: 'fra_four_1_3', title: 'Lexique'}
+        ]},
+        {id: 'fra_four_2', title: 'La lecture', content: [
+            {id: 'fra_four_2_1', title: 'La lettre'},
+            {id: 'fra_four_2_2', title: 'Le récit au XIXe siècle'},
+            {id: 'fra_four_2_3', title: 'Poésie : Le lyrisme'},
+            {id: 'fra_four_2_4', title: 'Théâtre : faire rire, faire pleurer'},
+            {id: 'fra_four_2_5', title: 'Étude de l\'image'}
+        ]},
+        {id: 'fra_four_3', title: 'L\'expression écrite', content: [
+            {id: 'fra_four_3_1', title: 'Méthodologie'},
+            {id: 'fra_four_3_2', title: 'L\'expression poétique'},
+            {id: 'fra_four_3_3', title: 'Scènes de théâtre'},
+            {id: 'fra_four_3_4', title: 'Nouvelles'},
+            {id: 'fra_four_3_5', title: 'Prolongement narratif'},
+            {id: 'fra_four_3_6', title: 'Paragraphe argumenté'}
+        ]},
+        {id: 'fra_four_4', title: 'L\'expression orale', content: [
+            {id: 'fra_four_4_1', title: 'Dialogue explicatif'},
+            {id: 'fra_four_4_2', title: 'Dialogue argumentatif'}
+        ]},
+        {id: 'fra_four_5', title: 'L\'histoire des arts', content: [
+            {id: 'fra_four_5_1', title: 'Arts, espace et temps'},
+            {id: 'fra_four_5_5', title: 'Arts, ruptures, continuités'}
+        ]}
+    ]},
+
+    {id: 'fra_three', title: 'Français - Troisième', matter: {id: 'fra'}, level: {id: 'three'}, long_title: 'Troisième', content: [
+        {id: 'fra_three_1', title: 'L\'étude de la langue', content: [
+            {id: 'fra_three_1_1', title: 'Grammaire'},
+            {id: 'fra_three_1_2', title: 'Orthographe'},
+            {id: 'fra_three_1_3', title: 'Lexique'}
+        ]},
+        {id: 'fra_three_2', title: 'La lecture', content: [
+            {id: 'fra_three_2_1', title: 'Formes du récit au XX et XXIe siècles'},
+            {id: 'fra_three_2_2', title: 'La poésie dans le monde et dans le siècle'},
+            {id: 'fra_three_2_3', title: 'Théâtre : continuité et renouvellement'},
+            {id: 'fra_three_2_4', title: 'Étude de l\'image'}
+        ]},
+        {id: 'fra_three_3', title: 'L\'expression écrite', content: [
+            {id: 'fra_three_3_1', title: 'Méthodologie'},
+            {id: 'fra_three_3_2', title: 'L\'écriture narrative'},
+            {id: 'fra_three_3_3', title: 'Résumé'},
+            {id: 'fra_three_3_4', title: 'Scène tragique'},
+            {id: 'fra_three_3_5', title: 'Poésie et expression de soi'},
+            {id: 'fra_three_3_6', title: 'Article de presse'},
+            {id: 'fra_three_3_7', title: 'Écrit argumentatif'},
+            {id: 'fra_three_3_8', title: 'Entraînement au brevet'}
+        ]},
+        {id: 'fra_three_4', title: 'L\'expression orale', content: [
+            {id: 'fra_three_4_1', title: 'Débat'},
+            {id: 'fra_three_4_2', title: 'Lecture à voix haute'}
+        ]},
+        {id: 'fra_three_5', title: 'L\'histoire des arts', content: [
+            {id: 'fra_three_5_1', title: 'Arts, Etats et pouvoir'}
+        ]},
+        {id: 'fra_three_6', title: 'Repères de fin de collège', content: [
+            {id: 'fra_three_6_1', title: 'Dates importantes'},
+            {id: 'fra_three_6_2', title: 'Notions importantes'},
+            {id: 'fra_three_6_3', title: 'Auteurs essentiels'},
+            {id: 'fra_three_6_4', title: 'Œuvres immanquables'},
+            {id: 'fra_three_6_5', title: 'Méthodologie du Brevet'}
+        ]}
+    ]},
+
+    {id: 'mat_six', title: 'Mathématiques - Sixième', matter: {id: 'mat'}, level: {id: 'six'}, long_title: 'Sixième', content: [
+        {id: 'mat_six_1', title: 'Organisation de données, fonctions', content: [
+            {id: 'mat_six_1_1', title: 'Proportionnalité'},
+            {id: 'mat_six_1_2', title: 'Organisation et représentation de données'}
+        ]},
+        {id: 'mat_six_2', title: 'Nombres et calculs', content: [
+            {id: 'mat_six_2_1', title: 'Nombres entiers et décimaux'},
+            {id: 'mat_six_2_2', title: 'Opérations '},
+            {id: 'mat_six_2_3', title: 'Opérations '},
+            {id: 'mat_six_2_4', title: 'Nombres en écriture fractionnaire'}
+        ]},
+        {id: 'mat_six_3', title: 'Géométrie', content: [
+            {id: 'mat_six_3_1', title: 'Figures planes'},
+            {id: 'mat_six_3_2', title: 'Symétrie orthogonale'},
+            {id: 'mat_six_3_3', title: 'Parallélépipède rectangle'}
+        ]},
+        {id: 'mat_six_4', title: 'Grandeurs et mesures', content: [
+            {id: 'mat_six_4_1', title: 'Longueurs, masses, durées'},
+            {id: 'mat_six_4_2', title: 'Angles'},
+            {id: 'mat_six_4_3', title: 'Aires'},
+            {id: 'mat_six_4_4', title: 'Volumes'}
+        ]}
+    ]},
+
+    {id: 'mat_five', title: 'Mathématiques - Cinquième', matter: {id: 'mat'}, level: {id: 'five'}, long_title: 'Cinquième', content: [
+        {id: 'mat_five_1', title: 'Organisation de données, fonctions', content: [
+            {id: 'mat_five_1_1', title: 'Proportionnalité'},
+            {id: 'mat_five_1_2', title: 'Expressions littérales'},
+            {id: 'mat_five_1_3', title: 'Activités graphiques'},
+            {id: 'mat_five_1_4', title: 'Représentation et traitement des données'}
+        ]},
+        {id: 'mat_five_2', title: 'Nombres et calculs', content: [
+            {id: 'mat_five_2_1', title: 'Nombres entiers et décimaux positifs'},
+            {id: 'mat_five_2_2', title: 'Nombres positifs en écriture fractionnaire'},
+            {id: 'mat_five_2_3', title: 'Nombres relatifs entiers et décimaux'},
+            {id: 'mat_five_2_4', title: 'Initiative à la notion d\'équation'}
+        ]},
+        {id: 'mat_five_3', title: 'Géométrie', content: [
+            {id: 'mat_five_3_1', title: 'Figures planes'},
+            {id: 'mat_five_3_2', title: 'Symétries'},
+            {id: 'mat_five_3_3', title: 'Prismes droits, cylindres de révolution'}
+        ]},
+        {id: 'mat_five_4', title: 'Grandeurs et mesures', content: [
+            {id: 'mat_five_4_1', title: 'Longueurs, masses, durées'},
+            {id: 'mat_five_4_2', title: 'Angles'},
+            {id: 'mat_five_4_3', title: 'Aires'},
+            {id: 'mat_five_4_4', title: 'Volumes'}
+        ]}
+    ]},
+
+    {id: 'mat_four', title: 'Mathématiques - Quatrième', matter: {id: 'mat'}, level: {id: 'four'}, long_title: 'Quatrième', content: [
+        {id: 'mat_four_1', title: 'Organisation de données, fonctions', content: [
+            {id: 'mat_four_1_1', title: 'Utilisation de la proportionnalité'},
+            {id: 'mat_four_1_2', title: 'Proportionnalité'},
+            {id: 'mat_four_1_3', title: 'Traitement de données'}
+        ]},
+        {id: 'mat_four_2', title: 'Nombres et calculs', content: [
+            {id: 'mat_four_2_1', title: 'Calcul numérique'},
+            {id: 'mat_four_2_2', title: 'Calcul littéral'},
+            {id: 'mat_four_2_3', title: 'Équation à une inconnue'}
+        ]},
+        {id: 'mat_four_3', title: 'Géométrie', content: [
+            {id: 'mat_four_3_1', title: 'Figures planes'},
+            {id: 'mat_four_3_2', title: 'Configurations dans l\'espace'},
+            {id: 'mat_four_3_3', title: 'Agrandissement et réduction'}
+        ]},
+        {id: 'mat_four_4', title: 'Grandeurs et mesures', content: [
+            {id: 'mat_four_4_1', title: 'Aires et volumes'},
+            {id: 'mat_four_4_2', title: 'Grandeurs quotients courantes'}
+        ]}
+    ]},
+
+    {id: 'mat_three', title: 'Mathématiques - Troisième', matter: {id: 'mat'}, level: {id: 'three'}, long_title: 'Troisième', content: [
+        {id: 'mat_three_1', title: 'Organisation de données, fonctions', content: [
+            {id: 'mat_three_1_1', title: 'Notion de fonction'},
+            {id: 'mat_three_1_2', title: 'Fonction linéaire, fonction affine'},
+            {id: 'mat_three_1_3', title: 'Statistiques'},
+            {id: 'mat_three_1_4', title: 'Notion de probabilité'}
+        ]},
+        {id: 'mat_three_2', title: 'Nombres et calculs', content: [
+            {id: 'mat_three_2_1', title: 'Nombres entiers et rationnels'},
+            {id: 'mat_three_2_2', title: 'Calculs élémentaires sur les radicaux'},
+            {id: 'mat_three_2_3', title: 'Écritures littérales'},
+            {id: 'mat_three_2_4', title: 'Équations et inéquations au premier degré'}
+        ]},
+        {id: 'mat_three_3', title: 'Géométrie', content: [
+            {id: 'mat_three_3_1', title: 'Figures planes'},
+            {id: 'mat_three_3_2', title: 'Configurations dans l\'espace'},
+            {id: 'mat_three_3_3', title: 'Sphère, centre et rayon'}
+        ]},
+        {id: 'mat_three_4', title: 'Grandeurs et mesures', content: [
+            {id: 'mat_three_4_1', title: 'Aires et volumes'},
+            {id: 'mat_three_4_2', title: 'Grandeurs composées, changement d\'unité'}
+        ]}
+    ]},
+
+    {id: 'hist_six', title: 'Histoire - Sixième', matter: {id: 'hist'}, level: {id: 'six'}, long_title: 'Sixième', content: [
+        {id: 'hist_six_1', title: 'L\'Orient ancient', content: [
+            {id: 'hist_six_1_1', title: 'Premières civilisations'},
+            {id: 'hist_six_1_2', title: 'Premières écritures'}
+        ]},
+        {id: 'hist_six_2', title: 'La civilisation grecque', content: [
+            {id: 'hist_six_2_1', title: 'Aux fondements de la Grèce : cités, mythes et panhellénisme'},
+            {id: 'hist_six_2_2', title: 'La Cité des Athéniens : citoyenneté et démocratie'},
+            {id: 'hist_six_2_3', title: 'Alexandre le Grand'},
+            {id: 'hist_six_2_4', title: 'La Grèce des savants'}
+        ]},
+        {id: 'hist_six_3', title: 'Rome', content: [
+            {id: 'hist_six_3_1', title: 'Des origines à la fin de la République'},
+            {id: 'hist_six_3_2', title: 'L\'Empire : l\'Empereur, la ville, la romanisation'}
+        ]},
+        {id: 'hist_six_4', title: 'Les débuts du judaïsme et du christianisme', content: [
+            {id: 'hist_six_4_1', title: 'Les débuts du judaïsme'},
+            {id: 'hist_six_4_2', title: 'Les débuts du christianisme'}
+        ]},
+        {id: 'hist_six_5', title: 'Les empires chrétiens du haut Moyen-âge', content: [
+            {id: 'hist_six_5_1', title: 'L\'empire byzantin'},
+            {id: 'hist_six_5_2', title: 'L\'empire carolingien'}
+        ]},
+        {id: 'hist_six_6', title: 'Regards sur des mondes lointains', content: [
+            {id: 'hist_six_6_1', title: 'La Chine des Han à son apogée'},
+            {id: 'hist_six_6_2', title: 'L\'Inde classique au IVe et Ve siècles'}
+        ]}
+    ]},
+
+    {id: 'hist_five', title: 'Histoire - Cinquième', matter: {id: 'hist'}, level: {id: 'five'}, long_title: 'Cinquième', content: [
+        {id: 'hist_five_1', title: 'Les débuts de l\'Islam', content: [
+            {id: 'hist_five_1_1', title: 'Contexte'},
+            {id: 'hist_five_1_2', title: 'Les textes'},
+            {id: 'hist_five_1_3', title: 'Vie quotidienne'}
+        ]},
+        {id: 'hist_five_2', title: 'L\'occident féodal (XI-XVe)', content: [
+            {id: 'hist_five_2_1', title: 'Paysans et seigneurs'},
+            {id: 'hist_five_2_2', title: 'Féodaux, souverains, premiers Etats'},
+            {id: 'hist_five_2_3', title: 'La place de l\'Église'}
+        ]},
+        {id: 'hist_five_3', title: 'Regards sur l\'Afrique', content: [
+            {id: 'hist_five_3_1', title: 'Une civilisation africaine'},
+            {id: 'hist_five_3_2', title: 'Les grands échanges'},
+            {id: 'hist_five_3_3', title: 'Les traites'}
+        ]},
+        {id: 'hist_five_4', title: 'Vers la modernité (XV-XVIIe)', content: [
+            {id: 'hist_five_4_1', title: 'Bouleversements culturels et intellectuels'},
+            {id: 'hist_five_4_2', title: 'L\'émergence du \'Roi absolu\' '}
+        ]}
+    ]},
+
+    {id: 'hist_four', title: 'Histoire - Quatrième', matter: {id: 'hist'}, level: {id: 'four'}, long_title: 'Quatrième', content: [
+        {id: 'hist_four_1', title: 'Thème transversal : les arts, témoins de l\'Histoire (XVIII-XXe)', content: [
+            {id: 'hist_four_1_1', title: 'Œuvres littéraires'},
+            {id: 'hist_four_1_2', title: 'Œuvres de compositeurs'},
+            {id: 'hist_four_1_3', title: 'Œuvres architecturale'},
+            {id: 'hist_four_1_4', title: 'Tableaux, sculptures'},
+            {id: 'hist_four_1_5', title: 'Photos et premiers films'},
+            {id: 'hist_four_1_6', title: 'Méthodologie'}
+        ]},
+        {id: 'hist_four_2', title: 'L\'Europe et le Monde au XVIIIe', content: [
+            {id: 'hist_four_2_1', title: 'L\'Europe dans le Monde au début du XVIIIe'},
+            {id: 'hist_four_2_2', title: 'L\'Europe des Lumières'},
+            {id: 'hist_four_2_3', title: 'Traites négrières et esclavage'},
+            {id: 'hist_four_2_4', title: 'Difficultés de la Monarchie sous Louis XVI'}
+        ]},
+        {id: 'hist_four_3', title: 'La Révolution et l\'Empire', content: [
+            {id: 'hist_four_3_1', title: 'Les temps forts de la Révolution'},
+            {id: 'hist_four_3_2', title: 'Les fondations d\'une France nouvelle'},
+            {id: 'hist_four_3_3', title: 'La France et l\'Europe en 1815'}
+        ]},
+        {id: 'hist_four_4', title: 'Le XIXe siècle', content: [
+            {id: 'hist_four_4_1', title: 'L\'âge industriel'},
+            {id: 'hist_four_4_2', title: 'L\'évolution politique de la France, 1815-1914'},
+            {id: 'hist_four_4_3', title: 'L\'affirmation des nationalismes'},
+            {id: 'hist_four_4_4', title: 'Les colonies'},
+            {id: 'hist_four_4_5', title: 'Carte de l\'Europe en 1914'}
+        ]}
+    ]},
+
+    {id: 'hist_three', title: 'Histoire - Troisième', matter: {id: 'hist'}, level: {id: 'three'}, long_title: 'Troisième', content: [
+        {id: 'hist_three_1', title: 'Thème transversal : les arts, témoins de l\'Histoire (XX-XXIe)', content: [
+            {id: 'hist_three_1_1', title: 'Œuvres littéraires'},
+            {id: 'hist_three_1_2', title: 'Œuvres de compositeurs'},
+            {id: 'hist_three_1_3', title: 'Œuvres architecturale'},
+            {id: 'hist_three_1_4', title: 'Tableaux, sculptures'},
+            {id: 'hist_three_1_5', title: 'Photos et premiers films'},
+            {id: 'hist_three_1_6', title: 'Méthodologie'}
+        ]},
+        {id: 'hist_three_2', title: 'Le XXe : un siècle de transformations', content: [
+            {id: 'hist_three_2_1', title: 'Grandes innovations scientifiques et technologiques'},
+            {id: 'hist_three_2_2', title: 'Evolution de la production et conséquences sociales'}
+        ]},
+        {id: 'hist_three_3', title: 'Guerres mondiales et régimes totalitaires', content: [
+            {id: 'hist_three_3_1', title: 'La 1ère Guerre mondiale, guerre totale (1914-18)'},
+            {id: 'hist_three_3_2', title: 'Les régimes totalitaires des années 1930'},
+            {id: 'hist_three_3_3', title: 'La 2de Guerre mondiale, guerre d\'anéantissement (1939-45)'}
+        ]},
+        {id: 'hist_three_4', title: 'Une géopolitique mondiale', content: [
+            {id: 'hist_three_4_1', title: 'La Guerre froide (1945-91)'},
+            {id: 'hist_three_4_2', title: 'Des colonies aux États nouvellement indépendants'},
+            {id: 'hist_three_4_3', title: 'La construction européenne (jusqu\'à 2000)'},
+            {id: 'hist_three_4_4', title: 'Le monde depuis le début des années 1990'}
+        ]},
+        {id: 'hist_three_5', title: 'La vie politique en France', content: [
+            {id: 'hist_three_5_1', title: 'La République de l\'Entre-deux-guerres'},
+            {id: 'hist_three_5_2', title: 'Effondrement et refondation républicaine (1940-46)'},
+            {id: 'hist_three_5_3', title: 'De Gaulle et nouveau système républicain (1958-69)'},
+            {id: 'hist_three_5_4', title: 'La Ve République à l\'épreuve de sa durée'}
+        ]},
+        {id: 'hist_three_6', title: 'Repères de fin de collège', content: [
+            {id: 'hist_three_6_1', title: 'Dates importantes'},
+            {id: 'hist_three_6_2', title: 'Notions importantes'},
+            {id: 'hist_three_6_3', title: 'Personnages importants'},
+            {id: 'hist_three_6_4', title: 'Méthodologie du Brevet'}
+        ]}
+    ]},
+
+    {id: 'geo_six', title: 'Géographie - Sixième', matter: {id: 'geo'}, level: {id: 'six'}, long_title: 'Géographie', content: [
+        {id: 'geo_six_1', title: 'Mon espace proche', content: [
+            {id: 'geo_six_1_1', title: 'Paysages et territoire'},
+            {id: 'geo_six_1_2', title: 'Les différentes échelles'}
+        ]},
+        {id: 'geo_six_2', title: 'Où sont les hommes sur la Terre ?', content: [
+            {id: 'geo_six_2_1', title: 'La répartition des hommes sur Terre '}
+        ]},
+        {id: 'geo_six_3', title: 'Habiter', content: [
+            {id: 'geo_six_3_1', title: 'Habiter la ville'},
+            {id: 'geo_six_3_2', title: 'Habiter le monde rural'},
+            {id: 'geo_six_3_3', title: 'Habiter les littoraux'},
+            {id: 'geo_six_3_4', title: 'Habiter des espaces à fortes contraintes'}
+        ]},
+        {id: 'geo_six_4', title: 'Question au choix \/ Autre thème'
+        }
+    ]},
+
+    {id: 'geo_five', title: 'Géographie - Cinquième', matter: {id: 'geo'}, level: {id: 'five'}, long_title: 'Géographie', content: [
+        {id: 'geo_five_1', title: 'La question du développement durable', content: [
+            {id: 'geo_five_1_1', title: 'Enjeux du développement durable'},
+            {id: 'geo_five_1_2', title: 'Dynamique de la population et DD'}
+        ]},
+        {id: 'geo_five_2', title: 'Des sociétés inégalement développées', content: [
+            {id: 'geo_five_2_1', title: 'Inégalités devant la santé'},
+            {id: 'geo_five_2_2', title: 'Inégalités devant l\'alphabétisation'},
+            {id: 'geo_five_2_3', title: 'Inégalités devant les risques'},
+            {id: 'geo_five_2_4', title: 'La pauvreté dans le monde'}
+        ]},
+        {id: 'geo_five_3', title: 'Des hommes et des ressources', content: [
+            {id: 'geo_five_3_1', title: 'Les ressources alimentaires'},
+            {id: 'geo_five_3_2', title: 'L\'accès à l\'eau'},
+            {id: 'geo_five_3_3', title: 'Gérer les océans et leurs ressources'},
+            {id: 'geo_five_3_4', title: 'Ménager l\'atmosphère'},
+            {id: 'geo_five_3_5', title: 'L\'énergie'}
+        ]},
+        {id: 'geo_five_4', title: 'Question au choix \/ Autre thème'
+        }
+    ]},
+
+    {id: 'geo_four', title: 'Géographie - Quatrième', matter: {id: 'geo'}, level: {id: 'four'}, long_title: 'Géographie', content: [
+        {id: 'geo_four_1', title: 'Des échanges internationaux', content: [
+            {id: 'geo_four_1_1', title: 'Espaces majeurs de production et d\'échanges'},
+            {id: 'geo_four_1_2', title: 'Échanges de marchandises'},
+            {id: 'geo_four_1_3', title: 'Mobilités humaines'},
+            {id: 'geo_four_1_4', title: 'Lieux de commandement'},
+            {id: 'geo_four_1_5', title: 'Entreprises transnationales'}
+        ]},
+        {id: 'geo_four_2', title: 'Les territoires dans la mondialisation', content: [
+            {id: 'geo_four_2_1', title: 'Les États-Unis'},
+            {id: 'geo_four_2_2', title: 'Les puissances émergentes'},
+            {id: 'geo_four_2_3', title: 'Les pays pauvres'}
+        ]},
+        {id: 'geo_four_3', title: 'Questions sur la mondialisation', content: [
+            {id: 'geo_four_3_1', title: 'Mondialisation et diversité culturelle'},
+            {id: 'geo_four_3_2', title: 'Mondialisation et ses contestations'}
+        ]}
+    ]},
+
+    {id: 'geo_three', title: 'Géographie - Troisième', matter: {id: 'geo'}, level: {id: 'three'}, long_title: 'Géographie', content: [
+        {id: 'geo_three_1', title: 'Habiter la France', content: [
+            {id: 'geo_three_1_1', title: 'De la ville à l\'espace rural'},
+            {id: 'geo_three_1_2', title: 'La région'},
+            {id: 'geo_three_1_3', title: 'Le territoire national et sa population'}
+        ]},
+        {id: 'geo_three_2', title: 'Aménagement et développement du territoire français', content: [
+            {id: 'geo_three_2_1', title: 'Les espaces productifs'},
+            {id: 'geo_three_2_2', title: 'L\'organisation du territoire français'}
+        ]},
+        {id: 'geo_three_3', title: 'La France dans l\'Union européenne', content: [
+            {id: 'geo_three_3_1', title: 'L\'UE, une union d\'États'},
+            {id: 'geo_three_3_2', title: 'La France intégrée dans l\'UE'}
+        ]},
+        {id: 'geo_three_4', title: 'Le rôle mondial de la France et de l\'UE', content: [
+            {id: 'geo_three_4_1', title: 'La France, une influence mondiale'},
+            {id: 'geo_three_4_2', title: 'Réalités et limites de la puissance de l\'UE'}
+        ]},
+        {id: 'geo_three_5', title: 'Repères de fin de collège', content: [
+            {id: 'geo_three_5_1', title: 'Dates importantes'},
+            {id: 'geo_three_5_2', title: 'Notions importantes'},
+            {id: 'geo_three_5_3', title: 'Repères géographiques indispensables'},
+            {id: 'geo_three_5_4', title: 'Méthodologie du Brevet'}
+        ]}
+    ]},
+
+    {id: 'hda_six', title: 'Histoire de l\'Art - Sixième', matter: {id: 'hda'}, level: {id: 'six'}, long_title: 'Histoire de l\'Art', content: [
+        {id: 'hda_six_1', title: 'Arts, créations, culture', content: [
+            {id: 'hda_six_1_1', title: 'Genèse des cultures'},
+            {id: 'hda_six_1_2', title: 'Création et traditions'},
+            {id: 'hda_six_1_3', title: 'Formes populaires de l\'Art'}
+        ]},
+        {id: 'hda_six_2', title: 'Arts, espace, temps', content: [
+            {id: 'hda_six_2_1', title: 'Évocation du temps et de l\'espace'},
+            {id: 'hda_six_2_2', title: 'Grandes figures du temps et de l\'espace'},
+            {id: 'hda_six_2_3', title: 'Place du corps et de l\'homme dans le monde et la nature'}
+        ]},
+        {id: 'hda_six_3', title: 'Arts, États et pouvoir', content: [
+            {id: 'hda_six_3_1', title: 'Art et pouvoir'},
+            {id: 'hda_six_3_2', title: 'Art et État'},
+            {id: 'hda_six_3_3', title: 'Art et mémoire'}
+        ]},
+        {id: 'hda_six_4', title: 'Arts, mythes et religion', content: [
+            {id: 'hda_six_4_1', title: 'Art et mythe'},
+            {id: 'hda_six_4_2', title: 'Art et sacré'},
+            {id: 'hda_six_4_3', title: 'Grandes figures de l\'inspiration artistique en Occident'}
+        ]},
+        {id: 'hda_six_5', title: 'Arts, techniques, expressions', content: [
+            {id: 'hda_six_5_1', title: 'Influence des techniques'},
+            {id: 'hda_six_5_2', title: 'Technique, source d\'inspiration'},
+            {id: 'hda_six_5_3', title: 'Grandes figures artistiques et techniques'},
+            {id: 'hda_six_5_4', title: 'La prouesse technique'}
+        ]},
+        {id: 'hda_six_6', title: 'Arts, ruptures, continuités', content: [
+            {id: 'hda_six_6_1', title: 'Tradition des œuvres d\'art'},
+            {id: 'hda_six_6_2', title: 'Composition des œuvres d\'art'},
+            {id: 'hda_six_6_3', title: 'Dialogue des arts'}
+        ]}
+    ]},
+
+    {id: 'hda_five', title: 'Histoire de l\'Art - Cinquième', matter: {id: 'hda'}, level: {id: 'five'}, long_title: 'Histoire de l\'Art', content: [
+        {id: 'hda_five_1', title: 'Arts, créations, culture', content: [
+            {id: 'hda_five_1_1', title: 'Genèse des cultures'},
+            {id: 'hda_five_1_2', title: 'Création et traditions'},
+            {id: 'hda_five_1_3', title: 'Formes populaires de l\'Art'}
+        ]},
+        {id: 'hda_five_2', title: 'Arts, espace, temps', content: [
+            {id: 'hda_five_2_1', title: 'Évocation du temps et de l\'espace'},
+            {id: 'hda_five_2_2', title: 'Grandes figures du temps et de l\'espace'},
+            {id: 'hda_five_2_3', title: 'Place du corps et de l\'homme dans le monde et la nature'}
+        ]},
+        {id: 'hda_five_3', title: 'Arts, États et pouvoir', content: [
+            {id: 'hda_five_3_1', title: 'Art et pouvoir'},
+            {id: 'hda_five_3_2', title: 'Art et État'},
+            {id: 'hda_five_3_3', title: 'Art et mémoire'}
+        ]},
+        {id: 'hda_five_4', title: 'Arts, mythes et religion', content: [
+            {id: 'hda_five_4_1', title: 'Art et mythe'},
+            {id: 'hda_five_4_2', title: 'Art et sacré'},
+            {id: 'hda_five_4_3', title: 'Grandes figures de l\'inspiration artistique en Occident'}
+        ]},
+        {id: 'hda_five_5', title: 'Arts, techniques, expressions', content: [
+            {id: 'hda_five_5_1', title: 'Influence des techniques'},
+            {id: 'hda_five_5_2', title: 'Technique, source d\'inspiration'},
+            {id: 'hda_five_5_3', title: 'Grandes figures artistiques et techniques'},
+            {id: 'hda_five_5_4', title: 'La prouesse technique'}
+        ]},
+        {id: 'hda_five_6', title: 'Arts, ruptures, continuités', content: [
+            {id: 'hda_five_6_1', title: 'Tradition des œuvres d\'art'},
+            {id: 'hda_five_6_2', title: 'Composition des œuvres d\'art'},
+            {id: 'hda_five_6_3', title: 'Dialogue des arts'}
+        ]}
+    ]},
+
+    {id: 'hda_four', title: 'Histoire de l\'Art - Quatrième', matter: {id: 'hda'}, level: {id: 'four'}, long_title: 'Histoire de l\'Art', content: [
+        {id: 'hda_four_1', title: 'Arts, créations, culture', content: [
+            {id: 'hda_four_1_1', title: 'Genèse des cultures'},
+            {id: 'hda_four_1_2', title: 'Création et traditions'},
+            {id: 'hda_four_1_3', title: 'Formes populaires de l\'Art'}
+        ]},
+        {id: 'hda_four_2', title: 'Arts, espace, temps', content: [
+            {id: 'hda_four_2_1', title: 'Évocation du temps et de l\'espace'},
+            {id: 'hda_four_2_2', title: 'Grandes figures du temps et de l\'espace'},
+            {id: 'hda_four_2_3', title: 'Place du corps et de l\'homme dans le monde et la nature'}
+        ]},
+        {id: 'hda_four_3', title: 'Arts, États et pouvoir', content: [
+            {id: 'hda_four_3_1', title: 'Art et pouvoir'},
+            {id: 'hda_four_3_2', title: 'Art et État'},
+            {id: 'hda_four_3_3', title: 'Art et mémoire'}
+        ]},
+        {id: 'hda_four_4', title: 'Arts, mythes et religion', content: [
+            {id: 'hda_four_4_1', title: 'Art et mythe'},
+            {id: 'hda_four_4_2', title: 'Art et sacré'},
+            {id: 'hda_four_4_3', title: 'Grandes figures de l\'inspiration artistique en Occident'}
+        ]},
+        {id: 'hda_four_5', title: 'Arts, techniques, expressions', content: [
+            {id: 'hda_four_5_1', title: 'Influence des techniques'},
+            {id: 'hda_four_5_2', title: 'Technique, source d\'inspiration'},
+            {id: 'hda_four_5_3', title: 'Grandes figures artistiques et techniques'},
+            {id: 'hda_four_5_4', title: 'La prouesse technique'}
+        ]},
+        {id: 'hda_four_6', title: 'Arts, ruptures, continuités', content: [
+            {id: 'hda_four_6_1', title: 'Tradition des œuvres d\'art'},
+            {id: 'hda_four_6_2', title: 'Composition des œuvres d\'art'},
+            {id: 'hda_four_6_3', title: 'Dialogue des arts'}
+        ]}
+    ]},
+
+    {id: 'hda_three', title: 'Histoire de l\'Art - Troisième', matter: {id: 'hda'}, level: {id: 'three'}, long_title: 'Histoire de l\'Art', content: [
+        {id: 'hda_three_1', title: 'Arts, créations, culture', content: [
+            {id: 'hda_three_1_1', title: 'Genèse des cultures'},
+            {id: 'hda_three_1_2', title: 'Création et traditions'},
+            {id: 'hda_three_1_3', title: 'Formes populaires de l\'Art'}
+        ]},
+        {id: 'hda_three_2', title: 'Arts, espace, temps', content: [
+            {id: 'hda_three_2_1', title: 'Évocation du temps et de l\'espace'},
+            {id: 'hda_three_2_2', title: 'Grandes figures du temps et de l\'espace'},
+            {id: 'hda_three_2_3', title: 'Place du corps et de l\'homme dans le monde et la nature'}
+        ]},
+        {id: 'hda_three_3', title: 'Arts, États et pouvoir', content: [
+            {id: 'hda_three_3_1', title: 'Art et pouvoir'},
+            {id: 'hda_three_3_2', title: 'Art et État'},
+            {id: 'hda_three_3_3', title: 'Art et mémoire'}
+        ]},
+        {id: 'hda_three_4', title: 'Arts, mythes et religion', content: [
+            {id: 'hda_three_4_1', title: 'Art et mythe'},
+            {id: 'hda_three_4_2', title: 'Art et sacré'},
+            {id: 'hda_three_4_3', title: 'Grandes figures de l\'inspiration artistique en Occident'}
+        ]},
+        {id: 'hda_three_5', title: 'Arts, techniques, expressions', content: [
+            {id: 'hda_three_5_1', title: 'Influence des techniques'},
+            {id: 'hda_three_5_2', title: 'Technique, source d\'inspiration'},
+            {id: 'hda_three_5_3', title: 'Grandes figures artistiques et techniques'},
+            {id: 'hda_three_5_4', title: 'La prouesse technique'}
+        ]},
+        {id: 'hda_three_6', title: 'Arts, ruptures, continuités', content: [
+            {id: 'hda_three_6_1', title: 'Tradition des œuvres d\'art'},
+            {id: 'hda_three_6_2', title: 'Composition des œuvres d\'art'},
+            {id: 'hda_three_6_3', title: 'Dialogue des arts'}
+        ]},
+        {id: 'hda_three_7', title: 'Repères de fin de collège', content: [
+            {id: 'hda_three_7_1', title: 'Dates importantes'},
+            {id: 'hda_three_7_2', title: 'Notions importantes'},
+            {id: 'hda_three_7_3', title: 'Grandes figures culturelles'},
+            {id: 'hda_three_7_4', title: 'Œuvres immanquables'},
+            {id: 'hda_three_7_5', title: 'Méthodologie du Brevet'}
+        ]}
+    ]},
+
+    {id: 'eng_tt_colg', title: 'Anglais - Tout le collège', matter: {id: 'eng'}, level: {id: 'tt_colg'}, long_title: 'Anglais', content: [
+        {id: 'eng_tt_colg_1', title: ' Compréhension orale', content: [
+            {id: 'eng_tt_colg_1_1', title: 'Instructions et consignes'},
+            {id: 'eng_tt_colg_1_2', title: 'Expressions usuelles'},
+            {id: 'eng_tt_colg_1_3', title: 'Présentations'},
+            {id: 'eng_tt_colg_1_4', title: 'Indications chiffrées'},
+            {id: 'eng_tt_colg_1_5', title: 'Récits'}
+        ]},
+        {id: 'eng_tt_colg_2', title: 'Expression orale en continu', content: [
+            {id: 'eng_tt_colg_2_1', title: 'Présentations'},
+            {id: 'eng_tt_colg_2_2', title: 'Descriptions'},
+            {id: 'eng_tt_colg_2_3', title: 'Récits'},
+            {id: 'eng_tt_colg_2_4', title: 'Explications'}
+        ]},
+        {id: 'eng_tt_colg_3', title: 'Interaction orale', content: [
+            {id: 'eng_tt_colg_3_1', title: 'Communication sociale'},
+            {id: 'eng_tt_colg_3_2', title: 'Recherche d\'informations'},
+            {id: 'eng_tt_colg_3_3', title: 'Dialogues'},
+            {id: 'eng_tt_colg_3_4', title: 'Réactions à des propositions'}
+        ]},
+        {id: 'eng_tt_colg_4', title: 'Compréhension de l\'écrit', content: [
+            {id: 'eng_tt_colg_4_1', title: 'Instructions et consignes'},
+            {id: 'eng_tt_colg_4_2', title: 'Correspondance'},
+            {id: 'eng_tt_colg_4_3', title: 'Textes informatif'},
+            {id: 'eng_tt_colg_4_4', title: 'Textes de fiction'},
+            {id: 'eng_tt_colg_4_5', title: 'Littérature enfantine'}
+        ]},
+        {id: 'eng_tt_colg_5', title: 'Expression écrite', content: [
+            {id: 'eng_tt_colg_5_1', title: 'Influence des techniques'},
+            {id: 'eng_tt_colg_5_2', title: 'Technique, source d\'inspiration'},
+            {id: 'eng_tt_colg_5_3', title: 'Grandes figures artistiques et techniques'},
+            {id: 'eng_tt_colg_5_4', title: 'La prouesse technique'}
+        ]},
+        {id: 'eng_tt_colg_6', title: 'Correspondance', content: [
+            {id: 'eng_tt_colg_6_1', title: 'Portraits'},
+            {id: 'eng_tt_colg_6_2', title: 'Descriptions'},
+            {id: 'eng_tt_colg_6_3', title: 'Récits réels ou imaginaires'}
+        ]},
+        {id: 'eng_tt_colg_7', title: 'Compétences culturelles', content: [
+            {id: 'eng_tt_colg_7_1', title: 'Différences linguistiques'},
+            {id: 'eng_tt_colg_7_2', title: 'Codes socioculturels'},
+            {id: 'eng_tt_colg_7_3', title: 'Mode de vie, usages, traditions'},
+            {id: 'eng_tt_colg_7_4', title: 'Expression artistique'}
+        ]},
+        {id: 'eng_tt_colg_8', title: 'Compétences linguistiques', content: [
+            {id: 'eng_tt_colg_8_1', title: 'Grammaire'},
+            {id: 'eng_tt_colg_8_2', title: 'Lexique'}
+        ]}
+    ]},
+
+    {id: 'edc_five', title: 'Éducation Civique - Cinquième', matter: {id: 'edc'}, level: {id: 'five'}, long_title: 'Éducation Civique', content: [
+        {id: 'edc_five_1', title: 'Êtres humains, une seule humanité', content: [
+            {id: 'edc_five_1_1', title: 'Différents mais égaux'},
+            {id: 'edc_five_1_2', title: 'Identités multiples de la personne'}
+        ]},
+        {id: 'edc_five_2', title: 'Égalité, valeur en construction', content: [
+            {id: 'edc_five_2_1', title: 'L\'Égalité, principe républicain'},
+            {id: 'edc_five_2_2', title: 'La réduction des inégalités'}
+        ]},
+        {id: 'edc_five_3', title: 'Sécurité et risques majeurs', content: [
+            {id: 'edc_five_3_1', title: 'Notion de risque'},
+            {id: 'edc_five_3_2', title: 'Sécurité nationale et collective'},
+            {id: 'edc_five_3_3', title: 'Risques majeurs'}
+        ]},
+        {id: 'edc_five_4', title: 'Une action solidaire', content: [
+            {id: 'edc_five_4_1', title: 'Étude de cas'},
+            {id: 'edc_five_4_2', title: 'Mise en œuvre d\'un projet'}
+        ]}
+    ]},
+
+    {id: 'edc_four', title: 'Éducation Civique - Quatrième', matter: {id: 'edc'}, level: {id: 'four'}, long_title: 'Éducation Civique', content: [
+        {id: 'edc_four_1', title: 'L\'exercice des libertés en France', content: [
+            {id: 'edc_four_1_1', title: 'Libertés individuelles et collectives'},
+            {id: 'edc_four_1_2', title: 'Usage des libertés et exigences sociales'}
+        ]},
+        {id: 'edc_four_2', title: 'Droit et justice en France', content: [
+            {id: 'edc_four_2_1', title: 'Le Droit, code des relations humaines'},
+            {id: 'edc_four_2_2', title: 'La Justice, garante du respect du Droit'},
+            {id: 'edc_four_2_3', title: 'La Justice des mineurs'}
+        ]},
+        {id: 'edc_four_3', title: 'La sûreté, un droit de l\'Homme'
+        }
+    ]},
+
+    {id: 'edc_three', title: 'Éducation Civique - Troisième', matter: {id: 'edc'}, level: {id: 'three'}, long_title: 'Éducation Civique', content: [
+        {id: 'edc_three_1', title: 'La République et la citoyenneté', content: [
+            {id: 'edc_three_1_1', title: 'Valeurs, principes et symboles de la République'},
+            {id: 'edc_three_1_2', title: 'Nationalité et citoyennetés français et européenne'},
+            {id: 'edc_three_1_2', title: 'Le droit de vote'}
+        ]},
+        {id: 'edc_three_2', title: 'La vie démocratique', content: [
+            {id: 'edc_three_2_1', title: 'La vie politique'},
+            {id: 'edc_three_2_2', title: 'La vie sociale'},
+            {id: 'edc_three_2_3', title: 'L\'opinion publique et les médias'}
+        ]},
+        {id: 'edc_three_3', title: 'La défense et la paix', content: [
+            {id: 'edc_three_3_1', title: 'La recherche collective de la paix'},
+            {id: 'edc_three_3_2', title: 'La Défense et l\'action internationale de la France'}
+        ]}
+    ]}
+
+ ];
 
   // On populate l'anglais pour les autres levels...
-  this.categories.push({
-    id: 'eng_tl', title: 'Anglais',
+  this.categories.push({id: 'eng_tl', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'tl'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_tt_tles', title: 'Anglais',
+  this.categories.push({id: 'eng_tt_tles', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'tt_tles'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_ts', title: 'Anglais',
+  this.categories.push({id: 'eng_ts', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'ts'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_tes', title: 'Anglais',
+  this.categories.push({id: 'eng_tes', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'tes'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_tt_prem', title: 'Anglais',
+  this.categories.push({id: 'eng_tt_prem', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'tt_prem'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_ps', title: 'Anglais',
+  this.categories.push({id: 'eng_ps', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'ps'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_pes', title: 'Anglais',
+  this.categories.push({id: 'eng_pes', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'pes'},
     content: this.categories[0].content
   });
 
-  this.categories.push({
-    id: 'eng_pl', title: 'Anglais',
+  this.categories.push({id: 'eng_pl', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'pl'},
     content: this.categories[0].content
   });
 
   // On populate l'histoire pour les autres levels
-  this.categories.push({
-    id: 'his_ps', title: 'Histoire - première S',
+  this.categories.push({id: 'his_ps', title: 'Histoire - première S',
     matter: {id: 'his'}, level: {id: 'ps'},
     long_title: 'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
-  this.categories.push({
-    id: 'his_pes', title: 'Histoire - première ES',
+  this.categories.push({id: 'his_pes', title: 'Histoire - première ES',
     matter: {id: 'his'}, level: {id: 'pes'},
     long_title: 'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
-  this.categories.push({
-    id: 'his_pl', title: 'Histoire - première L',
+  this.categories.push({id: 'his_pl', title: 'Histoire - première L',
     matter: {id: 'his'}, level: {id: 'pl'},
     long_title: 'Questions pour comprendre le 20e siècle',
     content: this.categories[1].content
   });
 
   // On populate la géo pour les autres levels
-  this.categories.push({
-    id: 'geo_ps', title: 'Géographie - première S',
+  this.categories.push({id: 'geo_ps', title: 'Géographie - première S',
     matter: {id: 'geo'}, level: {id: 'ps'},
     long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
-  this.categories.push({
-    id: 'geo_pes', title: 'Géographie - première ES',
+  this.categories.push({id: 'geo_pes', title: 'Géographie - première ES',
     matter: {id: 'geo'}, level: {id: 'pes'},
     long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
-  this.categories.push({
-    id: 'geo_pl', title: 'Géographie - première S',
+  this.categories.push({id: 'geo_pl', title: 'Géographie - première S',
     matter: {id: 'geo'}, level: {id: 'pl'},
     long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
     content: this.categories[2].content
   });
 
-  this.categories.push({
-    id: 'mat_pl ', title: 'Mathématiques - première L',
+  this.categories.push({id: 'mat_pl ', title: 'Mathématiques - première L',
     matter: {id: 'mat'}, level: {id: 'pl'},
     content: this.categories[3].content
   });
