@@ -3,7 +3,6 @@
   /*jshint camelcase:false*/
   'use strict';
   I18n.translations = {
-
     // This is javascript! - and must be valid
     // Be sure to call "puke flint" before commiting
     // Be also sure that "puke lint" passes ok
@@ -49,12 +48,8 @@
           }
         },
 
-
-
-
-
         categories: {
-          title: 'Catégories'
+          title: 'Programme'
         },
         users: {
           title: 'Utilisateurs'
@@ -79,7 +74,7 @@
         },
 
         activityedit: {
-          title: 'Édition activité'
+          title: 'Édition de l\'activité'
         }
       },
 
@@ -88,7 +83,7 @@
         home: {
           // Notip means no tip :)
           // tip: 'Accès au dashboard',
-          text: 'Home'
+          text: 'Accueil'
         },
 
         profile: {
@@ -133,17 +128,17 @@
         },
 
         cat: {
-          // tip: '',
-          text: 'Catégories'
+          // tip: 'Accrochez vos activités au programme',
+          text: 'Programme'
         },
 
         catlist: {
-          tip: 'Gérer les catégories',
+          tip: 'Gérer les programmes',
           text: 'Liste'
         },
 
         catnew: {
-          tip: 'Créer une catégorie',
+          tip: 'Créer un programme',
           text: 'Créer'
         },
 
@@ -229,7 +224,7 @@
         header1: 'Titre 1',
         header2: 'Titre 2',
         header3: 'Titre 3',
-        header4: 'Titre 4',
+        header4: 'Accordéon',
         bold: 'Gras',
         italic: 'Italique',
         fontcolor: 'Couleur du texte',

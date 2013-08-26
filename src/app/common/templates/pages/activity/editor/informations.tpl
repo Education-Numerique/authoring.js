@@ -24,7 +24,7 @@
                 </div>
                 {{#if categoryTree.content.length}}
                 <div class="input-prepend">
-                    <label class="add-on" for="form-page-subtitle">Catégories</label>
+                    <label class="add-on" for="form-page-subtitle">Programme</label>
                     {{view Em.GroupedSelect rawContentBinding="categoryTree.content" selectionBinding="content.category"}}
                 </div>
                 {{/if}}

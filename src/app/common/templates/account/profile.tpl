@@ -38,7 +38,7 @@
                     {{view Ember.TextField valueBinding="content.profile.company"   }}
                 </div>
                 <div class="input-prepend">
-                    <label class="add-on" for="form-page-subtitle">Addresse</label>
+                    <label class="add-on" for="form-page-subtitle">Adresse</label>
                     {{view Ember.TextField valueBinding="content.profile.company-address"   }}
                 </div>
 

@@ -19,7 +19,7 @@
                     <div class="control-group">
                         <div class="controls">
                             <div class="input-prepend" style="width:40%">
-                                <span class="add-on"  style="float:left"><i class="icon-user" ></i></span><input type="text" style="float:left" id="email" name="email" placeholder="Addresse électronique" />
+                                <span class="add-on"  style="float:left"><i class="icon-user" ></i></span><input type="text" style="float:left" id="email" name="email" placeholder="Adresse électronique" />
                             </div>
                         </div>
                     </div>

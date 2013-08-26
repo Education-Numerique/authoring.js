@@ -39,7 +39,7 @@
         </li>
         <li>                    
           <h4>{{nbCategories}}</h4>
-          <span>Catégories</span>
+          <span>liens vers les programmes</span>
         </li>
       </ul>
     </div>
@@ -92,7 +92,7 @@
 
   <div class="widget-box">
     <div class="widget-title">
-      <h5>Liste des activités dans la sandbox</h5>
+      <h5>Liste des activités dans le catalogue</h5>
     </div>
     <div class="widget-content nopadding">
       <table class="table table-bordered data-table">
@@ -101,8 +101,8 @@
             <th class="user-reviewer2" style="width: 10px;"></th>
             <th style="width: 10px;"></th>
             <th>Titre</th>
-            <th>Category</th>
-            <th>Author</th>
+            <th>Programme</th>
+            <th>Auteur</th>
           </tr>
         </thead>
         <tbody>

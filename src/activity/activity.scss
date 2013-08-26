@@ -121,6 +121,17 @@ body {
 
     @include shadow(0,5px,15px,rgba(0,0,0,0.5));
 
+    .page_title {
+      height: 45px;
+      width: 100%;
+      padding-top: 20px;
+      border-bottom: 1px solid #CCCCCC;
+      font: 24px Arial;
+      color: #331975;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
     table {
       background-color: #EEEEEE; border:none; padding:10px;
     }

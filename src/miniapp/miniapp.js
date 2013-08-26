@@ -1,8 +1,6 @@
 // UP TO YOU
 
 jsBoot.controllers.application.login("viapanda@gmail.com", "XXXXX", true);
-
-
 throw "stop here for now";
 
 /**
