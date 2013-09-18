@@ -127,9 +127,10 @@
       sameElse: 'L'
     },
     relativeTime: {
-      future: 'in %s',
+      future: 'dans %s',
       past: 'il y a %s',
       s: 'secondes',
+      ss: '%d secondes',
       m: 'une minute',
       mm: '%d minutes',
       h: 'une heure',

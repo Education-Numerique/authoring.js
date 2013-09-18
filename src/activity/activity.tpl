@@ -11,10 +11,8 @@
 
   <header>
     <!-- Titre de l'activité -->
-    <h1>{{title}}</h1>
-    <!-- see activity.js to access author name (search "username") -->
-
-  </header>
+    <h1>{{title}}&nbsp;&nbsp;&nbsp;<em> par {{author.username}}</em></h1>
+  </header> 
 
   <div id="final-feedback" class="row-fluid content-container" style="display: none">
   <section class="widget-box">

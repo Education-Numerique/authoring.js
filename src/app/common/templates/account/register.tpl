@@ -66,13 +66,15 @@
         </div>
 
         <div id="step-basic" class="step">
-<!--          
-          <div class="alert alert-info">Prenez quelques secondes pour nous en dire plus sur vous.
-            <a href="#" data-dismiss="alert" class="close">×</a>
+
+          <div class="alert alert-info">
+          Attention : choisissez bien votre nom d'auteur.<br />C'est le nom sous lequel seront publiées vos ativités. Vous ne pourrez pas le modifier.<br />
+          Nous vous conseillons de mettre ici votre vrai nom comme par exemple : JH Pestalozzi.
+            <!-- <a href="#" data-dismiss="alert" class="close">×</a> -->
           </div>
--->
+
           <div class="control-group">
-            <label for="username" class="control-label">Pseudonyme</label>
+            <label for="username" class="control-label">Votre nom d'auteur</label>
             <div class="controls">
               <input id="username" type="text" name="username" />
             </div>
