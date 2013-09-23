@@ -1,29 +1,28 @@
 /*
 * @template : pages/dashboard
 */
-
+<!--
+  
 <div class="row-fluid">
-  <div class="alert alert-error"> <!-- alert-info = vert -->
+  <div class="alert alert-error"> 
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">ATTENTION !!!!</h4>
     <p>Le service sera interrompu vendredi 20 septembre de 10h à 13h pour une mise à jour importante.<br /><br />
     Merci de votre compréhension.<br /><br />
     A bientôt,<br />
     l'équipe technique d'E&N</p>
-  <!--
+  
     Vous pouvez prendre contact avec <a href="mailto:contact@education-et-numerique.org">contact@education-et-numerique.org</a>
   
-  -->
   </div>
-<!--
+
   <article id="home" class="widget-box">
     <div>
       En attente validation et fourniture contenus / textes lot 2
     </div>
   </article>
--->
 </div>
-
+-->
 
 <div class="row-fluid">
   <article id="actions" class="widget-box">
