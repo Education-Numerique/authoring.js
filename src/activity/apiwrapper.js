@@ -46,9 +46,10 @@
 
       win = win.parent;
     }
-    }catch(e){
-    }
     return (('API_1484_11' in win) && win.API_1484_11) || (('API' in win) && win.API);
+    }catch(e){
+	return false;
+    }
   };
 
   // local variable definitions
