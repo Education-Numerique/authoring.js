@@ -36,6 +36,7 @@
   */
 
   var findAPI = function(win) {
+    try{
     var findAPITries = 0;
     while (!('API_1484_11' in win) && !('API' in win) && win.parent && (win.parent != win))
     {
@@ -44,6 +45,8 @@
         return null;
 
       win = win.parent;
+    }
+    }catch(e){
     }
     return (('API_1484_11' in win) && win.API_1484_11) || (('API' in win) && win.API);
   };
