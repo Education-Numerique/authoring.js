@@ -240,7 +240,7 @@ config-JB-darwin:
   root: "/Users/JB/sites/tmp-lxxl"
   paths:
     #deploy: "${HOME}/Sites/lxxl"
-    deploy: "/Users/JB/sites/lxxl2"
+    deploy: "/Users/JB/sites/lxxl"
   links:
     airstrip:
       version: '1.0'
