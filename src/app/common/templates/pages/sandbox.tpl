@@ -5,13 +5,12 @@
 
 <div class="row-fluid">
 <!-- Keep for later use !!! -->
-<!--
+
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">Le Catalogue</h4>
-    Retrouvez ici toutes les activités publiées par nos auteurs, en libre consultation.
+    Attention, le catalogue peut être assez long à charger. Nous travaillons activement pour régler ce problème.
   </div>
--->
 
   <div class="row-fluid">
     <div class="span6">

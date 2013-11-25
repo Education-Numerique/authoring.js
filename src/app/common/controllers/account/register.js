@@ -10,7 +10,7 @@
       Object.keys(data).forEach(function(key) {
         if (['', 'username', 'email', 'password', 'password2'].indexOf(key) != -1)
           return;
-
+        
         profile[key] = data[key];
       });
 
@@ -25,9 +25,8 @@
           failureCbk(this.UNKNOWN);
       }.bind(this), data.username, data.email, data.password, profile);
       // successCbk('regular');// or facebook
-      //failureCbk(this.ALREADY_USED_EMAIL);// or facebook
+      // failureCbk(this.ALREADY_USED_EMAIL);// or facebook
       // console.warn(JSON.stringify(data));
     }
   });
-
 }).apply(LxxlApp);

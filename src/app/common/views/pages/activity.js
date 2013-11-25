@@ -709,6 +709,7 @@
       page: null,
       modalName: null,
 
+      //attributeBindings: ['href', 'data-toggle', 'type'],
       attributeBindings: ['href', 'data-toggle'],
 
       click: function(event) {
@@ -716,7 +717,7 @@
           this.get('controller').deleteActivity();
         }.bind(this));
         $(this.get('href')).modal('show');
-        event.preventDefault();
+        //event.preventDefault();
         return false;
       }
     }),
