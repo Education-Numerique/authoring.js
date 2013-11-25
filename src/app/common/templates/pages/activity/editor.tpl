@@ -12,7 +12,6 @@
                 <div class="qti-title span3">
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
-
                 {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
 
                 {{#if content.controller.isPublished}}
@@ -28,8 +27,8 @@
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
                 <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini"><b>Sauvegarder</b></button>
 
-            </div>
 
+            </div>
             <div class="widget-content nopadding main-container">
                 <div id="page-management" class="panel-right span3">
                     {{#view view.InformationButton classNames="panel-button"}}Informations{{/view}}
@@ -279,19 +278,13 @@
 
 <div class="modal hide" id="action-embed" role="dialog" aria-hidden="true">
   <div class="modal-header">
-    <h3>Codes d'insertion</h3>
+    <h3>Code d'insertion</h3>
   </div>
   <div class="modal-body">
-    Lien vers l'activité :  
+    Vous pouvez exporter votre activité dans votre blog ou sur votre site en copiant-collant le code suivant:
     <pre>
-      https://www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}
+      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 1000px; max-width: 1000px; height: 600px;&quot; /&gt;
     </pre>
-    <br />
-    Code &lt;iframe&gt; à coller dans le code source html de votre blog :
-    <pre>
-      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 600px; max-width: 1000px; height: 800px;&quot; &gt;&lt;/iframe&gt;
-    </pre>
-
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Ok</a>
@@ -350,7 +343,7 @@
         <input type="text" class="word redactor_input" value="" />
         <label>Indice : </label>
         <input type="text" class="clue redactor_input" value="" />
-        <label>Autres réponses acceptées (séparées par ; | joker : *) : </label>
+        <label>Alternatives (séparées par ; | joker : *) : </label>
         <input type="text" class="alternatives redactor_input" value="" />
     </div>
             <hr class="clear" />

@@ -76,7 +76,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
 
   this.Page = api.TypedMutable.bind({}, {
     flavor: this.Flavor,
-    title: '',
+    title: 'Titre de la page',
     subtitle: '',
     advice: '',
     hasDocument: false,

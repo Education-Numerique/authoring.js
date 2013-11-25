@@ -77,7 +77,8 @@
 
     $('#email').on('blur', function() {
       $('#creation-error').hide();
-      if (!$('#email').val()) return;
+      if (!$('#email').val())
+        return;
 
       checkAvailability(function(resp) {
         if (!resp) {

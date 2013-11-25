@@ -12,7 +12,7 @@
             <div class="control-group">
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>
-                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Titre de la page"}}
+                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Identifiez la nature du texte"}}
                 </div>
             <!-- Ciao sous-titre ...
                 <div class="input-prepend">
