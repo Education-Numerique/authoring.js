@@ -33,7 +33,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     lit: 'Littérature',
     mat: 'Maths',
     mate: 'Maths éco',
-    ses: 'Sciences économiques et sociales',
+    sciec: 'Sciences éco',
     sci: 'Sciences',
     phys: 'Physique',
     chim: 'Chimie',
@@ -52,7 +52,6 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     mus: 'Musique',
     eps: 'EPS',
     tpe: 'TPE',
-    tech: 'Technologie',
     inf: 'Informatique',
     tuto: 'Tutoriel',
     other: 'Autre'
@@ -63,7 +62,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     lit: 'Littérature',
     mat: 'Maths',
     mate: 'Maths éco',
-    ses: 'Sciences économiques et sociales',
+    sciec: 'Sciences éco',
     sci: 'Sciences',
     phys: 'Physique',
     chim: 'Chimie',
@@ -82,7 +81,6 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     mus: 'Musique',
     eps: 'EPS',
     tpe: 'TPE',
-    tech: 'Technologie',
     inf: 'Informatique',
     tuto: 'Tutoriel',
     other: 'Autre'

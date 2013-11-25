@@ -563,7 +563,7 @@ dd {
 dt {
   font-weight: bold;
   line-height: 35px;
-  border-top:1px solid #DDDDDD;
+  border-top:1px solid # DDDDDD;
   padding:10px 0 10px 0;
   margin-top:10px;
 }
@@ -4703,11 +4703,11 @@ a.badge:hover {
 }
 
 .progress.active .bar {
-  -webkit-transition: progress-bar-stripes 2s linear infinite;
-     -moz-transition: progress-bar-stripes 2s linear infinite;
-      -ms-transition: progress-bar-stripes 2s linear infinite;
-       -o-transition: progress-bar-stripes 2s linear infinite;
-          transition: progress-bar-stripes 2s linear infinite;
+  -webkit-animation: progress-bar-stripes 2s linear infinite;
+     -moz-animation: progress-bar-stripes 2s linear infinite;
+      -ms-animation: progress-bar-stripes 2s linear infinite;
+       -o-animation: progress-bar-stripes 2s linear infinite;
+          animation: progress-bar-stripes 2s linear infinite;
 }
 
 .progress-danger .bar {

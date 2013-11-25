@@ -88,7 +88,6 @@ body .redactor_box_fullscreen {
     background: none;
     background: #fff !important;
     overflow: auto;
-    max-height: 300px;
     white-space: normal;
 }
 .redactor_editor a {
