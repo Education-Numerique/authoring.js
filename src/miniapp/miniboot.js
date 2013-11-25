@@ -55,11 +55,8 @@
 
   // Composants tiers
   jsBoot.loader.use('bootstrap');
-
   jsBoot.loader.use('raphael');
-
   jsBoot.loader.use('validate');
-
   jsBoot.loader.use('datatable');
 
   // LXXL core components
@@ -70,14 +67,22 @@
   jsBoot.loader.wait();
   jsBoot.loader.use(bootRoot + 'activity/activity.js');
 
+console.log("jsBoot 1 OK")
 
   // On attend tout ça...
   jsBoot.loader.wait(function(){
     // On boot le système
     jsBoot.controllers.application.boot(STORE_KEY, SERVICE_CONFIG, 'disable_instance_lockXXX');
+
+    console.log("application boot OK")
+
     // Et on finit en chargeant miniapp
     jsBoot.loader.use('miniapp.js');
   });
+
+  // il faudra bien initialiser  ???
+  // jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
+
 
 })();
 

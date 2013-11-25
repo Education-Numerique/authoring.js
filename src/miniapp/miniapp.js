@@ -1,5 +1,8 @@
 // UP TO YOU
 
+console.warn("welcome to miniapp");
+
+
 jsBoot.controllers.application.login("viapanda@gmail.com", "XXXXX", true);
 throw "stop here for now";
 

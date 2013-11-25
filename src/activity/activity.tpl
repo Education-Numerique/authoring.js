@@ -41,7 +41,7 @@
     </nav>
     {{/if}}
     <nav>
-      <h2>Plan de l'activité</h2>
+      <h2>Sommaire</h2>
       <ul class="pages-list">
         {{reset_index}}
         {{#each pages}}
