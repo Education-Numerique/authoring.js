@@ -2,8 +2,10 @@
   'use strict';
 
   window.LxxlScoring = {};
+
+  // Mix&Match / Glisser Déposer
   LxxlScoring.mixScore = function(total) {
-    console.warn('[MM Score] creqting', total);
+    console.warn('[MM Score] creating', total);
     var penalty = 0;
 
     this.addPenalty = function() {
@@ -17,6 +19,7 @@
     };
   };
 
+  // Texte a trous
   LxxlScoring.tatScore = function(total) {
     console.warn('[TAT Score] creating score for total:', total);
     var penalty = 0;
@@ -43,6 +46,8 @@
   // Conclusion:
   // - being wrong on a question means you loose half the remaining possible point for that question
   // - not answering at all
+
+  // QUIZ (QRM/QCM)
   LxxlScoring.questionScore = function(nbAnswers) {
     console.warn('[QUIZZ Score] creating score for total:', nbAnswers);
     var points = nbAnswers;

@@ -343,7 +343,7 @@
         <input type="text" class="word redactor_input" value="" />
         <label>Indice : </label>
         <input type="text" class="clue redactor_input" value="" />
-        <label>Alternatives (séparées par ; | joker : *) : </label>
+        <label>Autres réponses acceptées (séparées par ; | joker : *) : </label>
         <input type="text" class="alternatives redactor_input" value="" />
     </div>
             <hr class="clear" />
