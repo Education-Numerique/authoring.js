@@ -36,6 +36,7 @@
   */
 
   var findAPI = function(win) {
+    try{
     var findAPITries = 0;
     while (!('API_1484_11' in win) && !('API' in win) && win.parent && (win.parent != win))
     {
@@ -46,6 +47,9 @@
       win = win.parent;
     }
     return (('API_1484_11' in win) && win.API_1484_11) || (('API' in win) && win.API);
+    }catch(e){
+	return false;
+    }
   };
 
   // local variable definitions

@@ -122,7 +122,6 @@ body {
     @include shadow(0,5px,15px,rgba(0,0,0,0.5));
 
     .page_title {
-      height: 45px;
       width: 100%;
       padding-top: 20px;
       border-bottom: 1px solid #CCCCCC;
@@ -168,6 +167,10 @@ body {
     }
     h4 i[class*=icon]{
       float: right;
+    }
+    .light_grey_bloc {
+        background-color:#F8F8F8;
+        padding:4px;
     }
 
     .wordlist{

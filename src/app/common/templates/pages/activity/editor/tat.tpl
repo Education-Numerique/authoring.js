@@ -102,7 +102,7 @@
                 <form>
                   <fieldset>
                     
-                     <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher tous les trous</label> <br />
+                     <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher les mots enlevés</label> <br />
                     {{#if currentPage.displayHoles}}
                         <label>Trier les mots par ordre :</label>
                         {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsAlphabetical" value=false title="Alphabétique" groupBinding="tatIsRandom"}}

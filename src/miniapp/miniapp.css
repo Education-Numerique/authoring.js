@@ -1,4 +1,5 @@
 body {
 	background-color: green;
-	border: #CC0000 2px;	
+	border-color: #CC0000;
+	border: 2px;	
 }

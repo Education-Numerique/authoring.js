@@ -21,7 +21,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
   this.flavors = {
     simple: 'Page simple',
-    quizz: 'Page quizz',
+    quizz: 'Page quiz',
     tat: 'Page texte à trous',
     jmt: 'Page glisser-déposer',
     perf: 'Page performance'

@@ -27,6 +27,7 @@
   var bootRoot = location.href.split('/');
   bootRoot.pop();
   bootRoot = bootRoot.join('/');
+  console.log("Saluts Toto ...");
 
   // No analytics for now
   // var gaTracker = '{PUKE_ANALYTICS}';

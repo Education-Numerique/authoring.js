@@ -1,16 +1,19 @@
 /*
 * @template : pages/dashboard
 */
-
 <!--
+  
 <div class="row-fluid">
-  <div class="alert alert-info">
+  <div class="alert alert-error"> 
     <a href="#" data-dismiss="alert" class="close">×</a>
     <h4 class="alert-heading">ATTENTION !!!!</h4>
-    Ceci est la version Alpha 0.0 de l'Environnement Auteur d'Éducation &amp; Numérique.<br />
-    Elle ne fonctionne qu'avec GOOGLE CHROME !!! Avec tout autre navigateur, vous serez vite bloqué.<br /> 
-    Cette version n'est pas encore vraiment publique. Il y a encore beaucoup de choses qui ne fonctionnent pas bien, beaucoup de bugs. Nous y travaillons d'arrache-pied ! N'hésitez surtout pas à vous inscrire, à essayer, à nous faire part de vos remarques et suggestions.<br />
+    <p>Le service sera interrompu vendredi 20 septembre de 10h à 13h pour une mise à jour importante.<br /><br />
+    Merci de votre compréhension.<br /><br />
+    A bientôt,<br />
+    l'équipe technique d'E&N</p>
+  
     Vous pouvez prendre contact avec <a href="mailto:contact@education-et-numerique.org">contact@education-et-numerique.org</a>
+  
   </div>
 
   <article id="home" class="widget-box">

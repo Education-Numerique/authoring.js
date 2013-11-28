@@ -237,9 +237,11 @@ config-dmp-darwin:
 
 
 config-JB-darwin:
-  root: "${HOME}/tmp-lxxl"
+  #root: "${HOME}/tmp-lxxl"
+  root: "/Users/JB/sites/tmp-lxxl"
   paths:
-    deploy: "${HOME}/Sites/lxxl"
+    #deploy: "${HOME}/Sites/lxxl"
+    deploy: "/Users/JB/sites/lxxl"
   links:
     airstrip:
       version: '1.0'

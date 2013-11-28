@@ -11,11 +11,10 @@
 
   <header>
     <!-- Titre de l'activité -->
-    <h1>{{title}}</h1>
-    <!-- see activity.js to access author name (search "username") -->
+    <h1>{{title}}&nbsp;&nbsp;&nbsp;<em> par {{author.username}}</em></h1>
+  </header> 
 
-  </header>
-
+  <!-- fin de l'activité -->
   <div id="final-feedback" class="row-fluid content-container" style="display: none">
   <section class="widget-box">
     <div class="widget-content nopadding">
@@ -27,8 +26,6 @@
 
   <!-- Sommaire -->
   <div id="playing" class="row-fluid content-container">
-
-
 
   <aside class="span3 side-menu pull-right">
     {{#if extra.attachments.length}}

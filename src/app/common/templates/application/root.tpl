@@ -35,8 +35,6 @@
    </article>
 
 
-
-
   <div class="modal hide" id="modal-cgu" tabindex="-1" role="dialog" aria-labelledby="modal-cgu" aria-hidden="true">
      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
