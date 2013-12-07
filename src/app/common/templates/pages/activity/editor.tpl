@@ -355,6 +355,20 @@
     </div>
 </div>
 
+<div id="redactor-perf" style="display: none;">
+      <div id="redactor_modal_content">
+        <label>Condition d'affichage : </label>
+        <input type="text" class="condition redactor_input" value="" />
+        <span class="error_condition">&nbsp</span>
+    </div>
+    <hr class="clear" />
+
+    <div id="redactor_modal_footer">
+        <a class="redactor_modal_btn redactor_btn_modal_insert">Conditioner</a>
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Annuler</a>
+    </div>
+</div>
+
 <div id="redactor-tooltip" style="display: none;">
       <div id="redactor_modal_content">
         <label>Texte </label>
