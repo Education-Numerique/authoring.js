@@ -5,3 +5,6 @@
 *.pyc
 /build/
 /tmp/
+*.iml
+.idea
+/lib/
