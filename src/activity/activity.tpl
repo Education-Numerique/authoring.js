@@ -100,6 +100,9 @@
   {{#ifequalhelp flavor.id "jmt"}}
   <section class="page-jmt" id="jmt-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
+  {{#ifequalhelp flavor.id "perf"}}
+    <section class="page-perf" id="perf-{{id}}" data-page="{{id}}">
+  {{/ifequalhelp}}
     <div>
       <p class="page_title">{{title}}</p>
 
