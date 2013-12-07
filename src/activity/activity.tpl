@@ -57,6 +57,9 @@
           {{#ifequalhelp flavor.id "jmt"}}
           <li class="page-jmt">
           {{/ifequalhelp}}
+          {{#ifequalhelp flavor.id "perf"}}
+          <li class="page-perf">
+          {{/ifequalhelp}}
             <a href="#">
               <!--
               <span class="icon">
@@ -67,6 +70,9 @@
                 <span class="icon-ok-circle"></span>
                 {{/ifequalhelp}}
                 {{#ifequalhelp flavor "tat"}}
+                <span class="icon-text-width"></span>
+                {{/ifequalhelp}}
+                {{#ifequalhelp flavor "perf"}}
                 <span class="icon-text-width"></span>
                 {{/ifequalhelp}}
               </span>
