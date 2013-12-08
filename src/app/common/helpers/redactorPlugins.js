@@ -246,7 +246,7 @@
 
             var insertFromMyModal = function (el) {
 
-                var conditionSyntax =/^(activity)\.(pages\[\d]\.)?(note)(=|<|<=|>=|>)\d{1,3}$/;
+                var conditionSyntax =/^(activité)\.(pages\[\d]\.)?(note)(=|<|<=|>=|>)\d{1,3}$/;
                 var condition = $('#redactor_modal .condition').val();
                 var trimmedConditon = condition.replace(/ /g, '');
 

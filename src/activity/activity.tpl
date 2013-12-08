@@ -118,6 +118,10 @@
       <div>{{{advice}}}</div>
       {{/if}}
 
+      {{#ifequalhelp flavor.id "perf"}}
+         <div>{{{document}}}</div>
+      {{/ifequalhelp}}
+
       {{#ifequalhelp flavor.id "simple"}}
         <div>{{{document}}}</div>
       {{/ifequalhelp}}
