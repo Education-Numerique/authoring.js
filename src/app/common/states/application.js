@@ -173,9 +173,6 @@
 
         }),
 
-
-
-
         logout: Ember.Route.extend({
           route: '/logout',
           enter: function(router) {
@@ -185,9 +182,6 @@
             });
           }
         }),
-
-
-
 
         profile: Ember.Route.extend({
           route: '/profile',
@@ -207,10 +201,6 @@
             router.set('userController.content', router.get('applicationController.user'));
           }
         }),
-
-
-
-
 
         settings: Ember.Route.extend({
           route: '/settings',
@@ -266,7 +256,6 @@
         }
       }),
 
-
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
 
@@ -282,12 +271,9 @@
         }
       }),
 
-
-
       showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
       dashboard: Ember.Route.extend({
-
 
         index: Ember.Route.extend({
           route: '/',
@@ -328,8 +314,6 @@
         }
       }),
 
-
-
       // QTIs
       showMyActivities: Ember.Route.transitionTo('myActivities'),
       myActivities: Ember.Route.extend({
@@ -353,11 +337,9 @@
       //   }
       // }),
 
-
       // Routes not accessible from navigation itself
       // showPlayQTI: Ember.Route.transitionTo('playQTI'),
       editUser: Ember.Route.extend({route: '/userEdit/:user_id'}),
-
 
       // playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
@@ -371,17 +353,16 @@
             var isLogged = router.get('applicationController.isLogged');
             var act = LxxlLib.factories.activities.getActivity();
             Ember.run.next(function() {
-              if (!isLogged)
+              if (!isLogged) {
                 router.transitionTo('account.login');
-              else {
+              } else {
                 act.push();
                 act.addObserver('id', function() {
-                  // console.warn('BEEN PUSHED', act.id);
+                  console.warn('new activity pushed ', act.id);
                   router.transitionTo('activity.edit', act);
                 });
               }
             });
-
 
           },
           connectOutlets: function(router/*, qti*/) {
@@ -405,9 +386,7 @@
             router.get('applicationController').connectOutlet('activityEdit', activity.draft);
           }
         })
-
-
-
+        
       })
     })
   });

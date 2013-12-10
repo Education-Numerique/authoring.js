@@ -57,6 +57,10 @@
           {{#ifequalhelp flavor.id "jmt"}}
           <li class="page-jmt">
           {{/ifequalhelp}}
+          <!-- JBT  decembre 2013 -->
+          {{#ifequalhelp flavor.id "perf"}}
+          <li class="page-perf">
+          {{/ifequalhelp}}
             <a href="#">
               <!--
               <span class="icon">
@@ -94,6 +98,9 @@
   {{#ifequalhelp flavor.id "jmt"}}
   <section class="page-jmt" id="jmt-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
+  {{#ifequalhelp flavor.id "perf"}}
+  <section class="page-perf" id="perf-{{id}}" data-page="{{id}}">
+  {{/ifequalhelp}}
     <div>
       <p class="page_title">{{title}}</p>
 
@@ -102,8 +109,8 @@
       {{/if}}
     </div>
     <article>
-      <!-- Chronomètre pour le temps limité de la page (à cacher si limitedTime, voir behaviors) -->
-      <h5 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h5>
+      <!-- Chronomètre pour le temps limité de la page (à cacher si limitedTime, voir behaviors)
+      <h5 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h5>  -->
 
       {{#if advice}}
       <div>{{{advice}}}</div>
@@ -114,6 +121,7 @@
       {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "tat"}}
+      <!-- tat : texte à trous ################################# -->
         <div class="wordlist"></div>
 
         {{#if hasDocument}}
@@ -127,6 +135,7 @@
           <p><button id="tat-{{id}}-check">Vérifier mes réponses</button></p>
         </div>
 
+        <!-- conclusion -->
         <div class="modal conclusion hide" role="dialog" aria-hidden="true">
           <div class="modal-header">
             <h3>Exercice terminé!</h3>
@@ -138,9 +147,10 @@
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
           </div>
         </div>
+
         <div class="modal feedback hide" role="dialog" aria-hidden="true">
           <div class="modal-header">
-            <h3>Mmmm...</h3>
+            <!-- <h3>Mmmm...</h3> -->
           </div>
           <div class="modal-body">
             Certaines réponses ne sont pas encore bonnes! <span class="feedback">%</span>
@@ -150,8 +160,9 @@
           </div>
         </div>
       {{/ifequalhelp}}
-      {{#ifequalhelp flavor.id "jmt"}}
 
+      {{#ifequalhelp flavor.id "jmt"}}
+      <!--  Glisser déposer ################################# -->
         <div class="span12 row-fluid mix-and-match">
         {{#if hasDocument}}
           <div class="side-document">{{{document}}}</div>
@@ -185,10 +196,10 @@
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
           </div>
         </div>
-
       {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "quizz"}}
+      <!--  QUIZ ################################# -->
         {{#if hasDocument}}
           <div class="side-document">{{{document}}}</div>
         {{/if}}
@@ -278,22 +289,12 @@
         </div>
       {{/ifequalhelp}}
 
-
-
     </article>
   </section>
 
 {{/each}}
 </div>
 </div>
-
-
-
-
-
-
-
-
 
 
   <section class="widget-box">
@@ -308,7 +309,6 @@
       <ul class="pages-content span9" style="margin: auto; list-style-type: none;">
         {{#each pages}}
           <li style="margin: 10px;">
-
 
             {{#ifequalhelp flavor "quizz"}}
               {{#each questions}}
@@ -345,7 +345,6 @@
             {{/ifequalhelp}}
 
 
-
           </li>
         {{/each}}
       </ul>
@@ -358,7 +357,7 @@
   <div class="modal hide" id="modal-preview-tat" role="dialog" aria-labelledby="modal-preview-tat-label" aria-hidden="true">
     <div class="modal-header">
       <button type="button" class="close" onclick="$(event.target.parentNode.parentNode).modal('hide');" aria-hidden="true">×</button>
-      <h3 id="modal-preview-tat-label">Que doit-il y avoir à la place du trou?</h3>
+      <h3 id="modal-preview-tat-label">Que doit-il y avoir à la place du trou ?</h3>
     </div>
     <div class="modal-body">
       <p id="modal-preview-tat-body"></p>
@@ -375,7 +374,6 @@
   </div>
 -->
 </div>
-
 
 
 <!-- The utter stupidity of modals on modals -->

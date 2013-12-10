@@ -22,7 +22,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
   var wrapIt = function(callback) {
     return function(e) {
       delete e.details.error;
-      console.error('NETWORKERROR', JSON.stringify(e));
+      //console.error('NETWORKERROR', JSON.stringify(e));
       // var info = $('.network-crash div');
       // info.html(info.html() + '<pre style="whitespace: pre;">' + JSON.stringify(e) + '</pre>');
       // $('.network-crash').show();

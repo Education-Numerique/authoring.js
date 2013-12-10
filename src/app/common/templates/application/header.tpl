@@ -7,10 +7,11 @@
       </h1>
   </header>
 
+<!--
   <p id="search">
     <input type="text" placeholder="Chercher..."/><button type="submit" rel="tooltip" data-placement="right" title="Chercher quelque chose"><i class="icon-search icon-white"></i></button>
   </p>
-
+-->
   <nav id="user-nav" class="navbar" role="navigation">
     <!-- Logged-out, default -->
     <ul class="nav btn-group user-logged-out">
@@ -36,7 +37,9 @@
       </li>
 
       <li class="user-all">
-        <a rel="tooltip" data-placement="right" title="{{localize nav.sandbox.tip}}" id="navigation-sandbox" {{action showSandbox href=true}}><i class="icon icon-eye-open"></i> <span>{{localize nav.sandbox.text}}</span></a>
+        <!--              Nouveau catalogue Emmanuel dec 2013
+        <a rel="tooltip" data-placement="right" title="[[localize nav.sandbox.tip]]" id="navigation-sandbox" [[action showSandbox href=true]]><i class="icon icon-eye-open"></i> <span>[[localize nav.sandbox.text]]</span></a>  -->
+        <a rel="tooltip" data-placement="right" title="{{localize nav.sandbox.tip}}" id="navigation-sandbox" href='http://catalogue.education-et-numerique.org' target="_blank"><i class="icon icon-eye-open"></i> <span>{{localize nav.sandbox.text}}</span></a>
       </li>
 
       <li class="user-author">

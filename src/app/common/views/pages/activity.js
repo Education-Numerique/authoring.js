@@ -799,7 +799,7 @@
             this.set('flavorIcon', 'icon-ok-circle');
             this.set('pageType', 'page-quizz');
           } else if (value.id == 'quizzMulti') {
-            this.set('flavorIcon', ' icon-check');
+            this.set('flavorIcon', 'icon-check');
             this.set('pageType', 'page-quizz-multi');
           } else if (value.id == 'tat') {
             this.set('flavorIcon', 'icon-text-width');

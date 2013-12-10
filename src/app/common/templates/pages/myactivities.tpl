@@ -13,7 +13,6 @@
   </div>
   [[/if]]
 
-
   [[#unless view.activities.length]]
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
@@ -62,7 +61,15 @@
   <div class="widget-box">
     <div class="widget-title">
       <h5 style="margin-top:-3px;">Mes activités non encore publiées</h5>
-      <div style="margin-top:7px;"><a {{action showNewActivity href=true}} class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Créer une activité</a></div>
+      <div style="margin-top:7px;"><a {{action showNewActivity href=true}} id='bug2' class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Créer une activité</a></div>
+
+
+      <script>
+      $(document).on('click', '#bug2', function ()
+      {
+        alert("Bug: lorsque vous créez une nouvelle activité, la machine plante. Il suffit de rafraîchir la page (ctrl + r / pomme + r), et de  vous rendre dans vos activités pour continuer sans difficulté. Merci de votre indulgence !");
+      });
+      </script>
 
     </div>
     <div class="widget-content nopadding">
@@ -91,8 +98,6 @@
     </div>
   </div>
 
-
-
 </div>
 
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
@@ -104,12 +109,3 @@
     <p id="modal-preview-body"></p>
   </div>
 </div>
-
-
-
-
-
-            <!--
-              regarder le mixin no text dans roxee / + unselectable 
-
-            -->

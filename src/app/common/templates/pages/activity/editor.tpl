@@ -17,14 +17,15 @@
                 {{#if content.controller.isPublished}}
                 {{#view view.UnpublishActivityButton modalName="unpublishActivity" classNames="btn btn-warning btn-mini" data-toggle="modal" href="#modal-unpublish-activity"}}dépublier{{/view}}
                 {{/if}}
-<!--
-                <button type="button" [[action deleteActivity target="controller"]] class="btn btn-mini btn-danger" style="margin-left:20px">Supprimer</button>
-            -->
+
                 <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Partager</button>
+
                 <button type="button" {{action exportScorm target="controller"}} class="btn btn-mini">Exporter SCORM</button>
 
                 <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
+
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
+
                 <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini"><b>Sauvegarder</b></button>
 
 
@@ -34,7 +35,6 @@
                     {{#view view.InformationButton classNames="panel-button"}}Informations{{/view}}
                     
                     <div class="panel-content nopadding">
-
                         {{#collection view.pagesCollectionView contentBinding="content.pages" tagName="ul" classNames="pages-list"}}
                                 <span class="icon"><span {{bindAttr class="view.flavorIcon"}}></span></span>
                                 <span class="page-title">{{view.content.title}}</span>
