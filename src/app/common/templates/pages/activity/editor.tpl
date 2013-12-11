@@ -26,7 +26,7 @@
 
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
 
-                <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini"><b>Sauvegarder</b></button>
+                <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
 
 
             </div>
@@ -217,8 +217,8 @@
     <h3>Activité sauvegardée</h3>
   </div>
   <div class="modal-body">
-    Le brouillon de votre activité a bien été sauvegardé.<br />
-    Pour rendre cette version publiquement consultable, cliquez sur "publier".
+    Le brouillon de votre activité a été sauvegardé.<br />
+    En fait, cette sauvegarde est automatique, assez souvent. Vous pratiquement toujours pouvoir récupérer votre travail, n'importe où, n'importe quand. C'est l'une des magies du Cloud ...
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Ok</a>
@@ -278,16 +278,34 @@
 
 <div class="modal hide" id="action-embed" role="dialog" aria-hidden="true">
   <div class="modal-header">
-    <h3>Code d'insertion</h3>
+    <h3>Codes d'insertion</h3>
   </div>
   <div class="modal-body">
-    Vous pouvez exporter votre activité dans votre blog ou sur votre site en copiant-collant le code suivant:
+    Lien vers l'activité :  
     <pre>
-      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 1000px; max-width: 1000px; height: 600px;&quot; /&gt;
+      https://www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}
     </pre>
+    <hr />
+    Code &lt;iframe&gt; à copier/coller dans le code source html de votre blog :
+    <pre>
+      &lt;iframe src=&quot;//www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 600px; max-width: 1000px; height: 800px;&quot; &gt;&lt;/iframe&gt;
+    </pre>
+
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Ok</a>
+  </div>
+</div>
+
+<div class="modal hide" id="action-embed-error" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Codes d'insertion</h3>
+  </div>
+  <div class="modal-body">
+    <span id="embed-pub-err"></span>
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Fermer</a>
   </div>
 </div>
 

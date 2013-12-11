@@ -2,7 +2,6 @@
 * @template : application/footer
 */
 
-
 <!--
   XXX Google analytics, some day...
   <script>

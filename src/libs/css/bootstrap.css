@@ -420,9 +420,7 @@ a:hover {
   clear: both;
 }
 
-p {
-  margin: 0 0 9px;
-}
+p {}
 
 p small {
   font-size: 11px;

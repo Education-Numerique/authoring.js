@@ -21,16 +21,20 @@
 
   this.ActivityEditView = Ember.View.extend({
 
+    //**********************************************************************************
     StaticPage: Em.View.extend({
       templateName: 'pages/activity/editor/page'
     }),
 
+    //**********************************************************************************
     PerfPage: Em.View.extend({
       templateName: 'pages/activity/editor/perf'
     }),
 
+    //**********************************************************************************
     TatPage: Em.View.extend({
       templateName: 'pages/activity/editor/tat',
+    
       TimeButton: Em.View.extend({
         tagName: 'div',
         classNames: 'master-button',
@@ -45,15 +49,12 @@
               if (!this.get('controller.pageActivatedLimitedTime'))
                 this.set('controller.pageActivatedLimitedTime', true);
             }
-
           }.bind(this));
         }
-
       }),
 
       toggleSideDocument: function() {
         var hasDocument = this.get('controller.currentPage.hasDocument');
-
         if (hasDocument) {
           modalHandler.save('deleteSideDocument', function() {
             this.set('controller.currentPage.document', '');
@@ -64,9 +65,6 @@
           this.set('controller.currentPage.hasDocument', true);
         }
       },
-
-
-
 
       TatGestion: Em.View.extend({
         tats: [],
@@ -98,7 +96,6 @@
         currentTat: (function() {
           return this.get('tats')[this.get('current')];
         }.property('tats.length', 'current')),
-
 
         valueChanged: (function() {
           //XXX optim
@@ -136,10 +133,11 @@
       })
     }),
 
+    //**********************************************************************************
     MixnmatchPage: Em.View.extend({
       templateName: 'pages/activity/editor/mixnmatch',
+    
       TimeButton: Em.View.extend({
-
         didInsertElement: function() {
           // var self = this.$('.checker');
           this.$().on('click', function(e) {
@@ -153,16 +151,15 @@
           }.bind(this));
         }
       }),
-      SequenceButton: Em.View.extend({
 
+      SequenceButton: Em.View.extend({
         click: function(e) {
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
             $('#modal-page-sequencing').modal('show');
-          /*else if (this.$('[data-toggle]')[0] == e.target) {
-
-          }*/
+          /*else if (this.$('[data-toggle]')[0] == e.target) {}*/
         }
       }),
+
       toggleSideDocument: function(e) {
         e.preventDefault();
         e.stopImmediatePropagation();
@@ -271,11 +268,11 @@
       })
     }),
 
+    //**********************************************************************************
     QuizzPage: Em.View.extend({
       templateName: 'pages/activity/editor/quizz',
 
       TimeButton: Em.View.extend({
-
         didInsertElement: function() {
           // var self = this.$('.checker');
           this.$().on('click', function(e) {
@@ -292,7 +289,6 @@
 
       toggleSideDocument: function() {
         var hasDocument = this.get('controller.currentPage.hasDocument');
-
         if (hasDocument) {
           modalHandler.save('deleteSideDocument', function() {
             this.set('controller.currentPage.document', '');
@@ -303,8 +299,8 @@
           this.set('controller.currentPage.hasDocument', true);
         }
       },
-      SequenceButton: Em.View.extend({
 
+      SequenceButton: Em.View.extend({
         didInsertElement: function() {
           this.$().on('click', function(e) {
             if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked')) {
@@ -353,7 +349,6 @@
 
       questionsCollectionView: Em.CollectionView.extend({
         lastMove: 0,
-
         moveItem: function(fromIndex, toIndex) {
           var items = this.get('content');
           var item = items.objectAt(fromIndex);
@@ -399,15 +394,10 @@
             return this.get('parentView.content').indexOf(this.get('content')) + 1;
           }.property('parentView.lastMove')),
 
-
           displayTitle: (function() {
             var text = $('<p />').html(this.get('content.text')).text();
-            if (!text)
-              return;
-
-            if (text.length <= 20)
-              return '- ' + text;
-
+            if (!text) return;
+            if (text.length <= 20) return '- ' + text;
             return '- ' + text.slice(0, 20) + ' ...';
           }.property('content.text')),
 
@@ -465,9 +455,6 @@
               }.bind(this));
             }.observes('selectedAnswer'),
 
-
-
-
             didInsertElement: function() {
               var view = this;
               view.get('_parentView').$('table tbody').sortable({
@@ -503,13 +490,12 @@
               classNames: ['empty'],
               template: Ember.Handlebars.compile('<td colspan=\"6\"><i>Aucune réponse</i></td>')
             }),
-            itemViewClass: Em.View.extend({
 
+            itemViewClass: Em.View.extend({
               DeleteButton: Em.View.extend({
                 tagName: 'button',
                 answer: null,
                 modalName: null,
-
                 attributeBindings: ['href', 'data-toggle'],
 
                 click: function(e) {
@@ -529,6 +515,7 @@
       })
     }),
 
+    //**********************************************************************************
     InformationTab: Em.View.extend({
       templateName: 'pages/activity/editor/informations',
 
@@ -564,21 +551,22 @@
           // acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
           process: [
             {
-                      action: 'load',
-                      fileTypes: /^image\/(gif|jpe?g|png)$/,
-                      maxFileSize: 20000000 // 20MB
+                action: 'load',
+                fileTypes: /^image\/(gif|jpe?g|png)$/i,
+                maxFileSize: 2000000 // 2Mb
             },
             {
-                      action: 'resize',
-                      maxWidth: 800,
-                      maxHeight: 800,
-                      minWidth: 40,
-                      minHeight: 40
+                action: 'resize',
+                maxWidth: 800,
+                maxHeight: 800,
+                minWidth: 40,
+                minHeight: 40
             },
             {
-                      action: 'save'
+                action: 'save'
             }
           ],
+
           add: function(e, data) {
             $(this).fileupload('process', data).done(function() {
               self.get('controller.content').controller.setThumbnail(data.files[0]);
@@ -588,13 +576,14 @@
         });
 
         $('#fileattachmentupload').fileupload();
+        
         $('#fileattachmentupload').fileupload('option', {
           dropZone: this.$('.attachments .dropzone')[0],
           limitMultiFileUploads: 1,
 
           add: function(e, data) {
             var validation = /(application\/pdf|audio\/mpeg3|audio\/mpeg|audio\/mp3|audio\/x-mpeg-3)$/i;
-            var maxFileSize = 5000000;
+            var maxFileSize = 5000000; // 5Mb 
 
             data.files.forEach(function(file) {
               if (validation.test(file.type) && file.size < maxFileSize) {
@@ -611,19 +600,20 @@
               }
             });
           },
+
           fail: function() {
             showErrorMessage();
           }
-
         });
 
         var showErrorMessage = function(message) {
           if (!message)
-            message = 'Une erreure est survenue';
+            message = 'Une erreur est survenue';
           $('.attachments-error span').html(message);
           $('.attachments-error').clearQueue();
           $('.attachments-error').fadeIn().delay(3000).fadeOut();
         };
+        
         var showOkMessage = function(message) {
           $('.upload-ok').html(message);
           $('.upload-ok').clearQueue();
@@ -633,23 +623,21 @@
         this.$('.dropzone').bind('dragover', function(/*e*/) {
           $(this).addClass('hover');
         });
+        
         this.$('.dropzone').bind('dragleave', function(/*e*/) {
           $(this).removeClass('hover');
         });
+        
         this.$('.dropzone').bind('drop', function(/*e*/) {
           $(this).removeClass('hover').addClass('drop');
           window.setTimeout(function() {
             $(this).removeClass('drop');
           }.bind(this), 1000);
-
         });
       }
     }),
 
-
-
-
-
+    //**********************  Buttons  **********************************************
     InformationButton: Em.View.extend({
       tagName: 'button',
       classNames: 'section-active',
@@ -697,8 +685,7 @@
       click: function(/*e*/) {
         this.get('controller').addPage();
         this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected'));
-        if (this.get('controller.isQuizz') || this.get('controller.isMixnmatch'))
-          this.get('controller').addQuestion();
+        if (this.get('controller.isQuizz') || this.get('controller.isMixnmatch')) this.get('controller').addQuestion();
 
         $('#modal-create-page').modal('hide');
       }
@@ -721,7 +708,6 @@
       }
     }),
 
-
     UnpublishActivityButton: Em.View.extend({
       tagName: 'button',
       page: null,
@@ -739,7 +725,6 @@
       }
     }),
 
-
     pagesCollectionView: Em.CollectionView.extend({
       moveItem: function(fromIndex, toIndex) {
         var items = this.get('content');
@@ -747,6 +732,7 @@
 
         this.get('controller').movePage(item, toIndex);
       },
+
       didInsertElement: function() {
         var view = this;
         view.$().sortable({
@@ -754,12 +740,15 @@
           axis: 'y',
           delay: 150,
           items: 'li:not(.empty)',
+
           start: function(event, ui) {
             ui.item.previousIndex = ui.item.index();
           },
+          
           stop: function(event, ui) {
             view.moveItem(ui.item.previousIndex, ui.item.index());
           },
+          
           containment: 'parent',
           tolerance: 'pointer'
         });
@@ -780,8 +769,7 @@
         },
 
         updateActive: function() {
-          if (!this.get('element'))
-            return;
+          if (!this.get('element')) return;
 
           if (this.get('controller.currentPage') == this.get('content')) {
             this.$().addClass('active');
@@ -832,10 +820,6 @@
       })
     }),
 
-
-
-
-
     ModalBox: Em.View.extend({
       modalName: null,
 
@@ -847,6 +831,7 @@
           return true;
         }
       }),
+
       ConfirmButton: Em.View.extend({
         click: function() {
           var objectToDelete = modalHandler.get(this.get('_parentView.modalName'));
@@ -860,7 +845,6 @@
     templateName: function() {
       return 'pages/activity/editor';
     }.property(),
-
 
     disableSave: false,
     autoSaveListener: null,
@@ -896,9 +880,7 @@
         jsBoot.controllers.userActivity.addEventListener(jsBoot.controllers.userActivity.STATE_CHANGED,
             this.autoSaveListener);
 
-      // LxxlLib.behaviors.bindBehaviors(this.get('element'));
       this.set('parentView.controller.pageTitle', I18n.translate('breadcrumb.activityedit.title'));
-
     }
   });
 }).apply(LxxlApp);
