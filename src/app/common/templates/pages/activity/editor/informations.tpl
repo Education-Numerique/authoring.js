@@ -4,6 +4,7 @@
 
 <div class="container-fluid">
     <div class="widget-box noborder">
+
     
         <div class="widget-content" id="page-informations">
             <div class="control-group " style="width:60%">

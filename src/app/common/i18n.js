@@ -15,6 +15,13 @@
 
       // Breadcrumb - these specify the main title of the page, along with the optional breadcrumb
       breadcrumb: {
+        cnil: {
+          title: 'CNIL: respect de la vie privée, données personnelles'
+        },
+        charte: {
+          title: 'Conditions d\'utilisation des services d\'Éducation & Numérique'
+        },
+
         account: {
           validation: {
             title: 'Validation de compte'

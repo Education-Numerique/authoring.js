@@ -3,17 +3,24 @@
 */
 
 <div class="row-fluid">
-
-  {{#unless view.activities.length}}
+<!--
+  [[#if view.activities.length]]
   <div class="alert alert-info">
     <a href="#" data-dismiss="alert" class="close">×</a>
-    <h4 class="alert-heading">Bienvenue dans votre environnement auteur</h4>
-    Sur cette page, vous avez deux tableaux qui contiennent vos activités publiées et vos brouillons.<br /> 
-    Pour l'instant, ces deux tabeaux sont vides, mais vous allez vite créer votre première activité en cliquant le bouton vert du tableau de vos activités non publiées ... <br />
-    Travaillez bien vos activités avant de les publier. Il y va de votre renommée d'auteur !
+    <h4 class="alert-heading">Mes activités</h4>
+    Retrouvez ici toutes vos activités, publiées et non publiées.<br />
+    Vous pouvez également, <a [[action showNewActivity href=true]]>créer une nouvelle activité.</a>
   </div>
-  {{/unless}}
+  [[/if]]
 
+  [[#unless view.activities.length]]
+  <div class="alert alert-info">
+    <a href="#" data-dismiss="alert" class="close">×</a>
+    <h4 class="alert-heading">Aucune activité pour l'instant</h4>
+    Créez votre première activité <a [[action showNewActivity href=true]]>en cliquant ici.</a>
+  </div>
+  [[/unless]]
+-->
   <div class="widget-box">
     <div class="widget-title">
       <h5>Mes activités publiées</h5>
@@ -53,7 +60,7 @@
 
   <div class="widget-box">
     <div class="widget-title">
-      <h5 style="margin-top:-3px;">Mes activités non publiées</h5>
+      <h5 style="margin-top:-3px;">Mes activités non encore publiées</h5>
       <div style="margin-top:7px;"><a {{action showNewActivity href=true}} id='bug2' class="btn btn-success btn-mini"><i class="icon-plus icon-white spacify"></i>Créer une activité</a></div>
 
 

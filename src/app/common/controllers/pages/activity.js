@@ -67,13 +67,7 @@
     },
 
     embedActivity: function() {
-      var ip = this.get('content').controller.isPublished;
-      if (!ip) {
-        $('#action-embed-error #embed-pub-err').html('Seules les activités publiées peuvent être partagées.');
-        $('#action-embed-error').modal('show');
-      }else {
-        $('#action-embed').modal('show');
-      }
+      $('#action-embed').modal('show');
     },
 
     exportScorm: function() {
@@ -400,6 +394,8 @@
       this.get('currentQuestion.answers').replace(pos, 0, [answer]);
     },
 
+
+
     /**
      * Categories handling
      */
@@ -449,4 +445,8 @@
     })
 
   });
+
+
 }).apply(LxxlApp);
+
+

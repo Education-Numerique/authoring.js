@@ -107,6 +107,7 @@ jsBoot.pack('LxxlLib.model', function(api) {
   //   return '//' + api.servicesCore.requestor.hostPort + '/' + api.servicesCore.requestor.version + '/activities/' +
   //   v;
   // };
+
   // tt.isDirty = true;
 
   var MetaBlob = api.TypedMutable.bind({}, {
@@ -169,8 +170,8 @@ jsBoot.pack('LxxlLib.model', function(api) {
     try {
       throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
     }catch (e) {
-      // Might occur in rare legit conditions (race between competing network calls)
-      // doesn't really matter - the shit returns 404
+      // Might occur in rare legit conditions (race between competing network calls) - doesn't really matter - the
+      // shit returns 404
       console.error(e);
     }
   };

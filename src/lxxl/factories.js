@@ -1,6 +1,5 @@
 jsBoot.use('LxxlLib.model.defines');
 jsBoot.use('LxxlLib.model');
-
 jsBoot.pack('LxxlLib.factories', function(api) {
   'use strict';
 

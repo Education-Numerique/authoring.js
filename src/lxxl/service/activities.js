@@ -1,10 +1,10 @@
 /*global Mingus*/
 jsBoot.add(Mingus.xhr.digest).as('digest');
+
 jsBoot.use('jsBoot.service.core');
 
 jsBoot.pack('LxxlLib.service', function(api) {
   'use strict';
-
   var requestor = api.core.requestor;
   var SERVICE = 'activities';
   var CMD_SEEN = 'seen';
@@ -29,6 +29,7 @@ jsBoot.pack('LxxlLib.service', function(api) {
       callback();
     };
   };
+
 
   this.activities = new (function() {
 
@@ -241,7 +242,6 @@ publish / unpublish fait le ménage automatique dans les blobs
 activity.draft.blobs
 activity.published.blobs
 -> {'thumbnail' : ['id'], 'media' : ['id', 'id'], 'attachments' : ['id'...]]}
-
 18:54
 filtres sur la commande list :
 /X.Y/activities/ (all)
@@ -252,5 +252,6 @@ pour filtrer :  ?author.uid=
 possible de chercher sur n'importe quelle key
 ?draft.matter.id =
 ?draft.difficulty.id=easy
+
 
 */

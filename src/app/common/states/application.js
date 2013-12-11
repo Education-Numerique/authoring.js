@@ -17,12 +17,26 @@
     enableLogging: !!jsBoot.debug,
 
     root: Ember.Route.extend({
+      // redirectsTo: 'dashboard',
+      /*      index: lxxlRoute('/'),*/
       index: Ember.Route.extend({
         route: '/',
         redirectsTo: 'dashboard'
       }),
 
-      // ************ User account related
+      // route: '/',
+      // enter: function(router) {
+      //   console.log('entering route index from', router.get('currentState.name'));
+      // },
+      // connectOutlets: function(router) {
+      //   console.log('entered root.index, fully transitioned to', router.get('currentState.path'));
+      //   //        router.get('applicationController').connectOutlet('another');
+      //   //       redirectsTo: 'dashboard'
+      // }
+
+
+      // User account related
+      //
       admin: Ember.Route.extend({
         route: '/admin',
 
@@ -73,6 +87,7 @@
       showAdminUser: Em.Route.transitionTo('admin.user'),
       showAdminUsers: Ember.Route.transitionTo('admin.users'),
       showAdminActivities: Ember.Route.transitionTo('admin.activities'),
+
 
       account: Ember.Route.extend({
         route: '/account',
@@ -212,7 +227,21 @@
 
       // User base activities
       // showDashboard: Ember.Route.transitionTo('dashboard.index'),
+      // showCnil: Ember.Route.transitionTo('dashboard.cnil'),
+      // showCharte: Ember.Route.transitionTo('dashboard.charte'),
       // showAdvice: Ember.Route.transitionTo('dashboard.advices'),
+
+      // showCnil: Ember.Route.transitionTo('cnil'),
+
+      cnil: Ember.Route.extend({
+        route: '/cnil',
+        enter: function(router) {
+          router.set('applicationController.selected', 'cnil');
+        },
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('cnil');
+        }
+      }),
 
       showSandbox: Ember.Route.transitionTo('sandbox'),
       sandbox: Ember.Route.extend({
@@ -229,6 +258,19 @@
 
       showDashboard: Ember.Route.transitionTo('dashboard.index'),
       showActions: Ember.Route.transitionTo('dashboard.actions'),
+
+      // showCharte: Ember.Route.transitionTo('charte'), // allez, je me lance (JB)
+
+      charte: Ember.Route.extend({
+        route: '/charte',
+        enter: function(router) {
+          router.set('applicationController.selected', 'charte');
+        },
+        connectOutlets: function(router) {
+          router.get('applicationController').connectOutlet('charte');
+        }
+      }),
+
       showAdvice: Ember.Route.transitionTo('dashboard.advices'),
 
       dashboard: Ember.Route.extend({
@@ -246,6 +288,13 @@
             router.set('dashboardController.selected', 'actions');
           }
         }),
+
+        //        charte: Ember.Route.extend({
+        //          route: '/charte',
+        //          connectOutlets: function(router) {
+        //            router.set('dashboardController.selected', 'charte');
+        //          }
+        //        }),
 
         advices: Ember.Route.extend({
           route: '/advices',
@@ -277,7 +326,22 @@
         }
       }),
 
+      // showAllQTIs: Ember.Route.transitionTo('allQTIs'),
+      // allQTIs: Ember.Route.extend({
+      //   route: '/qtis',
+      //   enter: function(router) {
+      //     router.set('applicationController.selected', 'qtis');
+      //   },
+      //   connectOutlets: function(router) {
+      //     router.get('applicationController').connectOutlet('qtis');
+      //   }
+      // }),
+
+      // Routes not accessible from navigation itself
+      // showPlayQTI: Ember.Route.transitionTo('playQTI'),
       editUser: Ember.Route.extend({route: '/userEdit/:user_id'}),
+
+      // playQTI: Ember.Route.extend({route: '/qtiShow/:id'}),
 
       showActivityEdit: Ember.Route.transitionTo('activity.edit'),
       showNewActivity: Em.Route.transitionTo('activity.create'),
