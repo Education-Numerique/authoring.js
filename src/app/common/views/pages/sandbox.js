@@ -22,7 +22,6 @@
       '<div>{description}</div>';
 
 
-
   var will = function(arr, start, removeCount/*, addCount*/) {
     var nn = $('.sandbox.data-table').dataTable();
     for (var x = start + removeCount - 1; x >= start; x--)
@@ -54,8 +53,6 @@
         item.author.username,
         item.id
       ]);
-
-
     }
 
     nn.fnSort([[4, 'desc']]);
@@ -503,11 +500,6 @@
     this._super();
   };
 
-
-
   this.SandboxView = Ember.View.extend(t);
 
-
 }).apply(LxxlApp);
-
-

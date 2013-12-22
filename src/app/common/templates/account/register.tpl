@@ -66,13 +66,11 @@
           </div>
 
           <div class="control-group">
-            <label class="control-label">J'accepte les <a href="http://www.education-et-numerique.org/cgu/" title="CGU" target="_blank">conditions d'utilisation</a></label>
+            <label class="control-label">J'accepte<br />les <a href="http://www.education-et-numerique.org/cgu/" title="CGU" target="_blank">conditions d'utilisation</a></label>
             <div class="controls">
               <input id="eula" type="checkbox" name="eula" />
             </div>
           </div>
-
-
 
         </div>
 

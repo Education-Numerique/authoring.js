@@ -8,6 +8,7 @@
       <div class="widget-content">
         <form id="profile-form">
             <div class="control-group profile-fields" style="width:60%; float:left">
+                
                 <h4>Votre compte</h4>
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Pseudonyme</label>
@@ -32,6 +33,7 @@
                     <label class="add-on" for="form-page-subtitle">Discipline</label>
                     {{view LxxlLib.Em.Select contentBinding="disciplines.content" selectionBinding="discipline" optionLabelPath="content.title" optionValuePath="content.id"}}
                 </div>
+
                 <h4>Votre établissement</h4>
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Nom</label>
@@ -94,11 +96,6 @@
                 {{/if}}
             </div>
 
-
-
-
-            
-        
       </div>
 
       <div class="widget-content">

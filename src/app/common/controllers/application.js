@@ -86,8 +86,6 @@
       return this.get('user.level') == this.AUTHOR;
     }.property('_jsBootApp.status'));
 
-
-
     // Bind "isLogged"
     this.isLogged = (function() {
       return jsBootApp.status == jsBootApp.USER_READY;

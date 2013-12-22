@@ -34,7 +34,7 @@
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin
   var debug = /use-debug/.test(location.href);
-  //debug = false;
+  debug = true;
 
   // Ember global configuration
   window.ENV = {
@@ -179,8 +179,8 @@
 
 
   window.prefillHack = {
-
   };
+
   var a = location.search.substr(1).split('&');
   a.forEach(function(item) {
     item = item.split('=');

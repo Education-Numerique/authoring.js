@@ -22,10 +22,6 @@ jsBoot.pack('LxxlLib.service', function(api) {
   this.user = new (function() {
 
     this.list = function(onSuccess, onFailure) {
-
-
-
-
       requestor.query(requestor.GET, {
         service: SERVICE,
         onsuccess: onSuccess,

@@ -22,12 +22,14 @@
                     <label class="add-on" for="form-page-subtitle">Niveau</label>
                     {{view LxxlLib.Em.Select contentBinding="levels.content" selectionBinding="content.level" optionLabelPath="content.title" optionValuePath="content.id"}}
                 </div>
+
                 {{#if categoryTree.content.length}}
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Programme</label>
                     {{view Em.GroupedSelect rawContentBinding="categoryTree.content" selectionBinding="content.category"}}
                 </div>
                 {{/if}}
+
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Durée</label>
                     {{view LxxlLib.Em.Select contentBinding="lengths.content" selectionBinding="content.duration" optionLabelPath="content.title" optionValuePath="content.id"}}
@@ -40,6 +42,7 @@
                 
             </div>
 
+            <!-- pour mettre une vignette reco : jpg/png max, 200x200 px -->
             <div class="dropzone-container thumbnail-uploader">
                 <div class="dropzone fade">
                     <div {{bindAttr class=":preview content.thumbnailUrl:hasThumbnail:default"}}>
@@ -58,9 +61,10 @@
             <div class="input-prepend">
                     <label class="add-on" for="form-page-explanation">Description</label>
                     {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" buttons="bold,italic" maxLength=200 classNames="redactorjs 4lines" id="form-page-explanation"}}
-                </div>
+            </div>
         </div>
     </div>
+
     <div class="widget-box questions-toolbar attachments noborder">
         <div class="widget-title">
             <span class="icon">
