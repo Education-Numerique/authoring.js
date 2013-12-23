@@ -12,17 +12,7 @@
   <header>
     <!-- Titre de l'activité -->
     <h1>{{title}}&nbsp;&nbsp;&nbsp;<em> par {{author.username}}</em></h1>
-  </header> 
-
-  <!-- fin de l'activité -->
-  <div id="final-feedback" class="row-fluid content-container" style="display: none">
-  <section class="widget-box">
-    <div class="widget-content nopadding">
-      Félicitations! Vous avez terminé l'activité.<br />
-      Votre score total est de: <span class="feedback"></span>
-    </div>
-  </section>
-  </div>
+  </header>
 
   <!-- Sommaire -->
   <div id="playing" class="row-fluid content-container">

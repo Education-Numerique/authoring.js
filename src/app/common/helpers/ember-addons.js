@@ -403,7 +403,46 @@
                     return true;
                 }.bind(this));
 
+                /*this.opts.keyupCallback = function (redactor, e) {
+                    var c = String.fromCharCode(event.keyCode);
+                    var isCharacter = c.match(/\w/);
+                    if (isCharacter || event.keyCode == 8 || event.keyCode == 46 && event.keyCode == 13){
+                        redactor.saveSelection();
 
+                        var noteRegex = /{{activité\.(pages\[\d]\.)?note}}/gi;
+                        var noteUnWrappedRegex = new RegExp('(?!<a data-type="perf-note">)' + noteRegex.source + '(?!<\\/a>)', 'gi');
+                        var beginOfWrapper = '<a data-type="perf-note">'
+                        var endOfWrapper = '</a>'
+                        var wrapperRegex = new RegExp(beginOfWrapper + '(.*?)' + endOfWrapper.replace('/', '\\/'), 'gi');
+
+                        var currentNode = redactor.getCurrentNode();
+                        currentNode = currentNode.dataset.type == "perf-note" ? currentNode.parentNode : currentNode;
+
+                        // enlève les wrappers des notes wrappées si elles ne sont plus au bon format
+                        var newHtmlContent = currentNode.innerHTML.replace(wrapperRegex, function (originalContent, wrapperContent) {
+                            return wrapperContent.match(noteRegex) ? originalContent : wrapperContent;
+                        });
+
+                        // wrappe les notes correctement formatées qui ne sont pas encore wrappées
+                        newHtmlContent = newHtmlContent.replace(noteUnWrappedRegex, function (orignalContent, group1, idx, text) {
+                            return beginOfWrapper + orignalContent.trim() + endOfWrapper;
+                        });
+
+                        currentNode.innerHTML = newHtmlContent;
+                        redactor.restoreSelection();
+                    }
+
+
+                    /******
+                    var hasNotePattern = !!currentNode.textContent.match(noteRegex); // si le pattern d'une note est trouvé
+                     var hasNoteWrapper = !!currentNode.textContent.match(noteWrapperRegex)
+
+                     if (hasNotePattern && !hasNoteWrapper){
+                     $(currentNode).wrap("<a data-type='perf-note'></a>")
+                     } else if(!hasNotePattern && hasNoteWrapper){
+                     $(currentNode).unwrap();
+                     }****
+                };*/
             };
 
 

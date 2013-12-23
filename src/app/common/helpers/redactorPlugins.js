@@ -236,7 +236,11 @@
                 target = obj.getBtn('perf').data('target') ? $(obj.getBtn('perf').data('target')) : null;
                 obj.getBtn('perf').data('target', null);
 
-                obj.modalInit('Affichage conditionel', '#redactor-perf', 500, callback);
+                var handleOnlyIfTextIsSelected = function(){
+                    return this.getSelectedHtml().trim() != "" || !!this.getBtn('perf').data('target');
+                };
+
+                obj.modalInit('Affichage conditionel', '#redactor-perf', 500, callback, handleOnlyIfTextIsSelected);
             });
 
             var untagPerf = function (el) {
@@ -246,7 +250,7 @@
 
             var insertFromMyModal = function (el) {
 
-                var conditionSyntax =/^(activité)\.(pages\[\d]\.)?(note)(=|<|<=|>=|>)\d{1,3}$/;
+                var conditionSyntax =/^(activité)\.(pages\[\d]\.)?(note)(==|<|<=|>=|>)\d{1,3}$/;
                 var condition = $('#redactor_modal .condition').val();
                 var trimmedConditon = condition.replace(/ /g, '');
 

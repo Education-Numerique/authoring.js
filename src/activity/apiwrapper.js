@@ -1,4 +1,4 @@
-(function() {
+(function () {
     /*jshint devel: true*/
     'use strict';
     /*
@@ -35,11 +35,10 @@
      LMSGetDiagnostic( errocCode : CMIErrorCode ) : string
      */
 
-    var findAPI = function(win) {
-        try{
+    var findAPI = function (win) {
+        try {
             var findAPITries = 0;
-            while (!('API_1484_11' in win) && !('API' in win) && win.parent && (win.parent != win))
-            {
+            while (!('API_1484_11' in win) && !('API' in win) && win.parent && (win.parent != win)) {
                 findAPITries++;
                 if (findAPITries > 10)
                     return null;
@@ -47,7 +46,7 @@
                 win = win.parent;
             }
             return (('API_1484_11' in win) && win.API_1484_11) || (('API' in win) && win.API);
-        }catch(e){
+        } catch (e) {
             return false;
         }
     };
@@ -59,7 +58,7 @@
     scormAPI.hasAPI = false;
     scormAPI.deprecated = false;
 
-    var initHandler = function() {
+    var initHandler = function () {
         if (!api) {
             api = findAPI(window) || (window.opener && findAPI(window.opener));
             // Mapping of 1.1 / 1.2 into 2004 API
@@ -115,14 +114,14 @@
      */
 
     var initialized = false;
-    scormAPI.boot = function() {
+    scormAPI.boot = function () {
         initHandler();
         if (!api)
             return;
         return initialized || (initialized = !!api.Initialize(''));
     };
 
-    scormAPI.shutdown = function() {
+    scormAPI.shutdown = function () {
         if (!api)
             return;
         // Failure to terminate will leave initialized at true and api as it was.
@@ -130,7 +129,7 @@
     };
 
 
-    scormAPI.getLastError = function() {
+    scormAPI.getLastError = function () {
         if (!api)
             return {
                 code: scormAPI.errors.GENERAL_EXCEPTION,
@@ -149,7 +148,7 @@
         };
     };
 
-    scormAPI.getValue = function(name) {
+    scormAPI.getValue = function (name) {
         if (!api)
             return;
         var result = api.GetValue(name);
@@ -159,13 +158,13 @@
         return result;
     };
 
-    scormAPI.setValue = function(name, value) {
+    scormAPI.setValue = function (name, value) {
         if (!api)
             return;
         return api.SetValue(name, value.toString());
     };
 
-    scormAPI.commit = function() {
+    scormAPI.commit = function () {
         if (!api)
             return;
         return api.Commit('');
@@ -182,7 +181,7 @@
     };
 
     scormAPI.statusKeys = {};
-    Object.keys(scormAPI.status).forEach(function(key) {
+    Object.keys(scormAPI.status).forEach(function (key) {
         scormAPI.statusKeys[scormAPI.status[key]] = key;
     });
 
@@ -191,12 +190,12 @@
         title: ''
     });
 
-    var getStatus = function(id) {
+    var getStatus = function (id) {
         return new StatusPool({id: id});
     };
 
     // Init status
-    Object.keys(scormAPI.status).forEach(function(id) {
+    Object.keys(scormAPI.status).forEach(function (id) {
         return new StatusPool({id: id, title: scormAPI.status[id]});
     });
 
@@ -214,7 +213,7 @@
     };
 
 
-    var mapper = function(cacheHolder, key, mapping, parse, serialize, value) {
+    var mapper = function (cacheHolder, key, mapping, parse, serialize, value) {
         // console.warn('gonna do something', key, arguments);
         if (value === undefined) {
             if (scormAPI.hasAPI && !cacheHolder.hasOwnProperty(key)) {
@@ -230,22 +229,22 @@
         return value;
     };
 
-    var getScormMutable = function(descriptor) {
+    var getScormMutable = function (descriptor) {
         var innerMapper = mapper.bind({}, {});
         var innerDescriptor = {};
-        Object.keys(descriptor).forEach(function(key) {
+        Object.keys(descriptor).forEach(function (key) {
             var parse = descriptor[key].read;
             if (typeof descriptor[key] != 'object') {
                 innerDescriptor[key] = descriptor[key];
                 return;
             }
             if (descriptor[key].read === undefined)
-                parse = function() {
+                parse = function () {
                     throw new Error('Write-only');
                 };
             var serialize = descriptor[key].write;
             if (descriptor[key].write === undefined)
-                serialize = function() {
+                serialize = function () {
                     throw new Error('Read-only');
                 };
             innerDescriptor[key] = innerMapper.bind({}, key, descriptor[key].mapping, parse, serialize);
@@ -254,25 +253,25 @@
         return jsBoot.types.TypedMutable.bind({}, innerDescriptor, null, true);
     };
 
-    var score = function(prefix) {
+    var score = function (prefix) {
         return getScormMutable({
             raw: {
                 mapping: prefix + '.raw',
-                read: function(v) {
+                read: function (v) {
                     return parseInt(v, 10);
                 },
                 write: null
             },
             max: {
                 mapping: prefix + '.max',
-                read: function(v) {
+                read: function (v) {
                     return parseInt(v, 10);
                 },
                 write: null
             },
             min: {
                 mapping: prefix + '.min',
-                read: function(v) {
+                read: function (v) {
                     return parseInt(v, 10);
                 },
                 write: null
@@ -280,20 +279,20 @@
         });
     };
 
-    var status = function(prefix) {
+    var status = function (prefix) {
         return getScormMutable({
             mapping: prefix,
-            read: function(value) {
+            read: function (value) {
                 return getStatus(scormAPI.statusKeys[value]);
             },
-            write: function(value) {
+            write: function (value) {
                 return scormAPI.status[value.id];
             }
         });
     };
 
     // This is dead tricky. Each objective will own its type (binded because of the scorm mutable and the id).
-    var objective = function(mesh, idx) {
+    var objective = function (mesh, idx) {
         var Mutant = getScormMutable({
             id: {
                 mapping: 'core.objectives.' + idx + '.id',
@@ -303,26 +302,26 @@
             score: score('core.objectives.' + idx + '.score'),
             status: {
                 mapping: 'core.objectives.' + idx + '.status',
-                read: function(value) {
+                read: function (value) {
                     return getStatus(scormAPI.statusKeys[value]);
                 },
-                write: function(value) {
+                write: function (value) {
                     return scormAPI.status[value.id];
                 }
             }
             // status: status('core.objectives.' + idx + '.status')
         });
         var r = new Mutant(mesh);
-        r.setBrowsed = function() {
+        r.setBrowsed = function () {
             this.set('status', getStatus('BROWSED'));
         };
-        r.setComplete = function() {
+        r.setComplete = function () {
             this.set('status', getStatus('COMPLETED'));
         };
         return r;
     };
 
-    var interaction = function(mesh, idx) {
+    var interaction = function (mesh, idx) {
         // XXX total crap - this spec is a fucking shit train freak accident godamn it
         var Mutant = getScormMutable({
             id: {
@@ -374,9 +373,6 @@
     // interaction
 
 
-
-
-
     // * cmi.core.student_id (CMIString (SPM: 255), RO) Identifies the student on behalf of whom the SCO was launched
     // * cmi.core.student_name (CMIString (SPM: 255), RO) Name provided for the student by the LMS
     // * cmi.core.credit (“credit”, “no-credit”, RO) Indicates whether the learner will be credited for performance
@@ -402,14 +398,14 @@
 
         credit: {
             mapping: 'core.credit',
-            read: function(value) {
+            read: function (value) {
                 return value == 'credit';
             }
         },
 
         resume: {
             mapping: 'core.entry',
-            read: function(value) {
+            read: function (value) {
                 return value == 'resume';
             }
         },
@@ -453,10 +449,10 @@
 
         status: {
             mapping: 'core.lesson_status',
-            read: function(value) {
+            read: function (value) {
                 return getStatus(scormAPI.statusKeys[value]);
             },
-            write: function(value) {
+            write: function (value) {
                 return scormAPI.status[value.id];
             }
         }, // status('core.lesson_status'),
@@ -471,13 +467,13 @@
 
         sessionTime: {
             mapping: 'core.session_time',
-            read: function(value) {
+            read: function (value) {
                 var d = value.match(/(?:([0-9]{1,2}):)?(?:([0-9]{1,2}):)?([0-9]{1,2})/);
                 if (!d)
                     return;
                 return parseInt(d.pop(), 10) + parseInt(d.pop(), 10) * 60 + parseInt(d.pop(), 10) * 60 * 60;
             },
-            write: function(value) {
+            write: function (value) {
                 value = value / 1000;
                 var secs = (value % 60);
                 var mins = ((value - secs) / 60 % 60);
@@ -503,10 +499,10 @@
 
         suspendData: {
             mapping: 'core.suspend_data',
-            read: function(value) {
+            read: function (value) {
                 return JSON.parse(value);
             },
-            write: function(value) {
+            write: function (value) {
                 return JSON.stringify(value);
             }
         },
@@ -516,7 +512,7 @@
     });
 
     // XXX manu
-    LxxlLib.sessionManager = new (function() {
+    LxxlLib.sessionManager = new (function () {
         var cmip;
         var startTime;
         var dom;
@@ -524,7 +520,7 @@
         var pub;
         this.activity = null;
 
-        this.bindDocument = function(d) {
+        this.bindDocument = function (d) {
             dom = d;
             // XXX manu bind behaviors if you want
             tatBehavior();
@@ -532,7 +528,7 @@
             menuBehavior();
         };
 
-        this.start = function(act, pubVersion) {
+        this.start = function (act, pubVersion) {
             pub = pubVersion ? 'published' : 'draft';
             startTime = (new Date()).getTime();
             activity = this.activity = ('isMutable' in act) ? act : new LxxlLib.model.Activity(act);
@@ -553,7 +549,7 @@
                 // ]
             });
 
-            activity[pub].pages.forEach(function(page, idx) {
+            activity[pub].pages.forEach(function (page, idx) {
                 switch (page.flavor.id) {
                     case 'quizz':
                     case 'tat':
@@ -594,62 +590,57 @@
 
         Object.defineProperty(this, 'content', {
             enumerable: true,
-            get: function() {
+            get: function () {
                 return cmip;
             }
         });
 
 
-        var onPageComplete = function(pid, score) {
+        var onPageComplete = function (pid, score) {
             activity[pub].pages[pid].completed = true;
             activity[pub].pages[pid].score = score;
             console.warn('Page completed', pid, score);
             cmip.objectives[pid].score.raw = score;
             cmip.objectives[pid].setComplete();
-            var totalScore = 0;
             var nbPages = 0;
-            var allset = activity[pub].pages.every(function(page) {
+            var allset = activity[pub].pages.every(function (page) {
                 if (page.flavor.id == 'simple')
                     return true;
                 else {
                     nbPages++;
-                    totalScore += page.score;
                     return !!page.completed;
                 }
             });
             if (allset) {
-                totalScore = Math.round(totalScore / nbPages);
                 cmip.score.raw = totalScore;
                 cmip.status = getStatus('COMPLETED');
-                $('#final-feedback .feedback').html(totalScore + '%');
-                $('#final-feedback').show();
                 $('#playing').hide();
                 scormAPI.shutdown();
             }
         };
 
-        this.MixAndMatchComplete = function(pageId, score) {
+        this.MixAndMatchComplete = function (pageId, score) {
             $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
             $('#modal-on-modal-lynching').show();
             $('.modal', $('#jmt-' + pageId)).modal({
                 backdrop: true
             });
-            $('.modal', $('#jmt-' + pageId)).on('hide', function() {
+            $('.modal', $('#jmt-' + pageId)).on('hide', function () {
                 $('#modal-on-modal-lynching').hide();
                 onPageComplete(pageId, score);
             });
         };
 
-        this.pause = function() {
+        this.pause = function () {
         };
 
-        this.end = function() {
+        this.end = function () {
             scormAPI.shutdown();
             startTime = null;
             this.activity = activity = null;
         };
 
-        var menuBehavior = function() {
+        var menuBehavior = function () {
             var acti = $('.pages-list > li', dom);
             if (acti.length) {
                 $(acti[0]).addClass('active');
@@ -659,11 +650,13 @@
 
             acti = $('.pages-container > section', dom);
             if (acti.length)
-                $(acti[0]).fadeIn(1000, function() {console.warn('done');});
+                $(acti[0]).fadeIn(1000, function () {
+                    console.warn('done');
+                });
 
 
             // Pages navigation
-            $('.pages-list > li', dom).on('click', function(event) {
+            $('.pages-list > li', dom).on('click', function (event) {
                 var idx;
                 // TOTO.objectives[0].setBrowsed()
                 // Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.status"] debug.js:46
@@ -681,12 +674,12 @@
                 // undefined
                 // TOTO.objectives[0].score.set('raw', 14)
 
-                $('.pages-list > li', dom).each(function(ind, item) {
+                $('.pages-list > li', dom).each(function (ind, item) {
                     if (item == this) {
                         $(item).addClass('active');
                         idx = ind;
                         // pageEnter(ind);
-                    }else {
+                    } else {
                         if ($(item).hasClass('active')) {
                             //pageExit(ind);
                             $(item).removeClass('active');
@@ -694,14 +687,16 @@
                     }
                 }.bind(this));
 
-                $('.pages-container > section', dom).each(function(ind, item) {
+                $('.pages-container > section', dom).each(function (ind, item) {
                     var page = $(item);
-                    if (ind != idx){
+                    if (ind != idx) {
                         page.hide();
                     }
-                    else{
-                        page.fadeIn(1000, function() {console.warn('done');});
-                        if (page.hasClass('page-perf')){
+                    else {
+                        page.fadeIn(1000, function () {
+                            console.warn('done');
+                        });
+                        if (page.hasClass('page-perf')) {
                             refreshPerformancePage(page);
                         }
                     }
@@ -713,11 +708,11 @@
             });
         };
 
-        var completeQuestion = function(pid, qid) {
+        var completeQuestion = function (pid, qid) {
             console.warn('Completed question', pid, qid);
             activity[pub].pages[pid].questions[qid].completed = true;
             var pageComplete = true;
-            activity[pub].pages[pid].questions.forEach(function(item, idxxx) {
+            activity[pub].pages[pid].questions.forEach(function (item, idxxx) {
                 console.warn('Is this ok?', activity[pub].pages[pid].questions[idxxx], pid, idxxx, item.completed);
                 pageComplete = pageComplete && item.completed;
             });
@@ -725,7 +720,7 @@
             if (pageComplete) {
                 var total = activity[pub].pages[pid].questions.length;
                 var actual = 0;
-                activity[pub].pages[pid].questions.forEach(function(question) {
+                activity[pub].pages[pid].questions.forEach(function (question) {
                     console.warn('Result for the question?', question.score.getResult());
                     actual += question.score ? question.score.getResult() : 0;
                 });
@@ -736,7 +731,7 @@
 
                 $('.conclusion', $('#quizz-' + pid)).modal('show');
 
-                $('.conclusion', $('#quizz-' + pid)).on('hide', function() {
+                $('.conclusion', $('#quizz-' + pid)).on('hide', function () {
                     $('#modal-on-modal-lynching').hide();
                     onPageComplete(pid, Math.round(actual / total));
                 });
@@ -746,9 +741,9 @@
             }
         };
 
-        var quizzBehavior = function() {
-            $('section[id^=quizz-]', dom).each(function(ind, item) {
-                $('.qcm button', item).on('click', function() {
+        var quizzBehavior = function () {
+            $('section[id^=quizz-]', dom).each(function (ind, item) {
+                $('.qcm button', item).on('click', function () {
                     var aid = $(this).parent().attr('id').split('-').pop() - 1;
                     var pid = $(this).parent().parent().parent().prev().attr('id').split('-');
                     var qid = pid.pop() - 1;
@@ -760,7 +755,7 @@
 
                     var getBackTo = scb.answers[aid].isCorrect;
                     if (getBackTo) {
-                        $('button', $(this).parent().parent()).each(function(ind, item) {
+                        $('button', $(this).parent().parent()).each(function (ind, item) {
                             $(item).attr('disabled', 'disabled');
                             // if($(item).html() != 'X'){
 
@@ -772,12 +767,12 @@
                         $(this).attr('style', 'background-color: green;');
                         scb.score.markAnswered();
                         completeQuestion(pid, qid);
-                    }else {
+                    } else {
                         scb.score.addPenalty();
 
                         $('#modal-on-modal-lynching').show();
                         $('.modal', $(this).parent()).modal('show');
-                        $('.modal', $(this).parent()).on('hide', function() {
+                        $('.modal', $(this).parent()).on('hide', function () {
                             $('#modal-on-modal-lynching').hide();
                         });
                         $(this).html('X');
@@ -786,9 +781,9 @@
                     }
                 });
 
-                $('.qrm input', item).on('click', function() {
+                $('.qrm input', item).on('click', function () {
                     var ok = true;
-                    $('li', $(this).parent().parent().parent()).each(function(ind, line) {
+                    $('li', $(this).parent().parent().parent()).each(function (ind, line) {
                         ok = ($('input', $(line))[0].checked || $('input', $(line))[1].checked) && ok;
                     });
                     if (ok) {
@@ -797,7 +792,7 @@
                 });
 
 
-                $('.qrm button', item).on('click', function() {
+                $('.qrm button', item).on('click', function () {
                     var pid = $(this).parent().parent().prev().attr('id').split('-');
                     var qid = pid.pop() - 1;
                     pid = pid.pop();
@@ -806,12 +801,12 @@
                         scb.score = new LxxlScoring.questionScore(scb.answers.length);
                     var goods = 0;
                     var bads = [];
-                    $('li', $(this).parent()).each(function(ind, item) {
+                    $('li', $(this).parent()).each(function (ind, item) {
                         var aid = $(item).attr('id').split('-').pop() - 1;
                         var isYes = $('input', $(item))[0].checked;
                         if (activity[pub].pages[pid].questions[qid].answers[aid].isCorrect ? isYes : !isYes) {
                             goods++;
-                        }else {
+                        } else {
                             bads.push($('.modal', $(item)));
                         }
                     });
@@ -820,9 +815,9 @@
                         var mod = bads[Math.round(Math.random() * (bads.length - 1))];
                         $('.feedback', mod).html(goods + '/' + (bads.length + goods));
                         mod.modal('show');
-                    }else {
+                    } else {
                         $(this).attr('disabled', 'disabled');
-                        $('li input', $(this).parent()).each(function(ind, item) {
+                        $('li input', $(this).parent()).each(function (ind, item) {
                             $(item).attr('disabled', 'disabled');
                         });
                         scb.score.markAnswered();
@@ -830,7 +825,7 @@
 
                         $('#modal-on-modal-lynching').show();
                         $(this).next().modal('show');
-                        $(this).next().on('hidden', function() {
+                        $(this).next().on('hidden', function () {
                             $('#modal-on-modal-lynching').hide();
                             completeQuestion(pid, qid);
                         });
@@ -841,53 +836,100 @@
 
         };
 
-        var refreshPerformancePage = function(performancePage){
+        var refreshPerformancePage = function (performancePage) {
 
-            var flavorsWhoDontCount = ['perf'];
+            // TODO: Compter les page simples comme page compter / DONE
+            // TODO: Mettre en surbrilance le addon de note / FAIL
+            // TODO: Afficher le score dans la page / DONE
+            // TODO: supprimer la modal de fin d'activité /DONE
+            // TODO: Checker la page /DONE
+
+
+            //FIX : Pourquoi 60 en total vide ? // Fixed
+            //FIX : Cliquer sur un condition déjà existante
+            var flavorsWhoDontCount = ['perf', 'simple'];
             var nbPageWhoCount = 0;
             var total = 0;
 
             // Perf condition representation
             var activité = {
-                note:0,
-                pages:{}
+                note: 0,
+                pages: {}
             };
 
-            activity[pub].pages.forEach(function(page, idx){
-                if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")){
+            activity[pub].pages.forEach(function (page, idx) {
+                if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")) {
                     nbPageWhoCount++;
-                    activité.pages[idx]={note:page.score};
+                    activité.pages[idx] = {note: page.score};
                     total += page.score;
                 }
             });
-            activité.note = total / nbPageWhoCount;
+            activité.note = total / nbPageWhoCount >> 0;
 
-            $('[data-type="perf"]', performancePage).each(function(idx, it) {
+            $('[data-type="perf"]', performancePage).each(function (idx, it) {
                 $(it).attr('title', ''); // cleaning title
                 var condition = $(it).attr('data-condition');
                 // TODO dirty, but otherwise we must re-tokenize the string
-                var conditionIsTrue = eval(condition);
-                if (conditionIsTrue){
+                var conditionIsTrue = false;
+                try {
+                    conditionIsTrue = eval(condition);
+                } catch (e) {
+                    console.warn(e);
+                }
+                if (conditionIsTrue) {
                     $(it).show();
-                } else{
+                } else {
                     $(it).hide();
                 }
             });
+
+            var noteParsed = false;
+            $('[data-type="perf-note"]', performancePage).each(function (idx, it) {
+                noteParsed = true;
+                var content = it.dataset.content;
+                var scaleValue = it.dataset.scale;
+                var value = 0;
+                try {
+                    value = eval(content);
+                } catch (e) {
+                    console.warn(e);
+                }
+                value /= (100 / scaleValue);
+                it.innerHTML = value + "/" + scaleValue;
+            }.bind(this));
+
+            if (!noteParsed) {
+                var noteRegex = /{{(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?}}/gim;
+
+                var html = performancePage.html();
+                var newHtml = html.replace(noteRegex, function (all, content, page, scale, scaleValue, idx) {
+                    var value = 0;
+                    try {
+                        value = eval(content);
+                    } catch (e) {
+                        console.warn(e);
+                    }
+                    scaleValue = scaleValue || 100;
+                    value /= (100 / scaleValue);
+                    return '<span data-type="perf-note" data-content="' + content + '" data-scale="' + scaleValue + '">' + value + '/' + scaleValue + '</span>';
+                }.bind(this));
+                performancePage.html(newHtml);
+            }
         };
 
-        var tatBehavior = function() {
+        var tatBehavior = function () {
             // Tat thingies
             // var tat =
-            $('section[id^=tat-]', dom).each(function(ind, item) {
+            $('section[id^=tat-]', dom).each(function (ind, item) {
                 // Find page
                 var x = 0;
                 var recupPage;
-                activity[pub].pages.some(function(page, dex) {
+                activity[pub].pages.some(function (page, dex) {
                     if (page.flavor.id == 'tat') {
                         if (x == ind) {
                             recupPage = page;
                             return true;
-                        }else {
+                        } else {
                             x++;
                         }
                         return false;
@@ -900,14 +942,14 @@
                 var total = $('[data-type="tat"]', item).length;
                 recupPage.score = new LxxlScoring.tatScore(total);
 
-                $('#tat-' + pageId + '-check', item).on('click', function() {
+                $('#tat-' + pageId + '-check', item).on('click', function () {
                     var notYet = 0;
-                    $('input', $(this).parent().parent().prev()).each(function(ind, chose) {
+                    $('input', $(this).parent().parent().prev()).each(function (ind, chose) {
                         var response = $(chose).val().toLowerCase().trim();
-                        var valid = $(chose).data('ans').map(function(i) {
+                        var valid = $(chose).data('ans').map(function (i) {
                             return i.toLowerCase().trim();
                         });
-                        var isGood = valid.some(function(i) {
+                        var isGood = valid.some(function (i) {
                             if (!i)
                                 return;
                             if (response == i)
@@ -925,7 +967,7 @@
 
                             // $(chose).attr('disabled', 'disabled');
                             // $(chose).next().attr('disabled', 'disabled');
-                        }else {
+                        } else {
                             notYet++;
                         }
                     });
@@ -936,18 +978,18 @@
                         $('.modal .feedback', $('#tat-' + pageId)).html(r + '%');
                         $('#modal-on-modal-lynching').show();
                         $('.modal.feedback', $('#tat-' + pageId)).modal('show');
-                        $('.modal.feedback', $('#tat-' + pageId)).on('hide', function() {
+                        $('.modal.feedback', $('#tat-' + pageId)).on('hide', function () {
                             $('#modal-on-modal-lynching').hide();
                         });
 
                         // $('.modal.feedback', $('[id="tat-' + pageId + '"]')).modal('show');
-                    }else {
+                    } else {
                         $(this).attr('disabled', 'disabled');
                         $('.modal .feedback', $('#tat-' + pageId)).html(r + '%');
                         $('#modal-on-modal-lynching').show();
 
                         $('.modal.conclusion', $('#tat-' + pageId)).modal('show');
-                        $('.modal.conclusion', $('#tat-' + pageId)).on('hide', function() {
+                        $('.modal.conclusion', $('#tat-' + pageId)).on('hide', function () {
                             $('#modal-on-modal-lynching').hide();
                             onPageComplete(pageId, r);
                         });
@@ -956,7 +998,7 @@
                 });
 
 
-                $('[data-type="tat"]', item).each(function(idx, it) {
+                $('[data-type="tat"]', item).each(function (idx, it) {
                     var response = [it.innerHTML];
                     wordList.push(it.innerHTML);
                     it = $(it);
@@ -968,7 +1010,7 @@
                     $('input', h).data('ans', response);
                     it.replaceWith(h);
                     if (clue) {
-                        $('button', h).on('click', function(e) {
+                        $('button', h).on('click', function (e) {
                             recupPage.score.addPenalty();
                             // console.warn($(e.target).replace);
                             $(e.target).replaceWith($('<span style="text-decoration: underline;"/>').text('(' + clue + ')'));
@@ -985,7 +1027,7 @@
                         while (plist.length) {
                             wordList.push(plist.splice(Math.round(Math.random() * (plist.length - 1)), 1));
                         }
-                    }else {
+                    } else {
                         wordList.sort();
                     }
                     $('.wordlist', item).html('Liste des trous: ' + wordList.join(', '));
