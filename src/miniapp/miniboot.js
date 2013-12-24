@@ -35,6 +35,7 @@
 
 
   var debug = /use-debug/.test(location.href);
+  debug=false;  // debug impossible !!!!
 
   jsBoot.boot.ember(function(){
     if(debug){
@@ -45,8 +46,7 @@
       // Mute console while in production
       jsBoot.core.toggleConsole(false);
     }
-
-    // console.warn("J'ai Ember, jquery et handlebars!!!!");
+    console.warn("J'ai Ember, jquery et handlebars!!!!");
     $('html').removeClass('no-js');
   }, debug);
 
@@ -62,6 +62,10 @@
 
   jsBoot.loader.use('datatable');
 
+  jsBoot.loader.wait(function(){
+     console.warn("j'ai les composants tiers");
+  });
+
   // LXXL core components
   jsBoot.loader.use(bootRoot + 'activity/activity.css');
   jsBoot.loader.use(bootRoot + 'lxxl-standalone-library.js');
@@ -70,6 +74,8 @@
   jsBoot.loader.wait();
   jsBoot.loader.use(bootRoot + 'activity/activity.js');
 
+ 
+
 
   // On attend tout ça...
   jsBoot.loader.wait(function(){
@@ -77,6 +83,7 @@
     jsBoot.controllers.application.boot(STORE_KEY, SERVICE_CONFIG, 'disable_instance_lockXXX');
     // Et on finit en chargeant miniapp
     jsBoot.loader.use('miniapp.js');
+    console.warn("C'est parti pour miniapp ....");
   });
 
 })();

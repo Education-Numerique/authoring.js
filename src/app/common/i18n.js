@@ -15,12 +15,6 @@
 
       // Breadcrumb - these specify the main title of the page, along with the optional breadcrumb
       breadcrumb: {
-        cnil: {
-          title: 'CNIL: respect de la vie privée, données personnelles'
-        },
-        charte: {
-          title: 'Conditions d\'utilisation des services d\'Éducation & Numérique'
-        },
 
         account: {
           validation: {
@@ -66,9 +60,11 @@
         sandbox: {
           title: 'Le Catalogue'
         },
+
         dashboard: {
           title: 'Bienvenue sur la plateforme auteur d’Education & Numérique'
         },
+        
         myactivities: {
           title: 'Mes Activités'
         },
@@ -104,7 +100,7 @@
         },
         register: {
           tip: 'Créer un compte',
-          text: 'S\'inscrire'
+          text: 'Inscription'
         },
 
         sandbox: {

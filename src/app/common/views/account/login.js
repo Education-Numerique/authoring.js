@@ -7,6 +7,7 @@
     if (LxxlApp.router.accountReminderValidateController.get('content'))
       $('#email').val(LxxlApp.router.get('accountReminderValidateController.content'));
 
+// JQuery form Wizard (http://thecodemine.org/)
     $('#loginform').formwizard({
       formPluginEnabled: false,
       validationEnabled: true,
@@ -44,6 +45,7 @@
         }
       }
     });
+//******************************************
 
     this.get('controller').addObserver('isAttemptFailed', function() {
       if (!!this.get('controller.isAttemptFailed'))

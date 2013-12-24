@@ -39,7 +39,10 @@
         <div class="span12 center" style="text-align: center;">         
           <ul class="quick-actions">
             <li>
-              <a {{action showSandbox href=true}} rel="tooltip" data-placement="bottom" title="Accéder aux activités publées">
+                  <!-- Nouveau catalogue Emmanuel Decembre 2013 
+                            <a [[action showSandbox href=true]] rel="tooltip" data-placement="bottom" title="Accéder aux activités publées">
+                  -->
+              <a href="http://catalogue.education-et-numerique.org" target="_blank" rel="tooltip" data-placement="bottom" title="Accéder aux activités publées">
                 <i class="icon-eye"></i>
                 Le Catalogue
               </a>

@@ -27,8 +27,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     perf: 'Page performance'
   };
 
-  // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
-  this.discipline = {
+// You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
+/*  this.discipline = {
     fra: 'Français',
     lit: 'Littérature',
     mat: 'Maths',
@@ -57,7 +57,9 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     tuto: 'Tutoriel',
     other: 'Autre'
   };
+*/
 
+// You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
   this.matters = {
     fra: 'Français',
     lit: 'Littérature',

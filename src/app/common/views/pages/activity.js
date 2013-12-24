@@ -21,16 +21,20 @@
 
   this.ActivityEditView = Ember.View.extend({
 
+    //*************************************************************
     StaticPage: Em.View.extend({
       templateName: 'pages/activity/editor/page'
     }),
 
+    //*************************************************************
     PerfPage: Em.View.extend({
       templateName: 'pages/activity/editor/perf'
     }),
 
+    //*************************************************************
     TatPage: Em.View.extend({
       templateName: 'pages/activity/editor/tat',
+    
       TimeButton: Em.View.extend({
         tagName: 'div',
         classNames: 'master-button',
@@ -45,15 +49,12 @@
               if (!this.get('controller.pageActivatedLimitedTime'))
                 this.set('controller.pageActivatedLimitedTime', true);
             }
-
           }.bind(this));
         }
-
       }),
 
       toggleSideDocument: function() {
         var hasDocument = this.get('controller.currentPage.hasDocument');
-
         if (hasDocument) {
           modalHandler.save('deleteSideDocument', function() {
             this.set('controller.currentPage.document', '');
@@ -64,9 +65,6 @@
           this.set('controller.currentPage.hasDocument', true);
         }
       },
-
-
-
 
       TatGestion: Em.View.extend({
         tats: [],
@@ -136,6 +134,7 @@
       })
     }),
 
+//*************************************************************
     MixnmatchPage: Em.View.extend({
       templateName: 'pages/activity/editor/mixnmatch',
       TimeButton: Em.View.extend({
@@ -159,7 +158,6 @@
           if (this.$('.checker').has($(e.target)).length && this.$('input').attr('checked'))
             $('#modal-page-sequencing').modal('show');
           /*else if (this.$('[data-toggle]')[0] == e.target) {
-
           }*/
         }
       }),
@@ -271,6 +269,7 @@
       })
     }),
 
+    //*************************************************************
     QuizzPage: Em.View.extend({
       templateName: 'pages/activity/editor/quizz',
 
@@ -465,9 +464,6 @@
               }.bind(this));
             }.observes('selectedAnswer'),
 
-
-
-
             didInsertElement: function() {
               var view = this;
               view.get('_parentView').$('table tbody').sortable({
@@ -529,6 +525,7 @@
       })
     }),
 
+    //*************************************************************
     InformationTab: Em.View.extend({
       templateName: 'pages/activity/editor/informations',
 
@@ -564,19 +561,19 @@
           // acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
           process: [
             {
-                      action: 'load',
-                      fileTypes: /^image\/(gif|jpe?g|png)$/,
-                      maxFileSize: 20000000 // 20MB
+              action: 'load',
+              fileTypes: /^image\/(gif|jpe?g|png)$/,
+              maxFileSize: 2000000 // 2MB
             },
             {
-                      action: 'resize',
-                      maxWidth: 800,
-                      maxHeight: 800,
-                      minWidth: 40,
-                      minHeight: 40
+              action: 'resize',
+              maxWidth: 800,
+              maxHeight: 800,
+              minWidth: 40,
+              minHeight: 40
             },
             {
-                      action: 'save'
+              action: 'save'
             }
           ],
           add: function(e, data) {
@@ -594,7 +591,7 @@
 
           add: function(e, data) {
             var validation = /(application\/pdf|audio\/mpeg3|audio\/mpeg|audio\/mp3|audio\/x-mpeg-3)$/i;
-            var maxFileSize = 5000000;
+            var maxFileSize = 5000000;  // 5Mb
 
             data.files.forEach(function(file) {
               if (validation.test(file.type) && file.size < maxFileSize) {
@@ -619,7 +616,7 @@
 
         var showErrorMessage = function(message) {
           if (!message)
-            message = 'Une erreure est survenue';
+            message = 'Une erreur est survenue';
           $('.attachments-error span').html(message);
           $('.attachments-error').clearQueue();
           $('.attachments-error').fadeIn().delay(3000).fadeOut();
@@ -646,10 +643,7 @@
       }
     }),
 
-
-
-
-
+    //*************************************************************
     InformationButton: Em.View.extend({
       tagName: 'button',
       classNames: 'section-active',
@@ -799,7 +793,7 @@
             this.set('flavorIcon', 'icon-ok-circle');
             this.set('pageType', 'page-quizz');
           } else if (value.id == 'quizzMulti') {
-            this.set('flavorIcon', ' icon-check');
+            this.set('flavorIcon', 'icon-check');
             this.set('pageType', 'page-quizz-multi');
           } else if (value.id == 'tat') {
             this.set('flavorIcon', 'icon-text-width');

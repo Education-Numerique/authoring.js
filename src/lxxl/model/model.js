@@ -40,11 +40,11 @@ jsBoot.pack('LxxlLib.model', function(api) {
     title: ''
   });
 
-  this.Discipline = api.getPooledMutable({
+/*  this.Discipline = api.getPooledMutable({
     id: '',
     title: ''
   });
-
+*/
   var catDescriptor = {
     id: '',
     title: '',

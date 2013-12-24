@@ -4,8 +4,6 @@
 
 <div class="container-fluid">
 
-
-
     <div class="widget-box noborder">
         <div class="widget-content" id="page-informations">
             
@@ -98,7 +96,7 @@
             </div>
             <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
                     <div class="input-prepend">
-                        <label class="add-on" for="form-question-title">Intitulé</label>
+                        <label class="add-on" for="form-question-title">Question</label>
                         {{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" air=true oneLine=true plugins="mathjax" classNames="redactorjs"}}
                     </div>
                     
@@ -118,7 +116,7 @@
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" questionBinding="view.content" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Réponse proposée"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                             <!-- <td></td> -->
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.question" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
@@ -127,7 +125,7 @@
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer" checkedBinding="view.content.isCorrect"}}</td>
-                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Intitulé de la réponse"}}</td>
+                            <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Réponse proposée"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                             <!-- <td></td> -->
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
