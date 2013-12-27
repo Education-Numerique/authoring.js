@@ -93,7 +93,6 @@
     };
   })();
 
-
   this.RedactorPlugins.mathjax = new (function() {
     this.init = function() {
       var redactorScope;
