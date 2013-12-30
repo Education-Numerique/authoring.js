@@ -526,6 +526,7 @@
             tatBehavior();
             quizzBehavior();
             menuBehavior();
+            perfBehavior();
         };
 
         this.start = function (act, pubVersion) {
@@ -836,85 +837,86 @@
 
         };
 
-        var refreshPerformancePage = function (performancePage) {
+        // This method is launch at starting of an activity
+        var perfBehavior = function () {
 
-            // TODO: Compter les page simples comme page compter / DONE
-            // TODO: Mettre en surbrilance le addon de note / FAIL
-            // TODO: Afficher le score dans la page / DONE
-            // TODO: supprimer la modal de fin d'activité /DONE
-            // TODO: Checker la page /DONE
+            // retrieve each performance page
+            $('section[id^=perf-]').each(function (idx, section) {
+                var html = $(section).html();
+                var block = {
+                    subBlocks: {}
+                };
+                var currentBlock = block;
+                var id = 0;
+                var mustacheRegex = /{{(.*?)}}/g;
+                var beginOfIf = /^#if (.*)$/i;
+                var endOfIf = /^\/if$/i;
+                // looking for mustache
+                var newHtml = html.replace(mustacheRegex, function (all, expression) {
+                    var result = "";
+                    var groups = null;
+                    if (!!(groups = expression.match(beginOfIf))) { // check if it's a begin of an if mustache
 
+                        var newBlock = {
+                            id: ++id,
+                            type: "if",
+                            parentBlock: currentBlock
+                        };
+                        currentBlock.subBlocks[id] = newBlock;
+                        currentBlock = newBlock;
+                        var ifContent = groups[1].replace(/\s/g,'');
 
-            //FIX : Pourquoi 60 en total vide ? // Fixed
-            //FIX : Cliquer sur un condition déjà existante
-            var flavorsWhoDontCount = ['perf', 'simple'];
-            var nbPageWhoCount = 0;
-            var total = 0;
-
-            // Perf condition representation
-            var activité = {
-                note: 0,
-                pages: {}
-            };
-
-            activity[pub].pages.forEach(function (page, idx) {
-                if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")) {
-                    nbPageWhoCount++;
-                    activité.pages[idx] = {note: page.score};
-                    total += page.score;
-                }
-            });
-            activité.note = total / nbPageWhoCount >> 0;
-
-            $('[data-type="perf"]', performancePage).each(function (idx, it) {
-                $(it).attr('title', ''); // cleaning title
-                var condition = $(it).attr('data-condition');
-                // TODO dirty, but otherwise we must re-tokenize the string
-                var conditionIsTrue = false;
-                try {
-                    conditionIsTrue = eval(condition);
-                } catch (e) {
-                    console.warn(e);
-                }
-                if (conditionIsTrue) {
-                    $(it).show();
-                } else {
-                    $(it).hide();
-                }
-            });
-
-            var noteParsed = false;
-            $('[data-type="perf-note"]', performancePage).each(function (idx, it) {
-                noteParsed = true;
-                var content = it.dataset.content;
-                var scaleValue = it.dataset.scale;
-                var value = 0;
-                try {
-                    value = eval(content);
-                } catch (e) {
-                    console.warn(e);
-                }
-                value /= (100 / scaleValue);
-                it.innerHTML = value + "/" + scaleValue;
-            }.bind(this));
-
-            if (!noteParsed) {
-                var noteRegex = /{{(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?}}/gim;
-
-                var html = performancePage.html();
-                var newHtml = html.replace(noteRegex, function (all, content, page, scale, scaleValue, idx) {
-                    var value = 0;
-                    try {
-                        value = eval(content);
-                    } catch (e) {
-                        console.warn(e);
+                        result = "<script id='perf-if-open-" + id + "' type='text/x-placeholder' " +
+                            "data-expression='" + ifContent + "'></script>";
+                    } else if (expression.match(endOfIf)) { // check if it's a end of an if mustache
+                        result = "<script id='perf-if-close-" + currentBlock.id + "' type='text/x-placeholder'></script>";
+                        currentBlock = currentBlock.parentBlock;
+                    } else { // else it's just placeholder to display the value describe by the expression
+                        return "<span data-tag-type='value' data-expression='" + expression + "'></span>";
                     }
-                    scaleValue = scaleValue || 100;
-                    value /= (100 / scaleValue);
-                    return '<span data-type="perf-note" data-content="' + content + '" data-scale="' + scaleValue + '">' + value + '/' + scaleValue + '</span>';
-                }.bind(this));
-                performancePage.html(newHtml);
-            }
+                    return result;
+                });
+                $(section).html(newHtml);
+            });
+        };
+
+        var refreshPerformancePage = function (performancePage) {
+            // remove useless p arround script if tag
+            performancePage.find('script').each(function (idx, script) {
+                var $script = $(script);
+                var scriptParentContent = $script.parent().html().replace(/\s/g, '');
+                if (!!scriptParentContent.match(/^<scriptid="perf.*<\/script>$/)) {
+                    $script.unwrap();
+                }
+            });
+
+            // place a 'activité' var in 'this' to be accessible by eval
+            var activité = getActivityNotes();
+
+            // if parsing
+            performancePage.find('script[id^=perf-if-open]').each(function (idx, ifOpener) {
+                var $ifOpener = $(ifOpener);
+                var isDisplayed = !!getValueOf.call(this,ifOpener.dataset.expression);
+                var ifId = ifOpener.id.substr(ifOpener.id.lastIndexOf('-')+1) >> 0;
+                var domToDisplayOrHide = $ifOpener.nextUntil('#perf-if-close-' + ifId);
+                if (isDisplayed) {
+                    domToDisplayOrHide.show();
+                } else {
+                    domToDisplayOrHide.hide();
+                }
+            });
+
+            // value parsing
+            var noteRegex = /(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
+            performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
+                var expression = span.dataset.expression;
+                var groups = expression.match(noteRegex);
+                var noteExpression = groups[1],
+                    scale = (groups[4]>>0) || 100; // retrieve specified scale or take 100 by default
+
+                var note = getValueOf.call(this,noteExpression) / (100 / scale);
+                span.innerHTML = note + "/" + scale;
+            });
         };
 
         var tatBehavior = function () {
