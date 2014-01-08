@@ -861,7 +861,7 @@
                         };
                         currentBlock.subBlocks[id] = newBlock;
                         currentBlock = newBlock;
-                        var ifContent = groups[1].replace(/\s/g,'');
+                        var ifContent = groups[1].replace(/\s/g, '');
 
                         result = "<script id='perf-if-open-" + id + "' type='text/x-placeholder' " +
                             "data-expression='" + ifContent + "'></script>";
@@ -879,7 +879,6 @@
 
         var refreshPerformancePage = function (performancePage) {
 
-            debugger;
             // remove useless p arround script if tag
             performancePage.find('script').each(function (idx, script) {
                 var $script = $(script);
@@ -906,7 +905,7 @@
             performancePage.find('script[id^=perf-if-open]').each(function (idx, ifOpener) {
                 var $ifOpener = $(ifOpener);
                 var isDisplayed = !!getValueOf(ifOpener.dataset.expression);
-                var ifId = ifOpener.id.substr(ifOpener.id.lastIndexOf('-')+1) >> 0;
+                var ifId = ifOpener.id.substr(ifOpener.id.lastIndexOf('-') + 1) >> 0;
                 var domToDisplayOrHide = $ifOpener.nextUntil('#perf-if-close-' + ifId);
                 if (isDisplayed) {
                     domToDisplayOrHide.show();
@@ -921,7 +920,7 @@
                 var expression = span.dataset.expression;
                 var groups = expression.match(noteRegex);
                 var noteExpression = groups[1],
-                    scale = (groups[4]>>0) || 100; // retrieve specified scale or take 100 by default
+                    scale = (groups[4] >> 0) || 100; // retrieve specified scale or take 100 by default
 
                 var note = getValueOf(noteExpression) / (100 / scale);
                 span.innerHTML = note + "/" + scale;
@@ -942,7 +941,7 @@
             activity[pub].pages.forEach(function (page, idx) {
                 if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")) {
                     nbPageWhoCount++;
-                    activityNotes.pages[idx+1] = {note: page.score}; // page begin at one
+                    activityNotes.pages[idx + 1] = {note: page.score}; // page begin at one
                     total += page.score;
                 }
             });
