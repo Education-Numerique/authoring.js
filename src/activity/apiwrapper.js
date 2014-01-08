@@ -736,9 +736,6 @@
                     $('#modal-on-modal-lynching').hide();
                     onPageComplete(pid, Math.round(actual / total));
                 });
-
-                // window.setTimeout(function(){
-                // }, 300);
             }
         };
 
@@ -881,6 +878,8 @@
         };
 
         var refreshPerformancePage = function (performancePage) {
+
+            debugger;
             // remove useless p arround script if tag
             performancePage.find('script').each(function (idx, script) {
                 var $script = $(script);
@@ -893,10 +892,20 @@
             // place a 'activité' var in 'this' to be accessible by eval
             var activité = getActivityNotes();
 
+            var getValueOf = function (expression) {
+                var value;
+                try {
+                    value = eval(expression);
+                } catch (e) {
+                    console.warn(e);
+                }
+                return value;
+            };
+
             // if parsing
             performancePage.find('script[id^=perf-if-open]').each(function (idx, ifOpener) {
                 var $ifOpener = $(ifOpener);
-                var isDisplayed = !!getValueOf.call(this,ifOpener.dataset.expression);
+                var isDisplayed = !!getValueOf(ifOpener.dataset.expression);
                 var ifId = ifOpener.id.substr(ifOpener.id.lastIndexOf('-')+1) >> 0;
                 var domToDisplayOrHide = $ifOpener.nextUntil('#perf-if-close-' + ifId);
                 if (isDisplayed) {
@@ -914,10 +923,33 @@
                 var noteExpression = groups[1],
                     scale = (groups[4]>>0) || 100; // retrieve specified scale or take 100 by default
 
-                var note = getValueOf.call(this,noteExpression) / (100 / scale);
+                var note = getValueOf(noteExpression) / (100 / scale);
                 span.innerHTML = note + "/" + scale;
             });
         };
+
+        var getActivityNotes = function () {
+            var flavorsWhoDontCount = ['perf', 'simple'];
+            var nbPageWhoCount = 0;
+            var total = 0;
+
+            // Perf condition representation
+            var activityNotes = {
+                note: 0,
+                pages: {}
+            };
+
+            activity[pub].pages.forEach(function (page, idx) {
+                if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")) {
+                    nbPageWhoCount++;
+                    activityNotes.pages[idx+1] = {note: page.score}; // page begin at one
+                    total += page.score;
+                }
+            });
+            activityNotes.note = total / nbPageWhoCount >> 0;
+            return activityNotes;
+        };
+
 
         var tatBehavior = function () {
             // Tat thingies
