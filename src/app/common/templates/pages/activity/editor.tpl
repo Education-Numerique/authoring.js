@@ -275,6 +275,18 @@
   </div>
 </div>
 
+<div class="modal hide" id="action-embed-error" role="dialog" aria-hidden="true">
+  <div class="modal-header">
+    <h3>Codes d'insertion</h3>
+  </div>
+  <div class="modal-body">
+    <span id="embed-pub-err"></span>
+  </div>
+  <div class="modal-footer">
+      <a class="btn btn-primary" data-dismiss="modal">Fermer</a>
+  </div>
+</div>
+
 
 <div class="modal hide" id="action-embed" role="dialog" aria-hidden="true">
   <div class="modal-header">

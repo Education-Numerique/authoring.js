@@ -28,38 +28,6 @@ jsBoot.pack('LxxlLib.model.defines', function() {
   };
 
 // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
-/*  this.discipline = {
-    fra: 'Français',
-    lit: 'Littérature',
-    mat: 'Maths',
-    mate: 'Maths éco',
-    sciec: 'Sciences économiques et sociales',
-    sci: 'Sciences',
-    phys: 'Physique',
-    chim: 'Chimie',
-    svt: 'SVT',
-    his: 'Histoire',
-    geo: 'Géographie',
-    edc: 'Education civique',
-    phi: 'Philosophie',
-    all: 'Allemand',
-    eng: 'Anglais',
-    esp: 'Espagnol',
-    ita: 'Italien',
-    lat: 'Latin',
-    gre: 'Grec',
-    hda: 'Histoire de l\'Art',
-    mus: 'Musique',
-    eps: 'EPS',
-    tpe: 'TPE',
-    tech: 'Technologie',
-    inf: 'Informatique',
-    tuto: 'Tutoriel',
-    other: 'Autre'
-  };
-*/
-
-// You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
   this.matters = {
     fra: 'Français',
     lit: 'Littérature',
@@ -89,6 +57,9 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     tuto: 'Tutoriel',
     other: 'Autre'
   };
+
+  // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
+  this.discipline = this.matters;
 
   // You can add new levels here - but DONT RENAME existing keys!!!! - you can still change the value obviously
   this.levels = {
