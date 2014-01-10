@@ -17,15 +17,12 @@
     /*jshint camelcase:false*/
     $('html').tooltip({selector: '[rel=tooltip]'});
 
-
     // $('html').popover({selector: '[rel=popover]'});
 
     // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-title', 'titre');
     // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-html', '<h4>toto</h4>');
     // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-placement', 'top');
     // $('.sandbox.data-table tbody tr:last-of-type td').attr('data-trigger', 'hover');
-
-
 
     // Toggle active state on one menu item
     this.makeMenuItemActive = function(node) {
