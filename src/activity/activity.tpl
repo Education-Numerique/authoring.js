@@ -12,17 +12,7 @@
   <header>
     <!-- Titre de l'activité -->
     <h1>{{title}}&nbsp;&nbsp;&nbsp;<em> par {{author.username}}</em></h1>
-  </header> 
-
-  <!-- fin de l'activité -->
-  <div id="final-feedback" class="row-fluid content-container" style="display: none">
-  <section class="widget-box">
-    <div class="widget-content nopadding">
-      Félicitations! Vous avez terminé l'activité.<br />
-      Votre score total est de: <span class="feedback"></span>
-    </div>
-  </section>
-  </div>
+  </header>
 
   <!-- Sommaire -->
   <div id="playing" class="row-fluid content-container">
@@ -73,6 +63,9 @@
                 {{#ifequalhelp flavor "tat"}}
                 <span class="icon-text-width"></span>
                 {{/ifequalhelp}}
+                {{#ifequalhelp flavor "perf"}}
+                <span class="icon-text-width"></span>
+                {{/ifequalhelp}}
               </span>
               -->
               {{index}}. {{title}}
@@ -99,7 +92,7 @@
   <section class="page-jmt" id="jmt-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
   {{#ifequalhelp flavor.id "perf"}}
-  <section class="page-perf" id="perf-{{id}}" data-page="{{id}}">
+    <section class="page-perf" id="perf-{{id}}" data-page="{{id}}">
   {{/ifequalhelp}}
     <div>
       <p class="page_title">{{title}}</p>
@@ -115,6 +108,10 @@
       {{#if advice}}
       <div>{{{advice}}}</div>
       {{/if}}
+
+      {{#ifequalhelp flavor.id "perf"}}
+         <div>{{{document}}}</div>
+      {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "simple"}}
         <div>{{{document}}}</div>

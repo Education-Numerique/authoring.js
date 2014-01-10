@@ -263,3 +263,28 @@ config-JB-darwin:
   MINIFY: 'false'
 
 
+config-mbreton:
+  root: "${HOME}/tmp-lxxl"
+  #root: "/Library/WebServer/Documents/tmp-lxxl"
+  paths:
+    deploy: "${HOME}/Sites/lxxl"
+    #deploy: "/Library/WebServer/Documents/lxxl"
+  links:
+    airstrip:
+      version: '1.0'
+      url: 'https://www.education-et-numerique.fr/airstrip.json'
+    spitfire:
+      version: '1.0'
+      url: 'https://www.education-et-numerique.fr/spitfire.json'
+    jsboot:
+      version: '0.2'
+      url: 'https://www.education-et-numerique.fr/jsboot.json'
+    self:
+      url: '//dev.app.sn.ackitup.net/'
+
+  service:
+    port: ''
+    host: 'api.education-et-numerique.fr'
+
+  DEBUG: 'true'
+  MINIFY: 'false'

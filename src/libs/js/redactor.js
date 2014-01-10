@@ -3585,8 +3585,12 @@ var RLANG = {
 
 
         // MODAL
-        modalInit: function(title, content, width, callback)
+        modalInit: function(title, content, width, callback, isDisplayCallBack)
         {
+            if (!!isDisplayCallBack && typeof isDisplayCallBack === "function" && !isDisplayCallBack.call(this)){
+                return;
+            }
+
             // modal overlay
             if ($('#redactor_modal_overlay').size() === 0)
             {

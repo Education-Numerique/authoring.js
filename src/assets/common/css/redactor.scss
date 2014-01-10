@@ -1,116 +1,132 @@
 .redactor_box, .redactor_air {
 
+  .redactor_editor {
+    &.redactor_4lines {
+      min-height: 100px;
+    }
+    min-height: 120px;
+  }
 
-    .redactor_editor {
-        &.redactor_4lines {
-            min-height:100px;
-        }
-        min-height:120px;
-   }
-
-   &.one-line {
+  &.one-line {
     @include rounded-right(3px);
     .redactor_editor {
-        min-height:20px!important;
-        padding:3px!important;
-            @include rounded-right(3px);
+      min-height: 20px !important;
+      padding: 3px !important;
+      @include rounded-right(3px);
 
     }
-   }
+  }
 
-   .infobox {
-        display: block;
-        width: 100%;
-        background-color: #F1F1F1;
-        text-align:right;
+  .infobox {
+    display: block;
+    width: 100%;
+    background-color: #F1F1F1;
+    text-align: right;
 
-        &.ok {
-            span {
+    &.ok {
+      span {
 
-            }
-        }
-
-        &.ko {
-            span {
-                color:red;
-            }
-        }
-        span {
-            margin-right:10px;
-        }
+      }
     }
 
-    img[data-type=math] {
-        cursor:pointer;
-        padding:5px;
+    &.ko {
+      span {
+        color: red;
+      }
+    }
+    span {
+      margin-right: 10px;
+    }
+  }
 
-        &:hover {
-            @include rounded(5px);
-            background-color:#F1F1F1;
-        }
+  img[data-type=math] {
+    cursor: pointer;
+    padding: 5px;
+
+    &:hover {
+      @include rounded(5px);
+      background-color: #F1F1F1;
+    }
+  }
+
+  a[data-type=tat], a[data-type=perf] {
+    background-color: #909090 !important;
+    color: white !important;
+    padding: 2px 5px !important;
+    @include rounded(4px);
+    text-decoration: none !important;
+
+    &:hover {
+      background-color: #585858 !important;
+    }
+  }
+
+  a[data-type=perf-note]{
+    background-color: #e5c807 !important;
+    color: white !important;
+    padding: 2px 5px !important;
+    @include rounded(4px);
+    text-decoration: none !important;
+    &:hover{
+      text-decoration:underline
+      background-color: lighten(#e5c807, 30%) !important;
+    }
+  }
+
+  a[data-type=perf] {
+    display: inline-block;
+  }
+
+  .redactor_toolbar {
+    a.redactor_btn_mathjax {
+      background: url('images/redactor/mathjax.png') center center no-repeat;
     }
 
-    a[data-type=tat] {
-        background-color:#909090!important;
-        color:white!important;
-        padding:2px 5px!important;
-        @include rounded(4px);
-        text-decoration:none!important;
+    a.redactor_btn_tat {
+      background: url('images/redactor/tat.png') 0px -24px no-repeat;
+      background-size: 26px 52px;
 
-        &:hover {
-            background-color:#585858!important;
-        }
+      &:hover {
+        background: url('images/redactor/tat.png') 0px 3px no-repeat;
+        background-size: 26px 52px;
+      }
     }
 
-    .redactor_toolbar {
-        a.redactor_btn_mathjax {
-            background: url('images/redactor/mathjax.png') center center no-repeat;
-        }
-
-        a.redactor_btn_tat {
-            background: url('images/redactor/tat.png') 0px -24px no-repeat;
-            background-size:26px 52px;
-
-            &:hover {
-                background: url('images/redactor/tat.png') 0px 3px no-repeat;
-                background-size:26px 52px;
-            }
-        }
-
-        a.redactor_btn_tooltip {
-            background: url('images/redactor/tooltip.png') center center no-repeat;
-        }
-
-
+    a.redactor_btn_tooltip {
+      background: url('images/redactor/tooltip.png') center center no-repeat;
     }
+
+  }
 }
 
-
 .redactor_tabs a:hover, .redactor_tabs a.redactor_tabs_act {
-    background-color: #ddd;
-    padding: 5px 15px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .4) inset;
-    border: none;
-    text-shadow: 0 1px 0 #eee;
-    color: #777 !important;
-    text-decoration: none !important;
+  background-color: #ddd;
+  padding: 5px 15px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, .4) inset;
+  border: none;
+  text-shadow: 0 1px 0 #eee;
+  color: #777 !important;
+  text-decoration: none !important;
 }
 
 .redactor_tabs {
-    margin-bottom: 18px;
-}
-.redactor_tabs a {
-    display: inline-block;
-    border: 1px solid #d2d2d2;
-    padding: 4px 14px;
-    font-size: 12px;
-    background-color: #fff;
-    text-decoration: none;
-    color: #000;
-    line-height: 1;
-    border-radius: 10px;
-    margin-right: 5px;
+  margin-bottom: 18px;
 }
 
-body .redactor_toolbar li a.redactor_btn_imagemanager             { background-position: -200px; }
+.redactor_tabs a {
+  display: inline-block;
+  border: 1px solid #d2d2d2;
+  padding: 4px 14px;
+  font-size: 12px;
+  background-color: #fff;
+  text-decoration: none;
+  color: #000;
+  line-height: 1;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+
+body .redactor_toolbar li a.redactor_btn_imagemanager {
+  background-position: -200px;
+}
 
