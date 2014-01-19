@@ -915,6 +915,7 @@
             });
 
             // value parsing
+            // https://www.debuggex.com/r/570povZvScbDEdAM
             var noteRegex = /(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
             performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
                 var expression = span.dataset.expression;
@@ -923,6 +924,7 @@
                     scale = (groups[4] >> 0) || 100; // retrieve specified scale or take 100 by default
 
                 var note = getValueOf(noteExpression) / (100 / scale);
+                note = note.isNaN() ? 0 : note;
                 span.innerHTML = note + "/" + scale;
             });
         };
