@@ -231,10 +231,10 @@
                   <button disabled="disabled">Vérifier mes réponses</button>
                   <div class="modal hide" role="dialog" aria-hidden="true">
                     <div class="modal-header">
-                      <h3>Ok pour cette question!</h3>
+                      <h3>Ok pour cette question !</h3>
                     </div>
                     <div class="modal-body">
-                      Ton score sur cette question: <span class="feedback"></span>
+                      Ton score pour cette question: <span class="feedback"></span>
                     </div>
                     <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
@@ -250,7 +250,7 @@
                     {{text}}
                     <div class="modal hide" role="dialog" aria-hidden="true">
                       <div class="modal-header">
-                        <h3>Mauvaise réponse, mais voici un indice:</h3>
+                        <h3>Mauvaise réponse</h3>
                       </div>
                       <div class="modal-body">
                         {{comment}}

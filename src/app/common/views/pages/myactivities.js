@@ -155,7 +155,7 @@
           act.draft = infos;// .toObject();
           act.push(function() {
             // Something is rotten in Denmark
-            // act = LxxlLib.factories.activities.getActivity({id: act.id});
+             //act = LxxlLib.factories.activities.getActivity({id: act.id});
             LxxlApp.router.send('showActivityEdit', act);
           });
           act.removeObserver('id', onCreate);
@@ -164,6 +164,7 @@
         var act = LxxlLib.factories.activities.getActivity();
         act.addObserver('id', onCreate);
         act.push();
+        
         // Ember.run.next(function() {
         // });
 

@@ -10,15 +10,14 @@
             <div class="control-group">
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>
-                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="ITitre de la page"}}
+                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Texte à trous"}}
                 </div>
                 <!--
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-subtitle">Sous-titre</label>
                     [[view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"]]
                 </div>
-            --> 
-                
+                -->
             </div>
             <div class="options">
                 <!--
@@ -39,22 +38,21 @@
                     sequencing || Random : All | number
                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                 //-->
-
                  <div  data-toggle="modal" href="#modal-tat-gestion" class="name master-button btn">
                     Gestion
                 </div>
-<!--
+                <!--
                 <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
                     [[view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"]]
                     Side document
                 </button>
--->
+                -->
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
             <div class="input-prepend">
-                    <label class="add-on" for="form-page-explanation">Consigne</label>
-                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip,imagemanager" id="form-page-explanation"}}
-                </div>
+                <label class="add-on" for="form-page-explanation">Consigne</label>
+                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip,imagemanager" id="form-page-explanation"}}
+            </div>
         </div>
     </div>
     {{#if currentPage.hasDocument}}
@@ -101,12 +99,11 @@
             <div class="tab-pane active" id="general">
                 <form>
                   <fieldset>
-                    
-                     <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher les mots enlevés</label> <br />
+                    <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayHoles"}}Afficher les mots enlevés</label> <br />
                     {{#if currentPage.displayHoles}}
                         <label>Trier les mots par ordre :</label>
-                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsAlphabetical" value=false title="Alphabétique" groupBinding="tatIsRandom"}}
-                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsRandom" value=true title="Aléatoire" groupBinding="tatIsRandom"}}
+                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsAlphabetical" value=true title="Alphabétique" groupBinding="tatIsRandom"}}
+                        {{view LxxlLib.Em.RadioButton name="tat_options_sort" checkedBinding="tatIsRandom" value=false title="Aléatoire" groupBinding="tatIsRandom"}}
                     {{/if}}
                   </fieldset>
                 </form>

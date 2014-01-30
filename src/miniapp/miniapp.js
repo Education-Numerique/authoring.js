@@ -1,7 +1,7 @@
 // UP TO YOU
 
 //jsBoot.controllers.application.login("viapanda@gmail.com", "XXXXX", true);
-// jsBoot.controllers.application.login("jb@touchard.org", "gabuzomeux", true);
+jsBoot.controllers.application.login("jb@touchard.org", "gabuzomeux", true);
 //throw "stop here for now";
 
 /**
@@ -38,12 +38,10 @@ LxxlLib.service.activities.list(function(d){
 
 });
 */
-/*
 
- * Comment récupérer une activité 
+/** Comment récupérer une activité 
 
-//var acti = LxxlLib.factories.activities.getById('517757c83361eb192e9c67b8');
-var acti = LxxlLib.service.activities.getById('517757c83361eb192e9c67b8');
+var acti = LxxlLib.factories.activities.getById('517757c83361eb192e9c67b8');
 acti.pull(function(){
   // -> une fois que l'objet sera mis à jour par le retour réseau de pull
   console.warn(acti.draft.title);

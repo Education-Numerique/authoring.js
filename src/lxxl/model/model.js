@@ -6,6 +6,7 @@ jsBoot.use('jsBoot.core.Error');
 jsBoot.use('jsBoot.service.core').as('servicesCore');
 jsBoot.use('LxxlLib.service.activities', true).as('service');
 jsBoot.use('LxxlLib.service.blob', true).as('blobService');
+
 jsBoot.pack('LxxlLib.model', function (api) {
     'use strict';
 
@@ -77,7 +78,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
 
     this.Page = api.TypedMutable.bind({}, {
         flavor: this.Flavor,
-        title: 'Titre de la page',
+        title: '',
         subtitle: '',
         advice: '',
         hasDocument: false,
@@ -128,8 +129,8 @@ jsBoot.pack('LxxlLib.model', function (api) {
     });
 
     var SubActivity = api.TypedMutable.bind({}, {
-        title: '',
-        description: '',
+        title: 'Nouvelle Activité',
+        description: 'Présentez ici votre activité en 200 caractères.' ,
         contributors: api.ArrayMutable.bind({}, this.User),
         extraContributors: api.ArrayMutable.bind({}, ''),
         level: this.Level,//new this.Level({id: 'other'}),

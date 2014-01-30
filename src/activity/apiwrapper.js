@@ -2,13 +2,14 @@
     /*jshint devel: true*/
     'use strict';
     /*
+    // Uncomment this to get Fake LMS to console
      window.API = {};
      ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
      'GetDiagnostic'].forEach(function(key) {
-     window.API[key] = function(a, b, c) {
-     console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c);
-     return '0';
-     };
+         window.API[key] = function(a, b, c) {
+             console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c);
+             return '0';
+         };
      });
      */
     /*
@@ -889,7 +890,7 @@
             });
 
             // place a 'activité' var in 'this' to be accessible by eval
-            var activité = getActivityNotes();
+            var activite = getActivityNotes();
 
             var getValueOf = function (expression) {
                 var value;
@@ -915,7 +916,7 @@
             });
 
             // value parsing
-            var noteRegex = /(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
+            var noteRegex = /(activite\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
             performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
                 var expression = span.dataset.expression;
                 var groups = expression.match(noteRegex);
