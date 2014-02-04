@@ -373,7 +373,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
                     var mustachesContent = page.document.match(mustacheRegex);
                     if (!!mustachesContent){
                         return mustachesContent.every(function (content) {
-                            var contentRegex = /^{{(#if(.*)|\/if|activite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
+                            var contentRegex = /^{{(\/if|#if(?:.*?)activite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
                             return !!content.replace(/ /g, '').match(contentRegex);
                         });
                     }
