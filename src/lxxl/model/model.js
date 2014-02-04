@@ -368,7 +368,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
             if (!ok)
                 err = this.NO_GOOD_ANSWER;
 
-
+/*
             var perfPagesOk = this.draft.pages
                 .filter(function (page) {
                     return page.flavor.id == "perf" && !!page.document;
@@ -385,6 +385,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
             if (!perfPagesOk){
                 err = this.PERF_MUSTACHE_MALFORMED;
             }
+*/
 
             if (this.draft.pages.length < 1)
                 err = this.ONE_PAGE;
