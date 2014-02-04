@@ -1,3 +1,6 @@
+/**********************************************************************/
+/*         /src/app/common/controllers/pages/activity.js              */
+/**********************************************************************/
 (function () {
     'use strict';
     this.ActivityEditController = Ember.ObjectController.extend({
@@ -99,9 +102,6 @@
                     $('#download-package-scorm').modal('show');
                 });
             }
-            //       var zip = new JSZip();
-
-            // zip.file("RAGOUT/Hello.txt", "Hello World\n");
         },
 
 
@@ -235,7 +235,6 @@
         }.property('currentPage', 'currentPage.displayHolesRandomly')),
 
         tatIsRandom: (function (k, v) {
-
             if (arguments.length === 1) {
                 return this.get('currentPage.displayHolesRandomly');
             }
@@ -252,7 +251,6 @@
             this.get('currentPage').set('limitedTime', value ? 60 : 0);
 
             return !!this.get('currentPage.limitedTime');
-
         }.property('currentPage', 'currentPage.limitedTime')),
 
 

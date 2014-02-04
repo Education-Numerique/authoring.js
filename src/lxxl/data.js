@@ -521,121 +521,121 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         ]}
     ]},
 
-    {id: 'hist_six', title: 'Histoire - Sixième', matter: {id: 'hist'}, level: {id: 'six'}, long_title: 'Sixième', content: [
-        {id: 'hist_six_1', title: 'L\'Orient ancient', content: [
-            {id: 'hist_six_1_1', title: 'Premières civilisations'},
-            {id: 'hist_six_1_2', title: 'Premières écritures'}
+    {id: 'his_six', title: 'Histoire - Sixième', matter: {id: 'his'}, level: {id: 'six'}, long_title: 'Sixième', content: [
+        {id: 'his_six_1', title: 'L\'Orient ancient', content: [
+            {id: 'his_six_1_1', title: 'Premières civilisations'},
+            {id: 'his_six_1_2', title: 'Premières écritures'}
         ]},
-        {id: 'hist_six_2', title: 'La civilisation grecque', content: [
-            {id: 'hist_six_2_1', title: 'Aux fondements de la Grèce : cités, mythes et panhellénisme'},
-            {id: 'hist_six_2_2', title: 'La Cité des Athéniens : citoyenneté et démocratie'},
-            {id: 'hist_six_2_3', title: 'Alexandre le Grand'},
-            {id: 'hist_six_2_4', title: 'La Grèce des savants'}
+        {id: 'his_six_2', title: 'La civilisation grecque', content: [
+            {id: 'his_six_2_1', title: 'Aux fondements de la Grèce : cités, mythes et panhellénisme'},
+            {id: 'his_six_2_2', title: 'La Cité des Athéniens : citoyenneté et démocratie'},
+            {id: 'his_six_2_3', title: 'Alexandre le Grand'},
+            {id: 'his_six_2_4', title: 'La Grèce des savants'}
         ]},
-        {id: 'hist_six_3', title: 'Rome', content: [
-            {id: 'hist_six_3_1', title: 'Des origines à la fin de la République'},
-            {id: 'hist_six_3_2', title: 'L\'Empire : l\'Empereur, la ville, la romanisation'}
+        {id: 'his_six_3', title: 'Rome', content: [
+            {id: 'his_six_3_1', title: 'Des origines à la fin de la République'},
+            {id: 'his_six_3_2', title: 'L\'Empire : l\'Empereur, la ville, la romanisation'}
         ]},
-        {id: 'hist_six_4', title: 'Les débuts du judaïsme et du christianisme', content: [
-            {id: 'hist_six_4_1', title: 'Les débuts du judaïsme'},
-            {id: 'hist_six_4_2', title: 'Les débuts du christianisme'}
+        {id: 'his_six_4', title: 'Les débuts du judaïsme et du christianisme', content: [
+            {id: 'his_six_4_1', title: 'Les débuts du judaïsme'},
+            {id: 'his_six_4_2', title: 'Les débuts du christianisme'}
         ]},
-        {id: 'hist_six_5', title: 'Les empires chrétiens du haut Moyen-âge', content: [
-            {id: 'hist_six_5_1', title: 'L\'empire byzantin'},
-            {id: 'hist_six_5_2', title: 'L\'empire carolingien'}
+        {id: 'his_six_5', title: 'Les empires chrétiens du haut Moyen-âge', content: [
+            {id: 'his_six_5_1', title: 'L\'empire byzantin'},
+            {id: 'his_six_5_2', title: 'L\'empire carolingien'}
         ]},
-        {id: 'hist_six_6', title: 'Regards sur des mondes lointains', content: [
-            {id: 'hist_six_6_1', title: 'La Chine des Han à son apogée'},
-            {id: 'hist_six_6_2', title: 'L\'Inde classique au IVe et Ve siècles'}
+        {id: 'his_six_6', title: 'Regards sur des mondes lointains', content: [
+            {id: 'his_six_6_1', title: 'La Chine des Han à son apogée'},
+            {id: 'his_six_6_2', title: 'L\'Inde classique au IVe et Ve siècles'}
         ]}
     ]},
 
-    {id: 'hist_five', title: 'Histoire - Cinquième', matter: {id: 'hist'}, level: {id: 'five'}, long_title: 'Cinquième', content: [
-        {id: 'hist_five_1', title: 'Les débuts de l\'Islam', content: [
-            {id: 'hist_five_1_1', title: 'Contexte'},
-            {id: 'hist_five_1_2', title: 'Les textes'},
-            {id: 'hist_five_1_3', title: 'Vie quotidienne'}
+    {id: 'his_five', title: 'Histoire - Cinquième', matter: {id: 'his'}, level: {id: 'five'}, long_title: 'Cinquième', content: [
+        {id: 'his_five_1', title: 'Les débuts de l\'Islam', content: [
+            {id: 'his_five_1_1', title: 'Contexte'},
+            {id: 'his_five_1_2', title: 'Les textes'},
+            {id: 'his_five_1_3', title: 'Vie quotidienne'}
         ]},
-        {id: 'hist_five_2', title: 'L\'occident féodal (XI-XVe)', content: [
-            {id: 'hist_five_2_1', title: 'Paysans et seigneurs'},
-            {id: 'hist_five_2_2', title: 'Féodaux, souverains, premiers Etats'},
-            {id: 'hist_five_2_3', title: 'La place de l\'Église'}
+        {id: 'his_five_2', title: 'L\'occident féodal (XI-XVe)', content: [
+            {id: 'his_five_2_1', title: 'Paysans et seigneurs'},
+            {id: 'his_five_2_2', title: 'Féodaux, souverains, premiers Etats'},
+            {id: 'his_five_2_3', title: 'La place de l\'Église'}
         ]},
-        {id: 'hist_five_3', title: 'Regards sur l\'Afrique', content: [
-            {id: 'hist_five_3_1', title: 'Une civilisation africaine'},
-            {id: 'hist_five_3_2', title: 'Les grands échanges'},
-            {id: 'hist_five_3_3', title: 'Les traites'}
+        {id: 'his_five_3', title: 'Regards sur l\'Afrique', content: [
+            {id: 'his_five_3_1', title: 'Une civilisation africaine'},
+            {id: 'his_five_3_2', title: 'Les grands échanges'},
+            {id: 'his_five_3_3', title: 'Les traites'}
         ]},
-        {id: 'hist_five_4', title: 'Vers la modernité (XV-XVIIe)', content: [
-            {id: 'hist_five_4_1', title: 'Bouleversements culturels et intellectuels'},
-            {id: 'hist_five_4_2', title: 'L\'émergence du \'Roi absolu\' '}
+        {id: 'his_five_4', title: 'Vers la modernité (XV-XVIIe)', content: [
+            {id: 'his_five_4_1', title: 'Bouleversements culturels et intellectuels'},
+            {id: 'his_five_4_2', title: 'L\'émergence du \'Roi absolu\' '}
         ]}
     ]},
 
-    {id: 'hist_four', title: 'Histoire - Quatrième', matter: {id: 'hist'}, level: {id: 'four'}, long_title: 'Quatrième', content: [
-        {id: 'hist_four_1', title: 'Thème transversal : les arts, témoins de l\'Histoire (XVIII-XXe)', content: [
-            {id: 'hist_four_1_1', title: 'Œuvres littéraires'},
-            {id: 'hist_four_1_2', title: 'Œuvres de compositeurs'},
-            {id: 'hist_four_1_3', title: 'Œuvres architecturale'},
-            {id: 'hist_four_1_4', title: 'Tableaux, sculptures'},
-            {id: 'hist_four_1_5', title: 'Photos et premiers films'},
-            {id: 'hist_four_1_6', title: 'Méthodologie'}
+    {id: 'his_four', title: 'Histoire - Quatrième', matter: {id: 'his'}, level: {id: 'four'}, long_title: 'Quatrième', content: [
+        {id: 'his_four_1', title: 'Thème transversal : les arts, témoins de l\'Histoire (XVIII-XXe)', content: [
+            {id: 'his_four_1_1', title: 'Œuvres littéraires'},
+            {id: 'his_four_1_2', title: 'Œuvres de compositeurs'},
+            {id: 'his_four_1_3', title: 'Œuvres architecturale'},
+            {id: 'his_four_1_4', title: 'Tableaux, sculptures'},
+            {id: 'his_four_1_5', title: 'Photos et premiers films'},
+            {id: 'his_four_1_6', title: 'Méthodologie'}
         ]},
-        {id: 'hist_four_2', title: 'L\'Europe et le Monde au XVIIIe', content: [
-            {id: 'hist_four_2_1', title: 'L\'Europe dans le Monde au début du XVIIIe'},
-            {id: 'hist_four_2_2', title: 'L\'Europe des Lumières'},
-            {id: 'hist_four_2_3', title: 'Traites négrières et esclavage'},
-            {id: 'hist_four_2_4', title: 'Difficultés de la Monarchie sous Louis XVI'}
+        {id: 'his_four_2', title: 'L\'Europe et le Monde au XVIIIe', content: [
+            {id: 'his_four_2_1', title: 'L\'Europe dans le Monde au début du XVIIIe'},
+            {id: 'his_four_2_2', title: 'L\'Europe des Lumières'},
+            {id: 'his_four_2_3', title: 'Traites négrières et esclavage'},
+            {id: 'his_four_2_4', title: 'Difficultés de la Monarchie sous Louis XVI'}
         ]},
-        {id: 'hist_four_3', title: 'La Révolution et l\'Empire', content: [
-            {id: 'hist_four_3_1', title: 'Les temps forts de la Révolution'},
-            {id: 'hist_four_3_2', title: 'Les fondations d\'une France nouvelle'},
-            {id: 'hist_four_3_3', title: 'La France et l\'Europe en 1815'}
+        {id: 'his_four_3', title: 'La Révolution et l\'Empire', content: [
+            {id: 'his_four_3_1', title: 'Les temps forts de la Révolution'},
+            {id: 'his_four_3_2', title: 'Les fondations d\'une France nouvelle'},
+            {id: 'his_four_3_3', title: 'La France et l\'Europe en 1815'}
         ]},
-        {id: 'hist_four_4', title: 'Le XIXe siècle', content: [
-            {id: 'hist_four_4_1', title: 'L\'âge industriel'},
-            {id: 'hist_four_4_2', title: 'L\'évolution politique de la France, 1815-1914'},
-            {id: 'hist_four_4_3', title: 'L\'affirmation des nationalismes'},
-            {id: 'hist_four_4_4', title: 'Les colonies'},
-            {id: 'hist_four_4_5', title: 'Carte de l\'Europe en 1914'}
+        {id: 'his_four_4', title: 'Le XIXe siècle', content: [
+            {id: 'his_four_4_1', title: 'L\'âge industriel'},
+            {id: 'his_four_4_2', title: 'L\'évolution politique de la France, 1815-1914'},
+            {id: 'his_four_4_3', title: 'L\'affirmation des nationalismes'},
+            {id: 'his_four_4_4', title: 'Les colonies'},
+            {id: 'his_four_4_5', title: 'Carte de l\'Europe en 1914'}
         ]}
     ]},
 
-    {id: 'hist_three', title: 'Histoire - Troisième', matter: {id: 'hist'}, level: {id: 'three'}, long_title: 'Troisième', content: [
-        {id: 'hist_three_1', title: 'Thème transversal : les arts, témoins de l\'Histoire (XX-XXIe)', content: [
-            {id: 'hist_three_1_1', title: 'Œuvres littéraires'},
-            {id: 'hist_three_1_2', title: 'Œuvres de compositeurs'},
-            {id: 'hist_three_1_3', title: 'Œuvres architecturale'},
-            {id: 'hist_three_1_4', title: 'Tableaux, sculptures'},
-            {id: 'hist_three_1_5', title: 'Photos et premiers films'},
-            {id: 'hist_three_1_6', title: 'Méthodologie'}
+    {id: 'his_three', title: 'Histoire - Troisième', matter: {id: 'his'}, level: {id: 'three'}, long_title: 'Troisième', content: [
+        {id: 'his_three_1', title: 'Thème transversal : les arts, témoins de l\'Histoire (XX-XXIe)', content: [
+            {id: 'his_three_1_1', title: 'Œuvres littéraires'},
+            {id: 'his_three_1_2', title: 'Œuvres de compositeurs'},
+            {id: 'his_three_1_3', title: 'Œuvres architecturale'},
+            {id: 'his_three_1_4', title: 'Tableaux, sculptures'},
+            {id: 'his_three_1_5', title: 'Photos et premiers films'},
+            {id: 'his_three_1_6', title: 'Méthodologie'}
         ]},
-        {id: 'hist_three_2', title: 'Le XXe : un siècle de transformations', content: [
-            {id: 'hist_three_2_1', title: 'Grandes innovations scientifiques et technologiques'},
-            {id: 'hist_three_2_2', title: 'Evolution de la production et conséquences sociales'}
+        {id: 'his_three_2', title: 'Le XXe : un siècle de transformations', content: [
+            {id: 'his_three_2_1', title: 'Grandes innovations scientifiques et technologiques'},
+            {id: 'his_three_2_2', title: 'Evolution de la production et conséquences sociales'}
         ]},
-        {id: 'hist_three_3', title: 'Guerres mondiales et régimes totalitaires', content: [
-            {id: 'hist_three_3_1', title: 'La 1ère Guerre mondiale, guerre totale (1914-18)'},
-            {id: 'hist_three_3_2', title: 'Les régimes totalitaires des années 1930'},
-            {id: 'hist_three_3_3', title: 'La 2de Guerre mondiale, guerre d\'anéantissement (1939-45)'}
+        {id: 'his_three_3', title: 'Guerres mondiales et régimes totalitaires', content: [
+            {id: 'his_three_3_1', title: 'La 1ère Guerre mondiale, guerre totale (1914-18)'},
+            {id: 'his_three_3_2', title: 'Les régimes totalitaires des années 1930'},
+            {id: 'his_three_3_3', title: 'La 2de Guerre mondiale, guerre d\'anéantissement (1939-45)'}
         ]},
-        {id: 'hist_three_4', title: 'Une géopolitique mondiale', content: [
-            {id: 'hist_three_4_1', title: 'La Guerre froide (1945-91)'},
-            {id: 'hist_three_4_2', title: 'Des colonies aux États nouvellement indépendants'},
-            {id: 'hist_three_4_3', title: 'La construction européenne (jusqu\'à 2000)'},
-            {id: 'hist_three_4_4', title: 'Le monde depuis le début des années 1990'}
+        {id: 'his_three_4', title: 'Une géopolitique mondiale', content: [
+            {id: 'his_three_4_1', title: 'La Guerre froide (1945-91)'},
+            {id: 'his_three_4_2', title: 'Des colonies aux États nouvellement indépendants'},
+            {id: 'his_three_4_3', title: 'La construction européenne (jusqu\'à 2000)'},
+            {id: 'his_three_4_4', title: 'Le monde depuis le début des années 1990'}
         ]},
-        {id: 'hist_three_5', title: 'La vie politique en France', content: [
-            {id: 'hist_three_5_1', title: 'La République de l\'Entre-deux-guerres'},
-            {id: 'hist_three_5_2', title: 'Effondrement et refondation républicaine (1940-46)'},
-            {id: 'hist_three_5_3', title: 'De Gaulle et nouveau système républicain (1958-69)'},
-            {id: 'hist_three_5_4', title: 'La Ve République à l\'épreuve de sa durée'}
+        {id: 'his_three_5', title: 'La vie politique en France', content: [
+            {id: 'his_three_5_1', title: 'La République de l\'Entre-deux-guerres'},
+            {id: 'his_three_5_2', title: 'Effondrement et refondation républicaine (1940-46)'},
+            {id: 'his_three_5_3', title: 'De Gaulle et nouveau système républicain (1958-69)'},
+            {id: 'his_three_5_4', title: 'La Ve République à l\'épreuve de sa durée'}
         ]},
-        {id: 'hist_three_6', title: 'Repères de fin de collège', content: [
-            {id: 'hist_three_6_1', title: 'Dates importantes'},
-            {id: 'hist_three_6_2', title: 'Notions importantes'},
-            {id: 'hist_three_6_3', title: 'Personnages importants'},
-            {id: 'hist_three_6_4', title: 'Méthodologie du Brevet'}
+        {id: 'his_three_6', title: 'Repères de fin de collège', content: [
+            {id: 'his_three_6_1', title: 'Dates importantes'},
+            {id: 'his_three_6_2', title: 'Notions importantes'},
+            {id: 'his_three_6_3', title: 'Personnages importants'},
+            {id: 'his_three_6_4', title: 'Méthodologie du Brevet'}
         ]}
     ]},
 

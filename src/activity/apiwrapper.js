@@ -1,7 +1,7 @@
 (function () {
     /*jshint devel: true*/
     'use strict';
-    /*
+    /******************************************************************
     // Uncomment this to get Fake LMS to console
      window.API = {};
      ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
@@ -11,7 +11,7 @@
              return '0';
          };
      });
-     */
+     ******************************************************************/
     /*
      SCORM 2004 (API_1484_11)
 
@@ -129,7 +129,6 @@
         return (!initialized || !(initialized = !api.Terminate(''))) && !(api = null);
     };
 
-
     scormAPI.getLastError = function () {
         if (!api)
             return {
@@ -170,7 +169,6 @@
             return;
         return api.Commit('');
     };
-
 
     scormAPI.status = {
         PASSED: 'passed',
@@ -488,9 +486,7 @@
         //   seconds = Math.round(seconds / 1000);
         //   var S = seconds % 60;
         //   seconds -= S;
-        //   if (S < 10) {
-        //     S = '0' + S;
-        //   }
+        //   if (S < 10) {S = '0' + S;}
         //   var M = (seconds / 60) % 60;
         //   if (M < 10) {M = '0' + M;}
         //   var H = Math.floor(seconds / 3600);

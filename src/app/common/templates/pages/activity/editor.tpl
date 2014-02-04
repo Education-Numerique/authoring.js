@@ -15,14 +15,14 @@
                 {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
 
                 {{#if content.controller.isPublished}}
-                {{#view view.UnpublishActivityButton modalName="unpublishActivity" classNames="btn btn-warning btn-mini" data-toggle="modal" href="#modal-unpublish-activity"}}dépublier{{/view}}
+                  {{#view view.UnpublishActivityButton modalName="unpublishActivity" classNames="btn btn-warning btn-mini" data-toggle="modal" href="#modal-unpublish-activity"}}dépublier{{/view}}
+                {{else}}
+                  <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
                 {{/if}}
 
                 <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Partager</button>
 
                 <button type="button" {{action exportScorm target="controller"}} class="btn btn-mini">Exporter SCORM</button>
-
-                <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
 
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
 

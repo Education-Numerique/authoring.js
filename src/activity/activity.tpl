@@ -11,13 +11,14 @@
 
   <header>
     <!-- Titre de l'activité -->
-    <h1>{{title}}&nbsp;&nbsp;&nbsp;<em> par {{author.username}}</em></h1>
+    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong> par&nbsp;&nbsp;<em>{{author.username}}</em></h1>
   </header>
 
   <!-- Sommaire -->
   <div id="playing" class="row-fluid content-container">
 
   <aside class="span3 side-menu pull-right">
+
     {{#if extra.attachments.length}}
     <nav>
       <h2>Documents</h2>
@@ -30,6 +31,7 @@
       </ul>
     </nav>
     {{/if}}
+
     <nav>
       <h2>Sommaire</h2>
       <ul class="pages-list">
@@ -51,6 +53,7 @@
           {{#ifequalhelp flavor.id "perf"}}
           <li class="page-perf">
           {{/ifequalhelp}}
+
             <a href="#">
               <!--
               <span class="icon">
@@ -106,11 +109,11 @@
       <h5 class="clocker" data-chrono="{{limitedTime}}" data-binding="{{id}}"></h5>  -->
 
       {{#if advice}}
-      <div>{{{advice}}}</div>
+        <div>{{{advice}}}</div>
       {{/if}}
 
       {{#ifequalhelp flavor.id "perf"}}
-         <div>{{{document}}}</div>
+        <div>{{{document}}}</div>
       {{/ifequalhelp}}
 
       {{#ifequalhelp flavor.id "simple"}}
@@ -200,8 +203,9 @@
         {{#if hasDocument}}
           <div class="side-document">{{{document}}}</div>
         {{/if}}
+        
         <div>
-            <dl>
+          <dl>
           {{reset_index "qid"}}
           {{#each questions}}
               <dt id="questions-{{../id}}-{{index 'qid'}}">{{{text}}}</dt>
@@ -265,8 +269,8 @@
 
 
                 {{/if}}
-      <!--                    {{isCorrect}}
-                    {{weight}} -->
+      <!--                    [[isCorrect]]
+                    [[weight]] -->
               </dd>
           {{/each}}
             </dl>
@@ -282,8 +286,8 @@
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
             </div>
           </div>
-
         </div>
+
       {{/ifequalhelp}}
 
     </article>
@@ -310,14 +314,14 @@
             {{#ifequalhelp flavor "quizz"}}
               {{#each questions}}
                 <p>{{text}}</p>
-<!--              {{coef}} -->
+<!--              [[coef]] -->
                 <ul>
                   {{#each answers}}
                   <li>
                     <input type="radio" />
                     {{text}} <quote>{{comment}}</quote>
-<!--                    {{isCorrect}}
-                    {{weight}} -->
+<!--                    [[isCorrect]]
+                    [[weight]] -->
                   </li>
                   {{/each}}
                 </ul>
@@ -327,14 +331,14 @@
             {{#ifequalhelp flavor "quizzMulti"}}
               {{#each questions}}
                 <p>{{text}}</p>
-<!--              {{coef}} -->
+<!--              [[coef]]< -->
                 <ul>
                   {{#each answers}}
                   <li>
                     <input type="checkbox" />
                     {{text}} <quote>{{comment}}</quote>
-<!--                    {{isCorrect}}
-                    {{weight}} -->
+<!--                    [[isCorrect]]
+                    [[weight]] -->
                   </li>
                   {{/each}}
                 </ul>

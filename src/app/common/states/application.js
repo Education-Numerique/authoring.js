@@ -296,12 +296,12 @@
               if (!isLogged) {
                 router.transitionTo('account.login');
               } else {
-// JBT 01/14 Bug : l'activité est créée, 
-// mais ça plante quand on va directement vers la page d'édition de l'activité. 
-// du coup, j'ai décidé de rester dans myActivities (ligne suivante)
+                // JBT 01/14 Bug : l'activité est créée, 
+                // mais ça plante quand on va directement vers la page d'édition de l'activité. 
+                // du coup, j'ai décidé de rester dans myActivities (ligne suivante)
                 router.transitionTo('myActivities');
-// je crois que) la suite, qui semble bugger n'est pas prise en compte
-// ******************************
+                // je crois que) la suite, qui semble bugger n'est pas prise en compte
+                // ******************************
                 act.push();
                 act.addObserver('id', function() {
                   // console.warn('new activity pushed ', act.id);

@@ -17,35 +17,38 @@
                 
             </div>
             <div class="options">
-                <!--
-                    Activate / deactive
-                    Minutes / secondes
+                <div  style="display:none;">
+                <!-- ********* inactif >>>>> display none ************* -->
+                    <!--
+                        Activate / deactive
+                        Minutes / secondes
 
-                    limitedTime : 0 infini
-                //-->
-                {{#view view.TimeButton classNames="btn multicontrol master-button nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}
-                    <span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité 
-                        {{#if pageActivatedLimitedTime}}
-                            ({{#bind minutes.selected.id}}{{pad this}}{{/bind}}:{{#bind seconds.selected.id}}{{pad this}}{{/bind}})
-                        {{/if}}
-                    </span>
-                {{/view}}
+                        limitedTime : 0 infini
+                    //-->
+                    {{#view view.TimeButton classNames="btn multicontrol master-button nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}
+                        <span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité 
+                            {{#if pageActivatedLimitedTime}}
+                                ({{#bind minutes.selected.id}}{{pad this}}{{/bind}}:{{#bind seconds.selected.id}}{{pad this}}{{/bind}})
+                            {{/if}}
+                        </span>
+                    {{/view}}
+                </div>
                 <!--
                     displayAll (bool) All together / one by one
                     sequencing || Random : All | number
                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                 //-->
-                    <div {{action toggleRandom target="this"}} type="button" class="name btn master-button radioblock">
-                        {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.sequencing"}}
-                        Aléatoire
-                    </div>
-<!--
-                    <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
-                        [[view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"]]
-                        Side document
-                    </button>
--->
-                
+                <div {{action toggleRandom target="this"}} type="button" class="name btn master-button radioblock">
+                    {{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.sequencing"}}
+                    Aléatoire
+                </div>
+                <!--
+                <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
+                    [[view LxxlLib.Ember.Checkbox checkedBinding="currentPage.hasDocument"]]
+                    Side document
+                </button>
+                -->
+            
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
 

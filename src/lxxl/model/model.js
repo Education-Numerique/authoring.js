@@ -365,6 +365,10 @@ jsBoot.pack('LxxlLib.model', function (api) {
                 }
             });
 
+            if (!ok)
+                err = this.NO_GOOD_ANSWER;
+
+
             var perfPagesOk = this.draft.pages
                 .filter(function (page) {
                     return page.flavor.id == "perf" && !!page.document;
@@ -373,14 +377,10 @@ jsBoot.pack('LxxlLib.model', function (api) {
                     var mustacheRegex = /{{(.*?)}}/g;
                     var mustachesContent = page.document.match(mustacheRegex);
                     return mustachesContent.every(function (content) {
-                        var contentRegex = /^{{(#if(.*)|\/if|activité\.(pages\[\d]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?)}}$/i;
+                        var contentRegex = /^{{(#if(.*)|\/if|activite\.(pages\[\d]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d]\.)?note)(\[\/(20|100)\])?)}}$/i;
                         return !!content.replace(/ /g, '').match(contentRegex);
                     });
                 });
-
-
-            if (!ok)
-                err = this.NO_GOOD_ANSWER;
 
             if (!perfPagesOk){
                 err = this.PERF_MUSTACHE_MALFORMED;
