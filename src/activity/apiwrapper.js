@@ -888,8 +888,8 @@
                 }
             });
 
-            // place a 'activité' var in 'this' to be accessible by eval
-            var activité = getActivityNotes();
+            // place a 'activite' var in 'this' to be accessible by eval
+            var activite = getActivityNotes();
 
             var getValueOf = function (expression) {
                 var value;
@@ -916,7 +916,7 @@
 
             // value parsing
             // https://www.debuggex.com/r/570povZvScbDEdAM
-            var noteRegex = /(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
+            var noteRegex = /(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?$/i;
             performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
                 var expression = span.dataset.expression;
                 var groups = expression.match(noteRegex);
@@ -924,7 +924,7 @@
                     scale = (groups[4] >> 0) || 100; // retrieve specified scale or take 100 by default
 
                 var note = getValueOf(noteExpression) / (100 / scale);
-                note = note.isNaN() ? 0 : note;
+                note = note.isNaN() ? 0 : note; // Eventuellement un jour mettre "exercice non fait"
                 span.innerHTML = note + "/" + scale;
             });
         };

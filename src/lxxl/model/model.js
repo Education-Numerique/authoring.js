@@ -371,10 +371,13 @@ jsBoot.pack('LxxlLib.model', function (api) {
                 .every(function (page) {
                     var mustacheRegex = /{{(.*?)}}/g;
                     var mustachesContent = page.document.match(mustacheRegex);
-                    return mustachesContent.every(function (content) {
-                        var contentRegex = /^{{(#if(.*)|\/if|activité\.(pages\[\d]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activité\.(pages\[\d]\.)?note)(\[\/(20|100)\])?)}}$/i;
-                        return !!content.replace(/ /g, '').match(contentRegex);
-                    });
+                    if (!!mustachesContent){
+                        return mustachesContent.every(function (content) {
+                            var contentRegex = /^{{(#if(.*)|\/if|activite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
+                            return !!content.replace(/ /g, '').match(contentRegex);
+                        });
+                    }
+                    return true;
                 });
 
 
