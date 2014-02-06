@@ -14,11 +14,14 @@
                 </div>
                 {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
 
-                {{#if content.controller.isPublished}}
-                  {{#view view.UnpublishActivityButton modalName="unpublishActivity" classNames="btn btn-warning btn-mini" data-toggle="modal" href="#modal-unpublish-activity"}}dépublier{{/view}}
-                {{else}}
-                  <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
-                {{/if}}
+<!-- JBT 01/2014 l'auteur n'a plus le droit de dépublier .... C'est réservé à E&N
+                [[#if content.controller.isPublished]]
+                  [[#view view.UnpublishActivityButton modalName="unpublishActivity" classNames="btn btn-warning btn-mini" data-toggle="modal" href="#modal-unpublish-activity"]]dépublier[[/view]]
+                [[else]]
+                [[/if]]
+-------------------------------------------------------------------- -->
+
+                <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
 
                 <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Partager</button>
 
@@ -27,7 +30,6 @@
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
 
                 <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
-
 
             </div>
             <div class="widget-content nopadding main-container">
@@ -218,7 +220,8 @@
   </div>
   <div class="modal-body">
     Le brouillon de votre activité a bien été sauvegardé.<br />
-    En fait, cette sauvegarde est automatique. Vous devriez pratiquement toujours récupérer votre travail, n'importe où, n'importe quand. C'est l'une des magies du Cloud ...
+    En fait, cette sauvegarde est automatique. Vous devriez pratiquement toujours récupérer votre travail, n'importe où, n'importe quand.<br />
+    <small>Attention à ne pas avoir plusieurs instances de votre activité en cours de publication ouvertes en même temps. Vous risqueriez de tout perdre à cause d'une instance que vous auriez oublié de refermer ...</small>
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Ok</a>
@@ -230,7 +233,9 @@
     <h3>Activité publiée</h3>
   </div>
   <div class="modal-body">
-    Cette version de votre activité a bien été publiée. Elle est désormais consultable par tous dans le Catalogue.
+    Cette version de votre activité a bien été publiée. Elle est désormais consultable par tous dans le Catalogue.<br />
+    Nous vous rappelons que l'association se réserve le droit de présenter votre activité sur son site. (<a href='http://www.education-et-numérique.org' target='_blank'>Conditions Générales</a>)<br />
+    Si vous continuez à travailler, seul votre <strong>brouillon</strong> sera modifié tant que vous n'aurez pas utilisé à nouveau le bouton "Publier".
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Ok</a>
