@@ -55,13 +55,9 @@
 
   // Composants tiers
   jsBoot.loader.use('bootstrap');
-
   jsBoot.loader.use('raphael');
-
   jsBoot.loader.use('validate');
-
   jsBoot.loader.use('datatable');
-
   jsBoot.loader.wait(function(){
      console.warn("j'ai les composants tiers");
   });
@@ -73,9 +69,6 @@
   jsBoot.loader.use(bootRoot + 'activity/scoring.js');
   jsBoot.loader.wait();
   jsBoot.loader.use(bootRoot + 'activity/activity.js');
-
- 
-
 
   // On attend tout ça...
   jsBoot.loader.wait(function(){

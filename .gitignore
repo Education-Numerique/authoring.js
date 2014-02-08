@@ -3,6 +3,7 @@
 *.sublime-project
 *.sublime-workspace
 *.pyc
+config.yaml
 /build/
 /tmp/
 *.iml

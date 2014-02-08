@@ -1,7 +1,8 @@
+console.warn("bienvenue dans miniapp !!!");
 // UP TO YOU
 
 //jsBoot.controllers.application.login("viapanda@gmail.com", "XXXXX", true);
-// jsBoot.controllers.application.login("jb@touchard.org", "gabuzomeux", true);
+//jsBoot.controllers.application.login("jb@touchard.org", "gabuzomeux", true);
 //throw "stop here for now";
 
 /**
@@ -38,12 +39,10 @@ LxxlLib.service.activities.list(function(d){
 
 });
 */
-/*
 
- * Comment récupérer une activité 
+/**  récupérer une activité 
 
-//var acti = LxxlLib.factories.activities.getById('517757c83361eb192e9c67b8');
-var acti = LxxlLib.service.activities.getById('517757c83361eb192e9c67b8');
+var acti = LxxlLib.factories.activities.getById('517757c83361eb192e9c67b8');
 acti.pull(function(){
   // -> une fois que l'objet sera mis à jour par le retour réseau de pull
   console.warn(acti.draft.title);
@@ -51,8 +50,8 @@ acti.pull(function(){
 */
 
 /**
- * Access metadata -> Regarder dans model.js pour le détail sur la nature de ces objets
- */
+ * Access metadata -> Regarder dans src/lxxl/data.js pour le détail sur la nature de ces objets
+
 var discs = LxxlLib.factories.metadata.discipline;
 var content = "";
 for (ii=0;ii<discs.length;ii++){
@@ -60,13 +59,23 @@ for (ii=0;ii<discs.length;ii++){
 }
 content = decodeURIComponent(escape(content));
 $("#blabla").html(content);
+*/
 
-//LxxlLib.factories.metadata.flavors;
+var categ = LxxlLib.factories.metadata.getTreeFor('*', '*');
+console.warn(categ);
+var content = "";
+for (ii=0;ii<categ.length;ii++){
+  content += categ[ii].id + "<br />";
+}
+content = decodeURIComponent(escape(content));
+$("#blabla").html(content);
+
 //LxxlLib.factories.metadata.lengths;
-//LxxlLib.factories.metadata.levels;
+//LxxlLib.factories.metadata.difficulties;
+//LxxlLib.factories.metadata.flavors;
 //LxxlLib.factories.metadata.matters;
+//LxxlLib.factories.metadata.discipline; // = matters
+//LxxlLib.factories.metadata.levels;
+//LxxlLib.factories.metadata.categories;
+//    { id: 'eng_tt_lycee', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
 
-
-/**
- * Pour chaque type d'objet, voir ensuite model.js pour les différentes propriétés
- */

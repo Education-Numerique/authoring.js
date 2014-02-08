@@ -23,7 +23,7 @@
     <ul class="nav btn-group user-logged-in">
       <li class="btn btn-inverse" ><a title="{{localize nav.profile.tip}}" {{action showAccountProfile href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-user"></i><span class="text">{{localize nav.profile.text}}</span></a></li>
     <!--
-      <li class="btn btn-mini btn-inverse"><a title="{{localize nav.settings.tip}}"  {{action showAccountSettings href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-cog"></i> <span class="text">{{localize nav.settings.text}}</span></a></li>
+      <li class="btn btn-mini btn-inverse"><a title[[localize nav.settings.tip]]"  [[action showAccountSettings href=true]] rel="tooltip" data-placement="bottom"><i class="icon icon-cog"></i> <span class="text">[[localize nav.settings.text]]</span></a></li>
     -->
       <li class="btn btn-mini btn-inverse"><a title="{{localize nav.logout.tip}}" {{action showAccountLogout href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-off"></i> <span class="text">{{localize nav.logout.text}}</span></a></li>
     </ul>
