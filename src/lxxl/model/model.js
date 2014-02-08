@@ -348,9 +348,12 @@ jsBoot.pack('LxxlLib.model', function (api) {
         i.ONE_PAGE = 'ONE_PAGE';
         i.NO_GOOD_ANSWER = 'NO_GOOD_ANSWER';
         i.PERF_MUSTACHE_MALFORMED = 'PERF_MUSTACHE_MALFORMED';
+        i.errorDescription = "";
 
         i.canPublish = function () {
             var err = false;
+            var self = this;
+            this.errorDescription = "";
 
             var ok = this.draft.pages.every(function (page) {
                 if (page.flavor.id == 'quizz') {
@@ -384,13 +387,17 @@ jsBoot.pack('LxxlLib.model', function (api) {
                     };
 
                     if (!!mustachesContent) {
-                        return mustachesContent.every(function (content) {
-                            content = Object.keys(htmlChars).reduce(function (translated, htmlChar) {
-                                return translated.replace(new RegExp(htmlChar, 'g'), htmlChars[htmlChar])
-                            }, content.replace(/ /g, ''));
+                        return mustachesContent.every(function (mustacheContent) {
+                            var formattedContent = Object.keys(htmlChars).reduce(function (currentFormattedContent, htmlChar) {
+                                return currentFormattedContent.replace(new RegExp(htmlChar, 'g'), htmlChars[htmlChar])
+                            }, mustacheContent.replace(/ /g, ''));
 
                             var contentRegex = /^{{(\/if|#ifactivite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
-                            return !!content.match(contentRegex);
+                            var contentIsValid = !!formattedContent.match(contentRegex);
+                            if (!contentIsValid) {
+                                self.errorDescription += mustacheContent + '<br/>';
+                            }
+                            return contentIsValid;
                         });
                     }
                     return true;
