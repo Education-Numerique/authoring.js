@@ -130,7 +130,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
 
     var SubActivity = api.TypedMutable.bind({}, {
         title: 'Nouvelle Activité',
-        description: 'Présentez ici votre activité en 200 caractères.' ,
+        description: 'Présentez ici votre activité en 200 caractères.',
         contributors: api.ArrayMutable.bind({}, this.User),
         extraContributors: api.ArrayMutable.bind({}, ''),
         level: this.Level,//new this.Level({id: 'other'}),
@@ -348,9 +348,12 @@ jsBoot.pack('LxxlLib.model', function (api) {
         i.ONE_PAGE = 'ONE_PAGE';
         i.NO_GOOD_ANSWER = 'NO_GOOD_ANSWER';
         i.PERF_MUSTACHE_MALFORMED = 'PERF_MUSTACHE_MALFORMED';
+        i.errorDescription = "";
 
         i.canPublish = function () {
             var err = false;
+            var self = this;
+            this.errorDescription = "";
 
             var ok = this.draft.pages.every(function (page) {
                 if (page.flavor.id == 'quizz') {
@@ -365,10 +368,11 @@ jsBoot.pack('LxxlLib.model', function (api) {
                 }
             });
 
-            if (!ok)
+            if (!ok) {
                 err = this.NO_GOOD_ANSWER;
+            }
 
-/*
+
             var perfPagesOk = this.draft.pages
                 .filter(function (page) {
                     return page.flavor.id == "perf" && !!page.document;
@@ -376,16 +380,32 @@ jsBoot.pack('LxxlLib.model', function (api) {
                 .every(function (page) {
                     var mustacheRegex = /{{(.*?)}}/g;
                     var mustachesContent = page.document.match(mustacheRegex);
-                    return mustachesContent.every(function (content) {
-                        var contentRegex = /^{{(#if(.*)|\/if|activite\.(pages\[\d]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d]\.)?note)(\[\/(20|100)\])?)}}$/i;
-                        return !!content.replace(/ /g, '').match(contentRegex);
-                    });
+
+                    var htmlChars = {
+                        '&gt;': '>',
+                        '&lt;': '<'
+                    };
+
+                    if (!!mustachesContent) {
+                        return mustachesContent.every(function (mustacheContent) {
+                            var formattedContent = Object.keys(htmlChars).reduce(function (currentFormattedContent, htmlChar) {
+                                return currentFormattedContent.replace(new RegExp(htmlChar, 'g'), htmlChars[htmlChar])
+                            }, mustacheContent.replace(/ /g, ''));
+
+                            var contentRegex = /^{{(\/if|#ifactivite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
+                            var contentIsValid = !!formattedContent.match(contentRegex);
+                            if (!contentIsValid) {
+                                self.errorDescription += mustacheContent + '<br/>';
+                            }
+                            return contentIsValid;
+                        });
+                    }
+                    return true;
                 });
 
-            if (!perfPagesOk){
+            if (!perfPagesOk) {
                 err = this.PERF_MUSTACHE_MALFORMED;
             }
-*/
 
             if (this.draft.pages.length < 1)
                 err = this.ONE_PAGE;
