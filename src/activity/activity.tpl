@@ -1,3 +1,5 @@
+<script src="jquery.ui.touch-punch.min.js"></script>
+
 <div id="activity-preview-body">
   {{#each styleUri}}
     <link rel="stylesheet" href="{{data}}"></link>
@@ -351,9 +353,10 @@
       </ul>
     </div>
   </section>
-  <div>
+    <footer> 
+      <p>Copyright Education & Numerique</p>
+    </footer>
     <!-- footer : un peu de padding ... -->
-  </div>
 <!--
   <div class="modal hide" id="modal-preview-tat" role="dialog" aria-labelledby="modal-preview-tat-label" aria-hidden="true">
     <div class="modal-header">
@@ -378,4 +381,4 @@
 
 
 <!-- The utter stupidity of modals on modals -->
-<div id="modal-on-modal-lynching" style="display: none; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!-- <div id="modal-on-modal-lynching" style="display: none; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);"></div> -->

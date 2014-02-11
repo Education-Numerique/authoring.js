@@ -2,6 +2,12 @@
  * Empty
  */
 /** Rounded corners **/
+
+html, body {
+  height: 100%;
+}
+
+
 @mixin rounded($radius: 10px) {
   border-radius: $radius;
   -moz-border-radius: $radius;
@@ -108,10 +114,10 @@ body {
 
 #activity-preview-body {
   width: 90%;
-  margin: 20px auto;
-  padding-top: 10px;
+  margin:20px auto;
+  // padding-top: 10px;
   font-family: Arial;
-
+  //min-height: 100%;
   background-color: #FFF;
 
   @include shadow(0, 5px, 15px, rgba(0, 0, 0, 0.5));
@@ -159,7 +165,7 @@ body {
     font: 20px Arial;
     color: rgb(51, 25, 117);
     text-align: justify;
-    margin: 24px 0 12px;
+    //margin: 24px 0 12px;
   }
   h2 {
     height: auto;
@@ -475,4 +481,13 @@ body {
     }
 
   }
+}
+
+footer
+{
+  border-top:1px solid #ccc;
+  padding: 3px 0px 12px 21px;
+  // position:relative;
+  //clear: both;
+  height:32px; /* .push must be the same height as .footer */
 }

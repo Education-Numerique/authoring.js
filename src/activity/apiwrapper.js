@@ -619,12 +619,12 @@
 
         this.MixAndMatchComplete = function (pageId, score) {
             $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
-            $('#modal-on-modal-lynching').show();
+            //$('#modal-on-modal-lynching').show();
             $('.modal', $('#jmt-' + pageId)).modal({
                 backdrop: true
             });
             $('.modal', $('#jmt-' + pageId)).on('hide', function () {
-                $('#modal-on-modal-lynching').hide();
+              //  $('#modal-on-modal-lynching').hide();
                 onPageComplete(pageId, score);
             });
         };

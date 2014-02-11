@@ -230,9 +230,8 @@
       //   console.error('--_> SHOW');
       //   $(this).css('display: block');
       //   // $(this).height($(this).data('hack') + 'px');
-      // };
-
-      $(node).tooltip({selector: '[rel=tooltip]'});
+      // };\
+      $(document).tooltip({selector: '[rel=tooltip]'});
       $('h4', node).next().slideUp();
       $('h4', node).append('<i class="collapse-binder"></i>');
       $('h4', node).data('manuWillHateMeAgain', true);
@@ -241,7 +240,7 @@
       if (!node[0].jobDone) {
         node[0].jobDone = true;
 
-        node.on('click', 'h4', function(/*e*/) {
+        $(document).on('click', 'h4, a', function(/*e*/) {
           var status = $(this).data('manuWillHateMeAgain');
           $(this).data('manuWillHateMeAgain', !status);
           if (status) {
@@ -283,12 +282,12 @@
         var total = $('.propositions > li', container).length;
         page.score = new LxxlScoring.mixScore(total);
 
-
         $('.questions > li', container).droppable({
           activeClass: 'ui-state-active',
           hoverClass: 'ui-state-hover',
           drop: function(event, ui) {
             if (ui.draggable.data('lxxl-proposition') == $(this).data('lxxl-question')) {
+              
               var height = ui.draggable.outerHeight();
               var currentHeight = $(this).find('.title').outerHeight();
 
@@ -303,7 +302,7 @@
               $(this).droppable('disable');
               $(this).addClass('ui-state-correct');
 
-              // console.warn('Result', page.score.getResult(total - $('.propositions > li', container).length));
+              console.warn('Result', page.score.getResult(total - $('.propositions > li', container).length));
               if (!$('.propositions > li', container).length) {
                 LxxlLib.sessionManager.MixAndMatchComplete(index, page.score.getResult(total - $('.propositions > li',
                     container).length));
@@ -370,7 +369,7 @@
 
     this.setupTemplate = function(templateIri) {
       done++;
-      loader(templateIri || 'activity.tpl', note);
+      loader(templateIri ||    'activity.tpl', note);
     };
 
     this.showActivity = function(activityIri, callback, published) {

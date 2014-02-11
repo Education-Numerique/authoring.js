@@ -44,8 +44,8 @@
     //
 
     for (var x = start, item, infos; x < start + addCount; x++) {
-      item = arr[x];
-
+      item = arr[x]; 
+      //console.log(start+addCount); //TOTAL DES ACTIVITE draft et published
       if (cc == '.mydrafts')
         infos = item.draft;
       else
