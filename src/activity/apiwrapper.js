@@ -2,7 +2,7 @@
     /*jshint devel: true*/
     'use strict';
     /******************************************************************
-    // Uncomment this to get Fake LMS to console
+     // Uncomment this to get Fake LMS to console
      window.API = {};
      ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
      'GetDiagnostic'].forEach(function(key) {
@@ -841,7 +841,7 @@
                     subBlocks: {}
                 };
                 var currentBlock = block;
-                var id = 0;
+                var index = 0;
                 var mustacheRegex = /{{(.*?)}}/g;
                 var beginOfIf = /^#if (.*)$/i;
                 var endOfIf = /^\/if$/i;
@@ -852,15 +852,16 @@
                     if (!!(groups = expression.match(beginOfIf))) { // check if it's a begin of an if mustache
 
                         var newBlock = {
-                            id: ++id,
+                            id: ++index,
                             type: "if",
+                            subBlocks: {},
                             parentBlock: currentBlock
                         };
-                        currentBlock.subBlocks[id] = newBlock;
+                        currentBlock.subBlocks[index - 1] = newBlock;
                         currentBlock = newBlock;
                         var ifContent = groups[1].replace(/\s/g, '');
 
-                        result = "<script id='perf-if-open-" + id + "' type='text/x-placeholder' " +
+                        result = "<script id='perf-if-open-" + index + "' type='text/x-placeholder' " +
                             "data-expression='" + ifContent + "'></script>";
                     } else if (expression.match(endOfIf)) { // check if it's a end of an if mustache
                         result = "<script id='perf-if-close-" + currentBlock.id + "' type='text/x-placeholder'></script>";
@@ -870,22 +871,26 @@
                     }
                     return result;
                 });
-                $(section).html(newHtml);
+
+                // remove useless p arround script if tag
+                var $newHtml = $(newHtml);
+                $($newHtml).find('script').each(function (idx, script) {
+                    var $script = $(script);
+                    var scriptParentContent = $script.parent().html()
+                        .replace(/\s/g, '')
+                        .replace(/<br(\/?)>/g, '');
+                    if (!!scriptParentContent.match(/^<scriptid="perf.*<\/script>$/)) {
+                        $script.unwrap();
+                    }
+                });
+
+                $(section).html($newHtml);
             });
         };
 
         var refreshPerformancePage = function (performancePage) {
 
-            // remove useless p arround script if tag
-            performancePage.find('script').each(function (idx, script) {
-                var $script = $(script);
-                var scriptParentContent = $script.parent().html().replace(/\s/g, '');
-                if (!!scriptParentContent.match(/^<scriptid="perf.*<\/script>$/)) {
-                    $script.unwrap();
-                }
-            });
-
-            // place a 'activité' var in 'this' to be accessible by eval
+            // place a 'activite' var in 'this' to be accessible by eval
             var activite = getActivityNotes();
 
             var getValueOf = function (expression) {
@@ -912,7 +917,7 @@
             });
 
             // value parsing
-            var noteRegex = /(activite\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
+            var noteRegex = /(activite\.(pages\[\d{1,4}\]\.)?note)(\[\/(20|100)\])?$/i;
             performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
                 var expression = span.dataset.expression;
                 var groups = expression.match(noteRegex);
@@ -920,6 +925,7 @@
                     scale = (groups[4] >> 0) || 100; // retrieve specified scale or take 100 by default
 
                 var note = getValueOf(noteExpression) / (100 / scale);
+                note = isNaN(note) ? 0 : note; // Eventuellement un jour mettre "exercice non fait"
                 span.innerHTML = note + "/" + scale;
             });
         };
