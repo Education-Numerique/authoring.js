@@ -1,8 +1,6 @@
 console.warn("bienvenue dans miniapp !!!");
 // UP TO YOU
 
-//jsBoot.controllers.application.login("viapanda@gmail.com", "XXXXX", true);
-//jsBoot.controllers.application.login("jb@touchard.org", "gabuzomeux", true);
 //throw "stop here for now";
 
 /**

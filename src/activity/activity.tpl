@@ -1,5 +1,3 @@
-<script src="jquery.ui.touch-punch.min.js"></script>
-
 <div id="activity-preview-body">
   {{#each styleUri}}
     <link rel="stylesheet" href="{{data}}"></link>
