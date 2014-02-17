@@ -63,6 +63,7 @@
   jsBoot.loader.wait();
 
   jsBoot.loader.use('../../libs/js/jquery.ui.custom' + suffix + 'js');
+  // JBT EP 15/02/2014
   jsBoot.loader.use('../../libs/js/jquery.ui.touch-punch.min.js');
 
   // This could be put anywhere, but has to wait for core
