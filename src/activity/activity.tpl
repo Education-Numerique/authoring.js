@@ -352,7 +352,7 @@
     </div>
   </section>
     <footer> 
-      <p>Copyright Education & Numerique</p>
+      <small><i>powered by :</i> <a href="http://www.education-et-numerique.org" target="_blank">Education & Numerique</a></small>
     </footer>
     <!-- footer : un peu de padding ... -->
 <!--

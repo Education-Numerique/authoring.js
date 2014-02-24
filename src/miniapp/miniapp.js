@@ -14,8 +14,9 @@ LxxlLib.service.user.list(function(d) {
 }, function(){
   console.error("ARRRGGGG");
 });
+*/
 
-
+/*
 LxxlLib.service.activities.list(function(d) {
   d.forEach(function(item) {
     var act = LxxlLib.factories.activities.getActivity(item);
@@ -59,6 +60,7 @@ content = decodeURIComponent(escape(content));
 $("#blabla").html(content);
 */
 
+// OK get categories
 var categ = LxxlLib.factories.metadata.getTreeFor('*', '*');
 console.warn(categ);
 var content = "";

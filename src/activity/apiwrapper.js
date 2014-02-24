@@ -1,16 +1,28 @@
 (function () {
     /*jshint devel: true*/
     'use strict';
+    // In PART 1 of this file, we deal with SCORM API
+    // vars : api, scormAPI, initialized, Cmi, 
+    // functions/methods : findAPI, initHandler, mapper, getScormMutable, 
+    // score, status, objective, interaction
+    // scormAPI.boot, scormAPI.shutdown, scormAPI.getLastError
+    // scormAPI.getValue, scormAPI.setValue, scormAPI.commit
+
+    // PART 2 deals with LxxL specificities (intit, score calculations, ...)
+    
+    // In the future, this file may be splitted in two different files ...
+
     /******************************************************************
      // Uncomment this to get Fake LMS to console
-     window.API = {};
-     ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
-     'GetDiagnostic'].forEach(function(key) {
-         window.API[key] = function(a, b, c) {
-             console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c);
-             return '0';
-         };
+
+     window.API = {}; 
+     ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString', 'GetDiagnostic'].forEach(function(key) {
+        window.API[key] = function(a, b, c) {
+            console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c); 
+            return '0';
+        };
      });
+
      ******************************************************************/
     /*
      SCORM 2004 (API_1484_11)
@@ -36,6 +48,8 @@
      LMSGetDiagnostic( errocCode : CMIErrorCode ) : string
      */
 
+     // recursive function to see if there is a LMS around 
+     // called by initHandler
     var findAPI = function (win) {
         try {
             var findAPITries = 0;
@@ -59,6 +73,7 @@
     scormAPI.hasAPI = false;
     scormAPI.deprecated = false;
 
+    // called by scormAPI.boot
     var initHandler = function () {
         if (!api) {
             api = findAPI(window) || (window.opener && findAPI(window.opener));
@@ -290,7 +305,8 @@
         });
     };
 
-    // This is dead tricky. Each objective will own its type (binded because of the scorm mutable and the id).
+    // This is dead tricky. Each objective will own its type 
+    // (binded because of the scorm mutable and the id).
     var objective = function (mesh, idx) {
         var Mutant = getScormMutable({
             id: {
@@ -322,6 +338,7 @@
 
     var interaction = function (mesh, idx) {
         // XXX total crap - this spec is a fucking shit train freak accident godamn it
+        // I quite agree (JBT)
         var Mutant = getScormMutable({
             id: {
                 mapping: 'core.interactions.' + idx + '.id',
@@ -508,7 +525,10 @@
         interactions: jsBoot.types.ArrayMutable.bind({}, interaction)
     });
 
-    // XXX manu
+////////////////**********************************//////////////////
+// Part Two : LxxL interface with SCORM API 
+// baked by manu
+
     LxxlLib.sessionManager = new (function () {
         var cmip;
         var startTime;
@@ -610,7 +630,10 @@
                 }
             });
             if (allset) {
-                cmip.score.raw = totalScore;
+                console.warn('activity completed', score);
+                // bug : totalScore undefined !!!!!!!
+                // cmip.score.raw = totalScore;
+                cmip.score.raw = score;
                 cmip.status = getStatus('COMPLETED');
                 $('#playing').hide();
                 scormAPI.shutdown();
@@ -645,13 +668,11 @@
                 // pageEnter(0);
             }
 
-
             acti = $('.pages-container > section', dom);
             if (acti.length)
                 $(acti[0]).fadeIn(1000, function () {
                     console.warn('done');
                 });
-
 
             // Pages navigation
             $('.pages-list > li', dom).on('click', function (event) {
@@ -931,6 +952,11 @@
         };
 
         var getActivityNotes = function () {
+            // flavorsWhoDontCount à remplacer par la notion de coef des pages 
+            // (par défaut, les 2 flavors ['perf', 'simple'] seraient à 0)
+            // on compte ensuite la note globale avec un forEach sur toutes les pages de l'activité en
+            // prenant en compte les coefs...
+            // JBT 02/2014
             var flavorsWhoDontCount = ['perf', 'simple'];
             var nbPageWhoCount = 0;
             var total = 0;
@@ -942,7 +968,7 @@
             };
 
             activity[pub].pages.forEach(function (page, idx) {
-                if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")) {
+                if (!flavorsWhoDontCount.indexOf(page.flavor.id) && (typeof page.score != "object")) {
                     nbPageWhoCount++;
                     activityNotes.pages[idx + 1] = {note: page.score}; // page begin at one
                     total += page.score;
@@ -952,7 +978,7 @@
             return activityNotes;
         };
 
-
+/**************************  tatBehaviour ***********************/
         var tatBehavior = function () {
             // Tat thingies
             // var tat =
@@ -1053,7 +1079,6 @@
                         });
                         $('button', h)[0].style.display = 'inline';
                     }
-
                 });
 
                 if (recupPage.displayHoles) {
@@ -1066,7 +1091,7 @@
                     } else {
                         wordList.sort();
                     }
-                    $('.wordlist', item).html('Liste des trous: ' + wordList.join(', '));
+                    $('.wordlist', item).html('<strong>Liste des trous :</strong>&nbsp;&nbsp;' + wordList.join(', '));
                     $('.wordlist', item)[0].style.display = 'block';
                 }
 
