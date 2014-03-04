@@ -619,12 +619,12 @@
 
         this.MixAndMatchComplete = function (pageId, score) {
             $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
-            $('#modal-on-modal-lynching').show();
+            //$('#modal-on-modal-lynching').show();
             $('.modal', $('#jmt-' + pageId)).modal({
                 backdrop: true
             });
             $('.modal', $('#jmt-' + pageId)).on('hide', function () {
-                $('#modal-on-modal-lynching').hide();
+              //  $('#modal-on-modal-lynching').hide();
                 onPageComplete(pageId, score);
             });
         };
@@ -656,6 +656,13 @@
             // Pages navigation
             $('.pages-list > li', dom).on('click', function (event) {
                 var idx;
+                if ($(window).width() <= 910)
+                {
+                    $( ".side-menu" ).animate({
+                        width: "0"
+                    }, 1500 ); 
+                }
+
                 // TOTO.objectives[0].setBrowsed()
                 // Fake LMS API debug. Method: GetValue args ["cmi.core.objectives.0.status"] debug.js:46
                 // Fake LMS API debug. Method: GetLastError args [] debug.js:46

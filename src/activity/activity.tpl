@@ -1,3 +1,5 @@
+<script src="jquery.ui.touch-punch.min.js"></script>
+
 <div id="activity-preview-body">
   {{#each styleUri}}
     <link rel="stylesheet" href="{{data}}"></link>
@@ -11,7 +13,7 @@
 
   <header>
     <!-- Titre de l'activité -->
-    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong> par&nbsp;&nbsp;<em>{{author.username}}</em></h1>
+    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong> par&nbsp;&nbsp;<em>{{author.username}}</em> <button type="button" class='btn btn-navbar btn-responsive'><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> </h1>
   </header>
 
   <!-- Sommaire -->
@@ -34,24 +36,24 @@
 
     <nav>
       <h2>Sommaire</h2>
-      <ul class="pages-list">
+      <ul class="pages-list" id='wtf'>
         {{reset_index}}
         {{#each pages}}
           {{#ifequalhelp flavor.id "simple"}}
-          <li class="page-simple">
+          <li class="page-simple menu-items">
           {{/ifequalhelp}}
           {{#ifequalhelp flavor.id "quizz"}}
-          <li class="page-quizz">
+          <li class="page-quizz menu-items">
           {{/ifequalhelp}}
           {{#ifequalhelp flavor.id "tat"}}
-          <li class="page-tat">
+          <li class="page-tat menu-items">
           {{/ifequalhelp}}
           {{#ifequalhelp flavor.id "jmt"}}
-          <li class="page-jmt">
+          <li class="page-jmt menu-items">
           {{/ifequalhelp}}
           <!-- JBT  decembre 2013 -->
           {{#ifequalhelp flavor.id "perf"}}
-          <li class="page-perf">
+          <li class="page-perf menu-items">
           {{/ifequalhelp}}
 
             <a href="#">
@@ -75,7 +77,7 @@
             </a>
           </li>
         {{/each}}
-      </ol>
+      </ul>
     </nav>
   </aside>
 
@@ -351,9 +353,10 @@
       </ul>
     </div>
   </section>
-  <div>
+    <footer> 
+      <p>Powered by <a href='http://www.education-et-numerique.fr'>Education & Numerique</a></p>
+    </footer>
     <!-- footer : un peu de padding ... -->
-  </div>
 <!--
   <div class="modal hide" id="modal-preview-tat" role="dialog" aria-labelledby="modal-preview-tat-label" aria-hidden="true">
     <div class="modal-header">
@@ -376,6 +379,57 @@
 -->
 </div>
 
+<script type="text/javascript">
+
+$(document).ready( function ()
+{
+  if ($(window).width() <= 910)
+    {
+      $('.btn-responsive').show();
+      $('.pull-left').removeClass('span8');
+      $('.side-menu').css('width', '0px');
+    }
+    else
+    {
+      $('.btn-responsive').hide();
+      $('.pull-left').addClass('span8');
+    }
+  
+  $(document).on('click', '.btn-responsive', function ()
+  {
+    if ($('.side-menu').css('width') == '0px')
+    {
+      $( ".side-menu" ).animate({
+      width: "30%"
+    }, 1500 );
+    }
+    else
+    {
+     $( ".side-menu" ).animate({
+      width: "0px"
+    }, 1500 ); 
+    }
+  });
+
+  $(window).resize(function ()
+  {
+  if ($(window).width() <= 910)
+    {
+      $('.btn-responsive').show();
+      $('.pull-left').removeClass('span8');
+    }
+    else
+    {
+      $('.btn-responsive').hide();
+      $('.pull-left').addClass('span8');
+      $('.side-menu').css('width', '23%');
+    }
+  });
+
+});
+
+</script>
+
 
 <!-- The utter stupidity of modals on modals -->
-<div id="modal-on-modal-lynching" style="display: none; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);"></div>
+<!-- <div id="modal-on-modal-lynching" style="display: none; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8);"></div> -->
