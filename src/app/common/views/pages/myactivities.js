@@ -44,15 +44,14 @@
     //
 
     for (var x = start, item, infos; x < start + addCount; x++) {
-      item = arr[x];
-
+      item = arr[x]; 
+      //console.log(start+addCount); //TOTAL DES ACTIVITE draft et published
       if (cc == '.mydrafts')
         infos = item.draft;
       else
         infos = item.published;
-
+      
       nn.fnAddData([
-        '',
         '',
         '',
         infos.title,
@@ -65,6 +64,7 @@
         //        item.author.username,
         item.id
       ]);
+     // console.log(nn.fnAddData);
 
 
     }
@@ -75,6 +75,7 @@
   var TABLE_OPTIONS = {
     'fnRowCallback': function(nRow, aData/*, iDisplayIndex, iDisplayIndexFull*/) {
       var id = aData[aData.length - 1];
+      console.log(nRow);
 
       if ($(nRow).attr('data-rid'))
         return;
@@ -146,36 +147,37 @@
 
       if (infos.blobs.media.length || infos.blobs.attachments.length)
         return;
-      button = $(nRow).find('td:eq(2)');
-      button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
-          'title="Créer une nouvelle activité à partir de ce modèle"></button>');
+      /* WRENCH DESACTIVATE */
+      // button = $(nRow).find('td:eq(2)');
+      // button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
+      //    'title="Créer une nouvelle activité à partir de ce modèle"></button>');
+      //
+      // button.bind('click', function(/*e*/) {
+      //   var onCreate = function() {
+      //     act.draft = infos;// .toObject();
+      //     act.push(function() {
+      //       // Something is rotten in Denmark
+      //        //act = LxxlLib.factories.activities.getActivity({id: act.id});
+      //       LxxlApp.router.send('showActivityEdit', act);
+      //     });
+      //     act.removeObserver('id', onCreate);
+      //   };
 
-      button.bind('click', function(/*e*/) {
-        var onCreate = function() {
-          act.draft = infos;// .toObject();
-          act.push(function() {
-            // Something is rotten in Denmark
-             //act = LxxlLib.factories.activities.getActivity({id: act.id});
-            LxxlApp.router.send('showActivityEdit', act);
-          });
-          act.removeObserver('id', onCreate);
-        };
-
-        var act = LxxlLib.factories.activities.getActivity();
-        act.addObserver('id', onCreate);
-        act.push();
+      //   var act = LxxlLib.factories.activities.getActivity();
+      //   act.addObserver('id', onCreate);
+      //   act.push();
+      //   /* WRENCH DESACTIVATE */
         
-        // Ember.run.next(function() {
-        // });
+      //   // Ember.run.next(function() {
+      //   // });
 
 
-        // LxxlApp.router.send('showActivityEdit', item);
-      });
+      //   // LxxlApp.router.send('showActivityEdit', item);
+      // });
 
       // console.log(preview.html('bite'));
     },
     'aoColumns': [
-      null,
       null,
       null,
       null,

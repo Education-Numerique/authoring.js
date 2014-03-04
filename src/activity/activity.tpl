@@ -354,7 +354,7 @@
     </div>
   </section>
     <footer> 
-      <p>Powered by <a href='http://www.education-et-numerique.fr'>Education & Numerique</a></p>
+      <p>Powered by <a href='http://www.education-et-numerique.fr' target="_blank">Education & Numerique</a></p>
     </footer>
     <!-- footer : un peu de padding ... -->
 <!--

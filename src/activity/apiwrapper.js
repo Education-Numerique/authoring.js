@@ -1,16 +1,28 @@
 (function () {
     /*jshint devel: true*/
     'use strict';
+    // In PART 1 of this file, we deal with SCORM API
+    // vars : api, scormAPI, initialized, Cmi, 
+    // functions/methods : findAPI, initHandler, mapper, getScormMutable, 
+    // score, status, objective, interaction
+    // scormAPI.boot, scormAPI.shutdown, scormAPI.getLastError
+    // scormAPI.getValue, scormAPI.setValue, scormAPI.commit
+
+    // PART 2 deals with LxxL specificities (intit, score calculations, ...)
+    
+    // In the future, this file may be splitted in two different files ...
+
     /******************************************************************
-    // Uncomment this to get Fake LMS to console
-     window.API = {};
-     ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString',
-     'GetDiagnostic'].forEach(function(key) {
-         window.API[key] = function(a, b, c) {
-             console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c);
-             return '0';
-         };
+     // Uncomment this to get Fake LMS to console
+
+     window.API = {}; 
+     ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString', 'GetDiagnostic'].forEach(function(key) {
+        window.API[key] = function(a, b, c) {
+            console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c); 
+            return '0';
+        };
      });
+
      ******************************************************************/
     /*
      SCORM 2004 (API_1484_11)
@@ -36,6 +48,8 @@
      LMSGetDiagnostic( errocCode : CMIErrorCode ) : string
      */
 
+     // recursive function to see if there is a LMS around 
+     // called by initHandler
     var findAPI = function (win) {
         try {
             var findAPITries = 0;
@@ -59,6 +73,7 @@
     scormAPI.hasAPI = false;
     scormAPI.deprecated = false;
 
+    // called by scormAPI.boot
     var initHandler = function () {
         if (!api) {
             api = findAPI(window) || (window.opener && findAPI(window.opener));
@@ -290,7 +305,8 @@
         });
     };
 
-    // This is dead tricky. Each objective will own its type (binded because of the scorm mutable and the id).
+    // This is dead tricky. Each objective will own its type 
+    // (binded because of the scorm mutable and the id).
     var objective = function (mesh, idx) {
         var Mutant = getScormMutable({
             id: {
@@ -322,6 +338,7 @@
 
     var interaction = function (mesh, idx) {
         // XXX total crap - this spec is a fucking shit train freak accident godamn it
+        // I quite agree (JBT)
         var Mutant = getScormMutable({
             id: {
                 mapping: 'core.interactions.' + idx + '.id',
@@ -508,7 +525,10 @@
         interactions: jsBoot.types.ArrayMutable.bind({}, interaction)
     });
 
-    // XXX manu
+////////////////**********************************//////////////////
+// Part Two : LxxL interface with SCORM API 
+// baked by manu
+
     LxxlLib.sessionManager = new (function () {
         var cmip;
         var startTime;
@@ -610,7 +630,10 @@
                 }
             });
             if (allset) {
-                cmip.score.raw = totalScore;
+                console.warn('activity completed', score);
+                // bug : totalScore undefined !!!!!!!
+                // cmip.score.raw = totalScore;
+                cmip.score.raw = score;
                 cmip.status = getStatus('COMPLETED');
                 $('#playing').hide();
                 scormAPI.shutdown();
@@ -645,13 +668,11 @@
                 // pageEnter(0);
             }
 
-
             acti = $('.pages-container > section', dom);
             if (acti.length)
                 $(acti[0]).fadeIn(1000, function () {
                     console.warn('done');
                 });
-
 
             // Pages navigation
             $('.pages-list > li', dom).on('click', function (event) {
@@ -848,7 +869,7 @@
                     subBlocks: {}
                 };
                 var currentBlock = block;
-                var id = 0;
+                var index = 0;
                 var mustacheRegex = /{{(.*?)}}/g;
                 var beginOfIf = /^#if (.*)$/i;
                 var endOfIf = /^\/if$/i;
@@ -859,15 +880,16 @@
                     if (!!(groups = expression.match(beginOfIf))) { // check if it's a begin of an if mustache
 
                         var newBlock = {
-                            id: ++id,
+                            id: ++index,
                             type: "if",
+                            subBlocks: {},
                             parentBlock: currentBlock
                         };
-                        currentBlock.subBlocks[id] = newBlock;
+                        currentBlock.subBlocks[index - 1] = newBlock;
                         currentBlock = newBlock;
                         var ifContent = groups[1].replace(/\s/g, '');
 
-                        result = "<script id='perf-if-open-" + id + "' type='text/x-placeholder' " +
+                        result = "<script id='perf-if-open-" + index + "' type='text/x-placeholder' " +
                             "data-expression='" + ifContent + "'></script>";
                     } else if (expression.match(endOfIf)) { // check if it's a end of an if mustache
                         result = "<script id='perf-if-close-" + currentBlock.id + "' type='text/x-placeholder'></script>";
@@ -877,22 +899,26 @@
                     }
                     return result;
                 });
-                $(section).html(newHtml);
+
+                // remove useless p arround script if tag
+                var $newHtml = $(newHtml);
+                $($newHtml).find('script').each(function (idx, script) {
+                    var $script = $(script);
+                    var scriptParentContent = $script.parent().html()
+                        .replace(/\s/g, '')
+                        .replace(/<br(\/?)>/g, '');
+                    if (!!scriptParentContent.match(/^<scriptid="perf.*<\/script>$/)) {
+                        $script.unwrap();
+                    }
+                });
+
+                $(section).html($newHtml);
             });
         };
 
         var refreshPerformancePage = function (performancePage) {
 
-            // remove useless p arround script if tag
-            performancePage.find('script').each(function (idx, script) {
-                var $script = $(script);
-                var scriptParentContent = $script.parent().html().replace(/\s/g, '');
-                if (!!scriptParentContent.match(/^<scriptid="perf.*<\/script>$/)) {
-                    $script.unwrap();
-                }
-            });
-
-            // place a 'activité' var in 'this' to be accessible by eval
+            // place a 'activite' var in 'this' to be accessible by eval
             var activite = getActivityNotes();
 
             var getValueOf = function (expression) {
@@ -919,7 +945,7 @@
             });
 
             // value parsing
-            var noteRegex = /(activite\.(pages\[\d]\.)?note)(\[\/(20|100)\])?$/i;
+            var noteRegex = /(activite\.(pages\[\d{1,4}\]\.)?note)(\[\/(20|100)\])?$/i;
             performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
                 var expression = span.dataset.expression;
                 var groups = expression.match(noteRegex);
@@ -927,11 +953,17 @@
                     scale = (groups[4] >> 0) || 100; // retrieve specified scale or take 100 by default
 
                 var note = getValueOf(noteExpression) / (100 / scale);
+                note = isNaN(note) ? 0 : note; // Eventuellement un jour mettre "exercice non fait"
                 span.innerHTML = note + "/" + scale;
             });
         };
 
         var getActivityNotes = function () {
+            // flavorsWhoDontCount à remplacer par la notion de coef des pages 
+            // (par défaut, les 2 flavors ['perf', 'simple'] seraient à 0)
+            // on compte ensuite la note globale avec un forEach sur toutes les pages de l'activité en
+            // prenant en compte les coefs...
+            // JBT 02/2014
             var flavorsWhoDontCount = ['perf', 'simple'];
             var nbPageWhoCount = 0;
             var total = 0;
@@ -943,7 +975,7 @@
             };
 
             activity[pub].pages.forEach(function (page, idx) {
-                if (!flavorsWhoDontCount.contains(page.flavor.id) && (typeof page.score != "object")) {
+                if (!flavorsWhoDontCount.indexOf(page.flavor.id) && (typeof page.score != "object")) {
                     nbPageWhoCount++;
                     activityNotes.pages[idx + 1] = {note: page.score}; // page begin at one
                     total += page.score;
@@ -953,7 +985,7 @@
             return activityNotes;
         };
 
-
+/**************************  tatBehaviour ***********************/
         var tatBehavior = function () {
             // Tat thingies
             // var tat =
@@ -1054,7 +1086,6 @@
                         });
                         $('button', h)[0].style.display = 'inline';
                     }
-
                 });
 
                 if (recupPage.displayHoles) {
@@ -1067,7 +1098,7 @@
                     } else {
                         wordList.sort();
                     }
-                    $('.wordlist', item).html('Liste des trous: ' + wordList.join(', '));
+                    $('.wordlist', item).html('<strong>Liste des trous :</strong>&nbsp;&nbsp;' + wordList.join(', '));
                     $('.wordlist', item)[0].style.display = 'block';
                 }
 

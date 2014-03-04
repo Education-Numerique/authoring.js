@@ -116,6 +116,7 @@ body {
   width: 70%;
   position: relative;
   min-height: 891px;
+  width: 90%;
   margin:20px auto;
   // padding-top: 10px;
   font-family: Arial;
@@ -613,3 +614,9 @@ footer p
   margin-left:12px;
 }
 
+footer
+{
+  border-top:1px solid #ccc;
+  padding: 3px 0px 12px 21px;
+  height:32px;
+}

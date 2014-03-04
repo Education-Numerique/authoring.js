@@ -12,22 +12,23 @@
 
 (function() {
   'use strict';
+  console.log("miniboot is on the job ...");
 
   // Allow the use of additional url parameters to trigger specific behavior
-  // Debuggin
+  // Debugging
   var debug = /use-debug/.test(location.href);
   //debug = true;
 
   // Trunk version - don't do this, kid!
   var version = /use-trunk/.test(location.href) && 'trunk';
   // Not minified if debugging
+
   // Disabling minification for now
   var suffix = '.'; // !debug ? '-min.' : '.';
 
   var bootRoot = location.href.split('/');
   bootRoot.pop();
   bootRoot = bootRoot.join('/');
-  console.log("Saluts Toto ...");
 
   // No analytics for now
   // var gaTracker = '{PUKE_ANALYTICS}';
@@ -49,7 +50,7 @@
   jsBoot.loader.use(jsBoot.loader.SHIMS);
   // jsBoot.loader.use('stacktrace', version || '0.4', null, debug);
   jsBoot.loader.wait();
-  // // XXX compact every other needed script
+  // // XXX compact every other needed scriptjquery
   jsBoot.loader.use(jsBoot.loader.MINGUS);
   jsBoot.loader.use(jsBoot.loader.CORE);
   jsBoot.loader.wait();
@@ -62,6 +63,8 @@
   jsBoot.loader.wait();
 
   jsBoot.loader.use('../../libs/js/jquery.ui.custom' + suffix + 'js');
+  // JBT EP 15/02/2014
+  jsBoot.loader.use('../../libs/js/jquery.ui.touch-punch.min.js');
 
   // This could be put anywhere, but has to wait for core
   if (debug)

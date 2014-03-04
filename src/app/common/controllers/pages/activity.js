@@ -26,7 +26,8 @@
                     $('#action-published-error').modal('show');
                     break;
                 case ctr.PERF_MUSTACHE_MALFORMED:
-                    $('#action-published-error #pub-err').html('Performance : Erreur de syntaxe.');
+                    $('#action-published-error #pub-err').html('il y une ou plusieurs erreur de syntaxe dans une des pages performance :<br/>'
+                        + ctr.errorDescription);
                     $('#action-published-error').modal('show');
                     break;
                 case ctr.ONE_PAGE:

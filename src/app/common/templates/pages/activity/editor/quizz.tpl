@@ -26,14 +26,15 @@
                     Minutes / secondes
 
                     limitedTime : 0 infini
-                //-->
-                {{#view view.TimeButton classNames="btn multicontrol master-button nopadding"}}{{view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"}}
+                
+                [[#view view.TimeButton classNames="btn multicontrol master-button nopadding"]][[view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedLimitedTime"]]
                     <span data-toggle="modal" href="#modal-page-timer" class="name btn">Temps limité 
-                        {{#if pageActivatedLimitedTime}}
-                            ({{#bind minutes.selected.id}}{{pad this}}{{/bind}}:{{#bind seconds.selected.id}}{{pad this}}{{/bind}})
-                        {{/if}}
+                        [[#if pageActivatedLimitedTime]]
+                            ([[#bind minutes.selected.id]][[pad this]][[/bind]]:[[#bind seconds.selected.id]][[pad this]][[/bind]])
+                        [[/if]]
                     </span>
-                {{/view}}
+                [[/view]]
+                //-->
                 <!--
                     displayAll (bool) All together / one by one
                     sequencing || Random : All | number
@@ -119,9 +120,9 @@
                             <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Réponse proposée"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                             <!-- <td></td> -->
-                            <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.question" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
+                            <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                         {{/collection}}
-                    {{else}}
+                    {{else}} <!-- QCM -->
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer" checkedBinding="view.content.isCorrect"}}</td>

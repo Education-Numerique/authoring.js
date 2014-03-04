@@ -95,7 +95,6 @@
 
   // Redactor rich text editing
   //jsBoot.loader.use('redactor', 'stable');
-
   jsBoot.loader.use('raphael', version || '2.1', '.js$');
 
   // Use bootstrap as part of the stack as well - for some reason, the unicorn theme doesn't
@@ -129,6 +128,9 @@
   jsBoot.loader.use('libs/js/chosen.jquery' + suffix + 'js');
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
+   // JBT & EP added this one ... 15/02/2014
+  jsBoot.loader.use('libs/js/jquery.ui.touch-punch.min.js');
+
 
   if (cdnJax) {
     jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js');
