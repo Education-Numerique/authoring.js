@@ -680,8 +680,10 @@
                 if ($(window).width() <= 910)
                 {
                     $( ".side-menu" ).animate({
-                        width: "0"
-                    }, 1500 ); 
+                        width: "0",
+                    }, 1500 , function (){
+                        $('.side-menu').css('display', 'none');
+                    }); 
                 }
 
                 // TOTO.objectives[0].setBrowsed()
