@@ -13,13 +13,12 @@
     });
   };
 
-
+  // Le moins qu'on puisse dire est que ce n'est ni très joli, ni très utile .... (JBT)
   var popoverContent = '<div class="thumbnail">{thumbnail}</div>' +
       '<h5>{nickname}</h5>' +
       '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
       //'<div class="avatar">{useravatar}</div>' +
       '<div>{description}</div>';
-
 
 
   var will = function(arr, start, removeCount/*, addCount*/) {
@@ -75,7 +74,8 @@
   var TABLE_OPTIONS = {
     'fnRowCallback': function(nRow, aData/*, iDisplayIndex, iDisplayIndexFull*/) {
       var id = aData[aData.length - 1];
-      console.log(nRow);
+      // boucle sur toutes MyActivities
+      // console.log(nRow);
 
       if ($(nRow).attr('data-rid'))
         return;

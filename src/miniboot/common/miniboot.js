@@ -34,7 +34,7 @@
   // Allow the use of additional url parameters to trigger specific behavior
   // Debuggin
   var debug = /use-debug/.test(location.href);
-  debug = true;
+  debug = true; // JBT : to be removed while in prod !!! (Keep for dev)
 
   // Ember global configuration
   window.ENV = {

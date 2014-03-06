@@ -129,7 +129,7 @@
     relativeTime: {
       future: 'dans %s',
       past: 'il y a %s',
-      s: 'secondes',
+      s: 'une seconde',
       ss: '%d secondes',
       m: 'une minute',
       mm: '%d minutes',

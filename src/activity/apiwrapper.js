@@ -130,6 +130,7 @@
      */
 
     var initialized = false;
+
     scormAPI.boot = function () {
         initHandler();
         if (!api)
@@ -530,6 +531,7 @@
 // baked by manu
 
     LxxlLib.sessionManager = new (function () {
+        console.warn("entering LxxlLib.sessionManager");
         var cmip;
         var startTime;
         var dom;
@@ -544,7 +546,7 @@
             quizzBehavior();
             menuBehavior();
             perfBehavior();
-        };
+        }; // bindDocument
 
         this.start = function (act, pubVersion) {
             pub = pubVersion ? 'published' : 'draft';
@@ -599,7 +601,7 @@
             cmip.score.min = 0;
             cmip.score.max = 100;
             scormAPI.commit();
-        };
+        }; // start
 
         // this.execute(this.SET, ['cmi.objectives.' + idx + '.max', token.max]);
         // this.execute(this.SET, ['cmi.objectives.' + idx + '.raw', token.score]);
@@ -613,16 +615,15 @@
             }
         });
 
-
         var onPageComplete = function (pid, score) {
+            console.warn('Page completed', pid, score);
             activity[pub].pages[pid].completed = true;
             activity[pub].pages[pid].score = score;
-            console.warn('Page completed', pid, score);
             cmip.objectives[pid].score.raw = score;
             cmip.objectives[pid].setComplete();
             var nbPages = 0;
             var allset = activity[pub].pages.every(function (page) {
-                if (page.flavor.id == 'simple')
+                if (page.flavor.id == 'simple' || page.flavor.id == 'perf' )
                     return true;
                 else {
                     nbPages++;
@@ -635,10 +636,10 @@
                 // cmip.score.raw = totalScore;
                 cmip.score.raw = score;
                 cmip.status = getStatus('COMPLETED');
-                $('#playing').hide();
+                //$('#playing').hide();
                 scormAPI.shutdown();
             }
-        };
+        }; // onPageComplete
 
         this.MixAndMatchComplete = function (pageId, score) {
             $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
@@ -650,16 +651,16 @@
               //  $('#modal-on-modal-lynching').hide();
                 onPageComplete(pageId, score);
             });
-        };
+        }; // MixAndMatchComplete
 
         this.pause = function () {
-        };
+        }; // pause
 
         this.end = function () {
             scormAPI.shutdown();
             startTime = null;
             this.activity = activity = null;
-        };
+        }; // end
 
         var menuBehavior = function () {
             var acti = $('.pages-list > li', dom);
@@ -732,7 +733,7 @@
                 event.preventDefault();
                 return false;
             });
-        };
+        }; // menuBehavior
 
         var completeQuestion = function (pid, qid) {
             console.warn('Completed question', pid, qid);
@@ -762,7 +763,7 @@
                     onPageComplete(pid, Math.round(actual / total));
                 });
             }
-        };
+        }; // completeQuestion
 
         var quizzBehavior = function () {
             $('section[id^=quizz-]', dom).each(function (ind, item) {
@@ -854,10 +855,8 @@
                         });
                     }
                 });
-
             });
-
-        };
+        }; // quizzBehavior
 
         // This method is launch at starting of an activity
         var perfBehavior = function () {
@@ -914,7 +913,7 @@
 
                 $(section).html($newHtml);
             });
-        };
+        }; // perfBehavior
 
         var refreshPerformancePage = function (performancePage) {
 
@@ -956,7 +955,7 @@
                 note = isNaN(note) ? 0 : note; // Eventuellement un jour mettre "exercice non fait"
                 span.innerHTML = note + "/" + scale;
             });
-        };
+        }; // refreshPerformancePage
 
         var getActivityNotes = function () {
             // flavorsWhoDontCount à remplacer par la notion de coef des pages 
@@ -983,7 +982,7 @@
             });
             activityNotes.note = total / nbPageWhoCount >> 0;
             return activityNotes;
-        };
+        }; // getActivityNotes
 
 /**************************  tatBehaviour ***********************/
         var tatBehavior = function () {
@@ -1103,7 +1102,6 @@
                 }
 
             });
-        };
-
+        }; // tatBehaviour
     })();
 })();

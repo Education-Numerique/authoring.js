@@ -21,7 +21,7 @@
                 [[/if]]
 -------------------------------------------------------------------- -->
 
-                <button type="button" {{action publishActivity target="controller"}} class="btn btn-mini">Publier</button>
+                <button type="button" {{action publishActivity target="controller"}} class="btn btn-success btn-mini">Publier</button>
 
                 <button type="button" {{action embedActivity target="controller"}} class="btn btn-mini">Partager</button>
 
@@ -356,6 +356,21 @@
     </div>
     <div id="redactor_modal_footer">
         <a  class="redactor_modal_btn redactor_btn_modal_close">Fermer</a>
+    </div>
+</div>
+
+<div id="redactor-perf" style="display: none;">
+      <div id="redactor_modal_content">
+        <label>Condition d'affichage : </label>
+        <input type="text" class="condition redactor_input" value="" />
+        <span class="error_condition">&nbsp;</span>
+      </div>
+
+      <hr class="clear" />
+
+    <div id="redactor_modal_footer">
+        <a class="redactor_modal_btn redactor_btn_modal_insert">Conditionner</a>
+        <a  class="redactor_modal_btn redactor_btn_modal_close">Annuler</a>
     </div>
 </div>
 

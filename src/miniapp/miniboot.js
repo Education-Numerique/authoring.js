@@ -11,8 +11,6 @@
     key: {
       id: 'PROD',
       secret: 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
-      // id: 'TEST',
-      // secret: 'TEST'
     },
     server: {
       host: '{PUKE-SERVICE-HOST}',

@@ -177,13 +177,12 @@
           deref.seen();
         // Re-attach author from the activity to the dereferenced scope
         var author = deref.author;
+//      deref.author = author;
         // Now, the tpl can consume the author name
         // <h1>{{author.uid}}</h1>
         // <h1>{{author.username}}</h1>
 
-
         deref = pubVersion ? deref.published : deref.draft;
-        deref.author = author;
         deref.styleData = [];
         deref.styleUri = [];
         // Style mashuping
@@ -218,7 +217,6 @@
       var currentActivity = LxxlLib.sessionManager.activity;
       currentActivity = pubVersion ? currentActivity.published : currentActivity.draft;
 
-
       // var hide = function() {
       //   console.error('--_> HIDFE');
       //   $(this).css('display: none');
@@ -239,7 +237,7 @@
 
       if (!node[0].jobDone) {
         node[0].jobDone = true;
-
+        // does not fire on touch .... at least on ipad (JBT)
         $(document).on('click', 'h4, a', function(/*e*/) {
           var status = $(this).data('manuWillHateMeAgain');
           $(this).data('manuWillHateMeAgain', !status);
@@ -256,8 +254,6 @@
           }
         });
       }
-
-      // console.warn('exiting bind collapser', node);
 
       currentActivity.pages.forEach(function(page, index) {
 
@@ -340,6 +336,7 @@
       //   if (dataParent)
       //     $(dataParent).find('.slidify-on').slideUp(speed, hide);
 
+      // console.warn('exiting bind collapser', node);
     };
 
 
