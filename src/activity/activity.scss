@@ -158,14 +158,20 @@ body {
       font: 12px Arial;
       color: #FFF;
       display: block;
-      padding: 10px;
+      padding-top:10px;
+      padding-bottom:10px;
+    }
+
+    h1 strong
+    {
+      margin-left:12px;
     }
   }
 
   h1 {
     height: auto;
     width: 100%;
-    font: 20px Arial;
+    font: 27px Arial;
     color: rgb(51, 25, 117);
     text-align: justify;
     //margin: 24px 0 12px;
@@ -173,7 +179,7 @@ body {
   h2 {
     height: auto;
     width: 100%;
-    font: italic 16px Arial;
+    font: italic 21px Arial;
     color: #000;
     letter-spacing: 4px;
     text-align: justify;
@@ -182,11 +188,15 @@ body {
     margin: 24px 0 12px;
   }
   h3 {
-    height: auto;
+   height: auto;
     width: 100%;
-    font: 14px Times, serif;
+    font: italic 17px Arial;
     color: #000;
-    margin: 12px 0 0;
+    letter-spacing: 4px;
+    text-align: justify;
+    margin-bottom: 8px;
+    text-indent: 22px;
+    margin: 32px 0 12px;
   }
 
   /* h4 collapsers */
@@ -509,6 +519,15 @@ body {
     right:0;
     z-index:1 000 000;
   }
+
+  #activity-preview-body .side-menu nav h2 {
+    word-wrap: break-word;
+    text-align: center;
+  }
+
+  #activity-preview-body .side-menu nav ul li a {
+    word-wrap: break-word;
+  }
 }
 
 .pull-right
@@ -525,21 +544,21 @@ body {
 
 footer
 {
-  position: absolute;
+  position: relative;
   bottom: 0;
-  width: 100%;
+  // width: 99%;
   border-top:1px solid #ccc;
-  //padding: 3px 0px 12px 21px;
-  // position:relative;
-  //clear: both;
-  height:32px; /* .push must be the same height as .footer */
+  border-top:1px solid #ccc;
+  padding: 3px 0px 12px 21px;
+  height:32px;
 }
 
 footer p
 {
   position: relative;
   bottom: 5px;
-  left: 12px;
+  // left: 12px;
+  width: 235px;
 }
 
 .navbar .btn-navbar {
@@ -612,11 +631,4 @@ footer p
 {
   margin-right: 12px;
   margin-left:12px;
-}
-
-footer
-{
-  border-top:1px solid #ccc;
-  padding: 3px 0px 12px 21px;
-  height:32px;
 }
