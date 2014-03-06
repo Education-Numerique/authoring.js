@@ -158,7 +158,13 @@ body {
       font: 12px Arial;
       color: #FFF;
       display: block;
-      padding: 10px;
+      padding-top:10px;
+      padding-bottom:10px;
+    }
+
+    h1 strong
+    {
+      margin-left:12px;
     }
   }
 
@@ -509,6 +515,15 @@ body {
     right:0;
     z-index:1 000 000;
   }
+
+  #activity-preview-body .side-menu nav h2 {
+    word-wrap: break-word;
+    text-align: center;
+  }
+
+  #activity-preview-body .side-menu nav ul li a {
+    word-wrap: break-word;
+  }
 }
 
 .pull-right
@@ -525,21 +540,21 @@ body {
 
 footer
 {
-  position: absolute;
+  position: relative;
   bottom: 0;
-  width: 100%;
+  // width: 99%;
   border-top:1px solid #ccc;
-  //padding: 3px 0px 12px 21px;
-  // position:relative;
-  //clear: both;
-  height:32px; /* .push must be the same height as .footer */
+  border-top:1px solid #ccc;
+  padding: 3px 0px 12px 21px;
+  height:32px;
 }
 
 footer p
 {
   position: relative;
   bottom: 5px;
-  left: 12px;
+  // left: 12px;
+  width: 235px;
 }
 
 .navbar .btn-navbar {
@@ -612,11 +627,4 @@ footer p
 {
   margin-right: 12px;
   margin-left:12px;
-}
-
-footer
-{
-  border-top:1px solid #ccc;
-  padding: 3px 0px 12px 21px;
-  height:32px;
 }

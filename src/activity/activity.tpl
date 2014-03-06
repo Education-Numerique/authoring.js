@@ -307,7 +307,7 @@
       </span>
       <h5></h5>
     </header> -->
-    <div class="widget-content nopadding">
+    <div class="widget-content nopadding" style='display:none;'>
  
       <ul class="pages-content span9" style="margin: auto; list-style-type: none;">
         {{#each pages}}
