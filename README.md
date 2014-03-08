@@ -19,7 +19,7 @@ You need to be familiar with:
 How to build your own
 ----------------------
 
-Git clone the repository: git clone git@github.com:Éducation-Numerique/authoring.js.git
+Git clone the repository: git clone git@github.com:Education-Numerique/authoring.js.git
 
 **Install puke in order to build**
 You need python, along with pip, which probably means you need brew under osx 
@@ -88,7 +88,7 @@ You may edit at will any of the following files in that folder, namely:
 - miniboot.ico - the app favicon
 - miniboot.png - the placeholder while the app boots-up
 
-Though, you should NOT edit miniboot.js unless you have good reasons, nor should you add too much in there.
+Though, **you should NOT edit _miniboot.js_** unless you have good reasons, nor should you add too much in there.
 These are placeholders files, and should have almost zero intelligence.
 
 
