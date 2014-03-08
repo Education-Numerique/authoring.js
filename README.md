@@ -1,7 +1,11 @@
 clients.lxxl.authoring
 ======================
 
-Authoring environment for lxxl.
+Get a global overview of the Education & Numerique LxxL project at :
+http://www.education-et-numerique.org
+
+The present repo contains building blocs for LxxL's Authoring Environment.
+This is a javascript 'thick client' application, depending upon LxxL's web service, described in the **API** repo.
 
 If you want to contribute...
 ----------------------
@@ -17,16 +21,17 @@ How to build your own
 
 Git clone the repository: git clone git@github.com:Éducation-Numerique/authoring.js.git
 
-Install puke in order to build `pip install puke` (you need python obviously, along with pip, which probably means you need brew under osx - more about puke: https://github.com/webitup/puke)
+**Install puke in order to build**
+You need python, along with pip, which probably means you need brew under osx 
+More about puke: https://github.com/webitup/puke/wiki/v2
 
-Edit the config.yaml file to fit your mileage (read the file and inline comments, and copy an existing custom node).
-
+Edit the **config.yaml** file to fit your mileage
+(get inspired by inline comments, and existing custom node).
 
 How to deploy
 ----------------------
 
-Serve the build directory with any http webserver, under the chosen domain name you used in your config.yaml.
-
+Serve the build directory with any http webserver, under the chosen domain name you used in your **config.yaml**.
 
 How to contribute
 ----------------------
@@ -55,7 +60,7 @@ Then ask for a pull request.
 Files at the root
 ----------------------
 
-The only file you may edit is the config.yaml build descriptor, in case you want to customize the build output directory.
+**The only file you may edit is the config.yaml build descriptor**, in case you want to customize the build output directory.
 
 To do so, create a node with your (unix) username and lowercase os name (`uname`), and document:
 
@@ -152,8 +157,7 @@ This project is built on top of jsboot, which itself in turn depends on airstrip
 
 If you REALLY think there is a problem in these, you may report a bug there - otherwise, it's probably just something you can override.
 
-Note that these dependencies are served from the production server (or development server), along with the service API (see config.yaml for detailed
-url if you want to change that, and see the separate projects configurations informations if you want to go there).
+Note that these dependencies are served from the production server (or development server), along with the service API (see config.yaml for detailed url if you want to change that, and see the separate projects configurations informations if you want to go there).
 
 
 About dependencies
@@ -196,5 +200,4 @@ And to a lesser use:
 - jquery.flot.pie
 - jquery.file-upload
 
-
-All of these (but redactor) are free to use components released under open-source AGPL compatible licenses.
+All of these (**but redactor**) are free to use components released under open-source AGPL compatible licenses.
