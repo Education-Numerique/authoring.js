@@ -75,7 +75,7 @@ defaultYank:
       GA: 'UA-XXXXX'
 
   DEBUG: 'true'
-  MINIFY: 'true'
+  MINIFY: 'false'
 
 
 # Integration

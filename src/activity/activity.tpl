@@ -1,5 +1,3 @@
-<script src="jquery.ui.touch-punch.min.js"></script>
-
 <div id="activity-preview-body">
   {{#each styleUri}}
     <link rel="stylesheet" href="{{data}}"></link>
@@ -140,7 +138,7 @@
         <!-- conclusion -->
         <div class="modal conclusion hide" role="dialog" aria-hidden="true">
           <div class="modal-header">
-            <h3>Exercice terminé!</h3>
+            <h3>Page d'exercices terminée !</h3>
           </div>
           <div class="modal-body">
             Résultat: <span class="feedback">%</span>
@@ -155,7 +153,7 @@
             <!-- <h3>Mmmm...</h3> -->
           </div>
           <div class="modal-body">
-            Certaines réponses ne sont pas encore bonnes! <span class="feedback">%</span>
+            Certaines réponses ne sont pas encore bonnes !<span class="feedback">%</span>
           </div>
           <div class="modal-footer">
               <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
@@ -189,7 +187,7 @@
 
         <div class="modal conclusion hide" role="dialog" aria-hidden="true">
           <div class="modal-header">
-            <h3>Exercice terminé!</h3>
+            <h3>Page d'exercices terminée !</h3>
           </div>
           <div class="modal-body">
             Résultat: <span class="feedback">100%</span>
@@ -279,7 +277,7 @@
 
           <div class="modal conclusion hide" role="dialog" aria-hidden="true">
             <div class="modal-header">
-              <h3>Exercice terminé!</h3>
+              <h3>Page d'exercices terminée !</h3>
             </div>
             <div class="modal-body">
               Résultat: <span class="feedback"></span>
@@ -354,7 +352,7 @@
     </div>
   </section>
     <footer> 
-      <p>Powered by <a href='http://www.education-et-numerique.fr' target="_blank">Education & Numerique</a></p>
+      <small><i>powered by</i> <a href="http://www.education-et-numerique.org" target="_blank">Education & Numerique</a></small>
     </footer>
     <!-- footer : un peu de padding ... -->
 <!--
