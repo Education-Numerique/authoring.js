@@ -12,7 +12,7 @@
     
     // In the future, this file may be splitted in two different files ...
 
-    /******************************************************************
+    /******************************************************************/
      // Uncomment this to get Fake LMS to console
 
      window.API = {}; 
@@ -23,7 +23,7 @@
         };
      });
 
-     ******************************************************************/
+     /******************************************************************/
     /*
      SCORM 2004 (API_1484_11)
 
@@ -789,17 +789,23 @@
                         });
                         $(this).show();
                         $(this).html('O');
-
                         $(this).attr('style', 'background-color: green;');
+
+                        //$('#modal-on-modal-lynching').show();
+                        $('.modal', $(this).parent()).modal('show');
+                        $('.modal', $(this).parent()).on('hide', function () {
+                        //    $('#modal-on-modal-lynching').hide();
+                        });
+
                         scb.score.markAnswered();
                         completeQuestion(pid, qid);
                     } else {
                         scb.score.addPenalty();
 
-                        $('#modal-on-modal-lynching').show();
+                        //$('#modal-on-modal-lynching').show();
                         $('.modal', $(this).parent()).modal('show');
                         $('.modal', $(this).parent()).on('hide', function () {
-                            $('#modal-on-modal-lynching').hide();
+                          //  $('#modal-on-modal-lynching').hide();
                         });
                         $(this).html('X');
                         $(this).attr('disabled', 'disabled');

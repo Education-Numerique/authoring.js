@@ -225,13 +225,14 @@
                           {{comment}}
                         </div>
                         <div class="modal-footer">
-              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+                          <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
                         </div>
                       </div>
                   </form>
                   </li>
                   {{/each}}
                   <br />
+                  <!--  make QRM button more visible (green ?) when active -->
                   <button disabled="disabled">Vérifier mes réponses</button>
                   <div class="modal hide" role="dialog" aria-hidden="true">
                     <div class="modal-header">

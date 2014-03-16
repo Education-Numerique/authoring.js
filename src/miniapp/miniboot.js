@@ -72,6 +72,9 @@
   jsBoot.loader.wait(function(){
     // On boot le système
     jsBoot.controllers.application.boot(STORE_KEY, SERVICE_CONFIG, 'disable_instance_lockXXX');
+
+    jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
+
     // Et on finit en chargeant miniapp
     jsBoot.loader.use('miniapp.js');
     console.warn("C'est parti pour miniapp ....");

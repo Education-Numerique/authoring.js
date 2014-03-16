@@ -36,17 +36,6 @@
 
   };
 
-  // Hotpot code is impossible to understand. Penalties are defined, but never used.
-  // Feedback doesn't work in some cases.
-  // Scoring doesn't make sense in other cases.
-  // The number of tries is used against the total number of good questions, but as QCM and QRM are not implemented
-  // like that, the formula doesn't make sense in the context of the app:
-  // ((TotAns-((Tries*100)/State[QNum][3]))/(TotAns-1));
-  //
-  // Conclusion:
-  // - being wrong on a question means you loose half the remaining possible point for that question
-  // - not answering at all
-
   // QUIZ (QRM/QCM)
   LxxlScoring.questionScore = function(nbAnswers) {
     console.warn('[QUIZZ Score] creating score for total:', nbAnswers);

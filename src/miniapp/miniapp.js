@@ -1,31 +1,34 @@
 console.warn("bienvenue dans miniapp !!!");
 // UP TO YOU
 
+
 //throw "stop here for now";
 
 /**
- * Comment récupérer les utilisateurs?
+ * Récupérer les utilisateurs ....
 
 LxxlLib.service.user.list(function(d) {
+  var content = "";
   d.forEach(function(item) {
     var user = new LxxlLib.model.User(item);
-    console.warn(user.uid);
+    content += user.email +'<br />';
   });
+  $("#blabla").html(content);
 }, function(){
   console.error("ARRRGGGG");
 });
 */
 
-/*
+/* */
 LxxlLib.service.activities.list(function(d) {
   d.forEach(function(item) {
     var act = LxxlLib.factories.activities.getActivity(item);
-    console.warn(act.id);
+    console.warn(act.draft.title);
   });
 }, function(){
   console.error("ARRRGGGG");
 });
-*/
+
 
 /*
 LxxlLib.service.activities.list(function(d){
@@ -42,8 +45,7 @@ LxxlLib.service.activities.list(function(d){
 /**  récupérer une activité 
 
 var acti = LxxlLib.factories.activities.getById('517757c83361eb192e9c67b8');
-acti.pull(function(){
-  // -> une fois que l'objet sera mis à jour par le retour réseau de pull
+acti.pull(function(){ // -> une fois que l'objet sera mis à jour par le retour réseau de pull
   console.warn(acti.draft.title);
 });
 */
@@ -68,7 +70,7 @@ for (ii=0;ii<categ.length;ii++){
   content += categ[ii].id + "<br />";
 }
 content = decodeURIComponent(escape(content));
-$("#blabla").html(content);
+//$("#blabla").html(content); // On affiche pas ...
 
 //LxxlLib.factories.metadata.lengths;
 //LxxlLib.factories.metadata.difficulties;

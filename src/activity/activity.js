@@ -279,6 +279,7 @@
         page.score = new LxxlScoring.mixScore(total);
 
         $('.questions > li', container).droppable({
+          // display BUG : when dragged && scrolling, hotpoint looses dragpoint ....
           activeClass: 'ui-state-active',
           hoverClass: 'ui-state-hover',
           drop: function(event, ui) {
@@ -521,7 +522,7 @@
 
   // Activity may be passed as a json url, or embedded as a datauri?
   if (/(?:embed\.html)/.test(location.href)) {
-    var requestDraft = location.href.match(/draft/i);
+    var requestDraft = location.href.match(/draft/i); // but service will not display draft to anonymous ...
     var id = location.href.match(/id=([a-z0-9]+)/i);
     if (id) {
       id = id.pop();
@@ -560,19 +561,3 @@
   }
 
 })();
-
-/*
-// window.onload = function(){
-//   console.warn("loade");
-var a = new LxxlLib.activity();
-a.setupViewport(document.body, true);
-a.addStyle('body{background-color: blue;}');
-a.addStyle('http://static.loft.sn.ackitup.net:4242/lib/frameworks/normalize/normalize-2.0.css');
-a.setupTemplate('activity.tpl');
-a.showActivity('test.json', function(){
-  console.warn("All set baby!");
-});
-// };
-*/
-
-// a.makeDataUri({title: "thing", chist: "stuff"});
