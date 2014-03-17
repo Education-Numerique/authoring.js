@@ -780,7 +780,7 @@
                         scb.score = new LxxlScoring.questionScore(scb.answers.length);
 
                     var getBackTo = scb.answers[aid].isCorrect;
-                    if (getBackTo) {
+                    if (getBackTo) { // QCM reponse bonne
                         $('button', $(this).parent().parent()).each(function (ind, item) {
                             $(item).attr('disabled', 'disabled');
                             // if($(item).html() != 'X'){
@@ -791,21 +791,21 @@
                         $(this).html('O');
                         $(this).attr('style', 'background-color: green;');
 
-                        //$('#modal-on-modal-lynching').show();
+                        $('#modal-on-modal-lynching').show();
                         $('.modal', $(this).parent()).modal('show');
                         $('.modal', $(this).parent()).on('hide', function () {
-                        //    $('#modal-on-modal-lynching').hide();
+                            $('#modal-on-modal-lynching').hide();
                         });
 
                         scb.score.markAnswered();
                         completeQuestion(pid, qid);
-                    } else {
+                    } else { // QCM reponse fausse
                         scb.score.addPenalty();
 
-                        //$('#modal-on-modal-lynching').show();
+                        $('#modal-on-modal-lynching').show();
                         $('.modal', $(this).parent()).modal('show');
                         $('.modal', $(this).parent()).on('hide', function () {
-                          //  $('#modal-on-modal-lynching').hide();
+                            $('#modal-on-modal-lynching').hide();
                         });
                         $(this).html('X');
                         $(this).attr('disabled', 'disabled');
@@ -819,7 +819,10 @@
                         ok = ($('input', $(line))[0].checked || $('input', $(line))[1].checked) && ok;
                     });
                     if (ok) {
+                        // c'est sans doute par ici qu'il faudrait highlighter le bouton "vérifier"...
+                        // en accord avec src/activity/activity.tpl
                         $('button', $(this).parent().parent().parent()).attr('disabled', null);
+                        $('button', $(this).parent().parent().parent()).css('color', 'green');
                     }
                 });
 

@@ -242,7 +242,7 @@
                       Ton score pour cette question: <span class="feedback"></span>
                     </div>
                     <div class="modal-footer">
-              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+                      <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
                     </div>
                   </div>
                 </ul>
@@ -255,23 +255,26 @@
                     {{text}}
                     <div class="modal hide" role="dialog" aria-hidden="true">
                       <div class="modal-header">
-                        <h3>Mauvaise réponse</h3>
+                        <!-- titre du feed-back QCM -->
+                        {{#if isCorrect}}
+                          <h3>Bonne réponse !</h3>
+                        {{else}}
+                          <h3>Mauvaise réponse</h3>
+                        {{/if}}
                       </div>
                       <div class="modal-body">
                         {{comment}}
                       </div>
                       <div class="modal-footer">
-              <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+                        <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
                       </div>
                     </div>
                   </li>
                   {{/each}}
                 </ul>
 
-
                 {{/if}}
-      <!--                    [[isCorrect]]
-                    [[weight]] -->
+      <!--   [[isCorrect]] [[weight]] -->
               </dd>
           {{/each}}
             </dl>
