@@ -117,11 +117,11 @@ jsBoot.pack('LxxlLib.model.defines', function() {
       ]},
       {id: 'eng_tt_lycee_4', title: 'PRODUCTION ORALE', content: [
       ]},
-      {id: 'eng_tt_lycee_5', title: 'MONDE ANGLOPHONE', content: [
+      {id: 'eng_tt_lycee_5', title: 'CULTURE & CIVILISATION', content: [
         {id: 'eng_tt_lycee_5_1', title: 'Culture'},
         {id: 'eng_tt_lycee_5_2', title: 'Civilisation'}
       ]},
-      {id: 'eng_tt_lycee_6', title: 'LANGUE ANGLAISE', content: [
+      {id: 'eng_tt_lycee_6', title: 'LA LANGUE', content: [
         {id: 'eng_tt_lycee_6_1', title: 'Le lexique'},
         {id: 'eng_tt_lycee_6_2', title: 'La syntaxe'},
         {id: 'eng_tt_lycee_6_3', title: 'Les formes verbales'},
@@ -155,7 +155,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
             {id: 'his_tt_prem_6', title: 'MÈTHODOLOGIE', content: [
               {id: 'his_tt_prem_6_1', title: 'La composition'},
               {id: 'his_tt_prem_6_2', title: 'L\'étude d\'un document'},
-              {id: 'his_tt_prem_6_3', title: 'L\'étude de deux documents'}
+              {id: 'his_tt_prem_6_3', title: 'L\'étude de deux documents'},
+              {id: 'his_tt_prem_6_4', title: 'Annales du Bac'}
             ]}
     ]},
 
@@ -184,7 +185,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
               {id: 'geo_tt_prem_5_2', title: 'L\'étude d\'un document'},
               {id: 'geo_tt_prem_5_3', title: 'L\'étude de deux documents'},
               {id: 'geo_tt_prem_5_4', title: 'Le croquis'},
-              {id: 'geo_tt_prem_5_5', title: 'Le schéma'}
+              {id: 'geo_tt_prem_5_5', title: 'Le schéma'},
+              {id: 'geo_tt_prem_5_6', title: 'Annales du Bac'}
             ]}
     ]},
 
