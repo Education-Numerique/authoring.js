@@ -14,24 +14,21 @@
     });
   };
 
-
   var popoverContent = '<div class="thumbnail">{thumbnail}</div>' +
       '<h5>{nickname}</h5>' +
       '<div><span>{duration}</span>&nbsp;<span>{difficulty}</span></div>' +
       //'<div class="avatar">{useravatar}</div>' +
       '<div>{description}</div>';
 
-
-
   var will = function(arr, start, removeCount/*, addCount*/) {
     var nn = $('.mydrafts.data-table').dataTable();
     if (arr == pactivities) {
       nn = $('.mypublished.data-table').dataTable();
     }
-    for (var x = start + removeCount - 1; x >= start; x--)
-      nn.fnDeleteRow(x);
-  };
+    // for (var x = start + removeCount - 1; x >= start; x--)
+    //   nn.fnDeleteRow(x);
 
+  };
 
   var did = function(arr, start, removeCount, addCount) {
 
@@ -123,7 +120,7 @@
       button.html('<button class="icon-edit"></button>');
 
       button.bind('click', function(/*e*/) {
-        LxxlApp.router.send('showActivityEdit', item);
+        LxxlApp.router.send('showActivityivityEdit', item);
       });
 
       if (infos.blobs.media.length || infos.blobs.attachments.length)
@@ -146,9 +143,9 @@
         var act = LxxlLib.factories.activities.getActivity();
         act.addObserver('id', onCreate);
         act.push();
-        // Ember.run.next(function() {
-        // });
-
+        Ember.run.next(function() {
+          act.push(var activities = {isPublished : true});
+        });
 
         // LxxlApp.router.send('showActivityEdit', item);
       });
@@ -194,20 +191,19 @@
     this.draftActivities.removeArrayObserver(this, { willChange: will, didChange: did});
   };
 
-
   t.didInsertElement = function() {
     activities = this.activities;
     this.activities.replace(0, this.activities.length);
     pactivities = this.publishedActivities = [];
     dactivities = this.draftActivities = [];
     this.get('publishedActivities').addArrayObserver(this, { willChange: will, didChange: did});
-    this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
+    //this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
 
     // XXX listMine
     LxxlLib.service.activities.list(function(d) {
       activities.replace(0, activities.length);
       d.forEach(function(item) {
-        var act = LxxlLib.factories.activities.getActivity(item);
+        var act = LxxlLib.factories.activities.getActivity({isPublished: true});
         activities.pushObject(act);
         if (act.isPublished)
           pactivities.pushObject(act);

@@ -18,7 +18,7 @@
       var item = hookBack(id);
 
       var button = $(nRow).find('td:eq(0)');
-      button.html('<button class="icon-edit"></button>');
+      button.html('<a class="icon-edit" target="_blank"></a>');
 
       var admin;
       if (item.get('level') != '3') {

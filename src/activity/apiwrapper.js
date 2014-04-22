@@ -15,7 +15,7 @@
     /******************************************************************/
      // Uncomment this to get Fake LMS to console
 
-     window.API = {}; 
+     window.API = {};
      ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString', 'GetDiagnostic'].forEach(function(key) {
         window.API[key] = function(a, b, c) {
             console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c); 
@@ -680,11 +680,13 @@
                 var idx;
                 if ($(window).width() <= 910)
                 {
+                    $('.side-menu nav').css('white-space', 'nowrap');
                     $( ".side-menu" ).animate({
                         width: "0",
-                    }, 1500 , function (){
+                    }, 500 , function (){
                         $('.side-menu').css('display', 'none');
-                    }); 
+                        $('.side-menu nav').css('white-space', 'normal');
+                    });                     
                 }
 
                 // TOTO.objectives[0].setBrowsed()
@@ -1075,7 +1077,6 @@
                     }
                     // Completed
                 });
-
 
                 $('[data-type="tat"]', item).each(function (idx, it) {
                     var response = [it.innerHTML];

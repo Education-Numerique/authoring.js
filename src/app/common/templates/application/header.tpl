@@ -30,7 +30,7 @@
   </nav>
 
   <nav id="sidebar">
-    <a class="visible-phone"><i class="icon icon-home"></i>Home</a>
+    <a class="visible-phone"><button type="button" class="btn btn-navbar btn-responsive"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button></a>
     <ul>
       <li class="user-all">
         <a rel="tooltip" data-placement="right" title="{{localize nav.home.tip}}" id="navigation-dashboard" {{action showActions href=true}}><i class="icon icon-home"></i> <span>{{localize nav.home.text}}</span></a>

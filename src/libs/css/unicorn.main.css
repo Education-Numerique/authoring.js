@@ -1309,6 +1309,10 @@ form {
 		top: auto;
 		left: auto;
 		margin: 3px auto;
+		left: 31px !important;
+		height: 60px !important;
+		top: 21px !important;
+		width: 42px;
 	}
 	#user-nav {
 		position: relative;
@@ -1322,17 +1326,22 @@ form {
 		float: none;
 	}
 	#user-nav > ul {
-		left: 50%;
-		position: absolute;
+		/*left: 50%;
+		position: absolute;*/
+		float:right;
 	}
+
+	#button-mid
+	{
+		display:none;
+	}
+
 	#content {
 		margin-left: 0 !important;
 		border-top-left-radius: 0;
 	}
 	#content-header {
-		margin-top: 0;
-		height: 140px;
-		text-align: center;
+		display:none;
 	}
 	#content-header h1, #content-header .btn-group {
 		float: none;
@@ -1384,6 +1393,15 @@ form {
 		width: 11px;
 		white-space: nowrap;
 		overflow: hidden;
+	}
+
+	.form-horizontal .form-actions
+	{
+		padding:0 !important;
+	}
+	.profile .profile-fields input:not([type=submit]), .control-group.profile-fields
+	{
+		width:100% !important;
 	}
 }
 
@@ -1468,8 +1486,27 @@ form {
 		padding-right: 20px;
 	}
 	#search { display: none; }
-	#user-nav > ul > li > a > span.text {
+	#user-nav > ul > li > a > span.text 
+	{
 		display: none;
+	}
+	.content-header h1
+	{
+		font-size:13px !important;
+	}
+	.dataTables_length
+	{
+		display:none;
+	}
+
+	.controls
+	{
+		margin:0 !important;
+	}
+
+	.controls .input-prepend
+	{
+		width:100% !important;
 	}
 }
 /*

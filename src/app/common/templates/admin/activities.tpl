@@ -31,14 +31,14 @@
         </thead>
         <tbody>
         </tbody>
-      </table>  
+      </table>
     </div>
   </div>
 
   <div class="row-fluid">
   </div>
 
-  <div class="widget-box">
+<!--   <div class="widget-box">
     <div class="widget-title">
       <h5>Les activités non encore publiées</h5>
     </div>
@@ -62,7 +62,7 @@
         </tbody>
       </table>  
     </div>
-  </div>
+  </div> -->
 
 
 

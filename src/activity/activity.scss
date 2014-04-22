@@ -7,7 +7,6 @@ html, body {
   height: 100%;
 }
 
-
 @mixin rounded($radius: 10px) {
   border-radius: $radius;
   -moz-border-radius: $radius;
@@ -499,6 +498,11 @@ body {
 
 @media screen and (min-width : 0px) and (max-width : 910px)  {
 
+  .side-menu nav
+  {
+    white-space: nowrap;
+  }
+
   #activity-preview-body{
     width:100%;
   }
@@ -518,6 +522,7 @@ body {
     //opacity:0;
     right:0;
     z-index:1 000 000;
+    width:90%;
   }
 
   #activity-preview-body .side-menu nav h2 {
@@ -529,6 +534,8 @@ body {
     word-wrap: break-word;
   }
 }
+
+
 
 .pull-right
 {
@@ -559,6 +566,17 @@ footer p
   bottom: 5px;
   // left: 12px;
   width: 235px;
+}
+
+footer #creativeCommon
+{
+  background-image:url('https://i.creativecommons.org/l/by/4.0/88x31.png');
+  width: 88px;
+  height: 31px;
+  position: relative;
+  display: inline-block;
+  top: 5px;
+  left: 16px;
 }
 
 .navbar .btn-navbar {

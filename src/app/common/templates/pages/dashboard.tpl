@@ -28,7 +28,7 @@
       <h5>Mon dashboard</h5>
     </header>
   -->
-    <section class="widget-content">
+    <section class="widget-content" id='button-mid'>
       <div class="row-fluid">
         <div class="span12 center" style="text-align: center;">         
           <ul class="quick-actions">

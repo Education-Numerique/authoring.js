@@ -356,7 +356,7 @@
     </div>
   </section>
     <footer> 
-      <small><i>powered by</i> <a href="http://www.education-et-numerique.org" target="_blank">Education & Numerique</a></small>
+      <small><i>powered by</i> <a href="http://www.education-et-numerique.org" target="_blank">Education & Numerique</a></small><div id='creativeCommon'></div>
     </footer>
     <!-- footer : un peu de padding ... -->
 <!--
@@ -397,46 +397,47 @@ $(document).ready( function ()
       $('.btn-responsive').hide();
       $('.pull-left').addClass('span8');
     }
-  
-  $(document).on('click', window, function ()
-  {
-    //alert($(this).attr('id'));
-  // if ($('.side-menu').css('display') == 'block')
-  //   {
-  //     console.log($(this).html());
-  //     alert($(this).attr('id'));    
-  //     $( ".side-menu" ).animate({
-  //       width: "0px",
-  //     }, 1000 , function() {
-  //      $('.side-menu').hide();
-  //     });
-  //   }
-  });
 
   $(document).on('click', '.btn-responsive', function ()
   {
    
     if ($('.side-menu').css('display') == 'none')
     {
+        $('.side-menu nav').css('white-space', 'nowrap');
         $('.side-menu').show();
         $( ".side-menu" ).animate({
-        width: "30%",
+        width: "90%",
         step: function( now, fx ) {
         }
-      }, 1000,  function() {
+      }, 500,  function() {
        $('.side-menu').css('display', 'block');
-      });
+       $('.side-menu nav').css('white-space', 'normal');
+      });        
     }
     else
     {
+      $('.side-menu nav').css('white-space', 'nowrap');
        $( ".side-menu" ).animate({
-        width: "0px",
-      }, 1000 , function() {
+        width: "1px",
+      }, 500 , function() {
        $('.side-menu').hide();
-      });
+       $('.side-menu nav').css('white-space', 'normal');
+      });       
     }
 
   });
+
+  $('body').click(function (e)
+  {
+    alert('lol');
+    //$('#ss-form').hide();
+  });
+
+$(".side-menu").click(function (e)
+{
+    e.stopPropagation();
+});
+
 
   $(window).resize(function ()
   {
@@ -444,7 +445,7 @@ $(document).ready( function ()
     {
       $('.btn-responsive').show();
       $('.pull-left').removeClass('span8');
-      //$('.side-menu').hide();
+      $('.side-menu').css('width', '90%');
     }
     else
     {
@@ -452,7 +453,7 @@ $(document).ready( function ()
       $('.pull-left').addClass('span8');
       $('.side-menu').css('width', '23%');
       $('.side-menu').show();
-    }
+    } 
   });
 
 });

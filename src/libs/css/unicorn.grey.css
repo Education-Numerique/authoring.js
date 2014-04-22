@@ -72,7 +72,16 @@ body {
 	#sidebar > a {
 		background-image: -moz-linear-gradient(top, #464646 0%, #404040 100%);
 		border-bottom: 1px solid #6e6e6e;
+		height: 23px;
 	}
+
+	#sidebar > a button{		
+		height: 27px;
+		float:left;
+		position: relative;
+		left: 3px;
+	}
+
 	#sidebar > ul {
 		background-color: #444444;
 	}

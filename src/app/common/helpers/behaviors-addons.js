@@ -121,7 +121,17 @@
     };
   })();
 
-  $(document).ready(function() {
+$(document).ready(function() {
+
+  $(document).on('click', '#sidebar ul li', function ()
+  {
+    var widthTotal = $(window).width();
+    if (widthTotal <= 480)
+    {
+      $('#sidebar').removeClass('open');
+      $('#sidebar ul').slideUp();
+    }
+  });
 
     var oldMouseStart = $.ui.sortable.prototype._mouseStart;
     $.ui.sortable.prototype._mouseStart = function(event, overrideHandle, noActivation) {
@@ -178,6 +188,7 @@
         }
       });
     })();
+
   });
 
 
