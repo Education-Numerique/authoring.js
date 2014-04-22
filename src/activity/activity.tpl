@@ -427,12 +427,6 @@ $(document).ready( function ()
 
   });
 
-  $('body').click(function (e)
-  {
-    alert('lol');
-    //$('#ss-form').hide();
-  });
-
 $(".side-menu").click(function (e)
 {
     e.stopPropagation();
