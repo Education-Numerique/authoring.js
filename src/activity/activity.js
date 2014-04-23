@@ -229,6 +229,7 @@
       //   $(this).css('display: block');
       //   // $(this).height($(this).data('hack') + 'px');
       // };\
+
       $(document).tooltip({selector: '[rel=tooltip]'});
       $('h4', node).next().slideUp();
       $('h4', node).append('<i class="collapse-binder"></i>');
@@ -238,7 +239,7 @@
       if (!node[0].jobDone) {
         node[0].jobDone = true;
         // does not fire on touch .... at least on ipad (JBT)
-        $(document).on('click touchstart', 'h4, a', function(/*e*/) {
+        $(document).on('click touchstart', 'h4', function(/*e*/) {
           var status = $(this).data('manuWillHateMeAgain');
           $(this).data('manuWillHateMeAgain', !status);
           if (status) {
@@ -253,6 +254,28 @@
             $(this).next().slideUp(100);//, hide);
           }
         });
+
+        $(document).on('click touchstart', 'a', function(/*e*/) {
+          var status = $(this).data('manuWillHateMeAgain');
+          $(this).data('manuWillHateMeAgain', !status);
+          if (status) {
+            $('i.collapse-binder', this).addClass('icon-arrow-up');
+            $('i.collapse-binder', this).removeClass('icon-arrow-down');
+            $(this).next().slideDown(100);//, show);
+            $(this).next().addClass('light_grey_bloc');
+          }
+          else {
+            $('i.collapse-binder', this).addClass('icon-arrow-down');
+            $('i.collapse-binder', this).removeClass('icon-arrow-up');
+            $(this).next().slideUp(100);//, hide);
+          }
+        });
+
+        // $(document).on('click touchstart', 'a', function ()
+        // {
+        //   $('a').tooltip({ items: "a", content: "Displaying on click"});
+        //   $('a').tooltip("open");
+        // });
       }
 
       currentActivity.pages.forEach(function(page, index) {
