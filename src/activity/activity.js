@@ -238,7 +238,7 @@
       if (!node[0].jobDone) {
         node[0].jobDone = true;
         // does not fire on touch .... at least on ipad (JBT)
-        $(document).on('click', 'h4, a', function(/*e*/) {
+        $(document).on('click touchstart', 'h4, a', function(/*e*/) {
           var status = $(this).data('manuWillHateMeAgain');
           $(this).data('manuWillHateMeAgain', !status);
           if (status) {

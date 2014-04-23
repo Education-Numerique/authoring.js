@@ -385,6 +385,10 @@
 
 $(document).ready( function ()
 {
+  // $(document).on('click touchstart', 'a, h4', function ()
+  // {
+  //   alert('LDSFSDAFDFQWEAWQWRSDZFSL');
+  // });
   if ($(window).width() <= 910)
     {
       $('.btn-responsive').show();
@@ -400,7 +404,6 @@ $(document).ready( function ()
 
   $(document).on('click', '.btn-responsive', function ()
   {
-   
     if ($('.side-menu').css('display') == 'none')
     {
         $('.side-menu nav').css('white-space', 'nowrap');
