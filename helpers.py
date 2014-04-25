@@ -34,12 +34,12 @@ def __yankconfiguration():
   # Try to yank in a user defined node
   try:
     r.yak(usercpath)
-    console.info('Reading inline user configuration from main file')
+    console.info('Reading inline user configuration from main file ...')
   except:
     pass
   try:
     r.yak('userYank')
-    console.info('Reading separate user configuration')
+    console.info('Reading separate user configuration ...')
   except:
     pass
 
@@ -58,6 +58,7 @@ def __yankgitdata():
     commithash = sh("cd .; git log | head -n 1 | cut -f2 -d' '", output=False).strip()
     Yak.git['root'] = Yak.git['root'].replace('/master/', '/' + branch + '/')
     Yak.git['revision'] = '#' + commitnb + '-' + commithash
+    console.info('git info retrieved ...')
   except:
     Yak.git['revision'] = '#no-git-information'
     console.error("FAILED fetching git information - locations won't be accurate")

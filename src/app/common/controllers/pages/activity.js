@@ -25,6 +25,10 @@
                     $('#action-published-error #pub-err').html('la description de votre activité doit compter au moins 20 caractères.');
                     $('#action-published-error').modal('show');
                     break;
+                case ctr.LONG_DESCRIPTION:
+                    $('#action-published-error #pub-err').html('la description de votre activité doit compter au plus 200 caractères.');
+                    $('#action-published-error').modal('show');
+                    break;
                 case ctr.PERF_MUSTACHE_MALFORMED:
                     $('#action-published-error #pub-err').html('il y une ou plusieurs erreur de syntaxe dans une des pages performance :<br/>'
                         + ctr.errorDescription);
@@ -92,6 +96,7 @@
             } else {
                 console.warn('***** export scorm');
                 var title = this.get('content.controller.published.title');
+                // Bug : caractère & interdit ... 
                 ScormPacker(this.get('content.controller.id'), title, function (zip) {
                     var content = zip.generate();
                     var blob = zip.generate({type: 'blob'});

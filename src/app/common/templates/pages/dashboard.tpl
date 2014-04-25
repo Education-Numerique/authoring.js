@@ -108,8 +108,9 @@
           <h3><i class="icon-th-list"></i> Créez vos activités</h3>
 
           <p><strong>Devenez auteur</strong><br />
-          C’est libre, gratuit, Open source, sous licence Creative Commons. Vous conservez tous les droits de propriété sur vos créations. 
-          En quelques minutes, après avoir validé votre compte, vous pourrez créer votre première activité. <i class="icon-th-list"></i> À l’aide de gabarits conçus par E&N, vous concevez facilement fiches et exercices «&nbsp;accrochés&nbsp;» au programme, au bon thème, à la bonne notion.<br />
+          C’est libre, gratuit, Open source, sous licence Creative Commons. Vous conservez tous les droits de propriété sur vos créations.<br />
+          Découvrez ce que vous pourrez produire grâce à LEA en regardant les activités publiées dans le <a href="http://catalogue.education-et-numerique.org" target="_blank">catalogue</a>, et en particulier les tutoriels. Par exemple la présentation générale de la plateforme : <a href="http://www.education-et-numerique.fr/0.3/activity/embed.html?id=510eaff63361eb667e4c26f7" target="_blank">Elena</a><br />  
+          En quelques minutes, après avoir validé votre compte, vous pourrez créer votre première activité.<br /><i class="i con-th-list"></i> À l’aide de gabarits conçus par E&N, vous concevez facilement fiches et exercices «&nbsp;accrochés&nbsp;» au programme, au bon thème, à la bonne notion.<br />
           Prévisualisez vos séquences au fur et à mesure de la conception, sauvegardez, publiez.<br />
           Partagez avec vos élèves ou vos collègues via votre site ou votre blog… Grâce à la compatibilité SCORM, exportez vos activités vers le LCMS (Learning Course Management System) de l'ENT de votre établissement et assurerez le suivi de vos élèves.</p> 
         </div>

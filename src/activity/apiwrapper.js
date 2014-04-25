@@ -12,7 +12,7 @@
     
     // In the future, this file may be splitted in two different files ...
 
-    /******************************************************************/
+    /******************************************************************
      // Uncomment this to get Fake LMS to console
 
      window.API = {};
@@ -527,7 +527,7 @@
     });
 
 ////////////////**********************************//////////////////
-// Part Two : LxxL interface with SCORM API 
+// Part Two : LxxL sessionManager
 // baked by manu
 
     LxxlLib.sessionManager = new (function () {

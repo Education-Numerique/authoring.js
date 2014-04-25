@@ -19,14 +19,15 @@ You need to be familiar with:
 How to build your own
 ----------------------
 
-Git clone the repository: git clone git@github.com:Education-Numerique/authoring.js.git
+Git clone the repository: 
+```git clone git@github.com:Education-Numerique/authoring.js.git```
 
 **Install puke in order to build**
 You need python, along with pip, which probably means you need brew under osx 
 More about puke: https://github.com/webitup/puke/wiki/v2
 
 Edit the **config.yaml** file to fit your mileage
-(get inspired by inline comments, and existing custom node).
+(get inspired by inline comments, and existing custom nodes).
 
 How to deploy
 ----------------------
@@ -92,13 +93,19 @@ Though, **you should NOT edit _miniboot.js_** unless you have good reasons, nor 
 These are placeholders files, and should have almost zero intelligence.
 
 
-The libs folder
+The src/miniapp folder
+----------------------
+
+Use this sandbox if you want to experiment with the core concepts of the application.
+
+
+The src/libs folder
 ----------------------
 
 Contains third-party dependencies. There is no reason to change any of these.
 
 
-The lxxl folder
+The src/lxxl folder
 ----------------------
 
 Contains the *generic* lxxl library: the one that defines the data model and that is used when producing standalone activities, which provides APIs to display and manipulate activities.
@@ -126,6 +133,12 @@ Obviously, you may create any additional file you want in the common/css folder 
 If you want to quick change something, use zcustomization.css for that.
 
 
+About the "common" folders everywhere
+----------------------
+
+This is provisionnal, and is meant to specialize the application for desktop / mobile, by abstracting what is common to all devices.
+
+
 The src/app/common folder
 ----------------------
 
@@ -142,12 +155,10 @@ Anything else in there requires that you understand basics of MVC frameworks, an
 - the views folder provide... views
 - the states folder define the application routing - this is where you should hook if you want a new url endpoint, or edit an existing one
 
-
-About the "common" folders everywhere
+The src/activity foder
 ----------------------
 
-This is provisionnal, and is meant to specialize the application for desktop / mobile, by abstracting what is common to all devices.
-
+Holds everything concerning activities rendering in all of their possible formats : SCORM package, preview or browsed directly from their public URLs (eventually embedded).
 
 
 About stuff that is NOT there

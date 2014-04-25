@@ -4,11 +4,6 @@
 
 <div class="row-fluid">
 
-<!--
-  <div class="row-fluid">
-    <h4>Mes activités publiées</h4>
-  </div>
--->
   <div class="widget-box">
     <div class="widget-title">
       <h5>Les activités publiées</h5>
@@ -64,25 +59,14 @@
     </div>
   </div>
 
-
-
 </div>
 
 <div class="modal hide" id="modal-preview" role="dialog" aria-labelledby="modal-preview-label" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="modal-preview-label">Preview</h3>
+    <h3 id="modal-preview-label">Prévisualisation</h3>
   </div>
   <div class="modal-body">
     <p id="modal-preview-body"></p>
   </div>
 </div>
-
-
-
-
-
-            <!--
-              regarder le mixin no text dans roxee / + unselectable 
-
-            -->
