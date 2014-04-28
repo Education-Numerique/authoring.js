@@ -1,1 +1,535 @@
-{"creationDate": 1364492301, "seenCount": 108, "author": {"username": "raildecom", "uid": "c20ad4d76fe97759aa27a0c99bff6710"}, "isPublished": true, "draft": {"category": [], "description": "<p>description description</p>", "contributors": [], "extra": {"attachments": []}, "title": "vfsvdf", "extraContributors": [], "matter": {"id": "gre", "title": "Grec"}, "duration": {"id": 20, "title": "20 minutes"}, "difficulty": {"id": "hard", "title": "Difficile"}, "level": {"id": "tt_colg", "title": "Tout le coll\u00e8ge"}, "pages": [{"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "<p><br></p>", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [{"text": "<p>1</p>", "isQRM": false, "answers": [{"comment": "", "text": "<p>1</p>", "isCorrect": true, "weight": 0}], "coef": 0}, {"text": "<p>2</p>", "isQRM": false, "answers": [{"comment": "", "text": "<p>2</p>", "isCorrect": true, "weight": 0}], "coef": 0}], "sequencing": -1, "flavor": {"id": "jmt", "title": "Page glisser-d\u00e9poser"}, "document": "", "limitedTime": 60}, {"tat": "<p>Marquer test: <a data-type=\"tat\" data-clue=\"indice\" data-alt=\"\">testa</a>&nbsp;&nbsp;</p><p></p><p>Marquer test <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">testc</a>&nbsp;<br></p><p>Marquer test: <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">testb</a>&nbsp;&nbsp;</p><p><br></p><p><br></p><p><br></p><p></p>", "displayHoles": true, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "<p><br></p>", "coef": 0, "displayHolesRandomly": true, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "tat", "title": "Page texte \u00e0 trous"}, "document": "", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "<p><br></p>", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [{"text": "Question", "isQRM": false, "answers": [{"comment": "indice bon 1", "text": "OK", "isCorrect": true, "weight": 0}, {"comment": "indice pas bon 2", "text": "pas bon", "isCorrect": false, "weight": 0}, {"comment": "indice pas bon 3", "text": "pas bon", "isCorrect": false, "weight": 0}], "coef": 0}, {"text": "Autre question", "isQRM": true, "answers": [{"comment": "explication bon 1", "text": "Bon", "isCorrect": true, "weight": 0}, {"comment": "explication bon 2", "text": "Bon aussi", "isCorrect": true, "weight": 0}, {"comment": "explication pas bon 3", "text": "Pas bon", "isCorrect": false, "weight": 0}, {"comment": "explication pas bon 4", "text": "Pas bon", "isCorrect": false, "weight": 0}], "coef": 0}], "sequencing": -1, "flavor": {"id": "quizz", "title": "Page quizz"}, "document": "", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}], "blobs": {}}, "publicationDate": 1364614674, "published": {"category": [], "description": "<p>description description</p>", "contributors": [], "extra": {"attachments": []}, "title": "vfsvdf", "extraContributors": [], "matter": {"id": "gre", "title": "Grec"}, "duration": {"id": 20, "title": "20 minutes"}, "difficulty": {"id": "hard", "title": "Difficile"}, "level": {"id": "tt_colg", "title": "Tout le coll\u00e8ge"}, "pages": [{"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "<p><br></p>", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [{"text": "<p>1</p>", "isQRM": false, "answers": [{"comment": "", "text": "<p>1</p>", "isCorrect": true, "weight": 0}], "coef": 0}, {"text": "<p>2</p>", "isQRM": false, "answers": [{"comment": "", "text": "<p>2</p>", "isCorrect": true, "weight": 0}], "coef": 0}], "sequencing": -1, "flavor": {"id": "jmt", "title": "Page glisser-d\u00e9poser"}, "document": "", "limitedTime": 60}, {"tat": "<p>Marquer test: <a data-type=\"tat\" data-clue=\"indice\" data-alt=\"\">testa</a>&nbsp;&nbsp;</p><p></p><p>Marquer test <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">testc</a>&nbsp;<br></p><p>Marquer test: <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">testb</a>&nbsp;&nbsp;</p><p><br></p><p><br></p><p><br></p><p></p>", "displayHoles": true, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "<p><br></p>", "coef": 0, "displayHolesRandomly": true, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "tat", "title": "Page texte \u00e0 trous"}, "document": "", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "<p><br></p>", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [{"text": "Question", "isQRM": false, "answers": [{"comment": "indice bon 1", "text": "OK", "isCorrect": true, "weight": 0}, {"comment": "indice pas bon 2", "text": "pas bon", "isCorrect": false, "weight": 0}, {"comment": "indice pas bon 3", "text": "pas bon", "isCorrect": false, "weight": 0}], "coef": 0}, {"text": "Autre question", "isQRM": true, "answers": [{"comment": "explication bon 1", "text": "Bon", "isCorrect": true, "weight": 0}, {"comment": "explication bon 2", "text": "Bon aussi", "isCorrect": true, "weight": 0}, {"comment": "explication pas bon 3", "text": "Pas bon", "isCorrect": false, "weight": 0}, {"comment": "explication pas bon 4", "text": "Pas bon", "isCorrect": false, "weight": 0}], "coef": 0}], "sequencing": -1, "flavor": {"id": "quizz", "title": "Page quizz"}, "document": "", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}, {"tat": "", "displayHoles": false, "subtitle": "", "displayAll": true, "title": "Titre de la page", "advice": "", "coef": 0, "displayHolesRandomly": false, "hasDocument": false, "questions": [], "sequencing": -1, "flavor": {"id": "simple", "title": "Page simple"}, "document": "<p><br></p>", "limitedTime": 0}], "blobs": {}}, "isReported": false, "id": "5154800d3361eb1102578f1b", "isDeleted": false}
+{
+  "creationDate": 1359917046,
+  "seenCount": 230,
+  "author": {
+    "username": "Baboume",
+    "uid": "f7177163c833dff4b38fc8d2872f1ec6"
+  },
+  "isPublished": true,
+  "draft": {
+    "category": [
+      
+    ],
+    "description": "<p>20 minutes pour découvrir <b>la plateforme <\/b>auteur Libre et Gratuite d'Education & Numérique.<\/p>",
+    "contributors": [
+      
+    ],
+    "title": "La plateforme E&N",
+    "extra": {
+      "attachments": [
+        
+      ]
+    },
+    "extraContributors": [
+      
+    ],
+    "matter": {
+      "id": "tuto",
+      "title": "Tutoriel"
+    },
+    "duration": {
+      "id": 20,
+      "title": "20 minutes"
+    },
+    "difficulty": {
+      "id": "easy",
+      "title": "Facile"
+    },
+    "level": {
+      "id": "other",
+      "title": "Autre"
+    },
+    "pages": [
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "La plateforme E&N en quelques mots",
+        "advice": "",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "simple",
+          "title": "Page simple"
+        },
+        "document": "<h2><span style=\"font-size: 30px; font-weight: bold; line-height: 38px;\"><span style=\"color: #31859b;\">Le Catalogue<\/span><\/span><\/h2>\n\n<p>\n<img src=\"\/\/api.education-et-numerique.fr\/1.0\/blob\/511bae743361eb5bc69113a2\/draft\" data-blobid=\"511bae743361eb5bc69113a2\" style=\"width: 97.83568075117371px; height: 229px; float: right; margin: 0px 0px 10px 10px;\" alt=\"\" align=\"left\">Si vous avez trouvé cette activité, c'est que vous connaissez le <a data-original-title=\"C'est là que sont publiées les activités pédagogiques numériques que leurs auteurs décident de mettre à la disposition de tous.\" data-placement=\"top\" rel=\"tooltip\">Catalogue<\/a>. C'est là que sont publiées les <i>activités\npédagogiques numériques<\/i> que leurs auteurs décident de mettre à la disposition de tous.<\/p>\n<p><span style=\"line-height: 1.45em;\">Je vous laisse en découvrir les fonctionnalités et j'espère vous retrouver bientôt comme auteur, peut-être comme membre de l'association.<\/span><br><\/p><h2><span style=\"color: #31859b;\">L'environnement auteur<\/span><\/h2>\n<p>Feuilletez ces quelques pages pour voir ce qu'il est déjà possible de faire avec cette première version de l'environnement auteur et imaginez ce qu'elle va devenir grâce à vos contributions...<\/p><h4><span style=\"font-weight: normal;\"><span style=\"color: #4bacc6;\">Tout est vraiment gratuit ?<\/span><\/span><\/h4>\n<div>\n<p>Oui, tout est gratuit !<\/p><p><span style=\"line-height: 1.45em;\">Éducation & Numérique est un projet de mise en commun de ressources, animé par des enseignants, d'anciens éditeurs pédagogiques et une équipe informatique passionnée d'éducation qui <\/span>partagent l'envie de travailler dans le contexte du \"gratuit\". Pas de pub, rien à payer. Une Association, à laquelle tout le monde peut adhérer, pour produire de la valeur dans un contexte démonétarisé.<br><br>Élevés dans le giron et le respect de l'<i>École Publique<\/i>, nous sommes convaincus que l'investissement sur l'Éducation et la Culture est parmi les plus rentables pour une société. Nous pensons également qu'il serait anormal que les membres de cette société payent pour accéder au Savoir et à la Culture. C'est tout simplement un projet <i>politique<\/i>. Nous nous sentons avec fierté les héritiers de Condorcet et de Jules Ferry ... <br>\nAujourd'hui, <b>nous investissons ensemble afin de créer de la valeur, des compétences éditoriales, une communauté d'auteurs qui souhaitent s'exprimer sur la toile, y créer et y partager les meilleurs contenus<\/b> et les meilleurs outils. <br><br>\n<i>Tu as un franc, j'ai un franc, tu me donnes un franc, je te donne un franc, nous avons chacun un franc.<br>Tu as une idée, j'ai une idée, tu me donnes une idée, je te donne une idée, nous avons chacun <b>deux<\/b> idées.<\/i><br><br>Et nous sommes certains que de temps à autre, un groupe social proche du monde économique saura rétribuer le savoir-faire que nous aurons acquis ensemble dans cette réalisation et le réseau de compétences, de complicités, d'amitiés construit autour de cet ambitieux projet. <br><br>C'est un grand et beau débat au sein de l'Association Education & Numérique.<\/p><\/div><p><span style=\"line-height: 1.45em;\">Bienvenue parmi nous !<\/span><br><\/p><p>Jean-Baptiste Touchard,<br>Directeur Technique d'Éducation & Numérique<\/p>",
+        "limitedTime": 0
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": false,
+        "title": "Un Quiz, tout simple avec seulement deux questions",
+        "advice": "<p>Un Quiz, comme toutes les pages, comporte un titre éventuellement suivi d'un texte <a rel=\"tooltip\" data-placement=\"right\" data-original-title=\"que vous êtes en train de lire...\">enrichi<\/a>. Ce dernier donne souvent la consigne de l'activité ou un document sur lequel vont porter les questions qui suivent.<\/p><p><span style=\"line-height: 1.45em;\">Il existe deux types de questions dans un quiz :<\/span><\/p><p><\/p><ul><li><span style=\"font-size: 15px; line-height: 1.45em;\">les <b><span style=\"color: #548dd4;\">QCM<\/span> <\/b>(<b>Q<\/b>uestions à <b>C<\/b>hoix <b>M<\/b>ultiples)<\/span><\/li><li><span style=\"font-size: 15px; line-height: 1.45em;\">les <b><span style=\"color: #e36c09;\">QRM<\/span> <\/b>(<b>Q<\/b>uestions à <b>R<\/b>éponses <b>M<\/b>ultiple<\/span><span style=\"font-size: 15px;\">s)<\/span><\/li><\/ul><div><span style=\"line-height: 18px;\">Un (une ?) <b><span style=\"color: #548dd4;\">QCM<\/span><\/b> commence par une question, suivie de plusieurs propositions de réponses. Il suffit de trouver la bonne réponse pour que cette question soit résolue. Si on se trompe, on reçoit une indication (et on perd quelques points) et on peut recommencer jusqu'à trouver la bonne réponse. <br>Regardez la première question çi-dessous : c'est une <b><span style=\"color: #548dd4;\">QCM<\/span><\/b>.<\/span><\/div><div><span style=\"line-height: 18px;\"><br><\/span><\/div><h4><span style=\"line-height: 18px;\">Un Q ? \/ Une Q ?<\/span><\/h4><div><span style=\"line-height: 18px;\"><b>Une<\/b> Question \/ <b>Un<\/b> Questionnaire ...<\/span><\/div><div><span style=\"line-height: 18px; font-size: 15px; background-color: rgba(0, 0, 0, 0);\"><br><\/span><\/div><div><span style=\"line-height: 18px; font-size: 15px; background-color: rgba(0, 0, 0, 0);\">Les <b style=\"background-color: rgba(0, 0, 0, 0);\"><span style=\"color: #e36c09;\">QRM<\/span> (questionnaires à réponses multiples) <\/b>sont plus compliqués. On pose une question et on propose plusieurs réponses. Certaines sont vraies (oui) certaines sont  fausses (non). Pour répondre à une <b style=\"background-color: rgba(0, 0, 0, 0);\"><span style=\"color: #e36c09;\">QRM<\/span><\/b>, <span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: #5f497a;\"><b>il faut faire autant de choix oui\/non qu'il y a de réponses proposées<\/b><\/span><\/span>.  La question n'est résolue que quand on a trouvé, <i style=\"background-color: rgba(0, 0, 0, 0);\">pour chaque proposition de réponse<\/i> si elle est bonne (oui) ou non. <br><\/span><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Le bouton <\/span><b style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Vérifier les réponses<\/b><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\"> ne s'active que quand on a fait son choix pour chacune des réponses proposées.<\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Quand l'un des choix oui\/non n'est pas correct, le commentaire correspondant s'affiche. Ainsi quand vous créez un QRM, <i><span style=\"color: #953734;\">souvenez-vous bien que le commentaire ne s'affichera que si l'utilisateur a mal répondu pour cette proposition de réponse<\/span><\/i>, qu'elle soit juste ou fausse !!! <\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Au début, c'est assez déroutant.<\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">L'exercice se termine quand on a répondu correctement à tous les choix oui\/non.<\/span><\/div><div><span style=\"color: rgb(227, 108, 9); background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Pour une <b>QCM<\/b> avec 4 propositions de réponses, il y a ... 4 propositions de réponses, <\/span><span style=\"color: rgb(227, 108, 9); background-color: rgba(0, 0, 0, 0); line-height: 18px;\">mais pour une <\/span><b style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\"><span style=\"color: #4f81bd;\">QRM<\/span><\/b><span style=\"color: rgb(227, 108, 9); background-color: rgba(0, 0, 0, 0); line-height: 18px;\"> avec 4 propositions de réponses, il y a 2 x 2 x 2 x 2 = 16 manières de répondre !!!<\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Je conseille vivement bien réfléchir avant de proposer des <b>QRM<\/b> avec plus de quatre choix !!! <br>Un <b>QRM<\/b> avec six choix demande de repérer LA bonne réponse (au six questions oui\/non) parmi les 64 possibles...  <\/span><\/div><div><span style=\"line-height: 18px; font-size: 15px;\"><b>Ci-dessous, deux questions :<\/b><\/span><\/div><p><\/p>",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          {
+            "text": "Quelle est la couleur du cheval blanc d'Henri IV ?",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "... Mmm ... c'est pas ça, mais vous avez deux lettres correctes.",
+                "text": "bleu",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Bravo ! ",
+                "text": "blanc",
+                "isCorrect": true,
+                "weight": 0
+              },
+              {
+                "comment": "Ce n'est pas la réponse attendue. Il peut être rouge de honte, mais ce n'est tout de même pas la bonne réponse.",
+                "text": "rouge",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Daltonien, peut-être ???",
+                "text": "vert",
+                "isCorrect": false,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          },
+          {
+            "text": "Parmi les animaux suivants, quels sont les mammifères ?",
+            "isQRM": true,
+            "answers": [
+              {
+                "comment": "Ben, si elle donne du lait, c'est un signe, non ?",
+                "text": "la vache",
+                "isCorrect": true,
+                "weight": 0
+              },
+              {
+                "comment": "Les serpents, vraiment ?",
+                "text": "le boa constrictor bicolore de rocher ",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Oh ! un hermaphrodite ? Vraiment ? ",
+                "text": "l'escargot",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Et mon Momo à moi ?",
+                "text": "Maurice le chat",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          }
+        ],
+        "sequencing": 0,
+        "flavor": {
+          "id": "quizz",
+          "title": "Page quizz"
+        },
+        "document": "",
+        "limitedTime": 120
+      },
+      {
+        "tat": "<p>Une <span style=\"color: #548dd4;\"><b>QCM<\/b><\/span>  commence par une <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">question<\/a>, suivie de plusieurs propositions de <a data-type=\"tat\" data-clue=\"c'est un mot qui revient plusieurs fois ...\" data-alt=\"\">réponses<\/a> . Il suffit de trouver la bonne <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">réponse<\/a>  pour que cette <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">question<\/a>  soit résolue. Si on se trompe, on reçoit une <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">indication<\/a>  (et on perd quelques <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">points<\/a> ) mais on peut recommencer jusqu'à trouver la bonne <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">réponse<\/a>. <br><\/p><hr>Mais pour les <b>QRM<\/b>, c'est plus compliqué ...<div>En effet une <b>QRM<\/b> avec cinq <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">propositions<\/a>  de réponse (oui\/non) propose en fait <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">32<\/a>  réponses possible !!!<\/div><div>Quand on rédige un ? une ? <b>QRM<\/b>, les <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">commentaires<\/a>  que vous écrivez en face des choix oui\/non ne seront affichés à l'utilisateur <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">que s'il se trompe<\/a>  sur ce choix. <\/div><div><hr><\/div><div>Bon courage, vous vous y ferez vite et vous imaginerez des choses extraordinaires. <\/div><div>Par exemple, dans un texte à trou, on peut très bien mettre les trous dans un tableau :<\/div><div><table id=\"table11792\"><tbody><tr><td><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAAASCAYAAABy1wGXAAACuUlEQVRoQ+2YS4hPURzH\/fNIySwMO1OzmAWTPJJSpJlpmkZkoZASK4mNncjCnqJkakZSkzCxsLCQjSh5ZJpsKCFNsSEkyfvx+epcnW53zv0dGc10zqlP93bP7\/x+557vefzubUzJJdkRaES++THsz8G9yHbZfAKOQIz4a+j\/DVgBwxPwXXKXIkegLP4c2k+DV\/DT8zWX+w3wHl7Arcg4VvOx4lvb19ll\/94IFeI3ue18nat7zrUTnoBs9sNh2ARPx2HbD8WvE9RSn\/1XjFIhvs5yrerT0AMDbjJs49oLJ0A2qvsIB93EsAy8xSYU39+BLL6qbLL\/McSfxfNLsBa+O5tDXLfDUveshesX2AHP4IKbBH8rht+uLr4mZVE0WY+Aco6hUnAdV6fgPFz16lLyH6WHBnMqzIQPXsvN3GsCLPYmhKq3go6Cf5ntx8RXH7Y44TU5z7g+S\/hB6IbV8Nh7l9T8mydAVbavZ1dAu4G2\/5jSh\/GeQIOX1C2AtwEbS3wdP1rdO+EsXIQlsBKUkIZKCv5NOlSJr+3\/AHTBtxjlsW2H2YE2P6i7D18DNtb4q\/Bx0\/m5w3U9vDb0NwX\/Jh3K4i9j8HSW6qxXYhdbtMXW\/TsITaiY+Mrgb7sJd5zrXkNnU\/Fv0sEXahGD1w8d3opfzv0IWDJu+boMxedilRZK3lrhTUVlTPx5tL8Oo6AE8BochX1QJK3lEKn4N+tQiK9t4oFbPfqOnwFa\/e\/coBoW1W8T\/USZHjDWJCr\/QJJ5TPz52OtP4yPYCJ9gITwEfaruBn2Z+CUl\/2YdJL4y\/bugzN4vSs60WiTWeJaY+Mrq9XdRn5vK9j97HWvjXln+LjjpPU\/Jf5ROdedzlLP\/ZNxMHB0f5dWt8PoNrd0qlFDWdXOy+697vz\/1k1F888tlw\/AIZPETniFZ\/ITF\/wWghkJLOAPLEgAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"2^4 = 2times2times2times2 =\" uneditable=\"true\"><br><\/td><td><a data-type=\"tat\" data-clue=\"\" data-alt=\"\">16<\/a> <\/td><\/tr><tr><td><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAAASCAYAAABW4kwSAAAC5ElEQVRoQ+2Zy6sPYRjHndwTC5edhYUFkksiYoGkxEpiIwsll42ilJU\/AEedOoWkJJeyoCxkIySXkmwonYMUKXJLcr98vn7v1Ns0551nzpmfX37nmfo0c2aeeZ53nuf7e2+nY4jtGIXZdZgPZ2Ej\/LS96laDNQMdxg9fh90wuABfjO+42SDPQF5c44OIXnP+HeVmF9cH4QksgDdNyltf8esK5\/7Tmaw1P5m4xhHzNKwOsZ9zXga9UVvUc22DRWFYjMU30OJb4g8khvtPZ68p+cnEdYjYH+E4rIQjQWyaW8UiGsPf52EV1Dnnssbvr8DcfzpzTcmPxFUkmH3c3wRzguhk8wkmwn7YnBNdf4uu9yzxM\/9qr+LfBS0s4kM96zE4A5ejB+6\/kYw68lOpzirWUNBqUOLJjvVcSGCzYBK8hN3h+gDnOudcZfHzPeSGICyJ\/2RosBJ3AlbAEuiJvsX9N4RVV37MAitaLereJdDwp+FRx2gYCe9LPHfzfEfC5hXPpsG7hE1R\/Ly5hm71TlvgFJyD2bAQXpS00f2nE2TJj6nOReLSfGovLIcfZpk2DGfA2MQ7v3h2H74nbKzxF+PjRvBzm\/MasPSo7j9dVEt+THXOi2sucTWX0Vzrc0VhyVxDUNneWUqwVeJrhXMrCLqL805De91\/OknW\/JjqHAthJnEPw9Kox5rH9T2wbDvI10XItjOKPkMr0inwtuBhlfiaB16FZ6AJ\/hXohD3Q1yrW\/deTH3OdM3Gpm3sQfv2POY8A9V4fQtEMncJfE23CDU8YS6T5DVqZV4k\/Gftr8AjWgv5jMB0egrZStsO3XBvcf335MddZ4tJK8Q5oZRgfmnzr1y4xNPOoEl+rnpvwFLRa\/Bo1bCrXWiVuhaPRffffSEYd+amkg7L5USVn\/8h4AnE0vOZ7J4XXPpx629SCoayZ7r8sQ8bn\/6O4jJ\/mZq3OgIur1RVo4\/gurjYubqs\/zcXV6gq0cfw\/7BqIS4qIrTIAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"2^5 = 2times2times2times2times2 =\" uneditable=\"true\"><br><\/td><td><a data-type=\"tat\" data-clue=\"\" data-alt=\"\">32<\/a> <\/td><\/tr><tr><td><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAAASCAYAAAAtxo7eAAADBUlEQVRoQ+2aS8hNURTHfXlEYuBRBgYGFJLngGKAUGJkwERCSUzMlAwMDeRTSiEpyaMMDBSZeJQ8SmJAhFBMCCF5P37\/7tnane7dZ506V\/ec1q5f37n37L3W3uv89z5r7\/v1DbCXuVTdCbvhFvy2N\/WaHoHqI9BnNLmEehtgLfwxtvFqHoGuRiAv3lF4GwRvIpHq83V4DjfhPDzsUq\/a+a\/SldtPR7NW8QniHcmYTsKKbGwv+bsInsA4uAfzYQhchknwsUJVpfxX4cbtp6NYy\/gE8e5jbJ\/gKCyDQ5mYlSaMhVOwFJTn6nov3K5CVZmNlP8q0hS3n35YtYyPxDsczsJy+JWNcRd\/18FM+AH3YTZ8AKUN6+F1ReIt8q9JFYr6uyebOKdz\/pXeHMkm18XonttvBaMO8SklKYlhIAyFz1HL1VxLwNNBglbKsBGUMoyG\/VDFiiiXFv\/xoNbwQcLV5Dqe3dCDOQbaWC6Ax1EDt98Sbl3iYxZwu9MGfXcBtBorfQhlGBfKebX6dioHuLE1cV+r9WR4n6jTyX\/cRKmNVtdNcALOwAyYB68KRu\/20wHqhfiYdNROvEofdsBi+GmeBq2KU2FEoo1y5rugVKRTsfrX2+BaZkSnICvhraG\/bj8dpF6Ij0lHefHOYlx6JSvX\/WIQQr6KXtFFZ8epCVHGv3bIN7IJozRmm6G\/bj8dpF6Jj0lHsdCmMa6DsBCCwOZwfQcs+a1snYNw3NYuTNp8TYB3bW6W8a8TkCvwArSBuwT9sB3CpjPvwu3XIz5mHQXxapnWiYJWr6eg3Farr\/JbicJadMg9OFFZkyD+ASRULeN\/PI2uwiNYBV9hCjwAHfVtge+5Prj9+sRHj86kI4lXJw36XwWdLMRFmyutVhJbN0sZ\/+HXvmd0SKcN36KOTeRapwyb4XD0vdtvBaMO8Smls6L8tJSx\/1RZR3VKP\/Krq9yPAb0tUhvCom66\/XSEuh2foufz734dxWsenFdsdgRcvM1+vo0enYu30Y+32YNz8Tb7+TZ6dH8BOuTUS+WDEysAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"2^6 = 2times2times2times2times2times2 =\" uneditable=\"true\"><br><\/td><td><a data-type=\"tat\" data-clue=\"\" data-alt=\"\">64<\/a> <\/td><\/tr><\/tbody><\/table><\/div><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><div style=\"text-align: justify;\"><span style=\"color: #9bbb59;\"><b>Un dernier conseil <\/b>: ne mettez pas vos utilisateurs en situation d'échec !<\/span><\/div><\/blockquote><div>Sauf si vous avez vraiment une très bonne raison de faire autrement, conservez la valeur par défaut d'affichage des mots supprimés (Gestion).<br>Et ne mettez pas trop de trous dans votre texte. Sur cette page, il y en a 14 ! C'est probablement trop. Peu de gens vont au bout !!! Il me semble que 8 est un assez bon nombre. <\/div>",
+        "displayHoles": true,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Un texte à trous pas trop compliqué",
+        "advice": "<p>Dans le test suivant, essayez de trouver les mots manquants. <\/p><p>(On en profite pour vérifier si vous avez correctement appris ce qui précède !)<\/p><p><\/p><hr><p><\/p>",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "tat",
+          "title": "Page texte à trous"
+        },
+        "document": "",
+        "limitedTime": 10
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Un Glisser-Déposer pour (presque) tout le monde",
+        "advice": "<p><b style=\"line-height: 1.45em;\"><span style=\"color: #4f81bd;\">Trois points de rappel sur les nombres complexes : <\/span><\/b><br><\/p><ul><li><span style=\"line-height: 21.75px;\">L'égalité <b>fondamentale<\/b> des nombres complexes est : <img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAATCAYAAADbJP5YAAABK0lEQVRYR+1VvQ4BQRC+6z2Fl0BCgwegQqITaloaDS1aoiN0XkCpoPUuar6R3cK4\/XFRzIpNvtzldmbu+\/abycaRfW2wXQCywBZoO+LFbMcOJnfsU8wM6Kt3MeRtRFzCOkhe\/4IwcogWF0zfpbZiYjdxAUcI2CmXtNP0jVZVWA9qQZrWixZXKw6RVVai9LwJ0xcdQKjGu8wlTLdm4qkIUWgUVgTBsSJZwbMEnISQ9qFhFHZG9gq4qflq4bn3qchiuLumElNsjFLUN6UYhdEQDgASSCv\/xZ9+UmqJ4K5HAh8f64w1lVt0CS88iksKsQojt3IAncYkZauIa0U6fSI1By5AA6hLssTBxeoYXcIZ4Ar0AhHFL2hN+zmDrnssEI3vNP\/CQrPu71hojj0AI9IwFH7DHgsAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"i^2=-1\" uneditable=\"true\"><br><\/span><\/li><li><span style=\"line-height: 21.75px;\">Le <i><b>conjugué <\/b><\/i>d'un nombre complexe <img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAASCAYAAADv2ggfAAAB1ElEQVRYR+2WzS4EQRSFzZ53mLdAQiLhAYgF1oYtEis2szE7wdbPmh0PQCJhwdYTeAdhy\/la3c7VutPVZibRma7kpLvSVffWOfenqzXWjESBVqPDtwKjIMRnCLZxPdB8XpgU1oSrugoBsSoBvNX6S+HCZf+R3re9nSoG\/0sVVRUi79xPISNS\/qMqBGKeCZumkheC2tkLH2b1XBY+hP0hpMKMbHaD3Tc9J4SFSD8xGeHt0w\/g8xjsr4ZSYXojLAodE4KND6Fu2uF5V3A4az5l5+4ViOh9nWjNr3otMRwjBKlPxN8D6bQpOn8dvdM3rhEjrzQ42LQwVcb0j99PtW9DMN\/JQdzcm7W1Ma48FzjsCAjC8Fyy\/SFXCAwwMDKsQUR9tjEnRZciHcZkBKasBPg7kHk2sv0hyXCvIsq8OhHoGXn9od\/SYP+x88Ocw7YjAxArhI+852L+TJwkECaEpSCRuRfmhKJ0jQxc4TIcW\/+w\/kAz6woxDTNWCBP8WXZXBMs4L0RapgixFYizkMsHXZbNu4J12n7J+\/3rmpwL1szIBvxx6fEpXOQzVgi4jAsvQvqb1Lv5J+iMQ3jW8R5BFD2xgQSpjkIMhHjWSCNEUKQRohHiZ3F8AYsZZyLJS6qoAAAAAElFTkSuQmCC\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z = a+ib\" uneditable=\"true\"> est le nombre complexe <img> <img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAASCAYAAADixHhYAAABvklEQVRYR+2Wvy4EURTGbc877FsgIZHwAESB2tIiUdFsYztB609NxwOQSChoPYF3EFq+3+Seydm7OzPFXM3O3OTLzM3cf+c33zkznam2DRHotDyGCRiQ3wIwkwTMYrSYThTzsjQrbUl3MJikgKvM\/qgBt9KNG3im+33PoUlAxgF7Cw7JOTQdCGl0Je0aLQ+EnDoKDxZ1XZd+pOMqL9Z4vqC5\/TD\/S9cZaaXGevFUvz71grhew6DNkEJ0H6RVqWdAmPgS8qkbrk8VhysqxPGhBgVQ\/Z4XGjOSzwnAkBI44DsEnxdPt19P99SVe6CMSxkONi\/NJThQ2RKXergj2RmyA7m+n2tjq44Ux0MsBxJgaD6muH6MBcICNBb574bDvAvpY921xBtbavA1wYnW4vqROd4ThdCng0FNKasfdVOG+eduP\/ocupv4hXgn+JhsP4OUvRADYpbkDT1LS1KRfVO9QA5g9cXqB0WvL6UsrAb+XetuOAd6IHn6AmQvAMCq\/LxQjZl8KFlFTgXBr7OtzrVkRQ93sC8\/T97adfcmpmnpQ8o\/r7q3\/TEB7ZR4m\/4fMgK7BRIhaYG0QMpLUuuQiM8fCvdeIq0l0lIAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"\\bar{z} = a-ib\" uneditable=\"true\"> <br>(<img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAlklEQVQoU2NkIAIwEqGGAaboPw7FYHmSTMJrK8kmtQKNq4IaaQukg4H4GxBXw0yyAXIOA3EBECtA6b1A2gWXw\/uBEpZAbAFzKLqbQApAoBDZJ8iK1gMlHiApALmxGtm6WUBOKhBvAOIDQOwAxAFADA\/MfKhgIJDeA8TOQHwSiEuA+AguhyM7B8wmOTAxTMAVBFgVEmUdAKKWExOFZsH7AAAAAElFTkSuQmCC\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"\\bar{z}\" uneditable=\"true\">se prononce z-barre).<\/span><\/li><li><span style=\"line-height: 21.75px;\">Des deux points précédents, on déduit une propriété très utile : <b>Le produit d'un nombre complexe par son conjugué est un nombre réel <\/b>:<img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWwAAAATCAYAAAC0nDcZAAAFlUlEQVR4Xu1cva4VOQyGHt4B8QpbLEggIZaSYhEFINHtQgtIVNDcZrdDQMtPB4KOLSgXCQmK3ZYn4B0QtOBPOpZClNhOYs\/MPcpI1r33JLE\/f\/Y4mUzOPXpkXpOBbTLwgmCdJjlJ8pLk+jZhTlQJA70x6x0XRf7aeKr2j0Z5PPVOBgYZ+E7jkZ8PSW7vfh9UOYcHM9Abs95xUe6sjadq\/zAU7D8oKhdJLkVFx0nvG9LzluS5oG+ffHGiraoGXIHLWbCjmfbT3xuz3nF+yH\/WtDaeqn1LwUa1L12WsaOEXiUFr1ZcXbHv7OtfhOU3kl9JrpG8zhxE\/z8rRXuffBmNa8t4cLrElkgeaw2jlgva+Jb2rWKr4SrFzMLXUrG2ch+Jp4uPJYqulZxSPxCGx+HHI0qSsfyoYVX3727CSFfN0orvFvV\/VJlgvH2x+sD9PH1ptd3bH5hxXehQ4BFrzexSq\/9S7LaArYRLipnE10isNS562nvxtORdMx9bLth4LHhWKX49AcCYFjJrNv6jBqywa9yVVtkRvvRykI7r8cXDrkXHPep0flese+LWM8aCq4W\/Vn2e\/bXYetpiXVrMapi0cRFYJZ0jeFryrpmPLRfs3hlOCkQLmTU90PGU5GalQwl3hC8eSdzji4ddi458K641Vz1ireHU+NPGR7avgU2LWQ2TNi6Sp5LuETwtedfMR3oTYE8FMwuusySXSb6R3CeR2qLIhDN\/7+ynNs7QHwe7D77Qz+Mk1kdmC5mpfuxXg4uPO3u8D40\/\/yH5nSTfs2auUm4jfLHwHuGLxa61z0gsNRujsYZ+CZ8lFzSMUrsUuzWxabhqPkXz1cp1VO5Z8g5Yu\/jgogLwH0iwX3xi9\/PdrhBKbTWS8hmq1q9UkLlvac83xYJ97dY9RAuZeEzBCvorCV54pi8X2R4XaZwMQdFOi3NpHzvCF0uCRviS2h2J82gsNf9HY63hs+SChlFql2K3JjYJl+SPJ18jeceTHde7njoi+WnJO4zv4qP0mAlF+MLCqQIqqW0kOUtjS0XuCXW8kRTIUsFkXdzXgivlAT7eIUFi4kp5yPecRgp2hC95PCN8sfBp6dPiv6YvItYaPksuALcVW0vs1sQm5ZQ2AaXvfqR7V4v3aLvGn1W\/NbbQl8fXmj8\/YSklCTqgYOUXAlVrszrY0q9UsPEZr\/yhC39ja8J6Rts6+\/HjSn5CJd9z4pm+Z4U96ouVS29frHa1ftH+e8RayjVLLmgcaO1S7NbEVsMl+bMEXxqf3B6Ze9a86+IjLTSY8T4nxRp7sdi\/xiW1lUgafWThYlwqmDg2xxMKF\/UTyWda0lheXqWzX8pDPomUJgzrlgjGjvhiTU5vX1K7I3GO9t9640j8SPGx5II1RrV+W8VWw6Xde+n93LrY8so7ri1R954177ryh4sXL+2xWn1Pco6E92alttGE1AKc73HDSf6M94DwUvCAxPLisYVMBPR\/kiskvIJPSc4fq9gX60vHUV+s3HNh9PLFalfrF+2\/R6ylXLPkgsaB1i7Fbk1sNVza\/cwFu3bvaHx4tUfmXkveNfOBgo0VIQo0ihKOn+FkBG7uuyS\/CG18csKLxFxP6Sgcn2fml4JwGFjxctDy5RormbB9jOQTSXp8j+1jYsP1gCTnwXqsb9QXK+\/evljtav2i\/feKdS3XLLmgcaC1a7FbC1sNl+TPEnxpfHJ7ZO5Z866LD8v2gJUE734RXzbBzF47P+2FHwHLj\/pF+OKFV9JT8mUJux42loi1B86pY78YCM27LRdshDHf59l6aLf81fRW7iRfWnXN\/pOByYADA1sv2IdtZYoJpvRPoRCqffLFIfWmisnAZKCVga0XbC5089+rtkZ2rL\/lX8WOWZijJwOTgWYGDkPBbnZqDpgMTAYmA\/vIwA9FnoIynnPkYwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z\\bar{z} = (a+ib)(a-ib) = a^2 + iab - iab -i^2b^2 = a^2+b^2\" uneditable=\"true\"><\/span><\/li><\/ul><b><span style=\"color: #4f81bd;\">Plus un point de rappel d'arithmétique de base : <\/span><\/b><div><ul><li><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAeCAYAAACIeIa4AAACEUlEQVRYR+1Yu07EMBDkasQ\/8Bc0UEFJwXVQ82gBiY7mGq5DQMujhg5+ABoo4C\/4B0QNM5I3cvbsJLLWdpNIozsHxzuzs2finSy1r3UMZ+7WDz5XgC01J\/cwxmEfgfeATeAA2HZEdvB5DZxqYhPvBhd9B06AG+DKfffnlBAW4\/CJ4GeOI3lsAB\/AsRO3wNO\/cYtJh4Dce8Z3ZqWkuC4OF+ByDvx5wihSnhGxjQE+cT70CkgZcvwCTHPb5a3fxyHkEp\/h1ekcJ\/m1yzFLdBVYqOdMgvs46GraBY9H4A54A5aBB+GmnZs76+X3RqtnnpuZNDXLUlwXB11N4iQ3GhpBc55C4rgb3bss\/LrJXy4z3GBKXH0cKI47pbgjmyB\/Pt+6wkpuFiWS04oxiiuecqOAo3NGiSy+jJVz8o+0T4Bs833zTP4u4oaQs0pEiPiQ+EMFNzxzEh5KJts8K3FDM1+lLLNlr+bCVs7V1BCNrcXxzMST7hrAl9HmJbQgezMOIedqnMB17kw4hMTxOE\/napasCYeQAO58PPwdFSxFHcqEgxYnJ1sG4xmJPRT\/\/FRCb4wDYyd3v\/iw1LoIqtEkinHgwTm5+0VxutZriItxkBeApO4Xxelaj3aWMtZnF4fk7peIk6asjGu092IckrtfWpxukGY0q7W0tBTZlNIckrtfjCDdJ7rF6xJgy7rk1cVh7H6JE\/\/kkaMf1zLmBwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"a\/b=(an)\/(bn)\" uneditable=\"true\" style=\"line-height: 1.45em;\"><span style=\"line-height: 1.45em;\">(on peut multiplier un quotient <\/span><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAeCAYAAAAYa\/93AAABCklEQVQ4T91UOxIBQRC1B3AHt5AQcQAyYp+YWLIJmULqE5NxAREB51Fi3tuaVr09s5Z0p+rVds\/2m3ndM9NRKT1qcGM39cC3DDR1SKQcBl+AEbACFs7WMSXtrBEwAGTuCLul\/GRtTXjBPysJ9E9AO0sSA5bA2AXQp7yKmvN2mOHnROmvw4514lpSDz+2wAZ4utXv+O5dEbwctNRMO1WyXxhFIvCQ8kaSb5GSloSnMBpAFegCB1uJUNLBlybEEOHmdghWMDTJM+EVH4YOxhI67v4zls+Tb7oP7LIkiX4J8hqB3cHqzyVY\/XLHPgvbHaRTsJFxeK3mG8E2tmQFS5DOwQpxzIGrLu\/f1\/sNEgM0H2lOWLYAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"a\/b\" uneditable=\"true\" style=\"line-height: 1.45em;\"><span style=\"line-height: 1.45em;\">haut et bas par un même nombre <\/span><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAASCAYAAABit09LAAAAm0lEQVQoU2NkIBIwEqmOYagoTAZ6KBKInYE4BYh9oB4MANITgLgQxAd55gQQlwDxYagCWyB9BIjzoQrBHgYRrUBcDcT\/gRimCCQ3C4hTYWKw4EHRDTUZpBFmGDwc1wNFQG6CaYwAspcD8Wwg3gfE3DAJkO4NQBwINQVmA8iTBSC3IisE+XguVKENkAZ5DqT5ARAXDpUohLofPwUAlzoazsIWCHEAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"n\" uneditable=\"true\" style=\"line-height: 1.45em;\"><span style=\"line-height: 1.45em;\">non nul)<\/span><\/li><\/ul><span style=\"color: #4f81bd;\">Et on obtient <b>le truc<\/b> <\/span>: pour simplifier une fraction dans laquelle il y a un nombre complexe au dénominateur, on la multiplie haut et bas par le conjugué du dénominateur.<br><p><\/p><hr><p><b>Le but de l'exercice est de trouver la forme simplifiée des expressions suivantes.<\/b><\/p><hr><p><\/p>\n<\/div>",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          {
+            "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAAiCAYAAAD8gp97AAAChElEQVRoQ+2ZPU7EMBCF2Z5DcAtAAgkJSgoQBVDz0wKCChoaaIEWRA0dHAAkJCig5QT01NDCeyvPyvE6iSfZKHGylp5Wmzi25\/PYGWd6E\/WWOXR\/Ci2aYdzgd7fiIbHPV6jn6efPXBvc81WqeHyJ5p8MoDf87kGX0CO0GjgIGqS1gX1yQnzP8d4ddCv9axsPHHdwNRr4DC2ZJ4ZmMKclLaAztHfseklWH00AZC+rKgHJ0qKHroR6Xt2A3MmrEhDbnocOHUCyD3IsXHqswyXfL00CdIHx7EPb9h4woiV2jXa+oRPowQH0jv\/04h+I+88mdN80QOL+3KQPUqDQyJ0cYD67tnBxGZKN3wXEiWGfBMUyY\/fRFA+i+2s8R2wI2aRl2frYyoRsGO+hB181DRBnjq4tAwsxWgPIBeN6EO9zDNMQHYZvOi7Ffqnbg+S1yzeLlOA3DB7QwJT2fYDYDr3pA1qHBnFY3YB87s9BJvYB39ow17SA3P5kiTFAnIQ+oUQkXzegDNuDbnHjrvRoEjugIIplKo0B5dAbA1IAsg9yDLfXoF\/7lVfGVWN9VjxIIlkGSlMQf+1Ttm1fVuBl1ztvA1zfEmPoPat41RZxjlDIRdoe1TN9Ni4gwmFJOw+NqvNo2rEBMcL8suAkQm7LotDZb9USk5MyQ\/4XaAHShPzReIR2oPQgfgsmEJ4\/5Hstw\/0jaPDhSNtwW+rHGAeFZkK0Xye9cxojoNBMyFCGoohXxwiobCZExSlWQGUyIa0H5Bpo7zWZGQoVGVM5Rg+y7XQzIZkZiq4B8mVCMjMUXQOUlglJzVB0CVBWJiQ1Q9EVQHmZkNQMRVcA5WVCUjMUXQFUxM7Cz\/wD60+QI\/vIUTQAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z= (2+4i)\/(2i)\" uneditable=\"true\"><br><\/p>",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "",
+                "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAASCAYAAADlhqZNAAABdklEQVRYR+2WMUpDQRCG8\/ocwlvEgIIQD2CwUHu1NYKVNjbaqq1irZ0ewEDAFNrmBF5CW\/2\/x2xYwgt5kVk2kCz8LLwsM\/v9OzuborFEo1gi1kYO2A0ZfCl1zOgHzccJTf+12EUO2DeDHWo+kW6lV6mbCJh8T9JjDlic7kvbBjd2PhHsOGwu2Lh0s8BeyYJzs2FT8670I10kdjwFbOgLbJ3eAM8wnCw\/vks9ac3muNRi3rC5WR5c1zDqxnIdcqdmBZzj9w+tpXq+7b4eaH6uKmM20JbW5wj+n6XBYBrU6ZQA9\/p+VCP4JAcMxASaUbJULeL7tOQ18tZeQoV4n2icfN9OlWq9m4R90YevCJQ7XHVfPcoYx3kOyk1oENO7WZKjZXFLlpAglAvv3UDaknYSbACw0AjJFUaKXBjIFfmU9qQusDzswPGo8wDTvVhwJvHwe4+qyiCfd4+ApSmNpPIfmnfpeBvjGm8F62rnAgVbnewCHYbrVv4AAL1FE6OJdAEAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=2-i\" uneditable=\"true\"><br><\/p>",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          },
+          {
+            "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAiCAYAAADvVd+PAAAB0ElEQVRoQ+1YPUoEMRR2ew\/hLVRYQdADKBauB9BWBSttbLTVbRVr7fQACoIW2noCL6Gtfp8kS2Z2xnkvbCA\/E\/hIMS\/J+768JG\/eYC6OdgE3DoBBYHd+zPyTdUIv2MXHErd2Wn9ISDPmEfa3wI3vgl2EfL\/fY+CGkgzX0gow5Z9GPV9yknG9AAEjYIi5T80urKFfAV5LOgJvIHsNfJnzv4P+LkUBruD0ruQ81e4SXrSHAIVgW3LnKOUOGJnd51M7LlEA7v6iiYwz9CcpHoGm6Jc+g7S7BN6BbWAzFgHqiZDWL6kATIDmgQ9gL8YjILzbpsx4MVYIaSeK5RLU+j0z+16AmUmZ6ERuBPB5ODY8mC5uAd\/uk5Eox3\/dtgIwX34BmCgsmP4J\/XrDaPtP3aXHeQriNd0BfJqWgUrK2MVW+V0qonJalfkf97oAJM\/G3LmI5grAf\/JPh3wlZXTUkO5eUkfA\/mk9gOgzsAr4VGiSixpGwL4hzPyYKSOLBsyZj4BJ4SA5ZkKHY0mE+qqw2bDQG5JdVVgY6O1moRWXOuhbFZbO32pXggBZV4UlEVBcVbgpu822KiyJANpkWxWWCpBtVVgqQLZVYakA2VaFpQK02v0C23thI9rVFxEAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=(1+i)\/(1-i)\" uneditable=\"true\"><br><\/p>",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "",
+                "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAASCAYAAADVCrdsAAABCElEQVRIS2NkGASAcRC4gWEgHfEfGgCMA+mIPUBHLAfiuQPpCHhKGHSOaAU6rQrqPFsgHQzE34C4moqJ1wZoVgPUPGcgDbLnCCwkQJKHgbgAiBWg9F4g7YLFAbAERchtbVg8cAIoNhuIv0LTQySQXoEtOvqBEpZAbEHIFjLkQWYXAjHIMSAAtgPdESBFIABSSCsQAQ0FUKhPRHfEeqDAAyQHgNIItvRASXSA7ASFgjk0AMB2wEJiFpCTCsQbgPgAEDsAcQCWkKJG6IA8MQGITwJxOBAHghyRD7U0EEiDChBQqgUpKAHiI9SwFc0MkB08QHwJiNNAcoOunKCBp4kzcjQkYOE0KEICAAGTKhNDQpJ5AAAAAElFTkSuQmCC\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=i\" uneditable=\"true\"><br><\/p>",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          },
+          {
+            "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAjCAYAAAAkCQwqAAABzElEQVRoQ+1YwS4FMRT19j7CXyB5EgkfQCzwAWyRWLGxYYstsX52fACJhAVbX+An2HKOtC+deSNzq1qd25nkpC9v2um9p\/e2p3cwlcdzCjN2gUFkcz7N98fzxJ6wzR\/ruO0X2547TDQCrlJN2EaAfX+DHysJImDCntiM9wQIGYgZAUPYcGTsWEK7ADyVlALPcPYSeDf5v4n2uosEXMDoLUFE1dOaG+0eQCL4zLnfKGUP2DCrz6P2vEQCuPqz5pQ5RnvYxRQQRP+PXSiAzoAXYB1YzYWAuhCKZRcF0DTwCmznmAIhqxs0NpdNMMiJkME9ASHsaRjrRgCPhwPjFOXiGvDhHhkaHK77YAmgXn4EKBRmTHuPdrnBaXunbuPjpAvkNe0BPJrmgYpkbPPW872URM\/PenX\/9r1JN\/N\/auciHpcAXknfHOcrktFhQ7p6nUoBe9O6haMPwCLwLxWa1GHHCNgxDlMfUzKyaEDNvA+MCwepDUs1Xy5CqK8KmxX3XRDuRz5j1FWFfQmYyCwf9mKm5W+Loj0BghRQXRWWREBxVeG6wlVdFZZEAAlRWxWWEqC2KiwlQG1VWEqA2qowL3GVMrevWMlFCPna\/Wf9vwB9amEkzYt6VwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=(1-i)\/(1+i)\" uneditable=\"true\"><br><\/p>",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "",
+                "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAASCAYAAADPNlfiAAABE0lEQVRIS+2UwQoBURSGzd5DeAsUpXgAkwUegC3Kio0NW2zJmh0PQCmzYOsJvARb\/n86I023ZkJmTrn1d+qeM3O\/+99zr5VQOCyFzAlN0Hcx2NIEvQX0Elpogn52snroIbbSk+3kESvQDepHeFlzWHsg6xcRyeV4TjN5gNpQSuIOsWQA9i5E0F5GX9jwEf+YQ1fp5zriytQeYySyUCaI6s38DN81QnxLNrJ0IMJzuEx+aBZxsDAuoyYuswumfug1Ji4vwOxxUz\/\/sj3ISJfTYrDL5DntHdkGk3uoAJUNJxGF+zRpAp2gKmQTuiWQNiIfcN5SFnQhJwpK35pkSkJnqMmc+nc6BqaGQ\/g7Hc6nz6tUOv0ARcorE4ryj5oAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=-i\" uneditable=\"true\"><br><\/p>",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          }
+        ],
+        "sequencing": null,
+        "flavor": {
+          "id": "jmt",
+          "title": "Page mix and match"
+        },
+        "document": "",
+        "limitedTime": 0
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Pour terminer ... et pour aller plus loin",
+        "advice": "",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "simple",
+          "title": "Page simple"
+        },
+        "document": "<h2><span style=\"font-size: 30px; font-weight: bold; line-height: 38px;\"><span style=\"color: #31859b;\">Les zones de saisie des textes<\/span><\/span><\/h2><p>Vous avez déjà remarqué que dans les <b>zones de saisie de texte,<\/b> beaucoup de fonctions très puissantes se cachaient derrière les petit boutons...<\/p><p><img src=\"\/\/api.education-et-numerique.fr\/1.0\/blob\/531832193361eb112e6f3fa7\/draft\" data-blobid=\"531832193361eb112e6f3fa7\" style=\"\"><\/p><p><span style=\"font-size: 15px; line-height: 1.45em;\">ça vaut vraiment le coup de prendre un peu de temps pour faire des essais, pour apprendre à en tirer le meilleur parti.<\/span><\/p><p>Par exemple, avez-vous essayé d'utiliser le Titre <b>Accordéon<\/b> ? <\/p><h4>Ceci est un paragraphe \"Accordéon\"...<\/h4><p>... et le paragraphe qui suit est caché derrière le bandeau de titre. En cliquant sur la petite flèche, on déplie ou on replie le paragraphe. C'est un outil assez utile pour composer des textes numériques denses. Il permet de bien souligner la structure logique d'une page, organisée en niveaux de titres. Tout en haut et dans le sommaire, le nom de la page.<br>La page elle-même est organisée en une, deux, sans doute au maximum trois grande parties annoncées par des Titres 1.<br>Et chaque partie est elle-même structurée par les titres de  niveaux inférieurs.<\/p>\n<h3>... et les info-bulles<\/h3><div>Sympa aussi les<a rel=\"tooltip\" data-placement=\"top\" data-original-title=\"Tool Tip, en anglo-jargon informatique\"> info-bulles<\/a> . La possibilité de placer de petits éléments d'information complémentaire sur certains objets (textes, images, ...)  mis en scène dans la page. Les info-bulles s'affichent quand on survole l'objet et disparaissent dès que le curseur s'éloigne. <\/div><div> <b>Pour placer une info-bulle<\/b> : <br><ol><li><span style=\"font-size: 15px; line-height: 1.45em;\">on sélectionne le mot où l'image sur lequel on désire \"mettre la bulle\"<\/span><br><\/li><li><span style=\"font-size: 15px; line-height: 1.45em;\">et on clique dans le menu \"riche\" sur le phylactère noir, à côté de la racine carrée.<\/span><\/li><\/ol><div><span style=\"color: #8064a2;\"><b>Attention tout de même<\/b><\/span> à <strike>ne pas<\/strike> surcharger votre page d'enrichissements de tous ordres. <br>Au premier temps du Minitel, les enrichissements de texte se réduisaient au choix de 8 couleurs pour le texte. <span style=\"color: #c0504d;\">Certains<\/span> <span style=\"color: #4f81bd;\">considéraient<\/span> <span style=\"color: #9bbb59;\">qu'il eut été<\/span> <span style=\"color: #8064a2;\"><b>déshonorant<\/b><\/span> <span style=\"color: #4bacc6;\">de composer<\/span> <span style=\"color: #f2c314;\">une page <\/span><span style=\"color: #938953;\">sans utiliser<\/span> <span style=\"color: #953734;\">toutes les couleurs disponibles<\/span>. <\/div><div>Mais les pages les plus élégantes, les plus lisibles utilisaient deux, trois couleurs au maximum. <a rel=\"tooltip\" data-placement=\"bottom\" data-original-title=\"Intraduisible ! (Le minimum, c'est le plus ?). Cette phrase, rendue célèbre par Mies van der Rohe, célèbre architecte designer du siècle dernier, est extraite d'un poème de Robert Browning\">Less is More<\/a> !<br><\/div><\/div><h3><span style=\"color: #31859b;\">... et les maths ?<\/span><\/h3><div><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAANEAAAA0CAYAAAAUs93eAAAISklEQVR4Xu1dO8y1QxA+fytRql0rEi0S5E8oJBR0hFC4ROUSHTWVxKV0KSQEFRKioUGC6CQ0gqgUKo2WeT5nvqy1u+\/M7Ox7Oe9sMvnOd87uvrOz++xl9tl9LxwirNECf5NST5G8olTuSYr\/MskFZbqI3mGBMHaH8QYmBYisddOTdmCRTjdra0WdrkXmKdnN9Ji3SK4ieYfkgeyxORA+oN\/vPsb5nP5eeUxbqr8pED1Lab8g+UpQVOh5K8kLgri7jRIgWqbqv6HH\/p4AI6+HHAg\/HxvyG\/T3LpJPSGpgaYHoeUp3Lck9imIDwD+SPKdIs6uoAaLD4TOq8duSWkcjRXiV5Ndjr4\/P2vVJrSGhd\/\/yCIpL6O8fhZ6+BATWE3X2GsmjJJqR6E6K\/3ElzVSjhz4M3qm4u\/s9QPQviG4\/1nw6bUoX9hgJrnZqHZhOYURoOQ5KjgV89zrJYyT8+0X6nI4qLccCyvAeiWVEgb73OtrAyZTryCZAdDjkAEEDRUht4wmi1ijCrQLARmBw43M6GuDzLyT5CFlKh7Q9oxDrFKNRBbMBov+CiHtymOvDpJdHw8cI0BMYPHkepTp4mCJh\/aOtHzT0R0jezB7yEv1\/E8mNHQXAOu5rkqc78jjJpNpKOkUjoMHedywYvF6YtnHPja\/hDXu30DCttkBD\/1bQoLV7Ra2pHADwfWdHgE7geoHeVrtsNl2AaP6qS9c2radrp2Ct6RZ+g5u6tB7CGg0dCQesm0oevFgXVWprTyDitY43bG6hDCV7LngujxYWNkKP3rVRDcAAiDASAzzpCJy3jWBDBIgOWBeg8XLQNH6kQQO7huQ6EriXOYBmI10nsA5zu4tLIGJQpCMUu99LG8ABogDRmQXgZQNLAEGyLmn1\/qkTQjqiv00Z3k8ijd96vua3EoiwTrqBJO1M2P2OaV\/OUggQBYjOLMA9rWUUKZmQ8ys1ulJ8gBjBa89JCqTSHhG7yVNdWiDnqd\/cHYC0jIvF26NB0hEEhuf1gLUSAKQXSSTuY6lTwapLLV3JO1fSJQUWNp7TjVyrd07D1fMutyY\/M0+wF0QWA5mV1VhkIm6+Z6NdH1lU4UW7dNSyPKOWprRPxPw9BgqzNcCK+IgE+00piCz7RBaunme5tXmZeII9IOoxkElZrUUm4qfro3Rj1fkxZxSfy0l+I0Gn02Nzq24ldzm+A+OBAz5fQQLnC9gQT5CA6MpBy1jQuuitZfNOVypnk0XfqtAWXd\/DQNpK8TZW6s5F3rV9lN7nsmsdQAXZtJf5YNWnlzsHkq5kysr69TzPWkaPdKX9sCaLvgWiFl3fw0Br2LxjbxQbv3d9VKpE7sVGjnaSxtPT8Wk7vJ5nScoyOk6pvFUWfQ1ELbq+p4G0lTPCeOyR4rznWB+NKIckT8sU3DL19uDqScozKk5p\/Vdl0ddA1KLrexrIslgdYbiUzVDaaBzxzKXy1DiDrE4gD67eUvbBc0ueyCqLvgaiFl3f00BWt6m3gfP10RIeNO8yLZlfi6uXNtLL6B84NMACwZoLJFnNqVttGYfwBHMQSej6ngaSrosAXBhcErB41yyAOU\/eTOT\/l\/CiScq3hTgtBjpmMn+RoKPiGQ+cOvBgjmRzDOMJ1hpKi67vaaC1UUmYCjPCwbCFxu+lY6uNpAccmUvIR97x\/JL3Mh9BWnriLFWNsjSEJ9gCER9FzhX2NNCaQJQ6UyxHqL0a4CnkIz0LhU4LwTJz0NhpKE+wBKIpur6ngdYCIgaQhpEtqcSfJJE2GucO0pu5gHkRpFsgc9GghvIESyCaout7GkhKahy9JsopMBtt16tRu+V8gsv8OxKwInBimM9WoSN7sDKd6y3YUJ5gCURTdH1PA63BO4dKRRjpFeptBD3p2X0\/5\/5XbRuEZx6YLuP0LBwJvP5EPbxPgsOB3mEoT7AEoim6vqeBlt4n4lF3zgbm3UCm8mMQzeksqW3IM5UMOgMsuHePuXolh8BU2aS\/D+UJlkA0NU\/1NNCSjAWeSnoACKN3fhWwtIJHx2MQze2yl077R5dfmz\/ahYonmBtWStf3MJBaWa01GvF5WuFxTBvTkCWJpVNmYbb63CDypIdNldHzd3XHzobV0vU9DKRW1slSuMkTC9re6Q2mJs+Q4KJ5DzA6Fe9\/2SwFIihi4eqNsoMkXwtP8Pxsi4Wu32Mgk7ISK0zEYfD33LYDEAI0WBQjwMs093FvjSnYs7mUjhqunqZc3nGtPMFzEFnp+hYDmZXttFp6vwIavjbwBSd5ulHnkGr68XF0XDKCcjxE8jgJbjiFjrk+8IBijr8UiLR23lz8uefJSxooZWp76uHhmNDogw4PVwz\/SYK3SyDw1LREHMZ38IKt1fGhKfsq4+4JRKusAINSzD3j2UM68pQAg2k3yLtLnag1FHFbSQJE26qvVNvSJioAhuldeiMr1oGXkozYxNyu9Rw1DxA5GnPGrNJrv7gOeSMzX\/vgewTpVcczFuM0HhUg2mY9MjUrZdpjKof9qk9J4HpnGtMStJ9tWtWodYDIaLiFk+VUnpR9ARLnDyT8eswA0eDKChDpDMz7THAtw5281CZrTs1i9z30sr5SUmeJiH1ugQCRrjGkjVfy2khd7hF7kxYIEOmqLb1fQnoWSveEiL05C+wNRM3rYAW1FyASGGlvUfYGotZ1sHjlImhMtYB3t+LlXry5GSPR3tBSKe\/eQAQz1K6DDRAFKEwW2COIUucAX7pykawnOR4ejgVTMzvtRHsFEbum+RYY3MLJ+yqtGl+Li\/u0W+XGSrdHEG2sikLdtVsgQLT2Ggr9Vm+BANHqqygUXLsFAkRrr6HQb\/UW+Ae0FE9TwW0VVwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"f(x)=sum_(n=0)^oo(f^((n))(a))\/(n!)(x-a)^n\" uneditable=\"true\"><br><\/div><div>Si, si, croyez moi, il y a des gens pour lesquels les signes cabalistiques ci-dessus se lisent, se prononcent et sont même porteurs de sens !<\/div><div>Nous réservons à nos amis matheux et physiciens un tutoriel spécifique sur la manière de dompter l'éditeur LaTex ! Et pour la culture générale, on prononce LaTek. En effet, la dernière lettre, contrairement aux apparences, n'est pas un bête X, mais un Chi grec...<\/div>",
+        "limitedTime": 0
+      }
+    ],
+    "blobs": {
+      "media": [
+        "511204fd3361eb667e4c2754",
+        "511bae743361eb5bc69113a2",
+        "511bb0053361eb5bc69113a5",
+        "531832193361eb112e6f3fa7"
+      ],
+      "thumbnail": [
+        "510eb0743361eb667e4c26f8"
+      ]
+    }
+  },
+  "publicationDate": 1394094886,
+  "published": {
+    "category": [
+      
+    ],
+    "description": "<p>20 minutes pour découvrir <b>la plateforme <\/b>auteur Libre et Gratuite d'Education & Numérique.<\/p>",
+    "contributors": [
+      
+    ],
+    "title": "La plateforme E&N",
+    "extra": {
+      "attachments": [
+        
+      ]
+    },
+    "extraContributors": [
+      
+    ],
+    "matter": {
+      "id": "tuto",
+      "title": "Tutoriel"
+    },
+    "duration": {
+      "id": 20,
+      "title": "20 minutes"
+    },
+    "difficulty": {
+      "id": "easy",
+      "title": "Facile"
+    },
+    "level": {
+      "id": "other",
+      "title": "Autre"
+    },
+    "pages": [
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "La plateforme E&N en quelques mots",
+        "advice": "",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "simple",
+          "title": "Page simple"
+        },
+        "document": "<h2><span style=\"font-size: 30px; font-weight: bold; line-height: 38px;\"><span style=\"color: #31859b;\">Le Catalogue<\/span><\/span><\/h2>\n\n<p>\n<img src=\"\/\/api.education-et-numerique.fr\/1.0\/blob\/511bae743361eb5bc69113a2\/draft\" data-blobid=\"511bae743361eb5bc69113a2\" style=\"width: 97.83568075117371px; height: 229px; float: right; margin: 0px 0px 10px 10px;\" alt=\"\" align=\"left\">Si vous avez trouvé cette activité, c'est que vous connaissez le <a data-original-title=\"C'est là que sont publiées les activités pédagogiques numériques que leurs auteurs décident de mettre à la disposition de tous.\" data-placement=\"top\" rel=\"tooltip\">Catalogue<\/a>. C'est là que sont publiées les <i>activités\npédagogiques numériques<\/i> que leurs auteurs décident de mettre à la disposition de tous.<\/p>\n<p><span style=\"line-height: 1.45em;\">Je vous laisse en découvrir les fonctionnalités et j'espère vous retrouver bientôt comme auteur, peut-être comme membre de l'association.<\/span><br><\/p><h2><span style=\"color: #31859b;\">L'environnement auteur<\/span><\/h2>\n<p>Feuilletez ces quelques pages pour voir ce qu'il est déjà possible de faire avec cette première version de l'environnement auteur et imaginez ce qu'elle va devenir grâce à vos contributions...<\/p><h4><span style=\"font-weight: normal;\"><span style=\"color: #4bacc6;\">Tout est vraiment gratuit ?<\/span><\/span><\/h4>\n<div>\n<p>Oui, tout est gratuit !<\/p><p><span style=\"line-height: 1.45em;\">Éducation & Numérique est un projet de mise en commun de ressources, animé par des enseignants, d'anciens éditeurs pédagogiques et une équipe informatique passionnée d'éducation qui <\/span>partagent l'envie de travailler dans le contexte du \"gratuit\". Pas de pub, rien à payer. Une Association, à laquelle tout le monde peut adhérer, pour produire de la valeur dans un contexte démonétarisé.<br><br>Élevés dans le giron et le respect de l'<i>École Publique<\/i>, nous sommes convaincus que l'investissement sur l'Éducation et la Culture est parmi les plus rentables pour une société. Nous pensons également qu'il serait anormal que les membres de cette société payent pour accéder au Savoir et à la Culture. C'est tout simplement un projet <i>politique<\/i>. Nous nous sentons avec fierté les héritiers de Condorcet et de Jules Ferry ... <br>\nAujourd'hui, <b>nous investissons ensemble afin de créer de la valeur, des compétences éditoriales, une communauté d'auteurs qui souhaitent s'exprimer sur la toile, y créer et y partager les meilleurs contenus<\/b> et les meilleurs outils. <br><br>\n<i>Tu as un franc, j'ai un franc, tu me donnes un franc, je te donne un franc, nous avons chacun un franc.<br>Tu as une idée, j'ai une idée, tu me donnes une idée, je te donne une idée, nous avons chacun <b>deux<\/b> idées.<\/i><br><br>Et nous sommes certains que de temps à autre, un groupe social proche du monde économique saura rétribuer le savoir-faire que nous aurons acquis ensemble dans cette réalisation et le réseau de compétences, de complicités, d'amitiés construit autour de cet ambitieux projet. <br><br>C'est un grand et beau débat au sein de l'Association Education & Numérique.<\/p><\/div><p><span style=\"line-height: 1.45em;\">Bienvenue parmi nous !<\/span><br><\/p><p>Jean-Baptiste Touchard,<br>Directeur Technique d'Éducation & Numérique<\/p>",
+        "limitedTime": 0
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": false,
+        "title": "Un Quiz, tout simple avec seulement deux questions",
+        "advice": "<p>Un Quiz, comme toutes les pages, comporte un titre éventuellement suivi d'un texte <a rel=\"tooltip\" data-placement=\"right\" data-original-title=\"que vous êtes en train de lire...\">enrichi<\/a>. Ce dernier donne souvent la consigne de l'activité ou un document sur lequel vont porter les questions qui suivent.<\/p><p><span style=\"line-height: 1.45em;\">Il existe deux types de questions dans un quiz :<\/span><\/p><p><\/p><ul><li><span style=\"font-size: 15px; line-height: 1.45em;\">les <b><span style=\"color: #548dd4;\">QCM<\/span> <\/b>(<b>Q<\/b>uestions à <b>C<\/b>hoix <b>M<\/b>ultiples)<\/span><\/li><li><span style=\"font-size: 15px; line-height: 1.45em;\">les <b><span style=\"color: #e36c09;\">QRM<\/span> <\/b>(<b>Q<\/b>uestions à <b>R<\/b>éponses <b>M<\/b>ultiple<\/span><span style=\"font-size: 15px;\">s)<\/span><\/li><\/ul><div><span style=\"line-height: 18px;\">Un (une ?) <b><span style=\"color: #548dd4;\">QCM<\/span><\/b> commence par une question, suivie de plusieurs propositions de réponses. Il suffit de trouver la bonne réponse pour que cette question soit résolue. Si on se trompe, on reçoit une indication (et on perd quelques points) et on peut recommencer jusqu'à trouver la bonne réponse. <br>Regardez la première question çi-dessous : c'est une <b><span style=\"color: #548dd4;\">QCM<\/span><\/b>.<\/span><\/div><div><span style=\"line-height: 18px;\"><br><\/span><\/div><h4><span style=\"line-height: 18px;\">Un Q ? \/ Une Q ?<\/span><\/h4><div><span style=\"line-height: 18px;\"><b>Une<\/b> Question \/ <b>Un<\/b> Questionnaire ...<\/span><\/div><div><span style=\"line-height: 18px; font-size: 15px; background-color: rgba(0, 0, 0, 0);\"><br><\/span><\/div><div><span style=\"line-height: 18px; font-size: 15px; background-color: rgba(0, 0, 0, 0);\">Les <b style=\"background-color: rgba(0, 0, 0, 0);\"><span style=\"color: #e36c09;\">QRM<\/span> (questionnaires à réponses multiples) <\/b>sont plus compliqués. On pose une question et on propose plusieurs réponses. Certaines sont vraies (oui) certaines sont  fausses (non). Pour répondre à une <b style=\"background-color: rgba(0, 0, 0, 0);\"><span style=\"color: #e36c09;\">QRM<\/span><\/b>, <span style=\"background-color: rgb(255, 255, 255);\"><span style=\"color: #5f497a;\"><b>il faut faire autant de choix oui\/non qu'il y a de réponses proposées<\/b><\/span><\/span>.  La question n'est résolue que quand on a trouvé, <i style=\"background-color: rgba(0, 0, 0, 0);\">pour chaque proposition de réponse<\/i> si elle est bonne (oui) ou non. <br><\/span><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Le bouton <\/span><b style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Vérifier les réponses<\/b><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\"> ne s'active que quand on a fait son choix pour chacune des réponses proposées.<\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Quand l'un des choix oui\/non n'est pas correct, le commentaire correspondant s'affiche. Ainsi quand vous créez un QRM, <i><span style=\"color: #953734;\">souvenez-vous bien que le commentaire ne s'affichera que si l'utilisateur a mal répondu pour cette proposition de réponse<\/span><\/i>, qu'elle soit juste ou fausse !!! <\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Au début, c'est assez déroutant.<\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">L'exercice se termine quand on a répondu correctement à tous les choix oui\/non.<\/span><\/div><div><span style=\"color: rgb(227, 108, 9); background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Pour une <b>QCM<\/b> avec 4 propositions de réponses, il y a ... 4 propositions de réponses, <\/span><span style=\"color: rgb(227, 108, 9); background-color: rgba(0, 0, 0, 0); line-height: 18px;\">mais pour une <\/span><b style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\"><span style=\"color: #4f81bd;\">QRM<\/span><\/b><span style=\"color: rgb(227, 108, 9); background-color: rgba(0, 0, 0, 0); line-height: 18px;\"> avec 4 propositions de réponses, il y a 2 x 2 x 2 x 2 = 16 manières de répondre !!!<\/span><\/div><div><span style=\"background-color: rgba(0, 0, 0, 0); line-height: 18px;\">Je conseille vivement bien réfléchir avant de proposer des <b>QRM<\/b> avec plus de quatre choix !!! <br>Un <b>QRM<\/b> avec six choix demande de repérer LA bonne réponse (au six questions oui\/non) parmi les 64 possibles...  <\/span><\/div><div><span style=\"line-height: 18px; font-size: 15px;\"><b>Ci-dessous, deux questions :<\/b><\/span><\/div><p><\/p>",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          {
+            "text": "Quelle est la couleur du cheval blanc d'Henri IV ?",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "... Mmm ... c'est pas ça, mais vous avez deux lettres correctes.",
+                "text": "bleu",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Bravo ! ",
+                "text": "blanc",
+                "isCorrect": true,
+                "weight": 0
+              },
+              {
+                "comment": "Ce n'est pas la réponse attendue. Il peut être rouge de honte, mais ce n'est tout de même pas la bonne réponse.",
+                "text": "rouge",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Daltonien, peut-être ???",
+                "text": "vert",
+                "isCorrect": false,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          },
+          {
+            "text": "Parmi les animaux suivants, quels sont les mammifères ?",
+            "isQRM": true,
+            "answers": [
+              {
+                "comment": "Ben, si elle donne du lait, c'est un signe, non ?",
+                "text": "la vache",
+                "isCorrect": true,
+                "weight": 0
+              },
+              {
+                "comment": "Les serpents, vraiment ?",
+                "text": "le boa constrictor bicolore de rocher ",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Oh ! un hermaphrodite ? Vraiment ? ",
+                "text": "l'escargot",
+                "isCorrect": false,
+                "weight": 0
+              },
+              {
+                "comment": "Et mon Momo à moi ?",
+                "text": "Maurice le chat",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          }
+        ],
+        "sequencing": 0,
+        "flavor": {
+          "id": "quizz",
+          "title": "Page quizz"
+        },
+        "document": "",
+        "limitedTime": 120
+      },
+      {
+        "tat": "<p>Une <span style=\"color: #548dd4;\"><b>QCM<\/b><\/span>  commence par une <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">question<\/a>, suivie de plusieurs propositions de <a data-type=\"tat\" data-clue=\"c'est un mot qui revient plusieurs fois ...\" data-alt=\"\">réponses<\/a> . Il suffit de trouver la bonne <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">réponse<\/a>  pour que cette <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">question<\/a>  soit résolue. Si on se trompe, on reçoit une <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">indication<\/a>  (et on perd quelques <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">points<\/a> ) mais on peut recommencer jusqu'à trouver la bonne <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">réponse<\/a>. <br><\/p><hr>Mais pour les <b>QRM<\/b>, c'est plus compliqué ...<div>En effet une <b>QRM<\/b> avec cinq <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">propositions<\/a>  de réponse (oui\/non) propose en fait <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">32<\/a>  réponses possible !!!<\/div><div>Quand on rédige un ? une ? <b>QRM<\/b>, les <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">commentaires<\/a>  que vous écrivez en face des choix oui\/non ne seront affichés à l'utilisateur <a data-type=\"tat\" data-clue=\"\" data-alt=\"\">que s'il se trompe<\/a>  sur ce choix. <\/div><div><hr><\/div><div>Bon courage, vous vous y ferez vite et vous imaginerez des choses extraordinaires. <\/div><div>Par exemple, dans un texte à trou, on peut très bien mettre les trous dans un tableau :<\/div><div><table id=\"table11792\"><tbody><tr><td><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAAASCAYAAABy1wGXAAACuUlEQVRoQ+2YS4hPURzH\/fNIySwMO1OzmAWTPJJSpJlpmkZkoZASK4mNncjCnqJkakZSkzCxsLCQjSh5ZJpsKCFNsSEkyfvx+epcnW53zv0dGc10zqlP93bP7\/x+557vefzubUzJJdkRaES++THsz8G9yHbZfAKOQIz4a+j\/DVgBwxPwXXKXIkegLP4c2k+DV\/DT8zWX+w3wHl7Arcg4VvOx4lvb19ll\/94IFeI3ue18nat7zrUTnoBs9sNh2ARPx2HbD8WvE9RSn\/1XjFIhvs5yrerT0AMDbjJs49oLJ0A2qvsIB93EsAy8xSYU39+BLL6qbLL\/McSfxfNLsBa+O5tDXLfDUveshesX2AHP4IKbBH8rht+uLr4mZVE0WY+Aco6hUnAdV6fgPFz16lLyH6WHBnMqzIQPXsvN3GsCLPYmhKq3go6Cf5ntx8RXH7Y44TU5z7g+S\/hB6IbV8Nh7l9T8mydAVbavZ1dAu4G2\/5jSh\/GeQIOX1C2AtwEbS3wdP1rdO+EsXIQlsBKUkIZKCv5NOlSJr+3\/AHTBtxjlsW2H2YE2P6i7D18DNtb4q\/Bx0\/m5w3U9vDb0NwX\/Jh3K4i9j8HSW6qxXYhdbtMXW\/TsITaiY+Mrgb7sJd5zrXkNnU\/Fv0sEXahGD1w8d3opfzv0IWDJu+boMxedilRZK3lrhTUVlTPx5tL8Oo6AE8BochX1QJK3lEKn4N+tQiK9t4oFbPfqOnwFa\/e\/coBoW1W8T\/USZHjDWJCr\/QJJ5TPz52OtP4yPYCJ9gITwEfaruBn2Z+CUl\/2YdJL4y\/bugzN4vSs60WiTWeJaY+Mrq9XdRn5vK9j97HWvjXln+LjjpPU\/Jf5ROdedzlLP\/ZNxMHB0f5dWt8PoNrd0qlFDWdXOy+697vz\/1k1F888tlw\/AIZPETniFZ\/ITF\/wWghkJLOAPLEgAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"2^4 = 2times2times2times2 =\" uneditable=\"true\"><br><\/td><td><a data-type=\"tat\" data-clue=\"\" data-alt=\"\">16<\/a> <\/td><\/tr><tr><td><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAAASCAYAAABW4kwSAAAC5ElEQVRoQ+2Zy6sPYRjHndwTC5edhYUFkksiYoGkxEpiIwsll42ilJU\/AEedOoWkJJeyoCxkIySXkmwonYMUKXJLcr98vn7v1Ns0551nzpmfX37nmfo0c2aeeZ53nuf7e2+nY4jtGIXZdZgPZ2Ej\/LS96laDNQMdxg9fh90wuABfjO+42SDPQF5c44OIXnP+HeVmF9cH4QksgDdNyltf8esK5\/7Tmaw1P5m4xhHzNKwOsZ9zXga9UVvUc22DRWFYjMU30OJb4g8khvtPZ68p+cnEdYjYH+E4rIQjQWyaW8UiGsPf52EV1Dnnssbvr8DcfzpzTcmPxFUkmH3c3wRzguhk8wkmwn7YnBNdf4uu9yzxM\/9qr+LfBS0s4kM96zE4A5ejB+6\/kYw68lOpzirWUNBqUOLJjvVcSGCzYBK8hN3h+gDnOudcZfHzPeSGICyJ\/2RosBJ3AlbAEuiJvsX9N4RVV37MAitaLereJdDwp+FRx2gYCe9LPHfzfEfC5hXPpsG7hE1R\/Ly5hm71TlvgFJyD2bAQXpS00f2nE2TJj6nOReLSfGovLIcfZpk2DGfA2MQ7v3h2H74nbKzxF+PjRvBzm\/MasPSo7j9dVEt+THXOi2sucTWX0Vzrc0VhyVxDUNneWUqwVeJrhXMrCLqL805De91\/OknW\/JjqHAthJnEPw9Kox5rH9T2wbDvI10XItjOKPkMr0inwtuBhlfiaB16FZ6AJ\/hXohD3Q1yrW\/deTH3OdM3Gpm3sQfv2POY8A9V4fQtEMncJfE23CDU8YS6T5DVqZV4k\/Gftr8AjWgv5jMB0egrZStsO3XBvcf335MddZ4tJK8Q5oZRgfmnzr1y4xNPOoEl+rnpvwFLRa\/Bo1bCrXWiVuhaPRffffSEYd+amkg7L5USVn\/8h4AnE0vOZ7J4XXPpx629SCoayZ7r8sQ8bn\/6O4jJ\/mZq3OgIur1RVo4\/gurjYubqs\/zcXV6gq0cfw\/7BqIS4qIrTIAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"2^5 = 2times2times2times2times2 =\" uneditable=\"true\"><br><\/td><td><a data-type=\"tat\" data-clue=\"\" data-alt=\"\">32<\/a> <\/td><\/tr><tr><td><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAK8AAAASCAYAAAAtxo7eAAADBUlEQVRoQ+2aS8hNURTHfXlEYuBRBgYGFJLngGKAUGJkwERCSUzMlAwMDeRTSiEpyaMMDBSZeJQ8SmJAhFBMCCF5P37\/7tnane7dZ506V\/ec1q5f37n37L3W3uv89z5r7\/v1DbCXuVTdCbvhFvy2N\/WaHoHqI9BnNLmEehtgLfwxtvFqHoGuRiAv3lF4GwRvIpHq83V4DjfhPDzsUq\/a+a\/SldtPR7NW8QniHcmYTsKKbGwv+bsInsA4uAfzYQhchknwsUJVpfxX4cbtp6NYy\/gE8e5jbJ\/gKCyDQ5mYlSaMhVOwFJTn6nov3K5CVZmNlP8q0hS3n35YtYyPxDsczsJy+JWNcRd\/18FM+AH3YTZ8AKUN6+F1ReIt8q9JFYr6uyebOKdz\/pXeHMkm18XonttvBaMO8SklKYlhIAyFz1HL1VxLwNNBglbKsBGUMoyG\/VDFiiiXFv\/xoNbwQcLV5Dqe3dCDOQbaWC6Ax1EDt98Sbl3iYxZwu9MGfXcBtBorfQhlGBfKebX6dioHuLE1cV+r9WR4n6jTyX\/cRKmNVtdNcALOwAyYB68KRu\/20wHqhfiYdNROvEofdsBi+GmeBq2KU2FEoo1y5rugVKRTsfrX2+BaZkSnICvhraG\/bj8dpF6Ij0lHefHOYlx6JSvX\/WIQQr6KXtFFZ8epCVHGv3bIN7IJozRmm6G\/bj8dpF6Jj0lHsdCmMa6DsBCCwOZwfQcs+a1snYNw3NYuTNp8TYB3bW6W8a8TkCvwArSBuwT9sB3CpjPvwu3XIz5mHQXxapnWiYJWr6eg3Farr\/JbicJadMg9OFFZkyD+ASRULeN\/PI2uwiNYBV9hCjwAHfVtge+5Prj9+sRHj86kI4lXJw36XwWdLMRFmyutVhJbN0sZ\/+HXvmd0SKcN36KOTeRapwyb4XD0vdtvBaMO8Smls6L8tJSx\/1RZR3VKP\/Krq9yPAb0tUhvCom66\/XSEuh2foufz734dxWsenFdsdgRcvM1+vo0enYu30Y+32YNz8Tb7+TZ6dH8BOuTUS+WDEysAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"2^6 = 2times2times2times2times2times2 =\" uneditable=\"true\"><br><\/td><td><a data-type=\"tat\" data-clue=\"\" data-alt=\"\">64<\/a> <\/td><\/tr><\/tbody><\/table><\/div><blockquote style=\"margin: 0 0 0 40px; border: none; padding: 0px;\"><div style=\"text-align: justify;\"><span style=\"color: #9bbb59;\"><b>Un dernier conseil <\/b>: ne mettez pas vos utilisateurs en situation d'échec !<\/span><\/div><\/blockquote><div>Sauf si vous avez vraiment une très bonne raison de faire autrement, conservez la valeur par défaut d'affichage des mots supprimés (Gestion).<br>Et ne mettez pas trop de trous dans votre texte. Sur cette page, il y en a 14 ! C'est probablement trop. Peu de gens vont au bout !!! Il me semble que 8 est un assez bon nombre. <\/div>",
+        "displayHoles": true,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Un texte à trous pas trop compliqué",
+        "advice": "<p>Dans le test suivant, essayez de trouver les mots manquants. <\/p><p>(On en profite pour vérifier si vous avez correctement appris ce qui précède !)<\/p><p><\/p><hr><p><\/p>",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "tat",
+          "title": "Page texte à trous"
+        },
+        "document": "",
+        "limitedTime": 10
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Un Glisser-Déposer pour (presque) tout le monde",
+        "advice": "<p><b style=\"line-height: 1.45em;\"><span style=\"color: #4f81bd;\">Trois points de rappel sur les nombres complexes : <\/span><\/b><br><\/p><ul><li><span style=\"line-height: 21.75px;\">L'égalité <b>fondamentale<\/b> des nombres complexes est : <img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAATCAYAAADbJP5YAAABK0lEQVRYR+1VvQ4BQRC+6z2Fl0BCgwegQqITaloaDS1aoiN0XkCpoPUuar6R3cK4\/XFRzIpNvtzldmbu+\/abycaRfW2wXQCywBZoO+LFbMcOJnfsU8wM6Kt3MeRtRFzCOkhe\/4IwcogWF0zfpbZiYjdxAUcI2CmXtNP0jVZVWA9qQZrWixZXKw6RVVai9LwJ0xcdQKjGu8wlTLdm4qkIUWgUVgTBsSJZwbMEnISQ9qFhFHZG9gq4qflq4bn3qchiuLumElNsjFLUN6UYhdEQDgASSCv\/xZ9+UmqJ4K5HAh8f64w1lVt0CS88iksKsQojt3IAncYkZauIa0U6fSI1By5AA6hLssTBxeoYXcIZ4Ar0AhHFL2hN+zmDrnssEI3vNP\/CQrPu71hojj0AI9IwFH7DHgsAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"i^2=-1\" uneditable=\"true\"><br><\/span><\/li><li><span style=\"line-height: 21.75px;\">Le <i><b>conjugué <\/b><\/i>d'un nombre complexe <img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEIAAAASCAYAAADv2ggfAAAB1ElEQVRYR+2WzS4EQRSFzZ53mLdAQiLhAYgF1oYtEis2szE7wdbPmh0PQCJhwdYTeAdhy\/la3c7VutPVZibRma7kpLvSVffWOfenqzXWjESBVqPDtwKjIMRnCLZxPdB8XpgU1oSrugoBsSoBvNX6S+HCZf+R3re9nSoG\/0sVVRUi79xPISNS\/qMqBGKeCZumkheC2tkLH2b1XBY+hP0hpMKMbHaD3Tc9J4SFSD8xGeHt0w\/g8xjsr4ZSYXojLAodE4KND6Fu2uF5V3A4az5l5+4ViOh9nWjNr3otMRwjBKlPxN8D6bQpOn8dvdM3rhEjrzQ42LQwVcb0j99PtW9DMN\/JQdzcm7W1Ma48FzjsCAjC8Fyy\/SFXCAwwMDKsQUR9tjEnRZciHcZkBKasBPg7kHk2sv0hyXCvIsq8OhHoGXn9od\/SYP+x88Ocw7YjAxArhI+852L+TJwkECaEpSCRuRfmhKJ0jQxc4TIcW\/+w\/kAz6woxDTNWCBP8WXZXBMs4L0RapgixFYizkMsHXZbNu4J12n7J+\/3rmpwL1szIBvxx6fEpXOQzVgi4jAsvQvqb1Lv5J+iMQ3jW8R5BFD2xgQSpjkIMhHjWSCNEUKQRohHiZ3F8AYsZZyLJS6qoAAAAAElFTkSuQmCC\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z = a+ib\" uneditable=\"true\"> est le nombre complexe <img> <img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAASCAYAAADixHhYAAABvklEQVRYR+2Wvy4EURTGbc877FsgIZHwAESB2tIiUdFsYztB609NxwOQSChoPYF3EFq+3+Seydm7OzPFXM3O3OTLzM3cf+c33zkznam2DRHotDyGCRiQ3wIwkwTMYrSYThTzsjQrbUl3MJikgKvM\/qgBt9KNG3im+33PoUlAxgF7Cw7JOTQdCGl0Je0aLQ+EnDoKDxZ1XZd+pOMqL9Z4vqC5\/TD\/S9cZaaXGevFUvz71grhew6DNkEJ0H6RVqWdAmPgS8qkbrk8VhysqxPGhBgVQ\/Z4XGjOSzwnAkBI44DsEnxdPt19P99SVe6CMSxkONi\/NJThQ2RKXergj2RmyA7m+n2tjq44Ux0MsBxJgaD6muH6MBcICNBb574bDvAvpY921xBtbavA1wYnW4vqROd4ThdCng0FNKasfdVOG+eduP\/ocupv4hXgn+JhsP4OUvRADYpbkDT1LS1KRfVO9QA5g9cXqB0WvL6UsrAb+XetuOAd6IHn6AmQvAMCq\/LxQjZl8KFlFTgXBr7OtzrVkRQ93sC8\/T97adfcmpmnpQ8o\/r7q3\/TEB7ZR4m\/4fMgK7BRIhaYG0QMpLUuuQiM8fCvdeIq0l0lIAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"\\bar{z} = a-ib\" uneditable=\"true\"> <br>(<img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAlklEQVQoU2NkIAIwEqGGAaboPw7FYHmSTMJrK8kmtQKNq4IaaQukg4H4GxBXw0yyAXIOA3EBECtA6b1A2gWXw\/uBEpZAbAFzKLqbQApAoBDZJ8iK1gMlHiApALmxGtm6WUBOKhBvAOIDQOwAxAFADA\/MfKhgIJDeA8TOQHwSiEuA+AguhyM7B8wmOTAxTMAVBFgVEmUdAKKWExOFZsH7AAAAAElFTkSuQmCC\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"\\bar{z}\" uneditable=\"true\">se prononce z-barre).<\/span><\/li><li><span style=\"line-height: 21.75px;\">Des deux points précédents, on déduit une propriété très utile : <b>Le produit d'un nombre complexe par son conjugué est un nombre réel <\/b>:<img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAWwAAAATCAYAAAC0nDcZAAAFlUlEQVR4Xu1cva4VOQyGHt4B8QpbLEggIZaSYhEFINHtQgtIVNDcZrdDQMtPB4KOLSgXCQmK3ZYn4B0QtOBPOpZClNhOYs\/MPcpI1r33JLE\/f\/Y4mUzOPXpkXpOBbTLwgmCdJjlJ8pLk+jZhTlQJA70x6x0XRf7aeKr2j0Z5PPVOBgYZ+E7jkZ8PSW7vfh9UOYcHM9Abs95xUe6sjadq\/zAU7D8oKhdJLkVFx0nvG9LzluS5oG+ffHGiraoGXIHLWbCjmfbT3xuz3nF+yH\/WtDaeqn1LwUa1L12WsaOEXiUFr1ZcXbHv7OtfhOU3kl9JrpG8zhxE\/z8rRXuffBmNa8t4cLrElkgeaw2jlgva+Jb2rWKr4SrFzMLXUrG2ch+Jp4uPJYqulZxSPxCGx+HHI0qSsfyoYVX3727CSFfN0orvFvV\/VJlgvH2x+sD9PH1ptd3bH5hxXehQ4BFrzexSq\/9S7LaArYRLipnE10isNS562nvxtORdMx9bLth4LHhWKX49AcCYFjJrNv6jBqywa9yVVtkRvvRykI7r8cXDrkXHPep0flese+LWM8aCq4W\/Vn2e\/bXYetpiXVrMapi0cRFYJZ0jeFryrpmPLRfs3hlOCkQLmTU90PGU5GalQwl3hC8eSdzji4ddi458K641Vz1ireHU+NPGR7avgU2LWQ2TNi6Sp5LuETwtedfMR3oTYE8FMwuusySXSb6R3CeR2qLIhDN\/7+ynNs7QHwe7D77Qz+Mk1kdmC5mpfuxXg4uPO3u8D40\/\/yH5nSTfs2auUm4jfLHwHuGLxa61z0gsNRujsYZ+CZ8lFzSMUrsUuzWxabhqPkXz1cp1VO5Z8g5Yu\/jgogLwH0iwX3xi9\/PdrhBKbTWS8hmq1q9UkLlvac83xYJ97dY9RAuZeEzBCvorCV54pi8X2R4XaZwMQdFOi3NpHzvCF0uCRviS2h2J82gsNf9HY63hs+SChlFql2K3JjYJl+SPJ18jeceTHde7njoi+WnJO4zv4qP0mAlF+MLCqQIqqW0kOUtjS0XuCXW8kRTIUsFkXdzXgivlAT7eIUFi4kp5yPecRgp2hC95PCN8sfBp6dPiv6YvItYaPksuALcVW0vs1sQm5ZQ2AaXvfqR7V4v3aLvGn1W\/NbbQl8fXmj8\/YSklCTqgYOUXAlVrszrY0q9UsPEZr\/yhC39ja8J6Rts6+\/HjSn5CJd9z4pm+Z4U96ouVS29frHa1ftH+e8RayjVLLmgcaO1S7NbEVsMl+bMEXxqf3B6Ze9a86+IjLTSY8T4nxRp7sdi\/xiW1lUgafWThYlwqmDg2xxMKF\/UTyWda0lheXqWzX8pDPomUJgzrlgjGjvhiTU5vX1K7I3GO9t9640j8SPGx5II1RrV+W8VWw6Xde+n93LrY8so7ri1R954177ryh4sXL+2xWn1Pco6E92alttGE1AKc73HDSf6M94DwUvCAxPLisYVMBPR\/kiskvIJPSc4fq9gX60vHUV+s3HNh9PLFalfrF+2\/R6ylXLPkgsaB1i7Fbk1sNVza\/cwFu3bvaHx4tUfmXkveNfOBgo0VIQo0ihKOn+FkBG7uuyS\/CG18csKLxFxP6Sgcn2fml4JwGFjxctDy5RormbB9jOQTSXp8j+1jYsP1gCTnwXqsb9QXK+\/evljtav2i\/feKdS3XLLmgcaC1a7FbC1sNl+TPEnxpfHJ7ZO5Z866LD8v2gJUE734RXzbBzF47P+2FHwHLj\/pF+OKFV9JT8mUJux42loi1B86pY78YCM27LRdshDHf59l6aLf81fRW7iRfWnXN\/pOByYADA1sv2IdtZYoJpvRPoRCqffLFIfWmisnAZKCVga0XbC5089+rtkZ2rL\/lX8WOWZijJwOTgWYGDkPBbnZqDpgMTAYmA\/vIwA9FnoIynnPkYwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z\\bar{z} = (a+ib)(a-ib) = a^2 + iab - iab -i^2b^2 = a^2+b^2\" uneditable=\"true\"><\/span><\/li><\/ul><b><span style=\"color: #4f81bd;\">Plus un point de rappel d'arithmétique de base : <\/span><\/b><div><ul><li><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAAeCAYAAACIeIa4AAACEUlEQVRYR+1Yu07EMBDkasQ\/8Bc0UEFJwXVQ82gBiY7mGq5DQMujhg5+ABoo4C\/4B0QNM5I3cvbsJLLWdpNIozsHxzuzs2finSy1r3UMZ+7WDz5XgC01J\/cwxmEfgfeATeAA2HZEdvB5DZxqYhPvBhd9B06AG+DKfffnlBAW4\/CJ4GeOI3lsAB\/AsRO3wNO\/cYtJh4Dce8Z3ZqWkuC4OF+ByDvx5wihSnhGxjQE+cT70CkgZcvwCTHPb5a3fxyHkEp\/h1ekcJ\/m1yzFLdBVYqOdMgvs46GraBY9H4A54A5aBB+GmnZs76+X3RqtnnpuZNDXLUlwXB11N4iQ3GhpBc55C4rgb3bss\/LrJXy4z3GBKXH0cKI47pbgjmyB\/Pt+6wkpuFiWS04oxiiuecqOAo3NGiSy+jJVz8o+0T4Bs833zTP4u4oaQs0pEiPiQ+EMFNzxzEh5KJts8K3FDM1+lLLNlr+bCVs7V1BCNrcXxzMST7hrAl9HmJbQgezMOIedqnMB17kw4hMTxOE\/napasCYeQAO58PPwdFSxFHcqEgxYnJ1sG4xmJPRT\/\/FRCb4wDYyd3v\/iw1LoIqtEkinHgwTm5+0VxutZriItxkBeApO4Xxelaj3aWMtZnF4fk7peIk6asjGu092IckrtfWpxukGY0q7W0tBTZlNIckrtfjCDdJ7rF6xJgy7rk1cVh7H6JE\/\/kkaMf1zLmBwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"a\/b=(an)\/(bn)\" uneditable=\"true\" style=\"line-height: 1.45em;\"><span style=\"line-height: 1.45em;\">(on peut multiplier un quotient <\/span><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAeCAYAAAAYa\/93AAABCklEQVQ4T91UOxIBQRC1B3AHt5AQcQAyYp+YWLIJmULqE5NxAREB51Fi3tuaVr09s5Z0p+rVds\/2m3ndM9NRKT1qcGM39cC3DDR1SKQcBl+AEbACFs7WMSXtrBEwAGTuCLul\/GRtTXjBPysJ9E9AO0sSA5bA2AXQp7yKmvN2mOHnROmvw4514lpSDz+2wAZ4utXv+O5dEbwctNRMO1WyXxhFIvCQ8kaSb5GSloSnMBpAFegCB1uJUNLBlybEEOHmdghWMDTJM+EVH4YOxhI67v4zls+Tb7oP7LIkiX4J8hqB3cHqzyVY\/XLHPgvbHaRTsJFxeK3mG8E2tmQFS5DOwQpxzIGrLu\/f1\/sNEgM0H2lOWLYAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"a\/b\" uneditable=\"true\" style=\"line-height: 1.45em;\"><span style=\"line-height: 1.45em;\">haut et bas par un même nombre <\/span><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAASCAYAAABit09LAAAAm0lEQVQoU2NkIBIwEqmOYagoTAZ6KBKInYE4BYh9oB4MANITgLgQxAd55gQQlwDxYagCWyB9BIjzoQrBHgYRrUBcDcT\/gRimCCQ3C4hTYWKw4EHRDTUZpBFmGDwc1wNFQG6CaYwAspcD8Wwg3gfE3DAJkO4NQBwINQVmA8iTBSC3IisE+XguVKENkAZ5DqT5ARAXDpUohLofPwUAlzoazsIWCHEAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"n\" uneditable=\"true\" style=\"line-height: 1.45em;\"><span style=\"line-height: 1.45em;\">non nul)<\/span><\/li><\/ul><span style=\"color: #4f81bd;\">Et on obtient <b>le truc<\/b> <\/span>: pour simplifier une fraction dans laquelle il y a un nombre complexe au dénominateur, on la multiplie haut et bas par le conjugué du dénominateur.<br><p><\/p><hr><p><b>Le but de l'exercice est de trouver la forme simplifiée des expressions suivantes.<\/b><\/p><hr><p><\/p>\n<\/div>",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          {
+            "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEgAAAAiCAYAAAD8gp97AAAChElEQVRoQ+2ZPU7EMBCF2Z5DcAtAAgkJSgoQBVDz0wKCChoaaIEWRA0dHAAkJCig5QT01NDCeyvPyvE6iSfZKHGylp5Wmzi25\/PYGWd6E\/WWOXR\/Ci2aYdzgd7fiIbHPV6jn6efPXBvc81WqeHyJ5p8MoDf87kGX0CO0GjgIGqS1gX1yQnzP8d4ddCv9axsPHHdwNRr4DC2ZJ4ZmMKclLaAztHfseklWH00AZC+rKgHJ0qKHroR6Xt2A3MmrEhDbnocOHUCyD3IsXHqswyXfL00CdIHx7EPb9h4woiV2jXa+oRPowQH0jv\/04h+I+88mdN80QOL+3KQPUqDQyJ0cYD67tnBxGZKN3wXEiWGfBMUyY\/fRFA+i+2s8R2wI2aRl2frYyoRsGO+hB181DRBnjq4tAwsxWgPIBeN6EO9zDNMQHYZvOi7Ffqnbg+S1yzeLlOA3DB7QwJT2fYDYDr3pA1qHBnFY3YB87s9BJvYB39ow17SA3P5kiTFAnIQ+oUQkXzegDNuDbnHjrvRoEjugIIplKo0B5dAbA1IAsg9yDLfXoF\/7lVfGVWN9VjxIIlkGSlMQf+1Ttm1fVuBl1ztvA1zfEmPoPat41RZxjlDIRdoe1TN9Ni4gwmFJOw+NqvNo2rEBMcL8suAkQm7LotDZb9USk5MyQ\/4XaAHShPzReIR2oPQgfgsmEJ4\/5Hstw\/0jaPDhSNtwW+rHGAeFZkK0Xye9cxojoNBMyFCGoohXxwiobCZExSlWQGUyIa0H5Bpo7zWZGQoVGVM5Rg+y7XQzIZkZiq4B8mVCMjMUXQOUlglJzVB0CVBWJiQ1Q9EVQHmZkNQMRVcA5WVCUjMUXQFUxM7Cz\/wD60+QI\/vIUTQAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z= (2+4i)\/(2i)\" uneditable=\"true\"><br><\/p>",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "",
+                "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAADsAAAASCAYAAADlhqZNAAABdklEQVRYR+2WMUpDQRCG8\/ocwlvEgIIQD2CwUHu1NYKVNjbaqq1irZ0ewEDAFNrmBF5CW\/2\/x2xYwgt5kVk2kCz8LLwsM\/v9OzuborFEo1gi1kYO2A0ZfCl1zOgHzccJTf+12EUO2DeDHWo+kW6lV6mbCJh8T9JjDlic7kvbBjd2PhHsOGwu2Lh0s8BeyYJzs2FT8670I10kdjwFbOgLbJ3eAM8wnCw\/vks9ac3muNRi3rC5WR5c1zDqxnIdcqdmBZzj9w+tpXq+7b4eaH6uKmM20JbW5wj+n6XBYBrU6ZQA9\/p+VCP4JAcMxASaUbJULeL7tOQ18tZeQoV4n2icfN9OlWq9m4R90YevCJQ7XHVfPcoYx3kOyk1oENO7WZKjZXFLlpAglAvv3UDaknYSbACw0AjJFUaKXBjIFfmU9qQusDzswPGo8wDTvVhwJvHwe4+qyiCfd4+ApSmNpPIfmnfpeBvjGm8F62rnAgVbnewCHYbrVv4AAL1FE6OJdAEAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=2-i\" uneditable=\"true\"><br><\/p>",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          },
+          {
+            "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAiCAYAAADvVd+PAAAB0ElEQVRoQ+1YPUoEMRR2ew\/hLVRYQdADKBauB9BWBSttbLTVbRVr7fQACoIW2noCL6Gtfp8kS2Z2xnkvbCA\/E\/hIMS\/J+768JG\/eYC6OdgE3DoBBYHd+zPyTdUIv2MXHErd2Wn9ISDPmEfa3wI3vgl2EfL\/fY+CGkgzX0gow5Z9GPV9yknG9AAEjYIi5T80urKFfAV5LOgJvIHsNfJnzv4P+LkUBruD0ruQ81e4SXrSHAIVgW3LnKOUOGJnd51M7LlEA7v6iiYwz9CcpHoGm6Jc+g7S7BN6BbWAzFgHqiZDWL6kATIDmgQ9gL8YjILzbpsx4MVYIaSeK5RLU+j0z+16AmUmZ6ERuBPB5ODY8mC5uAd\/uk5Eox3\/dtgIwX34BmCgsmP4J\/XrDaPtP3aXHeQriNd0BfJqWgUrK2MVW+V0qonJalfkf97oAJM\/G3LmI5grAf\/JPh3wlZXTUkO5eUkfA\/mk9gOgzsAr4VGiSixpGwL4hzPyYKSOLBsyZj4BJ4SA5ZkKHY0mE+qqw2bDQG5JdVVgY6O1moRWXOuhbFZbO32pXggBZV4UlEVBcVbgpu822KiyJANpkWxWWCpBtVVgqQLZVYakA2VaFpQK02v0C23thI9rVFxEAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=(1+i)\/(1-i)\" uneditable=\"true\"><br><\/p>",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "",
+                "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAASCAYAAADVCrdsAAABCElEQVRIS2NkGASAcRC4gWEgHfEfGgCMA+mIPUBHLAfiuQPpCHhKGHSOaAU6rQrqPFsgHQzE34C4moqJ1wZoVgPUPGcgDbLnCCwkQJKHgbgAiBWg9F4g7YLFAbAERchtbVg8cAIoNhuIv0LTQySQXoEtOvqBEpZAbEHIFjLkQWYXAjHIMSAAtgPdESBFIABSSCsQAQ0FUKhPRHfEeqDAAyQHgNIItvRASXSA7ASFgjk0AMB2wEJiFpCTCsQbgPgAEDsAcQCWkKJG6IA8MQGITwJxOBAHghyRD7U0EEiDChBQqgUpKAHiI9SwFc0MkB08QHwJiNNAcoOunKCBp4kzcjQkYOE0KEICAAGTKhNDQpJ5AAAAAElFTkSuQmCC\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=i\" uneditable=\"true\"><br><\/p>",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          },
+          {
+            "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAjCAYAAAAkCQwqAAABzElEQVRoQ+1YwS4FMRT19j7CXyB5EgkfQCzwAWyRWLGxYYstsX52fACJhAVbX+An2HKOtC+deSNzq1qd25nkpC9v2um9p\/e2p3cwlcdzCjN2gUFkcz7N98fzxJ6wzR\/ruO0X2547TDQCrlJN2EaAfX+DHysJImDCntiM9wQIGYgZAUPYcGTsWEK7ADyVlALPcPYSeDf5v4n2uosEXMDoLUFE1dOaG+0eQCL4zLnfKGUP2DCrz6P2vEQCuPqz5pQ5RnvYxRQQRP+PXSiAzoAXYB1YzYWAuhCKZRcF0DTwCmznmAIhqxs0NpdNMMiJkME9ASHsaRjrRgCPhwPjFOXiGvDhHhkaHK77YAmgXn4EKBRmTHuPdrnBaXunbuPjpAvkNe0BPJrmgYpkbPPW872URM\/PenX\/9r1JN\/N\/auciHpcAXknfHOcrktFhQ7p6nUoBe9O6haMPwCLwLxWa1GHHCNgxDlMfUzKyaEDNvA+MCwepDUs1Xy5CqK8KmxX3XRDuRz5j1FWFfQmYyCwf9mKm5W+Loj0BghRQXRWWREBxVeG6wlVdFZZEAAlRWxWWEqC2KiwlQG1VWEqA2qowL3GVMrevWMlFCPna\/Wf9vwB9amEkzYt6VwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=(1-i)\/(1+i)\" uneditable=\"true\"><br><\/p>",
+            "isQRM": false,
+            "answers": [
+              {
+                "comment": "",
+                "text": "<p><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC0AAAASCAYAAADPNlfiAAABE0lEQVRIS+2UwQoBURSGzd5DeAsUpXgAkwUegC3Kio0NW2zJmh0PQCmzYOsJvARb\/n86I023ZkJmTrn1d+qeM3O\/+99zr5VQOCyFzAlN0Hcx2NIEvQX0Elpogn52snroIbbSk+3kESvQDepHeFlzWHsg6xcRyeV4TjN5gNpQSuIOsWQA9i5E0F5GX9jwEf+YQ1fp5zriytQeYySyUCaI6s38DN81QnxLNrJ0IMJzuEx+aBZxsDAuoyYuswumfug1Ji4vwOxxUz\/\/sj3ISJfTYrDL5DntHdkGk3uoAJUNJxGF+zRpAp2gKmQTuiWQNiIfcN5SFnQhJwpK35pkSkJnqMmc+nc6BqaGQ\/g7Hc6nz6tUOv0ARcorE4ryj5oAAAAASUVORK5CYII=\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"z=-i\" uneditable=\"true\"><br><\/p>",
+                "isCorrect": true,
+                "weight": 0
+              }
+            ],
+            "coef": 0
+          }
+        ],
+        "sequencing": null,
+        "flavor": {
+          "id": "jmt",
+          "title": "Page mix and match"
+        },
+        "document": "",
+        "limitedTime": 0
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Pour terminer ... et pour aller plus loin",
+        "advice": "",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "simple",
+          "title": "Page simple"
+        },
+        "document": "<h2><span style=\"font-size: 30px; font-weight: bold; line-height: 38px;\"><span style=\"color: #31859b;\">Les zones de saisie des textes<\/span><\/span><\/h2><p>Vous avez déjà remarqué que dans les <b>zones de saisie de texte,<\/b> beaucoup de fonctions très puissantes se cachaient derrière les petit boutons...<\/p><p><img src=\"\/\/api.education-et-numerique.fr\/1.0\/blob\/531832193361eb112e6f3fa7\/draft\" data-blobid=\"531832193361eb112e6f3fa7\" style=\"\"><\/p><p><span style=\"font-size: 15px; line-height: 1.45em;\">ça vaut vraiment le coup de prendre un peu de temps pour faire des essais, pour apprendre à en tirer le meilleur parti.<\/span><\/p><p>Par exemple, avez-vous essayé d'utiliser le Titre <b>Accordéon<\/b> ? <\/p><h4>Ceci est un paragraphe \"Accordéon\"...<\/h4><p>... et le paragraphe qui suit est caché derrière le bandeau de titre. En cliquant sur la petite flèche, on déplie ou on replie le paragraphe. C'est un outil assez utile pour composer des textes numériques denses. Il permet de bien souligner la structure logique d'une page, organisée en niveaux de titres. Tout en haut et dans le sommaire, le nom de la page.<br \/>La page elle-même est organisée en une, deux, sans doute au maximum trois grande parties annoncées par des Titres 1.<br \/>Et chaque partie est elle-même structurée par les titres de  niveaux inférieurs.<\/p>\n<h3>... et les info-bulles<\/h3><div>Sympa aussi les<a rel=\"tooltip\" data-placement=\"top\" data-original-title=\"Tool Tip, en anglo-jargon informatique\"> info-bulles<\/a> . La possibilité de placer de petits éléments d'information complémentaire sur certains objets (textes, images, ...)  mis en scène dans la page. Les info-bulles s'affichent quand on survole l'objet et disparaissent dès que le curseur s'éloigne. <\/div><div> <b>Pour placer une info-bulle<\/b> : <br><ol><li><span style=\"font-size: 15px; line-height: 1.45em;\">on sélectionne le mot où l'image sur lequel on désire \"mettre la bulle\"<\/span><br><\/li><li><span style=\"font-size: 15px; line-height: 1.45em;\">et on clique dans le menu \"riche\" sur le phylactère noir, à côté de la racine carrée.<\/span><\/li><\/ol><div><span style=\"color: #8064a2;\"><b>Attention tout de même<\/b><\/span> à <strike>ne pas<\/strike> surcharger votre page d'enrichissements de tous ordres. <br>Au premier temps du Minitel, les enrichissements de texte se réduisaient au choix de 8 couleurs pour le texte. <span style=\"color: #c0504d;\">Certains<\/span> <span style=\"color: #4f81bd;\">considéraient<\/span> <span style=\"color: #9bbb59;\">qu'il eut été<\/span> <span style=\"color: #8064a2;\"><b>déshonorant<\/b><\/span> <span style=\"color: #4bacc6;\">de composer<\/span> <span style=\"color: #f2c314;\">une page <\/span><span style=\"color: #938953;\">sans utiliser<\/span> <span style=\"color: #953734;\">toutes les couleurs disponibles<\/span>. <\/div><div>Mais les pages les plus élégantes, les plus lisibles utilisaient deux, trois couleurs au maximum. <a rel=\"tooltip\" data-placement=\"bottom\" data-original-title=\"Intraduisible ! (Le minimum, c'est le plus ?). Cette phrase, rendue célèbre par Mies van der Rohe, célèbre architecte designer du siècle dernier, est extraite d'un poème de Robert Browning\">Less is More<\/a> !<br><\/div><\/div><h3><span style=\"color: #31859b;\">... et les maths ?<\/span><\/h3><div><img src=\"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAANEAAAA0CAYAAAAUs93eAAAISklEQVR4Xu1dO8y1QxA+fytRql0rEi0S5E8oJBR0hFC4ROUSHTWVxKV0KSQEFRKioUGC6CQ0gqgUKo2WeT5nvqy1u+\/M7Ox7Oe9sMvnOd87uvrOz++xl9tl9LxwirNECf5NST5G8olTuSYr\/MskFZbqI3mGBMHaH8QYmBYisddOTdmCRTjdra0WdrkXmKdnN9Ji3SK4ieYfkgeyxORA+oN\/vPsb5nP5eeUxbqr8pED1Lab8g+UpQVOh5K8kLgri7jRIgWqbqv6HH\/p4AI6+HHAg\/HxvyG\/T3LpJPSGpgaYHoeUp3Lck9imIDwD+SPKdIs6uoAaLD4TOq8duSWkcjRXiV5Ndjr4\/P2vVJrSGhd\/\/yCIpL6O8fhZ6+BATWE3X2GsmjJJqR6E6K\/3ElzVSjhz4M3qm4u\/s9QPQviG4\/1nw6bUoX9hgJrnZqHZhOYURoOQ5KjgV89zrJYyT8+0X6nI4qLccCyvAeiWVEgb73OtrAyZTryCZAdDjkAEEDRUht4wmi1ijCrQLARmBw43M6GuDzLyT5CFlKh7Q9oxDrFKNRBbMBov+CiHtymOvDpJdHw8cI0BMYPHkepTp4mCJh\/aOtHzT0R0jezB7yEv1\/E8mNHQXAOu5rkqc78jjJpNpKOkUjoMHedywYvF6YtnHPja\/hDXu30DCttkBD\/1bQoLV7Ra2pHADwfWdHgE7geoHeVrtsNl2AaP6qS9c2radrp2Ct6RZ+g5u6tB7CGg0dCQesm0oevFgXVWprTyDitY43bG6hDCV7LngujxYWNkKP3rVRDcAAiDASAzzpCJy3jWBDBIgOWBeg8XLQNH6kQQO7huQ6EriXOYBmI10nsA5zu4tLIGJQpCMUu99LG8ABogDRmQXgZQNLAEGyLmn1\/qkTQjqiv00Z3k8ijd96vua3EoiwTrqBJO1M2P2OaV\/OUggQBYjOLMA9rWUUKZmQ8ys1ulJ8gBjBa89JCqTSHhG7yVNdWiDnqd\/cHYC0jIvF26NB0hEEhuf1gLUSAKQXSSTuY6lTwapLLV3JO1fSJQUWNp7TjVyrd07D1fMutyY\/M0+wF0QWA5mV1VhkIm6+Z6NdH1lU4UW7dNSyPKOWprRPxPw9BgqzNcCK+IgE+00piCz7RBaunme5tXmZeII9IOoxkElZrUUm4qfro3Rj1fkxZxSfy0l+I0Gn02Nzq24ldzm+A+OBAz5fQQLnC9gQT5CA6MpBy1jQuuitZfNOVypnk0XfqtAWXd\/DQNpK8TZW6s5F3rV9lN7nsmsdQAXZtJf5YNWnlzsHkq5kysr69TzPWkaPdKX9sCaLvgWiFl3fw0Br2LxjbxQbv3d9VKpE7sVGjnaSxtPT8Wk7vJ5nScoyOk6pvFUWfQ1ELbq+p4G0lTPCeOyR4rznWB+NKIckT8sU3DL19uDqScozKk5p\/Vdl0ddA1KLrexrIslgdYbiUzVDaaBzxzKXy1DiDrE4gD67eUvbBc0ueyCqLvgaiFl3f00BWt6m3gfP10RIeNO8yLZlfi6uXNtLL6B84NMACwZoLJFnNqVttGYfwBHMQSej6ngaSrosAXBhcErB41yyAOU\/eTOT\/l\/CiScq3hTgtBjpmMn+RoKPiGQ+cOvBgjmRzDOMJ1hpKi67vaaC1UUmYCjPCwbCFxu+lY6uNpAccmUvIR97x\/JL3Mh9BWnriLFWNsjSEJ9gCER9FzhX2NNCaQJQ6UyxHqL0a4CnkIz0LhU4LwTJz0NhpKE+wBKIpur6ngdYCIgaQhpEtqcSfJJE2GucO0pu5gHkRpFsgc9GghvIESyCaout7GkhKahy9JsopMBtt16tRu+V8gsv8OxKwInBimM9WoSN7sDKd6y3YUJ5gCURTdH1PA63BO4dKRRjpFeptBD3p2X0\/5\/5XbRuEZx6YLuP0LBwJvP5EPbxPgsOB3mEoT7AEoim6vqeBlt4n4lF3zgbm3UCm8mMQzeksqW3IM5UMOgMsuHePuXolh8BU2aS\/D+UJlkA0NU\/1NNCSjAWeSnoACKN3fhWwtIJHx2MQze2yl077R5dfmz\/ahYonmBtWStf3MJBaWa01GvF5WuFxTBvTkCWJpVNmYbb63CDypIdNldHzd3XHzobV0vU9DKRW1slSuMkTC9re6Q2mJs+Q4KJ5DzA6Fe9\/2SwFIihi4eqNsoMkXwtP8Pxsi4Wu32Mgk7ISK0zEYfD33LYDEAI0WBQjwMs093FvjSnYs7mUjhqunqZc3nGtPMFzEFnp+hYDmZXttFp6vwIavjbwBSd5ulHnkGr68XF0XDKCcjxE8jgJbjiFjrk+8IBijr8UiLR23lz8uefJSxooZWp76uHhmNDogw4PVwz\/SYK3SyDw1LREHMZ38IKt1fGhKfsq4+4JRKusAINSzD3j2UM68pQAg2k3yLtLnag1FHFbSQJE26qvVNvSJioAhuldeiMr1oGXkozYxNyu9Rw1DxA5GnPGrNJrv7gOeSMzX\/vgewTpVcczFuM0HhUg2mY9MjUrZdpjKof9qk9J4HpnGtMStJ9tWtWodYDIaLiFk+VUnpR9ARLnDyT8eswA0eDKChDpDMz7THAtw5281CZrTs1i9z30sr5SUmeJiH1ugQCRrjGkjVfy2khd7hF7kxYIEOmqLb1fQnoWSveEiL05C+wNRM3rYAW1FyASGGlvUfYGotZ1sHjlImhMtYB3t+LlXry5GSPR3tBSKe\/eQAQz1K6DDRAFKEwW2COIUucAX7pykawnOR4ejgVTMzvtRHsFEbum+RYY3MLJ+yqtGl+Li\/u0W+XGSrdHEG2sikLdtVsgQLT2Ggr9Vm+BANHqqygUXLsFAkRrr6HQb\/UW+Ae0FE9TwW0VVwAAAABJRU5ErkJggg==\" data-type=\"math\" data-format=\"asciimath\" data-formula=\"f(x)=sum_(n=0)^oo(f^((n))(a))\/(n!)(x-a)^n\" uneditable=\"true\"><br><\/div><div>Si, si, croyez moi, il y a des gens pour lesquels les signes cabalistiques ci-dessus se lisent, se prononcent et sont même porteurs de sens !<\/div><div>Nous réservons à nos amis matheux et physiciens un tutoriel spécifique sur la manière de dompter l'éditeur LaTex ! Et pour la culture générale, on prononce LaTek. En effet, la dernière lettre, contrairement aux apparences, n'est pas un bête X, mais un Chi grec...<\/div>",
+        "limitedTime": 0
+      },
+      {
+        "tat": "",
+        "displayHoles": false,
+        "subtitle": "",
+        "displayAll": true,
+        "title": "Performance",
+        "advice": "",
+        "coef": 0,
+        "displayHolesRandomly": false,
+        "hasDocument": false,
+        "questions": [
+          
+        ],
+        "sequencing": -1,
+        "flavor": {
+          "id": "perf",
+          "title": "Page performance"
+        },
+        "document": "<p><\/p><p>... Et voici la fin de cette activité. Votre performance !!!<\/p><p>Je ne vous en dit pas plus pour l'instant. <\/p><p>L'utilisation de la page performance et quelques indications sur SCORM feront l'objet d'un tuto spécifique.<\/p><p><b><\/b><\/p><div><b>Pour l'ensemble de cette activité, tu as obtenu : {{activite.note[\/20]}} <\/b>({{activite.note}})<br><b style=\"line-height: 1.45em;\">Pour les quiz de la page 2, tu as obtenu : {{activite.pages[2].note}} <br><\/b><b style=\"line-height: 1.45em;\">Pour le texte à trous de la page 3, tu as obtenu : {{activite.pages[3].note}}<br><b>Pour le Glisser\/Déposer de la page 4, tu as obtenu : {{activite.pages[4].note}}<\/b> <\/b><\/div><div>J'attends avec grande impatience vos réalisations, vos critiques, vos suggestions, vos conseils, vos demandes, votre aide, votre soutien, de vous rencontrer dans le cadre de l'association et les petits mots gentils pour nous dire si vous aimez bien Ellena.<br><br><h4>Elena ???<\/h4><h4><span style=\"font-size: 15px; line-height: 1.45em; color: rgb(51, 51, 51); font-weight: normal;\">C'est le petit nom que j'ai donné à l'environnement auteur (Environnement  Libre Education & Numérique pour les Auteurs) ... et la raison d'être de l'illustration de la victoire de samothrace à la première page de ce tuto.<\/span><\/h4><p>Je vous souhaite une très agréable journée.<\/p><p>Jean-Baptiste<\/p><br><p><\/p>\n<\/div>",
+        "limitedTime": 0
+      }
+    ],
+    "blobs": {
+      "media": [
+        "511204fd3361eb667e4c2754",
+        "511bae743361eb5bc69113a2",
+        "511bb0053361eb5bc69113a5",
+        "531832193361eb112e6f3fa7"
+      ],
+      "thumbnail": [
+        "510eb0743361eb667e4c26f8"
+      ]
+    }
+  },
+  "isReported": false,
+  "isDeleted": false
+}

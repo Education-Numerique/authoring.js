@@ -2,16 +2,13 @@
 * @template : account/login
 */
 
-
-
 <div class="row-fluid ">
-
 
     <div class="widget-box">
         <div class="widget-content">
             <form id="loginform" class="form-horizontal">
                 <div id="step-login" class="step">
-                    <p>Connectez-vous pour créer vos propres activités.</p>
+                    <h3>Connectez-vous pour créer vos propres activités</h3>
                     <div class="alert alert-error login-error-box" style="display:none">
                         Email inconnu ou mauvais mot de passe ... Êtes-vous inscrit ?
                         <a href="#" data-dismiss="alert" class="close">×</a>

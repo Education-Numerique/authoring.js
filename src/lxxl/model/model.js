@@ -345,6 +345,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
 
         i.SHORT_TITLE = 'SHORT_TITLE';
         i.SHORT_DESCRIPTION = 'SHORT_DESCRIPTION';
+        i.LONG_DESCRIPTION = 'LONG_DESCRIPTION';
         i.ONE_PAGE = 'ONE_PAGE';
         i.NO_GOOD_ANSWER = 'NO_GOOD_ANSWER';
         i.PERF_MUSTACHE_MALFORMED = 'PERF_MUSTACHE_MALFORMED';
@@ -411,6 +412,8 @@ jsBoot.pack('LxxlLib.model', function (api) {
                 err = this.ONE_PAGE;
             if (this.draft.description.replace(/(<[^>]+>)/g, '').length < 20)
                 err = this.SHORT_DESCRIPTION;
+            if (this.draft.description.replace(/(<[^>]+>)/g, '').length > 200)
+                err = this.LONG_DESCRIPTION;
             if (this.draft.title.length < 4)
                 err = this.SHORT_TITLE;
 
@@ -419,5 +422,4 @@ jsBoot.pack('LxxlLib.model', function (api) {
 
         return i;
     };
-})
-;
+});

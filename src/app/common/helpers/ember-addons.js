@@ -27,7 +27,7 @@
     LxxlLib.Em.Checkbox = Em.Checkbox.extend({
 
         didInsertElement: function () {
-            this.$().uniform({'checkboxClass': this.$().attr('class') + ' checker'});
+            this.$().uniform({'checkboxClass': this.$().attr('class') + ' checked'});
         },
 
         checkedUpdate: function () {
