@@ -10,7 +10,7 @@ html, body {
 a:hover, h4:hover{
   cursor:pointer;
 }
-
+ 
 @mixin rounded($radius: 10px) {
   border-radius: $radius;
   -moz-border-radius: $radius;
