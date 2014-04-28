@@ -3,7 +3,6 @@
 */
 
 <div class="row-fluid">
-
   <div class="widget-box">
     <div class="widget-title">
       <h5>Les activités publiées</h5>
