@@ -10,6 +10,11 @@ Style specific to activity edition
     min-height: 30px !important
   }
 
+.qti .input-prepend
+{
+  margin:0 !important;
+}
+
   label.add-on, .qti .input-prepend .chzn-container, .qti .input-prepend input.ember-text-field, .qti .input-prepend .redactor_box
   {
     margin: 0 !important;
