@@ -283,7 +283,7 @@
             if (this.get('maxLength') && !this.$().parent().find('.infobox').length) {
                 this.$().parent().append('<div class="infobox" />');
                 this.set('_infoBox', this.$().parent().find('.infobox'));
-            }
+            }            
 
 
             // BEGIN of "Text à trous" plugin
@@ -378,14 +378,32 @@
 
         },
 
+        limitChar: function () {
+            var max = 200;
+            var len = this.$().getText().trim().length;
+            //binding keyup/down events on the contenteditable div            
+            $("#textarea-description div div").keydown(function(e){ check_charcount(max, e); });
+
+            function check_charcount(max, e)
+            {   
+                if(e.which != 8 && $("#textarea-description div div").text().length > max)
+                {
+                    e.preventDefault();
+                }
+            }
+        },
+
         updateCharCount: function () {
             if (this.get('maxLength') > 0) {
                 var len = this.$().getText().trim().length;
                 var cnt = this.get('maxLength') - len;
 
-                if (cnt < 0) {
+                if (cnt < 0)
+                {
                     this.get('_infoBox').removeClass('ok').addClass('ko');
-                } else {
+                }
+                else 
+                {
                     this.get('_infoBox').removeClass('ko').addClass('ok');
                 }
                 this.get('_infoBox').html('<span>' + cnt + '</span>');
@@ -442,6 +460,7 @@
             this.$().getEditor().html(value);
             this.$().data('redactor').syncCode();
             this.updateCharCount();
+            this.limitChar();
         }.observes('value')
     });
 
