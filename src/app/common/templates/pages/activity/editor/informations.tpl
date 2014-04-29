@@ -5,9 +5,9 @@
 <div class="container-fluid">
     <div class="widget-box noborder">
 
-    
         <div class="widget-content" id="page-informations">
-            <div class="control-group " style="width:60%">
+            <div class="control-group " style="width:100%">
+                <div style='width:500px; float:left;'>
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>
                     {{view Ember.TextField valueBinding="content.title"  classNames="span2" id="form-activity-title" placeholder="Titre de l'activité"}}
@@ -40,10 +40,9 @@
                     {{view LxxlLib.Em.Select contentBinding="difficulties.content" selectionBinding="content.difficulty" optionLabelPath="content.title" optionValuePath="content.id"}}
                 </div>
                 
-            </div>
+        </div>
 
-            <!-- pour mettre une vignette reco : jpg/png max, 200x200 px -->
-            <div class="dropzone-container thumbnail-uploader">
+                <div class="dropzone-container thumbnail-uploader">
                 <div class="dropzone fade">
                     <div {{bindAttr class=":preview content.thumbnailUrl:hasThumbnail:default"}}>
                         {{#bind content.thumbnailUrl}}
@@ -51,17 +50,32 @@
                         {{/bind}}
                     </div>
                 </div>
-                <span class="btn btn-large add-thumbnail">
-                    <i class="icon-plus"></i>
+                <span class="btn btn-success add-thumbnail">
+                    <i class="icon-plus icon-white"></i>
                     <input id="fileupload" type="file" name="file" />
                     Ajouter une vignette
                 </span>
             </div>
+            
+        </div>
 
-            <div class="input-prepend" id='textarea-description'>
-                    <label class="add-on" for="form-page-explanation">Description</label>
-                    {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" buttons="bold,italic" maxLength=200 classNames="redactorjs 4lines" id="form-page-explanation"}}
-            </div>
+            <!-- pour mettre une vignette reco : jpg/png max, 200x200 px -->            
+
+            <div style='clear:both;'></div>
+
+           
+           <div class="widget-box" id='textarea-description'>
+        <div class="widget-title" data-toggle="slidify" data-target="#page-document">
+            <span class="icon">
+                <i class="icon-pencil"></i>
+            </span>
+            <h5>Document</h5>
+        </div>
+        <div class="widget-content slidify-on nopadding" id="page-document">
+            {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" buttons="bold,italic" maxLength=200 classNames="redactorjs 4lines" id="form-page-explanation"}}
+        </div>
+    </div>          
+           
         </div>
     </div>
 

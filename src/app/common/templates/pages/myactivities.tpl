@@ -79,6 +79,7 @@
 
     </div>
     <div class="widget-content nopadding">
+      <div class='table-responsive'>
       <table class="mydrafts table table-bordered data-table">
         <thead>
           <tr style="cursor: pointer; table-striped with-check">
@@ -99,7 +100,8 @@
         </thead>
         <tbody>
         </tbody>
-      </table>  
+      </table>
+    </div>
     </div>
   </div>
 

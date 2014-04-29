@@ -51,10 +51,20 @@
                 -->
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
-            <div class="input-prepend">
-                <label class="add-on" for="form-page-explanation">Consigne</label>
-                {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip,imagemanager" id="form-page-explanation"}}
-            </div>
+            
+              <div class="widget-box">
+        <div class="widget-title" data-toggle="slidify" data-target="#page-document">
+            <span class="icon">
+                <i class="icon-pencil"></i>
+            </span>
+            <h5>Document</h5>
+        </div>
+        <div class="widget-content slidify-on nopadding" id="page-document">
+            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip,imagemanager" id="form-page-explanation"}}
+        </div>
+    </div>
+
+            
         </div>
     </div>
     {{#if currentPage.hasDocument}}

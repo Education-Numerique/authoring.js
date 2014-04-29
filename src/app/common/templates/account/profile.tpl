@@ -106,14 +106,14 @@
                <div class="control-group">
                         <div class="controls" style="margin-left:0px;">
                             <div class="input-prepend">
-                                 <label class="add-on" style="width:200px;" for="password">Nouveau mot de passe</label><input  type="password" id="password" name="password" placeholder="" style="margin-top: 10px;" />
+                                 <label class="add-on" style="width:200px;" for="password">Nouveau mot de passe</label><input  type="password" id="password" name="password" placeholder="" />
                             </div>
                         </div>
                     </div>
                     <div class="control-group">
                         <div class="controls" style="margin-left:0px;">
                             <div class="input-prepend">
-                                <label class="add-on" style="width:200px;margin-top: 10px;" for="password2">Confirmez votre mot de passe</label><input type="password"  id="password2" style="margin-top: 10px;" name="password2" />
+                                <label class="add-on" style="width:200px;" for="password2">Confirmez votre mot de passe</label><input type="password"  id="password2" name="password2" />
                             </div>
                         </div>
                     </div>

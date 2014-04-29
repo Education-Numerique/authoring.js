@@ -381,12 +381,12 @@
         limitChar: function () {
             var max = 200;
             var len = this.$().getText().trim().length;
-            //binding keyup/down events on the contenteditable div            
-            $("#textarea-description div div").keydown(function(e){ check_charcount(max, e); });
+            console.log(12);
+            $("#textarea-description div div div").keydown(function(e){ check_charcount(max, e); });
 
             function check_charcount(max, e)
             {   
-                if(e.which != 8 && $("#textarea-description div div").text().length > max)
+                if (e.which != 8 && $("#textarea-description div div div").text().length > max)
                 {
                     e.preventDefault();
                 }
