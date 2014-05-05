@@ -251,6 +251,7 @@
                     return;
 
                 this.updateCharCount();
+                this.limitChar();
 
                 if (this.get('value') == this.$().getCode())
                     return;
@@ -381,7 +382,6 @@
         limitChar: function () {
             var max = 200;
             var len = this.$().getText().trim().length;
-            console.log(12);
             $("#textarea-description div div div").keydown(function(e){ check_charcount(max, e); });
 
             function check_charcount(max, e)
