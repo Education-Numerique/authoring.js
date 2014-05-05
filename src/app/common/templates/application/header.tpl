@@ -2,9 +2,8 @@
 * @template : application/header
 */
   <header id="header" role="banner">
-      <h1>
-        <a href="./">LxxL</a>
-      </h1>
+  <a href="./" titile='Acceuil' style='display:block;'>
+    </a>
   </header>
 
 <!--
