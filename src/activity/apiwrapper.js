@@ -686,7 +686,7 @@
                     }, 500 , function (){
                         $('.side-menu').css('display', 'none');
                         $('.side-menu nav').css('white-space', 'normal');
-                    });                     
+                    });
                 }
 
                 // TOTO.objectives[0].setBrowsed()
@@ -726,6 +726,7 @@
                     else {
                         page.fadeIn(1000, function () {
                             console.warn('done');
+                            console.warn(getActivityNotes());
                         });
                         if (page.hasClass('page-perf')) {
                             refreshPerformancePage(page);
@@ -750,6 +751,8 @@
             console.warn('Page completed?', pageComplete);
             if (pageComplete) {
                 var total = activity[pub].pages[pid].questions.length;
+                console.log('*************');
+                console.log(activity[pub].pages[pid].questions.length);
                 var actual = 0;
                 activity[pub].pages[pid].questions.forEach(function (question) {
                     console.warn('Result for the question?', question.score.getResult());
@@ -975,7 +978,7 @@
             // (par défaut, les 2 flavors ['perf', 'simple'] seraient à 0)
             // on compte ensuite la note globale avec un forEach sur toutes les pages de l'activité en
             // prenant en compte les coefs...
-            // JBT 02/2014
+            // JBT 02/2014            
             var flavorsWhoDontCount = ['perf', 'simple'];
             var nbPageWhoCount = 0;
             var total = 0;
@@ -987,13 +990,16 @@
             };
 
             activity[pub].pages.forEach(function (page, idx) {
-                if (!flavorsWhoDontCount.indexOf(page.flavor.id) && (typeof page.score != "object")) {
+                console.warn(page);
+                //activityNotes.pages = {id: page.id, note: page.score};
+                if ($.inArray(page.flavor.id, flavorsWhoDontCount) == -1 && (typeof page.score != "object")) {
                     nbPageWhoCount++;
                     activityNotes.pages[idx + 1] = {note: page.score}; // page begin at one
                     total += page.score;
                 }
             });
             activityNotes.note = total / nbPageWhoCount >> 0;
+            //console.log(activityNotes.pages);
             return activityNotes;
         }; // getActivityNotes
 

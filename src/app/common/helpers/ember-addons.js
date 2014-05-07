@@ -381,12 +381,12 @@
 
         limitChar: function () {
             var max = 200;
-            var len = this.$().getText().trim().length;
+            var len = this.$().getText().trim().replace(/(<[^>]+>)/g, '').length;
             $("#textarea-description div div div").keydown(function(e){ check_charcount(max, e); });
 
             function check_charcount(max, e)
             {   
-                if (e.which != 8 && $("#textarea-description div div div").text().length > max)
+                if (e.which != 8 && $("#textarea-description div div div").text().replace(/(<[^>]+>)/g, '').length > max)
                 {
                     e.preventDefault();
                 }
@@ -395,7 +395,7 @@
 
         updateCharCount: function () {
             if (this.get('maxLength') > 0) {
-                var len = this.$().getText().trim().length;
+                var len = this.$().getText().trim().replace(/(<[^>]+>)/g, '').length;
                 var cnt = this.get('maxLength') - len;
 
                 if (cnt < 0)
