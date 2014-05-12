@@ -11,8 +11,10 @@
 
   <header>
     <!-- Titre de l'activité -->
-    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong> par&nbsp;&nbsp;<em>{{author.username}}</em> <button type="button" class='btn btn-navbar btn-responsive'><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> </h1>
+    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong> par&nbsp;&nbsp;<em>{{author.username}}</em> <!-- <button type="button" class='btn btn-navbar btn-responsive'><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> --> </h1>
   </header>
+
+  <div class='see-sommaire'>Sommaire</div>
 
   <!-- Sommaire -->
   <div id="playing" class="row-fluid content-container">
@@ -354,6 +356,7 @@
         {{/each}}
       </ul>
     </div>
+    <div class="go-to-top">Sommaire &uarr;</div>
   </section>
     <footer> 
       <small><i>powered by</i> <a href="http://www.education-et-numerique.org" target="_blank">Education & Numerique</a></small><div id='creativeCommon'></div>
@@ -385,27 +388,26 @@
 
 $(document).ready( function ()
 {
-  // $(document).on('click touchstart', 'a, h4', function ()
-  // {
-  //   alert('LDSFSDAFDFQWEAWQWRSDZFSL');
-  // });
   if ($(window).width() <= 910)
     {
-      $('.btn-responsive').show();
+      $('.see-sommaire').show();
+      $('.see-sommaire').show();
       $('.pull-left').removeClass('span8');
       $('.side-menu').css('width', '0px');
       $('.side-menu').hide();
     }
     else
     {
-      $('.btn-responsive').hide();
+      $('.see-sommaire').hide();
       $('.pull-left').addClass('span8');
     }
 
-  $(document).on('click', '.btn-responsive', function ()
+  $(document).on('click', '.see-sommaire', function (e)
   {
+    e.stopPropagation();
     if ($('.side-menu').css('display') == 'none')
     {
+        // $('.see-sommaire').fadeOut();
         $('.side-menu nav').css('white-space', 'nowrap');
         $('.side-menu').show();
         $( ".side-menu" ).animate({
@@ -415,7 +417,7 @@ $(document).ready( function ()
       }, 500,  function() {
        $('.side-menu').css('display', 'block');
        $('.side-menu nav').css('white-space', 'normal');
-      });        
+      });
     }
     else
     {
@@ -425,7 +427,8 @@ $(document).ready( function ()
       }, 500 , function() {
        $('.side-menu').hide();
        $('.side-menu nav').css('white-space', 'normal');
-      });       
+       // $('.see-sommaire').fadeIn();
+      });
     }
 
   });
@@ -435,23 +438,69 @@ $(".side-menu").click(function (e)
     e.stopPropagation();
 });
 
-
   $(window).resize(function ()
   {
   if ($(window).width() <= 910)
     {
-      $('.btn-responsive').show();
+      $('.see-sommaire').show();
       $('.pull-left').removeClass('span8');
       $('.side-menu').css('width', '90%');
     }
     else
     {
-      $('.btn-responsive').hide();
+      $('.see-sommaire').fadeOut();
+      // $('.see-sommaire').hide();
       $('.pull-left').addClass('span8');
       $('.side-menu').css('width', '23%');
       $('.side-menu').show();
+      $('.go-to-top').fadeOut();
     } 
   });
+
+  $(window).scroll(function ()
+  {
+    if ($(window).width() <= 910)
+    {
+    var aTop = $('header').height() + 12;
+    if($(this).scrollTop()>=aTop){
+        // $('#bartop').fadeIn();
+        // $('#logo-en').fadeOut();
+        // $('#normal-nav').fadeOut();
+        // $('#searchform').fadeOut();
+        $('.go-to-top').fadeIn();
+    }
+    else
+    {
+      // $('#logo-en').fadeIn();
+      // $('#bartop').fadeOut();
+      // $('#normal-nav').fadeIn();
+      // $('#searchform').fadeIn();
+      $('.go-to-top').fadeOut();
+    }
+  }
+  });
+
+  $('.go-to-top').click( function ()
+  {
+    $(window).scrollTop(0);
+    $( ".see-sommaire" ).trigger( "click" );
+  });
+
+  $('#playing').click(function (e)
+    {
+      if ($(window).width() <= 910)
+    {
+      $('.side-menu nav').css('white-space', 'nowrap');
+       $( ".side-menu" ).animate({
+        width: "1px",
+      }, 500 , function() {
+       $('.side-menu').hide();
+       $('.side-menu nav').css('white-space', 'normal');
+       $('.see-sommaire').fadeIn();
+      });
+      //$('#activity-preview-body').hide();
+    }
+    });
 
 });
 

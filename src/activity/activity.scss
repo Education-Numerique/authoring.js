@@ -7,6 +7,40 @@ html, body {
   height: 100%;
 }
 
+.go-to-top
+{
+  width: 132px;
+  height: 21px;
+  position: fixed;
+  bottom: 57px;
+  background-color: #504A4A;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  padding-top: 4px;
+  font-size: 15px;
+  display: none;
+  right: 8px;
+  z-index: 10000;
+  cursor: pointer;
+}
+
+.see-sommaire
+{
+  width: 90px;
+  height: 17px;
+  position: absolute;
+  right: 15px;
+  top: 9px;
+  background-color: #888282;
+  border-radius: 5px;
+  text-align: center;
+  color: white;
+  padding-top: 0px;
+  font-size: 12px;
+  cursor:pointer;
+}
+
 a:hover, h4:hover{
   cursor:pointer;
 }
