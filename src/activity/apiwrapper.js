@@ -541,19 +541,19 @@
 
         this.bindDocument = function (d) {
             dom = d;
-            // XXX manu bind behaviors if you want
+
             // JMT BEHAVIOR IN ACTIVITY.JS DO NOT FORGET KEEP THINKING //
+
             tatBehavior();
             quizzBehavior();
             menuBehavior();
             perfBehavior();
-        }; // bindDocument
+        };
 
         this.start = function (act, pubVersion) {
             pub = pubVersion ? 'published' : 'draft';
             startTime = (new Date()).getTime();
             activity = this.activity = ('isMutable' in act) ? act : new LxxlLib.model.Activity(act);
-
 
             window.coin = scormAPI;
             scormAPI.boot();
@@ -696,7 +696,7 @@
             acti = $('.pages-container > section', dom);
             if (acti.length)
                 $(acti[0]).fadeIn(1000, function () {
-                    console.warn('done');
+                    console.warn('done : activity ready !!!');
                 });
 
             // Pages navigation
@@ -790,7 +790,7 @@
 
                 $('#modal-on-modal-lynching').show();
 
-                $('.conclusion .feedback', $('#quizz-' + pid)).html(Math.round(actual / total) + '%');
+                $('.conclusion .feedback', $('#quizz-' + pid)).html(Math.round(actual / total) + '/100');
 
                 $('.conclusion', $('#quizz-' + pid)).modal('show');
 
@@ -866,7 +866,7 @@
                         ok = ($('input', $(line))[0].checked || $('input', $(line))[1].checked) && ok;
                     });
                     if (ok) {
-                        // c'est sans doute par ici qu'il faudrait highlighter le bouton "vérifier"...
+                        // highlight du bouton "vérifier"...
                         // en accord avec src/activity/activity.tpl
                         $('button', $(this).parent().parent().parent()).attr('disabled', null);
                         $('button', $(this).parent().parent().parent()).css('color', 'green');
@@ -931,8 +931,10 @@
             });
         }; // quizzBehavior
 
-        // This method is launch at starting of an activity
+/**************************  perfBehaviour ***********************/
+// This method is launched at starting of an activity
         var perfBehavior = function () {
+            console.warn("entering perfBehaviour binding")
 
             // retrieve each performance page
             $('section[id^=perf-]').each(function (idx, section) {
@@ -1049,8 +1051,8 @@
                 pages: {}
             };            
             activity[pub].pages.forEach(function (page, idx) {
-                console.warn(page.score);
-                //activityNotes.pages = {id: page.id, note: page.score};
+                // console.warn(page.score);
+                // activityNotes.pages = {id: page.id, note: page.score};
                 if ($.inArray(page.flavor.id, flavorsWhoDontCount) == -1 && (typeof page.score != "object" || typeof page.score != "undefined")) {
                     nbPageWhoCount++;
                     activityNotes.pages[idx + 1] = {note: page.score}; // page begin at one
@@ -1061,8 +1063,9 @@
                 }
             });
             activityNotes.note = total / nbPageWhoCount >> 0;
+            // console.log(activityNotes.pages);
             return activityNotes;
-        }; // getActivityNotes
+        };
 
 /**************************  tatBehaviour ***********************/
         var tatBehavior = function () {
@@ -1176,7 +1179,8 @@
                     } else {
                         wordList.sort();
                     }
-                    $('.wordlist', item).html('<strong>Liste des trous :</strong>&nbsp;&nbsp;' + wordList.join(', '));
+                    var tmptxt = I18n.translate('pages.tat.holeslist');
+                    $('.wordlist', item).html('<strong>' + tmptxt + ':</strong>&nbsp;&nbsp;' + wordList.join(', '));
                     $('.wordlist', item)[0].style.display = 'block';
                 }
 

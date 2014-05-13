@@ -172,8 +172,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
         try {
             throw new api.Error('CREATION_FAILURE', 'Failed saving activity to service');
         } catch (e) {
-            // Might occur in rare legit conditions (race between competing network calls) - doesn't really matter - the
-            // shit returns 404
+            // Might occur in rare legit conditions (race between competing network calls) - doesn't really matter - the shit returns 404
             console.error(e);
         }
     };
@@ -393,7 +392,7 @@ jsBoot.pack('LxxlLib.model', function (api) {
                                 return currentFormattedContent.replace(new RegExp(htmlChar, 'g'), htmlChars[htmlChar])
                             }, mustacheContent.replace(/ /g, ''));
 
-                            var contentRegex = /^{{(\/if|#ifactivite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
+                            var contentRegex = /^{{(\/if|#if activite\.(pages\[\d{1,4}]\.)?note(==|>=|<=|<|>)(100|\d{1,2})|(activite\.(pages\[\d{1,4}]\.)?note)(\[\/(20|100)\])?)}}$/i;
                             var contentIsValid = !!formattedContent.match(contentRegex);
                             if (!contentIsValid) {
                                 self.errorDescription += mustacheContent + '<br/>';

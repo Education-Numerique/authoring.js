@@ -93,7 +93,6 @@
           }
         }),
 
-
         register: Ember.Route.extend({
           route: '/register',
           enter: function(router) {
@@ -107,7 +106,6 @@
             router.get('applicationController').connectOutlet('accountRegister');
           }
         }),
-
 
         validate: Ember.Route.extend({
           route: '/validate',

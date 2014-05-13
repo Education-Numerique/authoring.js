@@ -11,7 +11,7 @@
 
   <header>
     <!-- Titre de l'activité -->
-    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong> par&nbsp;&nbsp;<em>{{author.username}}</em> <!-- <button type="button" class='btn btn-navbar btn-responsive'><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> --> </h1>
+    <h1><strong>{{title}}&nbsp;&nbsp;&nbsp;</strong>-&nbsp;&nbsp;<em>{{author.username}}</em> <!-- <button type="button" class='btn btn-navbar btn-responsive'><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button> --> </h1>
   </header>
 
   <div class='see-sommaire'>Sommaire</div>
@@ -234,14 +234,13 @@
                   </li>
                   {{/each}}
                   <br />
-                  <!--  make QRM button more visible (green ?) when active -->
                   <button disabled="disabled">Vérifier mes réponses</button>
                   <div class="modal hide" role="dialog" aria-hidden="true">
                     <div class="modal-header">
                       <h3>Ok pour cette question !</h3>
                     </div>
                     <div class="modal-body">
-                      Ton score pour cette question: <span class="feedback"></span>
+                      Ton score pour cette question : <span class="feedback"></span>
                     </div>
                     <div class="modal-footer">
                       <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>

@@ -12,7 +12,8 @@
       copyright: 'Association Éducation & Numérique - Siège social : 47 rue Meslay, 75003 Paris | ',
       conditions: 'Conditions générales & Respect de la vie privée',
       welcome: 'Bienvenue !',
-      // Breadcrumb - these specify the main title of the page, along with the optional breadcrumb
+
+      // Breadcrumb - Main title of the page, along with the optional breadcrumb
       breadcrumb: {
         account: {
           validation: {
@@ -20,7 +21,6 @@
           },
           login: {
             title: 'Bienvenue'
-            // No bread means no bread ;)
           },
           register: {
             title: 'Créez votre compte'
@@ -66,6 +66,7 @@
           title: 'Édition de l\'activité'
         }
       },
+
       // These elements are in the top and left navigation widgets
       nav: {
         home: {
@@ -128,6 +129,167 @@
         users: {
           tip: 'Gérer les comptes utilisateurs',
           text: 'Utilisateurs'
+        }
+      },
+
+      // app/common/controllers/pages/activity.js
+      publishActivity: {
+          SHORT_TITLE: {
+              warning: 'le titre de votre activité doit compter au moins 4 caractères'
+          },
+          SHORT_DESCRIPTION: {
+              warning: 'la description de votre activité doit compter au moins 20 caractères'
+          },
+          LONG_DESCRIPTION: {
+              warning: 'la description de votre activité doit compter au plus 200 caractères'
+          },
+          PERF_MUSTACHE_MALFORMED: {
+              warning: 'il y une ou plusieurs erreur de syntaxe dans une page performance :<br/>'
+          },
+          ONE_PAGE: {
+              warning: 'votre activité doit contenir au moins une page'
+          },
+          NO_GOOD_ANSWER: {
+              warning: 'certaines de vos questions n\'indiquent pas de bonne réponse !'
+          },
+      },
+      embedActivity: {
+          warning: 'Seules les activités publiées peuvent être partagées'
+      },
+      exportScorm: {
+          warning: 'Seules les activités publiées peuvent être exportées sous cette forme'
+      },
+      addPage: {},
+      deletePage: {},
+      movePage: {},
+
+      timeminute: 'minute',
+      timeminutes: 'minutes',
+      timeseconds: 'secondes',
+      timesecond: 'seconde',
+
+      // app/common/pages/activity/editor/editor.tpl
+      /*
+        'Pages de l\'activité',
+        'dépublier'
+        'Publier'
+        'Partager'
+        'Exporter SCORM'
+        'Prévisualiser'
+        'Sauvegarder'
+        'Informations'
+        'Ajouter une page'
+        'Voulez-vous vraiment supprimer cette réponse ?
+        'Annuler'
+        'Supprimer'
+        'Voulez-vous vraiment supprimer cette question ?'
+        'Annuler'
+        'Supprimer'
+        'Voulez-vous vraiment supprimer cette page ?'
+        'Annuler'
+        'Supprimer'
+        'Voulez-vous vraiment supprimer TOUTE cette activité ?'
+        'Annuler'
+        'Supprimer'
+        'Voulez-vous vraiment dépublier cette activité ?'
+        'Annuler'
+        'Dépublier'
+        'Créer une nouvelle page'
+        'Choisissez le modèle de votre page'
+        'Annuler'
+        'Créer'
+        'Gérer le temps limité'
+        'Ok'
+        'Séquenceur'
+        'Afficher toutes les questions'
+        'Afficher les questions par ordre :'
+        'Aléatoire sur la totalité'
+        'Aléatoire sur un nombre de questions'
+        'Nombre d\'éléments'
+        'Ok'
+        'Preview'
+        'Activité sauvegardée'
+
+        'Le brouillon de votre activité a bien été sauvegardé.<br />En fait, cette sauvegarde est automatique. Vous devriez pratiquement toujours récupérer votre travail, n\'importe où, n\'importe quand.<br /><small>Attention à ne pas avoir plusieurs instances de votre activité en cours de publication ouvertes en même temps. Vous risqueriez de tout perdre à cause d'une instance que vous auriez oublié de refermer ...</small>
+        'Ok'
+        'Activité publiée'
+
+            Cette version de votre activité a bien été publiée. Elle est désormais consultable par tous dans le Catalogue.<br />Nous vous rappelons que l'association se réserve le droit de présenter votre activité sur son site. (<a href='http://www.education-et-numérique.org' target='_blank'>Conditions Générales</a>)<br />Si vous continuez à travailler, seul votre <strong>brouillon</strong> sera modifié tant que vous n'aurez pas utilisé à nouveau le bouton "Publier".
+
+        Télécharger le package SCORM'
+        Package scorm exporté'
+        Annuler'
+        Télécharger'
+        Activité non publiée'
+
+            Votre activité n'est pas prête à être publiée. En effet, <span id="pub-err"></span>
+            <br />Merci de corriger le problème.
+
+        Corriger'
+        Package scorm'
+        Fermer'
+        Codes d'insertion'
+        Fermer'
+        Codes d'insertion'
+
+            Lien vers l'activité : ' 
+            <pre>
+              https://www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}
+            </pre>
+            <hr />
+            Code &lt;iframe&gt; à copier/coller dans le code source html de votre blog :
+            <pre>
+              &lt;iframe src=&quot;//www.education-et-numerique.fr/0.3/activity/embed.html?id={{content.controller.id}}&quot; style=&quot;width: 600px; max-width: 1000px; height: 800px;&quot; &gt;&lt;/iframe&gt;
+            </pre>
+        Ok'
+        AsciiMath'
+        Latex'
+        Formule :
+        Aperçu : 
+                "http://fr.wikipedia.org/wiki/Aide:Formules_TeX"
+        Documentation
+        Insérer
+        Fermer
+        Upload
+        Galerie
+        Déposez le fichier ici
+        Ajouter une image
+        Fermer
+        Condition d'affichage : 
+        Conditionner
+        Annuler
+
+        ot supprimé : 
+        Indice : 
+        Autres réponses acceptées (séparées par ; | joker : *) : 
+        Trouer
+        Reboucher
+        Annuler
+        Condition d'affichage : 
+        Conditioner
+        Annuler
+        Texte 
+        Tooltip 
+        Emplacement 
+        Haut
+        Droite
+        Bas
+        Gauche
+        Insérer
+        Supprimer
+        Annuler
+        Voulez-vous vraiment supprimer ce side document ?
+        Annuler
+        Supprimer
+
+
+      */
+
+
+      // Localization for pages
+      pages: {
+        tat: {
+          holeslist: 'Liste des trous&nbsp;'
         }
       },
 

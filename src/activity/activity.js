@@ -29,9 +29,7 @@
     });
 
     return $(shuffled);
-
   };
-
 })($);
 
 
@@ -286,10 +284,12 @@
         var container = $('[data-page="' + index + '"]');
 
         $('.questions > li', container).each(function(index, item) {
+          
           $(item).data('lxxl-question', index);
         });
 
         $('.propositions > li', container).each(function(index, item) {
+
           $(item).data('lxxl-proposition', index);
         });
 
@@ -482,13 +482,6 @@
     };
   })();
   */
-
-
-
-
-
-
-
 
 
   /*

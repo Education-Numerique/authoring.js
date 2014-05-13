@@ -129,7 +129,7 @@
 <div class="modal" style="display:none" id="modal-delete-activity">
      <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">×</button>
-        <h3>Voulez-vous vraiment supprimer cette activité ?</h3>
+        <h3>Voulez-vous vraiment supprimer TOUTE cette activité ?</h3>
     </div>
     <div class="modal-footer">
         {{#view view.CancelButton classNames="btn" tagName="a" data-dismiss="modal"}}Annuler{{/view}}
@@ -190,7 +190,7 @@
           <fieldset>
             
             <label>{{view LxxlLib.Ember.Checkbox checkedBinding="currentPage.displayAll"}}Afficher toutes les questions</label> <br />
-            <label>Afficher les questions par ordre:</label>
+            <label>Afficher les questions par ordre :</label>
             {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsRandom" value="0" title="Aléatoire sur la totalité" groupBinding="currentPage.sequencing"}}
             {{view LxxlLib.Em.RadioButton name="sequencing_options_sort" checkedBinding="quizzSequencingIsRandomSubset" value="1" title="Aléatoire sur un nombre de questions" groupBinding="currentPage.sequencing"}} 
             {{#if quizzSequencingIsRandomSubset}}
@@ -260,8 +260,8 @@
     <h3>Activité non publiée</h3>
   </div>
   <div class="modal-body">
-    Votre activité n'est pas prête à être publiée. En effet, <span id="pub-err"></span>.
-    Merci de corriger le problème.
+    Votre activité n'est pas prête à être publiée. En effet, <span id="pub-err"></span>
+    <br />Merci de corriger le problème.
   </div>
   <div class="modal-footer">
       <a class="btn btn-primary" data-dismiss="modal">Corriger</a>
