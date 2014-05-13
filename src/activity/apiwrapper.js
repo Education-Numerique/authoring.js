@@ -542,6 +542,7 @@
         this.bindDocument = function (d) {
             dom = d;
             // XXX manu bind behaviors if you want
+            // JMT BEHAVIOR IN ACTIVITY.JS DO NOT FORGET KEEP THINKING //
             tatBehavior();
             quizzBehavior();
             menuBehavior();
@@ -617,6 +618,21 @@
 
         var onPageComplete = function (pid, score) {
             console.warn('Page completed', pid, score);
+            /* VORG IDICATEUR COLORE DANS LE MENU */
+            if (score >= 0 && score <= 30)
+            {
+                $('.active .vorg').css('color', 'red');
+            }
+            if (score > 30 && score <= 55)
+            {
+                $('.active .vorg').css('color', 'orange');
+            }
+            if (score > 55 && score <= 100)
+            {
+                $('.active .vorg').css('color', '#62E026');
+            }
+            /* VORG IDICATEUR COLORE DANS LE MENU */
+            
             activity[pub].pages[pid].completed = true;
             activity[pub].pages[pid].score = score;
             cmip.objectives[pid].score.raw = score;
@@ -625,7 +641,8 @@
             var allset = activity[pub].pages.every(function (page) {
                 if (page.flavor.id == 'simple' || page.flavor.id == 'perf' )
                     return true;
-                else {
+                else 
+                {
                     nbPages++;
                     return !!page.completed;
                 }
@@ -639,6 +656,12 @@
                 //$('#playing').hide();
                 scormAPI.shutdown();
             }
+
+            // VORG implementation ******************************************** proudly coded by EP !!!
+
+
+            // ****************************************************************************************
+
         }; // onPageComplete
 
         this.MixAndMatchComplete = function (pageId, score) {
@@ -661,6 +684,7 @@
             startTime = null;
             this.activity = activity = null;
         }; // end
+
 
         var menuBehavior = function () {
             var acti = $('.pages-list > li', dom);
@@ -725,8 +749,8 @@
                     }
                     else {
                         page.fadeIn(1000, function () {
-                            console.warn('done');
-                            console.warn(getActivityNotes());
+                            // console.warn('done');
+                            // console.warn(getActivityNotes());
                         });
                         if (page.hasClass('page-perf')) {
                             refreshPerformancePage(page);
@@ -740,22 +764,27 @@
             });
         }; // menuBehavior
 
-        var completeQuestion = function (pid, qid) {
+        // COMPLETEQUESTION UTILISER DANS LES PAGES QUIZZZZ
+
+        var completeQuestion = function (pid, qid, score) {
             console.warn('Completed question', pid, qid);
             activity[pub].pages[pid].questions[qid].completed = true;
             var pageComplete = true;
+
+            activity[pub].pages[pid].score = score;
+            cmip.objectives[pid].score.raw = score;
+            console.log(qid)
+
             activity[pub].pages[pid].questions.forEach(function (item, idxxx) {
-                console.warn('Is this ok?', activity[pub].pages[pid].questions[idxxx], pid, idxxx, item.completed);
+                //console.warn('Is this ok?', activity[pub].pages[pid].questions[idxxx], pid, idxxx, item.completed);
                 pageComplete = pageComplete && item.completed;
             });
-            console.warn('Page completed?', pageComplete);
+            // console.warn('Page completed?', pageComplete);
             if (pageComplete) {
                 var total = activity[pub].pages[pid].questions.length;
-                console.log('*************');
-                console.log(activity[pub].pages[pid].questions.length);
                 var actual = 0;
                 activity[pub].pages[pid].questions.forEach(function (question) {
-                    console.warn('Result for the question?', question.score.getResult());
+                    // console.warn('Result for the question?', question.score.getResult());
                     actual += question.score ? question.score.getResult() : 0;
                 });
 
@@ -789,7 +818,7 @@
                         $('button', $(this).parent().parent()).each(function (ind, item) {
                             $(item).attr('disabled', 'disabled');
                             // if($(item).html() != 'X'){
-
+                                console.warn(item);
                             // }
                         });
                         $(this).show();
@@ -803,7 +832,20 @@
                         });
 
                         scb.score.markAnswered();
-                        completeQuestion(pid, qid);
+
+                        /* SCORE DE LA PAGE QUIZZZZ AFFICHER ICI */
+                            //console.warn(scb.score.getResult());
+                        /* SCORE DE LA PAGE QUIZZZZ AFFICHER ICI */
+
+                        // CALCULE DU SCORE LORSQUE LUSER REPOND SEULEMENT A QUELQUES QUESTIONS MAIS PAS TOUTES DANS LE CADRE DU QCM
+                          var totalBis = activity[pub].pages[pid].questions.length;
+                            var actualBis = 0;
+                            activity[pub].pages[pid].questions.forEach(function (question) {
+                                // console.warn('Result for the question?', question.score.getResult());
+                                actualBis += question.score ? question.score.getResult() : 0;
+                            });
+                        
+                            completeQuestion(pid, qid, Math.round(actualBis / totalBis));
                     } else { // QCM reponse fausse
                         scb.score.addPenalty();
 
@@ -862,12 +904,27 @@
                         });
                         scb.score.markAnswered();
                         $('span.feedback', $(this).next()).html(scb.score.getResult() + '%');
+                        
+                        /* SCORE DE LA PAGE QUIZZZZ AFFICHER ICI  */
+                            console.warn(scb.score.getResult());
+                            // getQuizzNotes();
+                        /* SCORE DE LA PAGE QUIZZZZ AFFICHER ICI  */
 
                         $('#modal-on-modal-lynching').show();
                         $(this).next().modal('show');
                         $(this).next().on('hidden', function () {
                             $('#modal-on-modal-lynching').hide();
-                            completeQuestion(pid, qid);
+
+                            // CALCULE DU SCORE LORSQUE LUSER REPOND SEULEMENT A QUELQUES QUESTIONS MAIS PAS TOUTES DANS LE CADRE DU QRM
+                            var totalBis = activity[pub].pages[pid].questions.length;
+                            console.warn('lol',totalBis);
+                            var actualBis = 0;
+                            activity[pub].pages[pid].questions.forEach(function (question) {
+                                // console.warn('Result for the question?', question.score.getResult());
+                                actualBis += question.score ? question.score.getResult() : 0;
+                            });
+                        
+                            completeQuestion(pid, qid, Math.round(actualBis / totalBis));
                         });
                     }
                 });
@@ -934,10 +991,12 @@
         var refreshPerformancePage = function (performancePage) {
 
             // place a 'activite' var in 'this' to be accessible by eval
+            // RECUPERE TOUS LES NOTES ET LES TRAITE LORSQUE L'ON VA DANS LA PAGE PERFORMACE
             var activite = getActivityNotes();
 
             var getValueOf = function (expression) {
                 var value;
+                //console.warn(expression);
                 try {
                     value = eval(expression);
                 } catch (e) {
@@ -963,10 +1022,11 @@
             var noteRegex = /(activite\.(pages\[\d{1,4}\]\.)?note)(\[\/(20|100)\])?$/i;
             performancePage.find("span[data-tag-type='value']").each(function (idx, span) {
                 var expression = span.dataset.expression;
+                // console.log(expression);
+                // console.log('((((****)))))');
                 var groups = expression.match(noteRegex);
                 var noteExpression = groups[1],
                     scale = (groups[4] >> 0) || 100; // retrieve specified scale or take 100 by default
-
                 var note = getValueOf(noteExpression) / (100 / scale);
                 note = isNaN(note) ? 0 : note; // Eventuellement un jour mettre "exercice non fait"
                 span.innerHTML = note + "/" + scale;
@@ -978,7 +1038,7 @@
             // (par défaut, les 2 flavors ['perf', 'simple'] seraient à 0)
             // on compte ensuite la note globale avec un forEach sur toutes les pages de l'activité en
             // prenant en compte les coefs...
-            // JBT 02/2014            
+            // JBT 02/2014
             var flavorsWhoDontCount = ['perf', 'simple'];
             var nbPageWhoCount = 0;
             var total = 0;
@@ -987,19 +1047,20 @@
             var activityNotes = {
                 note: 0,
                 pages: {}
-            };
-
+            };            
             activity[pub].pages.forEach(function (page, idx) {
-                console.warn(page);
+                console.warn(page.score);
                 //activityNotes.pages = {id: page.id, note: page.score};
-                if ($.inArray(page.flavor.id, flavorsWhoDontCount) == -1 && (typeof page.score != "object")) {
+                if ($.inArray(page.flavor.id, flavorsWhoDontCount) == -1 && (typeof page.score != "object" || typeof page.score != "undefined")) {
                     nbPageWhoCount++;
                     activityNotes.pages[idx + 1] = {note: page.score}; // page begin at one
-                    total += page.score;
+                    if (!isNaN(page.score))
+                        total += page.score;
+                    else
+                        total += 0;
                 }
             });
             activityNotes.note = total / nbPageWhoCount >> 0;
-            //console.log(activityNotes.pages);
             return activityNotes;
         }; // getActivityNotes
 

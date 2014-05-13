@@ -73,7 +73,7 @@
                 {{/ifequalhelp}}
               </span>
               -->
-              {{index}}. {{title}}
+              <span class='vorg'>{{index}}.</span> {{title}}
             </a>
           </li>
         {{/each}}
