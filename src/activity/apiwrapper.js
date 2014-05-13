@@ -1179,8 +1179,9 @@
                     } else {
                         wordList.sort();
                     }
-                    var tmptxt = I18n.translate('pages.tat.holeslist');
-                    $('.wordlist', item).html('<strong>' + tmptxt + ':</strong>&nbsp;&nbsp;' + wordList.join(', '));
+                    //var tmptxt = I18n.translate('pages.tat.holeslist');
+                    //$('.wordlist', item).html('<strong>' + tmptxt + ':</strong>&nbsp;&nbsp;' + wordList.join(', '));
+                    $('.wordlist', item).html('<strong>Liste des trous&nbsp;:</strong>&nbsp;&nbsp;' + wordList.join(', '));
                     $('.wordlist', item)[0].style.display = 'block';
                 }
 

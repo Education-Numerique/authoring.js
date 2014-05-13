@@ -221,7 +221,8 @@
                       <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non :&nbsp;&nbsp;&nbsp;{{text}}
                       <div class="modal hide" role="dialog" aria-hidden="true">
                         <div class="modal-header">
-                          <h3>Mmm... Pas tout à fait (<span class="feedback"></span>). Voici un indice.</h3>
+                          <h3>Mmm... Pas tout à fait (<span class="feedback"></span>).
+                            <br />Voici un indice.</h3>
                         </div>
                         <div class="modal-body">
                           {{comment}}
