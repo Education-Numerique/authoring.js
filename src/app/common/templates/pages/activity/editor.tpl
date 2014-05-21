@@ -439,4 +439,17 @@
         {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
     </div>
 </div>
+<script>
+window.onbeforeunload = function (e) {
+    var e = e || window.event;
+    var msg = "Leaving this page may make you lose all your edit";
+    // For IE and Firefox
+    if (e) {
+        e.returnValue = msg;
+    }
+    else
+    //For Safari / chrome
+    return msg;
+ };
+</script>
 {{/view}}
