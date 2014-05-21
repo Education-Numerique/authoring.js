@@ -18,6 +18,14 @@
 
     root: Ember.Route.extend({
 
+      missing: Ember.Route.extend({
+        route: '/*path',
+        enter: function(router){
+        console.warn("No Route for given URL found. Will transition to Index Route instead.");
+       router.transitionTo('dashboard');
+        }
+      }),
+
       index: Ember.Route.extend({
         route: '/',
         redirectsTo: 'dashboard'
@@ -319,6 +327,9 @@
         edit: Ember.Route.extend({
           route: '/activity/:id',
           enter: function(/*router*/) {
+            LxxlApp.Router.reopen({
+              location: 'none'
+            });
             // var isLogged = router.get('applicationController.isLogged');
             // Ember.run.next(function() {
             //   if (!isLogged)
@@ -329,7 +340,15 @@
             var activity = LxxlLib.factories.activities.getById(qti.id);
             router.get('applicationController').connectOutlet('activityEdit', activity.draft);
           }
-        })
+        }),
+
+        missing: Ember.Route.extend({
+        route: '/*path',
+        enter: function(router){
+        console.warn("No Route for given URL found. Will transition to Index Route instead.");
+        router.transitionTo('dashboard');
+        }
+      })
         
       })
     })
