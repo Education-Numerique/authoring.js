@@ -98,7 +98,7 @@
         <div class="span6">
           <h3><i class="icon-eye-open"></i> Le Catalogue</h3>
 
-          <p><strong><a href="catalogue://www.education-et-numerique.org" target="_blank">Visitez le catalogue</a></strong> : Après une gestation de près d'un an et demi, LEA (L'Environnement Auteur) est né à l'automne 2013. Le catalogue s'enrichit tous les jours avec les activités que vous créez et que vous décidez de rendre publiques.<br />
+          <p><strong><a href="http://catalogue.education-et-numerique.org" target="_blank">Visitez le catalogue</a></strong> : Après une gestation de près d'un an et demi, LEA (L'Environnement Auteur) est né à l'automne 2013. Le catalogue s'enrichit tous les jours avec les activités que vous créez et que vous décidez de rendre publiques.<br />
           <p><strong><a href="http://www.education-et-numerique.org" target="_blank">Visitez le site de l'Association</a></strong> : Sur le site de l'Association, vous rencontrerez ses membres que vous rejoindrez peut-être, vous découvrirez le projet dans son ensemble.<br /> 
           Vous découvrirez également les activités crées avec LEA que l'Association a décidé de mettre en avant. C'est un blog Wordpress et cela vous donnera peut-être des idées sur la manière d'intégrer des activités produites avec LEA dans votre propre blog ou dans votre site web. 
           </p>
