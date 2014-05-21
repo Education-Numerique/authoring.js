@@ -18,14 +18,6 @@
 
     root: Ember.Route.extend({
 
-      missing: Ember.Route.extend({
-        route: '/*path',
-        enter: function(router){
-        console.warn("No Route for given URL found. Will transition to Index Route instead.");
-       router.transitionTo('dashboard');
-        }
-      }),
-
       index: Ember.Route.extend({
         route: '/',
         redirectsTo: 'dashboard'
