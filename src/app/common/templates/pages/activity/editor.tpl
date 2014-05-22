@@ -349,6 +349,7 @@
                 <input class="redactor_imageupload" type="file" name="file" class="">
                 Ajouter une image
             </button>
+            <span style='display:inherit; font-style:italic; text-align:center;'>(Format: jpg / jpeg / png / gif | Poids Max: 2,5 Mo)</span>
         </div>
         <div id="redactor_tab2" class="redactor_tab" style="display:none">
             <div id="redactor_image_box">

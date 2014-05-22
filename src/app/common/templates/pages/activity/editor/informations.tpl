@@ -84,7 +84,7 @@
             <span class="icon">
                 <i class="icon-file"></i>
             </span>
-            <h5>Fichiers joints</h5>
+            <h5>Fichiers joints&nbsp;&nbsp; <span style='font-weight:normal !important; font-size:12px; font-style:italic;'> (Formats: pdf | Poids max: 2,5Mo)</span></h5>
             <div class="btn btn-mini btn-success add-file"><i class="icon-plus icon-white spacify"></i><input id="fileattachmentupload" type="file" name="fileupload" />Ajouter un fichier</div>
         </div>
         <div class="widget-content">

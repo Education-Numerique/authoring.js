@@ -218,7 +218,7 @@
                   {{#each answers}}
                   <li id="answer-{{index 'aid'}}">
                   <form>
-                      <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non :&nbsp;&nbsp;&nbsp;{{text}}
+                      <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non :&nbsp;&nbsp;&nbsp;<div style='display:inline-block; width:70%;'>{{{text}}}</div>
                       <div class="modal hide" role="dialog" aria-hidden="true">
                         <div class="modal-header">
                           <h3>Mmm... Pas tout à fait (<span class="feedback"></span>).
@@ -254,7 +254,7 @@
                   {{#each answers}}
                   <li id="answer-{{index 'aid'}}">
                     <button>?</button>
-                    {{text}}
+                    <div style='display:inline-block; max-width:70%;'>{{{text}}}</div>
                     <div class="modal hide" role="dialog" aria-hidden="true">
                       <div class="modal-header">
                         <!-- titre du feed-back QCM -->
