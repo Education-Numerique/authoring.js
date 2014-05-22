@@ -591,8 +591,8 @@
 
           add: function(e, data) {
             var validation = /(application\/pdf|audio\/mpeg3|audio\/mpeg|audio\/mp3|audio\/x-mpeg-3)$/i;
-            var maxFileSize = 5000000;  // 5Mb
-
+            //var maxFileSize = 5000000;  // 5Mb
+            var maxFileSize = 2500000;
             data.files.forEach(function(file) {
               if (validation.test(file.type) && file.size < maxFileSize) {
                 self.get('controller.content').controller.addAttachment(file, file.name, function() {
@@ -604,7 +604,7 @@
                 if (!validation.test(file.type))
                   showErrorMessage('Le fichier <b>' + file.name + '</b> n\'est pas autorisé (' + file.type + ')');
                 else if (file.size >= maxFileSize)
-                  showErrorMessage('Le fichier <b>' + file.name + '</b> est trop volumineux. La limite est 5Mo.');
+                  showErrorMessage('Le fichier <b>' + file.name + '</b> est trop volumineux. La limite est 2.5Mo.');
               }
             });
           },

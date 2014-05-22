@@ -31,13 +31,13 @@
                 nodeContainer.find('.redactor_imageupload').fileupload('option', {
                     dropZone: dropZone[0],
                     limitMultiFileUploads: 1,
-                    maxFileSize: 5000000,
+                    maxFileSize: 2500000, //2,5Mo
                     acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i,
                     process: [
                         {
                             action: 'load',
                             fileTypes: /^image\/(gif|jpeg|png)$/,
-                            maxFileSize: 20000000 // 20MB
+                            maxFileSize: 2500000 // 20MB
                         },
                         {
                             action: 'resize',
