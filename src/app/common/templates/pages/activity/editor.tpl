@@ -417,8 +417,8 @@
         <label><input type="radio" name="placement" value="right" /> Droite</label>
         <label><input type="radio" name="placement" value="bottom" /> Bas</label>
         <label><input type="radio" name="placement" value="left" /> Gauche</label>
-
-    </div>
+      </div>
+      
     <hr class="clear" />
 
     <div id="redactor_modal_footer">
@@ -439,17 +439,45 @@
         {{#view view.ConfirmButton classNames="btn btn-danger" tagName="a"}}Supprimer{{/view}}
     </div>
 </div>
+
 <script>
+function confirmreload(){
+
 window.onbeforeunload = function (e) {
-    var e = e || window.event;
-    var msg = "Leaving this page may make you lose all your edit";
-    // For IE and Firefox
-    if (e) {
-        e.returnValue = msg;
+      var e = e || window.event;
+      var msg = "Leaving this page may make you lose all your edit";
+      // For IE and Firefox
+      if (e) {
+          e.returnValue = msg;
+      }
+      else
+      //For Safari / chrome
+      return msg;
+   };
+ }
+confirmreload();
+
+function getActiveElement () {
+    if (document.activeElement) {
+        var output = document.getElementById("output");
+        var activeElement = document.activeElement.getAttribute("contenteditable") || document.activeElement.tagName;
+        return activeElement;
     }
-    else
-    //For Safari / chrome
-    return msg;
- };
+}
+
+$(document).keydown(function (e)
+{
+  var activeElement = getActiveElement();
+  e = e || window.event;
+  var charCode = e.charCode || e.keyCode;
+  if (charCode == 8)
+  {
+    if (activeElement != 'INPUT' && activeElement != 'TEXTAREA' && activeElement != "true")
+    {
+      e.preventDefault();
+      return false;
+    }
+  }
+});
 </script>
 {{/view}}
