@@ -138,7 +138,7 @@
                     {{else}} <!-- QCM -->
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
-                            <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer" checkedBinding="view.opcontent.isCorrect"}}</td>
+                            <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer" checkedBinding="view.content.isCorrect"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Réponse proposée"}}</td>
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                             <!-- <td></td> -->
