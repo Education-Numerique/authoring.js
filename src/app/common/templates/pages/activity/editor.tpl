@@ -12,7 +12,9 @@
                 <div class="qti-title span3">
                     <h5 class="text-ellipsis unselectable">Pages de l'activité</h5>
                 </div>
-                {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
+                {{#unless content.controller.isPublished}}
+                  {{#view view.DeleteActivityButton modalName="deleteActivity" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-activity"}}Supprimer{{/view}}
+                {{/unless}}
 
 <!-- JBT 01/2014 l'auteur n'a plus le droit de dépublier .... C'est réservé à E&N
                 [[#if content.controller.isPublished]]
@@ -441,6 +443,8 @@
 </div>
 
 <script>
+// SCRIPT PERMETANT D'INTERCEPTER LE KEYDOWN EVENT ET EMPECHER L'UTILISATION DU RETURN AFIN DE NE PAS QUITTER LA PAGE ACCIDENTELLEMENT
+
 function confirmreload(){
 
 window.onbeforeunload = function (e) {
