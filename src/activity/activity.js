@@ -238,6 +238,8 @@
         node[0].jobDone = true;
         // does not fire on touch .... at least on ipad (JBT)
         $(document).on('click touchstart', 'h4', function(/*e*/) {
+          if ($(this).parent().attr('contenteditable') != 'true')
+          {
           var status = $(this).data('manuWillHateMeAgain');
           $(this).data('manuWillHateMeAgain', !status);
           if (status) {
@@ -251,6 +253,7 @@
             $('i.collapse-binder', this).removeClass('icon-arrow-up');
             $(this).next().slideUp(100);//, hide);
           }
+        }
         });
 
         $(document).on('click touchstart', 'a', function(/*e*/) {
