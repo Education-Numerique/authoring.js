@@ -276,9 +276,10 @@ body {
     word-wrap: break-word;
   }
   h4 i[class*=icon] {
-    float: right;
+    float:right;
     position: relative;
-    top: 5px;
+    top: 3px;
+    left: 7px;
   }
   .light_grey_bloc {
     background-color: #F8F8F8;
@@ -577,6 +578,11 @@ body {
 
   #activity-preview-body{
     width:100%;
+  }
+
+  #activity-preview-body h4
+  {
+    width: 94%;
   }
 
   #playing
