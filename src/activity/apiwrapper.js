@@ -665,6 +665,22 @@
         }; // onPageComplete
 
         this.MixAndMatchComplete = function (pageId, score) {
+
+            // VORG DRAG && DROP EVERY MIX & MATCH IT CHECK YOUR SCORE AND DISPLAY WHATS VORG YOU GET
+            // if (score >= 0 && score <= 30)
+            // {
+            //     $('.active .vorg').css('color', 'red');
+            // }
+            // if (score > 30 && score <= 55)
+            // {
+            //     $('.active .vorg').css('color', 'orange');
+            // }
+            // if (score > 55 && score <= 100)
+            // {
+            //     $('.active .vorg').css('color', '#62E026');
+            // }
+            // VORG END
+
             $('.modal .feedback', $('#jmt-' + pageId)).html(score + '%');
             //$('#modal-on-modal-lynching').show();
             $('.modal', $('#jmt-' + pageId)).modal({
@@ -770,6 +786,21 @@
             console.warn('Completed question', pid, qid);
             activity[pub].pages[pid].questions[qid].completed = true;
             var pageComplete = true;
+
+            // VORG QCM / QRM  EVERY MIX & MATCH IT CHECK YOUR SCORE AND DISPLAY WHATS VORG YOU GET
+            if (score >= 0 && score <= 30)
+            {
+                $('.active .vorg').css('color', 'red');
+            }
+            if (score > 30 && score <= 55)
+            {
+                $('.active .vorg').css('color', 'orange');
+            }
+            if (score > 55 && score <= 100)
+            {
+                $('.active .vorg').css('color', '#62E026');
+            }
+            // END VORG
 
             activity[pub].pages[pid].score = score;
             cmip.objectives[pid].score.raw = score;

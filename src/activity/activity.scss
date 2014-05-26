@@ -187,6 +187,7 @@ body {
     color: #331975;
     text-transform: uppercase;
     text-align: center;
+    word-wrap: break-word;
   }
 
   table {
@@ -464,6 +465,7 @@ body {
           padding: 0;
           margin: 0;
           border-top: 1px solid #FFF;
+          overflow-wrap: break-word;
 
           &.active {
             border-top-color: #5fbaf3;

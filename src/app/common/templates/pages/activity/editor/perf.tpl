@@ -10,7 +10,7 @@
             <div class="control-group">
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>
-                    {{view Ember.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Performance"}}
+                    {{view LxxlLib.Em.TextField valueBinding="currentPage.title" focus="true" classNames="span2" id="form-page-title" placeholder="Performance"}}
                 </div>
             </div>
 

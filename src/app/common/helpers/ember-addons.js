@@ -21,8 +21,13 @@
 
     LxxlLib.Ember = LxxlLib.Em = {};
     LxxlLib.utils = {};
+    // App.MyTextField = Em.TextField.extend({
+    //   attributeBindings: ['maxlength'],
+    //   'maxlength':30
+    // });
     LxxlLib.Em.TextField = Em.TextField.extend({
-        attributeBindings: ['min', 'max']
+        attributeBindings: ['min', 'max', 'maxlength'],
+        'maxlength':120
     });
     LxxlLib.Em.Checkbox = Em.Checkbox.extend({
 
@@ -466,7 +471,7 @@
 
     Ember.RadioButton = Ember.View.extend({
         title: null,
-        checked: false,
+        checked: true,
         name: 'radio_button',
         disabled: false,
 

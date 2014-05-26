@@ -10,7 +10,7 @@
                 <div style='width:500px; float:left;'>
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>
-                    {{view Ember.TextField valueBinding="content.title"  classNames="span2" id="form-activity-title" placeholder="Titre de l'activité"}}
+                    {{view LxxlLib.Em.TextField valueBinding="content.title"  classNames="span2" id="form-activity-title" placeholder="Titre de l'activité"}}
                 </div>
 
                 <div class="input-prepend">

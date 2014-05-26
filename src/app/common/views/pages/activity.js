@@ -183,6 +183,13 @@
       },
 
       addElement: function(e) {
+        var elemLength = $('.questions-list > div').length + 1;
+        if (elemLength > 8)
+        if (!confirm("IT'S TO MUCH, IS'NT IT ?"))
+        {
+          return 1;
+        }
+        console.warn($('.questions-list > div').length);
         this.get('controller').addQuestion();
         e.preventDefault();
         return false;
@@ -318,12 +325,28 @@
       }),
 
       addQCM: function(e) {
+        var qLen = $('.questions-list > div').length + 1;
+        if (qLen > 10)
+        {
+          if (!confirm('Seriously ?!'))
+          {
+            return 1;
+          }
+        } 
         this.get('controller').addQuestion();
         e.preventDefault();
         return false;
       },
 
       addQRM: function(e) {
+        var qLen = $('.questions-list > div').length + 1;
+        if (qLen > 10)
+        {
+          if (!confirm('Seriously ?!'))
+          {
+            return 1;
+          }
+        } 
         var q = this.get('controller').addQuestion();
         q.set('isQRM', true);
         e.preventDefault();
@@ -590,6 +613,14 @@
           limitMultiFileUploads: 1,
 
           add: function(e, data) {
+            var attachLength = $('.attachments-list > li').length + 1;
+            if (attachLength > 3)
+            {
+              if (!confirm("IT MAY BECOME BORING, IS'NT IT"));
+              {
+                return 1;
+              }
+            }
             var validation = /(application\/pdf|audio\/mpeg3|audio\/mpeg|audio\/mp3|audio\/x-mpeg-3)$/i;
             //var maxFileSize = 5000000;  // 5Mb
             var maxFileSize = 2500000;
@@ -689,6 +720,9 @@
 
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {
+        var nbPages = $('.pages-list li').length + 1;
+        if (nbPages > 12)
+          alert('ATTENTION');
         this.get('controller').addPage();
         this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected'));
         if (this.get('controller.isQuizz') || this.get('controller.isMixnmatch'))
@@ -732,7 +766,6 @@
         return false;
       }
     }),
-
 
     pagesCollectionView: Em.CollectionView.extend({
       moveItem: function(fromIndex, toIndex) {
@@ -825,10 +858,6 @@
         })
       })
     }),
-
-
-
-
 
     ModalBox: Em.View.extend({
       modalName: null,
