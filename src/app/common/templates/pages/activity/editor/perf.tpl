@@ -1,7 +1,7 @@
 /*
 * @template : pages/activity/editor/perf
 */
-
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.min.css">
 <div class="container-fluid">
 
     <div class="widget-box noborder">

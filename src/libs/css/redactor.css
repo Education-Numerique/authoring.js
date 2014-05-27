@@ -1,3 +1,15 @@
+/* CUSTOM */
+
+.redactor_btn_icon-star
+{
+    background-image: url("../img/glyphicons-halflings.png") !important;
+    background-position: -120px 0 !important;
+    width:14px !important;
+    height:14px !important;
+    position:relative;
+    top:6px;
+}
+
 .redactor_box {
     position: relative;
     border: 1px solid #ddd;

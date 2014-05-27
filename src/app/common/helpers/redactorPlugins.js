@@ -3,6 +3,33 @@
     'use strict';
     if (typeof this.RedactorPlugins === 'undefined') this.RedactorPlugins = {};
 
+
+    // PERFORMANCE PLUGIN
+
+    RedactorPlugins.perf = {
+        init: function()
+        {
+            this.addBtn('icon-star', 'Performance', this.insertAdvancedHtml);
+        },
+        insertAdvancedHtml: function(obj, e)
+        {
+            $('#'+obj.$el.context.id).prev().append("Ta note générale est : {{activite.note}} ou encore : {{activite.note[/20]}}<br/>");
+            // ------------------------------------------------------------------------------------------------------------------------------------------
+            var pageTypes = ['page-quizz', 'page-jmt', 'page-tat'];
+            var nbPage = $('.pages-list > li').length;
+            $( ".pages-list > li" ).each(function( index )
+            {
+                if ($.inArray($(this).attr('class').split(' ').pop(), pageTypes) != -1)
+                {
+                    console.log($(this).attr('class'));
+                    $('#'+obj.$el.context.id).prev().append("Page "+ (index+1) +": {{activite.pages["+(index+1)+"].note[/20]}} <br/>");
+                }
+            });
+        }
+    }
+
+    //END PERFORMANCE PLUGIN
+
     this.RedactorPlugins.imagemanager = new (function () {
         this.init = function () {
             var redactorScope;
@@ -88,6 +115,7 @@
                 redactorScope = obj;
                 obj.modalInit('Insérer une image', '#redactor-imagemanager', 500, callback);
             });
+
         };
     })();
 
@@ -316,9 +344,10 @@
                     target = sel.anchorNode.parentNode;
                     text = $(target).text();
                     $('.redactor_btn_modal_remove', container).show();
-
                 }
-                else {
+
+                else
+                {
                     target = $('<a />');
                     text = this.getSelectedHtml();
                     var tmp = $('<p />');
