@@ -460,6 +460,13 @@
 
           AddAnswerButton: Em.View.extend({
             click: function(e) {
+              var answerLen = $("#"+e.currentTarget.id).prev().children().next().children().length + 1;
+              if (answerLen >= 3)
+              {
+                if (!confirm('BUDDY ARE YOU F***ING SERIOUS ???'))
+                {
+                }
+              }
               this.get('controller').set('currentQuestion', this.get('_parentView.content'));
               this.get('controller').addAnswer();
               e.preventDefault();
@@ -614,9 +621,9 @@
 
           add: function(e, data) {
             var attachLength = $('.attachments-list > li').length + 1;
-            if (attachLength > 3)
+            if (attachLength > 5)
             {
-              if (!confirm("IT MAY BECOME BORING, IS'NT IT"));
+              if (!confirm("IT MAY BECOME BORING, IS'NT IT"))
               {
                 return 1;
               }

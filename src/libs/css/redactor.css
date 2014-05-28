@@ -2,12 +2,12 @@
 
 .redactor_btn_icon-star
 {
-    background-image: url("../img/glyphicons-halflings.png") !important;
-    background-position: -120px 0 !important;
-    width:14px !important;
-    height:14px !important;
-    position:relative;
-    top:6px;
+background-image: url("../img/star.png") !important;
+/* background-position: -120px 0 !important; */
+width: 27px !important;
+height: 27px !important;
+/* top: 6px; */
+background-position: center center !important;
 }
 
 .redactor_box {
@@ -39,7 +39,7 @@ body .redactor_box_fullscreen {
 }
 
 .redactor_box textarea {
-    font-family: Menlo, Monaco, monospace, sans-serif;
+    font-family: 'Menlo', 'Monaco', monospace, sans-serif;
     font-size: 13px;
     overflow: auto;
     resize: none;
