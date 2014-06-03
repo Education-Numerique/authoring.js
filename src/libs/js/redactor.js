@@ -1,10 +1,10 @@
 /*
-    Redactor v8.2.2
-    Updated: January 17, 2013
+    Redactor v8.2.1
+    Updated: December 2, 2012
 
     http://redactorjs.com/
 
-    Copyright (c) 2009-2013, Imperavi Inc.
+    Copyright (c) 2009-2012, Imperavi Inc.
     License: http://redactorjs.com/license/
 
     Usage: $('#content').redactor();
@@ -698,9 +698,9 @@ var RLANG = {
 
                 // paste
                 var oldsafari = false;
-                if (this.browser('webkit') && navigator.userAgent.indexOf('Chrome') === -1)
+                if ($.browser.webkit && navigator.userAgent.indexOf('Chrome') === -1)
                 {
-                    var arr = this.browser('version').split('.');
+                    var arr = $.browser.version.split('.');
                     if (arr[0] < 536) oldsafari = true;
                 }
 
@@ -755,15 +755,11 @@ var RLANG = {
                 }
 
                 // observers
-                setTimeout($.proxy(function()
-                {
-                    this.observeImages();
-                    this.observeTables();
-
-                }, this), 1);
+                this.observeImages();
+                this.observeTables();
 
                 // FF fix
-                if (this.browser('mozilla'))
+                if ($.browser.mozilla)
                 {
                     this.$editor.click($.proxy(function()
                     {
@@ -820,7 +816,7 @@ var RLANG = {
             {
                 var key = e.keyCode || e.which;
 
-                if (this.browser('mozilla') && !this.pasteRunning)
+                if ($.browser.mozilla && !this.pasteRunning)
                 {
                     this.saveSelection();
                 }
@@ -841,7 +837,7 @@ var RLANG = {
                 // new line p
                 if (key === 13 && !e.shiftKey && !e.ctrlKey && !e.metaKey)
                 {
-                    if (this.browser('webkit'))
+                    if ($.browser.webkit)
                     {
                         this.formatNewLine(e);
                     }
@@ -969,7 +965,7 @@ var RLANG = {
                 }
 
                 // safari shift key + enter
-                if (this.browser('webkit') && navigator.userAgent.indexOf('Chrome') === -1)
+                if ($.browser.webkit && navigator.userAgent.indexOf('Chrome') === -1)
                 {
                     return this.safariShiftKeyEnter(e, key);
                 }
@@ -1254,8 +1250,8 @@ var RLANG = {
             {
                 $(this.opts.toolbarExternal).empty();
             }
-
-            $('.redactor_air').remove();
+            //XXX patch here
+            if (this.air) this.air.remove();
 
             for (var i = 0; i < this.dropdowns.length; i++)
             {
@@ -1316,10 +1312,10 @@ var RLANG = {
             {
                 return false;
             }
-
-            this.$editor.find('img').each($.proxy(function(i,s)
+            //XXX patch here
+            this.$editor.find('img:not([uneditable])').each($.proxy(function(i,s)
             {
-                if (this.browser('msie'))
+                if ($.browser.msie)
                 {
                     $(s).attr('unselectable', 'on');
                 }
@@ -1373,7 +1369,7 @@ var RLANG = {
 
             this.$editor.html(this.opts.buffer);
 
-            if (!this.browser('msie'))
+            if (!$.browser.msie)
             {
                 this.restoreSelection();
             }
@@ -1399,7 +1395,7 @@ var RLANG = {
 
                 if (cmd === 'inserthtml')
                 {
-                    if (this.browser('msie'))
+                    if ($.browser.msie)
                     {
                         this.$editor.focus();
                         this.document.selection.createRange().pasteHTML(param);
@@ -1471,7 +1467,7 @@ var RLANG = {
                     parent = this.getCurrentNode();
                     if ($(parent).get(0).tagName === 'BLOCKQUOTE')
                     {
-                        if (this.browser('msie'))
+                        if ($.browser.msie)
                         {
                             var node = $('<p>' + $(parent).html() + '</p>');
                             $(parent).replaceWith(node);
@@ -1492,7 +1488,7 @@ var RLANG = {
                         }
                         else
                         {
-                            if (this.browser('msie'))
+                            if ($.browser.msie)
                             {
                                 var node = $('<blockquote>' + $(parent).html() + '</blockquote>');
                                 $(parent).replaceWith(node);
@@ -1523,12 +1519,12 @@ var RLANG = {
                 }
                 else
                 {
-                    if (cmd === 'inserthorizontalrule' && this.browser('msie'))
+                    if (cmd === 'inserthorizontalrule' && $.browser.msie)
                     {
                         this.$editor.focus();
                     }
 
-                    if (cmd === 'formatblock' && this.browser('mozilla'))
+                    if (cmd === 'formatblock' && $.browser.mozilla)
                     {
                         this.$editor.focus();
                     }
@@ -1562,7 +1558,7 @@ var RLANG = {
         },
         execRun: function(cmd, param)
         {
-            if (cmd === 'formatblock' && this.browser('msie'))
+            if (cmd === 'formatblock' && $.browser.msie)
             {
                 param = '<' + param + '>';
             }
@@ -1610,7 +1606,7 @@ var RLANG = {
         {
             var html = $.trim(this.$editor.html());
 
-            if (this.browser('mozilla'))
+            if ($.browser.mozilla)
             {
                 html = html.replace(/<br>/i, '');
             }
@@ -1721,6 +1717,7 @@ var RLANG = {
         },
         cleanupPre: function(s)
         {
+            return s;
             s = s.replace(/<br>/gi, '\n');
             s = s.replace(/<\/p>/gi, '\n');
             s = s.replace(/<\/div>/gi, '\n');
@@ -1805,7 +1802,7 @@ var RLANG = {
             html = html.replace(/<\/p><\/p>/gi, '</p>');
 
             // FF fix
-            if (this.browser('mozilla'))
+            if ($.browser.mozilla)
             {
                 html = html.replace(/<br>$/gi, '');
             }
@@ -2065,7 +2062,7 @@ var RLANG = {
                         this.setBtnActive(key);
                     }
 
-                    if (this.browser('mozilla'))
+                    if ($.browser.mozilla)
                     {
                         this.$editor.focus();
                         //this.restoreSelection();
@@ -2159,7 +2156,7 @@ var RLANG = {
             var mode;
             if (key === 'backcolor')
             {
-                if (this.browser('msie'))
+                if ($.browser.msie)
                 {
                     mode = 'BackColor';
                 }
@@ -2197,7 +2194,7 @@ var RLANG = {
                         });
                     }
 
-                    if (_self.browser('msie') && mode === 'BackColor')
+                    if ($.browser.msie && mode === 'BackColor')
                     {
                         _self.$editor.find('font').replaceWith(function() {
 
@@ -2464,14 +2461,14 @@ var RLANG = {
                 }
                 else
                 {
-                    if (this.browser('opera'))
+                    if ($.browser.opera)
                     {
                         this.$editor.focus();
                     }
 
                     this.setSelection(this.savedSel[0], this.savedSel[1], this.savedSelObj[0], this.savedSelObj[1]);
 
-                    if (this.browser('mozilla'))
+                    if ($.browser.mozilla)
                     {
                         this.$editor.focus();
                     }
@@ -2818,7 +2815,6 @@ var RLANG = {
             var ratio = $(resize).width()/$(resize).height();
             var min_w = 10;
             var min_h = 10;
-
             $(resize).off('hover mousedown mouseup click mousemove');
             $(resize).hover(function() { $(resize).css('cursor', 'nw-resize'); }, function() { $(resize).css('cursor',''); clicked = false; });
 
@@ -3356,7 +3352,7 @@ var RLANG = {
                 var sel = this.getSelection();
                 var url = '', text = '', target = '';
 
-                if (this.browser('msie'))
+                if ($.browser.msie)
                 {
                     var parent = this.getParentNode();
                     if (parent.nodeName === 'A')
@@ -3454,15 +3450,13 @@ var RLANG = {
                 }
 
                 // test url
-                var pattern = '/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/';
-                //var pattern = '((xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}';
+                var pattern = '((xn--)?[a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{2,}';
                 var re = new RegExp('^(http|ftp|https)://' + pattern,'i');
                 var re2 = new RegExp('^' + pattern,'i');
                 if (link.search(re) == -1 && link.search(re2) == 0 && this.opts.protocol !== false)
                 {
                     link = this.opts.protocol + link;
                 }
-
             }
             else if (tab_selected === '2') // mailto
             {
@@ -3571,7 +3565,7 @@ var RLANG = {
                 var link = '<a href="' + json.filelink + '">' + text + '</a>';
 
                 // chrome fix
-                if (this.browser('webkit') && !!this.window.chrome)
+                if ($.browser.webkit && !!this.window.chrome)
                 {
                     link = link + '&nbsp;';
                 }
@@ -3591,8 +3585,12 @@ var RLANG = {
 
 
         // MODAL
-        modalInit: function(title, content, width, callback)
+        modalInit: function(title, content, width, callback, isDisplayCallBack)
         {
+            if (!!isDisplayCallBack && typeof isDisplayCallBack === "function" && !isDisplayCallBack.call(this)){
+                return;
+            }
+
             // modal overlay
             if ($('#redactor_modal_overlay').size() === 0)
             {
@@ -3640,19 +3638,23 @@ var RLANG = {
             }
 
             // tabs
-            if ($('#redactor_tabs').size() !== 0)
+            // XXX Patch selector (added #redactor_modal prefix)
+            if ($('#redactor_modal #redactor_tabs').size() !== 0)
             {
                 var that = this;
-                $('#redactor_tabs a').each(function(i,s)
+                $('#redactor_modal #redactor_tab1').show();
+
+                $('#redactor_modal #redactor_tabs a').each(function(i,s)
                 {
                     i++;
+
                     $(s).click(function()
                     {
-                        $('#redactor_tabs a').removeClass('redactor_tabs_act');
+                        $('#redactor_modal #redactor_tabs a').removeClass('redactor_tabs_act');
                         $(this).addClass('redactor_tabs_act');
                         $('.redactor_tab').hide();
-                        $('#redactor_tab' + i).show();
-                        $('#redactor_tab_selected').val(i);
+                        $('#redactor_modal #redactor_tab' + i).show();
+                        $('#redactor_modal #redactor_tab_selected').val(i);
 
                         if (that.isMobile() === false)
                         {
@@ -3895,26 +3897,9 @@ var RLANG = {
         },
 
         // UTILITY
-        browser: function(browser)
-        {
-            var ua = navigator.userAgent.toLowerCase();
-            var match = /(chrome)[ \/]([\w.]+)/.exec(ua) || /(webkit)[ \/]([\w.]+)/.exec(ua) || /(opera)(?:.*version|)[ \/]([\w.]+)/.exec(ua) || /(msie) ([\w.]+)/.exec(ua) || ua.indexOf("compatible") < 0 && /(mozilla)(?:.*? rv:([\w.]+)|)/.exec(ua) || [];
-
-            if (browser == 'version')
-            {
-                return match[2];
-            }
-
-            if (browser == 'webkit')
-            {
-                return (match[1] == 'chrome' || match[1] == 'webkit');
-            }
-
-            return match[1] == browser;
-        },
         oldIE: function()
         {
-            if (this.browser('msie') && parseInt(this.browser('version'), 10) < 9)
+            if ($.browser.msie && parseInt($.browser.version, 10) < 9)
             {
                 return true;
             }
@@ -4049,7 +4034,7 @@ var RLANG = {
     Construct.prototype = {
         init: function()
         {
-            if (navigator.userAgent.search("MSIE") === -1)
+            if (!$.browser.msie)
             {
                 this.droparea = $('<div class="redactor_droparea"></div>');
                 this.dropareabox = $('<div class="redactor_dropareabox">' + this.opts.text + '</div>');
@@ -4207,4 +4192,4 @@ var RLANG = {
  * updated: Imperavi Inc.
  *
  */
-eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('(5($){$.1.4.7={t:5(0,v){$(2).0("8",c);$(2).0("r",0);$(2).l(\'g\',$.1.4.7.b)},u:5(0){$(2).w(\'g\',$.1.4.7.b)},b:5(1){9 0=$(2).0("r");9 3=$.1.4.7.f(0).h();6(3!=\'\'){$(2).0("8",x);1.j="7";1.3=3;$.1.i.m(2,k)}},f:5(0){9 3=\'\';6(q.e){3=q.e()}o 6(d.e){3=d.e()}o 6(d.p){3=d.p.B().3}A 3}};$.1.4.a={t:5(0,v){$(2).0("n",0);$(2).0("8",c);$(2).l(\'g\',$.1.4.a.b);$(2).l(\'D\',$.1.4.a.s)},u:5(0){$(2).w(\'g\',$.1.4.a.b)},b:5(1){6($(2).0("8")){9 0=$(2).0("n");9 3=$.1.4.7.f(0).h();6(3==\'\'){$(2).0("8",c);1.j="a";$.1.i.m(2,k)}}},s:5(1){6($(2).0("8")){9 0=$(2).0("n");9 3=$.1.4.7.f(0).h();6((1.y=z)&&(3==\'\')){$(2).0("8",c);1.j="a";$.1.i.m(2,k)}}}}})(C);',40,40,'data|event|this|text|special|function|if|textselect|textselected|var|textunselect|handler|false|rdocument|getSelection|getSelectedText|mouseup|toString|handle|type|arguments|bind|apply|rttt|else|selection|rwindow|ttt|handlerKey|setup|teardown|namespaces|unbind|true|keyCode|27|return|createRange|jQuery|keyup'.split('|'),0,{}))
+eval(function(p,a,c,k,e,d){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--){d[e(c)]=k[c]||e(c)}k=[function(e){return d[e]}];e=function(){return'\\w+'};c=1};while(c--){if(k[c]){p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c])}}return p}('(5($){$.1.4.7={t:5(0,v){$(2).0("8",c);$(2).0("r",0);$(2).l(\'g\',$.1.4.7.b)},u:5(0){$(2).w(\'g\',$.1.4.7.b)},b:5(1){9 0=$(2).0("r");9 3=$.1.4.7.f(0).h();6(3!=\'\'){$(2).0("8",x);1.j="7";1.3=3;$.1.i.m(2,k)}},f:5(0){9 3=\'\';6(q.e)3=q.e();o 6(d.e) 3=d.e();o 6(d.p)3=d.p.B().3;A 3}};$.1.4.a={t:5(0,v){$(2).0("n",0);$(2).0("8",c);$(2).l(\'g\',$.1.4.a.b);$(2).l(\'D\',$.1.4.a.s)},u:5(0){$(2).w(\'g\',$.1.4.a.b)},b:5(1){6($(2).0("8")){9 0=$(2).0("n");9 3=$.1.4.7.f(0).h();6(3==\'\'){$(2).0("8",c);1.j="a";$.1.i.m(2,k)}}},s:5(1){6($(2).0("8")){9 0=$(2).0("n");9 3=$.1.4.7.f(0).h();6((1.y=z)&&(3==\'\')){$(2).0("8",c);1.j="a";$.1.i.m(2,k)}}}}})(C);',40,40,'data|event|this|text|special|function|if|textselect|textselected|var|textunselect|handler|false|rdocument|getSelection|getSelectedText|mouseup|toString|handle|type|arguments|bind|apply|rttt|else|selection|rwindow|ttt|handlerKey|setup|teardown|namespaces|unbind|true|keyCode|27|return|createRange|jQuery|keyup'.split('|'),0,{}))

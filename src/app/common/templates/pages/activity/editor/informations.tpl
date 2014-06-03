@@ -69,7 +69,7 @@
             <span class="icon">
                 <i class="icon-pencil"></i>
             </span>
-            <h5>Document</h5>
+            <h5>Informations</h5>
         </div>
         <div class="widget-content slidify-on nopadding" id="page-document">
             {{view LxxlLib.Em.Wysiwyg valueBinding="content.description" buttons="bold,italic" maxLength=200 classNames="redactorjs 4lines" id="form-page-explanation"}}

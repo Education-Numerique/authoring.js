@@ -52,7 +52,7 @@
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
             
-              <div class="widget-box">
+              <div class="widget-box" style='display:none;'>
         <div class="widget-title" data-toggle="slidify" data-target="#page-document">
             <span class="icon">
                 <i class="icon-pencil"></i>

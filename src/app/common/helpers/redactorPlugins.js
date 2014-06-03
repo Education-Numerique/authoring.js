@@ -21,7 +21,6 @@
             {
                 if ($.inArray($(this).attr('class').split(' ').pop(), pageTypes) != -1)
                 {
-                    console.log($(this).attr('class'));
                     $('#'+obj.$el.context.id).prev().append("Page "+ (index+1) +": {{activite.pages["+(index+1)+"].note[/20]}} <br/>");
                 }
             });
@@ -151,7 +150,8 @@
                 };
 
 
-                $('#redactor_modal .redactor_tabs a').bind('click', function () {
+                $('#redactor_modal #redactor_tabs a').bind('click', function () {
+                    console.warn($(this).siblings().attr('class'));
                     $(this).siblings().removeClass('redactor_tabs_act');
                     $(this).addClass('redactor_tabs_act');
 
@@ -233,7 +233,6 @@
         this.init = function () {
             var redactorScope;
             var target = null;
-
             var callback = (function () {
 
                 if (target) {
@@ -249,7 +248,6 @@
                     $('#redactor_modal .redactor_btn_modal_remove').hide();
                 }
 
-
                 $('#redactor_modal .redactor_btn_modal_insert').bind('click', function () {
                     insertFromMyModal(target);
                 });
@@ -261,13 +259,36 @@
             }.bind(this));
 
 
-            this.addBtn('tat', 'Texte à trous', function (obj/*, e*/) {
+            this.addBtn('tat', 'Texte à trous', function (obj, e) {
+                this.saveSelection();
+                console.log(this.getSelectedHtml());
+                var str = this.getSelectedHtml();
+                var len = 0;
                 redactorScope = obj;
+                var temp = $('#'+redactorScope.$el.context.id).val();
+                var match = temp.match(/data-clue/g);
+                if (match != null)
+                    len = match.length;
                 target = obj.getBtn('tat').data('target') ? $(obj.getBtn('tat').data('target')) : null;
                 obj.getBtn('tat').data('target', null);
 
-                obj.modalInit('Texte à trous', '#redactor-tat', 500, callback);
-            });
+                if (len <= 9)
+                {
+                    console.log(this);
+                    if (str.indexOf('<img') != -1 || str.indexOf('<a') != -1)
+                    {
+                        alert("Vous ne pouvez pas trouer cela.");
+                    }
+                    else
+                    {
+                        obj.modalInit('Texte à trous', '#redactor-tat', 500, callback);
+                    }
+                }
+                else
+                {
+                    alert('Nombre de trous maximum atteint');
+                }
+            }.bind(this));
 
             var untagTat = function (el) {
                 el.replaceWith(el.html());

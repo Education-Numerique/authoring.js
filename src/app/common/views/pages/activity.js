@@ -184,11 +184,18 @@
 
       addElement: function(e) {
         var elemLength = $('.questions-list > div').length + 1;
-        if (elemLength > 8)
-        if (!confirm("IT'S TO MUCH, IS'NT IT ?"))
+        if (elemLength == 6)
+        if (!confirm("Le nombre de paires ne devrait pas dépasser 6..."))
         {
-          return 1;
+          return false;
         }
+
+        if (elemLength > 10)
+        {
+          alert('Nombre maximum de paires atteint');
+          return false;
+        }
+
         console.warn($('.questions-list > div').length);
         this.get('controller').addQuestion();
         e.preventDefault();
@@ -326,13 +333,19 @@
 
       addQCM: function(e) {
         var qLen = $('.questions-list > div').length + 1;
-        if (qLen > 10)
+        if (qLen == 10)
         {
-          if (!confirm('Seriously ?!'))
+          if (!confirm('Vous devriez créer plusieurs pages quiz...'))
           {
-            return 1;
+            return false;
           }
-        } 
+        }
+        if (qLen > 12)
+        {
+          alert('Vous avez trop de questions.');
+          return false;
+        }
+         
         this.get('controller').addQuestion();
         e.preventDefault();
         return false;
@@ -340,13 +353,18 @@
 
       addQRM: function(e) {
         var qLen = $('.questions-list > div').length + 1;
-        if (qLen > 10)
+        if (qLen == 10)
         {
-          if (!confirm('Seriously ?!'))
+          if (!confirm('Vous devriez créer plusieurs pages quiz...'))
           {
-            return 1;
+            return false;
           }
-        } 
+        }
+        if (qLen > 12)
+        {
+          alert('Vous avez trop de questions.');
+          return false;
+        }
         var q = this.get('controller').addQuestion();
         q.set('isQRM', true);
         e.preventDefault();
@@ -461,11 +479,18 @@
           AddAnswerButton: Em.View.extend({
             click: function(e) {
               var answerLen = $("#"+e.currentTarget.id).prev().children().next().children().length + 1;
-              if (answerLen >= 3)
+              if (answerLen == 5)
               {
-                if (!confirm('BUDDY ARE YOU F***ING SERIOUS ???'))
+                if (!confirm('Le nombre de réponses ne devrait pas dépasser cinq'))
                 {
+                  return false;
                 }
+              }
+
+              if (answerLen >= 10)
+              {
+                alert('Nombre maximum de réponses atteint');
+                return false;
               }
               this.get('controller').set('currentQuestion', this.get('_parentView.content'));
               this.get('controller').addAnswer();
@@ -623,10 +648,7 @@
             var attachLength = $('.attachments-list > li').length + 1;
             if (attachLength > 5)
             {
-              if (!confirm("IT MAY BECOME BORING, IS'NT IT"))
-              {
-                return 1;
-              }
+             alert('Nombre maximum de documents attachés atteint');
             }
             var validation = /(application\/pdf|audio\/mpeg3|audio\/mpeg|audio\/mp3|audio\/x-mpeg-3)$/i;
             //var maxFileSize = 5000000;  // 5Mb
@@ -728,8 +750,14 @@
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {
         var nbPages = $('.pages-list li').length + 1;
+        if (nbPages == 8)
+          alert('Attention : Votre activité va être trop longue...');
         if (nbPages > 12)
-          alert('ATTENTION');
+        {
+          alert('Votre activité est trop longue !');
+          return 1;
+        }
+          
         this.get('controller').addPage();
         this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected'));
         if (this.get('controller.isQuizz') || this.get('controller.isMixnmatch'))
