@@ -750,9 +750,9 @@
     AddPageButton: Em.View.extend({
       click: function(/*e*/) {
         var nbPages = $('.pages-list li').length + 1;
-        if (nbPages == 8)
+        if (nbPages == 10)
           alert('Attention : Votre activité va être trop longue...');
-        if (nbPages > 12)
+        if (nbPages > 16)
         {
           alert('Votre activité est trop longue !');
           return 1;
