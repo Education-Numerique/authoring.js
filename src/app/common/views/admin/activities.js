@@ -24,10 +24,10 @@
 
 
   var will = function(arr, start, removeCount/*, addCount*/) {
-    var nn = $('.mydrafts.data-table').dataTable();
-    if (arr == pactivities) {
-      nn = $('.mypublished.data-table').dataTable();
-    }
+    // var nn = $('.mydrafts.data-table').dataTable();
+    // if (arr == pactivities) {
+      var nn = $('.mypublished.data-table').dataTable();
+    //}
     for (var x = start + removeCount - 1; x >= start; x--)
       nn.fnDeleteRow(x);
   };
@@ -35,21 +35,21 @@
 
   var did = function(arr, start, removeCount, addCount) {
 
-    var nn = $('.mydrafts.data-table').dataTable();
-    var cc = '.mydrafts';
-    if (arr == pactivities) {
-      nn = $('.mypublished.data-table').dataTable();
-      cc = '.mypublished';
-    }
+    // var nn = $('.mydrafts.data-table').dataTable();
+    // var cc = '.mydrafts';
+    // if (arr == pactivities) {
+      var nn = $('.mypublished.data-table').dataTable();
+      var cc = '.mypublished';
+    //}
     // console.warn(nn);
     //
 
     for (var x = start, item, infos; x < start + addCount; x++) {
       item = arr[x];
 
-      if (cc == '.mydrafts')
-        infos = item.draft;
-      else
+      // if (cc == '.mydrafts')
+      //   infos = item.draft;
+      // else
         infos = item.published;
 
       nn.fnAddData([
@@ -81,7 +81,7 @@
       var preview = $(nRow).find('td:eq(1)');
       var item = hookBack(id);
 
-      var infos = item.isPublished ? item.published : item.draft;
+      var infos = item.isPublished ? item.published : item.published;
 
       preview.attr('data-title', infos.title);
       preview.html('<button class="icon-eye-open"></button>');
@@ -132,26 +132,26 @@
       button.html('<button class="icon-wrench" rel="tooltip" data-placement="right" ' +
           'title="Créer une nouvelle activité à partir de ce modèle"></button>');
 
-      button.bind('click', function(/*e*/) {
-        var onCreate = function() {
-          act.draft = infos;// .toObject();
-          act.push(function() {
-            // Something is rotten in Denmark
-            // act = LxxlLib.factories.activities.getActivity({id: act.id});
-            LxxlApp.router.send('showActivityEdit', act);
-          });
-          act.removeObserver('id', onCreate);
-        };
+      // button.bind('click', function(/*e*/) {
+      //   var onCreate = function() {
+      //     act.draft = infos;// .toObject();
+      //     act.push(function() {
+      //       // Something is rotten in Denmark
+      //       // act = LxxlLib.factories.activities.getActivity({id: act.id});
+      //       LxxlApp.router.send('showActivityEdit', act);
+      //     });
+      //     act.removeObserver('id', onCreate);
+      //   };
 
-        var act = LxxlLib.factories.activities.getActivity();
-        act.addObserver('id', onCreate);
-        act.push();
-        // Ember.run.next(function() {
-        // });
+      //   var act = LxxlLib.factories.activities.getActivity();
+      //   act.addObserver('id', onCreate);
+      //   act.push();
+      //   // Ember.run.next(function() {
+      //   // });
 
 
-        // LxxlApp.router.send('showActivityEdit', item);
-      });
+      //   // LxxlApp.router.send('showActivityEdit', item);
+      // });
 
       // console.log(preview.html('bite'));
     },
@@ -191,28 +191,29 @@
 
   t.willDestroyElement = function() {
     this.publishedActivities.removeArrayObserver(this, { willChange: will, didChange: did});
-    this.draftActivities.removeArrayObserver(this, { willChange: will, didChange: did});
+    //this.draftActivities.removeArrayObserver(this, { willChange: will, didChange: did});
   };
 
 
   t.didInsertElement = function() {
     activities = this.activities;
-    this.activities.replace(0, this.activities.length);
+    // this.activities.replace(0, this.activities.length);
     pactivities = this.publishedActivities = [];
-    dactivities = this.draftActivities = [];
+    // dactivities = this.draftActivities = [];
     this.get('publishedActivities').addArrayObserver(this, { willChange: will, didChange: did});
-    this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
+    //this.get('draftActivities').addArrayObserver(this, { willChange: will, didChange: did});
 
     // XXX listMine
-    LxxlLib.service.activities.list(function(d) {
+    LxxlLib.service.activities.listPublished(function(d) {
+      console.log(activities);
       activities.replace(0, activities.length);
       d.forEach(function(item) {
         var act = LxxlLib.factories.activities.getActivity(item);
         activities.pushObject(act);
         if (act.isPublished)
           pactivities.pushObject(act);
-        else
-          dactivities.pushObject(act);
+        // else
+        //   dactivities.pushObject(act);
       });
     }, Em.K);
 
