@@ -272,7 +272,7 @@
                 target = obj.getBtn('tat').data('target') ? $(obj.getBtn('tat').data('target')) : null;
                 obj.getBtn('tat').data('target', null);
 
-                if (len <= 9)
+                if (len <= 16)
                 {
                     console.log(this);
                     if (str.indexOf('<img') != -1 || str.indexOf('<a') != -1)
