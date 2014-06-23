@@ -297,22 +297,23 @@
                 // JBT 01/14 Bug : l'activité est créée, 
                 // mais ça plante quand on va directement vers la page d'édition de l'activité. 
                 // du coup, j'ai décidé de rester dans myActivities (ligne suivante)
-                router.transitionTo('myActivities');
+                // router.transitionTo('myActivities');
                 // je crois que) la suite, qui semble bugger n'est pas prise en compte
                 // ******************************
+                LxxlApp.router.send('showActivityEdit', act);
                 act.push();
-                act.addObserver('id', function() {
-                  // console.warn('new activity pushed ', act.id);
-                  // router.transitionTo('activity.edit', act);
-                });
+                // act.addObserver('id', function() {
+                //   console.warn('new activity pushed ', act.id);
+                //   router.transitionTo('activity.edit', act);
+                // });
               }
             });
 
           },
           connectOutlets: function(router/*, qti*/) {
             // XXX page de choix template activité ... un jour peut-être
-            router.get('applicationController').connectOutlet('activityEdit',
-                LxxlLib.factories.activities.getActivity());
+            // router.get('applicationController').connectOutlet('activityEdit',
+            //     LxxlLib.factories.activities.getActivity());
           }
         }),
 

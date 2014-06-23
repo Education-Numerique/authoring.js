@@ -31,7 +31,7 @@
 
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
 
-                <button type="button" {{bindAttr disabled="view.disableSave"}}  {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
+                <button type="button" {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
 
             </div>
             <div class="widget-content nopadding main-container">

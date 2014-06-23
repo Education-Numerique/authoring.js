@@ -67,8 +67,22 @@
     $('html').removeClass('no-js');
     // $('.network-crash').hide();
     // Now, go away placeholder
-    if ((typeof chrome == 'undefined') && (typeof XPCNativeWrapper == 'undefined'))
-      $('html').addClass('unsupported-browser');
+    // if ((typeof chrome == 'undefined') && (typeof XPCNativeWrapper == 'undefined'))
+    function msieversion() 
+    {
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+
+        if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))
+        {
+            //alert(parseInt(ua.substring(msie + 5, ua.indexOf(".", msie))));
+            $('html').addClass('unsupported-browser');
+        }
+        // else
+        //     alert('otherbrowser');
+       return false;
+    }
+    msieversion();
     if (debug) {
       // To be removed - allow to spoof user level when debugging
       // $('body').addClass(debugUser);
