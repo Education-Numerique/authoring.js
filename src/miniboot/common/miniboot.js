@@ -98,6 +98,7 @@
       // });
 
       Offline.on('confirmed-up', function () {
+        console.log($('.text-online').text());
         if ($('.text-online').text() == 'Online')
         {
           $('.text-online').text('Offline');
