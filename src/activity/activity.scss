@@ -345,6 +345,8 @@ body {
   .side-menu {
     &.pull-right {
       float: right !important;
+      position:fixed;
+      right:112px;
     }
     nav {
       border: 1px solid #DDD;
@@ -595,12 +597,10 @@ body {
 
   .pull-right
   {
-    //display:none !important;
     width:0;
     position:absolute;
     background-color:white;
-    //opacity:0;
-    right:0;
+    right:0 !important;
     z-index:1000000;
     width:90%;
   }
