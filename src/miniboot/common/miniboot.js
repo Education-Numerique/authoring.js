@@ -83,6 +83,36 @@
        return false;
     }
     msieversion();
+
+    // DISABLE THE NO LEAVE PAGE 
+    window.onhashchange = function ()
+    {
+        window.onbeforeunload = null;
+    }
+
+    $(function()
+    {
+      // Offline.on('confirmed-down', function () {  
+      //   $('.text-online').text('Online');
+      //   $('.icon-online').css('background', '#80d580');
+      // });
+
+      Offline.on('confirmed-up', function () {
+        if ($('.text-online').text() == 'OnlineOnline')
+        {
+          $('.text-online').text('Offline');
+          $('.icon-online').css('background', 'red');
+          alert('OFFLINE')
+        }
+        else
+        {
+           $('.text-online').text('Online');
+           $('.icon-online').css('background', '#80d580');
+           alert('ONLINE');
+        }
+      });
+    });
+
     if (debug) {
       // To be removed - allow to spoof user level when debugging
       // $('body').addClass(debugUser);
@@ -102,6 +132,7 @@
 
   // Bundled assets (vanilla bootstrap style doesn't work properly)
   jsBoot.loader.use('libs/css/bootstrap' + suffix + 'css');
+  //jsBoot.loader.use('libs/css/offline.css');
   // jsBoot.loader.use('libs/css/bootstrap-responsive.css');
 
   // Fullscreen shim-like - not used for now
@@ -144,6 +175,9 @@
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
    // JBT & EP added this one ... 15/02/2014
   jsBoot.loader.use('libs/js/jquery.ui.touch-punch.min.js');
+  jsBoot.loader.use('libs/js/offline-0.7.2.js');
+  jsBoot.loader.use('libs/js/offline-simulate.js');
+
 
 
   if (cdnJax) {

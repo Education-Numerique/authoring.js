@@ -31,7 +31,7 @@
 
                 <button type="button" {{action previewActivity target="controller"}} class="btn btn-mini">Prévisualiser</button>
 
-                <button type="button" {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
+                <button type="button" {{bindAttr disabled="view.disableSave"}} {{action saveActivity target="controller"}} class="btn btn-mini">Sauvegarder</button>
 
             </div>
             <div class="widget-content nopadding main-container">
@@ -441,22 +441,21 @@
 </div>
 
 <script>
+
 // SCRIPT PERMETANT D'INTERCEPTER LE KEYDOWN EVENT ET EMPECHER L'UTILISATION DU RETURN AFIN DE NE PAS QUITTER LA PAGE ACCIDENTELLEMENT
-
-function confirmreload(){
-
-window.onbeforeunload = function (e) {
-      var e = e || window.event;
-      var msg = "Leaving this page may make you lose all your edit";
-      // For IE and Firefox
-      if (e) {
-          e.returnValue = msg;
-      }
-      else
-      //For Safari / chrome
-      return msg;
-   };
- }
+function confirmreload()
+{
+    window.onbeforeunload = function (e) {
+        var e = e || window.event;
+        var msg = "Attention, quitter cette page risque de vous faire perdre votre travail !\nRevenez à l'accueil avant de quitter.";
+        // For IE and Firefox
+        if (e) 
+            e.returnValue = msg;
+        else
+        //For Safari / Chrome
+        return msg;
+     };
+}
 confirmreload();
 
 function getActiveElement () {
