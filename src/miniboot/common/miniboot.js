@@ -95,7 +95,7 @@
       Offline.on('confirmed-down', function () {
         $('.text-online').text('Offline');
         $('.icon-online').css('background', 'red');
-        $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardées</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
+        $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardée</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
       });
 
       Offline.on('confirmed-up', function () {
