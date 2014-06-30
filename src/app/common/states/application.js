@@ -293,21 +293,27 @@
             Ember.run.next(function() {
               if (!isLogged) {
                 router.transitionTo('account.login');
-              } 
-              else 
-              {
-
-                // CREER UNE NOUVELLE ACTIVITE
+              } else {
+                // JBT 01/14 Bug : l'activité est créée, 
+                // mais ça plante quand on va directement vers la page d'édition de l'activité. 
+                // du coup, j'ai décidé de rester dans myActivities (ligne suivante)
+                // router.transitionTo('myActivities');
+                // je crois que) la suite, qui semble bugger n'est pas prise en compte
+                // ******************************
+                //LxxlApp.router.send('showActivityEdit', act);
                 act.push();
-                act.addObserver('id', function() {
-                  console.warn('new activity pushed ', act.id);
-                  LxxlApp.router.send('showActivityEdit', act);
-                });
+                 act.addObserver('id', function() {
+                   console.warn('new activity created & pushed ', act.id);
+                   router.transitionTo('activity.edit', act);
+                 });
               }
             });
 
           },
           connectOutlets: function(router/*, qti*/) {
+            // XXX page de choix template activité ... un jour peut-être
+            // router.get('applicationController').connectOutlet('activityEdit',
+            //     LxxlLib.factories.activities.getActivity());
           }
         }),
 
