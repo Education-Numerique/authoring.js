@@ -55,7 +55,7 @@
     this.get('controller').addObserver('isAttemptSuccessful', function() {
       if (!!this.get('controller.isAttemptSuccessful')) {
         Ember.run.next(function() {
-          LxxlApp.get('router').transitionTo('dashboard');
+          LxxlApp.get('router').transitionTo('myActivities');
         });
       }
     }.bind(this));
