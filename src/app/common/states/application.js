@@ -301,15 +301,25 @@
                 // je crois que) la suite, qui semble bugger n'est pas prise en compte
                 // ******************************
                 //LxxlApp.router.send('showActivityEdit', act);
+                // act.push();
+                //  act.addObserver('id', function() {
+                //   $(document).ready(function ()
+                //   {
+                //    console.warn('new activity created & pushed ', act.id);
+                //    LxxlApp.router.send('showActivityEdit', act);
+                //   });
+                //    //router.transitionTo('activity.edit', act);
+                //  });
+
+                router.transitionTo('myActivities');
+                // je crois que) la suite, qui semble bugger n'est pas prise en compte
+                // ******************************
                 act.push();
-                 act.addObserver('id', function() {
-                  $(document).ready(function ()
-                  {
-                   console.warn('new activity created & pushed ', act.id);
-                   LxxlApp.router.send('showActivityEdit', act);
-                  });
-                   //router.transitionTo('activity.edit', act);
-                 });
+                act.addObserver('id', function() {
+                  // console.warn('new activity pushed ', act.id);
+                  // router.transitionTo('activity.edit', act);
+                });
+                //LE SOUCIS VIENT DE API ET NON D'ICI
               }
             });
 
