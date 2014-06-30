@@ -287,7 +287,7 @@
         create: Ember.Route.extend({
           route: '/activity/new',
           enter: function(router) {
-            console.log(router)
+            //console.log(router)
             var isLogged = router.get('applicationController.isLogged');
             var act = LxxlLib.factories.activities.getActivity();
             Ember.run.next(function() {
@@ -303,8 +303,11 @@
                 //LxxlApp.router.send('showActivityEdit', act);
                 act.push();
                  act.addObserver('id', function() {
+                  $(document).ready(function ()
+                  {
                    console.warn('new activity created & pushed ', act.id);
                    LxxlApp.router.send('showActivityEdit', act);
+                  });
                    //router.transitionTo('activity.edit', act);
                  });
               }
