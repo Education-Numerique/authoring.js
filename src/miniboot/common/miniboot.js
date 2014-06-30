@@ -98,17 +98,17 @@
       // });
 
       Offline.on('confirmed-up', function () {
-        if ($('.text-online').text() == 'OnlineOnline')
+        if ($('.text-online').text() == 'Online')
         {
           $('.text-online').text('Offline');
           $('.icon-online').css('background', 'red');
-          alert('OFFLINE')
+          alert('Attention. Connection internet perdu vos modifications ne seront plus sauvegardées.');
         }
         else
         {
            $('.text-online').text('Online');
            $('.icon-online').css('background', '#80d580');
-           alert('ONLINE');
+           //alert('ONLINE');
         }
       });
     });
@@ -176,7 +176,7 @@
    // JBT & EP added this one ... 15/02/2014
   jsBoot.loader.use('libs/js/jquery.ui.touch-punch.min.js');
   jsBoot.loader.use('libs/js/offline-0.7.2.js');
-  jsBoot.loader.use('libs/js/offline-simulate.js');
+//  jsBoot.loader.use('libs/js/offline-simulate.js');
 
 
 
