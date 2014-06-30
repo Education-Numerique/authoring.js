@@ -304,7 +304,8 @@
                 act.push();
                  act.addObserver('id', function() {
                    console.warn('new activity created & pushed ', act.id);
-                   router.transitionTo('activity.edit', act);
+                   LxxlApp.router.send('showActivityEdit', act);
+                   //router.transitionTo('activity.edit', act);
                  });
               }
             });
