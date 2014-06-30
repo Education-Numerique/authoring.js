@@ -92,27 +92,34 @@
 
     $(function()
     {
-      // Offline.on('confirmed-down', function () {  
-      //   $('.text-online').text('Online');
-      //   $('.icon-online').css('background', '#80d580');
-      // });
+      Offline.on('confirmed-down', function () {
+        $('.text-online').text('Offline');
+        $('.icon-online').css('background', 'red');
+        $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardées</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
+      });
 
       Offline.on('confirmed-up', function () {
-        console.log($('.text-online').text());
-        if ($('.text-online').text() == 'Online')
-        {
-          $('.text-online').text('Offline');
-          $('.icon-online').css('background', 'red');
-          //alert('Attention. Connection internet perdu vos modifications ne seront plus sauvegardées.');
-          $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardées</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
-        }
-        else
-        {
-           $('.text-online').text('Online');
-           $('.icon-online').css('background', '#80d580');
-           //alert('ONLINE');
-        }
+         $('.text-online').text('Online');
+         $('.icon-online').css('background', '#80d580');
       });
+      
+
+      // Offline.on('confirmed-up', function () {
+      //   console.log($('.text-online').text());
+      //   if ($('.text-online').text() == 'Online')
+      //   {
+      //     $('.text-online').text('Offline');
+      //     $('.icon-online').css('background', 'red');
+      //     //alert('Attention. Connection internet perdu vos modifications ne seront plus sauvegardées.');
+      //     $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardées</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
+      //   }
+      //   else
+      //   {
+      //      $('.text-online').text('Online');
+      //      $('.icon-online').css('background', '#80d580');
+      //      //alert('ONLINE');
+      //   }
+      // });
     });
 
   $(document).on('click', '.closure-lostconnection', function ()
