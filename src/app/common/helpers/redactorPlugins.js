@@ -150,7 +150,7 @@
                 };
 
 
-                $('#redactor_modal #redactor_tabs a').bind('click', function () {
+                $('#redactor_modal_content .redactor_tabs a').bind('click', function () {
                     console.warn($(this).siblings().attr('class'));
                     $(this).siblings().removeClass('redactor_tabs_act');
                     $(this).addClass('redactor_tabs_act');
@@ -171,7 +171,6 @@
                     }
 
                 }
-
 
                 drawIt();
 
