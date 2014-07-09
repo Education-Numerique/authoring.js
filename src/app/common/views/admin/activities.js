@@ -3,15 +3,9 @@
   //'use strict';
   var t = this.lxxlPageView('admin/activities');
 
-  // LxxlApp.router.applicationController.addObserver('isLogged', function() {
-  //   var value = LxxlApp.get('router.applicationController.isLogged');
-  //   console.log(value);
-  // });
-console.log(LxxlApp);
-
-  $(document).on('click', '#lol', function ()
+  $(document).on('click', '#modify-activity', function ()
   {
-    var id = $("#testo").val();
+    var id = $("#id-activity").val();
     var acti = LxxlLib.factories.activities.getById(id);
     LxxlApp.router.send('showActivityEdit', acti);
       acti.pull(function(){ // -> une fois que l'objet sera mis à jour par le retour réseau de pull
