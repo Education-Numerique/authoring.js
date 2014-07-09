@@ -492,6 +492,18 @@ $(".side-menu").click(function (e)
     }
     });
 
+  $(window).scroll(function()
+  {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 10)
+    {
+       $('.side-menu').addClass('bottom-100');
+    }
+    else
+    {
+       $('.side-menu').removeClass('bottom-100');
+    }
+  });
+
 });
 
 </script>
