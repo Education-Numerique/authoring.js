@@ -111,9 +111,9 @@
             <div class="widget-content slidify nopadding" {{bindAttr id="view.widgetId"}}>
                     <div class="input-prepend">
                         <label class="add-on" for="form-question-title">Question</label>
-                        {{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" air=true oneLine=true plugins="mathjax" classNames="redactorjs"}}
+                        <!-- {# view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" air=true oneLine=true plugins="mathjax" classNames="redactorjs" #} -->
+                        {{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" oneLine="true" classNames="redactorjs"}}
                     </div>
-                    
 
                 <table class="table answers table-bordered table-striped with-check">
                     <thead>
@@ -130,7 +130,7 @@
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" questionBinding="view.content" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Ember.Checkbox checkedBinding="view.content.isCorrect"}}</td>
-                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
+                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" oneLine="true" classNames="redactorjs" }}</td>
                             <!-- <td>[[view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Réponse proposée"]]</td> -->
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                             <!-- <td></td> -->
@@ -140,7 +140,7 @@
                         {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer" checkedBinding="view.content.isCorrect"}}</td>
-                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" classNames="redactorjs"}}</td>
+                            <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" oneLine="true" classNames="redactorjs"}}</td>
                             <!-- <td>[[view Ember.TextField valueBinding="view.content.text" classNames="span2"  placeholder="Réponse proposée"]]</td> -->
                             <td>{{view Ember.TextField valueBinding="view.content.comment" classNames="span2"  placeholder=""}}</td>
                             <!-- <td></td> -->
