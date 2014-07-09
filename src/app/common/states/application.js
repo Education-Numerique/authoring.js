@@ -61,16 +61,6 @@
           route: '/activities',
           enter: function(router) {
             router.set('applicationController.selected', 'qtis');
-             // if ($('#lxxlroot').hasClass('user-admin'))
-             //  {
-             //    alert('its ok');
-             //  }
-             //  else
-             //  {
-             //    alert('GO AWAY');
-             //    Ember.Route.transitionTo('dashboard');
-             //    return ;
-             //  }
           },
           connectOutlets: function(router) {
             if ($('#lxxlroot').hasClass('user-admin'))
@@ -307,7 +297,6 @@
               if (!isLogged) {
                 router.transitionTo('account.login');
               } else {
-
                 // JBT 01/14 Bug : l'activité est créée, 
                 // mais ça plante quand on va directement vers la page d'édition de l'activité. 
                 // du coup, j'ai décidé de rester dans myActivities (ligne suivante)
@@ -325,13 +314,13 @@
                 //    //router.transitionTo('activity.edit', act);
                 //  });
 
-                //router.transitionTo('myActivities');
+                router.transitionTo('myActivities');
                 // je crois que) la suite, qui semble bugger n'est pas prise en compte
                 // ******************************
                 act.push();
                 act.addObserver('id', function() {
-                  console.warn('new activity pushed ', act.id);
-                  router.transitionTo('activity.edit', act);
+                  // console.warn('new activity pushed ', act.id);
+                  // router.transitionTo('activity.edit', act);
                 });
                 //LE SOUCIS VIENT DE API ET NON D'ICI
               }
@@ -375,3 +364,4 @@
     })
   });
 }).apply(LxxlApp);
+
