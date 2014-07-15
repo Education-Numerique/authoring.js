@@ -17,7 +17,6 @@ def verify():
   executeTask("lint")
   executeTask("hint")
 
-
 @task("All")
 def all():
   executeTask("verify")
@@ -27,7 +26,6 @@ def all():
   executeTask("deploy")
   # executeTask("doc")
   executeTask("stats")
-
 
 @task("Wash the taupe!")
 def clean():
@@ -41,7 +39,6 @@ def doc():
   jsdoc3(list, "%s/gristaupe.json" % d)
   jsdoc3(list, "%s/html" % d, template = "templates/default")
 
-
 @task("Lint")
 def lint():
   PH.linter("src/lxxl")
@@ -49,22 +46,12 @@ def lint():
   PH.linter("src/activity", "*pack.js*")
   PH.linter("src/app")
 
-  # PH.linter("src/bootstrap")
-  # PH.linter("src/lib/ember")
-  # PH.linter("src/lib/roxee")
-  # PH.linter("src/lib/utils")
-  # PH.linter("src/lib/widgets")
-
 @task("Hint")
 def hint():
   PH.hinter("src/lxxl")
   PH.hinter("src/miniboot/")
   PH.hinter("src/activity", "*pack.js*")
   PH.hinter("src/app")
-
-  # PH.hinter("src/miniboot/")
-  # PH.hinter("src/lib/", excluding = "*jquery.ui*,*jquery.effects*")
-  # PH.hinter("src/app/", excluding = "*tests*")
 
 @task("Fhint")
 def fhint():
@@ -79,11 +66,6 @@ def flint():
   PH.flinter("src/miniboot")
   PH.flinter("src/activity", "*pack.js*")
   PH.flinter("src/app")
-  # PH.flinter("src/bootstrap")
-  # PH.flinter("src/lib/ember")
-  # PH.flinter("src/lib/roxee")
-  # PH.flinter("src/lib/utils")
-  # PH.flinter("src/lib/widgets")
 
 # @task("Deploy package")
 # def deploy():
@@ -95,7 +77,6 @@ def flint():
 def deploy():
   PH.deployer(False)
 
-
 @task("Minting")
 def mint():
   PH.minter(Yak.build_root)
@@ -103,7 +84,6 @@ def mint():
 @task("Stats report deploy")
 def stats():
   PH.stater(Yak.build_root)
-
 
 @task("Building the taupe!")
 def build():
@@ -163,10 +143,7 @@ def build():
   #   spitman['spitfire-lab'],
   #   'src/onegateisopening/boot.js',
   # ]
-  # combine(spitfireList, Yak.BUILD_ROOT + "/there.is.only.jsboot.js", replace=sed)
-
-
-
+  # combine(spitfireList, Yak.BUILD_ROOT + "/there.is.only.jsboot.js", replace=sed
 
   # ================================
   # Versioned part of the app
@@ -190,11 +167,6 @@ def build():
   js.merge(FileList("src/app/common/models", filter = "*.js"))
   js.merge(FileList("src/app/common/controllers", filter = "*.js"))
   js.merge(FileList("src/app/common/views", filter = "*.js"))
-  # js.merge(FileList("src/app/desktop/", filter = "*app.js"))
-  # js.merge(FileList("src/app/desktop/states", filter = "*.js"))
-  # js.merge(FileList("src/app/desktop/models", filter = "*.js"))
-  # js.merge(FileList("src/app/desktop/controllers", filter = "*.js"))
-  # js.merge(FileList("src/app/desktop/views", filter = "*.js"))
 
   js.merge("src/activity/apiwrapper.js")
   js.merge("src/activity/scoring.js")
@@ -203,14 +175,6 @@ def build():
   combine(js, VERSIONED_ROOT + "/lxxl.js", replace=sed)
 
   deepcopy('src/activity/scorm/', VERSIONED_ROOT);
-
-
-  # js.merge(FileList("src/app/desktop/", filter = "*routing.js"))
-  # js.merge(FileList("src/app/desktop/", filter = "*hotkeys.js"))
-  # js.merge(FileList("src/app/desktop/model/", filter = "*.js"))
-  # js.merge(FileList("src/app/desktop/views/", filter = "*.js"))
-  # js.merge(FileList("src/app/desktop/states/", filter = "*.js"))
-
 
   # css application
   css = FileList("src/assets/common/css", filter = "*.css,*.scss")
@@ -250,8 +214,5 @@ def build():
   combine("src/activity/miniboot.js", VERSIONED_ROOT + "/activity/miniboot-min.js", replace=sed)
 
 
-
-  # XXX new stuff
+  # new stuff
   deepcopy("src/miniapp", Yak.build_root + "/miniapp", replace=sed)
-
-

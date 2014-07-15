@@ -13,7 +13,7 @@ baseYank:
     # License link (eg: {PUKE-RIGHTS-LICENSE})
       license: '<a href="http://www.gnu.org/licenses/agpl-3.0.html">Afero GPL</a>'
     # Copyright to be replaced in files (eg: {PUKE-RIGHTS-COPYRIGHT})
-      copyright: 'All rights reserved <a href="http://education-numerique.com">E&N</a>'
+      copyright: 'All rights reserved <a href="http://education-et-numerique.org">E&N</a>'
     # Author (eg: {PUKE-RIGHTS-AUTHOR})
       author: '<a href="mailto:dev@webitup.fr">Mangled Deutz & Raildecom</a>'
   git:
@@ -133,7 +133,6 @@ config-www-data-linux:
 
   service:
     port: ''
-    # host: 'app.lxxl.com'
     host: 'api.education-et-numerique.fr'
 
 
@@ -192,9 +191,6 @@ config-raildecom-darwin:
   DEBUG: 'true'
   MINIFY: 'false'
 
-
-
-
 config-dmp-darwin:
   root: "${HOME}/buildd/stage.webitup.org"
   paths:
@@ -231,9 +227,6 @@ config-dmp-darwin:
 
   DEBUG: 'true'
   MINIFY: 'false'
-
-
-
 
 
 config-JB-darwin:

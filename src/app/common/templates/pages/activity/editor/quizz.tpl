@@ -3,10 +3,8 @@
 */
 
 <div class="container-fluid">
-
     <div class="widget-box noborder">
         <div class="widget-content" id="page-informations">
-            
             <div class="control-group">
                 <div class="input-prepend">
                     <label class="add-on" for="form-page-title">Titre</label>
@@ -17,8 +15,7 @@
                     <label class="add-on" for="form-page-subtitle">Sous-titre</label>
                     [[view Ember.TextField valueBinding="currentPage.subtitle" classNames="span2" id="form-page-subtitle" placeholder="Sous-titre de la page"]]
                 </div>
-            -->
-                
+            -->   
             </div>
             <div class="options">
                 <!--
@@ -41,9 +38,11 @@
                     -1 = follow through | 0 = random sur la totalité | X = random sur un subset
                 //-->
 
-                <!-- [[#view view.SequenceButton classNames="btn master-button multicontrol nopadding"]][[view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"]]-->
-                    <span data-toggle="modal" href="#modal-page-sequencing"  class="name btn">Séquenceur</span>
-                <!-- [[/view]]-->
+                <!-- 
+                    [[#view view.SequenceButton classNames="btn master-button multicontrol nopadding"]][[view LxxlLib.Ember.Checkbox classNames="btn" checkedBinding="pageActivatedSequencing"]]
+                        <span data-toggle="modal" href="#modal-page-sequencing"  class="name btn">Séquenceur</span>
+                    [[/view]]
+                -->
 
                 <!-- Ciao Side Document ....
                     <button [[action toggleSideDocument target="this"]] type="button" class="name btn radioblock">
@@ -54,20 +53,18 @@
                 
                 <!-- <button class="btn">Coefficient</button> -->
             </div>
-            
+
             <div class="widget-box">
-        <div class="widget-title" data-toggle="slidify" data-target="#page-document">
-            <span class="icon">
-                <i class="icon-pencil"></i>
-            </span>
-            <h5>Document</h5>
-        </div>
-        <div class="widget-content slidify-on nopadding" id="page-document">
-            {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip,imagemanager" id="form-page-explanation"}}
-        </div>
-    </div>
-          
-                
+                <div class="widget-title" data-toggle="slidify" data-target="#page-document">
+                    <span class="icon">
+                        <i class="icon-pencil"></i>
+                    </span>
+                    <h5>Document</h5>
+                </div>
+                <div class="widget-content slidify-on nopadding" id="page-document">
+                    {{view LxxlLib.Em.Wysiwyg valueBinding="currentPage.advice" classNames="redactorjs" plugins="mathjax,tooltip,imagemanager" id="form-page-explanation"}}
+                </div>
+            </div>          
         </div>
     </div>
 <!-- Ciao Side Document ....
@@ -137,7 +134,7 @@
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                         {{/collection}}
                     {{else}} <!-- QCM -->
-                        {{#collection view.answersCollectionView contentBinding="view.content.answers" tagName="tbody"}}
+                        {{#collection view.answersCollectionView contentBinding="view.content.answers" questionBinding="view.content" tagName="tbody"}}
                             <td><i class="icon-resize-vertical"></td>
                             <td>{{view LxxlLib.Em.RadioButton nameBinding="view.parentView.elementId" valueBinding="view.content" groupBinding="view.parentView.selectedAnswer" checkedBinding="view.content.isCorrect"}}</td>
                             <td>{{view LxxlLib.Em.Wysiwyg valueBinding="view.content.text" buttons="bold,italic,|,video" plugins="mathjax,imagemanager" oneLine="true" classNames="redactorjs"}}</td>
@@ -147,10 +144,8 @@
                             <td>{{#view view.DeleteButton modalName="deleteAnswer" questionBinding="view.parentView.parentView.content" answerBinding="view.content" classNames="btn btn-danger btn-mini" data-toggle="modal" href="#modal-delete-answer"}}<i class="icon-remove icon-white full-opacity"></i>{{/view}}</td>
                         {{/collection}}
                     {{/if}}
-
                 </table>
                 {{#view view.AddAnswerButton classNames="btn btn-inverse btn-mini add-answer-button" tagName="button"}}<i class="icon-plus icon-white spacify"></i>Ajouter une réponse{{/view}}
             </div>
         {{/collection}}
-        
 </div>

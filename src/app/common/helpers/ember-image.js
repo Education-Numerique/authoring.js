@@ -1,11 +1,22 @@
-(function() {
+/**
+ * @file app/common/helpers/ember-image.js
+ * @summary Ember helpers
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/app/common/helpers/ember-image.js{PUKE-GIT-REVISION}
+ */
+
+ (function() {
   /*jshint maxstatements:30*/
   'use strict';
 
   var get = Em.get, set = Em.set;
 
   Em.BLANK_IMAGE_DATA_URL = 'data:image/gif;base64,R0lGODlhAQABAJAAAP///wAAACH5BAUQAAAALAAAAAABAAEAAAICBAEAOw==';
-
 
   /**
   @extends Em.View
@@ -15,41 +26,40 @@
 
     /**
     Image source url
-
     @property {String}
-  */
+    */
     src: Em.BLANK_IMAGE_DATA_URL,
 
     /**
     @property {Number}
-  */
+    */
     height: null,
 
     /**
     @property {Number}
-  */
+    */
     width: null,
 
     /**
     @property {String}
-  */
+    */
     alt: null,
 
     /**
     @property {String}
-  */
+    */
     defaultImage: Em.BLANK_IMAGE_DATA_URL,
 
     /**
     @property {String}
-  */
+    */
     status: 'none',
 
     attributeBindings: ['src', 'alt', 'height', 'width'],
 
     /**
     Reset image src to default blank value
-  */
+    */
     reset: function() {
       this.$().prop('src', get(this, 'defaultImage'));
       set(this, 'status', 'none');

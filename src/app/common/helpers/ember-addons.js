@@ -20,15 +20,13 @@
     }
 
     LxxlLib.Ember = LxxlLib.Em = {};
+
     LxxlLib.utils = {};
-    // App.MyTextField = Em.TextField.extend({
-    //   attributeBindings: ['maxlength'],
-    //   'maxlength':30
-    // });
     LxxlLib.Em.TextField = Em.TextField.extend({
         attributeBindings: ['min', 'max', 'maxlength'],
         'maxlength':120
     });
+
     LxxlLib.Em.Checkbox = Em.Checkbox.extend({
 
         didInsertElement: function () {
@@ -128,7 +126,6 @@
             return result;
         },
 
-
         change: function (/*e*/) {
             var options = this.$('option:selected'),
                 content = this.get('rawContent'),
@@ -199,7 +196,6 @@
             return list;
         }.property('rawContent', '_forceRefresh')),
 
-
         contentUpdated: function () {
             Ember.run.next(this, function () {
                 if (this.get('state') == 'inDOM')
@@ -264,7 +260,6 @@
                 this.set('value', this.$().getCode());
             }.bind(this));
 
-
             this.$().redactor({
                 lang: 'fr',
                 imageUpload: true,
@@ -276,21 +271,17 @@
                 buttons: buttons
             });
 
-
             var api = this.$().redactor().getObject();
-
             var editor = this.$().redactor().getEditor();
 
             if (this.get('oneLine')) {
                 editor.parent().addClass('one-line');
             }
 
-
             if (this.get('maxLength') && !this.$().parent().find('.infobox').length) {
                 this.$().parent().append('<div class="infobox" />');
                 this.set('_infoBox', this.$().parent().find('.infobox'));
             }            
-
 
             // BEGIN of "Text à trous" plugin
             Object.getPrototypeOf(api).observesTat = function () {
@@ -300,7 +291,6 @@
 
                     if (!this.getSelectedHtml().trim())
                         return;
-
 
                     var width = this.$editor.tatAir.innerWidth();
                     var left = e.clientX;
@@ -313,7 +303,6 @@
                         14) + 'px' }).show();
                     return true;
                 }.bind(this));
-
 
                 // var hideTatAir = (function() {
                 //   ensureTatAir();
@@ -345,10 +334,7 @@
                     this.$editor.tatAir.hide();
                     return true;
                 }.bind(this));
-
-
             };
-
 
             if (plugins.indexOf('tat') != -1) {
                 $(editor).on('click.tat-click-handler', '[data-type=tat]', function (e) {
@@ -357,9 +343,7 @@
                 });
                 api.observesTat();
 
-            }
-            // END of "Text à trous" plugin
-
+            } // END of "Text à trous" plugin
 
             if (plugins.indexOf('mathjax') != -1) {
                 $(editor).on('click.mathredactor', '[data-type=math]', function (e) {
@@ -367,7 +351,6 @@
                     api.getBtn('mathjax').click();
                 });
             }
-
 
             this.updateContent();
             this._timer.start();
@@ -381,7 +364,6 @@
 
             $(document).focus();
             $(document).blur();
-
         },
 
         limitChar: function () {
@@ -389,10 +371,8 @@
             var len = this.$().getText().trim().replace(/(<[^>]+>)/g, '').length;
             $("#textarea-description div div div").keydown(function(e){ check_charcount(max, e); });
 
-            function check_charcount(max, e)
-            {   
-                if (e.which != 8 && $("#textarea-description div div div").text().replace(/(<[^>]+>)/g, '').length > max)
-                {
+            function check_charcount(max, e) {   
+                if (e.which != 8 && $("#textarea-description div div div").text().replace(/(<[^>]+>)/g, '').length > max) {
                     e.preventDefault();
                 }
             }
@@ -403,18 +383,14 @@
                 var len = this.$().getText().trim().replace(/(<[^>]+>)/g, '').length;
                 var cnt = this.get('maxLength') - len;
 
-                if (cnt < 0)
-                {
+                if (cnt < 0) {
                     this.get('_infoBox').removeClass('ok').addClass('ko');
-                }
-                else 
-                {
+                } else {
                     this.get('_infoBox').removeClass('ko').addClass('ok');
                 }
                 this.get('_infoBox').html('<span>' + cnt + '</span>');
             }
         },
-
 
         willDestroyElement: function () {
             this._timer.stop();
@@ -439,15 +415,12 @@
                 editor.perfButton = null;
             }
 
-
             this.$().destroyEditor();
 
             if (this.get('value') == value)
                 return;
 
             this.set('value', value);
-
-
         },
 
         updateContent: function () {
@@ -486,7 +459,6 @@
             this.$('input').uniform();
         },
 
-
         change: function () {
             this._updateElementValue();
         },
@@ -505,9 +477,7 @@
     });
 
     LxxlLib.Em.RadioButton = Em.RadioButton.extend({
-
     });
-
 
     LxxlLib.utils.poll = function (condition, callback, limit) {
         var delay = 1;
@@ -551,7 +521,5 @@
             status = 0;
             clearTimeout(ref);
         };
-
     };
-
 })();
