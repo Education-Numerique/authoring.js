@@ -95,13 +95,13 @@
       $('.data-table', node).each(function(ind, item) {
         if ($(item).hasClass('dataTable'))
           return;
+
         $(item).dataTable($.extend({
           'oLanguage': LxxlLib.Locale.getData('tables'),
           'bJQueryUI': true,
           'sPaginationType': 'full_numbers',
           'sDom': '<""l>t<"F"fp>'
         }, options));
-
 
         $('span.icon input:checkbox, th input:checkbox', node).click(function() {
           var checkedStatus = this.checked;
@@ -116,22 +116,22 @@
             }
           });
         });
+
         $('select', node).chosen();
       });
     };
   })();
 
-$(document).ready(function() {
+  $(document).ready(function() {
 
-  $(document).on('click', '#sidebar ul li', function ()
-  {
-    var widthTotal = $(window).width();
-    if (widthTotal <= 480)
-    {
-      $('#sidebar').removeClass('open');
-      $('#sidebar ul').slideUp();
-    }
-  });
+    $(document).on('click', '#sidebar ul li', function () {
+      var widthTotal = $(window).width();
+      if (widthTotal <= 480)
+      {
+        $('#sidebar').removeClass('open');
+        $('#sidebar ul').slideUp();
+      }
+    });
 
     var oldMouseStart = $.ui.sortable.prototype._mouseStart;
     $.ui.sortable.prototype._mouseStart = function(event, overrideHandle, noActivation) {
@@ -141,29 +141,27 @@ $(document).ready(function() {
     // === Sidebar navigation === //
 
     // Sidebar mobile
-    $(document).delegate('#sidebar > a', 'click', function(e)
-        {
-          e.preventDefault();
-          var ul = $('#sidebar > ul');
-          var sidebar = $('#sidebar');
-          if (sidebar.hasClass('open'))
-          {
-            sidebar.removeClass('open');
-            ul.slideUp(250);
-          } else {
-            sidebar.addClass('open');
-            ul.slideDown(250);
-          }
-        });
+    $(document).delegate('#sidebar > a', 'click', function(e) {
+      e.preventDefault();
+      var ul = $('#sidebar > ul');
+      var sidebar = $('#sidebar');
+      if (sidebar.hasClass('open')) {
+        sidebar.removeClass('open');
+        ul.slideUp(250);
+      } else {
+        sidebar.addClass('open');
+        ul.slideDown(250);
+      }
+    });
 
-    // === Search input typeahead === //
-    // XXX rebind search
-    // $('#search input[type=text]').typeahead({
-    //  source: ['Dashboard','Form elements','Common Elements','Validation','Wizard','Buttons',
-    //  'Icons','Interface elements','Support','Calendar','Gallery','Reports','Charts','Graphs',
-    //  'Widgets'],
-    //  items: 4
-    // });
+      // === Search input typeahead === //
+      // XXX rebind search
+      // $('#search input[type=text]').typeahead({
+      //  source: ['Dashboard','Form elements','Common Elements','Validation','Wizard','Buttons',
+      //  'Icons','Interface elements','Support','Calendar','Gallery','Reports','Charts','Graphs',
+      //  'Widgets'],
+      //  items: 4
+      // });
 
     (function() {
       var hide = function() {
@@ -188,8 +186,5 @@ $(document).ready(function() {
         }
       });
     })();
-
   });
-
-
 }).apply(this);

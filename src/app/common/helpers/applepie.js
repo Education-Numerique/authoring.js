@@ -1,3 +1,18 @@
+/**
+ * @file src/app/common/helpers/applepie.js
+ * @summary This takes care of the Raphael ApplePie used in the sandbox
+ * http://www.education-et-numerique.fr/#/sandbox
+ * after build (puke), first part of lxxl/{VERSIONED_ROOT}/lxxl.js : helpers (see pukefile.py)
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}/app/common/helpers/applepie.js{PUKE-GIT-REVISION}
+ **/
+
+
 (function() {
   /*global Raphael:true*/
   /*jshint maxparams:16*/
@@ -104,11 +119,6 @@
     };
     return [paper, chart];
   };
-
-
-
-
-
 
   LxxlLib.widgets = {};
 

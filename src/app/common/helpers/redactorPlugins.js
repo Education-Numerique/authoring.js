@@ -1,4 +1,16 @@
-(function () {
+/**
+ * @file app/common/helpers/redactorPlugins.js
+ * @summary Ember helpers
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}app/common/helpers/redactorPlugins.js{PUKE-GIT-REVISION}
+ */
+
+ (function () {
     /*global MathJax, html2canvas*/
     'use strict';
     if (typeof this.RedactorPlugins === 'undefined') this.RedactorPlugins = {};

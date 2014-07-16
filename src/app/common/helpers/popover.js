@@ -1,7 +1,19 @@
+/**
+ * @file app/common/helpers/popover.js
+ * @summary Ember helpers
+ *
+ * @author {PUKE-RIGHTS-AUTHOR}
+ * @version {PUKE-PACKAGE-VERSION}
+ *
+ * @license {PUKE-RIGHTS-LICENSE}.
+ * @copyright {PUKE-RIGHTS-COPYRIGHT}
+ * @name {PUKE-GIT-ROOT}app/common/helpers/popover.js{PUKE-GIT-REVISION}
+ */
+
 (function() {
   'use strict';
 
-  // Bootstrap popover is a piece of shite - use our own in place, recycling just their style
+  // Bootstrap popover is a piece of shit - use our own in place, recycling just their style
   var popover = $('<div class="popover">' +
       '<div class="arrow"></div>' +
       '<div class="popover-inner">' +

@@ -1,12 +1,32 @@
 console.warn("bienvenue dans miniapp !!!");
-// UP TO YOU
 
+
+var SERVICE_CONFIG = {
+  key: {
+    id: 'PROD',
+    secret: 'a8f4981e5bb946993e4173d1e7af4cb866528c4e87f51f80'
+  },
+  server: {
+    host: '{PUKE-SERVICE-HOST}',
+    port: '{PUKE-SERVICE-PORT}',
+    // host: 'snap.lxxl.com',8081
+    // port: '90',
+    version: '1.0'
+  },
+  anonymous: {
+    id: 'anonymous',
+    login: 'anonymous',
+    password: '860b9dbbda6ee5f71ddf3b44e54c469e'
+  }
+};
+
+jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
+
+// UP TO YOU
 
 //throw "stop here for now";
 
-/**
- * Récupérer les utilisateurs ....
-
+ /* Récupérer les utilisateurs .... 
 LxxlLib.service.user.list(function(d) {
   var content = "";
   d.forEach(function(item) {
@@ -17,9 +37,8 @@ LxxlLib.service.user.list(function(d) {
 }, function(){
   console.error("ARRRGGGG");
 });
-*/
 
-/* */
+/*
 LxxlLib.service.activities.list(function(d) {
   d.forEach(function(item) {
     var act = LxxlLib.factories.activities.getActivity(item);
@@ -28,7 +47,7 @@ LxxlLib.service.activities.list(function(d) {
 }, function(){
   console.error("ARRRGGGG");
 });
-
+ */
 
 /*
 LxxlLib.service.activities.list(function(d){
@@ -70,7 +89,7 @@ for (ii=0;ii<categ.length;ii++){
   content += categ[ii].id + "<br />";
 }
 content = decodeURIComponent(escape(content));
-//$("#blabla").html(content); // On affiche pas ...
+$("#blabla").html(content); // On affiche pas ...
 
 //LxxlLib.factories.metadata.lengths;
 //LxxlLib.factories.metadata.difficulties;

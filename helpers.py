@@ -75,7 +75,6 @@ def __preparepaths():
       Yak.set(key + '_root', FileSystem.join(Yak.root, path))
     FileSystem.makedir(Yak.get(key + '_root'))
 
-
 def __prepareconfig():
   Yak.istrunk = Yak.settings['variant'] == 'bleed'
 
@@ -102,7 +101,6 @@ def cleaner():
       except:
         console.error('Failed removing %s' % pathtoremove)
 
-
 # Adds a {PUKE-*-*} pattern for every package, link, or path entry in the Yak
 def replacer(s):
   for (key, path) in Yak.package.items():
@@ -117,9 +115,6 @@ def replacer(s):
     for (key, path) in Yak.links.items():
       s.add('{PUKE-%s-LINK}' % key.replace('_', '-').upper(), Yak.links[key]['url'])
   return s
-
-
-
 
 # Mint every file in the provided path avoiding xxx files, tests, and already mint files themselves (usually the build root)
 excludecrap = '*xxx*'
@@ -183,9 +178,7 @@ def fhinter(path, excluding = '', relax=False):
   else:
     console.info("You passed the dreaded hinter!")
 
-
 #  npm install -g jshint
-
 
 # Flint every file (usually src)
 def flinter(path, excluding = '', relax=False):

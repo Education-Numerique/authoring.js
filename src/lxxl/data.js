@@ -32,6 +32,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     fra: 'Français',
     lit: 'Littérature',
     let: 'Lettres',
+    fle: 'FLE - Français Langue Etrangère',
     mat: 'Maths',
     mate: 'Maths éco',
     sciec: 'Sciences économiques et sociales',
@@ -95,6 +96,21 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     other: 'Autre'
   };
 
+  // here are specific levels for language learning
+  this.lllevels = {
+    c2: "C2",
+    c1: "C1",
+    b2: "B2",
+    b1: "B1",
+    a2: "A2",
+    a1: "A1"
+  };
+  
+  // for those keys, once the matter is chosen, then level is "lllevels"
+  this.llkeys = ['fle', 'all', 'eng', 'esp', 'ita', 'chin', 'jap'];
+
+  // Atention, voir section suivante les clones :
+  // caategories[0], [1], [2], [3], [4]
   this.categories = [
     { id: 'eng_tt_lycee', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
       {id: 'eng_tt_lycee_1', title: 'COMPRÉHENSION ÉCRITE', content: [
@@ -160,34 +176,33 @@ jsBoot.pack('LxxlLib.model.defines', function() {
             ]}
     ]},
 
-    {id: 'geo_tt_prem', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'tt_prem'}, long_title:
-          'France et Europe : dynamiques des territoires dans la mondialisation', content: [
-            {id: 'geo_tt_prem_1', title: 'Territoires de proximité', content: [
-              {id: 'geo_tt_prem_1_1', title: 'Territoires du quotidien'},
-              {id: 'geo_tt_prem_1_2', title: 'Territoire de la région'}
-            ]},
-            {id: 'geo_tt_prem_2', title: 'Territoire français', content: [
-              {id: 'geo_tt_prem_2_1', title: 'Valoriser et ménager les milieux'},
-              {id: 'geo_tt_prem_2_2', title: 'La France en villes'},
-              {id: 'geo_tt_prem_2_3', title: 'Dynamiques des espaces productifs'},
-              {id: 'geo_tt_prem_2_4', title: 'Mobilités, flux et réseaux de communication'}
-            ]},
-            {id: 'geo_tt_prem_3', title: 'L\'Union européenne', content: [
-              {id: 'geo_tt_prem_3_1', title: 'Europe et Union européenne'},
-              {id: 'geo_tt_prem_3_2', title: 'Les territoires ultramarins'}
-            ]},
-            {id: 'geo_tt_prem_4', title: 'France, Europe et monde', content: [
-              {id: 'geo_tt_prem_4_1', title: 'L\'UE dans la mondialisation'},
-              {id: 'geo_tt_prem_4_2', title: 'La France dans la mondialisation'}
-            ]},
-            {id: 'geo_tt_prem_5', title: 'Méthodologie', content: [
-              {id: 'geo_tt_prem_5_1', title: 'La composition'},
-              {id: 'geo_tt_prem_5_2', title: 'L\'étude d\'un document'},
-              {id: 'geo_tt_prem_5_3', title: 'L\'étude de deux documents'},
-              {id: 'geo_tt_prem_5_4', title: 'Le croquis'},
-              {id: 'geo_tt_prem_5_5', title: 'Le schéma'},
-              {id: 'geo_tt_prem_5_6', title: 'Annales du Bac'}
-            ]}
+    {id: 'geo_tt_prem', title: 'Géographie', matter: {id: 'geo'}, level: {id: 'tt_prem'}, long_title: 'France et Europe : dynamiques des territoires dans la mondialisation', content: [
+        {id: 'geo_tt_prem_1', title: 'Territoires de proximité', content: [
+          {id: 'geo_tt_prem_1_1', title: 'Territoires du quotidien'},
+          {id: 'geo_tt_prem_1_2', title: 'Territoire de la région'}
+        ]},
+        {id: 'geo_tt_prem_2', title: 'Territoire français', content: [
+          {id: 'geo_tt_prem_2_1', title: 'Valoriser et ménager les milieux'},
+          {id: 'geo_tt_prem_2_2', title: 'La France en villes'},
+          {id: 'geo_tt_prem_2_3', title: 'Dynamiques des espaces productifs'},
+          {id: 'geo_tt_prem_2_4', title: 'Mobilités, flux et réseaux de communication'}
+        ]},
+        {id: 'geo_tt_prem_3', title: 'L\'Union européenne', content: [
+          {id: 'geo_tt_prem_3_1', title: 'Europe et Union européenne'},
+          {id: 'geo_tt_prem_3_2', title: 'Les territoires ultramarins'}
+        ]},
+        {id: 'geo_tt_prem_4', title: 'France, Europe et monde', content: [
+          {id: 'geo_tt_prem_4_1', title: 'L\'UE dans la mondialisation'},
+          {id: 'geo_tt_prem_4_2', title: 'La France dans la mondialisation'}
+        ]},
+        {id: 'geo_tt_prem_5', title: 'Méthodologie', content: [
+          {id: 'geo_tt_prem_5_1', title: 'La composition'},
+          {id: 'geo_tt_prem_5_2', title: 'L\'étude d\'un document'},
+          {id: 'geo_tt_prem_5_3', title: 'L\'étude de deux documents'},
+          {id: 'geo_tt_prem_5_4', title: 'Le croquis'},
+          {id: 'geo_tt_prem_5_5', title: 'Le schéma'},
+          {id: 'geo_tt_prem_5_6', title: 'Annales du Bac'}
+        ]}
     ]},
 
     {id: 'mat_pes', title: 'Mathématiques - première ES', matter: {id: 'mat'},
@@ -1099,7 +1114,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
 
  ];
 
-  // On populate l'anglais pour les autres levels...
+  // clone des categories pour differents levels
+  // Anglais categories[0]
   this.categories.push({id: 'eng_tl', title: 'Anglais',
     matter: {id: 'eng'}, level: {id: 'tl'},
     content: this.categories[0].content
@@ -1140,7 +1156,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     content: this.categories[0].content
   });
 
-  // On populate l'histoire pour les autres levels
+  // Histoire categories[1]
   this.categories.push({id: 'his_ps', title: 'Histoire - première S',
     matter: {id: 'his'}, level: {id: 'ps'},
     long_title: 'Questions pour comprendre le 20e siècle',
@@ -1159,7 +1175,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     content: this.categories[1].content
   });
 
-  // On populate la géo pour les autres levels
+  // Géo  categories[2]
   this.categories.push({id: 'geo_ps', title: 'Géographie - première S',
     matter: {id: 'geo'}, level: {id: 'ps'},
     long_title: 'France et Europe : dynamiques des territoires dans la mondialisation',
@@ -1178,6 +1194,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     content: this.categories[2].content
   });
 
+  // Maths  categories[3] 
   this.categories.push({id: 'mat_pl ', title: 'Mathématiques - première L',
     matter: {id: 'mat'}, level: {id: 'pl'},
     content: this.categories[3].content
