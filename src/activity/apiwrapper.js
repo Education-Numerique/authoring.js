@@ -12,18 +12,18 @@
     
     // In the future, this file may be splitted in two different files ...
 
-    /******************************************************************
+    //*****************************************************************
      // Uncomment this to get Fake LMS to console
 
-     window.API = {};
-     ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString', 'GetDiagnostic'].forEach(function(key) {
-        window.API[key] = function(a, b, c) {
-            console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c); 
-            return '0';
-        };
-     });
+     // window.API = {};
+     // ['Initialize', 'Terminate', 'GetValue', 'SetValue', 'Commit', 'GetLastError', 'GetErrorString', 'GetDiagnostic'].forEach(function(key) {
+     //    window.API[key] = function(a, b, c) {
+     //        console.warn('Fake LMS API debug. Method:', key, 'args', a, b, c); 
+     //        return '0';
+     //    };
+     // });
 
-     /******************************************************************/
+     /*****************************************************************
     /*
      SCORM 2004 (API_1484_11)
 
@@ -718,6 +718,7 @@
             // Pages navigation
             $('.pages-list > li', dom).on('click', function (event) {
                 var idx;
+                $(window).scrollTop(0);
                 if ($(window).width() <= 910)
                 {
                     $('.side-menu nav').css('white-space', 'nowrap');
