@@ -27,23 +27,24 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     perf: 'Page performance'
   };
 
-// You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
+  // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value
   this.matters = {
     fra: 'Français',
     lit: 'Littérature',
     let: 'Lettres',
-    fle: 'FLE - Français Langue Etrangère',
     mat: 'Maths',
     mate: 'Maths éco',
     sciec: 'Sciences économiques et sociales',
-    sci: 'Sciences',
+    sci: 'Sciences et technologies',
     phys: 'Physique',
     chim: 'Chimie',
+    phychim: "Physique - Chimie",
     svt: 'SVT',
     his: 'Histoire',
     geo: 'Géographie',
     edc: 'Education civique',
     phi: 'Philosophie',
+    fle: 'FLE - Français Langue Etrangère',
     all: 'Allemand',
     eng: 'Anglais',
     esp: 'Espagnol',
@@ -67,10 +68,10 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     other: 'Autre'
   };
 
-  // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value obviously
+  // You can add new matters here - but DONT RENAME existing keys!!!! - you can still change the value
   this.discipline = this.matters;
 
-  // You can add new levels here - but DONT RENAME existing keys!!!! - you can still change the value obviously
+  // You can add new levels here - but DONT RENAME existing keys!!!! - you can still change the value
   this.levels = {
     tt_lycee: 'Tout le lycée',
     tt_tles: 'Toutes terminales',
@@ -96,8 +97,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     other: 'Autre'
   };
 
-  // here are specific levels for language learning
-  this.lllevels = {
+  // here are specific levels for language learning (lv = langues vivantes)
+  this.lvlevels = {
     c2: "C2",
     c1: "C1",
     b2: "B2",
@@ -106,11 +107,11 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     a1: "A1"
   };
   
-  // for those keys, once the matter is chosen, then level is "lllevels"
-  this.llkeys = ['fle', 'all', 'eng', 'esp', 'ita', 'chin', 'jap'];
+  // for those keys, once the matter is chosen, then level is "lvlevels"
+  this.lvkeys = ['fle', 'all', 'eng', 'esp', 'ita', 'chin', 'jap'];
 
   // Atention, voir section suivante les clones :
-  // caategories[0], [1], [2], [3], [4]
+  // categories[0], [1], [2], [3]
   this.categories = [
     { id: 'eng_tt_lycee', title: 'Anglais', matter: {id: 'eng'}, level: {id: 'tt_lycee'}, content: [
       {id: 'eng_tt_lycee_1', title: 'COMPRÉHENSION ÉCRITE', content: [
@@ -205,7 +206,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         ]}
     ]},
 
-    {id: 'mat_pes', title: 'Mathématiques - première ES', matter: {id: 'mat'},
+    {id: 'mat_pes', title: 'Mathématiques Prem ES', matter: {id: 'mat'},
       level: {id: 'pes'}, long_title: '', content: [
         {id: 'mat_pes_1', title: 'Algèbre/ analyse', content: [
           {id: 'mat_pes_1_1', title: 'Second degré'},
@@ -221,7 +222,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         {id: 'mat_pes_4', title: 'Notations / raisonnements'}
     ]},
 
-    {id: 'mat_ps', title: 'Mathématiques - première S', matter: {id: 'mat'},
+    {id: 'mat_ps', title: 'Mathématiques Prem S', matter: {id: 'mat'},
       level: {id: 'ps'}, long_title: '', content: [
         {id: 'mat_ps_1', title: 'Analyse', content: [
           {id: 'mat_ps_1_1', title: 'Second degré'},
@@ -243,7 +244,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
         {id: 'mat_ps_5', title: 'Notations et raisonnements en mathématiques'}
     ]},
 
-    {id: 'mat_ts', title: 'Mathématiques - terminale S', matter: {id: 'mat'}, level: {id: 'ts'},
+    {id: 'mat_ts', title: 'Mathématiques Tle S', matter: {id: 'mat'}, level: {id: 'ts'},
       content: [
         {id: 'mat_ts_1', title: 'SUITES NUMERIQUES', content: [
           {id: 'mat_ts_1_1', title: 'Suites arithmétiques et géométriques'},
@@ -299,6 +300,59 @@ jsBoot.pack('LxxlLib.model.defines', function() {
           {id: 'mat_ts_sp_4_2', title: 'Cônes'},
           {id: 'mat_ts_sp_4_3', title: 'Surfaces'}
         ]}
+    ]},
+
+    {id: 'his_tes', title:'Histoire Tle ES', matter: {id:'his'}, level:{id:'tes'}, long_title:'', content:[
+      {id: 'his_tes_1', title:'Rapport des sociétés à leur passé', content:[
+        {id: 'his_tes_1_1', title:'Les mémoires : lecture historique'}]},
+      {id: 'his_tes_2', title:'Idéologies et opinions en Europe (fin du XIXe siècle à auj)', content:[
+        {id: 'his_tes_2_1', title:'Socialisme et mouvement ouvrier '},
+        {id: 'his_tes_2_2', title:'Médias et opinion publique'}]},
+      {id: 'his_tes_3', title:'Puissances et tensions dans le monde (1918 à auj)', content:[
+        {id: 'his_tes_3_1', title:'Les chemins de la puissance'},
+        {id: 'his_tes_3_2', title:'Un foyer de conflits '}]},
+      {id: 'his_tes_4', title:'Echelles de gouvernement dans le monde (1945 à auj)', content:[
+        {id: 'his_tes_4_1', title:'L’échelle de l’État-nation'},
+        {id: 'his_tes_4_2', title:'L’échelle continentale'},
+        {id: 'his_tes_4_3', title:'L’échelle mondiale'}]}
+    ]},
+
+    {id: 'his_tl', title:'Histoire Tle L', matter: {id:'his'}, level:{id:'tl'}, long_title:'', content:[
+      {id: 'his_tl_1', title:'Rapport des sociétés à leur passé', content:[
+        {id: 'his_tl_1_1', title:'Les mémoires : lecture historique'}]},
+      {id: 'his_tl_2', title:'Idéologies et opinions en Europe (fin du XIXe siècle à auj)', content:[
+        {id: 'his_tl_2_1', title:'Socialisme et mouvement ouvrier '},
+        {id: 'his_tl_2_2', title:'Médias et opinion publique'}]},
+      {id: 'his_tl_3', title:'Puissances et tensions dans le monde (1918 à auj)', content:[
+        {id: 'his_tl_3_1', title:'Les chemins de la puissance'}]},
+      {id: 'his_tl_4', title:'Echelles de gouvernement dans le monde (1945 à auj)', content:[
+        {id: 'his_tl_4_1', title:'L’échelle de l’État-nation'},
+        {id: 'his_tl_4_2', title:'L’échelle continentale'},
+        {id: 'his_tl_4_3', title:'L’échelle mondiale'}]}
+    ]},
+
+    {id: 'geo_tes', title:'Géographie Tle ES', matter: {id:'geo'}, level:{id:'tes'}, long_title:'', content:[
+      {id: 'geo_tes_1', title:'Clés de lectures d’un monde complexe', content:[
+        {id: 'geo_tes_1_1', title:'Des cartes pour comprendre le monde'}]},
+      {id: 'geo_tes_2', title:'Les dynamiques de la mondialisation', content:[
+        {id: 'geo_tes_2_1', title:'La mondialisation en fonctionnement'},
+        {id: 'geo_tes_2_2', title:'Les territoires dans la mondialisation'}]},
+      {id: 'geo_tes_3', title:'Dynamiques géographiques de grandes aires continentales', content:[
+        {id: 'geo_tes_3_1', title:'L\'Amérique'},
+        {id: 'geo_tes_3_2', title:'L\'afrique'},
+        {id: 'geo_tes_3_3', title:'L\’Asie du Sud et de l\’Est'}]}
+    ]},
+
+    {id: 'geo_tl', title:'Géographie Tle L', matter: {id:'geo'}, level:{id:'tl'}, long_title:'', content:[
+      {id: 'geo_tl_1', title:'Clés de lectures d’un monde complexe', content:[
+        {id: 'geo_tl_1_1', title:'Des cartes pour comprendre le monde'}]},
+      {id: 'geo_tl_2', title:'Les dynamiques de la mondialisation', content:[
+        {id: 'geo_tl_2_1', title:'La mondialisation en fonctionnement'},
+        {id: 'geo_tl_2_2', title:'Les territoires dans la mondialisation'}]},
+      {id: 'geo_tl_3', title:'Dynamiques géographiques de grandes aires continentales', content:[
+        {id: 'geo_tl_3_1', title:'L\'Amérique'},
+        {id: 'geo_tl_3_2', title:'L\'afrique'},
+        {id: 'geo_tl_3_3', title:'L\’Asie du Sud et de l\’Est'}]}
     ]},
 
     {id: 'fra_six', title: 'Français - Sixième', matter: {id: 'fra'}, level: {id: 'six'}, long_title: 'Français sixième', content: [
@@ -1008,7 +1062,8 @@ jsBoot.pack('LxxlLib.model.defines', function() {
      {id: 'svt_six_5', title:'Diversité, parenté et unité des êtres vivants', content:[
        {id: 'svt_six_5_1', title:'Qu\'est-ce qu\'une espèce ?'},
        {id: 'svt_six_5_2', title:'Classification scientifique des êtres vivants'},
-       {id: 'svt_six_5_3', title:'Etres vivants, composés de cellules'}]}]},
+       {id: 'svt_six_5_3', title:'Etres vivants, composés de cellules'}]}
+    ]},
 
     {id: 'svt_five', title:'SVT', matter: {id:'svt'}, level:{id:'five'}, long_title:'Sciences de la Vie et de la Terre', content:[
        {id: 'svt_five_1', title:'Respiration et occupation des milieux de vie', content:[
@@ -1109,10 +1164,323 @@ jsBoot.pack('LxxlLib.model.defines', function() {
        {id: 'svt_ts_4_1', title:'Les projets personnels encadrés (PPE)'},
        {id: 'svt_ts_4_2', title:'L\'épreuve du bac'}
       ]}
+    ]},
+
+    {id: 'fr_cm1', title:'CM1', matter: {id:'fr'}, level:{id:'cm1'}, long_title:'', content:[
+      {id: 'fr_cm1_1', title:'Langage oral', content:[
+        {id: 'fr_cm1_1_1', title:'Réciter'},
+        {id: 'fr_cm1_1_2', title:'Interroger'},
+        {id: 'fr_cm1_1_3', title:'Argumenter'},
+        {id: 'fr_cm1_1_4', title:'Résumer'}]},
+      {id: 'fr_cm1_2', title:'Lecture, écriture', content:[
+        {id: 'fr_cm1_2_1', title:'Lecture'},
+        {id: 'fr_cm1_2_2', title:'Littérature'},
+        {id: 'fr_cm1_2_3', title:'Rédaction'}]},
+      {id: 'fr_cm1_3', title:'Etude de la langue', content:[
+        {id: 'fr_cm1_3_1', title:'Vocabulaire'},
+        {id: 'fr_cm1_3_2', title:'Grammaire'},
+        {id: 'fr_cm1_3_3', title:'Orthographe'}]}
+    ]},
+
+    {id: 'mat_cm1', title:'CM1', matter: {id:'mat'}, level:{id:'cm1'}, long_title:'', content:[
+      {id: 'mat_cm1_1', title:'Nombres et calcul', content:[
+        {id: 'mat_cm1_1_1', title:'Nombres entiers naturels'},
+        {id: 'mat_cm1_1_2', title:'Nombres décimaux et les fractions'},
+        {id: 'mat_cm1_1_3', title:'Calcul'},
+        {id: 'mat_cm1_1_4', title:'Résolution de problèmes'}]},
+      {id: 'mat_cm1_2', title:'Géométrie', content:[
+        {id: 'mat_cm1_2_1', title:'Relations et propriétés géométriques'},
+        {id: 'mat_cm1_2_2', title:'Instruments techniques'},
+        {id: 'mat_cm1_2_3', title:'Figures planes'},
+        {id: 'mat_cm1_2_4', title:'Solides usuels'},
+        {id: 'mat_cm1_2_5', title:'Résolution de problèmes'}]},
+      {id: 'mat_cm1_3', title:'Grandeurs et mesures', content:[
+        {id: 'mat_cm1_3_1', title:'Longueur, masse, volume'},
+        {id: 'mat_cm1_3_2', title:'Aires'},
+        {id: 'mat_cm1_3_3', title:'Angles'},
+        {id: 'mat_cm1_3_4', title:'Temps et durées'},
+        {id: 'mat_cm1_3_5', title:'Monnaie'},
+        {id: 'mat_cm1_3_6', title:'Résolution de problèmes'}]},
+      {id: 'mat_cm1_4', title:'Organisation et gestion de données', content:[
+        {id: 'mat_cm1_4_1', title:'Trier des données'},
+        {id: 'mat_cm1_4_2', title:'Faire des tableaux'},
+        {id: 'mat_cm1_4_3', title:'Analyse de données'}]}
+    ]},
+
+    {id: 'sci_cm1', title:'CM1', matter: {id:'sci'}, level:{id:'cm1'}, long_title:'', content:[
+      {id: 'sci_cm1_1', title:'Le ciel et la terre', content:[
+        {id: 'sci_cm1_1_1', title:'Mouvements de la Terre'},
+        {id: 'sci_cm1_1_2', title:'Mouvements de la Lune'},
+        {id: 'sci_cm1_1_3', title:'Lumières et ombres'},
+        {id: 'sci_cm1_1_4', title:'Volcans et séismes, les risques'}]},
+      {id: 'sci_cm1_2', title:'La matière', content:[
+        {id: 'sci_cm1_2_1', title:'L\'eau, une ressource'},
+        {id: 'sci_cm1_2_2', title:'L\'air et les pollutions de l\'air'},
+        {id: 'sci_cm1_2_3', title:'Mélanges et solutions'},
+        {id: 'sci_cm1_2_4', title:'Les déchets'}]},
+      {id: 'sci_cm1_3', title:'L\'énergie', content:[
+        {id: 'sci_cm1_3_1', title:'Sources d\'énergies'},
+        {id: 'sci_cm1_3_2', title:'Besoins en énergie'}]},
+      {id: 'sci_cm1_4', title:'L\'unité et diversité du vivant', content:[
+        {id: 'sci_cm1_4_1', title:'Biodiversité'},
+        {id: 'sci_cm1_4_2', title:'Unité du vivant'},
+        {id: 'sci_cm1_4_3', title:'Classification du vivant'}]},
+      {id: 'sci_cm1_5', title:'Le fonctionnement du vivant', content:[
+        {id: 'sci_cm1_5_1', title:'Stades de développement de l\'être vivant'},
+        {id: 'sci_cm1_5_2', title:'Conditions de développement des végétaux et animaux'},
+        {id: 'sci_cm1_5_3', title:'Modes de reproduction'}]},
+      {id: 'sci_cm1_6', title:'Le fonctionnement du corps humain', content:[
+        {id: 'sci_cm1_6_1', title:'Mouvements corporels'},
+        {id: 'sci_cm1_6_2', title:'Fonctions de nutrition'},
+        {id: 'sci_cm1_6_3', title:'Reproduction de l\'être humain'},
+        {id: 'sci_cm1_6_4', title:'Hygiène et santé'}]},
+      {id: 'sci_cm1_7', title:'Êtres vivants dans leur environnement', content:[
+        {id: 'sci_cm1_7_1', title:'Adaptation des êtres vivants à leur milieu'},
+        {id: 'sci_cm1_7_2', title:'Place et rôle des êtres vivants'},
+        {id: 'sci_cm1_7_3', title:'Evolution d\'un environnement géré par l\'être humain'}]},
+      {id: 'sci_cm1_8', title:'Les objets techniques', content:[
+        {id: 'sci_cm1_8_1', title:'Circuits électriques alimentés par des piles'},
+        {id: 'sci_cm1_8_2', title:'Règles de sécurité et danger de l\'électricité'},
+        {id: 'sci_cm1_8_3', title:'Leviers et balance, équilibres'},
+        {id: 'sci_cm1_8_4', title:'Objets mécaniques, transmission de mouvement'}]}
+    ]},
+
+    {id: 'his_cm1', title:'CM1', matter: {id:'his'}, level:{id:'cm1'}, long_title:'', content:[
+      {id: 'his_cm1_1', title:'La Préhistoire', content:[
+        {id: 'his_cm1_1_1', title:'Premières traces de la vie humaine'}]},
+      {id: 'his_cm1_2', title:'L\'Antiquité', content:[
+        {id: 'his_cm1_2_1', title:'Gaulois, romanisation de la Gaulle et christianisation'}]},
+      {id: 'his_cm1_3', title:'Le Moyen-Âge', content:[
+        {id: 'his_cm1_3_1', title:'Développement du Royaume de France'},
+        {id: 'his_cm1_3_2', title:'Relation de servage et rôle de l\'Eglise'},
+        {id: 'his_cm1_3_3', title:'Conflits et échanges en Mediterranée'},
+        {id: 'his_cm1_3_4', title:'Guerre de Cent ans'}]},
+      {id: 'his_cm1_4', title:'Les Temps modernes', content:[
+        {id: 'his_cm1_4_1', title:'Grandes découvertes, Traite des noirs'},
+        {id: 'his_cm1_4_2', title:'La Renaissance'},
+        {id: 'his_cm1_4_3', title:'Louis XIV, monarque absolu'},
+        {id: 'his_cm1_4_4', title:'Les Lumières'}]},
+      {id: 'his_cm1_5', title:'La Révolution française et le XIXe siècle', content:[
+        {id: 'his_cm1_5_1', title:'Révolution française et Premier Empire'},
+        {id: 'his_cm1_5_2', title:'Révolution industrielle (XIXe siècle)'},
+        {id: 'his_cm1_5_3', title:'Les débuts de la démocratie'}]},
+      {id: 'his_cm1_6', title:'Le XXe siècle et notre époque', content:[
+        {id: 'his_cm1_6_1', title:'Violence du XXe siècle'},
+        {id: 'his_cm1_6_2', title:'Progrès scientifiques et techniques, consommation'},
+        {id: 'his_cm1_6_3', title:'La Ve République'},
+        {id: 'his_cm1_6_4', title:'La construction européenne'}]}
+    ]},
+
+    {id: 'geo_cm1', title:'CM1', matter: {id:'geo'}, level:{id:'cm1'}, long_title:'', content:[
+      {id: 'geo_cm1_1', title:'L\'environnement proche', content:[
+        {id: 'geo_cm1_1_1', title:'Paysages, flux, activités économiques'},
+        {id: 'geo_cm1_1_2', title:'Développement durable'},
+        {id: 'geo_cm1_1_3', title:'Département et région'}]},
+      {id: 'geo_cm1_2', title:'Le territoire français dans l\'UE', content:[
+        {id: 'geo_cm1_2_1', title:'Grands types de paysages'},
+        {id: 'geo_cm1_2_2', title:'Diversité des régions françaises'},
+        {id: 'geo_cm1_2_3', title:'Frontières françaises et de l\'UE'}]},
+      {id: 'geo_cm1_3', title:'Les français dans l\'Europe', content:[
+        {id: 'geo_cm1_3_1', title:'Répartition de la population en France et en Europe'},
+        {id: 'geo_cm1_3_2', title:'Principales villes en France et en Europe'}]},
+      {id: 'geo_cm1_4', title:'Se déplacer en France et en Europe', content:[
+        {id: 'geo_cm1_4_1', title:'Aéroport'},
+        {id: 'geo_cm1_4_2', title:'Réseau routier, autoroutier et ferrovière'}]},
+      {id: 'geo_cm1_5', title:'La France dans le monde', content:[
+        {id: 'geo_cm1_5_1', title:'Territoires français dans le monde'},
+        {id: 'geo_cm1_5_2', title:'Langue française dans le monde'}]}
+    ]},
+
+    {id: 'eps_cm1', title:'CM1', matter: {id:'eps'}, level:{id:'cm1'}, long_title:'', content:[
+      {id: 'eps_cm1_1', title:'Réaliser une performance mesurée', content:[
+        {id: 'eps_cm1_1_1', title:'Activités athlétiques'},
+        {id: 'eps_cm1_1_2', title:'Natation'}]},
+      {id: 'eps_cm1_2', title:'Adapter ses performances', content:[
+        {id: 'eps_cm1_2_1', title:'Activités d\'escalade'},
+        {id: 'eps_cm1_2_2', title:'Activités aquatiques et nautiques'},
+        {id: 'eps_cm1_2_3', title:'Activités de roule et de glisse'},
+        {id: 'eps_cm1_2_4', title:'Activités d\'orientation'}]},
+      {id: 'eps_cm1_3', title:'Coopérer ou s\'opposer', content:[
+        {id: 'eps_cm1_3_1', title:'Jeux de lutte'},
+        {id: 'eps_cm1_3_2', title:'Jeux de raquette'},
+        {id: 'eps_cm1_3_3', title:'Jeux sportifs collectifs'}]},
+      {id: 'eps_cm1_4', title:'Concevoir et réaliser des actions', content:[
+        {id: 'eps_cm1_4_1', title:'Danse'},
+        {id: 'eps_cm1_4_2', title:'Activité gymnastique'}]}
+    ]},
+
+    {id: 'fr_cm2', title:'CM2', matter: {id:'fr'}, level:{id:'cm2'}, long_title:'', content:[
+     {id: 'fr_cm2_1', title:'Langage oral', content:[    
+       {id: 'fr_cm2_1_1', title:'Réciter'},
+       {id: 'fr_cm2_1_2', title:'Interroger'},
+       {id: 'fr_cm2_1_3', title:'Argumenter'},
+       {id: 'fr_cm2_1_4', title:'Résumer'}]},
+     {id: 'fr_cm2_2', title:'Lecture, écriture', content:[
+       {id: 'fr_cm2_2_1', title:'Lecture'},
+       {id: 'fr_cm2_2_2', title:'Littérature'},
+       {id: 'fr_cm2_2_3', title:'Rédaction'}]},
+     {id: 'fr_cm2_3', title:'Etude de la langue', content:[
+       {id: 'fr_cm2_3_1', title:'Vocabulaire'},
+       {id: 'fr_cm2_3_2', title:'Grammaire'},
+       {id: 'fr_cm2_3_3', title:'Orthographe'}]}
+    ]},
+
+    {id: 'mat_cm2', title:'CM2', matter: {id:'mat'}, level:{id:'cm2'}, long_title:'', content:[
+     {id: 'mat_cm2_1', title:'Nombres et calcul', content:[
+       {id: 'mat_cm2_1_1', title:'Nombres entiers naturels'},
+       {id: 'mat_cm2_1_2', title:'Nombres décimaux et les fractions'},
+       {id: 'mat_cm2_1_3', title:'Calcul'},
+       {id: 'mat_cm2_1_4', title:'Résolution de problèmes'}]},
+     {id: 'mat_cm2_2', title:'Géométrie', content:[
+       {id: 'mat_cm2_2_1', title:'Relations et propriétés géométriques'},
+       {id: 'mat_cm2_2_2', title:'Instruments techniques'},
+       {id: 'mat_cm2_2_3', title:'Figures planes'},
+       {id: 'mat_cm2_2_4', title:'Solides usuels'},
+       {id: 'mat_cm2_2_5', title:'Résolution de problèmes'}]},
+     {id: 'mat_cm2_3', title:'Grandeurs et mesures', content:[
+       {id: 'mat_cm2_3_1', title:'Longueur, masse, volume'},
+       {id: 'mat_cm2_3_2', title:'Aires'},
+       {id: 'mat_cm2_3_3', title:'Angles'},
+       {id: 'mat_cm2_3_4', title:'Temps et durées'},
+       {id: 'mat_cm2_3_5', title:'Monnaie'},
+       {id: 'mat_cm2_3_6', title:'Résolution de problèmes'}]},
+     {id: 'mat_cm2_4', title:'Organisation et gestion de données', content:[
+       {id: 'mat_cm2_4_1', title:'Trier des données'},
+       {id: 'mat_cm2_4_2', title:'Faire des tableaux'},
+       {id: 'mat_cm2_4_3', title:'Analyse de données'}]}
+    ]},
+
+    {id: 'sci_cm2', title:'CM2', matter: {id:'sci'}, level:{id:'cm2'}, long_title:'', content:[
+     {id: 'sci_cm2_1', title:'Le ciel et la terre', content:[
+       {id: 'sci_cm2_1_1', title:'Mouvements de la Terre'},
+       {id: 'sci_cm2_1_2', title:'Mouvements de la Lune'},
+       {id: 'sci_cm2_1_3', title:'Lumières et ombres'},
+       {id: 'sci_cm2_1_4', title:'Volcans et séismes, les risques'}]},
+     {id: 'sci_cm2_2', title:'La matière', content:[
+       {id: 'sci_cm2_2_1', title:'L\'eau, une ressource'},
+       {id: 'sci_cm2_2_2', title:'L\'air et les pollutions de l\'air'},
+       {id: 'sci_cm2_2_3', title:'Mélanges et solutions'},
+       {id: 'sci_cm2_2_4', title:'Les déchets'}]},
+     {id: 'sci_cm2_3', title:'L\'énergie', content:[
+       {id: 'sci_cm2_3_1', title:'Sources d\'énergies'},
+       {id: 'sci_cm2_3_2', title:'Besoins en énergie'}]},
+     {id: 'sci_cm2_4', title:'L\'unité et diversité du vivant', content:[
+       {id: 'sci_cm2_4_1', title:'Biodiversité'},
+       {id: 'sci_cm2_4_2', title:'Unité du vivant'},
+       {id: 'sci_cm2_4_3', title:'Classification du vivant'}]},
+     {id: 'sci_cm2_5', title:'Le fonctionnement du vivant', content:[
+       {id: 'sci_cm2_5_1', title:'Stades de développement de l\'être vivant'},
+       {id: 'sci_cm2_5_2', title:'Conditions de développement des végétaux et animaux'},
+       {id: 'sci_cm2_5_3', title:'Modes de reproduction'}]},
+     {id: 'sci_cm2_6', title:'Le fonctionnement du corps humain', content:[
+       {id: 'sci_cm2_6_1', title:'Mouvements corporels'},
+       {id: 'sci_cm2_6_2', title:'Fonctions de nutrition'},
+       {id: 'sci_cm2_6_3', title:'Reproduction de l\'être humain'},
+       {id: 'sci_cm2_6_4', title:'Hygiène et santé'}]},
+     {id: 'sci_cm2_7', title:'Êtres vivants dans leur environnement', content:[
+       {id: 'sci_cm2_7_1', title:'Adaptation des êtres vivants à leur milieu'},
+       {id: 'sci_cm2_7_2', title:'Place et rôle des êtres vivants'},
+       {id: 'sci_cm2_7_3', title:'Evolution d\'un environnement géré par l\'être humain'}]},
+     {id: 'sci_cm2_8', title:'Les objets techniques', content:[
+       {id: 'sci_cm2_8_1', title:'Circuits électriques alimentés par des piles'},
+       {id: 'sci_cm2_8_2', title:'Règles de sécurité et danger de l\'électricité'},
+       {id: 'sci_cm2_8_3', title:'Leviers et balance, équilibres'},
+       {id: 'sci_cm2_8_4', title:'Objets mécaniques, transmission de mouvement'}]}
+    ]},
+
+    {id: 'his_cm2', title:'CM2', matter: {id:'his'}, level:{id:'cm2'}, long_title:'', content:[
+     {id: 'his_cm2_1', title:'La Préhistoire', content:[
+       {id: 'his_cm2_1_1', title:'Premières traces de la vie humaine'}]},
+     {id: 'his_cm2_2', title:'L\'Antiquité', content:[
+       {id: 'his_cm2_2_1', title:'Gaulois, romanisation de la Gaulle et christianisation'}]},
+     {id: 'his_cm2_3', title:'Le Moyen-Âge', content:[
+       {id: 'his_cm2_3_1', title:'Développement du Royaume de France'},
+       {id: 'his_cm2_3_2', title:'Relation de servage et rôle de l\'Eglise'},
+       {id: 'his_cm2_3_3', title:'Conflits et échanges en Mediterranée'},
+       {id: 'his_cm2_3_4', title:'Guerre de Cent ans'}]},
+     {id: 'his_cm2_4', title:'Les Temps modernes', content:[
+       {id: 'his_cm2_4_1', title:'Grandes découvertes, Traite des noirs'},
+       {id: 'his_cm2_4_2', title:'La Renaissance'},
+       {id: 'his_cm2_4_3', title:'Louis XIV, monarque absolu'},
+       {id: 'his_cm2_4_4', title:'Les Lumières'}]},
+     {id: 'his_cm2_5', title:'La Révolution française et le XIXe siècle', content:[
+       {id: 'his_cm2_5_1', title:'Révolution française et Premier Empire'},
+       {id: 'his_cm2_5_2', title:'Révolution industrielle (XIXe siècle)'},
+       {id: 'his_cm2_5_3', title:'Les débuts de la démocratie'}]},
+     {id: 'his_cm2_6', title:'Le XXe siècle et notre époque', content:[
+       {id: 'his_cm2_6_1', title:'Violence du XXe siècle'},
+       {id: 'his_cm2_6_2', title:'Progrès scientifiques et techniques, consommation'},
+       {id: 'his_cm2_6_3', title:'La Ve République'},
+       {id: 'his_cm2_6_4', title:'La construction européenne'}]}
+    ]},
+
+    {id: 'geo_cm2', title:'CM2', matter: {id:'geo'}, level:{id:'cm2'}, long_title:'', content:[
+     {id: 'geo_cm2_1', title: 'L\'environnement proche', content:[
+       {id: 'geo_cm2_1_1', title: 'Paysages, flux, activités économiques'},
+       {id: 'geo_cm2_1_2', title: 'Développement durable'},
+       {id: 'geo_cm2_1_3', title: 'Département et région'}]},
+     {id: 'geo_cm2_2', title:'Le territoire français dans l\'UE', content:[
+       {id: 'geo_cm2_2_1', title:'Grands types de paysages'},
+       {id: 'geo_cm2_2_2', title:'Diversité des régions françaises'},
+       {id: 'geo_cm2_2_3', title:'Frontières françaises et de l\'UE'}]},
+     {id: 'geo_cm2_3', title:'Les français dans l\'Europe', content:[
+       {id: 'geo_cm2_3_1', title:'Répartition de la population en France et en Europe'},
+       {id: 'geo_cm2_3_2', title:'Principales villes en France et en Europe'}]},
+     {id: 'geo_cm2_4', title:'Se déplacer en France et en Europe', content:[
+       {id: 'geo_cm2_4_1', title:'Aéroport'},
+       {id: 'geo_cm2_4_2', title:'Réseau routier, autoroutier et ferrovière'}]},
+     {id: 'geo_cm2_5', title:'La France dans le monde', content:[
+       {id: 'geo_cm2_5_1', title:'Territoires français dans le monde'},
+       {id: 'geo_cm2_5_2', title:'Langue française dans le monde'}]}
+    ]},
+
+    {id: 'eps_cm2', title:'CM2', matter: {id:'eps'}, level:{id:'cm2'}, long_title:'', content:[
+     {id: 'eps_cm2_1', title:'Réaliser une performance mesurée', content:[
+       {id: 'eps_cm2_1_1', title:'Activités athlétiques'},
+       {id: 'eps_cm2_1_2', title:'Natation'}]},
+     {id: 'eps_cm2_2', title:'Adapter ses performances', content:[
+       {id: 'eps_cm2_2_1', title:'Activités d\'escalade'},
+       {id: 'eps_cm2_2_2', title:'Activités aquatiques et nautiques'},
+       {id: 'eps_cm2_2_3', title:'Activités de roule et de glisse'},
+       {id: 'eps_cm2_2_4', title:'Activités d\'orientation'}]},
+     {id: 'eps_cm2_3', title:'Coopérer ou s\'opposer', content:[
+       {id: 'eps_cm2_3_1', title:'Jeux de lutte'},
+       {id: 'eps_cm2_3_2', title:'Jeux de raquette'},
+       {id: 'eps_cm2_3_3', title:'Jeux sportifs collectifs'}]},
+     {id: 'eps_cm2_4', title:'Concevoir et réaliser des actions', content:[
+       {id: 'eps_cm2_4_1', title:'Danse'},
+       {id: 'eps_cm2_4_2', title:'Activité gymnastique'}]}
+    ]},
+
+    {id: 'sci_ce2', title:'', matter: {id:'sci'}, level:{id:'ce2'}, long_title:'', content:[
+      {id: 'sci_ce2_1', title:'Le ciel et la Terre', content:[
+        {id: 'sci_ce2_1_1', title:'Lumières et ombres'},
+        {id: 'sci_ce2_1_2', title:'La Terre autour du soleil'},
+        {id: 'sci_ce2_1_3', title:'Volcans et séismes'}]},
+      {id: 'sci_ce2_2', title:'La matière', content:[
+        {id: 'sci_ce2_2_1', title:'Etats et changements d\'états'},
+        {id: 'sci_ce2_2_2', title:'Le trajet de l\'eau dans la nature'},
+        {id: 'sci_ce2_2_3', title:'Les déchets'}]},
+      {id: 'sci_ce2_3', title:'L\'énergie', content:[
+        {id: 'sci_ce2_3_1', title:'Sources d\'énergie'}]},
+      {id: 'sci_ce2_4', title:'L\'unité et la diversité du vivant', content:[
+        {id: 'sci_ce2_4_1', title:'L\'unité du vivant'}]},
+      {id: 'sci_ce2_5', title:'Le fonctionnement du vivant', content:[
+        {id: 'sci_ce2_5_1', title:'Stades de développement'}]},
+      {id: 'sci_ce2_6', title:'Le corps humain et la santé', content:[
+        {id: 'sci_ce2_6_1', title:'Hygiène et santé'},
+        {id: 'sci_ce2_6_2', title:'Mouvements corporels'}]},
+      {id: 'sci_ce2_7', title:'Les êtres vivants dans leur environnement', content:[
+        {id: 'sci_ce2_7_1', title:'Places et rôles des êtres vivants'},
+        {id: 'sci_ce2_7_2', title:'Chaînes et réseaux alimentaires'}]},
+      {id: 'sci_ce2_8', title:'Les objets techniques', content:[
+        {id: 'sci_ce2_8_1', title:'Sécurité et danger de l\'électricité'},
+        {id: 'sci_ce2_8_2', title:'Circuits électriques et piles'},
+        {id: 'sci_ce2_8_3', title:'Leviers et balances'}]},
+      {id: 'sci_ce2_9', title:'L\'environnement et le développement durable', content:[
+        {id: 'sci_ce2_9_1', title:'Les déchets'}]}
     ]}
-
-
- ];
+  ];
 
   // clone des categories pour differents levels
   // Anglais categories[0]
