@@ -90,43 +90,6 @@
         window.onbeforeunload = null;
     }
 
-    $(function()
-    {
-      Offline.on('confirmed-down', function () {
-        $('.text-online').text('Offline');
-        $('.icon-online').css('background', 'red');
-        $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardée</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
-      });
-
-      Offline.on('confirmed-up', function () {
-         $('.text-online').text('Online');
-         $('.icon-online').css('background', '#80d580');
-      });
-      
-
-      // Offline.on('confirmed-up', function () {
-      //   console.log($('.text-online').text());
-      //   if ($('.text-online').text() == 'Online')
-      //   {
-      //     $('.text-online').text('Offline');
-      //     $('.icon-online').css('background', 'red');
-      //     //alert('Attention. Connection internet perdu vos modifications ne seront plus sauvegardées.');
-      //     $('#content').before('<div class="modal modal-lostconnection"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only closure-lostconnection">Close</span></button><h4 class="modal-title">Connection Perdue</h4></div><div class="modal-body"><p>Attention toute modification ne sera sauvegardées</p></div><div class="modal-footer"><button type="button" class="btn btn-default closure-lostconnection" data-dismiss="modal">Close</button></div></div></div></div>');
-      //   }
-      //   else
-      //   {
-      //      $('.text-online').text('Online');
-      //      $('.icon-online').css('background', '#80d580');
-      //      //alert('ONLINE');
-      //   }
-      // });
-    });
-
-  $(document).on('click', '.closure-lostconnection', function ()
-  {
-    $('.modal-lostconnection').remove();
-  });
-
     if (debug) {
       // To be removed - allow to spoof user level when debugging
       // $('body').addClass(debugUser);
@@ -183,13 +146,18 @@
   jsBoot.loader.use('libs/css/unicorn.main' + suffix + 'css');
   jsBoot.loader.use('libs/css/unicorn.grey' + suffix + 'css');
   jsBoot.loader.use('libs/css/redactor' + suffix + 'css');
+  jsBoot.loader.use("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
+  jsBoot.loader.use('libs/css/offline-theme-chrome.css');
+  jsBoot.loader.use('libs/css/offline-language-french.css');
+
 
   jsBoot.loader.use('libs/js/chosen.jquery' + suffix + 'js');
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
    // JBT & EP added this one ... 15/02/2014
   jsBoot.loader.use('libs/js/jquery.ui.touch-punch.min.js');
-  jsBoot.loader.use('libs/js/offline-0.7.2.js');
+  jsBoot.loader.use('libs/js/offline.min.js');
+  // jsBoot.loader.use('libs/js/offline-simulate-ui.min.js');
 //  jsBoot.loader.use('libs/js/offline-simulate.js');
 
 
@@ -222,8 +190,6 @@
   jsBoot.loader.use('libs/js/file-upload/load-image' + suffix + 'js');
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload' + suffix + 'js');
   jsBoot.loader.use('libs/js/file-upload/jquery.fileupload-fp' + suffix + 'js');
-
-
 
   jsBoot.loader.use(bootRoot + 'activity/activity' + suffix + 'css');
   jsBoot.loader.use(bootRoot + 'activity/packer' + suffix + 'js');
