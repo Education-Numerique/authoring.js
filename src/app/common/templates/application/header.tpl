@@ -12,12 +12,6 @@
   </p>
 -->
   <nav id="user-nav" class="navbar" role="navigation">
-    <div style='font-family: "Lucida Grande", sans-serif;font-size: 12px;padding: 3px;width: 69px;background: #f6f6f6;color: #888888;z-index: 20000;border-radius: 4px;position: relative;float: left;top: 3px;right: 3px;'>
-        <div class='online-icon-div'>
-          <span class='icon-online'></span>
-          <span style='float:right; padding-right:5px;' class='text-online'>Online</span>
-        </div>
-      </div>
     <!-- Logged-out, default -->
 
     <ul class="nav btn-group user-logged-out">
