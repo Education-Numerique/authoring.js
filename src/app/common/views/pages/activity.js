@@ -762,6 +762,12 @@
         this.get('controller.currentPage').set('flavor', this.get('controller.flavors.selected'));
         if (this.get('controller.isQuizz') || this.get('controller.isMixnmatch'))
           this.get('controller').addQuestion();
+        if (this.get('controller.isPerfPage'))
+        {
+          window.setTimeout(function() {
+  $( ".redactor_btn_icon-star" ).trigger( "click" );
+}, 500);
+        }
 
         $('#modal-create-page').modal('hide');
       }

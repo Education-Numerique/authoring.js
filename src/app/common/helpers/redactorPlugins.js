@@ -25,7 +25,7 @@
         },
         insertAdvancedHtml: function(obj, e)
         {
-            $('#'+obj.$el.context.id).prev().append("Ta note générale est : {{activite.note}} ou encore : {{activite.note[/20]}}<br/>");
+            $('#'+obj.$el.context.id).prev().append("Voici les résultats que tu as obtenus aux exercices de cette activité : <p class='mystats'>{{activite.note}} ou encore : {{activite.note[/20]}}</p> Remarques sur ta Performance : <br /> Suggestions pour aller plus loin : <br />Crédits (textes, photos) :<br/>");
             // ------------------------------------------------------------------------------------------------------------------------------------------
             var pageTypes = ['page-quizz', 'page-jmt', 'page-tat'];
             var nbPage = $('.pages-list > li').length;
@@ -33,9 +33,16 @@
             {
                 if ($.inArray($(this).attr('class').split(' ').pop(), pageTypes) != -1)
                 {
-                    $('#'+obj.$el.context.id).prev().append("Page "+ (index+1) +": {{activite.pages["+(index+1)+"].note[/20]}} <br/>");
+                    $('.mystats').append("<p>Page "+ (index+1) +": {{activite.pages["+(index+1)+"].note[/20]}} </p>");
                 }
             });
+            // $( ".pages-list > li" ).each(function( index )
+            // {
+            //     if ($.inArray($(this).attr('class').split(' ').pop(), pageTypes) != -1)
+            //     {
+            //         $('#'+obj.$el.context.id).prev().append("Page "+ (index+1) +": {{activite.pages["+(index+1)+"].note[/20]}} <br/>");
+            //     }
+            // });
         }
     }
 
@@ -160,7 +167,6 @@
                     });
 
                 };
-
 
                 $('#redactor_modal_content .redactor_tabs a').bind('click', function () {
                     console.warn($(this).siblings().attr('class'));
