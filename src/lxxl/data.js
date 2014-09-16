@@ -64,6 +64,7 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     inf: 'Informatique',
     docu: 'Documentation',
     tice: 'TICE',
+    b2i: 'B2I',
     tuto: 'Tutoriel',
     other: 'Autre'
   };
