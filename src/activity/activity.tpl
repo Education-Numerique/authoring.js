@@ -216,21 +216,29 @@
                 <ul class="qrm">
                   {{reset_index "aid"}}
                   {{#each answers}}
-                  <li id="answer-{{index 'aid'}}">
+                  <li id="answer-{{index 'aid'}}" style='padding-bottom: 10px;'>
                   <form>
-                      <input type="radio" name="ans" value="true" /> Oui <input type="radio" name="ans" value="" /> Non :&nbsp;&nbsp;&nbsp;<div style='display:inline-block; width:70%;'>{{{text}}}</div>
-                      <div class="modal hide" role="dialog" aria-hidden="true">
-                        <div class="modal-header">
-                          <h3>Mmm... Pas tout à fait (<span class="feedback"></span>).
-                            <br />Voici un indice.</h3>
-                        </div>
-                        <div class="modal-body">
-                          {{comment}}
-                        </div>
-                        <div class="modal-footer">
-                          <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
-                        </div>
+                    
+                    <div style='border-bottom: dotted 1px #DDDDDD;'>
+                      <div style='display:inline-block; width:20%; vertical-align:top;'>
+                        <input type="radio" name="ans" value="true" />&nbsp;Oui &nbsp;&nbsp;
+                        <input type="radio" name="ans" value="" />&nbsp;Non &nbsp;&nbsp;
                       </div>
+                      <div style='display:inline-block; width:70%;'>{{{text}}}</div>
+                    </div>
+
+                    <!-- TODO : discard modal by clicking outside -->
+                    <div class="modal hide" role="dialog" aria-hidden="true">
+                      <div class="modal-header">
+                        <h3>Mmm... Pas tout à fait (<span class="feedback"></span>).
+                          <br />Voici un indice.</h3>
+                      </div>
+                      <div class="modal-body">{{comment}}</div>
+                      <div class="modal-footer">
+                        <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
+                      </div>
+                    </div>
+
                   </form>
                   </li>
                   {{/each}}
@@ -244,6 +252,7 @@
                       Ton score pour cette question : <span class="feedback"></span>
                     </div>
                     <div class="modal-footer">
+                      <!-- TODO : discard modal by clicking outside -->
                       <a class="btn btn-primary" onclick="$(this).parent().parent().modal('hide');">Ok</a>
                     </div>
                   </div>
@@ -252,9 +261,12 @@
                 <ul class="qcm">
                   {{reset_index "aid"}}
                   {{#each answers}}
-                  <li id="answer-{{index 'aid'}}">
-                    <button>?</button>
-                    <div style='display:inline-block; max-width:70%;'>{{{text}}}</div>
+                  <li id="answer-{{index 'aid'}}" style='padding-bottom: 10px;'>
+                    <div style='border-bottom: dotted 1px #DDDDDD;'>
+                      <div style='display:inline-block; width:10%; vertical-align:top;'><button>?</button></div>
+                      <div style='display:inline-block; max-width:80%;'>{{{text}}}</div>
+                    </div>
+
                     <div class="modal hide" role="dialog" aria-hidden="true">
                       <div class="modal-header">
                         <!-- titre du feed-back QCM -->
