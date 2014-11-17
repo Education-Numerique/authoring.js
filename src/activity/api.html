@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>VS SCORM - RTE API</title>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js" />
+<script language="javascript">
+var debug = true;
+
+/*****************************************************************
+Based on http://www.vsscorm.net/docs/vsscorm_0_A.zip 
+
+API Methods
+
+The run-time API (application programming interface) methods provide a standardized way for SCOs to communicate with the LMS while shielding the communication implementation from the SCO developer.
+
+There are eight run-time API functions provided by the SCORM run-time environment:
+Initialize("")
+Terminate("")
+GetValue(parameter)
+SetValue(parameter1, parameter2)
+Commit("")
+GetLastError()
+GetErrorString(parameter)
+GetDiagnostic(parameter)
+
+****** Session Methods ****** 
+Session methods are used to initiate and terminate data communication between a SCO and an API instance. Calling a session method may change the API instance's current error code.
+
+Initialize(""): used to initiate the communication session. It allows the LMS to handle LMS specific initialization issues.
+parameter (required): "" - always an empty string
+return values:
+  - true, returned if communication session initialization was successful as determined by the LMS
+  - false, returned if the communication session initialization was not successful
+
+Terminate(""): used to terminate the communication session. It is used by the SCO when the SCO has determined that it no longer needs to communicate with the LMS.
+parameter (required): "" - always an empty string
+return values:
+  - true, returned if communication session termination was successful as determined by the LMS
+  - false, returned if the communication session termination was not successful
+
+****** Data-Transfer Methods ******
+
+GetValue(parameter): requests information from the LMS. It permits the SCO to request information from the LMS, including the value of data model elements.
+parameter (required): the name of a Run-time Data Model element (e.g. "learner.learner_id")
+return value: 
+  - the value of the data model element parameter
+  - an empty characterstring (""). If an error occurs, GetLastError() should be called to determine the nature of the error.
+
+SetValue(parameter1, parameter2): used to request the transfer to the LMS of the value of data model elements.
+parameters (all required):
+  - parameter1, the name of a Run-time Data Model element (e.g. "learner.learner_id")
+  - parameter2, the value to set the data model element to
+return value:
+  - true, if the value of parameter2 was accepted for the data model element parameter1
+  - false, if an error occurs (GetLastError() should be called to determine the nature of the error)
+
+Commit(""): requests forwarding to the persistent data store any data from the SCO that may have been cached by the API instance. The method can be used to guarantee that data set by SetValue() is persisted to reduce the likelihood that data is lost due to communication session interruption or abnormal session termination prior to a call to Terminate().
+parameter: (required): "" - always an empty string
+Commit() return value:
+  - true, returned if the commit succeeded
+  - false, returned if the commit failed
+
+****** Support Methods ******
+
+GetLastError(): requests the error code for the current error state of the API instance.
+parameters: (none)
+return value: the error code reflecting the current error state of the API instance
+
+GetErrorString(parameter): retrieves a textual description of the current error state.
+parameter (required): an error code (e.g. "301")
+return values: the LMS-specific error string for the passed error code (max length: 255 characters)
+
+GetDiagnostic(parameter): allows the LMS to define additional diagnostic information through the API instance.
+parameters (required): an implementer-specific value for diagnostics
+return value: the LMS-specific diagnostic string for the passed parameter
+
+******************************************************************/
+
+// ------------------------------------------
+//   SCORM RTE Functions - Initialization
+// ------------------------------------------
+function LMSInitialize(dummyString) { 
+  if (debug) {console.log('*** LMSInitialize ***'); }
+  return "true";
+}
+
+// ------------------------------------------
+//   SCORM RTE Functions - Getting and Setting Values
+// ------------------------------------------
+function LMSGetValue(varname) {
+  if (debug) { 
+    console.log('*** LMSGetValue varname=' + varname + ' varvalue=value ***');
+  }
+  return "value";
+}
+
+function LMSSetValue(varname,varvalue) {
+  if (debug) { 
+    console.log('*** LMSSetValue varname=' + varname + ' varvalue=' + varvalue + ' ***');
+  }
+  return "true";
+}
+
+function LMSCommit(dummyString) {
+  if (debug) { console.log('*** LMSCommit ***'); }
+  return "true";
+}
+
+// ------------------------------------------
+//   SCORM RTE Functions - Closing The Session
+// ------------------------------------------
+function LMSFinish(dummyString) {
+  if (debug) { console.log('*** LMSFinish ***'); }
+  return "true";
+}
+
+// ------------------------------------------
+//   SCORM RTE Functions - Error Handling
+// ------------------------------------------
+function LMSGetLastError() {
+  if (debug) { console.log('*** LMSGetLastError ***'); }
+  return 0;
+}
+
+function LMSGetDiagnostic(errorCode) {
+  if (debug) { 
+    console.log('*** LMSGetDiagnostic errorCode='+errorCode+' ***');
+  }
+  return "diagnostic string";
+}
+
+function LMSGetErrorString(errorCode) {
+  if (debug) { 
+    console.log('*** LMSGetErrorString errorCode='+errorCode+' ***'); 
+  }
+  return "error string";
+}
+</script>
+</head>
+<body>
+</body>
+</html>

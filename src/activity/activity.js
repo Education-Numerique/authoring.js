@@ -4,7 +4,6 @@
  * - add the learner environemnent including feedback and other consumer related behaviors
  */
 
-
 /*global Mingus, Handlebars*/
 
 (function($) {
@@ -32,12 +31,9 @@
   };
 })($);
 
-
 (function() {
   'use strict';
-  /**
-   * Handle
-   */
+  /*  Handle */
   Handlebars.registerHelper('ifequalhelp', function(val1, val2, options) {
     // var context = (options.fn.contexts && options.fn.contexts[0]) || this;
     // var val1 = Ember.Handlebars.getPath(context, val1, options.fn);
@@ -74,7 +70,6 @@
       globalIndex = 0;
     });
   })();
-
 
   // var session;
   var ifr;
@@ -366,7 +361,6 @@
       // console.warn('exiting bind collapser', node);
     };
 
-
     this.setupViewport = function(node, noframe) {
       if (ifr && ifr.parentNode)
         ifr.parentNode.removeChild(ifr);
@@ -417,12 +411,7 @@
     this.makeDataUri = function(obj) {
       return 'data:application/json;base64,' + encode(obj);
     };
-
   };
-
-
-
-
 
   /*  Ember.Handlebars.registerHelper('isEqual', function(key, options) {
     return key ==
@@ -430,7 +419,6 @@
     var ret = I18n.translate(key, options);
     return (ret != '---') && ret || null;
   });*/
-
 
   /*
   var helpers = new (function() {
@@ -442,14 +430,13 @@
       return subject;
     };
 
-// XXX use this instead of the other crap
+    // XXX use this instead of the other crap
 
-// var date = new Date(null);
-//       date.setSeconds(this.get('currentPage.limitedTime'));
-//       var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
-//         return parseInt(i);
-//       });
-
+    // var date = new Date(null);
+    //       date.setSeconds(this.get('currentPage.limitedTime'));
+    //       var time = date.toUTCString().split('1970 ').pop().split('GMT').shift().split(':').map(function(i) {
+    //         return parseInt(i);
+    //       });
 
     this.chronometer = function(node, seconds, toutCbk) {
       var cur = seconds;
@@ -485,7 +472,6 @@
     };
   })();
   */
-
 
   /*
   var ActivityUserController = function(mesh) {
@@ -576,7 +562,5 @@
     };
 
     jsBoot.service.core.initialize(SERVICE_CONFIG.key, SERVICE_CONFIG.server, SERVICE_CONFIG.anonymous);
-
   }
-
 })();
