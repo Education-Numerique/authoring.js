@@ -1,8 +1,29 @@
 /*
 * @template : pages/dashboard
 */
+
+<div class="row-fluid">
+  <div class="alert-info alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+    Parce que nous croyons à l’égalité des chances dans l’éducation,<br /> nous sommes attachés à la gratuité.<br />
+    Pour que la communauté éducative dispose de toujours plus de ressources<br />libres et sans publicité.<br />
+    Pour que E&N puisse créer de nouvelles fonctionnalités, soutenez nous !<br />
+    Faites un don de 2€, 5€, 20 € ou plus :-), en un clic<br /><br />
+    <div align='middle'>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+    <input type="hidden" name="cmd" value="_s-xclick">
+    <input type="hidden" name="hosted_button_id" value="WGAAGJ8F7RGGN">
+    <input type="image" src="https://www.paypalobjects.com/fr_FR/FR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - la solution de paiement en ligne la plus simple et la plus sécurisée !">
+    <img alt="" border="0" src="https://www.paypalobjects.com/fr_FR/i/scr/pixel.gif" width="1" height="1">
+    </form>
+    </div>
+    Où va votre don ?<br />
+     Votre don confortera l’organisation. E&N est une petite équipe composée d’un éditeur assisté de professeurs responsables matière qui correspondent avec les enseignants auteurs, de 2 chargées de communication qui mettent en avant vos ressources et vous informent chaque semaine des nouveautés, et enfin de 2 développeurs qui assurent  le bon fonctionnement de la plateforme pour le nombre croissant d’utilisateurs (serveurs et maintenance) et le développement de nouvelles fonctionnalités.<br /><br />
+    <small>Les dons aux associations d’intérêt général ouvrent droit à une réduction d’impôt sur 66% des sommes versées dans la limite de 20% du revenu imposable. (<a href='http://vosdroits.service-public.fr/particuliers/F426.xhtml#N100DA' target='_blank'><em>cliquez ici pour en savoir plus<em></a>)</small>
+  </div>
+</div>
+
 <!--
-  
 <div class="row-fluid">
   <div class="alert alert-error"> 
     <a href="#" data-dismiss="alert" class="close">×</a>
@@ -12,8 +33,7 @@
     A bientôt,<br />
     l'équipe technique d'E&N</p>
   
-    Vous pouvez prendre contact avec <a href="mailto:contact@education-et-numerique.org">contact@education-et-numerique.org</a>
-  
+    Vous pouvez prendre contact avec <a href="mailto:contact@education-et-numerique.org">contact@education-et-numerique.org</a>  
   </div>
 </div>
 -->
