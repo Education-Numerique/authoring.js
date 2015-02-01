@@ -1,10 +1,16 @@
 Licensed under the AferoGPL 
 (http://www.gnu.org/licenses/agpl-3.0.html)
 
-authors : Mangled Deutz & Raildecom 
+copyright : All rights reserved @ JBT & Education et Numérique,
+(47 rue Meslay, 75003, Paris (FR) / http://education-et-numerique.org)
+For any commercial use, please contact mailto:contact@education-et-numerique.org
+
+project management, specs and some code : JB Touchard 
+(mailto:jbt@txtnet.com)
+
+architecture and lead developpers : Mangled Deutz & Raildecom 
 (mailto:dev@webitup.fr)
 
-copyright All rights reserved : Education & Numérique, 47 rue Meslay, 75003, Paris (FR)
-(http://education-et-numerique.org - mailto:contact@education-et-numerique.org)
+Conributors : Antonin Bazin, Fabien de Maestri, Mathieu Breton, Emmanuel Prevost
 
 Please check the "About dependencies" section of the README.md for chaining licences.
