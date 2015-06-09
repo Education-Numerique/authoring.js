@@ -115,8 +115,8 @@
           <h3><i class="icon-eye-open"></i> Les activités publiées</h3>
 
           <p><strong><a href="http://catalogue.education-et-numerique.org" target="_blank">Visitez le catalogue</a></strong> : Il contient TOUTES les activités que les auteurs (vous) décident de publier. Les meilleures y sont mélangées aux activités incomplètes, aux essais de tous genres. Il est assez dur d'y repérer le bon grain au milieu de l'ivraie.<br />Mais c'est grâce à lui que vous pouvez partager ce que vous produisez avec tout le monde. Naviguez dans les filtres matière/niveau ou utilisez l'outil de recherche pour retrouver une activité. Cliquez dessus, elle s'ouvre dans une nouvelle fenêtre. Pour la signaler à quelqu'un, il suffit de recopier son adresse dans la barre d'adresse du navigateur.<br />Le lien ressemble à&nbsp;: <a href="http://www.education-et-numerique.fr/0.3/activity/embed.html?id=510eaff63361eb667e4c26f7" target="_blank">www.education-et-numerique.fr/0.3/activity/embed.html?id=510eaff63361eb667e4c26f7</a></p>
-          <p><strong><a href="http://www.education-et-numerique.org" target="_blank">Visitez le site de l'Association</a></strong> : Les éditeurs et directeurs de collections de l'association explorent régulièrement le catalogue à la recherche des pépites que vous y déposez. Ils prennent contact avec les auteurs et travaillent avec eux, les aider à améliorer leur production, leur donner des conseils, parler pédagogie numérique, se lier d'amitié.<br /> 
-          Et bien sûr, fiers de ce que nous faisons, promouvoir autant que nous le pouvons le meilleur de ce que vous produisez : lettre d'information envoyée à plus de 60&nbsp;000 membres de la communauté éducative francophone, Twitter, Facebook, presse, bouche à oreille ... Cette seconde année d'existence nous permet d'affirmer que nous occupons aujourd'hui une belle place dans le paysage des ressources pédagogiques numériques. Certaines de vos activités ont été consultées plus de 50&nbsp;000 fois !!!</p>
+          <p><strong><a href="http://www.education-et-numerique.org" target="_blank">Visitez le site de l'Association</a></strong> : Les éditeurs et directeurs de collections de l'association explorent régulièrement le catalogue à la recherche des pépites que vous y déposez. Ils prennent contact avec les auteurs, travaillent avec eux, les aident à améliorer leur production, leur donnent des conseils, parlent avec eux de pédagogie numérique, se lient d'amitié&nbsp;...<br /> 
+          Et bien sûr, fiers de ce que nous faisons ensemble, autant que nous le pouvons, nous cherchons à promouvoir le meilleur de ce que vous produisez : lettre d'information envoyée à plus de 60&nbsp;000 membres de la communauté éducative francophone, Twitter, Facebook, presse, bouche à oreille ... Cette seconde année d'existence nous permet d'affirmer que nous occupons aujourd'hui une belle place dans le paysage des ressources pédagogiques numériques. Certaines de vos activités ont été consultées plus de 50&nbsp;000 fois !!!</p>
         </div>
 
         <div class="span6">
@@ -125,11 +125,11 @@
           <p><strong>Devenez auteur</strong><br />
           C’est libre, gratuit, Open source, sous licence Creative Commons. Vous conservez tous les droits de propriété sur vos créations.<br />
           En quelques minutes, après avoir validé votre compte, vous pourrez créer votre première activité.<br /><i class="i con-th-list"></i> À l’aide de gabarits conçus par E&N, vous concevez facilement fiches et exercices «&nbsp;accrochés&nbsp;» au programme, au bon thème, à la bonne notion.<br />
-          Prévisualisez vos séquences au fur et à mesure de la conception, sauvegardez, publiez.<br />
+          Prévisualisez vos séquences au fur et à mesure de leur conception, sauvegardez une étape importante, publiez.<br />
           Découvrez ce que vous pourrez produire grâce à LEA en regardant les activités publiées dans le <a href="http://catalogue.education-et-numerique.org" target="_blank">catalogue</a>.<br />
           Prenez le temps de découvrir les tutos. Par exemple la présentation générale de la plateforme : <a href="http://www.education-et-numerique.fr/0.3/activity/embed.html?id=510eaff63361eb667e4c26f7" target="_blank">Elena</a> ou <a href="http://www.education-et-numerique.org/tutoriels-education-et-numerique/" target="_blank">la page du blog réservée aux tutos</a></br />.
-          Pensez à validez les exercices que vous proposez avec des utilisateurs et observez leurs réactions.<br />  
-          Partagez avec vos élèves ou vos collègues via votre site ou votre blog… Grâce à la compatibilité SCORM, exportez vos activités vers le LCMS (Learning Course Management System) de l'ENT de votre établissement et assurerez le suivi de vos élèves.</p> 
+          Validez les exercices que vous proposez avec vos élèves, observez leurs réactions.<br />  
+          Grâce à la compatibilité SCORM, partagez avec vos élèves ou vos collègues via votre site ou votre blog, exportez vos activités vers le LCMS (Learning Course Management System) de l'ENT de votre établissement et assurerez le suivi de vos élèves.</p> 
         </div>
       </div>
 

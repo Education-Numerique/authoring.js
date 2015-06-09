@@ -2,7 +2,7 @@
 * @template : application/header
 */
   <header id="header" role="banner">
-  <a href="./" titile='Acceuil' style='display:block;'>
+  <a href="./" title='Acceuil' style='display:block;'>
     </a>
   </header>
 
@@ -12,8 +12,8 @@
   </p>
 -->
   <nav id="user-nav" class="navbar" role="navigation">
-    <!-- Logged-out, default -->
 
+    <!-- Logged-out, default -->
     <ul class="nav btn-group user-logged-out">
       <li class="btn btn-inverse" ><a title="{{localize nav.login.tip}}" {{action showAccountLogin href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-lock"></i><span class="text">{{localize nav.login.text}}</span></a></li>
       <li class="btn btn-mini btn-inverse"><a title="{{localize nav.register.tip}}"  {{action showAccountRegister href=true}} rel="tooltip" data-placement="bottom"><i class="icon icon-user"></i> <span class="text">{{localize nav.register.text}}</span></a></li>

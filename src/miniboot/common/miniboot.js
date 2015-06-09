@@ -146,22 +146,20 @@
   jsBoot.loader.use('libs/css/unicorn.main' + suffix + 'css');
   jsBoot.loader.use('libs/css/unicorn.grey' + suffix + 'css');
   jsBoot.loader.use('libs/css/redactor' + suffix + 'css');
-  jsBoot.loader.use("//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css");
-  jsBoot.loader.use('libs/css/offline-theme-chrome.css');
-  jsBoot.loader.use('libs/css/offline-language-french.css');
+  jsBoot.loader.use('libs/css/font-awesome' + suffix + 'css'); //netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css
+  //jsBoot.loader.use('libs/css/offline-theme-chrome.css'); // deactivated JBT 09/06/2015
+  //jsBoot.loader.use('libs/css/offline-language-french.css'); // deactivated JBT 09/06/2015
 
 
   jsBoot.loader.use('libs/js/chosen.jquery' + suffix + 'js');
   // Wizard depend on this crap, and possibly flot as well
   jsBoot.loader.use('libs/js/jquery.ui.custom' + suffix + 'js');
-   // JBT & EP added this one ... 15/02/2014
-  jsBoot.loader.use('libs/js/jquery.ui.touch-punch.min.js');
-  jsBoot.loader.use('libs/js/offline.min.js');
-  // jsBoot.loader.use('libs/js/offline-simulate-ui.min.js');
-//  jsBoot.loader.use('libs/js/offline-simulate.js');
+  jsBoot.loader.use('libs/js/jquery.ui.touch-punch.min.js'); // added JBT & EP  15/02/2014
+  //jsBoot.loader.use('libs/js/offline.min.js'); // deactivated JBT 09/06/2015
+  //jsBoot.loader.use('libs/js/offline-simulate-ui.min.js');
+  //jsBoot.loader.use('libs/js/offline-simulate.js');
 
-
-
+  // to be replaced by local stable ???
   if (cdnJax) {
     jsBoot.loader.use('//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_HTMLorMML.js');
   }else {

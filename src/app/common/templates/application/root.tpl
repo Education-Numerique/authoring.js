@@ -29,5 +29,4 @@
     <div class="modal-footer">
     </div>
   </div>
-
   {{view view.footerView}}
