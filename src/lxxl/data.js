@@ -101,6 +101,12 @@ jsBoot.pack('LxxlLib.model.defines', function() {
     ce2: 'CE2',
     ce1: 'CE1',
     cp: 'CP',
+		c2: "LV C2",
+    c1: "LV C1",
+    b2: "LV B2",
+    b1: "LV B1",
+    a2: "LV A2",
+    a1: "LV A1",
     other: 'Autre'
   };
 
